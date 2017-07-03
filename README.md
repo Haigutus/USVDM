@@ -11,6 +11,6 @@ External modules:
 User guide:
 1# Add OPDM validator to same folder with python script
 2# Run python script
-3# Select file(s) containing single .xml profile for validation
+3# Select file(s) containing single .xml profile or zip file(s) containing zipped profiles for validation 
 4# Select location for report folder
 5# Check .xml files in selected report folder location
