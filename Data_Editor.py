@@ -13,22 +13,7 @@ from ToolBox import *
 
 
 
-def show_meta_table(event):
 
-
-    ID = element_tree.focus()
-
-    #print ID
-
-    #print data_tree[int(ID)]["DATA"]["atribute"]
-
-    for i in meta_tree.get_children():
-        meta_tree.delete(i)
-
-    for key in data_tree[int(ID)]["DATA"]["atribute"]:
-        #print key
-
-        meta_tree.insert("", "end" , str(key) , text = key , value = str(data_tree[int(ID)]["DATA"]["atribute"][key]))
 
 def get_element(event):
 
@@ -156,7 +141,10 @@ def edit_element(event): #to be named to edit_field
 
             for n, column in enumerate(columns):
                 key = original_parent.heading(column)["text"]
-                value =       values[n]
+                try:
+                    value =       values[n]
+                except IndexError:
+                    value = ""   
 
                 DATA[key] = value
 
@@ -180,31 +168,69 @@ def edit_element(event): #to be named to edit_field
         #original_parent = element.master.master
         #print original_parent.__dick__
 
+def show_meta_table(event):
+
+
+    ID = element_tree.focus()
+
+    #print ID
+
+    #print data_tree[int(ID)]["DATA"]["atribute"]
+
+    for i in meta_tree.get_children():
+        meta_tree.delete(i)
+
+    for key in data_tree[int(ID)]["DATA"]["atribute"]:
+        #print key
+
+        meta_tree.insert("", "end" , str(key) , text = key , value = str(data_tree[int(ID)]["DATA"]["atribute"][key]))        
+
 
 def tree_view(root,decription_dic):
 
     element_tree   = ttk.Treeview(root)
-    element_tree["columns"]=(1) #tuple
     element_tree["selectmode"]="extended"
+    default_column_width=100    
 
-    element_tree.column(1, width=100 )
-    element_tree.heading(1, text="Text")
-    element_tree.column("#0", width=100 )
-    element_tree.heading("#0", text="Element") # Tree column
+    
+
+    #Generate all columns
+
+    element_tree["columns"]=("#1",) # All columns expect first one have to be define, first column ID is #0 so we are just continuing same numbering, but we need to add first tuple to then extend on it
+
+    column_dic=OrderedDict({})
+
+    for column_n,key in enumerate(data_tree[1]["DATA"].keys()):
+
+        column_id = "#{}".format(column_n)
+        
+        column_dic[key] = column_id
+
+        if column_n > 1:
+
+            element_tree["columns"]+=(column_id,)
+
+        
+    for key, column_id in column_dic.iteritems(): 
+        
+        element_tree.column(column_id, width = default_column_width )
+        element_tree.heading(column_id, text = key)      
 
 
 
-    for key, value in data_tree.iteritems():
+    for key, value in data_tree.iteritems(): 
 
 
         text = ""
-        values = [""]
+        values = [""] # in case no value is present
 
-        if "element" in value["DATA"]:
-            text = value["DATA"]["element"]
+        for item in value["DATA"]:
 
-        if "text" in value["DATA"]:
-            values = [value["DATA"]["text"]]
+            if column_dic[item] == "#0":
+                text = value["DATA"][item]
+
+            else:
+                values.append(value["DATA"][item])
 
 
         element_tree.insert(value["PARENT"], "end" , str(key) , text = text  , value= values)
@@ -267,14 +293,15 @@ element_tree = tree_view(root, settings)
 
 
 
-def print_cursorlocation(event):
-    print "X = {} !! Y = {}".format(event.x, event.y)
+
 
 
 
 meta_tree.pack(fill=BOTH, expand=YES, side=LEFT)
 
 
+def print_cursorlocation(event):
+    print "X = {} !! Y = {}".format(event.x, event.y)
 
 #root.bind("<Button-1>", print_cursorlocation)
 

@@ -21,6 +21,7 @@ import zipfile
 import os
 from lxml import etree
 import logging
+from collections import OrderedDict
 
 def get_XML_namespace(element_tag):
 
@@ -193,7 +194,7 @@ def xml_to_dic(XML_tree):
 
     """ Convert lxml XML tree object to dictionary and returns it"""
 
-    items_dic={}
+    items_dic=OrderedDict({})
 
 
     #print XML_tree.docinfo.root_name
@@ -223,15 +224,18 @@ def xml_to_dic(XML_tree):
         if isinstance(element.tag, basestring):
 
 
-            data={}
-            data["namespace"] = get_XML_namespace(element.tag)
+            data=OrderedDict({})
             data["element"]=get_XML_element(element.tag)
-            data["atribute"]=element.attrib
             data["text"]=element.text
+            data["atribute"]=element.attrib
+            data["namespace"] = get_XML_namespace(element.tag)            
+            
+            
 
-            item={}
-            item["PARENT"] = parent
+            item=OrderedDict({})
             item["DATA"] = data
+            item["PARENT"] = parent
+           
 
             #print item
 
