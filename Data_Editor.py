@@ -13,8 +13,6 @@ from ToolBox import *
 
 
 
-
-
 def get_element(event):
 
     """  event -> element """
@@ -169,38 +167,28 @@ def edit_element(event): #to be named to edit_field
         #print original_parent.__dick__
 
 def show_meta_table(event):
-
+    """Updates atributes filed in side table"""
 
     ID = element_tree.focus()
 
-    #print ID
-
-    #print data_tree[int(ID)]["DATA"]["atribute"]
-
-    for i in meta_tree.get_children():
+    for i in meta_tree.get_children(): #Deletes pervious values
         meta_tree.delete(i)
 
     for key in data_tree[int(ID)]["DATA"]["atribute"]:
-        #print key
-
+        #
         meta_tree.insert("", "end" , str(key) , text = key , value = str(data_tree[int(ID)]["DATA"]["atribute"][key]))        
 
 
-def tree_view(root,decription_dic):
 
-    element_tree   = ttk.Treeview(root)
-    element_tree["selectmode"]="extended"
-    default_column_width=100    
+def generate_treeview_columns_from_keys(tree_view_element,data_dic_example_row,default_column_width):
 
-    
+    """Treeview element, sample data for a row -> dcitionary of added column names(key): id-s(value)"""
 
-    #Generate all columns
-
-    element_tree["columns"]=("#1",) # All columns expect first one have to be define, first column ID is #0 so we are just continuing same numbering, but we need to add first tuple to then extend on it
+    tree_view_element["columns"]=("#1",) # All columns expect first one have to be define, first column ID is #0 so we are just continuing same numbering, but we need to add first tuple to then extend on it
 
     column_dic=OrderedDict({})
 
-    for column_n,key in enumerate(data_tree[1]["DATA"].keys()):
+    for column_n,key in enumerate(data_dic_example_row.keys()):
 
         column_id = "#{}".format(column_n)
         
@@ -208,21 +196,35 @@ def tree_view(root,decription_dic):
 
         if column_n > 1:
 
-            element_tree["columns"]+=(column_id,)
+            tree_view_element["columns"]+=(column_id,)
 
-        
+    
     for key, column_id in column_dic.iteritems(): 
-        
-        element_tree.column(column_id, width = default_column_width )
-        element_tree.heading(column_id, text = key)      
+    
+        tree_view_element.column(column_id, width = default_column_width )
+        tree_view_element.heading(column_id, text = key)
+
+    return column_dic
 
 
+def tree_view(root,data_tree):
+
+    element_tree   = ttk.Treeview(root)
+    element_tree["selectmode"]="extended"
+    default_column_width=100  
+
+    
+    #Generate all columns
+
+    column_dic = generate_treeview_columns_from_keys(element_tree,data_tree[1]["DATA"],default_column_width)              
+
+    #Fill all generated columns with data
 
     for key, value in data_tree.iteritems(): 
 
 
         text = ""
-        values = [""] # in case no value is present
+        values = [] # in case no value is present
 
         for item in value["DATA"]:
 
@@ -231,7 +233,7 @@ def tree_view(root,decription_dic):
 
             else:
                 values.append(value["DATA"][item])
-
+        if not values: values = [""]
 
         element_tree.insert(value["PARENT"], "end" , str(key) , text = text  , value= values)
 
@@ -242,62 +244,167 @@ def tree_view(root,decription_dic):
 
     return element_tree
 
+def configure_element(element_name,config_dic):
+    for key, value in config_dic[element_name].iteritems():
 
+        print key, value        
+
+        eval("{}.{}({})".format(element_name,key,config_dic[element_name][key]))
+
+def create_gui_from_dic(config_dic):
+
+    iterator_list = range(0,len(config_dic),1) #Get all data out from dic in ordered manner
+
+
+    for key in iterator_list:
+        create_element_command = config_dic[str(key)]["DATA"]["text"]
+        if create_element_command != "":
+            exec(create_element_command)
+
+    for key in iterator_list:
+        root_id = config_dic[str(key)]["PARENT"]
+        if root_id != "":
+            root_element = config_dic[root_id]["DATA"]["element"]   
+            child_element = config_dic[str(key)]["DATA"]["element"]
+            setting = config_dic[str(key)]["DATA"]["atribute"]
+
+            eval("{}.{}({})".format(root_element, child_element, setting))
 # Process start - Load file
 
 #file_paths=["C:/USVDM/valid/20170621T2230Z_1D_LATVIANABRAKADABRA_SV_001-valid.xml"]
+
+
+# GUI load up
+
+#Root window creation
+
+#"DATA editor {}".format(data_tree[-1]["DATA"]["atribute"]["URL"])
+
+config_dic = {
+"0":{"DATA":{"element":"root",
+                "text": "root = Tk()",
+            "atribute":"",
+           "namespace":""},                        
+     "PARENT":""},
+
+"1":{"DATA":{"element":"minsize",
+                "text": "",
+            "atribute":"width=1000, height=600",
+           "namespace":""},                        
+     "PARENT":"0"},
+
+"2":{"DATA":{"element":"title",
+                "text": "",
+            "atribute":"'Editor'",
+           "namespace":""},                        
+     "PARENT":"0"}, 
+
+"3":{"DATA":{"element":"config",
+                "text": "",
+            "atribute":"menu=main_menu",
+           "namespace":""},                        
+     "PARENT":"0"},             
+
+"4":{"DATA":{"element":"main_menu",
+                "text": "main_menu = Menu(root)",
+            "atribute":"",
+           "namespace":""},                        
+     "PARENT":""},
+
+"5":{"DATA":{"element":"add_cascade",
+                "text": "",
+            "atribute":"label='File', menu=file_menu",
+           "namespace":""},                        
+     "PARENT":"4"}, 
+
+"6":{"DATA":{"element":"add_cascade",
+                "text": "",
+            "atribute":"label='Edit', menu=edit_menu",
+           "namespace":""},                        
+     "PARENT":"4"},           
+
+"7":{"DATA":{"element":"file_menu",
+                "text":"file_menu = Menu(main_menu,tearoff=False)",
+            "atribute":"",
+           "namespace":""}, 
+     "PARENT":""},
+
+"8":{"DATA":{"element":"add_command",
+                "text": "",
+            "atribute":"label='Open', command=select_file",
+           "namespace":""},                        
+     "PARENT":"7"},
+
+"9":{"DATA":{"element":"add_command",
+                "text": "",
+            "atribute":"label='Quit', command=root.quit",
+           "namespace":""},                        
+     "PARENT":"7"}, 
+
+"10":{"DATA":{"element":"edit_menu",
+                "text":"edit_menu = Menu(main_menu,tearoff=False)",
+            "atribute":"",
+           "namespace":""}, 
+     "PARENT":""},
+
+"11":{"DATA":{"element":"add_command",
+                "text": "",
+            "atribute":"label='Open', command=select_file",
+           "namespace":""},                        
+     "PARENT":"10"},
+
+"12":{"DATA":{"element":"add_command",
+                "text": "",
+            "atribute":"label='Quit', command=root.quit",
+           "namespace":""},                        
+     "PARENT":"10"},           
+     
+}
+
+
+#Set up root window
+
+
+iterator_list = range(0,len(config_dic),1) # to get all data out from dic in ordered manner
+
+
+for key in iterator_list:
+    create_element_command = config_dic[str(key)]["DATA"]["text"]
+    if create_element_command != "":
+        exec(create_element_command)
+
+for key in iterator_list:
+    root_id = config_dic[str(key)]["PARENT"]
+    if root_id != "":
+        root_element = config_dic[root_id]["DATA"]["element"]   
+        child_element = config_dic[str(key)]["DATA"]["element"]
+        setting = config_dic[str(key)]["DATA"]["atribute"]
+
+        eval("{}.{}({})".format(root_element, child_element, setting))
+
+  
 file_paths = select_files()
 
 new_element = {}
 
 XML_trees=loadXMLs(file_paths)
 
-data_tree = xml_to_dic(XML_trees[0])
-
-# GUI load up
-
-#Root window creation
-
-root_config_dic = {
-"root":{"minsize":{"width":1000, "height":600},
-        "title":'"DATA editor {}".format(data_tree[-1]["DATA"]["atribute"]["URL"])'}
-}
-
-##getattr(x, 'y') is equivalent to x.y
-##setattr(x, 'y', v) is equivalent to x.y = v
-##delattr(x, 'y') is equivalent to del x.y
-root = Tk()
-#setattr(root,"minsize",(width=1000, height=600))
-root.minsize(width=1000, height=600)                                            # Inital size of the window
-root.title("DATA editor {}".format(data_tree[-1]["DATA"]["atribute"]["URL"]))   # Window title
+data_tree = xml_to_dic(XML_trees[0]) #currenlty only first file
 
 #Define Tabels
 
-settings={} # Tree setting are going to be a dictionary that can be read in from XML and also exported as XML
 
 meta_tree    = ttk.Treeview(root)
-
-
-
-
 meta_tree["columns"]=("#1")
 meta_tree.column("#0", width=100 )
 meta_tree.heading("#0", text="Atribute")
 meta_tree.column("#1", width=100 )
 meta_tree.heading("#1", text="Value")
 meta_tree.bind("<Double-Button-1>", edit_tree_field)
-
-element_tree = tree_view(root, settings)
-
-
-
-
-
-
-
-
-
 meta_tree.pack(fill=BOTH, expand=YES, side=LEFT)
+
+element_tree = tree_view(root, data_tree)
+
 
 
 def print_cursorlocation(event):
