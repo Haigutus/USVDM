@@ -286,7 +286,7 @@ def create_gui_from_dic(config_dic):
 
 config_dic = {
 "0":{"DATA":{"element":"root",
-                "text": "root = Tk()",
+                "text":"root = Tk()",
             "atribute":"",
            "namespace":""},
      "PARENT":""},
@@ -310,7 +310,7 @@ config_dic = {
      "PARENT":"0"},
 
 "4":{"DATA":{"element":"main_menu",
-                "text": "main_menu = Menu(root)",
+                "text":"main_menu = Menu(root)",
             "atribute":"",
            "namespace":""},
      "PARENT":""},
@@ -368,6 +368,8 @@ config_dic = {
 
 #Set up root window
 
+# create_gui_from_dic(config_dic)
+
 
 iterator_list = range(0,len(config_dic),1) # to get all data out from dic in ordered manner
 
@@ -389,9 +391,9 @@ for key in iterator_list:
 
 file_paths = select_files()
 
-new_element = {}
+#new_element = {}
 
-XML_trees=loadXMLs(file_paths)
+XML_trees = loadXMLs(file_paths)
 
 data_tree = xml_to_dic(XML_trees[0]) #currenlty only first file
 

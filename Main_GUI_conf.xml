@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>root = Tk()<minsize></minsize><title></title><config></config><main_menu>main_menu = Menu(root)<add_cascade></add_cascade><add_cascade></add_cascade></main_menu><file_menu>file_menu = Menu(main_menu,tearoff=False)<add_command></add_command><add_command></add_command></file_menu><edit_menu>edit_menu = Menu(main_menu,tearoff=False)<add_command></add_command><add_command></add_command></edit_menu></root>
