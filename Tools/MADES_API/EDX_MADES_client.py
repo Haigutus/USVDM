@@ -77,13 +77,13 @@ def select_file(file_type='.*',dialogue_title="Select file"):
     print filename
     return [filename] #main function takes files in a list, thus single file must aslo be passed as list
 
-#test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
+test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
 
-test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
-
-status = check_message_status(test_message_ID)
-
-print status
+##test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+##
+##status = check_message_status(test_message_ID)
+##
+##print status
 
 
 ##Operations:

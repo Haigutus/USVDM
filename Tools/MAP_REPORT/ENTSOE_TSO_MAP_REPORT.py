@@ -76,10 +76,12 @@ def update_svg_paths(loaded_xml, DataFrame, identificator_tag, unknown_attrbute_
             else:
                 write_key = unknown_attrbute_namespace + key
 
+
             try:
                 path.attrib[write_key] = DataFrame[(DataFrame[identificator_tag])==identificator][key].tolist()[0]
             except:
                 print "ID not found in DataFrame: {}".format(identificator)
+
 
 
 def update_svg_texts(loaded_xml, texts_dic):
