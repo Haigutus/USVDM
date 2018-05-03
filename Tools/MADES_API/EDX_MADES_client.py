@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
+# Name:        EDX_MADES_client
 # Purpose:
 #
 # Author:      kristjan.vilgo
@@ -23,7 +23,7 @@ from tkFileDialog import askopenfilename
 WSDL_path = 'http://10.1.21.50:9090/ws/madesInWSInterface.wsdl'
 
 session = Session()
-session.auth = HTTPBasicAuth("elering", "elering.edx")
+session.auth = HTTPBasicAuth("user_name", "password")
 
 transport = Transport(session = session)
 client = Client(WSDL_path, transport = transport)
@@ -53,7 +53,6 @@ def check_message_status(message_id):
     """CheckMessageStatus(messageID: xsd:string) -> messageStatus: ns0:MessageStatus
        ns0:MessageStatus(messageID: xsd:string, state: ns0:MessageState, receiverCode: xsd:string, senderCode: xsd:string, businessType: xsd:string, senderApplication: xsd:string, baMessageID: xsd:string, sendTimestamp: xsd:dateTime, receiveTimestamp: xsd:dateTime, trace: ns0:MessageTrace)"""
 
-    messageID = client.get_type("xsd:string")
     status = service.CheckMessageStatus(message_id)
     return status
 
@@ -77,14 +76,21 @@ def select_file(file_type='.*',dialogue_title="Select file"):
     print filename
     return [filename] #main function takes files in a list, thus single file must aslo be passed as list
 
-test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
 
-##test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
-##
-##status = check_message_status(test_message_ID)
-##
-##print status
+# TEST
 
+if __name__ == '__main__':
+
+    test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
+
+    ##test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+    ##
+    ##status = check_message_status(test_message_ID)
+    ##
+    ##print status
+
+
+# SERVICE DESCRIPTION
 
 ##Operations:
 ##    CheckMessageStatus(messageID: xsd:string) -> messageStatus: ns0:MessageStatus
