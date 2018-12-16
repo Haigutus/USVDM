@@ -23,15 +23,18 @@ from tkFileDialog import askopenfilename
 WSDL_path = 'http://10.1.21.50:9090/ws/madesInWSInterface.wsdl'
 
 session = Session()
-session.auth = HTTPBasicAuth("user_name", "password")
+session.auth = HTTPBasicAuth("elering", "elering.edx")
 
 transport = Transport(session = session)
 client = Client(WSDL_path, transport = transport)
+
+#client.debug = True
 
 
 service = client.create_service(
     '{http://mades.entsoe.eu/}MadesEndpointSOAP12',
     'http://10.1.21.50:9090/ws/madesInWSInterface')
+
 
 
 def connectivity_test(reciver_EIC, business_type):
@@ -58,12 +61,16 @@ def check_message_status(message_id):
 
 def recieve_message(business_type, number_of_files_to_download):
     """ReceiveMessage(businessType: xsd:string, downloadMessage: xsd:boolean) -> receivedMessage: ns0:ReceivedMessage, remainingMessagesCount: xsd:long"""
-    recieved_message, remaining_messages = service.ReceiveMessage(business_type, number_of_files_to_download)
-    return recieved_message, remaining_messages
+    recieved_message_raw = service.ReceiveMessage(business_type, number_of_files_to_download)
+
+    recieved_message_dict = recieved_message_raw._root
+    recieved_message_dict["receivedMessage"]["content"] = recieved_message_raw.attachments[0].content
+
+    return recieved_message_dict
 
 def confirm_recieved_message(message_id):
     """ConfirmReceiveMessage(messageID: xsd:string) -> messageID: xsd:string"""
-    message_id = ConfirmReceiveMessage(message_id)
+    message_id = service.ConfirmReceiveMessage(message_id)
     return message_id
 
 def select_file(file_type='.*',dialogue_title="Select file"):
@@ -81,13 +88,18 @@ def select_file(file_type='.*',dialogue_title="Select file"):
 
 if __name__ == '__main__':
 
-    test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
+    client.debug = True
 
-    ##test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
-    ##
-    ##status = check_message_status(test_message_ID)
-    ##
-    ##print status
+##    test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
+##
+    test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+
+    status = check_message_status(test_message_ID)
+##
+##    print status
+
+##    message = recieve_message("RIMD",1)
+##    #confirm_recieved_message(message["receivedMessage"]["messageID"])
 
 
 # SERVICE DESCRIPTION
