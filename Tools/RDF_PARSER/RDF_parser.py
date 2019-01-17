@@ -57,7 +57,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
     data_list = []
 
 
-    # TODO - a lot of replacemtns have been done useing replace function, but is it valid that these charecaters are not present in UUID-s
+    # TODO - a lot of replacemtns have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
 
     for object in RDF_objects:
 
@@ -143,7 +143,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
 # END OF FUNCTIONS
 
 
-
+# TEST and examples
 if __name__ == '__main__':
 
     path = "FlowExample.zip"
