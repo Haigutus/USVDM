@@ -18,8 +18,8 @@ import datetime
 import zipfile
 
 #pandas.set_option("display.height", 1000)
-pandas.set_option("display.max_rows", 30)
-pandas.set_option("display.max_columns", 8)
+pandas.set_option("display.max_rows", 15)
+pandas.set_option("display.max_columns", 7)
 pandas.set_option("display.width", 1000)
 
 # FUNCTIONS - go down for sample code
@@ -30,8 +30,9 @@ def load_RDF_objects_from_XML(path_or_fileobject):
     start_time = datetime.datetime.now()
 
     # LOAD XML
-    parsed_xml = etree.parse(path_or_fileobject)
-    model_id = parsed_xml.find(".//{*}FullModel").attrib.values()[0].replace("urn:uuid:", "")
+    parser =  etree.XMLParser(remove_comments=True, collect_ids = False)
+    parsed_xml = etree.parse(path_or_fileobject, parser = parser)
+    model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
 
     # PRINT DURATION
     end_time = datetime.datetime.now()
@@ -62,7 +63,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
     VALUE   = ""
 
 
-    # TODO - a lot of replacemtns have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
+    # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
 
     for object in RDF_objects:
 
@@ -89,7 +90,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
 
     end_time = datetime.datetime.now()
-    print("All values put to datalist", (end_time - start_time).total_seconds())
+    print("All values put to data list", (end_time - start_time).total_seconds())
 
     start_time = end_time
 
@@ -143,7 +144,7 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
     return xml_files_list
 
 def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
-    list_of_xmls = find_all_xmls([path])
+    list_of_xmls = find_all_xmls(list_of_paths_to_zip_globalzip_xml)
 
     data = pandas.DataFrame()
 
@@ -183,49 +184,7 @@ if __name__ == '__main__':
 
     print(data.type_view("SubGeographicalRegion"))
 
-##    print(data)
-##
-##
-##    print("Loaded model UUID-s")
-##    model_uuids = data[(data["VALUE"]=="FullModel")]
-##    print(model_uuids)
-##
-##    print("Printing loaded profile headers")
-##    for uuid in list(model_uuids["ID"]):
-##
-##        print(uuid)
-##
-##        header = data[(data["ID"]==uuid)]
-##
-##        print(header[["KEY", "VALUE"]])
-##
-##
-##
-##    print("Loaded attributes")
-##    print(data.KEY.value_counts())
-##
-##
-##    print("All transformers rated S")
-##    print(data.query(KEY == "PowerTransformerEnd.ratedS"])
-##
-##
-##    print("Powertransformers")
-##    print(data[data.VALUE == "PowerTransformer"]) # Sample of not using query to sort/filter data
-##
-##    print("One winding data")
-##    print(data.query("ID == '12d773ab-1521-4e09-8a45-88b5eebf6fdd'")
 
-
-##    power_transformers = data.query("VALUE == 'PowerTransformer' & KEY == 'Type'")
-##
-##    terminals_conducting_equipment = data.query("KEY == 'Terminal.ConductingEquipment'")
-##
-##    terminals_svpowerflow = data.query("KEY == 'SvPowerFlow.Terminal'")
-##    terminals_svvoltage   = data.query("KEY == 'SvVoltage.TopologicalNode'")
-##
-##    eq_container_terminals = pandas.merge(power_transformers, terminals_conducting_equipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_eqcontainer", "_terminal"])
-##
-##    sv_powerflows = pandas.merge(eq_container_terminals, terminals_svpowerflow, how = "inner", left_on = "ID_terminal", right_on = "VALUE", suffixes = ["", "_svpowerflow"])
 
 
 ##KEY                                  IdentifiedObject.name          SubGeographicalRegion.Region                   Type
