@@ -9,7 +9,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-import OPDM_SOAP_client as API
+#import OPDM_SOAP_client as API
 import os
 from lxml import etree
 
@@ -18,7 +18,8 @@ import tempfile
 from StringIO import StringIO
 
 import ftplib
-import os
+
+import json
 
 import pandas
 
@@ -26,9 +27,13 @@ pandas.set_option("display.max_rows", 10)
 pandas.set_option("display.max_columns", 10)
 pandas.set_option("display.width", 1500)
 
-server_ip   = '185.7.252.111'
-username    = 'Elering_baltic-rsc.eu'
-password    = '8CHmWzWZ'
+conf_file = open(r"C:\USVDM\Tools\MADES_API\FTP.conf.txt", "r")
+
+conf = json.load(conf_file)
+
+server_ip   = conf["server_ip"]
+username    = conf["username"]
+password    = conf["password"]
 
 meta_separator = "_"
 
