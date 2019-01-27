@@ -32,7 +32,8 @@ def load_RDF_objects_from_XML(path_or_fileobject):
     # LOAD XML
     parser =  etree.XMLParser(remove_comments=True, collect_ids = False)
     parsed_xml = etree.parse(path_or_fileobject, parser = parser)
-    model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
+    model_id = parsed_xml.find("./").attrib.values()[0].replace("urn:uuid:", "") # Lets asume that the first RDF element describes the whole document
+    #model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
 
     # PRINT DURATION
     end_time = datetime.datetime.now()
@@ -112,7 +113,7 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
 
     for item in list_of_paths_to_zip_globalzip_xml:
 
-        if ".xml" in item:
+        if ".xml" in item or ".rdf" in item:
             xml_files_list.append(item)
             print("Added: {}".format(item))
 
@@ -130,7 +131,7 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
 
         for zipped_file in zipped_files:
 
-            if ".xml" in zipped_file:
+            if ".xml" in zipped_file or ".rdf" in zipped_file:
                 xml_files_list.append(BytesIO(zip_container.read(zipped_file)))
                 print("Added: {}".format(zipped_file))
 
