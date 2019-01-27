@@ -52,7 +52,7 @@ def load_RDF_objects_from_XML(path_or_fileobject):
 
 def load_RDF_to_dataframe(path_or_fileobject):
 
-    RDF_objects, PROFILE_UUID = load_RDF_objects_from_XML(path_or_fileobject)
+    RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject)
 
     start_time = datetime.datetime.now()
 
@@ -75,7 +75,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
         VALUE = object.tag.split("}")[1]
 
         #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
-        data_list.append([ID, KEY, VALUE, PROFILE_UUID])
+        data_list.append([ID, KEY, VALUE, INSTANCE_ID])
 
         for element in object.iterchildren():
 
@@ -87,7 +87,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
                 VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "")
 
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
-            data_list.append([ID, KEY, VALUE, PROFILE_UUID])
+            data_list.append([ID, KEY, VALUE, INSTANCE_ID])
 
 
     end_time = datetime.datetime.now()
@@ -95,7 +95,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
     start_time = end_time
 
-    data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "PROFILE_UUID"])
+    data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
 
     end_time = datetime.datetime.now()
     print("Data list loaded to DataFrame", (end_time - start_time).total_seconds())
