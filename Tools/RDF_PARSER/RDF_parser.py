@@ -132,7 +132,9 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
         for zipped_file in zipped_files:
 
             if ".xml" in zipped_file or ".rdf" in zipped_file:
-                xml_files_list.append(BytesIO(zip_container.read(zipped_file)))
+                file_object = BytesIO(zip_container.read(zipped_file))
+                file_object.name = zipped_file
+                xml_files_list.append(file_object)
                 print("Added: {}".format(zipped_file))
 
             elif ".zip" in zipped_file:
@@ -150,7 +152,12 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
     data = pandas.DataFrame()
 
     for xml in list_of_xmls:
-        print("Loading {}".format(xml))
+        file_name = xml
+
+        if type(xml) != str:
+            file_name = xml.name
+
+        print("Loading {}".format(xml.name))
         data = data.append(load_RDF_to_dataframe(xml), ignore_index = True)
 
     return data
@@ -183,7 +190,33 @@ if __name__ == '__main__':
     print("Loaded types")
     print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-    print(data.type_view("SubGeographicalRegion"))
+    print(data.type_view("ACLineSegment"))
+
+    ACLineSegments  = data.type_view("ACLineSegment")
+    Terminals       = data.type_view("Terminal")
+    SvVoltages      = data.type_view("SvVoltage")
+
+    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
+
+    ACLineSegments_Terminals_SvVoltages = pandas.merge(ACLineSegments_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+
+    print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]])
+
+##    ACLineSegments = data.query("VALUE == 'ACLineSegment' & KEY == 'Type'")
+##    Terminals_ConductingEquipment = data.query("KEY == 'Terminal.ConductingEquipment'")
+##
+##    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals_ConductingEquipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_ACLineSegment", "_Terminal"])
+##
+##    Terminals_TopologicalNode = data.query("KEY == 'Terminal.TopologicalNode'")
+##
+##    #ACLineSegments_TopologicalNodes = pandas.merge(ACLineSegments_Terminals, Terminals_ConductingEquipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["", "_TopologicalNode"])
+
+##    terminals_svpowerflow = data.query("KEY == 'SvPowerFlow.Terminal'")
+##    terminals_svvoltage   = data.query("KEY == 'SvVoltage.TopologicalNode'")
+##
+##    eq_container_terminals = pandas.merge(power_transformers, terminals_conducting_equipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_eqcontainer", "_terminal"])
+##
+##    sv_powerflows = pandas.merge(eq_container_terminals, terminals_svpowerflow, how = "inner", left_on = "ID_terminal", right_on = "VALUE", suffixes = ["", "_svpowerflow"])
 
 
 
@@ -213,7 +246,7 @@ if __name__ == '__main__':
 
 
 
-    # for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
+# for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
 
 
-    #data = load_RDF_to_dataframe(r"C:\Users\kristjan.vilgo\Desktop\IGM_hour23\IGM_hour23\20180310T2330Z_2D_ELERING_TP_001.xml")
+#data = load_RDF_to_dataframe(r"C:\Users\kristjan.vilgo\Desktop\IGM_hour23\IGM_hour23\20180310T2330Z_2D_ELERING_TP_001.xml")
