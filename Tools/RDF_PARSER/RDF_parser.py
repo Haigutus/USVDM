@@ -19,7 +19,7 @@ import zipfile
 
 #pandas.set_option("display.height", 1000)
 pandas.set_option("display.max_rows", 15)
-pandas.set_option("display.max_columns", 7)
+pandas.set_option("display.max_columns", 8)
 pandas.set_option("display.width", 1000)
 
 # FUNCTIONS - go down for sample code
@@ -197,10 +197,16 @@ if __name__ == '__main__':
     SvVoltages      = data.type_view("SvVoltage")
 
     ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
-
     ACLineSegments_Terminals_SvVoltages = pandas.merge(ACLineSegments_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-
     print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]])
+
+
+    PowerTransformers  = data.type_view("PowerTransformer")
+    PowerTransformerEnds  = data.type_view("PowerTransformerEnd")
+    PowerTransformerEnds_Terminals = pandas.merge(PowerTransformerEnds, Terminals, how = "inner", left_on="TransformerEnd.Terminal", right_index = True)
+    PowerTransformerEnds_Terminals_SvVoltages = pandas.merge(PowerTransformerEnds_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+    print(PowerTransformerEnds_Terminals_SvVoltages[["SvVoltage.v", "SvVoltage.angle", "PowerTransformerEnd.ratedS", "PowerTransformerEnd.ratedU", "PowerTransformerEnd.r", "PowerTransformerEnd.x", "PowerTransformerEnd.g", "PowerTransformerEnd.b"]])
+
 
 ##    ACLineSegments = data.query("VALUE == 'ACLineSegment' & KEY == 'Type'")
 ##    Terminals_ConductingEquipment = data.query("KEY == 'Terminal.ConductingEquipment'")
