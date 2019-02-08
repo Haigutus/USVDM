@@ -8,96 +8,96 @@
 # Copyright:   (c) kristjan.vilgo 2018
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+from __future__ import print_function
+
 from requests import Session
-from requests.auth import HTTPBasicAuth  # or HTTPDigestAuth, or OAuth1, etc.
+from requests.auth import HTTPBasicAuth
 from zeep import Client
 from zeep.transports import Transport
-import base64
-from lxml import etree
-from Tkinter import *
-import ttk
-from tkFileDialog import askdirectory
-from tkFileDialog import askopenfilename
+
+class EDXService():
+
+    def __init__(self, server, username = "", password = "", debug = False):
+
+        """At minimum server address or IP must be provided"""
+
+        wsdl = '{}/ws/madesInWSInterface.wsdl'.format(server)
+
+        session = Session()
+        session.verify = False
+        session.auth = HTTPBasicAuth(username, password)
+
+        transport = Transport(session = session)
+        client = Client(wsdl, transport = transport)
+
+        client.debug = debug
+
+        self.service = client.create_service(
+            '{http://mades.entsoe.eu/}MadesEndpointSOAP12',
+            '{}/ws/madesInWSInterface'.format(server))
 
 
-WSDL_path = 'http://10.1.21.50:9090/ws/madesInWSInterface.wsdl'
+    def connectivity_test(self, reciver_EIC, business_type):
+        """ConnectivityTest(receiverCode: xsd:string, businessType: xsd:string) -> messageID: xsd:string"""
 
-session = Session()
-session.auth = HTTPBasicAuth("elering", "elering.edx")
+        message_id = self.service.ConnectivityTest(reciver_EIC, business_type)
 
-transport = Transport(session = session)
-client = Client(WSDL_path, transport = transport)
+        return message_id
 
-#client.debug = True
+    def send_message(self, receiver_EIC, business_type, file_path, sender_EIC, message_id, converstaion_id):
+        """SendMessage(message: ns0:SentMessage, conversationID: xsd:string) -> messageID: xsd:string
+           ns0:SentMessage(receiverCode: xsd:string, businessType: xsd:string, content: xsd:base64Binary, senderApplication: xsd:string, baMessageID: xsd:string)"""
+
+        loaded_file = open(file_path, "rb")
+        file_text = loaded_file.read()
+
+        message_dic = {"receiverCode": receiver_EIC, "businessType": business_type, "content": file_text, "senderApplication": sender_EIC, "baMessageID": message_id}
+        message_id = self.service.SendMessage(message_dic, converstaion_id)
+
+        return message_id
+
+    def check_message_status(self, message_id):
+        """CheckMessageStatus(messageID: xsd:string) -> messageStatus: ns0:MessageStatus
+           ns0:MessageStatus(messageID: xsd:string, state: ns0:MessageState, receiverCode: xsd:string, senderCode: xsd:string, businessType: xsd:string, senderApplication: xsd:string, baMessageID: xsd:string, sendTimestamp: xsd:dateTime, receiveTimestamp: xsd:dateTime, trace: ns0:MessageTrace)"""
+
+        status = self.service.CheckMessageStatus(message_id)
+        return status
+
+    def recieve_message(self, business_type, number_of_files_to_download):
+        """ReceiveMessage(businessType: xsd:string, downloadMessage: xsd:boolean) -> receivedMessage: ns0:ReceivedMessage, remainingMessagesCount: xsd:long"""
+
+        recieved_message = self.service.ReceiveMessage(business_type, number_of_files_to_download)
+
+        return recieved_message
+
+    def confirm_recieved_message(self, message_id):
+        """ConfirmReceiveMessage(messageID: xsd:string) -> messageID: xsd:string"""
+
+        message_id = self.service.ConfirmReceiveMessage(message_id)
+
+        return message_id
 
 
-service = client.create_service(
-    '{http://mades.entsoe.eu/}MadesEndpointSOAP12',
-    'http://10.1.21.50:9090/ws/madesInWSInterface')
-
-
-
-def connectivity_test(reciver_EIC, business_type):
-    """ConnectivityTest(receiverCode: xsd:string, businessType: xsd:string) -> messageID: xsd:string"""
-    message_id = service.ConnectivityTest(reciver_EIC, business_type)
-    return message_id
-
-def send_message(receiver_EIC, business_type, file_path, sender_EIC, message_id, converstaion_id):
-    """SendMessage(message: ns0:SentMessage, conversationID: xsd:string) -> messageID: xsd:string
-       ns0:SentMessage(receiverCode: xsd:string, businessType: xsd:string, content: xsd:base64Binary, senderApplication: xsd:string, baMessageID: xsd:string)"""
-
-    loaded_file = open(file_path, "r")
-    file_text = loaded_file.read()
-    message_dic = {"receiverCode": receiver_EIC, "businessType": business_type, "content": base64.b64encode(file_text), "senderApplication": sender_EIC, "baMessageID": message_id}
-    message_id = service.SendMessage(message_dic, converstaion_id)
-    return message_id
-
-def check_message_status(message_id):
-    """CheckMessageStatus(messageID: xsd:string) -> messageStatus: ns0:MessageStatus
-       ns0:MessageStatus(messageID: xsd:string, state: ns0:MessageState, receiverCode: xsd:string, senderCode: xsd:string, businessType: xsd:string, senderApplication: xsd:string, baMessageID: xsd:string, sendTimestamp: xsd:dateTime, receiveTimestamp: xsd:dateTime, trace: ns0:MessageTrace)"""
-
-    status = service.CheckMessageStatus(message_id)
-    return status
-
-def recieve_message(business_type, number_of_files_to_download):
-    """ReceiveMessage(businessType: xsd:string, downloadMessage: xsd:boolean) -> receivedMessage: ns0:ReceivedMessage, remainingMessagesCount: xsd:long"""
-    recieved_message_raw = service.ReceiveMessage(business_type, number_of_files_to_download)
-
-    recieved_message_dict = recieved_message_raw._root
-    recieved_message_dict["receivedMessage"]["content"] = recieved_message_raw.attachments[0].content
-
-    return recieved_message_dict
-
-def confirm_recieved_message(message_id):
-    """ConfirmReceiveMessage(messageID: xsd:string) -> messageID: xsd:string"""
-    message_id = service.ConfirmReceiveMessage(message_id)
-    return message_id
-
-def select_file(file_type='.*',dialogue_title="Select file"):
-    """ Single file selection popup
-    return: list"""
-
-    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-    filename = askopenfilename(title=dialogue_title,filetypes=[('{} file'.format(file_type),'*{}'.format(file_type))]) # show an "Open" dialog box and return the path to the selected file
-
-    print filename
-    return [filename] #main function takes files in a list, thus single file must aslo be passed as list
 
 
 # TEST
 
 if __name__ == '__main__':
 
-    client.debug = True
+    server = "https://er-opdm.elering.sise"
+    username = raw_input("UserName")
+    password = raw_input("PassWord")
+
+    service = EDXService(server, username, password, debug = True)
+
+    test_message_ID = service.send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+
+    status = service.check_message_status(test_message_ID)
 
 ##    test_message_ID = connectivity_test("38V-EE-OPDM----S", "")
 ##
-    test_message_ID = send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
-
-    status = check_message_status(test_message_ID)
 ##
-##    print status
-
+##    print (status)
 ##    message = recieve_message("RIMD",1)
 ##    #confirm_recieved_message(message["receivedMessage"]["messageID"])
 
