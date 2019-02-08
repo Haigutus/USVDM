@@ -9,7 +9,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-import numpy
+from numpy import sin, cos, deg2rad, triu
 from RDF_parser import load_all_to_dataframe
 import pandas
 
@@ -41,15 +41,32 @@ print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "AC
 # Set data types
 ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]] = ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]].astype("float")
 
+# Define variables
 
 r = ACLineSegments_Terminals_SvVoltages["ACLineSegment.r"]
 x = ACLineSegments_Terminals_SvVoltages["ACLineSegment.x"]
 v = ACLineSegments_Terminals_SvVoltages["SvVoltage.v"]
-angle = numpy.deg2rad(ACLineSegments_Terminals_SvVoltages["SvVoltage.angle"])
+angle = deg2rad(ACLineSegments_Terminals_SvVoltages["SvVoltage.angle"])
 
-impedance   = r + x * 1j
+# ACLineSegment formulas
 
-voltage     = v * numpy.cos(angle) + v * numpy.sin(angle) * 1j
+Y = 1/(r + x * 1j)
+V = v * cos(angle) + v * sin(angle) * 1j
+
+# Save values
+
+admittance_name ="Branch.y"
+node_voltage = "TopologicalNode.v"
+
+ACLineSegments_Terminals_SvVoltages[admittance_name] = Y
+ACLineSegments_Terminals_SvVoltages[node_voltage]    = V
+
+
+line_branches = pandas.merge(ACLineSegments_Terminals_SvVoltages[["Terminal.ConductingEquipment","SvVoltage.TopologicalNode"]], ACLineSegments_Terminals_SvVoltages[["Terminal.ConductingEquipment","SvVoltage.TopologicalNode",admittance_name]], how = "inner", left_on = "Terminal.ConductingEquipment", right_on = "Terminal.ConductingEquipment")
+
+branches = line_branches[(line_branches["SvVoltage.TopologicalNode_x"] != line_branches["SvVoltage.TopologicalNode_y"])]
+
+admittance_matrix = branches[["Terminal.ConductingEquipment","SvVoltage.TopologicalNode_x", "SvVoltage.TopologicalNode_y"]].pivot(index = "SvVoltage.TopologicalNode_x", columns = "SvVoltage.TopologicalNode_y") # Does not work with complex
 
 
 
@@ -58,3 +75,16 @@ PowerTransformerEnds_Terminals              = pandas.merge(PowerTransformerEnds,
 PowerTransformerEnds_Terminals_SvVoltages   = pandas.merge(PowerTransformerEnds_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
 
 print(PowerTransformerEnds_Terminals_SvVoltages[["SvVoltage.v", "SvVoltage.angle", "PowerTransformerEnd.ratedS", "PowerTransformerEnd.ratedU", "PowerTransformerEnd.r", "PowerTransformerEnd.x", "PowerTransformerEnd.g", "PowerTransformerEnd.b"]])
+
+# Define variables
+
+r = PowerTransformerEnds_Terminals_SvVoltages["PowerTransformerEnd.r"]
+x = PowerTransformerEnds_Terminals_SvVoltages["PowerTransformerEnd.x"]
+u = PowerTransformerEnds_Terminals_SvVoltages["PowerTransformerEnd.ratedU"]
+
+v = PowerTransformerEnds_Terminals_SvVoltages["SvVoltage.v"]
+angle = PowerTransformerEnds_Terminals_SvVoltages["SvVoltage.angle"]
+
+S_base = 100
+
+
