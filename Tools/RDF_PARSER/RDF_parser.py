@@ -21,8 +21,21 @@ import zipfile
 pandas.set_option("display.max_rows", 15)
 pandas.set_option("display.max_columns", 8)
 pandas.set_option("display.width", 1000)
+#pandas.set_option('display.max_colwidth', -1)
 
 # FUNCTIONS - go down for sample code
+
+def print_duration(text, start_time):
+
+    """Print duration between now and start time
+    Input: text, start_time
+    Output: duration (in seconds), end_time"""
+
+    end_time = datetime.datetime.now()
+    duration = (end_time - start_time).total_seconds()
+    print(text, duration)
+
+    return duration, end_time
 
 def load_RDF_objects_from_XML(path_or_fileobject):
 
@@ -34,18 +47,14 @@ def load_RDF_objects_from_XML(path_or_fileobject):
     parsed_xml = etree.parse(path_or_fileobject, parser = parser)
     model_id = parsed_xml.find("./").attrib.values()[0].replace("urn:uuid:", "") # Lets asume that the first RDF element describes the whole document
     #model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
-
-    # PRINT DURATION
-    end_time = datetime.datetime.now()
-    print("XML loaded to tree object", (end_time - start_time).total_seconds())
+    _,start_time = print_duration("XML loaded to tree object", start_time)
 
 
     # EXTRACT RDF OBJECTS
-    start_time = end_time
     RDF_objects = parsed_xml.getroot().iterchildren()
-    end_time = datetime.datetime.now()
+    _,start_time = print_duration("All children put to a generator", start_time)
 
-    print("All children put to a generator", (end_time - start_time).total_seconds())
+
 
     return RDF_objects, model_id
 
@@ -89,18 +98,11 @@ def load_RDF_to_dataframe(path_or_fileobject):
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
             data_list.append([ID, KEY, VALUE, INSTANCE_ID])
 
+    _,start_time = print_duration("All values put to data list", start_time)
 
-    end_time = datetime.datetime.now()
-    print("All values put to data list", (end_time - start_time).total_seconds())
-
-    start_time = end_time
 
     data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
-
-    end_time = datetime.datetime.now()
-    print("Data list loaded to DataFrame", (end_time - start_time).total_seconds())
-
-
+    _,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
 
     return data
@@ -157,7 +159,8 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
         if type(xml) != str:
             file_name = xml.name
 
-        print("Loading {}".format(xml.name))
+        print("Loading {}".format(file_name))
+
         data = data.append(load_RDF_to_dataframe(xml), ignore_index = True)
 
     return data
@@ -181,31 +184,51 @@ pandas.DataFrame.type_view = type_view #Lets extend this fuctionality to pandas 
 # TEST and examples
 if __name__ == '__main__':
 
-    path = "FlowExample.zip"
 
-    #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
+    model = "FlowExample.zip"
 
-    data = load_all_to_dataframe([path])
+    rdfs = "C:\Users\kristjan.vilgo\Downloads\ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS\EquipmentProfileCoreOperationRDFSAugmented-v2_4_15-4Jul2016.rdf"
 
-    print("Loaded types")
-    print(data[(data.KEY == "Type")]["VALUE"].value_counts())
-
-    print(data.type_view("ACLineSegment"))
-
-    ACLineSegments  = data.type_view("ACLineSegment")
-    Terminals       = data.type_view("Terminal")
-    SvVoltages      = data.type_view("SvVoltage")
-
-    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
-    ACLineSegments_Terminals_SvVoltages = pandas.merge(ACLineSegments_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-    print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]])
+    data = load_all_to_dataframe([model, rdfs])
 
 
-    PowerTransformers  = data.type_view("PowerTransformer")
-    PowerTransformerEnds  = data.type_view("PowerTransformerEnd")
-    PowerTransformerEnds_Terminals = pandas.merge(PowerTransformerEnds, Terminals, how = "inner", left_on="TransformerEnd.Terminal", right_index = True)
-    PowerTransformerEnds_Terminals_SvVoltages = pandas.merge(PowerTransformerEnds_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-    print(PowerTransformerEnds_Terminals_SvVoltages[["SvVoltage.v", "SvVoltage.angle", "PowerTransformerEnd.ratedS", "PowerTransformerEnd.ratedU", "PowerTransformerEnd.r", "PowerTransformerEnd.x", "PowerTransformerEnd.g", "PowerTransformerEnd.b"]])
+    values_in_linesegment = data.query("VALUE == '#ACLineSegment'")
+    values_in_powertransform_end = data.query("VALUE == '#PowerTransformerEnd'")
+    data.query("ID == '#PowerTransformerEnd.r'")
+    data.query("ID == '#Resistance'")
+
+    data_types = data.query("KEY == 'dataType'")["VALUE"].drop_duplicates()
+
+
+##    path = "FlowExample.zip"
+##
+##    #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
+##
+##    data = load_all_to_dataframe([path])
+##
+##    print("Loaded types")
+##    print(data[(data.KEY == "Type")]["VALUE"].value_counts())
+##
+##    print(data.type_view("ACLineSegment"))
+##
+##    ACLineSegments  = data.type_view("ACLineSegment")
+##    Terminals       = data.type_view("Terminal")
+##    SvVoltages      = data.type_view("SvVoltage")
+##
+##    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
+##    ACLineSegments_Terminals_SvVoltages = pandas.merge(ACLineSegments_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+##    print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]])
+##
+##
+##    PowerTransformers  = data.type_view("PowerTransformer")
+##    PowerTransformerEnds  = data.type_view("PowerTransformerEnd")
+##    PowerTransformerEnds_Terminals = pandas.merge(PowerTransformerEnds, Terminals, how = "inner", left_on="TransformerEnd.Terminal", right_index = True)
+##    PowerTransformerEnds_Terminals_SvVoltages = pandas.merge(PowerTransformerEnds_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+##    print(PowerTransformerEnds_Terminals_SvVoltages[["SvVoltage.v", "SvVoltage.angle", "PowerTransformerEnd.ratedS", "PowerTransformerEnd.ratedU", "PowerTransformerEnd.r", "PowerTransformerEnd.x", "PowerTransformerEnd.g", "PowerTransformerEnd.b"]])
+
+
+
+
 
 
 ##    ACLineSegments = data.query("VALUE == 'ACLineSegment' & KEY == 'Type'")
