@@ -21,7 +21,7 @@ def validate_CGMES(parameters,CGMES_files,report_folder):
     for file in CGMES_files:
         print "Processing: " + file
 
-        command=['java', '-jar', 'local-quality-service-2.4.517.jar', parameters, file, report_folder]
+        command=['java', '-jar', 'local-quality-service-2.5.0.878.jar', parameters, file, report_folder]
         output = command_line(command)
 
         if output == 0:

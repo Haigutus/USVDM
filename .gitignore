@@ -1,1 +1,5 @@
 *.jar
+*.xml
+*.svg
+*.png
+*.pyc

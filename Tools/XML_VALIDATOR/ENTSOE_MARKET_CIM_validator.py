@@ -51,10 +51,10 @@ def check_path(list_of_paths): #Print paths an check if exsist
         print message
 
 #XSD = "C:\CIMDesk\CIMdesk\profile\entsoe\entsoe_2_4\equipment.xsd"
-XSD = r"""C:\USVDM\XSD\CIM_2017-05-30\iec62325-451-4-settlement_v4_0.xsd"""
+XSD = r"""C:\Users\kristjan.vilgo\Downloads\Day-Ahead-Public-master\Day-Ahead-Public-master\urn-ediel-org-neg-spotmarket-biddocument-2-0.xsd"""
 #XML = r"""C:\USVDM\XSD\CIM_2017-05-30\20170503T2230Z_ELERING_EQ_001.xml"""
 #XML = r"""H:\PROJECTS\BHT 2\CGMA\CGMA_templates\20170103_CGMA_PPD_10X1001A1001A55Y_10YLT-1001A0008Q_LITGRID.xml"""
-XML = r"""C:\USVDM\XSD\10906271.xml"""
+XML = r"""C:\Users\kristjan.vilgo\Downloads\Day-Ahead-Public-master\Day-Ahead-Public-master\Elering_for_11XNORDPOOLSPOT2_120720182200.xml"""
 check_path([XML,XSD])
 
 validate_XML(XML,XSD)
