@@ -39,7 +39,7 @@ data = load_all_to_dataframe(path_list)
 print("Loaded types")
 print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-print(data.type_view("ACLineSegment"))
+print(data.type_tabelview("ACLineSegment"))
 
 print("One winding data")
 print(data.query("ID == '12d773ab-1521-4e09-8a45-88b5eebf6fdd'"))

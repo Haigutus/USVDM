@@ -166,17 +166,44 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
     return data
 
 
-def type_view(data, type_name):
+def type_tableview(data, type_name):
+
+    "Creates a table view of all elements of defined type, with their parameters in columns"
 
     type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
-
     type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
     data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
 
     return data_view
 
-pandas.DataFrame.type_view = type_view #Lets extend this fuctionality to pandas DataFrame
+pandas.DataFrame.type_tableview = type_tableview #Lets extend this fuctionality to pandas DataFrame
+
+
+def reference_tableview(data, reference):
+
+    "Creates a table view of all elements that refer to specific element, returns only id, type, name"
+
+    reference_list = data.query("VALUE == '{}'".format(reference))["ID"].tolist()
+    reference_data = data[data.ID.isin(reference_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot
+
+    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][["Type", "IdentifiedObject.name"]]
+
+    return data_view
+
+pandas.DataFrame.reference_tabeleview = reference_tableview #Lets extend this fuctionality to pandas DataFrame
+
+
+def types_dict(data):
+
+    "Returns dictionary with all types as keys and number of their occurrences as values"
+
+    types_dictionary = data[(data.KEY == "Type")]["VALUE"].value_counts().to_dict()
+
+    return  types_dictionary
+
+pandas.DataFrame.types_dict = types_dict
+
 
 # END OF FUNCTIONS
 
@@ -194,7 +221,7 @@ if __name__ == '__main__':
     print("Loaded types")
     print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-    print(data.type_view("ACLineSegment"))
+    print(data.type_tableview("ACLineSegment"))
 
 
     # model = "FlowExample.zip"
@@ -213,72 +240,7 @@ if __name__ == '__main__':
 
 
 
-##
-##    ACLineSegments  = data.type_view("ACLineSegment")
-##    Terminals       = data.type_view("Terminal")
-##    SvVoltages      = data.type_view("SvVoltage")
-##
-##    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
-##    ACLineSegments_Terminals_SvVoltages = pandas.merge(ACLineSegments_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-##    print(ACLineSegments_Terminals_SvVoltages[["SvVoltage.angle", "SvVoltage.v", "ACLineSegment.r", "ACLineSegment.x"]])
-##
-##
-##    PowerTransformers  = data.type_view("PowerTransformer")
-##    PowerTransformerEnds  = data.type_view("PowerTransformerEnd")
-##    PowerTransformerEnds_Terminals = pandas.merge(PowerTransformerEnds, Terminals, how = "inner", left_on="TransformerEnd.Terminal", right_index = True)
-##    PowerTransformerEnds_Terminals_SvVoltages = pandas.merge(PowerTransformerEnds_Terminals, SvVoltages, how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-##    print(PowerTransformerEnds_Terminals_SvVoltages[["SvVoltage.v", "SvVoltage.angle", "PowerTransformerEnd.ratedS", "PowerTransformerEnd.ratedU", "PowerTransformerEnd.r", "PowerTransformerEnd.x", "PowerTransformerEnd.g", "PowerTransformerEnd.b"]])
-
-
-
-
-
-
-##    ACLineSegments = data.query("VALUE == 'ACLineSegment' & KEY == 'Type'")
-##    Terminals_ConductingEquipment = data.query("KEY == 'Terminal.ConductingEquipment'")
-##
-##    ACLineSegments_Terminals = pandas.merge(ACLineSegments, Terminals_ConductingEquipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_ACLineSegment", "_Terminal"])
-##
-##    Terminals_TopologicalNode = data.query("KEY == 'Terminal.TopologicalNode'")
-##
-##    #ACLineSegments_TopologicalNodes = pandas.merge(ACLineSegments_Terminals, Terminals_ConductingEquipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["", "_TopologicalNode"])
-
-##    terminals_svpowerflow = data.query("KEY == 'SvPowerFlow.Terminal'")
-##    terminals_svvoltage   = data.query("KEY == 'SvVoltage.TopologicalNode'")
-##
-##    eq_container_terminals = pandas.merge(power_transformers, terminals_conducting_equipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_eqcontainer", "_terminal"])
-##
-##    sv_powerflows = pandas.merge(eq_container_terminals, terminals_svpowerflow, how = "inner", left_on = "ID_terminal", right_on = "VALUE", suffixes = ["", "_svpowerflow"])
-
-
-
-
-##KEY                                  IdentifiedObject.name          SubGeographicalRegion.Region                   Type
-##ID
-##02e3f63a-1100-48fa-a64b-79b3b86d28e3                  Grid  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##2b35c4e0-d85f-44b7-9e2c-4a110f9944a3      SubstatSeriesImp  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##42a937f4-fd79-4d57-8153-14d40107b23a           SubstatMain  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##43fd1008-34f6-4721-a468-64339d340cff        SubstatTr2tap5  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##95d267b2-3ee1-4a9d-a400-36bfb8032412            SubstatTr2  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##a598110a-4286-44e1-8335-56c866363cd7           SubstatLine  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##c9ce2b09-1225-4afa-bf85-9284fdb1f415           SubstatTr3a  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##eba981b5-0007-40bb-8f5c-f14c277f5d61           SubstatTr3b  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-##f4637966-e63c-4bb4-89ed-0f897e40b05c          SubstatEqLne  2fdc1414-2e27-46c9-9989-860d4f8d420b  SubGeographicalRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
 
 
-#data = load_RDF_to_dataframe(r"C:\Users\kristjan.vilgo\Desktop\IGM_hour23\IGM_hour23\20180310T2330Z_2D_ELERING_TP_001.xml")

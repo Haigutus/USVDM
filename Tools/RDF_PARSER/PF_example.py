@@ -25,11 +25,11 @@ print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
 # Generate classical data views needed to extract relevant data
 
-ACLineSegments          = data.type_view("ACLineSegment")
-Terminals               = data.type_view("Terminal")
-SvVoltages              = data.type_view("SvVoltage")
-PowerTransformerEnds    = data.type_view("PowerTransformerEnd")
-#PowerTransformers       = data.type_view("PowerTransformer")
+ACLineSegments          = data.type_tableview("ACLineSegment")
+Terminals               = data.type_tableview("Terminal")
+SvVoltages              = data.type_tableview("SvVoltage")
+PowerTransformerEnds    = data.type_tableview("PowerTransformerEnd")
+#PowerTransformers       = data.type_tableview("PowerTransformer")
 
 # Join views to get needed AC line data
 ACLineSegments_Terminals            = pandas.merge(ACLineSegments, Terminals, how = "inner", left_index=True, right_on = 'Terminal.ConductingEquipment')
