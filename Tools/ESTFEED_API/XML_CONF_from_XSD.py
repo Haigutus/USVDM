@@ -49,6 +49,10 @@ def create_conf_from_XSD(xsd_path):
             global_variables_dictionary[variable_name][str(ID)] = {'PARENT': str(0), 'DATA': {'element': child_name, 'text': '{{{}}}'.format(child_name)}}
             variables_dictionary[child_name] = child_element.attrib
 
+
+    pprint(global_elements_dictionary)
+
+
     return global_elements_dictionary, global_variables_dictionary, variables_dictionary
 
 
@@ -112,7 +116,6 @@ def append_XML_object(root, message_template_dictionary, variables_dictionary):
         return root
 
     else:
-
         root.append(etree.XML(create_XML_from_conf(message_template_dictionary).format(**variables_dictionary), parser = parser))
 
 
@@ -121,5 +124,13 @@ def remove_root(text_xml):
     return without_root
 
 
-append_XML_object('create_root', global_elements_dictionary['error'], variables_dictionary)
+global_elements_dictionary, global_variables_dictionary, variables_dictionary = create_conf_from_XSD("estefeed-1.0.xsd")
 
+variables_dictionary["service"] = "weather"
+error_message = append_XML_object('create_root', global_elements_dictionary['request'], variables_dictionary)
+
+print(etree.tostring(error_message))
+
+file = open("test.xml", "w")
+file.write(etree.tostring(error_message, pretty_print="true").decode("UTF-8"), )
+file.close()
