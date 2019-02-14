@@ -185,31 +185,34 @@ pandas.DataFrame.type_view = type_view #Lets extend this fuctionality to pandas 
 if __name__ == '__main__':
 
 
-    model = "FlowExample.zip"
+    path = "FlowExample.zip"
 
-    rdfs = "C:\Users\kristjan.vilgo\Downloads\ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS\EquipmentProfileCoreOperationRDFSAugmented-v2_4_15-4Jul2016.rdf"
+    #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
 
-    data = load_all_to_dataframe([model, rdfs])
+    data = load_all_to_dataframe([path])
 
+    print("Loaded types")
+    print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-    values_in_linesegment = data.query("VALUE == '#ACLineSegment'")
-    values_in_powertransform_end = data.query("VALUE == '#PowerTransformerEnd'")
-    data.query("ID == '#PowerTransformerEnd.r'")
-    data.query("ID == '#Resistance'")
-
-    data_types = data.query("KEY == 'dataType'")["VALUE"].drop_duplicates()
+    print(data.type_view("ACLineSegment"))
 
 
-##    path = "FlowExample.zip"
-##
-##    #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
-##
-##    data = load_all_to_dataframe([path])
-##
-##    print("Loaded types")
-##    print(data[(data.KEY == "Type")]["VALUE"].value_counts())
-##
-##    print(data.type_view("ACLineSegment"))
+    # model = "FlowExample.zip"
+    #
+    # rdfs = "C:\Users\kristjan.vilgo\Downloads\ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS\EquipmentProfileCoreOperationRDFSAugmented-v2_4_15-4Jul2016.rdf"
+    #
+    # data = load_all_to_dataframe([model, rdfs])
+    #
+    #
+    # values_in_linesegment = data.query("VALUE == '#ACLineSegment'")
+    # values_in_powertransform_end = data.query("VALUE == '#PowerTransformerEnd'")
+    # data.query("ID == '#PowerTransformerEnd.r'")
+    # data.query("ID == '#Resistance'")
+    #
+    # data_types = data.query("KEY == 'dataType'")["VALUE"].drop_duplicates()
+
+
+
 ##
 ##    ACLineSegments  = data.type_view("ACLineSegment")
 ##    Terminals       = data.type_view("Terminal")
