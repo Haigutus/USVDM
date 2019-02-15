@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="690e805b-d647-4e5b-973f-02ad3b895b89" name="Default" comment="">
+    <list default="true" id="690e805b-d647-4e5b-973f-02ad3b895b89" name="Default" comment="added reference_tableview, types_dict functions, schange type_view name to type_tableview">
+      <change afterPath="$PROJECT_DIR$/Tools/RDF_PARSER/RDFS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,34 +14,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/XML_CONF_from_XSD.py">
+        <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1052">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="250">
+              <caret line="172" selection-start-line="172" selection-end-line="175" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/PF_example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/RDFS.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="67" column="46" lean-forward="true" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
               <folding>
-                <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#0#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="183" column="19" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-              <folding>
-                <element signature="e#326#370#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -68,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/estfeed_listener.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="150">
               <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -89,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/send_estfeed_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="75">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -132,13 +137,14 @@
         <option value="$PROJECT_DIR$/Tools/ESTFEED_API/estfeed-1.0.xsd" />
         <option value="$PROJECT_DIR$/Tools/ESTFEED_API/XML_CONF_from_XSD.py" />
         <option value="$PROJECT_DIR$/Tools/ESTFEED_API/estfeed_listener.py" />
-        <option value="$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py" />
         <option value="$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py" />
+        <option value="$PROJECT_DIR$/Tools/RDF_PARSER/PF_example.py" />
+        <option value="$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py" />
+        <option value="$PROJECT_DIR$/Tools/RDF_PARSER/RDFS.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="960" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
     <option name="width" value="960" />
     <option name="height" value="1053" />
@@ -164,20 +170,21 @@
               <item name="USVDM" type="b2602c69:ProjectViewProjectNode" />
               <item name="USVDM" type="462c0819:PsiDirectoryNode" />
               <item name="Tools" type="462c0819:PsiDirectoryNode" />
-              <item name="ESTFEED_API" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="USVDM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="USVDM" type="462c0819:PsiDirectoryNode" />
-              <item name="Tools" type="462c0819:PsiDirectoryNode" />
-              <item name="ESTFEED_API" type="462c0819:PsiDirectoryNode" />
-              <item name="XML_CONF_from_XSD.py" type="8704e2dd:PyFileNode" />
+              <item name="RDF_PARSER" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="USVDM" type="b2602c69:ProjectViewProjectNode" />
               <item name="USVDM" type="462c0819:PsiDirectoryNode" />
               <item name="Tools" type="462c0819:PsiDirectoryNode" />
               <item name="RDF_PARSER" type="462c0819:PsiDirectoryNode" />
+              <item name="ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="USVDM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="USVDM" type="462c0819:PsiDirectoryNode" />
+              <item name="Tools" type="462c0819:PsiDirectoryNode" />
+              <item name="RDF_PARSER" type="462c0819:PsiDirectoryNode" />
+              <item name="RDF_parser.py" type="8704e2dd:PyFileNode" />
             </path>
           </expand>
           <select />
@@ -210,7 +217,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.query_example">
+  <component name="RunManager" selected="Python.RDFS">
+    <configuration name="PF_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="USVDM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tools/RDF_PARSER" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/RDF_PARSER/PF_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RDFS" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="USVDM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tools/RDF_PARSER" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/RDF_PARSER/RDFS.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="RDF_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="USVDM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -225,7 +271,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -247,27 +293,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/ESTFEED_API/estfeed_listener.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="estfeed_message_header" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="USVDM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tools/ESTFEED_API" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/ESTFEED_API/XML_CONF_from_XSD.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -296,18 +321,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.estfeed_message_header" />
       <item itemvalue="Python.estfeed_listener" />
       <item itemvalue="Python.RDF_parser" />
       <item itemvalue="Python.query_example" />
+      <item itemvalue="Python.PF_example" />
+      <item itemvalue="Python.RDFS" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.query_example" />
+        <item itemvalue="Python.RDFS" />
+        <item itemvalue="Python.RDFS" />
+        <item itemvalue="Python.PF_example" />
         <item itemvalue="Python.RDF_parser" />
-        <item itemvalue="Python.estfeed_listener" />
-        <item itemvalue="Python.estfeed_message_header" />
-        <item itemvalue="Python.estfeed_message_header" />
+        <item itemvalue="Python.query_example" />
       </list>
     </recent_temporary>
   </component>
@@ -322,30 +348,59 @@
       <option name="presentableId" value="Default" />
       <updated>1525302118514</updated>
     </task>
+    <task id="LOCAL-00001" summary="query_xample.py updated to work with python 3.X">
+      <created>1550163387171</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1550163387171</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added reference_tableview, types_dict functions, schange type_view name to type_tableview">
+      <created>1550167748575</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1550167748575</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="27" width="960" height="1053" extended-state="4" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36858973" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18196203" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32894737" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32894737" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32894737" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286026" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3111588" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.52960527" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="query_xample.py updated to work with python 3.X" />
+    <MESSAGE value="added reference_tableview, types_dict functions, schange type_view name to type_tableview" />
+    <option name="LAST_COMMIT_MESSAGE" value="added reference_tableview, types_dict functions, schange type_view name to type_tableview" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/XML_CONF_from_XSD.py">
@@ -355,6 +410,13 @@
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
@@ -374,7 +436,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/estfeed_listener.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="150">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -391,7 +453,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tools/ESTFEED_API/send_estfeed_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
+        <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -408,17 +470,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/RDF_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="183" column="19" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
+        <state relative-caret-position="250">
+          <caret line="172" selection-start-line="172" selection-end-line="175" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/query_example.py">
+    <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/PF_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tools/RDF_PARSER/RDFS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="67" column="46" lean-forward="true" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
           <folding>
-            <element signature="e#326#370#0" expanded="true" />
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
