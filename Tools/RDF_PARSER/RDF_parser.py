@@ -91,9 +91,11 @@ def load_RDF_to_dataframe(path_or_fileobject):
             KEY = element.tag.split("}")[1]
             VALUE = element.text
 
-            if VALUE == None:
+            if VALUE == None and len(element.attrib.values()) > 0:
 
                 VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "")
+
+
 
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
             data_list.append([ID, KEY, VALUE, INSTANCE_ID])
@@ -216,12 +218,14 @@ if __name__ == '__main__':
 
     #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
 
+    #path = r"C:\Users\kristjan.vilgo\Downloads\20190216T2130Z_1D_LITGRID_TP_001.zip"
+
     data = load_all_to_dataframe([path])
 
     print("Loaded types")
     print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-    print(data.type_tableview("ACLineSegment"))
+    #print(data.type_tableview("ACLineSegment"))
 
 
     # model = "FlowExample.zip"
