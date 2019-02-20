@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Conroy (Tedior) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecl="urn:easee-gas.eu:edigas:codelists" elementFormDefault="qualified">
+	<!-- need to add followinfg to enable access to standard codelists -->
+	<xsd:import namespace="urn:easee-gas.eu:edigas:codelists" schemaLocation="../cclib-v5/urn-easee-gas-eu-edigas-codelists.xsd"/>
+	<xsd:simpleType name="LocalRestrictedAccountDirectionTypeList">
+		<xsd:restriction base="ecl:LocalAccountDirectionTypeList">
+			<xsd:enumeration value="ZPD"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedAvailabilityTypeList">
+		<xsd:restriction base="ecl:LocalAvailabilityTypeList">
+			<xsd:enumeration value="Z05"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedAccountTypeTypeList">
+		<xsd:restriction base="ecl:LocalAccountTypeTypeList">
+			<xsd:enumeration value="ZOC"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedBusinessTypeList">
+		<xsd:restriction base="ecl:LocalBusinessTypeList">
+			<xsd:enumeration value="Z02"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedCharacteristicTypeList">
+		<xsd:restriction base="ecl:LocalCharacteristicTypeList">
+			<xsd:enumeration value="Y"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedCodingSchemeTypeList">
+		<xsd:restriction base="ecl:LocalCodingSchemeTypeList">
+			<xsd:enumeration value="305"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedCurrencyTypeList">
+		<xsd:restriction base="ecl:LocalCurrencyTypeList">
+			<xsd:enumeration value="EUR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedDocumentTypeList">
+		<xsd:restriction base="ecl:LocalDocumentTypeList">
+			<xsd:enumeration value="AL3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedGasDirectionTypeList">
+		<xsd:restriction base="ecl:LocalGasDirectionTypeList">
+			<xsd:enumeration value="Z02"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedIndicatorTypeList">
+		<xsd:restriction base="ecl:LocalIndicatorTypeList">
+			<xsd:enumeration value="01G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedSpanTypeList">
+		<xsd:restriction base="ecl:LocalSpanTypeList">
+			<xsd:enumeration value="ZEJ"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedMeasurementTypeTypeList">
+		<xsd:restriction base="ecl:LocalMeasurementTypeTypeList">
+			<xsd:enumeration value="Z25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedNominationTypeList">
+		<xsd:restriction base="ecl:LocalNominationTypeList">
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedQuantityNatureTypeList">
+		<xsd:restriction base="ecl:LocalQuantityNatureTypeList">
+			<xsd:enumeration value="Z01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedQuantityTypeTypeList">
+		<xsd:restriction base="ecl:LocalQuantityTypeTypeList">
+			<xsd:enumeration value="ZLA"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedReasonCodeTypeList">
+		<xsd:restriction base="ecl:LocalReasonCodeTypeList">
+			<xsd:enumeration value="01G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedReferenceTypeList">
+		<xsd:restriction base="ecl:LocalReferenceTypeList">
+			<xsd:enumeration value="ACW"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedRoleTypeList">
+		<xsd:restriction base="ecl:LocalRoleTypeList">
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedStatusCategoryTypeList">
+		<xsd:restriction base="ecl:LocalStatusCategoryTypeList">
+			<xsd:enumeration value="04G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedStatusTypeList">
+		<xsd:restriction base="ecl:LocalStatusTypeList">
+			<xsd:enumeration value="03G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRestrictedUnitOfMeasureTypeList">
+		<xsd:restriction base="ecl:LocalUnitOfMeasureTypeList">
+			<xsd:enumeration value="KW1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

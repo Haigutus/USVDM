@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecl="urn:easee-gas.eu:edigas:codelists" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- import the codelsits -->
+	<xsd:import namespace="urn:easee-gas.eu:edigas:codelists" schemaLocation="../cclib-v5/urn-easee-gas-eu-edigas-codelists.xsd"/>
+	<!-- include the local message restrictions -->
+	<xsd:include schemaLocation="urn-easee-gas-eu-edigas-transparency-contractmarketmonitoringdocument-5-1-local-restrictions.xsd"/>
+	<!--  restricted codelists  -->
+	<!-- AvailabilitytypeType type-->
+	<xsd:simpleType name="StandardRestrictedAvailabilityTypeList">
+		<xsd:restriction base="ecl:StandardAvailabilityTypeList">
+			<xsd:enumeration value="Z05"/>
+			<xsd:enumeration value="Z06"/>
+			<xsd:enumeration value="ZEQ"/>
+			<xsd:enumeration value="ZER"/>
+			<xsd:enumeration value="ZES"/>
+			<xsd:enumeration value="ZET"/>
+			<xsd:enumeration value="ZEU"/>
+			<xsd:enumeration value="ZEW"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AvailabilityTypeList">
+		<xsd:union memberTypes="StandardRestrictedAvailabilityTypeList LocalRestrictedAvailabilityTypeList"/>
+	</xsd:simpleType>
+	<!-- Capacity type-->
+	<xsd:simpleType name="StandardRestrictedCapacityTypeTypeList">
+		<xsd:restriction base="ecl:StandardCapacityTypeTypeList">
+			<xsd:enumeration value="ZEO"/>
+			<xsd:enumeration value="ZEP"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CapacityTypeTypeList">
+		<xsd:union memberTypes="StandardRestrictedCapacityTypeTypeList LocalRestrictedCapacityTypeTypeList"/>
+	</xsd:simpleType>
+	<!-- CodingScheme type-->
+	<xsd:simpleType name="EicCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="305"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TsoCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StandardRestrictedCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="305"/>
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodingSchemeTypeList">
+		<xsd:union memberTypes="StandardRestrictedCodingSchemeTypeList LocalRestrictedCodingSchemeTypeList"/>
+	</xsd:simpleType>
+	<!-- document type-->
+	<xsd:simpleType name="StandardRestrictedDocumentTypeList">
+		<xsd:restriction base="ecl:StandardDocumentTypeList">
+			<xsd:enumeration value="ANG"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DocumentTypeList">
+		<xsd:union memberTypes="StandardRestrictedDocumentTypeList LocalRestrictedDocumentTypeList"/>
+	</xsd:simpleType>
+	<!-- GasDirection type-->
+	<xsd:simpleType name="StandardRestrictedGasDirectionTypeList">
+		<xsd:restriction base="ecl:StandardGasDirectionTypeList">
+			<xsd:enumeration value="Z02"/>
+			<xsd:enumeration value="Z03"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GasDirectionTypeList">
+		<xsd:union memberTypes="StandardRestrictedGasDirectionTypeList LocalRestrictedGasDirectionTypeList"/>
+	</xsd:simpleType>
+	<!-- Reference type-->
+	<xsd:simpleType name="StandardRestrictedReferenceTypeList">
+		<xsd:restriction base="ecl:StandardReferenceTypeList"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReferenceTypeList">
+		<xsd:union memberTypes="StandardRestrictedReferenceTypeList LocalRestrictedReferenceTypeList"/>
+	</xsd:simpleType>
+	<!-- Role type-->
+	<xsd:simpleType name="IssuerRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RecipientRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZTV"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StandardRestrictedRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZSO"/>
+			<xsd:enumeration value="ZTV"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RoleTypeList">
+		<xsd:union memberTypes="StandardRestrictedRoleTypeList LocalRestrictedRoleTypeList"/>
+	</xsd:simpleType>
+	<!-- Status type-->
+	<xsd:simpleType name="StandardRestrictedStatusTypeList">
+		<xsd:restriction base="ecl:StandardStatusTypeList">
+			<xsd:enumeration value="62G"/>
+			<xsd:enumeration value="63G"/>
+			<xsd:enumeration value="66G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusTypeList">
+		<xsd:union memberTypes="StandardRestrictedStatusTypeList LocalRestrictedStatusTypeList"/>
+	</xsd:simpleType>
+	<!-- Transaction type-->
+	<xsd:simpleType name="StandardRestrictedTransactionTypeList">
+		<xsd:restriction base="ecl:StandardTransactionTypeList">
+			<xsd:enumeration value="ZSF"/>
+			<xsd:enumeration value="ZSG"/>
+			<xsd:enumeration value="ZSI"/>
+			<xsd:enumeration value="ZSJ"/>
+			<xsd:enumeration value="ZSK"/>
+			<xsd:enumeration value="ZSL"/>
+			<xsd:enumeration value="ZSM"/>
+			<xsd:enumeration value="ZSN"/>
+			<xsd:enumeration value="ZSO"/>
+			<xsd:enumeration value="ZSP"/>
+			<xsd:enumeration value="ZSQ"/>
+			<xsd:enumeration value="ZSR"/>
+			<xsd:enumeration value="ZSS"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransactionTypeList">
+		<xsd:union memberTypes="StandardRestrictedTransactionTypeList LocalRestrictedTransactionTypeList"/>
+	</xsd:simpleType>
+	<!-- UnitOfMeasure type-->
+	<xsd:simpleType name="StandardRestrictedUnitOfMeasureTypeList">
+		<xsd:restriction base="ecl:StandardUnitOfMeasureTypeList">
+			<xsd:enumeration value="KW1"/>
+			<xsd:enumeration value="KW2"/>
+			<xsd:enumeration value="KWH"/>
+			<xsd:enumeration value="GWH"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnitOfMeasureTypeList">
+		<xsd:union memberTypes="StandardRestrictedUnitOfMeasureTypeList LocalRestrictedUnitOfMeasureTypeList"/>
+	</xsd:simpleType>
+</xsd:schema>
