@@ -40,7 +40,7 @@ app.layout = html.Div(children=[
         cursorStart = 1,
         style= {"width":"100%", "height":"80vh"},
         fontSize = 14,
-        value= xml_path_to_str(r"Examples/EDIGAS_5/1.1-Capacity management, publication/TRAADV.xml"),
+        value= "Copy your IEC62325 or EDIGAS 5 XML message here",
         showGutter = True,
         highlightActiveLine = True,
 
