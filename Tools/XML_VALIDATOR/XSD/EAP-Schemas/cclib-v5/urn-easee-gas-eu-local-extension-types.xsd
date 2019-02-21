@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Michael Conroy (TEDIOR SARL) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="LocalAccountDirectionTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZPD"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalAccountTypeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZOC"/>
+			<xsd:enumeration value="ZOD"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalAvailabilityTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="Z05"/>
+			<xsd:enumeration value="ZEX"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalBusinessTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="12G"/>
+			<xsd:enumeration value="14G"/>
+			<xsd:enumeration value="Z01"/>
+			<xsd:enumeration value="Z02"/>
+			<xsd:enumeration value="ZXJ"/>
+			<xsd:enumeration value="ZEJ"/>
+			<xsd:enumeration value="ZEQ"/>
+			<xsd:enumeration value="ZEY"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCapacityMarketTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCapacityTypeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZEO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCharacteristicTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="Y"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCodingSchemeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="305"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCountryTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="FRA"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalCurrencyTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="EUR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDocumentTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="294"/>
+			<xsd:enumeration value="AEG"/>
+			<xsd:enumeration value="AL1"/>
+			<xsd:enumeration value="AL2"/>
+			<xsd:enumeration value="ALU"/>
+			<xsd:enumeration value="ALH"/>
+			<xsd:enumeration value="ALK"/>
+			<xsd:enumeration value="ALN"/>
+			<xsd:enumeration value="ALP"/>
+			<xsd:enumeration value="ALR"/>
+			<xsd:enumeration value="ALV"/>
+			<xsd:enumeration value="ALW"/>
+			<xsd:enumeration value="ALX"/>
+			<xsd:enumeration value="AL3"/>
+			<xsd:enumeration value="AMC"/>
+			<xsd:enumeration value="AME"/>
+			<xsd:enumeration value="AMK"/>
+			<xsd:enumeration value="AMM"/>
+			<xsd:enumeration value="AMN"/>
+			<xsd:enumeration value="AMV"/>
+			<xsd:enumeration value="AMZ"/>
+			<xsd:enumeration value="ANA"/>
+			<xsd:enumeration value="ANG"/>
+			<xsd:enumeration value="ANH"/>
+			<xsd:enumeration value="ANI"/>
+			<xsd:enumeration value="01G"/>
+			<xsd:enumeration value="27G"/>
+			<xsd:enumeration value="07G"/>
+			<xsd:enumeration value="30G"/>
+			<xsd:enumeration value="14G"/>
+			<xsd:enumeration value="26G"/>
+			<xsd:enumeration value="27G"/>
+			<xsd:enumeration value="38G"/>
+			<xsd:enumeration value="51G"/>
+			<xsd:enumeration value="95G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalEnergyProductTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalGasDirectionTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="Z02"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalIndicatorTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="01G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalMeasurementTypeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="3B"/>
+			<xsd:enumeration value="Z19"/>
+			<xsd:enumeration value="Z25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalNominationTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalPriceTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="Z01"/>
+			<xsd:enumeration value="Z05"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalProcedureTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalQuantityNatureTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="Z01"/>
+			<xsd:enumeration value="Z05"/>
+			<xsd:enumeration value="Z10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalQuantityTypeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZLA"/>
+			<xsd:enumeration value="ZXD"/>
+			<xsd:enumeration value="ZXH"/>
+			<xsd:enumeration value="ZXO"/>
+			<xsd:enumeration value="DN"/>
+			<xsd:enumeration value="TP"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalReasonCodeTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="01G"/>
+			<xsd:enumeration value="09G"/>
+			<xsd:enumeration value="22G"/>
+			<xsd:enumeration value="85G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalReferenceTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZSD"/>
+			<xsd:enumeration value="ACW"/>
+			<xsd:enumeration value="Z17"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalRoleTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalSettlementTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalSpanTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="ZEJ"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalStatusCategoryTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="04G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalStatusTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="03G"/>
+			<xsd:enumeration value="06G"/>
+			<xsd:enumeration value="22G"/>
+			<xsd:enumeration value="32G"/>
+			<xsd:enumeration value="59G"/>
+			<xsd:enumeration value="62G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalTransferTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="A01"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalTransactionTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="ZSF"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalUnitOfMeasureTypeList">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="3"/>
+			<xsd:enumeration value="KW1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
