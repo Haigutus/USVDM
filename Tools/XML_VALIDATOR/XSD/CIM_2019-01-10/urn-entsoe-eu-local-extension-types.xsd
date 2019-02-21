@@ -40,6 +40,11 @@
       <xsd:enumeration value="A01" />
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="LocalCoordinateSystemType">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="A01" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="LocalContractType">
     <xsd:restriction base="xsd:NMTOKEN">
       <xsd:enumeration value="A01" />
@@ -81,6 +86,11 @@
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="LocalMessageType">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="A01" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LocalMarketProductType">
     <xsd:restriction base="xsd:NMTOKEN">
       <xsd:enumeration value="A01" />
     </xsd:restriction>
@@ -153,11 +163,6 @@
   <xsd:simpleType name="LocalUnitSymbol">
     <xsd:restriction base="xsd:NMTOKEN">
       <xsd:enumeration value="AMP" />
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="LocalCoordinateSystemType">
-    <xsd:restriction base="xsd:NMTOKEN">
-      <xsd:enumeration value="A01" />
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="LocalDocumentType">
