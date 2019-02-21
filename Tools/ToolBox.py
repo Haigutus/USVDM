@@ -55,7 +55,7 @@ def check_path(list_of_paths): #Print paths an check if exsist
         print (path)
         check=os.path.exists(path)
         message="Path exsits: {}".format(check)
-        print message
+        print (message)
         #logging.info(path)
         #logging.info(message)
         return check
@@ -116,10 +116,10 @@ def command_line(cmd):
     try:
 
         cmd_process = subprocess.Popen(cmd)
-        print subprocess.list2cmdline(cmd) # To see the command that was passed  [DEBUG]
+        print (subprocess.list2cmdline(cmd)) # To see the command that was passed  [DEBUG]
 
     except subprocess.CalledProcessError:
-        print "Error"
+        print ("Error")
         return 0
 
 ##if sys.platform == 'darwin':
@@ -143,10 +143,10 @@ def list_of_files(path,file_extension):
             #logging.info("Processing file:"+filename)
             matches.append(path + "//" + filename)
         else:
-            print "Not a {} file: {}".format(file_extension, filename)
+            print ("Not a {} file: {}".format(file_extension, filename))
             #logging.warning("Not a {} file: {}".format(file_extension,file_text[0]))
 
-    print matches
+    print (matches)
     return matches
 
 def unzip_file(file, to_directory):
@@ -185,7 +185,7 @@ def list_of_zip_in_zip(zip_file):
 
             list_of_zip.append(zipinfo.filename)
 
-    print list_of_zip
+    print (list_of_zip)
 
     return list_of_zip
 
