@@ -51,7 +51,7 @@ source_bath = "//elering.sise/teenused/NMM/data/ACG/Generated Cases Archive"
 destination_bath = "C:/IOPs"
 
 
-IOP_date = "05.12.2018"
+IOP_date = "16.01.2019"
 
 
 
