@@ -9,6 +9,8 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
+from __future__ import print_function
+
 from lxml import etree
 import pandas
 
@@ -26,13 +28,13 @@ def svg_to_DataFrame(file_path, attributes):
         for attribute in path_attributes:
             data_dic[attribute] = path.attrib[attribute]
 
-        print data_dic["id"]
+        print (data_dic["id"])
 
         try:
             data_dic["__description__"] = path.find("{http://www.w3.org/2000/svg}desc").text
 
         except:
-            print "No Description available"
+            print ("No Description available")
             data_dic["__description__"] = "NAN"
 
 
@@ -40,7 +42,7 @@ def svg_to_DataFrame(file_path, attributes):
             data_dic["__title__"] = path.find("{http://www.w3.org/2000/svg}title").text
 
         except:
-            print "No Title available"
+            print ("No Title available")
             data_dic["__title__"] = "NAN"
 
         paths_DataFrame = paths_DataFrame.append(pandas.DataFrame([data_dic.values()], columns = data_dic.keys()), ignore_index = True)
@@ -64,7 +66,7 @@ def update_svg_paths(loaded_xml, DataFrame, identificator_tag, unknown_attrbute_
             identificator = path.attrib[identificator_tag]
 
         except:
-            print "{} has no attribute {} -> skipping".format(path, identificator_tag)
+            print ("{} has no attribute {} -> skipping".format(path, identificator_tag))
             continue
 
 
@@ -80,7 +82,7 @@ def update_svg_paths(loaded_xml, DataFrame, identificator_tag, unknown_attrbute_
             try:
                 path.attrib[write_key] = DataFrame[(DataFrame[identificator_tag])==identificator][key].tolist()[0]
             except:
-                print "ID not found in DataFrame: {}".format(identificator)
+                print ("ID not found in DataFrame: {}".format(identificator))
 
 
 
@@ -94,10 +96,10 @@ def update_svg_texts(loaded_xml, texts_dic):
 
             text_element.find("{http://www.w3.org/2000/svg}tspan").text = texts_dic[text_element.attrib["id"]]
 
-            print "New text defined for text element with id: {} -> new value: {}".format(text_element.attrib["id"], texts_dic[text_element.attrib["id"]])
+            print ("New text defined for text element with id: {} -> new value: {}".format(text_element.attrib["id"], texts_dic[text_element.attrib["id"]]))
 
         else:
-            print "No new text defined for text element with id: {}".format(text_element.attrib["id"])
+            print ("No new text defined for text element with id: {}".format(text_element.attrib["id"]))
 
 
 
