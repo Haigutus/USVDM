@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns="urn:easeegas.eu:edigas:general:publicationdocument:5:1" xmlns:cimp="http://www.iec.ch/cimprofile" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:easeegas.eu:edigas:general:publicationdocument:5:1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- INCLUDE code lists as well as restricted codelists -->
+	<xs:include schemaLocation="urn-easee-gas-eu-edigas-general-publicationdocument-5-1-restricted-codes.xsd"/>
+	<!-- END INCLUDE -->
+	<xs:element name="Publication_Document" type="Publication_Document"/>
+	<xs:simpleType name="QuantityNatureType" sawsdl:modelReference="http://easee-gas/edigas#QuantityNatureType">
+		<xs:restriction base="QuantityNatureTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasureType" sawsdl:modelReference="http://easee-gas/edigas#UnitOfMeasureType">
+		<xs:restriction base="UnitOfMeasureTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="CurrencyType" sawsdl:modelReference="http://easee-gas/edigas#CurrencyType">
+		<xs:restriction base="CurrencyTypeList"/>
+	</xs:simpleType>
+	<xs:complexType name="Characteristic" sawsdl:modelReference="http://easee-gas/edigas#Characteristic">
+		<xs:sequence>
+			<xs:element name="sequence" type="xs:integer" sawsdl:modelReference="http://easee-gas/edigas#Characteristic.sequence"/>
+			<xs:element name="code" type="QuantityNatureType" sawsdl:modelReference="http://easee-gas/edigas#Characteristic.code"/>
+			<xs:element name="measureUnit.code" type="UnitOfMeasureType" sawsdl:modelReference="http://easee-gas/edigas#MeasureUnit.code"/>
+			<xs:element name="currency.code" type="CurrencyType" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Currency.code"/>
+			<xs:element name="Period" type="Period" maxOccurs="unbounded" sawsdl:modelReference="http://easee-gas/edigas#Characteristic.Period"/>
+			<xs:element name="Reason" type="Reason" minOccurs="0" maxOccurs="unbounded" sawsdl:modelReference="http://easee-gas/edigas#Characteristic.Reason"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MeasurementPointType-base" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MeasurementPointType" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:simpleContent>
+			<xs:extension base="MeasurementPointType-base">
+				<xs:attribute name="codingScheme" type="CodingSchemeTypeList" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ConnectionPoint" sawsdl:modelReference="http://easee-gas/edigas#ConnectionPoint">
+		<xs:sequence>
+			<xs:element name="identification" type="MeasurementPointType" sawsdl:modelReference="http://easee-gas/edigas#ConnectionPoint.identification"/>
+			<xs:element name="Characteristic" type="Characteristic" maxOccurs="unbounded" sawsdl:modelReference="http://easee-gas/edigas#ConnectionPoint.Characteristic"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="TimeIntervalType" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(((((20[0-9]{2})[\-](0[13578]|1[02])[\-](0[1-9]|[12][0-9]|3[01])|([0-9]{4})[\-]((0[469])|(11))[\-](0[1-9]|[12][0-9]|30))T(([01][0-9]|2[0-3]):[0-5][0-9])Z/)|(([13579][26][02468][048]|[13579][01345789](0)[48]|[13579][01345789][2468][048]|[02468][048][02468][048]|[02468][1235679](0)[48]|[02468][1235679][2468][048]|[0-9][0-9][13579][26])[\-](02)[\-](0[1-9]|1[0-9]|2[0-9])T(([01][0-9]|2[0-3]):[0-5][0-9])Z/)|(([13579][26][02468][1235679]|[13579][01345789](0)[01235679]|[13579][01345789][2468][1235679]|[02468][048][02468][1235679]|[02468][1235679](0)[01235679]|[02468][1235679][2468][1235679]|[0-9][0-9][13579][01345789])[\-](02)[\-](0[1-9]|1[0-9]|2[0-8])T(([01][0-9]|2[0-3]):[0-5][0-9])Z/))(((([0-9]{4})-(0[13578]|1[02])[\-](0[1-9]|[12][0-9]|3[01])|([0-9]{4})[\-]((0[469])|(11))[\-](0[1-9]|[12][0-9]|30))T(([01][0-9]|2[0-3]):[0-5][0-9])Z)|(([13579][26][02468][048]|[13579][01345789](0)[48]|[13579][01345789][2468][048]|[02468][048][02468][048]|[02468][1235679](0)[48]|[02468][1235679][2468][048]|[0-9][0-9][13579][26])[\-](02)[\-](0[1-9]|1[0-9]|2[0-9])T(([01][0-9]|2[0-3]):[0-5][0-9])Z)|(([13579][26][02468][1235679]|[13579][01345789](0)[01235679]|[13579][01345789][2468][1235679]|[02468][048][02468][1235679]|[02468][1235679](0)[01235679]|[02468][1235679][2468][1235679]|[0-9][0-9][13579][01345789])[\-](02)[\-](0[1-9]|1[0-9]|2[0-8])T(([01][0-9]|2[0-3]):[0-5][0-9])Z)))"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GasDirectionType" sawsdl:modelReference="http://easee-gas/edigas#GasDirectionType">
+		<xs:restriction base="GasDirectionTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="QuantityType" sawsdl:modelReference="http://easee-gas/edigas#QuantityType">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Amount_Decimal" sawsdl:modelReference="http://easee-gas/edigas#Decimal">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Period" sawsdl:modelReference="http://easee-gas/edigas#Period">
+		<xs:sequence>
+			<xs:element name="timeInterval" type="TimeIntervalType" sawsdl:modelReference="http://easee-gas/edigas#Period.timeInterval"/>
+			<xs:element name="direction.code" type="GasDirectionType" sawsdl:modelReference="http://easee-gas/edigas#GasDirection.code"/>
+			<xs:element name="quantity.amount" type="QuantityType" sawsdl:modelReference="http://easee-gas/edigas#Quantity.amount"/>
+			<xs:element name="price.amount" type="Amount_Decimal" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Price.amount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="IdentificationType" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Version_Integer" sawsdl:modelReference="http://easee-gas/edigas#Integer">
+		<xs:restriction base="xs:integer">
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentType" sawsdl:modelReference="http://easee-gas/edigas#DocumentType">
+		<xs:restriction base="DocumentTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="ReferenceType" sawsdl:modelReference="http://easee-gas/edigas#ReferenceType">
+		<xs:restriction base="ReferenceTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="PartyType-base" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PartyType" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:simpleContent>
+			<xs:extension base="PartyType-base">
+				<xs:attribute name="codingScheme" type="EicCodingSchemeTypeList" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="IssuerRoleType" sawsdl:modelReference="http://easee-gas/edigas#RoleType">
+		<xs:restriction base="IssuerRoleTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="RecipientRoleType" sawsdl:modelReference="http://easee-gas/edigas#RoleType">
+		<xs:restriction base="RecipientRoleTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="RoleType" sawsdl:modelReference="http://easee-gas/edigas#RoleType">
+		<xs:restriction base="RoleTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="LocationType-base" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LocationType" sawsdl:modelReference="http://easee-gas/edigas#String">
+		<xs:simpleContent>
+			<xs:extension base="LocationType-base">
+				<xs:attribute name="codingScheme" type="EicCodingSchemeTypeList" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Publication_Document" sawsdl:modelReference="http://easee-gas/edigas#Document">
+		<xs:sequence>
+			<xs:element name="identification" type="IdentificationType" sawsdl:modelReference="http://easee-gas/edigas#Document.identification"/>
+			<xs:element name="version" type="Version_Integer" sawsdl:modelReference="http://easee-gas/edigas#Document.version"/>
+			<xs:element name="type" type="DocumentType" sawsdl:modelReference="http://easee-gas/edigas#Document.type"/>
+			<xs:element name="creationDateTime" type="xs:dateTime" sawsdl:modelReference="http://easee-gas/edigas#Document.creationDateTime"/>
+			<xs:element name="validityPeriod" type="TimeIntervalType" sawsdl:modelReference="http://easee-gas/edigas#Document.validityPeriod"/>
+			<xs:element name="contractReference" type="IdentificationType" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Document.contractReference"/>
+			<xs:element name="contractType" type="ReferenceType" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Document.contractType"/>
+			<xs:element name="issuer_MarketParticipant.identification" type="PartyType" sawsdl:modelReference="http://easee-gas/edigas#MarketParticipant.identification"/>
+			<xs:element name="issuer_MarketParticipant.marketRole.code" type="IssuerRoleType" sawsdl:modelReference="http://easee-gas/edigas#MarketRole.code"/>
+			<xs:element name="recipient_MarketParticipant.identification" type="PartyType" sawsdl:modelReference="http://easee-gas/edigas#MarketParticipant.identification"/>
+			<xs:element name="recipient_MarketParticipant.marketRole.code" type="RecipientRoleType" sawsdl:modelReference="http://easee-gas/edigas#MarketRole.code"/>
+			<xs:element name="applicationContext" type="LocationType" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Document.applicationContext"/>
+			<xs:element name="ConnectionPoint" type="ConnectionPoint" maxOccurs="unbounded" sawsdl:modelReference="http://easee-gas/edigas#Document.ConnectionPoint"/>
+		</xs:sequence>
+		<xs:attribute name="release" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="ReasonCodeType" sawsdl:modelReference="http://easee-gas/edigas#ReasonCodeType">
+		<xs:restriction base="ReasonCodeTypeList"/>
+	</xs:simpleType>
+	<xs:simpleType name="ReasonTextType" sawsdl:modelReference="http://easee-gas/edigas#ReasonTextType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="512"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Reason" sawsdl:modelReference="http://easee-gas/edigas#Reason">
+		<xs:sequence>
+			<xs:element name="code" type="ReasonCodeType" sawsdl:modelReference="http://easee-gas/edigas#Reason.code"/>
+			<xs:element name="text" type="ReasonTextType" minOccurs="0" sawsdl:modelReference="http://easee-gas/edigas#Reason.text"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
