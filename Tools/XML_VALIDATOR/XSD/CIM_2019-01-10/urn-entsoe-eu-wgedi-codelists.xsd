@@ -3,10 +3,10 @@
   <xsd:include schemaLocation="urn-entsoe-eu-local-extension-types.xsd" />
   <xsd:annotation>
     <xsd:documentation>
-      <Version>Current version 47</Version>
+      <Version>Current version 60</Version>
       <Titre>Complete compilation of ENTSO-E Code Lists used by ENTSO-E XML electronic documents and CIM XML electronic documents.</Titre>
       <Release>Current Release: 0</Release>
-      <ReleaseDate>2017-01-17</ReleaseDate>
+      <ReleaseDate>2018-12-10</ReleaseDate>
     </xsd:documentation>
   </xsd:annotation>
   <xsd:simpleType name="StandardAllocationModeTypeList">
@@ -132,7 +132,7 @@
           <xsd:documentation>
             <CodeDescription>
               <Title>Final adjustment margin value</Title>
-              <Definition>This is the amount of MW that is manually added or subtracted to the capacity of the critical network element. A negative value for final adjustment value simulates the effect of an additional margin due to complex remedial actions (RA) which cannot be modeled and so calculated in the flow based parameter calculation. A positive value for FAV as a consequence of the verification phase of the flow based domain, leading to the need to reduce the margin on one or more CBs for system security reasons.</Definition>
+              <Definition>This is the margin that is manually added or subtracted to the capacity of the critical network element. A negative value for final adjustment value simulates the effect of an additional margin due to complex remedial actions (RA) which cannot be modeled and so calculated in the flow based parameter calculation. A positive value for FAV as a consequence of the verification phase of the flow based domain, leading to the need to reduce the margin on one or more CBs for system security reasons.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -153,6 +153,96 @@
             <CodeDescription>
               <Title>Long admissible flow</Title>
               <Definition>This is the value, expressed in A or MW, that the overload flow in a network element shall not exceed for a duration no longer than the long duration. The long duration value depends on the TSO network operating rules.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A09">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Negative Final adjustment margin value</Title>
+              <Definition>This is the margin that is manually added to the capacity of the critical network element in order to simulate the effect of an additional margin due to complex remedial actions (RA) which cannot be modeled and so calculated in the flow based parameter calculation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A10">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Minimum voltage level</Title>
+              <Definition>This is the minimum voltage that can be supported by a network element without involving a risk for the security of supply.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A11">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Maximum voltage level</Title>
+              <Definition>This is the maximum voltage that can be supported by a network element without involving a risk for the security of supply.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A12">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>TATL after automatic RA</Title>
+              <Definition>The Transitory admissible transmission limit (TATL) which is allowed after an automatic Remedial Action (RA) has been applied.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A13">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>TATL after curative RA</Title>
+              <Definition>The Transitory admissible transmission limit (TATL) which is allowed after a curative Remedial Action (RA) has been applied.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A14">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Computed Voltage</Title>
+              <Definition>This is the computed voltage for a given monitored element.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A15">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Base Case flow</Title>
+              <Definition>This is the amount of power on a critical network element affected by a contingency that reflects a situation with no scheduled exchange on the Capacity Calculation Region borders.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A16">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Available margin after remedial actions</Title>
+              <Definition>This is the available flow margin adjusted for the consideration of remedial actions in capacity calculation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A17">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Loss Factor</Title>
+              <Definition>This is the loss factor for an asset.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -277,6 +367,16 @@
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="A12">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>FACTS</Title>
+              <Definition>Flexible Alternating Current Transmission System</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
       <xsd:enumeration value="B01">
         <xsd:annotation>
           <xsd:documentation>
@@ -381,8 +481,8 @@
         <xsd:annotation>
           <xsd:documentation>
             <CodeDescription>
-              <Title>Hydro Run-of-river and poundage</Title>
-              <Definition>A resource using Hydro Run-of-river and poundage for energy.</Definition>
+              <Title>Hydro Run-of-river and pondage</Title>
+              <Definition>A resource using Hydro Run-of-river and pondage for energy.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -823,7 +923,7 @@ With the following rules: In area=Out area, In party=Out party, + means producti
           <xsd:documentation>
             <CodeDescription>
               <Title>Frequency control</Title>
-              <Definition>A time series concerning primary and secondary reserve (See ETSO TF Balance Management definition).</Definition>
+              <Definition>A time series concerning primary and secondary reserve.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -833,7 +933,7 @@ With the following rules: In area=Out area, In party=Out party, + means producti
           <xsd:documentation>
             <CodeDescription>
               <Title>Balance management</Title>
-              <Definition>A time series concerning energy balancing services (See ETSO TF Balance Management definition).</Definition>
+              <Definition>A time series concerning energy balancing services.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -863,7 +963,7 @@ With the following rules: In area=Out area, In party=Out party, + means producti
           <xsd:documentation>
             <CodeDescription>
               <Title>Available transfer capacity (ATC)</Title>
-              <Definition>Available transfer capacity as defined in the ETSO document "Definitions of Transfer Capacities in liberalised Electricity Markets" April 2001.</Definition>
+              <Definition>Available transfer capacity for cross-border exchanges.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -873,7 +973,7 @@ With the following rules: In area=Out area, In party=Out party, + means producti
           <xsd:documentation>
             <CodeDescription>
               <Title>Net transfer capacity (NTC)</Title>
-              <Definition>Net transfer capacity as defined in the ETSO document "Definitions of Transfer Capacities in liberalised Electricity Markets" April 2001.</Definition>
+              <Definition>Net transfer capacity for cross-border exchanges.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -894,7 +994,7 @@ Note this definition might change when UCTE brings forward its coding requiremen
           <xsd:documentation>
             <CodeDescription>
               <Title>Already allocated capacity (AAC)</Title>
-              <Definition>Already Allocated Capacity as defined in the ETSO document "Definitions of Transfer Capacities in liberalised Electricity Markets" April 2001.</Definition>
+              <Definition>The already allocated capacity is the total amount of allocated transmission rights.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -1334,7 +1434,7 @@ Note this definition might change when UCTE brings forward its coding requiremen
           <xsd:documentation>
             <CodeDescription>
               <Title>Load Frequency Control Program Schedule</Title>
-              <Definition>A time series providing the schedule information for the Load Frequency Control Program of a Control Area or a Control Block.</Definition>
+              <Definition>A time series providing the schedule information for the Load Frequency Control Program.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -2476,6 +2576,246 @@ Critical network elements are displayed in details and their impact on the marke
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="B89">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Inter-TSO assistance</Title>
+              <Definition>Cross border assistance schedule between TSOs not interconnected directly. </Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B90">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>FlexibleNeed</Title>
+              <Definition>The business type indicates that the need is optional.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B91">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>GLSK Limitation</Title>
+              <Definition>A constraint related to a GLSK maximum or minimum limitation in the production or/and consumption shift.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B92">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Capacity ramping limitation</Title>
+              <Definition>A constraint related to a ramping limitation on the capacity offered at a given border.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B93">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>interconnector capacity</Title>
+              <Definition>The maximum capacity that can be exchanged on an interconnector, excluding external factor on both ends. </Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B94">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Must Run</Title>
+              <Definition>A time series concerning must run generation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B95">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Procured capacity</Title>
+              <Definition>An accepted offer of balancing capacity.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B96">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Used capacity</Title>
+              <Definition>The used cross-zonal balancing capacity.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B97">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Estimated costs</Title>
+              <Definition>Estimated costs of the process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B98">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Estimated benefits</Title>
+              <Definition>Estimated benefits of the process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B99">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Load Shedding</Title>
+              <Definition>A time series concerning a load shedding used to avoid failure of the power system.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C01">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Remaining Capacity</Title>
+              <Definition>A time series concerning the remaining capacity.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C02">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Indicator of generation capacity adequacy</Title>
+              <Definition>Indicator of adequacy, it indicates if there is final generation remaining capacity after SMTA calculation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C03">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Income from price divergence without congestions</Title>
+              <Definition>The time series describes income due to price divergence without congestion between bidding zones.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C04">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Push-button</Title>
+              <Definition>The cross-border Push-button service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C05">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Intertripping</Title>
+              <Definition>The cross-border Intertripping service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C06">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Emergency instruction</Title>
+              <Definition>The cross-border Emergency instruction service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C07">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Ramp management</Title>
+              <Definition>The schedule resulting from cross-border Ramp management service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C08">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Profile smoothing</Title>
+              <Definition>The schedule resulting from cross-border Profile smoothing service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C09">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Emergency reallocation deselection</Title>
+              <Definition>The schedule resulting from cross-border Emergency reallocation deselection service between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C10">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>SO-SO-trade</Title>
+              <Definition>The generic cross border trade between System Operators.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C11">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Production reduction</Title>
+              <Definition>A time series providing the volume of production reduced by an energy provider / producer / supplier.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C12">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Maximum power exchange</Title>
+              <Definition>The timeseries provides the maximum admissible power flow between two bidding zones respecting operational security limits taking into account N-1 criterion.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="C13">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Maximum power exchange after remedial actions</Title>
+              <Definition>The timeseries provides the maximum admissible power flow between two bidding zones after remedial actions.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="StandardCategoryTypeList">
@@ -3052,6 +3392,56 @@ Critical network elements are displayed in details and their impact on the marke
             <CodeDescription>
               <Title>Ukraine National coding scheme</Title>
               <Definition>The National coding scheme of the country in question.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="StandardCoordinateSystemTypeList">
+    <xsd:annotation>
+      <xsd:documentation>
+        <Uid>ET0108</Uid>
+        <Definition>The identification of the coordinate system used for the location position.</Definition>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="A01">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>ED50</Title>
+              <Definition>ED 50 (European Datum 1950) is a geodetic datum which was defined after World War II for the international connection of geodetic networks.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A02">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>OSGB36</Title>
+              <Definition>Ordinance Survey Great Britain 1936. The Ordinance Survey (OS) devised the national grid reference system, and it is heavily used in their survey data, and in maps (whether published by the Ordinance Survey or commercial map producers) based on those surveys.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A03">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>WGS84</Title>
+              <Definition>The World Geodetic System version 1984. for use in cartography, geodesy, and navigation including by GPS. It comprises a standard coordinate system for the earth, a standard spheroidal reference surface (the datum or reference ellipsoid) for raw altitude data, and a gravitational equipotential surface (the geoid) that defines the nominal sea level.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A04">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>GTRF</Title>
+              <Definition>Galileo Terrestrial Reference Frame</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -3672,7 +4062,7 @@ The significance of this type is dependent on area specific coded working method
           <xsd:documentation>
             <CodeDescription>
               <Title>Capacitive reactive power</Title>
-              <Definition>Refer to the ETSO document "Energy product types Active - Reactive - Inductive - Capacitive".</Definition>
+              <Definition>Capacitive reactive power.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -3682,7 +4072,7 @@ The significance of this type is dependent on area specific coded working method
           <xsd:documentation>
             <CodeDescription>
               <Title>Inductive reactive power</Title>
-              <Definition>Refer to the ETSO document "Energy product types Active - Reactive - Inductive - Capacitive".</Definition>
+              <Definition>Inductive reactive power.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -3692,7 +4082,7 @@ The significance of this type is dependent on area specific coded working method
           <xsd:documentation>
             <CodeDescription>
               <Title>Capacitive Reactive energy</Title>
-              <Definition>Refer to the ETSO document "Energy product types Active - Reactive - Inductive - Capacitive".</Definition>
+              <Definition>Capacitive reactive energy.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -3702,7 +4092,7 @@ The significance of this type is dependent on area specific coded working method
           <xsd:documentation>
             <CodeDescription>
               <Title>Inductive Reactive energy</Title>
-              <Definition>Refer to the ETSO document "Energy product types Active - Reactive - Inductive - Capacitive".</Definition>
+              <Definition>Inductive reactive energy.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -3833,7 +4223,7 @@ This enumeration is used in the XML instances based on IEC 62325.</Definition>
           <xsd:documentation>
             <CodeDescription>
               <Title>System Operator area schedule</Title>
-              <Definition>A compilation of all external schedules concerning two System Operator areas of all balance responsible parties.</Definition>
+              <Definition>A compilation of all external schedules concerning two System Operator areas or a connector concerning two System Operator of all balance responsible parties.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -5018,6 +5408,116 @@ This enumeration is used in the XML instances based on IEC 62325.</Definition>
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="B25">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Security analysis report</Title>
+              <Definition>A document providing a report on a performed security analysis.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B26">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Aggregated netted external schedule document</Title>
+              <Definition>A document used to report aggregated netted external schedules for a given border. </Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B27">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>External TSO schedule</Title>
+              <Definition>A document used to report external TSO schedules for a given border or interconnector.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B28">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Move of scheduled production</Title>
+              <Definition>A document indication a move of scheduled production.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B29">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>PS&amp;LC results document</Title>
+              <Definition>A document providing Pole Splitting &amp;amp; Loss Calculation results.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B30">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Notification data market document</Title>
+              <Definition>A document used to notify data to any information receiver.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B31">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Additional Constraint document</Title>
+              <Definition>A document describing additional constraints for a capacity calculation process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="StandardMarketProductTypeList">
+    <xsd:annotation>
+      <xsd:documentation>
+        <Uid>ET0008</Uid>
+        <Definition>The identification of the type of a product on a market view</Definition>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="A01">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Standard balancing product</Title>
+              <Definition>A harmonised balancing product defined by all TSOs for the exchange of balancing services.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A02">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Specific balancing product</Title>
+              <Definition>A product different from a standard product.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A03">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Product from integrated scheduling process</Title>
+              <Definition>From the EBGL Article 2 (19), means an iterative process that uses at least integrated scheduling process bids that contain commercial data, complex technical data of individual power generating facilities or demand facilities and explicitly includes the start-up characteristics, the latest control area adequacy analysis and the operational security limits as an input to the process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="StandardObjectAggregationTypeList">
@@ -5764,6 +6264,56 @@ This enumeration is used in the XML instances based on IEC 62325.</Definition>
             <CodeDescription>
               <Title>Manual frequency restoration reserve</Title>
               <Definition>A process being described is for manual frequency restoration reserves (mFRR).</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A48">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Day-ahead capacity determination</Title>
+              <Definition>The process run at the day-ahead timeframe to determine the capacity for use.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A49">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Intraday capacity determination</Title>
+              <Definition>The process run at the intraday timeframe to determine the capacity for use.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A50">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Long term capacity determination</Title>
+              <Definition>The process run at the long term timeframe to determine the capacity for use.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A51">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Automatic frequency restoration reserve</Title>
+              <Definition>A process being described is for automatic frequency restoration reserves (aFRR).</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A52">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Frequency containment reserve</Title>
+              <Definition>A process being described is for frequency containment reserves (FCR).</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -6930,6 +7480,126 @@ In the case of a Final Confirmation Report this is informing the recipient that 
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="B29">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Special Condition</Title>
+              <Definition>Special condition need to be fulfilled.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B30">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Unverified</Title>
+              <Definition>Missing or not validated data.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B31">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Verified</Title>
+              <Definition>Data has successfully passed the verification process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B32">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>CGM inconsistency</Title>
+              <Definition>Describes an element which was not found in the CGM.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B33">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Network dictionary inconsistency</Title>
+              <Definition>Describes an element which was not found in the network dictionary.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B34">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Capacity reduced by TSO</Title>
+              <Definition>Describes a capacity that was reduced by a TSO.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B35">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Overload</Title>
+              <Definition>Describes an N-k or N state overload.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B36">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>GLSK limitation</Title>
+              <Definition>Describes a situation in which there is not enough power adjustment in the GLSK file to cover the capacity.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B37">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Voltage constraint</Title>
+              <Definition>Describes an N-k or N state voltage violation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B38">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Angle constraint</Title>
+              <Definition>Describes an N-k or N state angle violation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B39">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Stability</Title>
+              <Definition>Describes a situation in which the dynamic behaviour of the network violated.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="B40">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Loadflow divergence</Title>
+              <Definition>Describes a network situation in which the provided capacity values are part of a load flow divergence situation.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="StandardRightsTypeList">
@@ -7456,6 +8126,16 @@ A party that is financially accountable for the reconciled volume of energy prod
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="A45">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Energy Service Company (ESCO)</Title>
+              <Definition>A party offering energy-related services to the Party Connected to Grid, but not directly active in the energy value chain or the physical infrastructure itself. The ESCO may provide insight services as well as energy management services.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="StandardStatusTypeList">
@@ -7762,7 +8442,7 @@ In this case the resources are no longer available to all Acquiring System Opera
           <xsd:documentation>
             <CodeDescription>
               <Title>Substituted</Title>
-              <Definition>Substituted pre-processing data by Pan European Verification Function.</Definition>
+              <Definition>Substituted pre-processing data.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -7851,7 +8531,7 @@ In this case the resources are no longer available to all Acquiring System Opera
         <xsd:annotation>
           <xsd:documentation>
             <CodeDescription>
-              <Title>Cloud Be Used</Title>
+              <Title>Could Be Used</Title>
               <Definition>The object defined in the series could be used.</Definition>
             </CodeDescription>
           </xsd:documentation>
@@ -7883,6 +8563,116 @@ In this case the resources are no longer available to all Acquiring System Opera
             <CodeDescription>
               <Title>Common Network Data</Title>
               <Definition>The network data provided in the document or series concerns the whole area describes by the document or series.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A43">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Setpoint schedule</Title>
+              <Definition>The code for the power setpoint mode of operation of the HVDC link.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A44">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Proportional external signal</Title>
+              <Definition>The code for the proportional external signal mode of operation of the HVDC link.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A45">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>AC emulation</Title>
+              <Definition>The code for the AC emulation mode of operation of the HVDC link.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A46">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Importing element</Title>
+              <Definition>An importing network element in which the flow measurement enters.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A47">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Exporting element</Title>
+              <Definition>An exporting network element from which the flow measurement comes out.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A48">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>To be optimized</Title>
+              <Definition>Describes an element which needs to be optimized by an optimization process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A49">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>To be monitored</Title>
+              <Definition>Describes an element which needs to be monitored by an optimization process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A50">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>To be included in capacity calculation</Title>
+              <Definition>Describes an element which needs to be taken into account in a capacity calculation process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A51">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Relative to previous point in time</Title>
+              <Definition>The quantity being described is a relative value to a previous point in time.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A52">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>For flow optimization</Title>
+              <Definition>Describes an element which needs to be optimized by a flow optimization process.</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="A53">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>For voltage optimization</Title>
+              <Definition>Describes an element which needs to be optimized by a voltage optimization process.</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -8317,12 +9107,32 @@ In this case the resources are no longer available to all Acquiring System Opera
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="MAR">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>MVAr</Title>
+              <Definition>The symbol of MVAr</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
       <xsd:enumeration value="MAW">
         <xsd:annotation>
           <xsd:documentation>
             <CodeDescription>
               <Title>MW</Title>
               <Definition>The symbol of MW</Definition>
+            </CodeDescription>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OHM">
+        <xsd:annotation>
+          <xsd:documentation>
+            <CodeDescription>
+              <Title>Ohm</Title>
+              <Definition>The symbol of Ohm Unit</Definition>
             </CodeDescription>
           </xsd:documentation>
         </xsd:annotation>
@@ -8339,52 +9149,12 @@ In this case the resources are no longer available to all Acquiring System Opera
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="StandardCoordinateSystemTypeList">
-    <xsd:annotation>
-      <xsd:documentation>
-        <Uid>ET0108</Uid>
-        <Definition>The identification of the coordinate system used for the location position.</Definition>
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:NMTOKEN">
-      <xsd:enumeration value="A01">
-        <xsd:annotation>
-          <xsd:documentation>
-            <CodeDescription>
-              <Title>ED50</Title>
-              <Definition>ED 50 (European Datum 1950) is a geodetic datum which was defined after World War II for the international connection of geodetic networks.</Definition>
-            </CodeDescription>
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="A02">
-        <xsd:annotation>
-          <xsd:documentation>
-            <CodeDescription>
-              <Title>OSGB36</Title>
-              <Definition>Ordinance Survey Great Britain 1936. The Ordinance Survey (OS) devised the national grid reference system, and it is heavily used in their survey data, and in maps (whether published by the Ordinance Survey or commercial map producers) based on those surveys.</Definition>
-            </CodeDescription>
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="A03">
-        <xsd:annotation>
-          <xsd:documentation>
-            <CodeDescription>
-              <Title>WGS84</Title>
-              <Definition>The World Geodetic System version 1984. for use in cartography, geodesy, and navigation including by GPS. It comprises a standard coordinate system for the earth, a standard spheroidal reference surface (the datum or reference ellipsoid) for raw altitude data, and a gravitational equipotential surface (the geoid) that defines the nominal sea level.</Definition>
-            </CodeDescription>
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="StandardDocumentTypeList">
     <xsd:annotation>
       <xsd:documentation>
         <Uid>ET0003</Uid>
-        <Definition>(Synonym "MessageTypeList") The coded type of a document. The message type describes the principal characteristic of a document.
-The DocumentTypeList is only used in XML instances using the ENTSO-E schema; otherwise for XML instances based on IEC 62325 schema, the codelist is MessageTypeList.</Definition>
+        <Definition>The DocumentTypeList is only used in XML instances using deprecated ENTSO-E schema; otherwise for XML instances based CIM, the codelist is MessageTypeList. 
+Therefore, you are kindly advised to refer to the MessageType enumeration, which includes the same enumeration codes.</Definition>
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NMTOKEN">
@@ -9444,6 +10214,9 @@ The DocumentTypeList is only used in XML instances using the ENTSO-E schema; oth
   <xsd:simpleType name="CodingSchemeTypeList">
     <xsd:union memberTypes="ecl:StandardCodingSchemeTypeList ecl:LocalCodingSchemeType" />
   </xsd:simpleType>
+  <xsd:simpleType name="CoordinateSystemTypeList">
+    <xsd:union memberTypes="ecl:StandardCoordinateSystemTypeList ecl:LocalCoordinateSystemType" />
+  </xsd:simpleType>
   <xsd:simpleType name="ContractTypeList">
     <xsd:union memberTypes="ecl:StandardContractTypeList ecl:LocalContractType" />
   </xsd:simpleType>
@@ -9470,6 +10243,9 @@ The DocumentTypeList is only used in XML instances using the ENTSO-E schema; oth
   </xsd:simpleType>
   <xsd:simpleType name="MessageTypeList">
     <xsd:union memberTypes="ecl:StandardMessageTypeList ecl:LocalMessageType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MarketProductTypeList">
+    <xsd:union memberTypes="ecl:StandardMarketProductTypeList ecl:LocalMarketProductType" />
   </xsd:simpleType>
   <xsd:simpleType name="ObjectAggregationTypeList">
     <xsd:union memberTypes="ecl:StandardObjectAggregationTypeList ecl:LocalObjectAggregationType" />
@@ -9512,9 +10288,6 @@ The DocumentTypeList is only used in XML instances using the ENTSO-E schema; oth
   </xsd:simpleType>
   <xsd:simpleType name="UnitSymbol">
     <xsd:union memberTypes="ecl:StandardUnitSymbol ecl:LocalUnitSymbol" />
-  </xsd:simpleType>
-  <xsd:simpleType name="CoordinateSystemTypeList">
-    <xsd:union memberTypes="ecl:StandardCoordinateSystemTypeList ecl:LocalCoordinateSystemType" />
   </xsd:simpleType>
   <xsd:simpleType name="DocumentTypeList">
     <xsd:union memberTypes="ecl:StandardDocumentTypeList ecl:LocalDocumentType" />
