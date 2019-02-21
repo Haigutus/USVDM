@@ -38,8 +38,8 @@ for message_type in message_type_list:
 
         response = requests.post(post_url, data=message["receivedMessage"]["content"], headers=headers)
 
-        print response.text
-        print requests.status_codes._codes[response.status_code]
+        print(response.text)
+        print(requests.status_codes._codes[response.status_code] )
 
         if response.status_code == 202:
             API.confirm_recieved_message(message["receivedMessage"]["messageID"])

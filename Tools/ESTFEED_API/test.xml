@@ -1,4 +1,0 @@
-<ns0:request xmlns:ns0="http://estfeed.ee/xsd/estfeed-1.0.xsd">
-  <transactionId>{'type': 'xs:string', 'minOccurs': '0', 'name': 'transactionId'}</transactionId>
-  <service>weather</service>
-</ns0:request>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecl="urn:easee-gas.eu:edigas:codelists" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- import the codelsits -->
+	<xsd:import namespace="urn:easee-gas.eu:edigas:codelists" schemaLocation="../cclib-v5/urn-easee-gas-eu-edigas-codelists.xsd"/>
+	<!-- include the local message restrictions -->
+	<xsd:include schemaLocation="urn-easee-gas-eu-edigas-nominationandmatching-nominationresponsedocument-5-1-local-restrictions.xsd"/>
+	<!--  restricted codelists  -->
+	<!-- Business type-->
+	<xsd:simpleType name="StandardRestrictedBusinessTypeList">
+		<xsd:restriction base="ecl:StandardBusinessTypeList">
+			<xsd:enumeration value="14G"/>
+			<xsd:enumeration value="15G"/>
+			<xsd:enumeration value="16G"/>
+			<xsd:enumeration value="18G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BusinessTypeList">
+		<xsd:union memberTypes="StandardRestrictedBusinessTypeList LocalRestrictedBusinessTypeList"/>
+	</xsd:simpleType>
+	<!-- CodingScheme type-->
+	<xsd:simpleType name="EicCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="305"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TsoCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StandardRestrictedCodingSchemeTypeList">
+		<xsd:restriction base="ecl:StandardCodingSchemeTypeList">
+			<xsd:enumeration value="305"/>
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodingSchemeTypeList">
+		<xsd:union memberTypes="StandardRestrictedCodingSchemeTypeList LocalRestrictedCodingSchemeTypeList"/>
+	</xsd:simpleType>
+	<!-- document type-->
+	<xsd:simpleType name="StandardRestrictedDocumentTypeList">
+		<xsd:restriction base="ecl:StandardDocumentTypeList">
+			<xsd:enumeration value="07G"/>
+			<xsd:enumeration value="08G"/>
+			<xsd:enumeration value="AND"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DocumentTypeList">
+		<xsd:union memberTypes="StandardRestrictedDocumentTypeList LocalRestrictedDocumentTypeList"/>
+	</xsd:simpleType>
+	<!-- GasDirection type-->
+	<xsd:simpleType name="StandardRestrictedGasDirectionTypeList">
+		<xsd:restriction base="ecl:StandardGasDirectionTypeList">
+			<xsd:enumeration value="Z02"/>
+			<xsd:enumeration value="Z03"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GasDirectionTypeList">
+		<xsd:union memberTypes="StandardRestrictedGasDirectionTypeList LocalRestrictedGasDirectionTypeList"/>
+	</xsd:simpleType>
+	<!--Nomination type-->
+	<xsd:simpleType name="StandardRestrictedNominationTypeList">
+		<xsd:restriction base="ecl:StandardNominationTypeList">
+			<xsd:enumeration value="A01"/>
+			<xsd:enumeration value="A02"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NominationTypeList">
+		<xsd:union memberTypes="StandardRestrictedNominationTypeList LocalRestrictedNominationTypeList"/>
+	</xsd:simpleType>
+	<!-- QuantityType type-->
+	<xsd:simpleType name="StandardRestrictedQuantityTypeTypeList">
+		<xsd:restriction base="ecl:StandardQuantityTypeTypeList">
+			<xsd:enumeration value="ZXD"/>
+			<xsd:enumeration value="ZXE"/>
+			<xsd:enumeration value="ZXF"/>
+			<xsd:enumeration value="ZXG"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="QuantityTypeTypeList">
+		<xsd:union memberTypes="StandardRestrictedQuantityTypeTypeList LocalRestrictedQuantityTypeTypeList"/>
+	</xsd:simpleType>
+	<!-- Reference type-->
+	<xsd:simpleType name="StandardRestrictedReferenceTypeList">
+		<xsd:restriction base="ecl:StandardReferenceTypeList"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReferenceTypeList">
+		<xsd:union memberTypes="StandardRestrictedReferenceTypeList LocalRestrictedReferenceTypeList"/>
+	</xsd:simpleType>
+	<!-- Role type-->
+	<xsd:simpleType name="IssuerRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RecipientRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZSH"/>
+			<xsd:enumeration value="ZSY"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StandardRestrictedRoleTypeList">
+		<xsd:restriction base="ecl:StandardRoleTypeList">
+			<xsd:enumeration value="ZSH"/>
+			<xsd:enumeration value="ZSY"/>
+			<xsd:enumeration value="ZSO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RoleTypeList">
+		<xsd:union memberTypes="StandardRestrictedRoleTypeList LocalRestrictedRoleTypeList"/>
+	</xsd:simpleType>
+	<!-- Status type-->
+	<xsd:simpleType name="StandardRestrictedStatusTypeList">
+		<xsd:restriction base="ecl:StandardStatusTypeList">
+			<xsd:enumeration value="06G"/>
+			<xsd:enumeration value="07G"/>
+			<xsd:enumeration value="08G"/>
+			<xsd:enumeration value="09G"/>
+			<xsd:enumeration value="10G"/>
+			<xsd:enumeration value="11G"/>
+			<xsd:enumeration value="12G"/>
+			<xsd:enumeration value="13G"/>
+			<xsd:enumeration value="14G"/>
+			<xsd:enumeration value="35G"/>
+			<xsd:enumeration value="36G"/>
+			<xsd:enumeration value="37G"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusTypeList">
+		<xsd:union memberTypes="StandardRestrictedStatusTypeList LocalRestrictedStatusTypeList"/>
+	</xsd:simpleType>
+	<!-- UnitOfMeasure type-->
+	<xsd:simpleType name="StandardRestrictedUnitOfMeasureTypeList">
+		<xsd:restriction base="ecl:StandardUnitOfMeasureTypeList">
+			<xsd:enumeration value="KW1"/>
+			<xsd:enumeration value="KW2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnitOfMeasureTypeList">
+		<xsd:union memberTypes="StandardRestrictedUnitOfMeasureTypeList LocalRestrictedUnitOfMeasureTypeList"/>
+	</xsd:simpleType>
+</xsd:schema>
