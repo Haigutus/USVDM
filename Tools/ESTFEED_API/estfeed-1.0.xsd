@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://estfeed.ee/xsd/estfeed-1.0.xsd" xmlns:tns="http://estfeed.ee/xsd/estfeed-1.0.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+				<xs:element name="service" type="tns:ServiceId"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="acknowledgement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+				<xs:element name="service" type="tns:ServiceId"/>
+				<xs:element minOccurs="0" name="responders" type="tns:Responders"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="transactionId" type="xs:string"/>
+				<xs:element name="service" type="tns:ServiceId"/>
+				<xs:element name="sourceId" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="error">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+				<xs:element name="message" type="xs:string"/>
+				<xs:element minOccurs="0" name="detail" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Responders">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="sourceId" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceId">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string"/>
+			<xs:element name="version" type="xs:string"/>
+			<xs:element name="kind" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
