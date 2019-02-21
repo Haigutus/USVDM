@@ -8,19 +8,22 @@
 # Copyright:   (c) kristjan.vilgo 2018
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+from __future__ import print_function
+
 from requests import Session
 from zeep import Client
 from zeep.transports import Transport
-import os
+
 from lxml import etree
+
+import os
+import uuid
+
+import json
+import xmltodict
 
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning) #Used togehter with vei
-
-
-from Tkinter import *
-import ttk
-from tkFileDialog import askopenfilename
 
 
 WSDL_path = 'https://10.1.21.50:8443/cxf/OPDMSoapInterface?wsdl'
@@ -33,33 +36,8 @@ client = Client(WSDL_path, transport = transport)
 client.debug = True
 
 
-def select_file(file_type='.*',dialogue_title="Select file"):
-    """ Single file selection popup
-    return: list"""
+API_VERSION = "0.1"
 
-    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-    filename = askopenfilename(title=dialogue_title,filetypes=[('{} file'.format(file_type),'*{}'.format(file_type))]) # show an "Open" dialog box and return the path to the selected file
-
-    print (filename)
-    return [filename] #main function takes files in a list, thus single file must aslo be passed as list
-
-
-def list_of_files(path,file_extension):
-
-    matches = []
-    for filename in os.listdir(path):
-
-
-
-        if filename.endswith(file_extension):
-            #logging.info("Processing file:"+filename)
-            matches.append(path + "//" + filename)
-        else:
-            print "Not a {} file: {}".format(file_extension, filename)
-            #logging.warning("Not a {} file: {}".format(file_extension,file_text[0]))
-
-    print matches
-    return matches
 
 def get_element(element_path, xmltree):
 
@@ -68,52 +46,51 @@ def get_element(element_path, xmltree):
     return element
 
 
+def add_xml_elements(xml_string, parent_element_url, metadata_dict):
+
+        xmltree = etree.fromstring(xml_string)
+        metadata_element = get_element(parent_element_url, xmltree = xmltree)
+
+
+        for key in metadata_dict:
+
+            namespace, element_name = key.split(":")
+
+            element_full_name = "{{{}}}{}".format(xmltree.nsmap[namespace], element_name)
+
+            etree.SubElement(metadata_element, element_full_name, nsmap = xmltree.nsmap).text = metadata_dict[key]
+
+
+        return etree.tostring(xmltree, pretty_print=True)
+
+
 def execute_operation(operation_xml):
     """ExecuteOperation(payload: xsd:base64Binary) -> return: ns0:resultDto"""
     response = client.service.ExecuteOperation(operation_xml)
-
-    if client.debug == True:
-
-        print etree.tostring(response, pretty_print=True)
-
     return response
 
-def publication_request(content_type, file_path):
+def publication_request(content_type, file_path_or_file_object):
     """PublicationRequest(dataset: ns0:opdeFileDto) -> return: ns0:resultDto,
     ns0:opdeFileDto(id: xsd:string, type: xsd:string, content: xsd:base64Binary)"""
 
-    with open(file_path, "rb") as file_object:
-        file_string = file_object.read()
+    if type(file_path_or_file_object) == str:
 
-    payload = {"id": os.path.basename(file_path), "type": content_type, "content": file_string}
+        with open(file_path_or_file_object, "rb") as file_object:
+            file_string = file_object.read()
 
+        file_name =  os.path.basename(file_path_or_file_object)
+
+    else:
+
+        file_string = file_path_or_file_object.getvalue()
+        file_name =  file_path_or_file_object.name
+
+
+    payload = {"id": file_name, "type": content_type, "content": file_string}
     response = client.service.PublicationRequest(payload)
 
     return response
 
-
-# Profile Meta example
-"""
-<pmd:fileName>20181024T1030Z_EMS_EQ_000.XML</pmd:fileName>
-<pmd:modelid>6bfa5c34-f4fb-45f3-a909-1ae94c08d4e3</pmd:modelid>
-<pmd:versionNumber>000</pmd:versionNumber>
-<pmd:content-reference>CGMES/1D/EMS/20181024/103000/EQ/20181024T1030Z_EMS_EQ_000.XML</pmd:content-reference>
-<pmd:isFullModel>true</pmd:isFullModel>
-<pmd:timeHorizon>1D</pmd:timeHorizon>
-<pmd:modelPartReference>EMS</pmd:modelPartReference>
-<pmd:contentType>CGMES</pmd:contentType>
-<pmd:conversationId>18240149</pmd:conversationId>
-<pmd:description>Created by Transmission Network Analyzer 2.3</pmd:description>
-<pmd:creationDate>2018-10-24T12:58:23.000Z</pmd:creationDate>
-<pmd:TSO>EMS</pmd:TSO>
-<pmd:cgmesProfile>EQ</pmd:cgmesProfile>
-<pmd:modelingAuthoritySet>https://ems.rs/OperationalPlanning</pmd:modelingAuthoritySet>
-<pmd:version>0</pmd:version>
-<pmd:scenarioDate>2018-10-24T10:30:00.000Z</pmd:scenarioDate>
-<pmd:validFrom>20181024T1030Z</pmd:validFrom>
-<pmd:modelProfile>http://entsoe.eu/CIM/EquipmentCore/3/1</pmd:modelProfile>
-<pmd:fullModel_ID>6bfa5c34-f4fb-45f3-a909-1ae94c08d4e3</pmd:fullModel_ID>
-"""
 
 
 QueryObject  = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -121,10 +98,12 @@ QueryObject  = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
                           xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0"
                           xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
                           xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0">
-                <sm:part name="name">{}</sm:part>
+                <sm:part name="name">{query_id}</sm:part>
                 <sm:part name="query" type="opde:MetaDataPattern">
                     <opdm:OPDMObject>
-                        <pmd:Object-Type>{}</pmd:Object-Type>
+                        <pmd:Object-Type>{object_type}</pmd:Object-Type>
+                        <opde:Components/>
+                        <opde:Dependencies/>
                     </opdm:OPDMObject>
                 </sm:part>
                 </sm:Query>"""
@@ -136,11 +115,9 @@ QueryProfile = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
                           xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0"
                           xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
                           xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0">
-                <sm:part name="name">py_query</sm:part>
+                <sm:part name="name">{query_id}</sm:part>
                 <sm:part name="query" type="opde:MetaDataPattern">
-                    <opdm:Profile>
-
-                    </opdm:Profile>
+                    <opdm:Profile/>
                 </sm:part>
             </sm:Query>"""
 
@@ -174,57 +151,78 @@ PublicationSubscriptionCancel = """<sm:PublicationSubscriptionCancel xmlns="http
                                             <sm:part name="subscriptionID">{}</sm:part>
                                         </sm:PublicationSubscriptionCancel>"""
 
-def add_profile_metadata(xml_string, parent_element_url, metadata_dict):
-
-        xmltree = etree.fromstring(xml_string)
-        metadata_element = get_element(parent_element_url, xmltree = xmltree)
 
 
-        for key in metadata_dict:
-
-            element_name = "{{{}}}{}".format(xmltree.nsmap["pmd"], key)
-
-            etree.SubElement(metadata_element, element_name, nsmap = xmltree.nsmap).text = metadata_dict[key]
-
-
-        return etree.tostring(xmltree, pretty_print=True)
-
-
-def query_object(object_type, query_name = "py_query"):
+def query_object(object_type="IGM", metadata_dict = "", components = [], dependencies = []):
     """objec_type ->IGM, CGM, BDS"""
+    """metadata_dict_example = {'pmd:cgmesProfile': 'SV', 'pmd:scenarioDate': '2018-12-07T00:30:00+01:00', 'pmd:timeHorizon': '1D'}"""
+    """components_example = [{"opde:Component":"45955-94458-854789358-8557895"}, {"opde:Component":"45955-94458-854789358-8557895"}] """
+    """dependencies_example = [{"opde:DependsOn":"45955-94458-854789358-8557895"}, {"opde:Supersedes":"45955-94458-854789358-8557895"}, {"opde:Replaces":"45955-94458-854789358-8557895"}] """
 
-    new_QueryObject = QueryObject.format(query_name, object_type)
-    result = execute_operation(new_QueryObject)
+    query_id = "pyquery_{api_version}_{uuid}".format(uuid = uuid.uuid4(), api_version = API_VERSION)
 
-    return result
+    _QueryObject = QueryObject.format(query_id = query_id, object_type = object_type).encode()
+
+    if metadata_dict != "":
+        _QueryObject = add_xml_elements(_QueryObject, ".//opdm:OPDMObject", metadata_dict)
+
+    for component in components:
+        _QueryObject = add_xml_elements(_QueryObject, ".//opde:Components", component)
+
+    for dependenci in dependencies:
+        _QueryObject = add_xml_elements(_QueryObject, ".//opde:Dependencies", dependenci)
+
+    #print(_QueryObject.decode())
+
+    result = xmltodict.parse(etree.tostring(execute_operation(_QueryObject)), xml_attribs = False)
+
+
+
+    return query_id, result
 
 
 def query_profile(metadata_dict):
 
+    """metadata_dict_example = {'pmd:cgmesProfile': 'SV', 'pmd:scenarioDate': '2018-12-07T00:30:00+01:00', 'pmd:timeHorizon': '1D'}"""
 
-    new_QueryProfile = add_profile_metadata(QueryProfile, ".//opdm:Profile", metadata_dict)
+    query_id = "pyquery_{api_version}_{uuid}".format(uuid = uuid.uuid4(), api_version = API_VERSION)
 
-    result = execute_operation(new_QueryProfile)
+    _QueryProfile = QueryProfile.format(query_id = query_id).encode()
+    _QueryProfile = add_xml_elements(_QueryProfile, ".//opdm:Profile", metadata_dict)
 
-    return result
+    #print(_QueryProfile.decode())
+
+    result = xmltodict.parse(etree.tostring(execute_operation(_QueryProfile)), xml_attribs = False)
+
+
+    return query_id, result
 
 
 def get_content(content_id):
 
     new_GetContentResult = GetContentResult.format(content_id)
-    result = execute_operation(new_GetContentResult)
+    #result = execute_operation(new_GetContentResult.encode())
 
-    #print result
+    result = xmltodict.parse(etree.tostring(execute_operation(new_GetContentResult.encode())), xml_attribs = False)
+
+    try:
+        print("File downloded")
+        print(result['sm:GetContentResult']['sm:part']['opdm:Profile']['opde:Content']) # Print url of the
+
+    except:
+        print("Error oqqoured")
+
     return result
 
 
 def publication_list():
 
-    result = execute_operation(PublicationsList)
+    result = execute_operation(PublicationsList.encode())
     return result
 
 
 def publication_subscribe(subscription_id, publication_id, mode, metadata_list):
+    """NOT IMPLEMENTED - IN DEVELOPMENT"""
 
     PublicationSubscribe = """<sm:PublicationSubscribe xmlns="http://entsoe.eu/opde/ServiceModel/1/0"
                                 xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
@@ -245,93 +243,73 @@ def publication_subscribe(subscription_id, publication_id, mode, metadata_list):
 
 def publication_cancel_subscription(subscription_id):
 
-    PublicationSubscriptionCancel.format(subscription_id)
-    result = execute_operation(PublicationSubscriptionCancel)
+    new_PublicationSubscriptionCancel.format(subscription_id)
+    result = execute_operation(new_PublicationSubscriptionCancel)
 
     return result
 
 
+# DEBUG
+if __name__ == '__main__':
+    #file_path  = select_file()[0]
+    #file_path = "//elering.sise/teenused/NMM/data/ACG/Generated Cases/20180814T1830Z_ELERING_EQ_001.zip"
+    #file_path = r"H:\20181206T2330Z_1D_CGMBA_SV_001.zip"
+    #response = publication_request("CGMES", file_path)
+    #print(etree.tostring(response, pretty_print = True).decode())
+    #print(json.dumps(xmltodict.parse(etree.tostring(publication_list()), xml_attribs = False), indent = 4))
+    #print(json.dumps(xmltodict.parse(etree.tostring(publication_list())), indent = 4))
+    #metadata_dict = dict(TSO = "AST", cgmesProfile = "SV", validFrom = "20181024T1030Z")
 
-##if __name__ == '__main__':
-##    #file_path  = select_file()[0]
-##    #file_path = "//elering.sise/teenused/NMM/data/ACG/Generated Cases/20180730T1830Z_ELERING_EQ_001.zip"
-##    #response = publication_request("CGMES", file_path)
-##
-##    opdm_query ="""<sm:Query xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0"
-##                      xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0"
-##                        xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
-##                        xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0">
-##                        <sm:part name="name">BDSQuery</sm:part>
-##                        <sm:part name="query" type="opde:MetaDataPattern">
-##                            <opdm:OPDMObject>
-##                                 <pmd:Object-Type>BDS</pmd:Object-Type>
-##                           </opdm:OPDMObject>
-##                       </sm:part>
-##                    </sm:Query>"""
-##
-##
-##    test = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-##                <sm:Query xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0"
-##                          xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0"
-##                          xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
-##                            xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0">
-##                    <sm:part name="name">IGM test query</sm:part>
-##                    <sm:part name="query" type="opde:MetaDataPattern">
-##                        <opdm:OPDMObject>
-##                                 <pmd:Object-Type>IGM</pmd:Object-Type>
-##                        </opdm:OPDMObject>
-##                        <opdm:Profile>
-##                            <pmd:cgmesProfile>EQ</pmd:cgmesProfile>
-##                            <pmd:scenarioDate>2017-10-05</pmd:scenarioDate>
-##                            <opde:Dependencies>
-##                            </opde:Dependencies>
-##                        </opdm:Profile>
-##                    </sm:part>
-##                </sm:Query>"""
-##
-##
-##
-##
-##
-##    result = execute_operation(opdm_query)
-##
-##    #print etree.tostring(results, pretty_print=True)
+    import pandas
+    #metadata_dict = {"pmd:modelid":"c1860c13-7444-4d7f-a4fd-3eae2a360ce3"}
+    #metadata_dict = {'pmd:cgmesProfile': 'SV', 'pmd:scenarioDate': '2018-12-07T00:30:00+01:00', 'pmd:timeHorizon': '1D'}
+    #response =   query_profile(metadata_dict)
+    #print(json.dumps(response, indent = 4))
+    #response['sm:QueryResult']['sm:part'].pop(0)
+    #print(pandas.DataFrame(response['sm:QueryResult']['sm:part']))
+
+    pandas.set_option("display.max_rows", 12)
+    pandas.set_option("display.max_columns", 10)
+    pandas.set_option("display.width", 1500)
+    #pandas.set_option('display.max_colwidth', -1)
 
 
-metadata_dict = dict(TSO = "AST", cgmesProfile = "SV", validFrom = "20181024T1030Z")
+    query_id, response = query_object(object_type = "BDS", metadata_dict = {"opde:Context":"{'opde:IsOfficial': 'true'}"})
+
+    list_of_responses = []
+
+    for single_response in response['sm:QueryResult']['sm:part'][1:]:
+        list_of_responses.append(single_response['opdm:OPDMObject'])
+
+    data = pandas.DataFrame(list_of_responses)
 
 
-test_xml_1 = """<sm:GetContentResult xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0" xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0" xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0" xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0" xmlns:ns2="http://soap.interfaces.application.components.opdm.entsoe.eu/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" opdm-version="2.5.0.878">
-  <sm:part name="content" type="opde:DataSet">
-    <opdm:Profile>
-      <opde:Id>5d9c9d99-933d-432e-b096-a307eaa1c140</opde:Id>
-      <opde:Dependencies/>
-      <pmd:fileName>20160710T0000Z_ENTSO-E_EQ_BD_001.xml</pmd:fileName>
-      <pmd:cgmesProfile>EQ_BD</pmd:cgmesProfile>
-      <pmd:modelid>5d9c9d99-933d-432e-b096-a307eaa1c140</pmd:modelid>
-      <pmd:isFullModel>true</pmd:isFullModel>
-      <pmd:timeHorizon>1D</pmd:timeHorizon>
-      <pmd:fullModel_ID>5d9c9d99-933d-432e-b096-a307eaa1c140</pmd:fullModel_ID>
-      <pmd:contentType>CGMES</pmd:contentType>
-      <pmd:creationDate>2018-07-10T07:55:23.547Z</pmd:creationDate>
-      <pmd:description>Official CGM boundary set</pmd:description>
-      <pmd:modelPartReference>ENTSO-E</pmd:modelPartReference>
-      <pmd:modelingAuthoritySet>http://tscnet.eu/EMF</pmd:modelingAuthoritySet>
-      <pmd:validFrom>20160710T0000Z</pmd:validFrom>
-      <pmd:scenarioDate>2016-07-10T00:00:00.000Z</pmd:scenarioDate>
-      <pmd:version>1</pmd:version>
-      <pmd:conversationId>594197046</pmd:conversationId>
-      <pmd:content-reference>CGMES/1D/ENTSO-E/20160710/00000/EQ_BD/20160710T0000Z_ENTSO-E_EQ_BD_001.xml</pmd:content-reference>
-      <pmd:modelProfile>http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1</pmd:modelProfile>
-      <pmd:versionNumber>001</pmd:versionNumber>
-      <opde:Dependencies/>
-      <opde:Content sm:uri="20160710T0000Z_ENTSO-E_EQ_BD_001.xml">/opt/opdm-home/opdm-client/./opdm/operation-client/local-storage/20160710T0000Z_ENTSO-E_EQ_BD_001.xml</opde:Content>
-    </opdm:Profile>
-  </sm:part>
-</sm:GetContentResult>"""
+ # Profile Meta example
+"""
+<pmd:fileName>20181024T1030Z_EMS_EQ_000.XML</pmd:fileName>
+<pmd:modelid>6bfa5c34-f4fb-45f3-a909-1ae94c08d4e3</pmd:modelid>
+<pmd:versionNumber>000</pmd:versionNumber>
+<pmd:content-reference>CGMES/1D/EMS/20181024/103000/EQ/20181024T1030Z_EMS_EQ_000.XML</pmd:content-reference>
+<pmd:isFullModel>true</pmd:isFullModel>
+<pmd:timeHorizon>1D</pmd:timeHorizon>
+<pmd:modelPartReference>EMS</pmd:modelPartReference>
+<pmd:contentType>CGMES</pmd:contentType>
+<pmd:conversationId>18240149</pmd:conversationId>
+<pmd:description>Created by Transmission Network Analyzer 2.3</pmd:description>
+<pmd:creationDate>2018-10-24T12:58:23.000Z</pmd:creationDate>
+<pmd:TSO>EMS</pmd:TSO>
+<pmd:cgmesProfile>EQ</pmd:cgmesProfile>
+<pmd:modelingAuthoritySet>https://ems.rs/OperationalPlanning</pmd:modelingAuthoritySet>
+<pmd:version>0</pmd:version>
+<pmd:scenarioDate>2018-10-24T10:30:00.000Z</pmd:scenarioDate>
+<pmd:validFrom>20181024T1030Z</pmd:validFrom>
+<pmd:modelProfile>http://entsoe.eu/CIM/EquipmentCore/3/1</pmd:modelProfile>
+<pmd:fullModel_ID>6bfa5c34-f4fb-45f3-a909-1ae94c08d4e3</pmd:fullModel_ID>
+"""
 
 
 
+ # SOAP API
 """
 Prefixes:
      ns0: http://soap.interfaces.application.components.opdm.entsoe.eu/
