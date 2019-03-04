@@ -172,8 +172,11 @@ def type_tableview(data, type_name):
 
     "Creates a table view of all elements of defined type, with their parameters in columns"
 
-    type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
-    type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+##    type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
+##    type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+
+    type_id  = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
+    type_data = pandas.merge(type_id[["ID"]], data, right_on = "ID", left_on = "ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
     data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
 
