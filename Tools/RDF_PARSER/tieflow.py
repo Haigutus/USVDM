@@ -18,8 +18,27 @@ import aniso8601
 
 def tieflow_sign_convention(positiveFlowIn):
 
-        mapping = {'true': -1, 'false': 1}
+        mapping = {'true': 1, 'false': -1}
         return mapping[positiveFlowIn.lower()]
+
+
+def dict_of_loaded_IGMs(data):
+
+    FullModel_data = data.query("KEY == 'Model.profile' or KEY == 'Model.DependentOn'")
+
+    SV_iterator = FullModel_data.query("VALUE == 'http://entsoe.eu/CIM/StateVariables/4/1'").iterrows()
+
+    dependancies_dict = {}
+
+    for _, SV in SV_iterator:
+
+        dependancies_dict[SV.ID] = [SV.ID]
+
+        for dependancie in dependancies_dict[SV.ID]:
+
+            dependancies_dict[SV.ID].extend(FullModel_data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(dependancie)).VALUE.tolist())
+
+    return dependancies_dict
 
 #path = "FlowExample.zip"
 
@@ -27,9 +46,9 @@ def tieflow_sign_convention(positiveFlowIn):
 
 #path = "C:\IOPs\IOP160119\CE02_BD16012019_1D_Amprion_BusBranch.zip"
 
-path2 = "C:\IOPs\IOP160119\CE03_BD16012019_1D_APG_BusBranch.zip"
+path = "C:\IOPs\IOP160119\CE03_BD16012019_1D_APG_BusBranch.zip"
 
-path = "C:\IOPs\IOP160119\BA03_20190116_1D_LITGRID_001_NodeBreaker.zip"
+#path2 = "C:\IOPs\IOP160119\BA03_20190116_1D_LITGRID_001_NodeBreaker.zip"
 
 #path = "C:\IOPs\IOP160119\CE09_BD16012019_1D_Energinet_NodeBreaker\CE09_BD16012019_1D_Energinet_NodeBreaker_DKW.zip"
 
@@ -37,39 +56,44 @@ path = "C:\IOPs\IOP160119\BA03_20190116_1D_LITGRID_001_NodeBreaker.zip"
 
 #path = "C:\IOPs\IOP160119\BA01_BD16012019_1D_AST_001_BusBranch.zip"
 
-data = load_all_to_dataframe([path, path2])
+#data = load_all_to_dataframe([path, path2])
 
-#data = load_all_to_dataframe([path])
+data = load_all_to_dataframe([path])
 
 
 print("Loaded types")
 print(data.query("KEY == 'Type'")["VALUE"].value_counts())
 
 FullModel   = data.type_tableview("FullModel")
-SV_iterator = FullModel[FullModel["Model.profile"] == 'http://entsoe.eu/CIM/StateVariables/4/1'].iterrows()
+#SV_iterator = FullModel[FullModel["Model.profile"] == 'http://entsoe.eu/CIM/StateVariables/4/1'].iterrows()
 
-tieflow_data = pandas.DataFrame()
-
+tieflow_data        = pandas.DataFrame()
 netinterchange_data = pandas.DataFrame()
 
 #_, SV = SV_iterator.next()
 
-for _, SV in SV_iterator:
+loaded_IGMs = dict_of_loaded_IGMs(data)
+
+for IGM in loaded_IGMs:
+
+#for _, SV in SV_iterator:
 
     # Find all instances of data
 
-    SV_UUID = SV.name
+##    SV_UUID = SV.name
+##
+##    dependancies_list = [SV_UUID]
+##
+##    for dependancie in dependancies_list:
+##
+##        dependancies_list.extend(data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(dependancie))["VALUE"].tolist())
 
-    dependancies_list = [SV_UUID]
-
-    for dependancie in dependancies_list:
-
-        dependancies_list.extend(data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(dependancie))["VALUE"].tolist())
+    dependancies_list = loaded_IGMs[IGM]
 
     dependancies_dataframe = FullModel[FullModel.index.isin(dependancies_list)]
 
-    print("\nAnalysing IGM consiting of following instances: \n")
-    print(dependancies_dataframe[[u'Model.profile', u'Model.created', u'Model.modelingAuthoritySet', u'Model.scenarioTime', u'Model.version']])
+    #print("\nAnalysing IGM consiting of following instances: \n")
+    #print(dependancies_dataframe[[u'Model.profile', u'Model.created', u'Model.modelingAuthoritySet', u'Model.scenarioTime', u'Model.version']])
 
 
     IGM_data = data[data.INSTANCE_ID.isin(dependancies_list)]
@@ -77,7 +101,7 @@ for _, SV in SV_iterator:
     EQ_UUID = IGM_data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")["INSTANCE_ID"].tolist()[0]
     EQ_data = data.query("INSTANCE_ID == '{}'".format(EQ_UUID))
 
-    #print("Loading TieFlow data from EQ -> {}".format(EQ_UUID))
+    print("Loading TieFlow data from EQ -> {}".format(EQ_UUID))
 
 
     TieFlow     = EQ_data.type_tableview("TieFlow")
@@ -97,24 +121,27 @@ for _, SV in SV_iterator:
 
 
 
-    # apply function to series
+    # Apply tieflow convention and calculate sum
+
     Tieflow_SvPowerFlow["TieFlow.Sign"] = Tieflow_SvPowerFlow["TieFlow.positiveFlowIn"].apply(tieflow_sign_convention)
 
-    #sum = Tieflow_SvPowerFlow[[u'SvPowerFlow.p', u'SvPowerFlow.q']].astype("float").sum()
+    tieflow_sum = (Tieflow_SvPowerFlow[u'SvPowerFlow.p'].astype("float") * Tieflow_SvPowerFlow["TieFlow.Sign"]).sum()
 
-    sum = (Tieflow_SvPowerFlow[u'SvPowerFlow.p'].astype("float") * Tieflow_SvPowerFlow["TieFlow.Sign"]).sum() # Direction sign change is not implemented
+
+    # Find area EIC and scenario time
 
     area_EIC = IGM_data.query("ID == '{}' & KEY == 'IdentifiedObject.energyIdentCodeEic'".format(Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]))["VALUE"].item()
 
+    scenario_time = aniso8601.parse_datetime(IGM_data.query("ID == '{}' & KEY == 'Model.scenarioTime'".format(IGM)).VALUE.item().replace("Z",""))
 
-    #tieflow_data.loc[SV["Model.scenarioTime"], SV["Model.modelingAuthoritySet"]]= sum["SvPowerFlow.p"]
 
-    tieflow_data.loc[aniso8601.parse_datetime(SV["Model.scenarioTime"].replace("Z","")), area_EIC]= float(sum) #["SvPowerFlow.p"] # Lets use area EIC and naive datetime
+    # Add tieflows
+    tieflow_data.loc[scenario_time, area_EIC]= float(tieflow_sum)  # Lets use area EIC and naive datetime
 
 
     # Add netinterchange
     netInterchange = IGM_data.query("ID == '{}' & KEY == 'ControlArea.netInterchange'".format(Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]))["VALUE"].item()
-    netinterchange_data.loc[aniso8601.parse_datetime(SV["Model.scenarioTime"].replace("Z","")), area_EIC] = float(netInterchange)
+    netinterchange_data.loc[scenario_time, area_EIC] = float(netInterchange)
 
 
 
@@ -125,4 +152,11 @@ report_dict["TieFlow"] = tieflow_data.sort_index()
 
 print(pandas.concat(report_dict, axis=1)).round(1)
 
+id_1 = "2163f0d8-74f3-431b-92bb-df9480fe4bec"
+id_2 = "875c4766-b8d9-4f28-b317-ce6ef42d7743"
+
+
+##EQ_diff = data.query("INSTANCE_ID == '{}' or INSTANCE_ID == '{}'".format(id_1,id_2)).drop_duplicates(["ID","KEY","VALUE"],keep = False)
+##
+##EQ_diff.query("INSTANCE_ID == '0ed7801b-a428-4899-9067-52ab6cce2534'")
 
