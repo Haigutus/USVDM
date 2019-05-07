@@ -1,8 +1,7 @@
 *.jar
 *.xml
-*.csv
+*.svg
+*.conf
 *.png
 *.pyc
-*.svg
 
-*.conf

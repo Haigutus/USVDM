@@ -24,15 +24,15 @@ import OPDM_SOAP_client
 
 # OPDM server conf
 
-username        = "kvilgo"
-server_adress   = '10.1.21.50'
-key_file_dir    = "H:\PROJECTS\OPDE\private_key_12102018_1017.pem"
+username        = ""
+server_adress   = ''
+key_file_dir    = ""
 
 # Baltic FTP conf
 
-server_ip   = '185.7.252.111'
-username    = 'Elering_baltic-rsc.eu'
-password    = '8CHmWzWZ'
+server_ip   = ''
+username    = ''
+password    = ''
 
 
 
