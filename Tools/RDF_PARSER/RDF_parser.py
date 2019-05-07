@@ -17,6 +17,8 @@ import pandas
 import datetime
 import zipfile
 
+from multiprocessing import Pool
+
 #pandas.set_option("display.height", 1000)
 pandas.set_option("display.max_rows", 15)
 pandas.set_option("display.max_columns", 8)
@@ -60,6 +62,14 @@ def load_RDF_objects_from_XML(path_or_fileobject):
 
 
 def load_RDF_to_dataframe(path_or_fileobject):
+
+    file_name = path_or_fileobject
+
+    if type(path_or_fileobject) != str:
+        file_name = path_or_fileobject.name
+
+    print("Loading {}".format(file_name))
+
 
     RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject)
 
@@ -106,8 +116,61 @@ def load_RDF_to_dataframe(path_or_fileobject):
     data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
     _,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
-
     return data
+
+
+def load_RDF_to_list(path_or_fileobject):
+
+    file_name = path_or_fileobject
+
+    if type(path_or_fileobject) != str:
+        file_name = path_or_fileobject.name
+
+    print("Loading {}".format(file_name))
+
+    RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject)
+
+    start_time = datetime.datetime.now()
+
+    data_list = []
+
+    #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
+    ID      = ""
+    KEY     = ""
+    VALUE   = ""
+
+
+    # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
+
+    for object in RDF_objects:
+
+        ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+        #ID_TYPE = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
+        #KEY = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
+        KEY = 'Type'
+        VALUE = object.tag.split("}")[1]
+
+        #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
+        data_list.append([ID, KEY, VALUE, INSTANCE_ID])
+
+        for element in object.iterchildren():
+
+            KEY = element.tag.split("}")[1]
+            VALUE = element.text
+
+            if VALUE == None and len(element.attrib.values()) > 0:
+
+                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "")
+
+
+
+            #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
+            data_list.append([ID, KEY, VALUE, INSTANCE_ID])
+
+    _,start_time = print_duration("All values put to data list", start_time)
+
+
+    return data_list
 
 def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
     """Retunrs list of file objects and/or paths"""
@@ -151,19 +214,24 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
     return xml_files_list
 
 def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
+    "Parse contents of provided list of paths to Pandas DataFrame (zip, global zip or XML)"
+
     list_of_xmls = find_all_xmls(list_of_paths_to_zip_globalzip_xml)
 
-    data = pandas.DataFrame()
+    #data = pandas.DataFrame()
+    data_list = []
+
+##    process_pool = Pool(5)
+##    data_list = sum(process_pool.map(load_RDF_to_list, list_of_xmls),[])
 
     for xml in list_of_xmls:
-        file_name = xml
 
-        if type(xml) != str:
-            file_name = xml.name
+        data_list.extend(load_RDF_to_list(xml))
 
-        print("Loading {}".format(file_name))
 
-        data = data.append(load_RDF_to_dataframe(xml), ignore_index = True)
+    start_time = datetime.datetime.now()
+    data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
+    _,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
     return data
 
@@ -172,8 +240,11 @@ def type_tableview(data, type_name):
 
     "Creates a table view of all elements of defined type, with their parameters in columns"
 
-    type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
-    type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+##    type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
+##    type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+
+    type_id  = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
+    type_data = pandas.merge(type_id[["ID"]], data, right_on = "ID", left_on = "ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
     data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
 

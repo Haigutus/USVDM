@@ -51,7 +51,7 @@ source_bath = "//elering.sise/teenused/NMM/data/ACG/Generated Cases Archive"
 destination_bath = "C:/IOPs"
 
 
-IOP_date = "16.01.2019"
+IOP_date = "13.02.2019"
 
 
 
@@ -97,6 +97,8 @@ for process_type in list_of_processtypes:
     zip_file_path = os.path.join(destination_bath, zip_file_name)
 
     out_zipped_file = zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED)
+
+    print os.path.normpath(zip_file_path).replace("\\","/")
 
 
 
