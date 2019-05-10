@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
+            xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0"
+            xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0"
+            targetNamespace="http://entsoe.eu/opde/ServiceModel/1/0"
+            vc:minVersion="1.1"
+            elementFormDefault="qualified">
+    <xsd:include schemaLocation="opde-service-core-model.xsd"/>
+    <xsd:import namespace="http://entsoe.eu/opdm/ObjectModel/1/0"
+                schemaLocation="opdm-object-model.xsd"/>
+    <!-- Echo -->
+    <xsd:element name="Echo" type="sm:Operation">
+        <xsd:annotation>
+            <xsd:documentation>Check the availability of the Service Provider. The result of this
+                operation is an EchoAcknowledge. If the client does not receive back an
+                EchoAcknowledge operation after a specific timeout, the Service Provider will be
+                considered as unavailable.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <!-- EchoAcknowledge -->
+    <xsd:element name="EchoAcknowledge" type="sm:Operation">
+        <xsd:annotation>
+            <xsd:documentation>The result of the invocation of a EchoAcknowledge operations.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <!-- Validate -->
+    <xsd:element name="Validate">
+        <xsd:annotation>
+            <xsd:documentation>Request the validation of a data set (CGMES Profiles,…) or an OPDM
+                Object to a Quality Service (Local Quality Service, Global Quality Gate,…). The
+                result is a Quality Report.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:sequence maxOccurs="1" minOccurs="1">
+                    <xsd:element name="part">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:element ref="opdm:OPDEFile"/>
+                                <xsd:element ref="opdm:OPDMObject"/>
+                            </xsd:choice>
+                            <xsd:attribute name="name" use="required" fixed="dataset" type="xsd:string"/>
+                            <xsd:attribute name="type" use="required" fixed="opde:DataSet" type="xsd:QName"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:sequence>
+            <xsd:attribute name="opdm-version"/>
+        </xsd:complexType>
+
+    </xsd:element>
+
+    <xsd:element name="PublicationRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:sequence minOccurs="1" maxOccurs="1">
+                    <xsd:element name="part" maxOccurs="1" minOccurs="1">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:element ref="opdm:OPDEFile"/>
+                                <xsd:element ref="opdm:OPDMObject"/>
+                            </xsd:choice>
+                            <xsd:attribute name="name" use="required" fixed="dataset" type="xsd:string"/>
+                            <xsd:attribute name="type" use="required" fixed="opde:DataSet" type="xsd:QName"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:sequence>
+            <xsd:attribute name="opdm-version"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="Query">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="part" minOccurs="2" maxOccurs="2">
+                    <xsd:complexType mixed="true">
+                        <xsd:choice minOccurs="0" maxOccurs="1">
+                            <xsd:element ref="opdm:OPDEFile"/>
+                            <xsd:element ref="opdm:OPDMObject"/>
+                            <xsd:element ref="opdm:Profile"/>
+                        </xsd:choice>
+                        <xsd:attribute name="name" use="required">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="name"/>
+                                    <xsd:enumeration value="query"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:attribute>
+                        <xsd:attribute name="type">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:QName">
+                                    <xsd:enumeration value="opde:MetaDataPattern"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="opdm-version"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="QueryResult">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="part" minOccurs="2" maxOccurs="unbounded">
+                    <xsd:complexType mixed="true">
+                        <xsd:choice minOccurs="0" maxOccurs="1">
+                            <xsd:element ref="opdm:OPDEFile"/>
+                            <xsd:element ref="opdm:OPDMObject"/>
+                            <xsd:element ref="opdm:Profile"/>
+                        </xsd:choice>
+                        <xsd:attribute name="name" use="required">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="name"/>
+                                    <xsd:enumeration value="result"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:attribute>
+                        <xsd:attribute name="type">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:QName">
+                                    <xsd:enumeration value="opde:MetaData"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="opdm-version"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
