@@ -1,0 +1,105 @@
+<h1>#PhaseTapChangerTablePoint -> #TapChangerTablePoint</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>KEY</th>
+      <th>Type</th>
+      <th>comment</th>
+      <th>dataType</th>
+      <th>domain</th>
+      <th>label</th>
+      <th>multiplicity</th>
+      <th>stereotype</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#PhaseTapChangerTablePoint.angle</th>
+      <td>Description</td>
+      <td>The angle difference in degrees.</td>
+      <td>#AngleDegrees</td>
+      <td>#PhaseTapChangerTablePoint</td>
+      <td>angle</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.b</th>
+      <td>Description</td>
+      <td>The magnetizing branch susceptance deviation in percent of nominal value. The actual susceptance is calculated as follows:\ncalculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100).   The b(nominal) is defined as the static magnetizing susceptance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.</td>
+      <td>#PerCent</td>
+      <td>#TapChangerTablePoint</td>
+      <td>b</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.g</th>
+      <td>Description</td>
+      <td>The magnetizing branch conductance deviation in percent of nominal value. The actual conductance is calculated as follows:\ncalculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100).   The g(nominal) is defined as the static magnetizing conductance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.</td>
+      <td>#PerCent</td>
+      <td>#TapChangerTablePoint</td>
+      <td>g</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.r</th>
+      <td>Description</td>
+      <td>The resistance deviation in percent of nominal value. The actual reactance is calculated as follows:\ncalculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nominal) is defined as the static resistance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.</td>
+      <td>#PerCent</td>
+      <td>#TapChangerTablePoint</td>
+      <td>r</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.ratio</th>
+      <td>Description</td>
+      <td>The voltage ratio in per unit. Hence this is a value close to one.</td>
+      <td>#SimpleFloat</td>
+      <td>#TapChangerTablePoint</td>
+      <td>ratio</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.step</th>
+      <td>Description</td>
+      <td>The tap step.</td>
+      <td>#Integer</td>
+      <td>#TapChangerTablePoint</td>
+      <td>step</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TapChangerTablePoint.x</th>
+      <td>Description</td>
+      <td>The series reactance deviation in percent of nominal value. The actual reactance is calculated as follows:\ncalculated reactance = x(nominal) * (1 + x(from this class)/100).   The x(nominal) is defined as the static series reactance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.</td>
+      <td>#PerCent</td>
+      <td>#TapChangerTablePoint</td>
+      <td>x</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+  </tbody>
+</table>
