@@ -1,0 +1,62 @@
+<h1>#SvTapStep</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>KEY</th>
+      <th>AssociationUsed</th>
+      <th>Type</th>
+      <th>comment</th>
+      <th>dataType</th>
+      <th>domain</th>
+      <th>inverseRoleName</th>
+      <th>label</th>
+      <th>multiplicity</th>
+      <th>range</th>
+      <th>stereotype</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#SvTapStep.TapChanger</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The tap changer associated with the tap step state.</td>
+      <td>None</td>
+      <td>#SvTapStep</td>
+      <td>#TapChanger.SvTapStep</td>
+      <td>TapChanger</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#TapChanger</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#SvTapStep.position</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined by the related tap changer model and normally is constrained to be within the range of minimum and maximum tap positions.</td>
+      <td>#SimpleFloat</td>
+      <td>#SvTapStep</td>
+      <td>None</td>
+      <td>position</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+  </tbody>
+</table>

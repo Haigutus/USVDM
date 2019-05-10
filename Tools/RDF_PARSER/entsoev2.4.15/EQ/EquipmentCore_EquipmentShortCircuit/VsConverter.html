@@ -1,0 +1,215 @@
+<h1>#VsConverter -> #ACDCConverter -> #ConductingEquipment -> #Equipment -> #PowerSystemResource -> #IdentifiedObject</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>KEY</th>
+      <th>Type</th>
+      <th>comment</th>
+      <th>dataType</th>
+      <th>domain</th>
+      <th>label</th>
+      <th>multiplicity</th>
+      <th>stereotype</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#ACDCConverter.baseS</th>
+      <td>Description</td>
+      <td>Base apparent power of the converter pole.</td>
+      <td>#ApparentPower</td>
+      <td>#ACDCConverter</td>
+      <td>baseS</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.idleLoss</th>
+      <td>Description</td>
+      <td>Active power loss in pole at no power transfer. Converter configuration data used in power flow.</td>
+      <td>#ActivePower</td>
+      <td>#ACDCConverter</td>
+      <td>idleLoss</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.maxUdc</th>
+      <td>Description</td>
+      <td>The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow.</td>
+      <td>#Voltage</td>
+      <td>#ACDCConverter</td>
+      <td>maxUdc</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.minUdc</th>
+      <td>Description</td>
+      <td>Min allowed converter DC voltage. Converter configuration data used in power flow.</td>
+      <td>#Voltage</td>
+      <td>#ACDCConverter</td>
+      <td>minUdc</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.numberOfValves</th>
+      <td>Description</td>
+      <td>Number of valves in the converter. Used in loss calculations.</td>
+      <td>#Integer</td>
+      <td>#ACDCConverter</td>
+      <td>numberOfValves</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.ratedUdc</th>
+      <td>Description</td>
+      <td>Rated converter DC voltage, also called UdN. Converter configuration data used in power flow.</td>
+      <td>#Voltage</td>
+      <td>#ACDCConverter</td>
+      <td>ratedUdc</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.resistiveLoss</th>
+      <td>Description</td>
+      <td>Converter configuration data used in power flow. Refer to poleLossP.</td>
+      <td>#Resistance</td>
+      <td>#ACDCConverter</td>
+      <td>resistiveLoss</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.switchingLoss</th>
+      <td>Description</td>
+      <td>Switching losses, relative to the base apparent power 'baseS'.\nRefer to poleLossP.</td>
+      <td>#ActivePowerPerCurrentFlow</td>
+      <td>#ACDCConverter</td>
+      <td>switchingLoss</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCConverter.valveU0</th>
+      <td>Description</td>
+      <td>Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0.</td>
+      <td>#Voltage</td>
+      <td>#ACDCConverter</td>
+      <td>valveU0</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#Equipment.aggregate</th>
+      <td>Description</td>
+      <td>The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.</td>
+      <td>#Boolean</td>
+      <td>#Equipment</td>
+      <td>aggregate</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.description</th>
+      <td>Description</td>
+      <td>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>description</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.energyIdentCodeEic</th>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>energyIdentCodeEic</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.mRID</th>
+      <td>Description</td>
+      <td>Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>mRID</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.name</th>
+      <td>Description</td>
+      <td>The name is any free human readable and possibly non unique text naming the object.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>name</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.shortName</th>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>shortName</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#VsConverter.maxModulationIndex</th>
+      <td>Description</td>
+      <td>The max quotient between the AC converter voltage (Uc) and DC voltage (Ud). A factor typically less than 1. VSC configuration data used in power flow.</td>
+      <td>#SimpleFloat</td>
+      <td>#VsConverter</td>
+      <td>maxModulationIndex</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#VsConverter.maxValveCurrent</th>
+      <td>Description</td>
+      <td>The maximum current through a valve. This current limit is the basis for calculating the capability diagram. VSC  configuration data.</td>
+      <td>#CurrentFlow</td>
+      <td>#VsConverter</td>
+      <td>maxValveCurrent</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+  </tbody>
+</table>
