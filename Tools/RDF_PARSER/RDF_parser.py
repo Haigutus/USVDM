@@ -17,7 +17,9 @@ import pandas
 import datetime
 import zipfile
 
-from multiprocessing import Pool
+#from multiprocessing import Pool
+
+import re
 
 #pandas.set_option("display.height", 1000)
 pandas.set_option("display.max_rows", 15)
@@ -103,7 +105,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
             if VALUE == None and len(element.attrib.values()) > 0:
 
-                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "")
+                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
 
 
 
@@ -130,6 +132,8 @@ def load_RDF_to_list(path_or_fileobject):
 
     RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject)
 
+    INSTANCE_ID = INSTANCE_ID.replace("_", "")
+
     start_time = datetime.datetime.now()
 
     data_list = []
@@ -139,19 +143,27 @@ def load_RDF_to_list(path_or_fileobject):
     KEY     = ""
     VALUE   = ""
 
+##
+##    ID_regex_string = r"(urn:uuid:)|(#_)|(_)"
+##    VALUE_regex_string = r"(urn:uuid:)|(#_)"
+##
+##    ID_regex = re.compile(ID_regex_string)
+##    VALUE_regex = re.compile(VALUE_regex_string)
+
 
     # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
 
     for object in RDF_objects:
 
         ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+        #ID = ID_regex.sub("",object.attrib.values()[0]) # Was slower than regular replace, but maybe regex can be optimized
         #ID_TYPE = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
         #KEY = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
         KEY = 'Type'
         VALUE = object.tag.split("}")[1]
 
         #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
-        data_list.append([ID, KEY, VALUE, INSTANCE_ID])
+        data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
         for element in object.iterchildren():
 
@@ -160,12 +172,13 @@ def load_RDF_to_list(path_or_fileobject):
 
             if VALUE == None and len(element.attrib.values()) > 0:
 
-                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "")
+                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+                #VALUE = VALUE_regex.sub("", element.attrib.values()[0]) # Was slower than regular replace, bu maybe regex can be optimized
 
 
 
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
-            data_list.append([ID, KEY, VALUE, INSTANCE_ID])
+            data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
     _,start_time = print_duration("All values put to data list", start_time)
 
@@ -231,6 +244,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
 
     start_time = datetime.datetime.now()
     data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
+
     _,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
     return data
@@ -287,7 +301,7 @@ if __name__ == '__main__':
 
     path = "FlowExample.zip"
 
-    #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
+    path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
 
     #path = r"C:\Users\kristjan.vilgo\Downloads\20190216T2130Z_1D_LITGRID_TP_001.zip"
 
