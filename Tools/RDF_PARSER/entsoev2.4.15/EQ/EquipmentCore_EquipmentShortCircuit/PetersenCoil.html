@@ -2,10 +2,12 @@
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
+      <th>AssociationUsed</th>
       <th>Type</th>
       <th>comment</th>
       <th>dataType</th>
       <th>domain</th>
+      <th>inverseRoleName</th>
       <th>label</th>
       <th>multiplicity</th>
       <th>range</th>
@@ -23,15 +25,47 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>#ConductingEquipment.BaseVoltage</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</td>
+      <td>None</td>
+      <td>#ConductingEquipment</td>
+      <td>#BaseVoltage.ConductingEquipment</td>
+      <td>BaseVoltage</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#BaseVoltage</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ConductingEquipment.Terminals</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</td>
+      <td>None</td>
+      <td>#ConductingEquipment</td>
+      <td>#Terminal.ConductingEquipment</td>
+      <td>Terminals</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#Terminal</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#EarthFaultCompensator.r</th>
+      <td>None</td>
       <td>Description</td>
       <td>Nominal resistance of device.</td>
       <td>#Resistance</td>
       <td>#EarthFaultCompensator</td>
+      <td>None</td>
       <td>r</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -39,11 +73,41 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
+      <th>#Equipment.EquipmentContainer</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>Container of this equipment.</td>
+      <td>None</td>
+      <td>#Equipment</td>
+      <td>#EquipmentContainer.Equipments</td>
+      <td>EquipmentContainer</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#EquipmentContainer</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#Equipment.OperationalLimitSet</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>The operational limit sets associated with this equipment.</td>
+      <td>None</td>
+      <td>#Equipment</td>
+      <td>#OperationalLimitSet.Equipment</td>
+      <td>OperationalLimitSet</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#OperationalLimitSet</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#Equipment.aggregate</th>
+      <td>None</td>
       <td>Description</td>
       <td>The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.</td>
       <td>#Boolean</td>
       <td>#Equipment</td>
+      <td>None</td>
       <td>aggregate</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -52,10 +116,12 @@
     </tr>
     <tr>
       <th>#IdentifiedObject.description</th>
+      <td>None</td>
       <td>Description</td>
       <td>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</td>
       <td>#String</td>
       <td>#IdentifiedObject</td>
+      <td>None</td>
       <td>description</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -63,23 +129,13 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
-      <th>#IdentifiedObject.energyIdentCodeEic</th>
-      <td>Description</td>
-      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
-      <td>energyIdentCodeEic</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
-      <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
       <th>#IdentifiedObject.mRID</th>
+      <td>None</td>
       <td>Description</td>
       <td>Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</td>
       <td>#String</td>
       <td>#IdentifiedObject</td>
+      <td>None</td>
       <td>mRID</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -88,10 +144,12 @@
     </tr>
     <tr>
       <th>#IdentifiedObject.name</th>
+      <td>None</td>
       <td>Description</td>
       <td>The name is any free human readable and possibly non unique text naming the object.</td>
       <td>#String</td>
       <td>#IdentifiedObject</td>
+      <td>None</td>
       <td>name</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
       <td>None</td>
@@ -99,23 +157,13 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
-      <th>#IdentifiedObject.shortName</th>
-      <td>Description</td>
-      <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
-      <td>shortName</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
-      <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
       <th>#PetersenCoil.mode</th>
+      <td>None</td>
       <td>Description</td>
       <td>The mode of operation of the Petersen coil.</td>
       <td>None</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>mode</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
       <td>#PetersenCoilModeKind</td>
@@ -124,10 +172,12 @@
     </tr>
     <tr>
       <th>#PetersenCoil.nominalU</th>
+      <td>None</td>
       <td>Description</td>
       <td>The nominal voltage for which the coil is designed.</td>
       <td>#Voltage</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>nominalU</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
       <td>None</td>
@@ -136,10 +186,12 @@
     </tr>
     <tr>
       <th>#PetersenCoil.offsetCurrent</th>
+      <td>None</td>
       <td>Description</td>
       <td>The offset current that the Petersen coil controller is operating from the resonant point.  This is normally a fixed amount for which the controller is configured and could be positive or negative.  Typically 0 to 60 Amperes depending on voltage and resonance conditions.</td>
       <td>#CurrentFlow</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>offsetCurrent</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -148,10 +200,12 @@
     </tr>
     <tr>
       <th>#PetersenCoil.positionCurrent</th>
+      <td>None</td>
       <td>Description</td>
       <td>The control current used to control the Petersen coil also known as the position current.  Typically in the range of 20-200mA.</td>
       <td>#CurrentFlow</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>positionCurrent</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
@@ -160,10 +214,12 @@
     </tr>
     <tr>
       <th>#PetersenCoil.xGroundMax</th>
+      <td>None</td>
       <td>Description</td>
       <td>The maximum reactance.</td>
       <td>#Reactance</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>xGroundMax</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
       <td>None</td>
@@ -172,10 +228,12 @@
     </tr>
     <tr>
       <th>#PetersenCoil.xGroundMin</th>
+      <td>None</td>
       <td>Description</td>
       <td>The minimum reactance.</td>
       <td>#Reactance</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>xGroundMin</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
       <td>None</td>
@@ -184,12 +242,42 @@
     </tr>
     <tr>
       <th>#PetersenCoil.xGroundNominal</th>
+      <td>None</td>
       <td>Description</td>
       <td>The nominal reactance.  This is the operating point (normally over compensation) that is defined based on the resonance point in the healthy network condition.  The impedance is calculated based on nominal voltage divided by position current.</td>
       <td>#Reactance</td>
       <td>#PetersenCoil</td>
+      <td>None</td>
       <td>xGroundNominal</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>energyIdentCodeEic</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>shortName</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>

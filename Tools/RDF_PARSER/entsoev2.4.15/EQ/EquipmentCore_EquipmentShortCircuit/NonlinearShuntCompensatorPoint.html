@@ -2,12 +2,15 @@
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
+      <th>AssociationUsed</th>
       <th>Type</th>
       <th>comment</th>
       <th>dataType</th>
       <th>domain</th>
+      <th>inverseRoleName</th>
       <th>label</th>
       <th>multiplicity</th>
+      <th>range</th>
       <th>stereotype</th>
       <th>type</th>
     </tr>
@@ -21,61 +24,93 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>#NonlinearShuntCompensatorPoint.NonlinearShuntCompensator</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>Non-linear shunt compensator owning this point.</td>
+      <td>None</td>
+      <td>#NonlinearShuntCompensatorPoint</td>
+      <td>#NonlinearShuntCompensator.NonlinearShuntCompensatorPoints</td>
+      <td>NonlinearShuntCompensator</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#NonlinearShuntCompensator</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#NonlinearShuntCompensatorPoint.b</th>
+      <td>None</td>
       <td>Description</td>
       <td>Positive sequence shunt (charging) susceptance per section</td>
       <td>#Susceptance</td>
       <td>#NonlinearShuntCompensatorPoint</td>
+      <td>None</td>
       <td>b</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#NonlinearShuntCompensatorPoint.b0</th>
+      <td>None</td>
       <td>Description</td>
       <td>Zero sequence shunt (charging) susceptance per section</td>
       <td>#Susceptance</td>
       <td>#NonlinearShuntCompensatorPoint</td>
+      <td>None</td>
       <td>b0</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#NonlinearShuntCompensatorPoint.g</th>
+      <td>None</td>
       <td>Description</td>
       <td>Positive sequence shunt (charging) conductance per section</td>
       <td>#Conductance</td>
       <td>#NonlinearShuntCompensatorPoint</td>
+      <td>None</td>
       <td>g</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#NonlinearShuntCompensatorPoint.g0</th>
+      <td>None</td>
       <td>Description</td>
       <td>Zero sequence shunt (charging) conductance per section</td>
       <td>#Conductance</td>
       <td>#NonlinearShuntCompensatorPoint</td>
+      <td>None</td>
       <td>g0</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#NonlinearShuntCompensatorPoint.sectionNumber</th>
+      <td>None</td>
       <td>Description</td>
       <td>The number of the section.</td>
       <td>#Integer</td>
       <td>#NonlinearShuntCompensatorPoint</td>
+      <td>None</td>
       <td>sectionNumber</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>

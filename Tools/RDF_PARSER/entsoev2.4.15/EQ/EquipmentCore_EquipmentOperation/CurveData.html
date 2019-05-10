@@ -2,12 +2,15 @@
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
+      <th>AssociationUsed</th>
       <th>Type</th>
       <th>comment</th>
       <th>dataType</th>
       <th>domain</th>
+      <th>inverseRoleName</th>
       <th>label</th>
       <th>multiplicity</th>
+      <th>range</th>
       <th>stereotype</th>
       <th>type</th>
     </tr>
@@ -21,39 +24,65 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>#CurveData.Curve</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The point data values that define this curve.</td>
+      <td>None</td>
+      <td>#CurveData</td>
+      <td>#Curve.CurveDatas</td>
+      <td>Curve</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#Curve</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#CurveData.xvalue</th>
+      <td>None</td>
       <td>Description</td>
       <td>The data value of the X-axis variable,  depending on the X-axis units.</td>
       <td>#SimpleFloat</td>
       <td>#CurveData</td>
+      <td>None</td>
       <td>xvalue</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#CurveData.y1value</th>
+      <td>None</td>
       <td>Description</td>
       <td>The data value of the  first Y-axis variable, depending on the Y-axis units.</td>
       <td>#SimpleFloat</td>
       <td>#CurveData</td>
+      <td>None</td>
       <td>y1value</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#CurveData.y2value</th>
+      <td>None</td>
       <td>Description</td>
       <td>The data value of the second Y-axis variable (if present), depending on the Y-axis units.</td>
       <td>#SimpleFloat</td>
       <td>#CurveData</td>
+      <td>None</td>
       <td>y2value</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>

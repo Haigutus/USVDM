@@ -31,6 +31,48 @@
   </thead>
   <tbody>
     <tr>
+      <th>#ConductingEquipment.BaseVoltage</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</td>
+      <td>None</td>
+      <td>#ConductingEquipment</td>
+      <td>#BaseVoltage.ConductingEquipment</td>
+      <td>BaseVoltage</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#BaseVoltage</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ConductingEquipment.Terminals</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</td>
+      <td>None</td>
+      <td>#ConductingEquipment</td>
+      <td>#Terminal.ConductingEquipment</td>
+      <td>Terminals</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#Terminal</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#EnergyConsumer.LoadResponse</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The load response characteristic of this load.  If missing, this load is assumed to be constant power.</td>
+      <td>None</td>
+      <td>#EnergyConsumer</td>
+      <td>#LoadResponseCharacteristic.EnergyConsumer</td>
+      <td>LoadResponse</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#LoadResponseCharacteristic</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#EnergyConsumer.pfixed</th>
       <td>None</td>
       <td>Description</td>
@@ -87,6 +129,34 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
+      <th>#Equipment.EquipmentContainer</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>Container of this equipment.</td>
+      <td>None</td>
+      <td>#Equipment</td>
+      <td>#EquipmentContainer.Equipments</td>
+      <td>EquipmentContainer</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#EquipmentContainer</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#Equipment.OperationalLimitSet</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>The operational limit sets associated with this equipment.</td>
+      <td>None</td>
+      <td>#Equipment</td>
+      <td>#OperationalLimitSet.Equipment</td>
+      <td>OperationalLimitSet</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#OperationalLimitSet</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#Equipment.aggregate</th>
       <td>None</td>
       <td>Description</td>
@@ -109,20 +179,6 @@
       <td>#IdentifiedObject</td>
       <td>None</td>
       <td>description</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
-      <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
-      <th>#IdentifiedObject.energyIdentCodeEic</th>
-      <td>None</td>
-      <td>Description</td>
-      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
-      <td>None</td>
-      <td>energyIdentCodeEic</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
@@ -157,17 +213,17 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
-      <th>#IdentifiedObject.shortName</th>
-      <td>None</td>
+      <th>#NonConformLoad.LoadGroup</th>
+      <td>Yes</td>
       <td>Description</td>
-      <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
+      <td>Conform loads assigned to this ConformLoadGroup.</td>
       <td>None</td>
-      <td>shortName</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#NonConformLoad</td>
+      <td>#NonConformLoadGroup.EnergyConsumers</td>
+      <td>LoadGroup</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#NonConformLoadGroup</td>
       <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
@@ -196,6 +252,34 @@
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
       <td>#Measurement</td>
       <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>energyIdentCodeEic</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>shortName</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
   </tbody>

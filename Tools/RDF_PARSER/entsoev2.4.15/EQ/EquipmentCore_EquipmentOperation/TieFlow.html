@@ -2,12 +2,15 @@
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
+      <th>AssociationUsed</th>
       <th>Type</th>
       <th>comment</th>
       <th>dataType</th>
       <th>domain</th>
+      <th>inverseRoleName</th>
       <th>label</th>
       <th>multiplicity</th>
+      <th>range</th>
       <th>stereotype</th>
       <th>type</th>
     </tr>
@@ -21,17 +24,51 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>#TieFlow.ControlArea</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The control area of the tie flows.</td>
+      <td>None</td>
+      <td>#TieFlow</td>
+      <td>#ControlArea.TieFlow</td>
+      <td>ControlArea</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#ControlArea</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#TieFlow.Terminal</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The terminal to which this tie flow belongs.</td>
+      <td>None</td>
+      <td>#TieFlow</td>
+      <td>#Terminal.TieFlow</td>
+      <td>Terminal</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#Terminal</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#TieFlow.positiveFlowIn</th>
+      <td>None</td>
       <td>Description</td>
       <td>True if the flow into the terminal (load convention) is also flow into the control area.  For example, this attribute should be true if using the tie line terminal further away from the control area. For example to represent a tie to a shunt component (like a load or generator) in another area, this is the near end of a branch and this attribute would be specified as false.</td>
       <td>#Boolean</td>
       <td>#TieFlow</td>
+      <td>None</td>
       <td>positiveFlowIn</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>

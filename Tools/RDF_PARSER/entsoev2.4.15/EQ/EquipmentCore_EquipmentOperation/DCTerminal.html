@@ -31,6 +31,20 @@
   </thead>
   <tbody>
     <tr>
+      <th>#ACDCTerminal.BusNameMarker</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The bus name marker used to name the bus (topological node).</td>
+      <td>None</td>
+      <td>#ACDCTerminal</td>
+      <td>#BusNameMarker.Terminal</td>
+      <td>BusNameMarker</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#BusNameMarker</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#ACDCTerminal.Measurements</th>
       <td>No</td>
       <td>Description</td>
@@ -41,6 +55,20 @@
       <td>Measurements</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
       <td>#Measurement</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#ACDCTerminal.OperationalLimitSet</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>None</td>
+      <td>None</td>
+      <td>#ACDCTerminal</td>
+      <td>#OperationalLimitSet.Terminal</td>
+      <td>OperationalLimitSet</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#OperationalLimitSet</td>
       <td>None</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
@@ -59,6 +87,34 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
+      <th>#DCBaseTerminal.DCNode</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>None</td>
+      <td>None</td>
+      <td>#DCBaseTerminal</td>
+      <td>#DCNode.DCTerminals</td>
+      <td>DCNode</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>#DCNode</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#DCTerminal.DCConductingEquipment</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>None</td>
+      <td>None</td>
+      <td>#DCTerminal</td>
+      <td>#DCConductingEquipment.DCTerminals</td>
+      <td>DCConductingEquipment</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#DCConductingEquipment</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#IdentifiedObject.description</th>
       <td>None</td>
       <td>Description</td>
@@ -67,20 +123,6 @@
       <td>#IdentifiedObject</td>
       <td>None</td>
       <td>description</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
-      <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
-      <th>#IdentifiedObject.energyIdentCodeEic</th>
-      <td>None</td>
-      <td>Description</td>
-      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
-      <td>None</td>
-      <td>energyIdentCodeEic</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
@@ -115,7 +157,21 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
-      <th>#IdentifiedObject.shortName</th>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>energyIdentCodeEic</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName</th>
       <td>None</td>
       <td>Description</td>
       <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>

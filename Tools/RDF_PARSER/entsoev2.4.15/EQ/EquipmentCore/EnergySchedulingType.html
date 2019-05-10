@@ -1,4 +1,4 @@
-<h1>#EnergySchedulingType -> #IdentifiedObject</h1><table border="1" class="dataframe">
+<h1>http://entsoe.eu/CIM/SchemaExtension/3/1#EnergySchedulingType -> #IdentifiedObject</h1><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
@@ -31,20 +31,6 @@
   </thead>
   <tbody>
     <tr>
-      <th>#EnergySchedulingType.EnergySource</th>
-      <td>No</td>
-      <td>Description</td>
-      <td>Energy Scheduling Type of an Energy Source</td>
-      <td>None</td>
-      <td>#EnergySchedulingType</td>
-      <td>#EnergySource.EnergySchedulingType</td>
-      <td>EnergySource</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
-      <td>#EnergySource</td>
-      <td>None</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
       <th>#IdentifiedObject.description</th>
       <td>None</td>
       <td>Description</td>
@@ -53,20 +39,6 @@
       <td>#IdentifiedObject</td>
       <td>None</td>
       <td>description</td>
-      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
-      <td>None</td>
-      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
-    </tr>
-    <tr>
-      <th>#IdentifiedObject.energyIdentCodeEic</th>
-      <td>None</td>
-      <td>Description</td>
-      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
-      <td>#String</td>
-      <td>#IdentifiedObject</td>
-      <td>None</td>
-      <td>energyIdentCodeEic</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
       <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
@@ -101,7 +73,35 @@
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
-      <th>#IdentifiedObject.shortName</th>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#EnergySchedulingType.EnergySource</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>Energy Scheduling Type of an Energy Source</td>
+      <td>None</td>
+      <td>http://entsoe.eu/CIM/SchemaExtension/3/1#EnergySchedulingType</td>
+      <td>http://entsoe.eu/CIM/SchemaExtension/3/1#EnergySource.EnergySchedulingType</td>
+      <td>EnergySource</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#EnergySource</td>
+      <td>Entsoe</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n</td>
+      <td>#String</td>
+      <td>#IdentifiedObject</td>
+      <td>None</td>
+      <td>energyIdentCodeEic</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName</th>
       <td>None</td>
       <td>Description</td>
       <td>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</td>

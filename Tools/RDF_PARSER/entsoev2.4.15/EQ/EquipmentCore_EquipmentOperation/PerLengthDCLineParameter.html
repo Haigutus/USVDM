@@ -2,12 +2,15 @@
   <thead>
     <tr style="text-align: left;">
       <th>KEY</th>
+      <th>AssociationUsed</th>
       <th>Type</th>
       <th>comment</th>
       <th>dataType</th>
       <th>domain</th>
+      <th>inverseRoleName</th>
       <th>label</th>
       <th>multiplicity</th>
+      <th>range</th>
       <th>stereotype</th>
       <th>type</th>
     </tr>
@@ -21,39 +24,65 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>#PerLengthDCLineParameter.DCLineSegments</th>
+      <td>No</td>
+      <td>Description</td>
+      <td>All line segments described by this set of per-length parameters.</td>
+      <td>None</td>
+      <td>#PerLengthDCLineParameter</td>
+      <td>#DCLineSegment.PerLengthParameter</td>
+      <td>DCLineSegments</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n</td>
+      <td>#DCLineSegment</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
       <th>#PerLengthDCLineParameter.capacitance</th>
+      <td>None</td>
       <td>Description</td>
       <td>Capacitance per unit of length of the DC line segment; significant for cables only.</td>
       <td>#CapacitancePerLength</td>
       <td>#PerLengthDCLineParameter</td>
+      <td>None</td>
       <td>capacitance</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#PerLengthDCLineParameter.inductance</th>
+      <td>None</td>
       <td>Description</td>
       <td>Inductance per unit of length of the DC line segment.</td>
       <td>#InductancePerLength</td>
       <td>#PerLengthDCLineParameter</td>
+      <td>None</td>
       <td>inductance</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
     <tr>
       <th>#PerLengthDCLineParameter.resistance</th>
+      <td>None</td>
       <td>Description</td>
       <td>Resistance per length of the DC line segment.</td>
       <td>#ResistancePerLength</td>
       <td>#PerLengthDCLineParameter</td>
+      <td>None</td>
       <td>resistance</td>
       <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1</td>
+      <td>None</td>
       <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
       <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
     </tr>
