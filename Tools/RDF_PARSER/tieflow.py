@@ -32,11 +32,30 @@ def dict_of_loaded_IGMs(data):
 
     for _, SV in SV_iterator:
 
-        dependancies_dict[SV.ID] = [SV.ID]
+        current_dependencies = []
 
-        for dependancie in dependancies_dict[SV.ID]:
+        dependancies_list = [SV.ID]
 
-            dependancies_dict[SV.ID].extend(FullModel_data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(dependancie)).VALUE.tolist())
+        for instance in dependancies_list:
+
+            # Append current instance
+
+            INSTANCE_ID = instance
+            PROFILES    = FullModel_data.query("ID == '{}' & KEY == 'Model.profile'".format(instance)).VALUE.tolist()
+
+            for PROFILE in PROFILES:
+                current_dependencies.append(dict(INSTANCE_ID = INSTANCE_ID, PROFILE = PROFILE))
+
+            # Add newly found dependacies to processing
+            dependancies_list.extend(FullModel_data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(instance)).VALUE.tolist())
+
+
+
+
+        dependancies_dict[SV.ID] = pandas.DataFrame(current_dependencies).drop_duplicates()
+
+        print dependancies_dict
+
 
     return dependancies_dict
 
@@ -46,19 +65,19 @@ def dict_of_loaded_IGMs(data):
 
 #path = "C:\IOPs\IOP160119\CE02_BD16012019_1D_Amprion_BusBranch.zip"
 
-path = "C:\IOPs\IOP160119\CE03_BD16012019_1D_APG_BusBranch.zip"
+#path = "C:\IOPs\IOP160119\CE03_BD16012019_1D_APG_BusBranch.zip"
 
-#path2 = "C:\IOPs\IOP160119\BA03_20190116_1D_LITGRID_001_NodeBreaker.zip"
+#path = "C:\IOPs\IOP160119\BA03_20190116_1D_LITGRID_001_NodeBreaker.zip"
 
 #path = "C:\IOPs\IOP160119\CE09_BD16012019_1D_Energinet_NodeBreaker\CE09_BD16012019_1D_Energinet_NodeBreaker_DKW.zip"
 
-#path = "C:\IOPs\IOP160119\BA02_BD16012019_1D_Elering_001_NodeBreaker.zip"
+path = "C:\IOPs\IOP160119\BA02_BD16012019_1D_Elering_001_NodeBreaker.zip"
 
 #path = "C:\IOPs\IOP160119\BA01_BD16012019_1D_AST_001_BusBranch.zip"
 
 #data = load_all_to_dataframe([path, path2])
 
-data = load_all_to_dataframe([path])
+data = load_all_to_dataframe([path, r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"])
 
 
 print("Loaded types")
@@ -67,8 +86,9 @@ print(data.query("KEY == 'Type'")["VALUE"].value_counts())
 FullModel   = data.type_tableview("FullModel")
 #SV_iterator = FullModel[FullModel["Model.profile"] == 'http://entsoe.eu/CIM/StateVariables/4/1'].iterrows()
 
-tieflow_data        = pandas.DataFrame()
-netinterchange_data = pandas.DataFrame()
+tieflow_data              = pandas.DataFrame()
+netinterchange_data       = pandas.DataFrame()
+equivalentinjections_data = pandas.DataFrame()
 
 #_, SV = SV_iterator.next()
 
@@ -90,13 +110,14 @@ for IGM in loaded_IGMs:
 
     dependancies_list = loaded_IGMs[IGM]
 
-    dependancies_dataframe = FullModel[FullModel.index.isin(dependancies_list)]
+    #dependancies_dataframe = FullModel[FullModel.index.isin(dependancies_list)]
 
     #print("\nAnalysing IGM consiting of following instances: \n")
     #print(dependancies_dataframe[[u'Model.profile', u'Model.created', u'Model.modelingAuthoritySet', u'Model.scenarioTime', u'Model.version']])
 
 
-    IGM_data = data[data.INSTANCE_ID.isin(dependancies_list)]
+    #IGM_data = data[data.INSTANCE_ID.isin(dependancies_list)]
+    IGM_data = pandas.merge(data, dependancies_list[["INSTANCE_ID"]].drop_duplicates(), right_on = "INSTANCE_ID", left_on = "INSTANCE_ID")
 
     EQ_UUID = IGM_data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")["INSTANCE_ID"].tolist()[0]
     EQ_data = data.query("INSTANCE_ID == '{}'".format(EQ_UUID))
@@ -130,7 +151,9 @@ for IGM in loaded_IGMs:
 
     # Find area EIC and scenario time
 
-    area_EIC = IGM_data.query("ID == '{}' & KEY == 'IdentifiedObject.energyIdentCodeEic'".format(Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]))["VALUE"].item()
+    ControlArea_UUID = IGM_data.query("VALUE == 'ControlArea'").ID.unique()[0]
+
+    area_EIC = IGM_data.query("ID == '{}' & KEY == 'IdentifiedObject.energyIdentCodeEic'".format(ControlArea_UUID))["VALUE"].item() # Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]
 
     scenario_time = aniso8601.parse_datetime(IGM_data.query("ID == '{}' & KEY == 'Model.scenarioTime'".format(IGM)).VALUE.item().replace("Z",""))
 
@@ -140,20 +163,45 @@ for IGM in loaded_IGMs:
 
 
     # Add netinterchange
-    netInterchange = IGM_data.query("ID == '{}' & KEY == 'ControlArea.netInterchange'".format(Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]))["VALUE"].item()
+    netInterchange = IGM_data.query("ID == '{}' & KEY == 'ControlArea.netInterchange'".format(ControlArea_UUID))["VALUE"].item() # Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]
     netinterchange_data.loc[scenario_time, area_EIC] = float(netInterchange)
+
+
+    # Add Equivalent Injection sum
+    try:
+        TP_BOUNDARY_ID = dependancies_list.query("PROFILE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
+        TP_TopologicalNodes = IGM_data.query("INSTANCE_ID == '{}'".format(TP_BOUNDARY_ID)).type_tableview("TopologicalNode")
+    except:
+        print("No boundary present, using ENTSO-E latest boundary")
+        TP_BOUNDARY_ID = data.query("VALUE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
+        TP_TopologicalNodes = data.query("INSTANCE_ID == '{}'".format(TP_BOUNDARY_ID)).type_tableview("TopologicalNode")
+
+    EquivalentInjections = IGM_data.type_tableview("EquivalentInjection")
+    EquivalentInjections_TopologicalNodes = pandas.merge(Terminal, EquivalentInjections, left_on = "Terminal.ConductingEquipment", right_index = True)
+
+    EquivalentInjections_sum = pandas.merge(Terminal, EquivalentInjections, left_on = "Terminal.ConductingEquipment", right_index = True)[['EquivalentInjection.p']].astype("float").sum().item()
+
+    equivalentinjections_data.loc[scenario_time, area_EIC] = EquivalentInjections_sum
+
+
 
 
 
 report_dict = {}
 
 report_dict["NetInterchange"] = netinterchange_data.sort_index()
-report_dict["TieFlow"] = tieflow_data.sort_index()
+report_dict["TieFlows"] = tieflow_data.sort_index()
+report_dict["EquivalentInjections"] = equivalentinjections_data.sort_index()
 
 print(pandas.concat(report_dict, axis=1)).round(1)
 
 id_1 = "2163f0d8-74f3-431b-92bb-df9480fe4bec"
 id_2 = "875c4766-b8d9-4f28-b317-ce6ef42d7743"
+
+
+
+##Terminal.ConductingEquipment -> EquivalentInjection
+##Terminal.TopologicalNode -> (Boundary TP)
 
 
 ##EQ_diff = data.query("INSTANCE_ID == '{}' or INSTANCE_ID == '{}'".format(id_1,id_2)).drop_duplicates(["ID","KEY","VALUE"],keep = False)
