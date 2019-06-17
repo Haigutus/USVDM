@@ -16,6 +16,8 @@ import pandas
 
 path = "FlowExample.zip"
 
+path = "/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/TestConfigurations_packageCASv2.0/MicroGrid/BaseCase_BC/CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip"
+
 #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
 
 data = load_all_to_dataframe([path])
@@ -28,6 +30,7 @@ print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 ACLineSegments          = data.type_tableview("ACLineSegment")
 Terminals               = data.type_tableview("Terminal")
 SvVoltages              = data.type_tableview("SvVoltage")
+SvPowerFlows            = data.type_tableview("SvPowerFlow")
 PowerTransformerEnds    = data.type_tableview("PowerTransformerEnd")
 #PowerTransformers       = data.type_tableview("PowerTransformer")
 
@@ -66,7 +69,7 @@ line_branches = pandas.merge(ACLineSegments_Terminals_SvVoltages[["Terminal.Cond
 
 branches = line_branches[(line_branches["SvVoltage.TopologicalNode_x"] != line_branches["SvVoltage.TopologicalNode_y"])]
 
-admittance_matrix = branches[["Terminal.ConductingEquipment","SvVoltage.TopologicalNode_x", "SvVoltage.TopologicalNode_y"]].pivot(index = "SvVoltage.TopologicalNode_x", columns = "SvVoltage.TopologicalNode_y") # Does not work with complex
+#admittance_matrix = branches[["Terminal.ConductingEquipment","SvVoltage.TopologicalNode_x", "SvVoltage.TopologicalNode_y"]].pivot(index = "SvVoltage.TopologicalNode_x", columns = "SvVoltage.TopologicalNode_y") # Does not work with complex
 
 
 
@@ -87,4 +90,39 @@ angle = PowerTransformerEnds_Terminals_SvVoltages["SvVoltage.angle"]
 
 S_base = 100
 
+# Reset index to keep UUID
+SynchronousMachines = data.type_tableview("SynchronousMachine")
+SynchronousMachines = pandas.merge(SynchronousMachines.reset_index(), Terminals.reset_index(), suffixes=('', '_Terminal'),    how = "inner", left_on = "ID", right_on = 'Terminal.ConductingEquipment')
+SynchronousMachines = pandas.merge(SynchronousMachines, SvVoltages,              suffixes=('', '_SvVoltage'),   how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+SynchronousMachines = pandas.merge(SynchronousMachines, SvPowerFlows,            suffixes=('', '_SvPowerFlow'), how = "inner", left_on = 'ID_Terminal', right_on = 'SvPowerFlow.Terminal')
 
+#['Equipment.EquipmentContainer', 'Equipment.aggregate', 'IdentifiedObject.description', 'IdentifiedObject.name', 'IdentifiedObject.shortName', 'RegulatingCondEq.RegulatingControl', 'RegulatingCondEq.controlEnabled', 'RotatingMachine.GeneratingUnit', 'RotatingMachine.p', 'RotatingMachine.q', 'RotatingMachine.ratedPowerFactor', 'RotatingMachine.ratedS', 'RotatingMachine.ratedU', 'SynchronousMachine.InitialReactiveCapabilityCurve', 'SynchronousMachine.earthing', 'SynchronousMachine.earthingStarPointR', 'SynchronousMachine.earthingStarPointX', 'SynchronousMachine.ikk', 'SynchronousMachine.maxQ', 'SynchronousMachine.minQ', 'SynchronousMachine.mu', 'SynchronousMachine.operatingMode', 'SynchronousMachine.qPercent', 'SynchronousMachine.r', 'SynchronousMachine.r0', 'SynchronousMachine.r2', 'SynchronousMachine.referencePriority', 'SynchronousMachine.satDirectSubtransX', 'SynchronousMachine.satDirectSyncX', 'SynchronousMachine.satDirectTransX', 'SynchronousMachine.shortCircuitRotorType', 'SynchronousMachine.type', 'SynchronousMachine.voltageRegulationRange', 'SynchronousMachine.x0', 'SynchronousMachine.x2', 'Type_x', 'ID', 'ACDCTerminal.connected', 'ACDCTerminal.sequenceNumber', 'IdentifiedObject.description_Terminal', 'IdentifiedObject.energyIdentCodeEic', 'IdentifiedObject.name_Terminal', 'IdentifiedObject.shortName_Terminal', 'Terminal.ConductingEquipment', 'Terminal.ConnectivityNode', 'Terminal.TopologicalNode', 'Terminal.phases', 'Type_Terminal', 'SvVoltage.TopologicalNode', 'SvVoltage.angle', 'SvVoltage.v', 'Type_SvVoltage', 'SvPowerFlow.Terminal', 'SvPowerFlow.p', 'SvPowerFlow.q', 'Type_y']
+print(SynchronousMachines[["ID", 'IdentifiedObject.name', 'RegulatingCondEq.controlEnabled', 'RotatingMachine.GeneratingUnit', 'RotatingMachine.p', 'RotatingMachine.q', 'RotatingMachine.ratedPowerFactor', 'RotatingMachine.ratedS', 'RotatingMachine.ratedU', 'SynchronousMachine.maxQ', 'SynchronousMachine.referencePriority', 'SynchronousMachine.voltageRegulationRange', 'ACDCTerminal.connected', 'SvVoltage.angle', 'SvVoltage.v', 'SvPowerFlow.p', 'SvPowerFlow.q']])
+
+
+def tableview_by_IDs(data, IDs_dataframe, IDs_column_name):
+    """Filters tripelstore by provided IDs and returns tabular view, IDs- as indexes and KEY-s as columns"""
+    class_name = IDs_column_name.split(".")[1]
+    meta_separator = "_"
+    result = pandas.merge(IDs_dataframe, data, left_on = IDs_column_name, right_on ="ID", how="inner", suffixes=('', meta_separator + class_name))[["ID_" + class_name, "KEY", "VALUE"]].drop_duplicates(["ID" + meta_separator + class_name, "KEY"]).pivot(index="ID" + meta_separator + class_name, columns ="KEY")["VALUE"]
+
+    return  result
+
+#GeneratingUnits = pandas.merge(SynchronousMachines, data, left_on = "RotatingMachine.GeneratingUnit", right_on = "ID", how= "inner", suffixes=('', '_GeneratingUnit'))[["ID_GeneratingUnit", "KEY", "VALUE"]].drop_duplicates(["ID_GeneratingUnit", "KEY"]).pivot(index="ID_GeneratingUnit", columns = "KEY")["VALUE"]
+
+GeneratingUnits = tableview_by_IDs(data, SynchronousMachines, "RotatingMachine.GeneratingUnit")
+
+
+SynchronousMachines = pandas.merge(SynchronousMachines, GeneratingUnits, left_on = "RotatingMachine.GeneratingUnit", right_index = True, how= "inner", suffixes=('', '_GeneratingUnit'))
+
+RegulatingControls = tableview_by_IDs(data, SynchronousMachines,'RegulatingCondEq.RegulatingControl')
+
+
+# Join views to get needed AC line data
+ACLineSegments = data.type_tableview("ACLineSegment")
+ACLineSegments = pandas.merge(ACLineSegments.reset_index(), Terminals.reset_index(), suffixes=('', '_Terminal'), how = "inner", left_on = "ID", right_on = 'Terminal.ConductingEquipment')
+
+#ACLineSegments = pandas.merge(ACLineSegments, SvVoltages,              suffixes=('', '_SvVoltage'),   how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
+#ACLineSegments = pandas.merge(ACLineSegments, SvPowerFlows,            suffixes=('', '_SvPowerFlow'), how = "inner", left_on = 'ID_Terminal', right_on = 'SvPowerFlow.Terminal')
+
+ConductingEquipment_terminals = pandas.merge(Terminals.reset_index(), Terminals.reset_index(), how = "inner", on = "Terminal.ConductingEquipment")
