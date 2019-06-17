@@ -1,0 +1,76 @@
+<h1>#SvPowerFlow</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>KEY</th>
+      <th>AssociationUsed</th>
+      <th>Type</th>
+      <th>comment</th>
+      <th>dataType</th>
+      <th>domain</th>
+      <th>inverseRoleName</th>
+      <th>label</th>
+      <th>multiplicity</th>
+      <th>range</th>
+      <th>stereotype</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#SvPowerFlow.Terminal</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The terminal associated with the power flow state variable.</td>
+      <td>None</td>
+      <td>#SvPowerFlow</td>
+      <td>#Terminal.SvPowerFlow</td>
+      <td>Terminal</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#Terminal</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#SvPowerFlow.p</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</td>
+      <td>#ActivePower</td>
+      <td>#SvPowerFlow</td>
+      <td>None</td>
+      <td>p</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#SvPowerFlow.q</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</td>
+      <td>#ReactivePower</td>
+      <td>#SvPowerFlow</td>
+      <td>None</td>
+      <td>q</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+  </tbody>
+</table>
