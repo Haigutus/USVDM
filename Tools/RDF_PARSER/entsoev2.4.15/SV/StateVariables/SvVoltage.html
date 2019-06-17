@@ -1,0 +1,76 @@
+<h1>#SvVoltage</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>KEY</th>
+      <th>AssociationUsed</th>
+      <th>Type</th>
+      <th>comment</th>
+      <th>dataType</th>
+      <th>domain</th>
+      <th>inverseRoleName</th>
+      <th>label</th>
+      <th>multiplicity</th>
+      <th>range</th>
+      <th>stereotype</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#SvVoltage.TopologicalNode</th>
+      <td>Yes</td>
+      <td>Description</td>
+      <td>The state voltage associated with the topological node.</td>
+      <td>None</td>
+      <td>#SvVoltage</td>
+      <td>#TopologicalNode.SvVoltage</td>
+      <td>TopologicalNode</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1</td>
+      <td>#TopologicalNode</td>
+      <td>None</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#SvVoltage.angle</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The voltage angle of the topological node complex voltage with respect to system reference.</td>
+      <td>#AngleDegrees</td>
+      <td>#SvVoltage</td>
+      <td>None</td>
+      <td>angle</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+    <tr>
+      <th>#SvVoltage.v</th>
+      <td>None</td>
+      <td>Description</td>
+      <td>The voltage magnitude of the topological node.</td>
+      <td>#Voltage</td>
+      <td>#SvVoltage</td>
+      <td>None</td>
+      <td>v</td>
+      <td>http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1</td>
+      <td>None</td>
+      <td>http://iec.ch/TC57/NonStandard/UML#attribute</td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</td>
+    </tr>
+  </tbody>
+</table>
