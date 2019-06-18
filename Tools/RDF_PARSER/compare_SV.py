@@ -21,27 +21,58 @@ import os
 
 import tempfile
 
-pandas.set_option("display.max_rows", 10)
+
+from CGMEStools import *
+
+
+
+
+pandas.set_option("display.max_rows", 15)
 pandas.set_option("display.max_columns", 6)
 pandas.set_option("display.width", 1000)
 
 
-paths = [r"C:\Users\kristjan.vilgo\Downloads\results_CVG\20190116T0930Z_1D_CGMEU_SV_000.zip",
-         r"C:\Users\kristjan.vilgo\Downloads\20190116_0930Z_ELES_HOPS_NOSBIH_TNA\20190116T0930Z_1D_CGMCE_SCC_SV_000\20190116T0930Z_1D_CGMCE_SCC_SV_000.xml",
-         r"C:\Users\kristjan.vilgo\Downloads\20190116T0930Z_1D_AMICA_merged_model_RGCE_Prague_meeting\20190116T0930Z_1D_CGMCE_SV_002.zip",
-         r"C:\Users\kristjan.vilgo\Downloads\2019016_0930Z_ELES_HOPS_NOSBIH_PowerFactory\3TSOsMerge\20190116T0930Z_1D_Abildgaard_SV_001\20190116T0930Z_1D_Abildgaard_SV_001.xml",
-         r"C:\Users\kristjan.vilgo\Downloads\export\20190325T1722Z_1D_CGMBA_SV_001\20190325T1722Z_1D_CGMBA_SV_001.xml",
-         r"C:\Users\kristjan.vilgo\Downloads\IGM_data.zip",
-         r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"]
+##paths = [r"C:\Users\kristjan.vilgo\Downloads\results_CVG\20190116T0930Z_1D_CGMEU_SV_000.zip",
+##         r"C:\Users\kristjan.vilgo\Downloads\20190116_0930Z_ELES_HOPS_NOSBIH_TNA\20190116T0930Z_1D_CGMCE_SCC_SV_000\20190116T0930Z_1D_CGMCE_SCC_SV_000.xml",
+##         r"C:\Users\kristjan.vilgo\Downloads\20190116T0930Z_1D_AMICA_merged_model_RGCE_Prague_meeting\20190116T0930Z_1D_CGMCE_SV_002.zip",
+##         r"C:\Users\kristjan.vilgo\Downloads\2019016_0930Z_ELES_HOPS_NOSBIH_PowerFactory\3TSOsMerge\20190116T0930Z_1D_Abildgaard_SV_001\20190116T0930Z_1D_Abildgaard_SV_001.xml",
+##         r"C:\Users\kristjan.vilgo\Downloads\export\20190325T1722Z_1D_CGMBA_SV_001\20190325T1722Z_1D_CGMBA_SV_001.xml",
+##         r"C:\Users\kristjan.vilgo\Downloads\IGM_data.zip",
+##         r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"]
+
+
+##paths = [r"C:\IOPs\IOP100419\RSC_MERGE\20190410_0930_Convergence_results_ELES_HOPS_NOSBIH\20190410T0930Z_1D_CGMEU_SV_001.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\20190410_0930Z_PowerFactory_ELES_HOPS_NOSBIH\EMF2019-04-10_0930Z_ELESHOPSNOSBIH\19700101T0000Z_1D_PowerFactory_SV_001.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\20190410_0930Z_SCC1_results_ELES_HOPS_NOSBIH\2\20190410T0930Z_1D_CGMCE_SCC_SV_001.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\20190410T0930Z_1D_BALTICRSC_CGMCE_001\20190410T0930Z_1D_BALTICRSC_CGMCE_001\20190410T0930Z_1D_CGMBA_SV_001.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\20190410T0930Z_1D_small_merge_AMICA\20190410T0930Z_1D_CGMCE_SV_002.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\20190410T0930Z_NRSC_Merge_ELES_HOPS_NOSBIH\20190410T0930Z_1D_CGMNO_SV_001.zip",
+##        r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip",
+##        r"C:\IOPs\IOP100419\RSC_MERGE\IGM_TP_EQ.zip"
+##]
+
+
+# Define here paths that you want to load. Load only SV files you want to compare, usually CGM SV files
+paths = [r"C:\IOPs\IOP150519\RSC_MERGE\20190515T0930Z_1D_BALTICRSC-CE_002.zip",
+         r"C:\IOPs\IOP150519\RSC_MERGE\20190515T0930Z_1D_CORESO-CE_002.zip",
+         r"C:\IOPs\IOP150519\RSC_MERGE\20190515T0930Z_1D_HANS-CE_004.zip",
+         r"C:\IOPs\IOP150519\RSC_MERGE\20190515T0930Z_1D_TSCNET-CE_003_distributed_slack.zip",
+         r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip",
+         r"C:\IOPs\IOP150519\RSC_MERGE\IGM.zip"
+         ]
 
 
 data = load_all_to_dataframe(paths)
+
+
 
 loaded_profiles = data.type_tableview("FullModel")[[u'Model.created', u'Model.description', u'Model.modelingAuthoritySet', u'Model.profile', u'Model.scenarioTime', u'Model.version']] #
 print(loaded_profiles)
 
 comparison_dict = {"statistics":{}, "data":{}, "report":{"Instances": loaded_profiles}}
 SV_UUID_list = data.query("VALUE == 'http://entsoe.eu/CIM/StateVariables/4/1'").ID.tolist()
+
+EMF_namelist = []
 
 for SV_UUID in SV_UUID_list:
 
@@ -59,6 +90,8 @@ for SV_UUID in SV_UUID_list:
     comparison_dict["statistics"]["{}".format(EMF_name)] = instance_data.types_dict()
     comparison_dict["data"]["{}".format(EMF_name)]       = instance_data
 
+    EMF_namelist.append(EMF_name)
+
 
 statistics = pandas.DataFrame(comparison_dict["statistics"])
 comparison_dict["report"]["SvStatistics"] = statistics
@@ -72,7 +105,7 @@ settings = [dict(index = "SvTapStep.TapChanger",      merge_column = "SvTapStep.
             dict(index = "SvVoltage.TopologicalNode", merge_column = "SvVoltage.v"),
             dict(index = "SvVoltage.TopologicalNode", merge_column = "SvVoltage.angle")]
 
-data.query("VALUE == 'ControlArea'")
+#data.query("VALUE == 'ControlArea'")
 
 # Create all comparison tables
 for setting in settings:
@@ -108,138 +141,65 @@ for setting in settings:
 
     # Add statistics
 
-    columns = [u'<baltic-rsc.eu> - <rte-france.fr>', u'<baltic-rsc.eu> - <nordic-rsc.net>', u'<baltic-rsc.eu> - <tscnet.eu>', u'<baltic-rsc.eu> - <scc-rsci.com>']
+    #columns = [u'<baltic-rsc.eu> - <rte-france.fr>', u'<baltic-rsc.eu> - <nordic-rsc.net>', u'<baltic-rsc.eu> - <tscnet.eu>', u'<baltic-rsc.eu> - <scc-rsci.com>']
 
-    comparison_dict["report"][column_name + "_" + "statistics"] = comparison_dict["report"][column_name][columns].describe()
+    comparison_dict["report"][column_name + "_" + "statistics"] = comparison_dict["report"][column_name][EMF_namelist].describe()
 
-excel_writer = pandas.ExcelWriter(r"C:\Users\kristjan.vilgo\Downloads\SV_comparison.xlsx")
+##excel_writer = pandas.ExcelWriter(r"C:\IOPs\IOP150519\RSC_MERGE\SV_comparison_150519.xlsx")
+##
+##for report in comparison_dict["report"].keys():
+##    comparison_dict["report"][report].to_excel(excel_writer, sheet_name = report)
+##
+##excel_writer.save()
 
-for report in comparison_dict["report"].keys():
-    comparison_dict["report"][report].to_excel(excel_writer, sheet_name = report)
 
-excel_writer.save()
+print(loaded_profiles[loaded_profiles["Model.profile"]=="http://entsoe.eu/CIM/StateVariables/4/1"])
 
+print("all data is avaialbel in 'comparison_dict'")
+print(comparison_dict.keys())
 
-
-### Test realtion visulisation
-##
-##def relations_from(from_UUID, show = True):
-##
-##    level = 1
-##
-##    identified_objects  = {from_UUID:{"data":data[data.ID == from_UUID], "level":level}}
-##    connections         = []
-##    UUID_list           = [from_UUID]
-##
-##    for UUID in UUID_list:
-##
-##        level += 1
-##
-##        for _, row in identified_objects[UUID]["data"].iterrows():
-##
-##
-##            refered_UUID   = row.VALUE
-##            refered_object = data[data.ID == refered_UUID]
-##
-##            # Test if valid reference to object (if dataframe is empty, no object was found)
-##            if refered_object.empty:
-##                continue
-##
-##            # Lets add connection to valid object
-##            connections.append(dict(FROM = UUID, TO = refered_UUID, NAME = row.KEY))
-##
-##            # Test if we allready don't have the element
-##            if refered_UUID in UUID_list:
-##                print("This object is allready analyzed -> {}".format(refered_UUID))
-##                continue
-##
-##            # If not then add it
-##            identified_objects[refered_UUID] = {"data":refered_object, "level":level}
-##            UUID_list.append(refered_UUID)
-##
-##
-##    # Visulise with pyvis
-##
-##    if show == True:
-##
-##        graph = Network(directed = True, width = "100%", height = 750)
-##
-##        for identified_object in identified_objects.keys():
-##
-##            level     = identified_objects[identified_object]["level"]
-##            dataframe = identified_objects[identified_object]["data"]
-##            node_type = dataframe[dataframe.KEY == "Type"].VALUE.tolist()[0]
-##
-##            node_name_list = dataframe[dataframe.KEY == "IdentifiedObject.name"].VALUE.tolist()
-##
-##            if node_name_list:
-##                node_name = node_name_list[0]
-##            else:
-##                node_name = urlparse(dataframe[dataframe.KEY == "Model.profile"].VALUE.tolist()[0]).path # FullModel does not have IdentifiedObject.name
-##
-##
-##            graph.add_node(identified_object, node_type + " - " + node_name, title = dataframe.to_html(index = False), size = 10, level = level) #[["KEY", "VALUE"]]
-##
-##        for connection in connections:
-##            graph.add_edge(connection["FROM"], connection["TO"], title = connection["NAME"])
-##
-##
-##        # Set options
-##
-##        options = {
-##          "nodes": {
-##            "shape": "dot",
-##            "size": 10
-##          },
-##          "edges": {
-##            "color": {
-##              "inherit": True
-##            },
-##            "smooth": False
-##          },
-##          "layout": {
-##            "hierarchical": {
-##              "enabled": True,
-##              "direction": "LR",
-##              "sortMethod": "directed"
-##            }
-##          },
-##          "interaction": {
-##            "navigationButtons": True
-##          },
-##          "physics": {
-##            "hierarchicalRepulsion": {
-##              "centralGravity": 0,
-##              "springLength": 75,
-##              "nodeDistance": 145,
-##              "damping": 0.2
-##            },
-##            "maxVelocity": 28,
-##            "minVelocity": 0.75,
-##            "solver": "hierarchicalRepulsion"
-##          }
-##        }
-##
-##
-##
-##        #graph.show_buttons()
-##
-##        graph.options = options
-##
-##        os.chdir(tempfile.mkdtemp())
-##        graph.show(r"{}.html".format(from_UUID))
-##
-##
-##    return connections, identified_objects
-##
-##
-##
 ##relations_from('000319d5-61de-4ed8-a5a3-9058d85012d1')
 
+# Generate classical data views needed to extract relevant data
+
+ACLineSegments          = data.type_tableview("ACLineSegment")
+Terminals               = data.type_tableview("Terminal")
+
+PowerTransformerEnds    = data.type_tableview("PowerTransformerEnd")
+SynchronousMachines     = data.type_tableview("SynchronousMachine")
+
+#PowerTransformers       = data.type_tableview("PowerTransformer")
+
+SynchronousMachines = pandas.merge(SynchronousMachines.reset_index(), Terminals.reset_index(), suffixes=('', '_Terminal'),    how = "inner", left_on = "ID", right_on = 'Terminal.ConductingEquipment')
+
+# Query for referenced object
+GeneratingUnits    = tableview_by_IDs(data, SynchronousMachines,"RotatingMachine.GeneratingUnit")
+RegulatingControls = tableview_by_IDs(data, SynchronousMachines,"RegulatingCondEq.RegulatingControl")
+
+# Add data from referenced objects
+SynchronousMachines = pandas.merge(SynchronousMachines, GeneratingUnits, left_on = "RotatingMachine.GeneratingUnit", right_index = True, how= "inner", suffixes=('', '_GeneratingUnit'))
 
 
 
 
+sv_profiles = loaded_profiles[loaded_profiles["Model.profile"]=="http://entsoe.eu/CIM/StateVariables/4/1"]
+
+for UUID, row in sv_profiles.iterrows():
+
+    authority = row['Model.modelingAuthoritySet']
+
+    try:
+        EMF_name = urlparse(authority).netloc
+
+    except:
+        print("No modelling authorityset found or invalid url -> {}, using SV UUID".format(authority))
+        EMF_name = SV_UUID
+
+    SvVoltages              = data.query("INSTANCE_ID == '{}'".format(UUID)).type_tableview("SvVoltage").add_prefix(EMF_name + "_")
+    SvPowerFlows            = data.query("INSTANCE_ID == '{}'".format(UUID)).type_tableview("SvPowerFlow").add_prefix(EMF_name + "_")
+
+    SynchronousMachines = pandas.merge(SynchronousMachines, SvVoltages,              suffixes=('', '_SvVoltage'),   how = "inner", left_on = 'Terminal.TopologicalNode', right_on = EMF_name + '_SvVoltage.TopologicalNode')
+    SynchronousMachines = pandas.merge(SynchronousMachines, SvPowerFlows,            suffixes=('', '_SvPowerFlow'), how = "inner", left_on = 'ID_Terminal', right_on = EMF_name + '_SvPowerFlow.Terminal')
 
 
 
