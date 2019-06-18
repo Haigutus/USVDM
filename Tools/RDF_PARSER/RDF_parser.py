@@ -51,12 +51,12 @@ def load_RDF_objects_from_XML(path_or_fileobject):
     parsed_xml = etree.parse(path_or_fileobject, parser = parser)
     model_id = parsed_xml.find("./").attrib.values()[0].replace("urn:uuid:", "") # Lets asume that the first RDF element describes the whole document
     #model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
-    _,start_time = print_duration("XML loaded to tree object", start_time)
+    #_,start_time = print_duration("XML loaded to tree object", start_time)
 
 
     # EXTRACT RDF OBJECTS
     RDF_objects = parsed_xml.getroot().iterchildren()
-    _,start_time = print_duration("All children put to a generator", start_time)
+    #_,start_time = print_duration("All children put to a generator", start_time)
 
 
 
@@ -112,11 +112,11 @@ def load_RDF_to_dataframe(path_or_fileobject):
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
             data_list.append([ID, KEY, VALUE, INSTANCE_ID])
 
-    _,start_time = print_duration("All values put to data list", start_time)
+    #_,start_time = print_duration("All values put to data list", start_time)
 
 
     data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
-    _,start_time = print_duration("Data list loaded to DataFrame", start_time)
+    #_,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
     return data
 
@@ -180,7 +180,7 @@ def load_RDF_to_list(path_or_fileobject):
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
             data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
-    _,start_time = print_duration("All values put to data list", start_time)
+    #_,start_time = print_duration("All values put to data list", start_time)
 
 
     return data_list
@@ -193,13 +193,14 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
 
     for item in list_of_paths_to_zip_globalzip_xml:
 
-        if ".xml" in item or ".rdf" in item:
+
+        if ".xml" in item or ".rdf" in item or ".XML" in item:
             xml_files_list.append(item)
-            print("Added: {}".format(item))
+            #print("Added: {}".format(item))
 
         elif ".zip" in item:
             zip_files_list.append(item)
-            print("Added for further processing: {}".format(item))
+            #print("Added for further processing: {}".format(item))
 
         else: print("Not supported file: {}".format(item))
 
@@ -211,15 +212,15 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
 
         for zipped_file in zipped_files:
 
-            if ".xml" in zipped_file or ".rdf" in zipped_file:
+            if ".xml" in zipped_file or ".rdf" in zipped_file or ".XML" in zipped_file:
                 file_object = BytesIO(zip_container.read(zipped_file))
                 file_object.name = zipped_file
                 xml_files_list.append(file_object)
-                print("Added: {}".format(zipped_file))
+                #print("Added: {}".format(zipped_file))
 
             elif ".zip" in zipped_file:
                 zip_files_list.append(BytesIO(zip_container.read(zipped_file)))
-                print("Added for further processing: {}".format(zipped_file))
+                #print("Added for further processing: {}".format(zipped_file))
 
             else: print("Not supported file: {}".format(zipped_file))
 
@@ -245,7 +246,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
     start_time = datetime.datetime.now()
     data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
 
-    _,start_time = print_duration("Data list loaded to DataFrame", start_time)
+    #_,start_time = print_duration("Data list loaded to DataFrame", start_time)
 
     return data
 
