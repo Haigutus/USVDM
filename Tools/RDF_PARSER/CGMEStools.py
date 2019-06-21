@@ -149,6 +149,8 @@ def get_relations_from(data, from_UUID, show = True, notebook = False):
 
         level += 1
 
+        # TODO - use merge instead of a loop
+
         for _, row in identified_objects[UUID]["data"].iterrows():
 
 
@@ -247,13 +249,13 @@ def get_relations_from(data, from_UUID, show = True, notebook = False):
 
 def statistics_GeneratingUnit_types(data):
     """Returns statistics of GeneratingUnit types """
+
     list_of_generating_units = data.query("KEY == 'GeneratingUnit.initialP'").ID.tolist() # Random compulsory field in all Genrating units
     value_counts = pandas.DataFrame(data[data.ID.isin(list_of_generating_units)].query("KEY == 'Type'")[["ID", "VALUE"]].drop_duplicates()["VALUE"].value_counts())
+
+    #value_counts= pandas.DataFrame(statistics_ConcreteClasses(data).filter(like="Generating")) # Should be faster, but not might find all
     value_counts["TOTAL"] = value_counts.sum()["VALUE"]
     value_counts["%"] = value_counts["VALUE"]/value_counts["TOTAL"]*100
-
-    #value_counts= statistics_ConcreteClasses(igm_data).filter(like="Generating") # Alterantive
-
 
     return value_counts
 
@@ -291,10 +293,14 @@ def tableview_by_IDs(data, IDs_dataframe, IDs_column_name):
     """Filters tripelstore by provided IDs and returns tabular view, IDs- as indexes and KEY-s as columns"""
     class_name = IDs_column_name.split(".")[1]
     meta_separator = "_"
-    result = pandas.merge(IDs_dataframe, data, left_on = IDs_column_name, right_on ="ID", how="inner", suffixes=('', meta_separator + class_name))
-    [["ID_" + class_name, "KEY", "VALUE"]].\
-    drop_duplicates(["ID" + meta_separator + class_name, "KEY"]).\
-    pivot(index="ID" + meta_separator + class_name, columns ="KEY")["VALUE"]
+    result = pandas.merge(IDs_dataframe, data,
+                          left_on  = IDs_column_name,
+                          right_on = "ID",
+                          how      = "inner",
+                          suffixes=('', meta_separator + class_name))\
+                          [["ID_" + class_name, "KEY", "VALUE"]].\
+                          drop_duplicates(["ID" + meta_separator + class_name, "KEY"]).\
+                          pivot(index="ID" + meta_separator + class_name, columns ="KEY")["VALUE"]
 
     return  result
 
