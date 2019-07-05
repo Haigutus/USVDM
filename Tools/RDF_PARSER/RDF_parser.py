@@ -16,6 +16,7 @@ from lxml import etree
 import pandas
 import datetime
 import zipfile
+import uuid
 
 #from multiprocessing import Pool
 
@@ -77,7 +78,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
     start_time = datetime.datetime.now()
 
-    data_list = []
+    data_list = [(str(uuid.uuid4()), "Lable", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:Lable
 
     #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
     ID      = ""
@@ -110,7 +111,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
 
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
-            data_list.append([ID, KEY, VALUE, INSTANCE_ID])
+            data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
     #_,start_time = print_duration("All values put to data list", start_time)
 
@@ -136,7 +137,7 @@ def load_RDF_to_list(path_or_fileobject):
 
     start_time = datetime.datetime.now()
 
-    data_list = []
+    data_list = [(str(uuid.uuid4()), "Lable", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:Lable
 
     #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
     ID      = ""
