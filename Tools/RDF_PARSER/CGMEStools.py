@@ -22,20 +22,46 @@ from lxml import etree
 
 def get_metadata_from_filename(file_name):
 
+    # Separators
+    file_type_separator = "."
+    meta_separator = "_"
+    entity_and_area_separator = "-"
+
     #print(file_name)
     file_metadata = {}
     file_name, file_metadata["file_type"] = file_name.split(".")
 
-    if "_EQ_" in file_name or "_BD_" in file_name:
+    # Parse file metadata
+    file_meta_list = file_name.split(meta_separator)
 
-        file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_name.split(meta_separator)
+    if len(file_meta_list) == 4:
+
+        file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_meta_list
         file_metadata["process_type"] = ""
 
+        print("Warning - only 4 meta elements found, expecting 5, setting processtype to empty string")
+
+    if len(file_meta_list) == 5:
+
+            file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_meta_list
+
     else:
-        try:
-            file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_name.split(meta_separator)
-        except:
-            print ("Non CGMES file {}".format(file_name))
+        print("Non CGMES file {}".format(file_name))
+
+
+    entity_and_area_list = file_metadata["model_authority"].split(entity_and_area_separator)
+
+    if len(entity_and_area_list) == 1:
+        file_metadata["TSO"] = entity_and_area_list[0]
+        file_metadata["RSC"], file_metadata["synchronous_area"] = "", ""
+
+    if len(entity_and_area_list) == 2:
+        file_metadata["RSC"], file_metadata["synchronous_area"] = entity_and_area_list
+        file_metadata["TSO"] = ""
+
+    if len(entity_and_area_list) == 3:
+        file_metadata["RSC"], file_metadata["synchronous_area"], file_metadata["TSO"] = entity_and_area_list
+
 
     return file_metadata
 
