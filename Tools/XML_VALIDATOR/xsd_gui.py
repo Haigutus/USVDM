@@ -65,18 +65,24 @@ app.layout = html.Div(children=[
 def display_output(content): # TODO higlight erronous rows in xml editor
 
 
-    errors_list = xsd.validate_XML_string(content)
-    errors_string = ""
+    status_list = xsd.validate_XML_string(content)
 
-    if type(errors_list) == list:
+    status_string = ""
 
-        for error in errors_list:
-            errors_string += "line {} - {}\n".format(error["line"], error["message"])
+    for item in status_list:
+        status_string += "{} -> {}\n".format(item["type"], item["status"])
 
-    else:
-        errors_string = str(errors_list)
 
-    return errors_string
+        if item["type"] == "Validation":
+
+            for error in item["errors"]:
+                status_string += "line {} - {}\n".format(error["line"], error["message"])
+
+        else:
+            for error in item["errors"]:
+                status_string += "{}\n".format(error)
+
+    return status_string
 
 if __name__ == '__main__':
     app.run_server(debug=False, host= '0.0.0.0', port=8020)
