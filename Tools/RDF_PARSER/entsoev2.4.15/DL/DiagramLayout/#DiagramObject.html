@@ -1,0 +1,126 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>minOccurs</th>
+      <th>maxOccurs</th>
+      <th>domain</th>
+      <th>label</th>
+      <th>comment</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#DiagramObject.Diagram</th>
+      <td>1</td>
+      <td>None</td>
+      <td>#DiagramObject</td>
+      <td>Diagram</td>
+      <td>A diagram object is part of a diagram.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.DiagramObjectPoints</th>
+      <td>0</td>
+      <td>n</td>
+      <td>#DiagramObject</td>
+      <td>DiagramObjectPoints</td>
+      <td>A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons).</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.DiagramObjectStyle</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>DiagramObjectStyle</td>
+      <td>A diagram object has a style associated that provides a reference for the style used in the originating system.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.IdentifiedObject</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>IdentifiedObject</td>
+      <td>The diagram objects that are associated with the domain object.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.VisibilityLayers</th>
+      <td>0</td>
+      <td>n</td>
+      <td>#DiagramObject</td>
+      <td>VisibilityLayers</td>
+      <td>A diagram object can be part of multiple visibility layers.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.drawingOrder</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>drawingOrder</td>
+      <td>The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.isPolygon</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>isPolygon</td>
+      <td>Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.offsetX</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>offsetX</td>
+      <td>The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.offsetY</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>offsetY</td>
+      <td>The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.</td>
+    </tr>
+    <tr>
+      <th>#DiagramObject.rotation</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#DiagramObject</td>
+      <td>rotation</td>
+      <td>Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.DiagramObjects</th>
+      <td>0</td>
+      <td>n</td>
+      <td>#IdentifiedObject</td>
+      <td>DiagramObjects</td>
+      <td>The domain object to which this diagram object is associated.</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.mRID</th>
+      <td>0</td>
+      <td>1</td>
+      <td>#IdentifiedObject</td>
+      <td>mRID</td>
+      <td>Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</td>
+    </tr>
+    <tr>
+      <th>#IdentifiedObject.name</th>
+      <td>1</td>
+      <td>1</td>
+      <td>#IdentifiedObject</td>
+      <td>name</td>
+      <td>The name is any free human readable and possibly non unique text naming the object.</td>
+    </tr>
+  </tbody>
+</table>
