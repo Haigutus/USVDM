@@ -41,26 +41,26 @@ def get_metadata_from_filename(file_name):
 
         print("Warning - only 4 meta elements found, expecting 5, setting processtype to empty string")
 
-    if len(file_meta_list) == 5:
+    elif len(file_meta_list) == 5:
 
             file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_meta_list
 
     else:
         print("Non CGMES file {}".format(file_name))
 
+    if file_metadata.get("model_authority", False):
+        entity_and_area_list = file_metadata["model_authority"].split(entity_and_area_separator)
 
-    entity_and_area_list = file_metadata["model_authority"].split(entity_and_area_separator)
+        if len(entity_and_area_list) == 1:
+            file_metadata["TSO"] = entity_and_area_list[0]
+            file_metadata["RSC"], file_metadata["synchronous_area"] = "", ""
 
-    if len(entity_and_area_list) == 1:
-        file_metadata["TSO"] = entity_and_area_list[0]
-        file_metadata["RSC"], file_metadata["synchronous_area"] = "", ""
+        if len(entity_and_area_list) == 2:
+            file_metadata["RSC"], file_metadata["synchronous_area"] = entity_and_area_list
+            file_metadata["TSO"] = ""
 
-    if len(entity_and_area_list) == 2:
-        file_metadata["RSC"], file_metadata["synchronous_area"] = entity_and_area_list
-        file_metadata["TSO"] = ""
-
-    if len(entity_and_area_list) == 3:
-        file_metadata["RSC"], file_metadata["synchronous_area"], file_metadata["TSO"] = entity_and_area_list
+        if len(entity_and_area_list) == 3:
+            file_metadata["RSC"], file_metadata["synchronous_area"], file_metadata["TSO"] = entity_and_area_list
 
 
     return file_metadata
