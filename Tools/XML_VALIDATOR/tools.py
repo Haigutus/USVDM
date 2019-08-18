@@ -71,25 +71,87 @@ def find_all_xsds():
     return xsd_dataframe
 
 
-def load_xml_string(XML_string):
+def load_XML(XML_string):
 
-    error = ""
+    status_dict = {"type":"XML"}
 
     # Load XML
     print("Loading XML xml string")
     try:
         parser = etree.XMLParser(remove_comments=True, encoding='utf-8')
-        xml_doc = etree.fromstring(XML_string.encode(), parser=parser)
-        print("XML loaded")
+        xml_doc = etree.fromstring(XML_string.encode(), parser = parser)
 
-    except etree.XMLSyntaxError as error:
+        print("OK - XML loaded")
+        status_dict["status"] = "OK - loaded"
+        status_dict["errors"] = ""
 
-        print("Loading XML failed")
-        #print(error)
+    except Exception as error:
+
+        print("ERROR - Loading XML failed")
+        print(error)
         print(error.args)
 
-        return error
+        status_dict["status"] = "ERROR - Loading failed"
+        status_dict["errors"] = error.args
+        xml_doc = ""
+
+    return status_dict, xml_doc
 
 
-    return xml_doc
+
+def load_XSD_file(XSD_file):
+
+    status_dict = {"type":"XSD"}
+
+    # Load XSD
+    print("Loading XSD from")
+    try:
+        xml_schema_doc = etree.parse(XSD_file)
+        xml_schema = etree.XMLSchema(xml_schema_doc)
+
+
+        print("OK - XSD loaded")
+        print(xml_schema.error_log)
+
+        status_dict["status"] = "OK - loaded"
+        status_dict["errors"] = xml_schema.error_log
+
+    except Exception as error:
+        print(error)
+        print("ERROR - Loading XSD failed")
+
+        status_dict["status"] = "ERROR - Loading failed"
+        status_dict["errors"] = [error]
+        xml_schema = ""
+
+    return status_dict, xml_schema
+
+
+def load_XSD_string(XSD_string):
+
+    status_dict = {"type":"XSD"}
+
+    # Load XSD
+    print("Loading XSD")
+    try:
+        parser = etree.XMLParser(remove_comments=True, encoding='utf-8')
+        xml_schema_doc = etree.fromstring(XSD_string.encode(), parser = parser)
+        xml_schema = etree.XMLSchema(xml_schema_doc)
+
+
+        print("OK - XSD loaded")
+        print(xml_schema.error_log)
+
+        status_dict["status"] = "OK - loaded"
+        status_dict["errors"] = xml_schema.error_log
+
+    except Exception as error:
+        print(error)
+        print("ERROR - Loading XSD failed")
+
+        status_dict["status"] = "ERROR - Loading failed"
+        status_dict["errors"] = error
+        xml_schema = ""
+
+    return status_dict, xml_schema
 

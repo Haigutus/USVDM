@@ -10,7 +10,8 @@
 #-------------------------------------------------------------------------------
 
 import sys, os
-sys.path.append(r'C:\USVDM\Tools\MADES_API')
+
+sys.path.append(r'..\MADES_API')
 import OPDM_SOAP_client as OPDM_API
 import EDX_MADES_client as EDX_API
 
@@ -30,7 +31,9 @@ CET = pytz.timezone("Europe/Brussels")
 now = datetime.now(CET)
 meta_separator = "_"
 
-elements_dictionary, complex_variables_dictionary, variables_dictionary = create_conf_from_XSD("C:\USVDM\Tools\XML_GENERATOR\QAR_v2_20170113\QAR_v2_20170113.xsd")
+
+elements_dictionary, complex_variables_dictionary, variables_dictionary = create_conf_from_XSD(r"QAR_v2_20170113\QAR_v2_20170113.xsd")
+
 
 def complex_variable_name(name_string, position = "0"):
     """To catch case where name is written wrong"""
@@ -49,23 +52,26 @@ def get_day_start(date_time = now):
 
 def metadata_from_filename(file_name):
 
-    print(file_name)
-    file_metadata = {}
+    file_metadata = {} # Meta container
+
     file_name, file_metadata["file_type"] = file_name.split(".")
+    meta_list = file_name.split(meta_separator)
 
 
-    if "_EQ_" in file_name or "_BD_" in file_name:
 
-        file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_name.split(meta_separator)
+    if len(meta_list) == 4:   #try: #if "_EQ_" in file_name or "_BD_" in file_name:
+
+        file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = meta_list
         file_metadata["process_type"] = ""
 
+
+    elif len(meta_list) == 5:
+
+        file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = meta_list
+
+
     else:
-
-        try:
-            file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_name.split(meta_separator)
-
-        except:
-            print ("Non CGMES file {}".format(file_name))
+        print("Parsing error, number of allowed meta in filename is 4 or 5 separated by '_' -> {} ".format(file_name))
 
     return file_metadata
 
@@ -95,24 +101,15 @@ def profile_query_result_to_dataframe(query_result):
     return query_dataframe
 
 
-server_ip   = '185.7.252.111'
-username    = 'Elering_baltic-rsc.eu'
-password    = 'Gb8JCNF'
-
-TSOs = ['ELERING', 'LITGRID', 'AST']
-
-
-
-
 
 delivery_date = get_day_start() + aniso8601.parse_duration("P0D")
 base_bath = "/RSC/CGM/OUT/{}/".format(delivery_date.strftime("%Y%m%d"))
 
+sys.path.append("C:\GIT")
+import baltic_ftp
+files_list = baltic_ftp.get_file_list(base_bath)
 
-session = ftplib.FTP(server_ip, username, password)
-session.cwd(base_bath)
-files_list = session.nlst()
-
+TSOs = ['ELERING', 'LITGRID', 'AST']
 meta_list = []
 
 for n, file_name in enumerate(files_list):
@@ -132,18 +129,101 @@ cgm_profiles = pandas.DataFrame(meta_list)
 
 timestamps = cgm_profiles["date_time"].unique()
 
-timestamp = cgm_profiles["date_time"].unique()[0]
-TSO = TSOs[0]
-instance_type = "SV"
+
+#timestamp = cgm_profiles["date_time"].unique()[0]
+#TSO = TSOs[0]
+
+# Neede only if basic auth is set up for UI
+server = "https://er-opdm.elering.sise"
+
+username = "admin"
+password = "sadmin"
+
+service = EDX_API.EDXService(server, username, password, debug = False)
+
+for timestamp in timestamps:
+    for TSO in TSOs:
+
+        query_id, query_result = OPDM_API.query_object(object_type = "IGM", metadata_dict = {'pmd:TSO': TSO, 'pmd:validFrom': timestamp})
+
+        try:
+            profile_list = query_result['sm:QueryResult']['sm:part'][1]['opdm:OPDMObject']["opde:Component"]
+        except:
+            print("No profiles returned")
+            continue
+
+        #cgm_profiles.query("date_time == '{date_time}' & model_authority == '{model_authority}' & profile == 'SV'".format(date_time = timestamp, model_authority = TSO))
+
+        profile_dicts_list = []
+
+        for profile in profile_list:
+
+            profile_dicts_list.append(profile['opdm:Profile'])
 
 
-query_id, query_result = API.query_object(object_type = "IGM", metadata_dict = {'pmd:TSO': TSO, 'pmd:validFrom': timestamp})
+        profiles_dataframe = pandas.DataFrame(profile_dicts_list)
 
-try:
-    profile_list = query_result['sm:QueryResult']['sm:part'][1]['opdm:OPDMObject']["opde:Component"]
-except:
-    print("No profiles returned")
-    continue
+        dependacies_list = profiles_dataframe["pmd:modelid"].tolist()
+
+        E = ElementMaker(namespace="http://entsoe.eu/checks", nsmap={None:'http://entsoe.eu/checks'})
+
+        QAReport_attributes = {  'created': datetime.utcnow().isoformat(sep='T'),#", timespec='seconds'),
+                                 'schemeVersion': "2.0",
+                                 'serviceProvider': "Baltic"}
+
+        QAReport = E(complex_variable_name("QAReport"), "", QAReport_attributes)
+
+        SV = profiles_dataframe[profiles_dataframe["pmd:cgmesProfile"] == "SV"]
+
+        created         = SV["pmd:creationDate"].item()
+        processType     = SV["pmd:timeHorizon"].item()
+        scenarioTime    = SV["pmd:scenarioDate"].item()
+        tso             = SV["pmd:TSO"].item()
+        version         = SV["pmd:version"].item()
+
+        IGM_attributes = {   'created': created,
+                             'processType': processType,
+                             'qualityIndicator': 'Plausible',
+                             'scenarioTime': scenarioTime,
+                             'tso': tso,
+                             'version': version}
+
+
+        IGM = E(complex_variable_name("IGM"),"",IGM_attributes)
+        QAReport.append(IGM)
+
+        for UUID in dependacies_list:
+            resource = E(complex_variable_name("IGM","1"), UUID)
+            IGM.append(resource)
+
+
+
+        #print(etree.tostring(QAReport, pretty_print=True, xml_declaration=True, encoding='UTF-8').decode())
+
+
+        with open("_".join(["QAR", tso, processType, scenarioTime.replace(":",""), version]) + ".xml", "w") as export_file:
+            export_file.write(etree.tostring(QAReport, pretty_print=True, xml_declaration=True, encoding='UTF-8').decode())
+
+
+        test_message_ID = service.send_message("10V1001A1001B106", "ENTSOE-OPDM-ValidateResult", etree.tostring(QAReport, pretty_print=True, xml_declaration=True, encoding='UTF-8'), "38V-EE-OPDM----S", "", "")
+
+        status = service.check_message_status(test_message_ID)
+
+
+
+
+##timestamp = cgm_profiles["date_time"].unique()[0]
+##TSO = TSOs[0]
+##instance_type = "SV"
+##
+##
+##query_id, query_result = API.query_object(object_type = "IGM", metadata_dict = {'pmd:TSO': TSO, 'pmd:validFrom': timestamp})
+##
+##try:
+##    profile_list = query_result['sm:QueryResult']['sm:part'][1]['opdm:OPDMObject']["opde:Component"]
+##except:
+##    print("No profiles returned")
+##    continue
 
 #cgm_profiles.query("date_time == '{date_time}' & model_authority == '{model_authority}' & profile == 'SV'".format(date_time = timestamp, model_authority = TSO))
 

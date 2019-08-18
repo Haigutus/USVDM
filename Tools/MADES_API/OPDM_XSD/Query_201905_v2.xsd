@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://entsoe.eu/checks" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:entso-e="http://entsoe.eu/checks" elementFormDefault="qualified" version="1.0">
+
+	<xs:element name="QASQuery" type="entso-e:QASQuery"/>
+
+	<xs:complexType name="QASQuery">
+		<xs:sequence>
+			<xs:element name="IGM" type="entso-e:IGM" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CGM" type="entso-e:CGM" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="created" use="required" type="xs:dateTime"/>
+		<xs:attribute name="schemeVersion" use="required" type="xs:decimal"/>
+	</xs:complexType>
+
+	<xs:complexType name="IGM">
+		<xs:sequence>
+			<xs:element name="processType" type="entso-e:ProcessType"/>
+			<xs:element name="tso" type="xs:string"/>
+			<xs:element name="scenarioDate" type="xs:date"/>
+			<xs:element name="scenarioTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="version" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>If version is not specified, the last version will be provided.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+
+	<xs:complexType name="CGM">
+		<xs:sequence>
+			<xs:element name="processType" type="entso-e:ProcessType"/>
+			<xs:element name="RSCName" type="entso-e:RSCName"/>
+			<xs:element name="CGMType" type="entso-e:CGMType"/>
+			<xs:element name="scenarioDate" type="xs:date"/>
+			<xs:element name="scenarioTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="version" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>If version is not specified, the last version will be provided.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="RSCName">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BALTICRSC"/>
+			<xs:enumeration value="CORESO"/>
+			<xs:enumeration value="NORDICRSC"/>
+			<xs:enumeration value="SCCRSCI"/>
+			<xs:enumeration value="TSCNET"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CGMType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BA"/>
+			<xs:enumeration value="CE"/>
+			<xs:enumeration value="EU"/>
+			<xs:enumeration value="IN"/>
+			<xs:enumeration value="NO"/>
+			<xs:enumeration value="UK"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ProcessType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="14"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="16"/>
+			<xs:enumeration value="17"/>
+			<xs:enumeration value="18"/>
+			<xs:enumeration value="19"/>
+			<xs:enumeration value="1D"/>
+			<xs:enumeration value="20"/>
+			<xs:enumeration value="21"/>
+			<xs:enumeration value="22"/>
+			<xs:enumeration value="23"/>
+			<xs:enumeration value="MO"/>
+			<xs:enumeration value="RT"/>
+			<xs:enumeration value="WK"/>
+			<xs:enumeration value="YR"/>
+			<xs:enumeration value="2D"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
