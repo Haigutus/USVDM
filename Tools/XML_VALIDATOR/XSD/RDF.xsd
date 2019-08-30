@@ -1,0 +1,60 @@
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+
+    <xs:import namespace = "http://iec.ch/TC57/61970-552/ModelDescription/1#" schemaLocation="FullModel.xsd" />
+
+    <!-- RDF element definition -->
+    <xs:element name="RDF">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="md:FullModel" maxOccurs="1" minOccurs="1"/>
+                <xs:any namespace="##any" processContents="skip" maxOccurs="unbounded" minOccurs="1"/> <!-- Any other RDF element, reasonably ateales one should be there -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:attribute name="about" type="IdentifiedObject.mRID_String"/>
+    <xs:attribute name="ID" type="IdentifiedObject.mRID_String"/>
+    <xs:attribute name="resource" type="IdentifiedObject.mRID_String"/>
+
+    <xs:simpleType name="IdentifiedObject.mRID_String">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                rdf:ID - resource identifier valid within the scope of a document
+                rdf:about - globally valid resource identifier
+                rdf:resource - reference to a resource referring to its rdf:ID or rdf:about
+
+                refer to [61970-552_Ed3 6 - Object identification] for more details
+
+                Examples:
+                - rdf:ID=”_26cc8d71-3b7e-4cf8-8c93-8d9d557a4846” the rdf:ID” form.
+                - rdf:about=”#_26cc8d71-3b7e-4cf8-8c93-8d9d557a4846” the “hash” form.
+                - rdf:about=”urn:uuid:26cc8d71-3b7e-4cf8-8c93-8d9d557a4846” the “urn:uuid:” form.
+
+                [61970-452_Ed3 4.2]
+                rdf:ID – 60 characters maximum
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>                     <!-- 61970-452_Ed3 4.2 -->
+            <xs:pattern value="(((urn:uuid:)|(#_)|(_))[A-Za-z0-9_-]*)"/>   <!-- 61970-552_Ed3 6.3 -->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdentifiedObject.name_String">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                [61970-452_Ed3 4.2]
+                IdentifiedObject.name – 32 characters maximum
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="32"/> <!-- 61970-452_Ed3 4.2 -->
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

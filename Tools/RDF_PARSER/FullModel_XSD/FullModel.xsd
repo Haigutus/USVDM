@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+           xmlns="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+  <xs:import namespace = "http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="RDF.xsd"/>
+
+  <xs:element name="FullModel" type="FullModel_Type"/>
+
+  <!-- FullModel element definition -->
+  <xs:complexType name="FullModel_Type" mixed="true">
+    <xs:annotation>
+          <xs:documentation xml:lang="en">
+        [61970-552_Ed2 5.2]
+            A header section describes the content of the model section contained in a document e.g. the
+            date the model was created, description etc. The header may also identify other models and
+            their relationship to the present model. Such information is important when the models are
+            part of a work flow where, for example, the models have relations to each other, e.g. a model
+            succeeds and/or depends on another.
+
+            Single header element is allowed in a CIMXML document
+
+        [61970-552_Ed2 5.2]
+            The Model class describes the header content that is the same for the FullModel and the
+            DifferenceModel. A Model is identified by an rdf:about attribute. The rdf:about attribute
+            uniquely describe the model data and not the CIMXML document A new rdf:about
+            identification is generated for created documents only when the model data has changed.
+            A repeated creation of documents from unchanged model data should have the same
+            rdf:about identification as previous document generated from the same model data.
+      </xs:documentation>
+    </xs:annotation>
+
+    <!-- Order should not matter that's why we should use xs:all, but XSD 1.0 does not support unbounded in xs:all, so for now xs:sequence is used-->
+    <xs:sequence>
+      <xs:element name="Model.scenarioTime" maxOccurs="1" minOccurs="1" type="xs:dateTime"/>
+      <xs:element name="Model.created" maxOccurs="1" minOccurs="1" type="xs:dateTime"/>
+      <xs:element name="Model.description" maxOccurs="1" minOccurs="1" type="Model.description_String"/>
+      <xs:element name="Model.version" maxOccurs="1" minOccurs="1" type="Model.version_Integer"/>
+      <xs:element name="Model.profile" maxOccurs="unbounded" minOccurs="1" type="Model.profile_Type"/>
+      <xs:element name="Model.modelingAuthoritySet" maxOccurs="1" minOccurs="1" type="xs:anyURI"/>
+      <xs:element name="Model.DependentOn" maxOccurs="unbounded" minOccurs="0" type="Model.Relation_Type"/>
+      <xs:element name="Model.Supersedes" maxOccurs="unbounded" minOccurs="0" type="Model.Relation_Type"/>
+      <!-- <xs:element name="Model.Replaces" minOccurs="0" type="Model.Relation_Type"/> Could not find where this is defined -->
+    </xs:sequence>
+    <xs:attribute ref="rdf:about"/> <!--61970-552_Ed3-->
+  </xs:complexType>
+
+  <xs:simpleType name="Model.version_Integer">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        [61970-552_Ed2 5.3 Table 2 - version]
+         A description of the version of the model sourcing the data in a CIMXML document. Examples are
+          – Variations of the equipment model for the ModelingAuthoritySet
+          – Different study cases resulting in different solutions.
+          The version attribute is an integer that is changed in synchronisation with
+          the rdf:about identifier, refer to description of the Model class preceding
+          this table.
+         [QoDC v2]
+          Limited from 0 to 999
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:minExclusive value="0"/>
+      <xs:maxExclusive value="999"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Model.description_String">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+         [61970-552_Ed2 5.3 Table 2]
+         A description of the model, e.g. the name of person that created the
+         model and for what purpose. The number of UTF-8 characters is limited to 2000.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2000" /> <!-- 61970-552_Ed2 5.3 Table 2 -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Model.Relation_Type">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+
+        The referenced models are identified by rdf:resource attribute referring to the original FullModel rdf:about attribute.
+
+        [61970-552_Ed2 5.3 Table 2 - DependentOn]
+          References to other models that the model in this document depends on, e.g.
+            – A load flow solution depends on the topology model it was computed from
+            – A topology model computed by a topology processor depends on the network model it was computed from.
+
+        [61970-552_Ed2 5.3 Table 2 - Supersedes]
+          When a model is updated the resulting model supersedes the models that
+          were used as basis for the update. Hence this is a reference to the
+          models that are superseded by the model in this document. A model can
+          supersede one or more models, for each superseded model one
+          Supersedes reference is included in the header.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="rdf:resource"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="Model.profile_Type">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">
+         [61970-552_Ed2 5.3 Table 2 - profile]
+         A urn describing the Profiles that governs this model. It uniquely identifies the Profile and its version.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:anyURI">
+        <xs:enumeration value="http://entsoe.eu/CIM/Topology/4/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/EquipmentCore/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/EquipmentOperation/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/EquipmentShortCircuit/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/StateVariables/4/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/GeographicalLocation/2/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/DiagramLayout/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/TopologyBoundary/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/EquipmentBoundary/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1"/>
+        <xs:enumeration value="http://entsoe.eu/CIM/Dynamics/3/1"/>
+      </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

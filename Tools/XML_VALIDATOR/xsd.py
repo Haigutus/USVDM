@@ -11,6 +11,8 @@
 
 from tools import *
 
+#https://github.com/sissaschool/xmlschema
+
 
 def validate_XML_string(XML_string, XSD_string = False):
 
@@ -29,7 +31,8 @@ def validate_XML_string(XML_string, XSD_string = False):
     if XSD_string == False:
         # Find XML root namespace and corresponding XSD
 
-        root_namespace = xml_doc.nsmap.get(None)
+        #root_namespace = xml_doc.nsmap.get(None)
+        root_namespace = xml_doc.getroottree().getroot().tag.split("}")[0][1:]
         xsd_dataframe = find_all_xsds()
         XSD_path_list = xsd_dataframe.query("target_namespace == '{}'".format(root_namespace))["file_path"].tolist()
 
@@ -49,6 +52,7 @@ def validate_XML_string(XML_string, XSD_string = False):
         #Load XSD
         status_list.append({"type":"XSD_used", "status":"Using provided XSD", "errors":""})
         XSD_status, xml_schema = load_XSD_string(XSD_string)
+        #print(xml_schema)
 
     status_list.append(XSD_status)
 
@@ -109,12 +113,18 @@ def validate_XML_string(XML_string, XSD_string = False):
 if __name__ == "__main__":
 
 
-    XML = r"""example.xml"""
+    XML = r"""/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/TestConfigurations_packageCASv2.0/MiniGrid/BusBranch/CGMES_v2.4.15_MiniGridTestConfiguration_BaseCase_v3/MiniGridTestConfiguration_BC_EQ_v3.0.0.xml"""
+    XSD = r"""/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/FullModel_XSD/RDF.xsd"""
 
 
-    check_path([XML]) # DEBUG
+    check_path([XML, XSD]) # DEBUG
+
 
     XML_string = open(XML,"r").read()
+    #XSD_string = open(XSD, "r").read()
     status_list = validate_XML_string(XML_string)
 
-    for line in status_list: print(line)
+    for line in status_list:
+        print(line)
+        for error in line["errors"]:
+            print(error)
