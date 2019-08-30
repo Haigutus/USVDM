@@ -18,9 +18,8 @@ import datetime
 import zipfile
 import uuid
 
-#from multiprocessing import Pool
+#from multiprocessing import Pool - TODO add parallel loading for import ALL
 
-import re
 
 #pandas.set_option("display.height", 1000)
 pandas.set_option("display.max_rows", 15)
@@ -42,15 +41,30 @@ def print_duration(text, start_time):
 
     return duration, end_time
 
+def clean_ID(ID):
+
+    # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s? is replace once sufficent?
+
+    replace_count = 1 # Remove only once the ID prefix string, otherwise we risk of removing characters from within ID
+    clean_ID      = ID.replace("urn:uuid:", "", replace_count).replace("#_", "", replace_count).replace("_", "", replace_count)
+
+    return clean_ID
+
+
 def load_RDF_objects_from_XML(path_or_fileobject):
 
     # START TIMER
+
     start_time = datetime.datetime.now()
 
     # LOAD XML
-    parser =  etree.XMLParser(remove_comments=True, collect_ids = False)
-    parsed_xml = etree.parse(path_or_fileobject, parser = parser)
-    model_id = parsed_xml.find("./").attrib.values()[0].replace("urn:uuid:", "") # Lets asume that the first RDF element describes the whole document
+
+    parser     = etree.XMLParser(remove_comments=True, collect_ids=False)   # TODO - try remove_blank_text, remove_pis
+    parsed_xml = etree.parse(path_or_fileobject, parser = parser)           # TODO - add iterparse for Python3
+
+    # Get unique ID for loaded instance
+
+    instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
     #model_id = parsed_xml.find(".//{http://iec.ch/TC57/61970-552/ModelDescription/1#}FullModel").attrib.values()[0].replace("urn:uuid:", "")
     #_,start_time = print_duration("XML loaded to tree object", start_time)
 
@@ -61,7 +75,7 @@ def load_RDF_objects_from_XML(path_or_fileobject):
 
 
 
-    return RDF_objects, model_id
+    return RDF_objects, instance_id
 
 
 def load_RDF_to_dataframe(path_or_fileobject):
@@ -90,10 +104,13 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
     for object in RDF_objects:
 
-        ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+        replace_count = 1 # Remove only once the ID prefix string, otherwise we risk of removing characters from within ID
+
+        ID = clean_ID(object.attrib.values()[0])
+        #ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
         #ID_TYPE = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
         #KEY = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
-        KEY = 'Type'
+        KEY = 'Type' # But we don't
         VALUE = object.tag.split("}")[1]
 
         #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
@@ -106,7 +123,7 @@ def load_RDF_to_dataframe(path_or_fileobject):
 
             if VALUE == None and len(element.attrib.values()) > 0:
 
-                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+                VALUE = clean_ID(element.attrib.values()[0])
 
 
 
@@ -133,8 +150,6 @@ def load_RDF_to_list(path_or_fileobject):
 
     RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject)
 
-    INSTANCE_ID = INSTANCE_ID.replace("_", "")
-
     start_time = datetime.datetime.now()
 
     data_list = [(str(uuid.uuid4()), "Lable", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:Lable
@@ -144,24 +159,15 @@ def load_RDF_to_list(path_or_fileobject):
     KEY     = ""
     VALUE   = ""
 
-##
-##    ID_regex_string = r"(urn:uuid:)|(#_)|(_)"
-##    VALUE_regex_string = r"(urn:uuid:)|(#_)"
-##
-##    ID_regex = re.compile(ID_regex_string)
-##    VALUE_regex = re.compile(VALUE_regex_string)
-
-
-    # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s?
-
     for object in RDF_objects:
 
-        ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
+        ID      = clean_ID(object.attrib.values()[0])
+        #ID = object.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
         #ID = ID_regex.sub("",object.attrib.values()[0]) # Was slower than regular replace, but maybe regex can be optimized
         #ID_TYPE = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
         #KEY = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
-        KEY = 'Type'
-        VALUE = object.tag.split("}")[1]
+        KEY     = 'Type'
+        VALUE   = object.tag.split("}")[1]
 
         #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
         data_list.append((ID, KEY, VALUE, INSTANCE_ID))
@@ -173,10 +179,7 @@ def load_RDF_to_list(path_or_fileobject):
 
             if VALUE == None and len(element.attrib.values()) > 0:
 
-                VALUE = element.attrib.values()[0].replace("urn:uuid:", "").replace("#_", "").replace("_", "")
-                #VALUE = VALUE_regex.sub("", element.attrib.values()[0]) # Was slower than regular replace, bu maybe regex can be optimized
-
-
+                VALUE = clean_ID(element.attrib.values()[0])
 
             #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE
             data_list.append((ID, KEY, VALUE, INSTANCE_ID))
@@ -190,12 +193,12 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml):
     """Retunrs list of file objects and/or paths"""
 
     xml_files_list = []
-    zip_files_list = []
+    zip_files_list = [] # TODO - add support random folders awell
 
     for item in list_of_paths_to_zip_globalzip_xml:
 
 
-        if ".xml" in item or ".rdf" in item or ".XML" in item:
+        if ".xml" in item or ".rdf" in item or ".XML" in item: # TODO - add item.lower()
             xml_files_list.append(item)
             #print("Added: {}".format(item))
 
@@ -236,6 +239,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml):
     #data = pandas.DataFrame()
     data_list = []
 
+##    TODO - add paralel processing if number inputs is greater than X - top be decided
 ##    process_pool = Pool(5)
 ##    data_list = sum(process_pool.map(load_RDF_to_list, list_of_xmls),[])
 
