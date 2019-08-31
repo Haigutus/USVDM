@@ -63,8 +63,8 @@
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:integer">
-      <xs:minExclusive value="0"/>
-      <xs:maxExclusive value="999"/>
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="999"/>
     </xs:restriction>
   </xs:simpleType>
 
