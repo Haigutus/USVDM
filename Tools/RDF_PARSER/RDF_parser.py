@@ -250,67 +250,107 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
 
 
 def type_tableview(data, type_name):
+    """Creates a table view of all objects of same type, with their parameters in columns"""
 
-    "Creates a table view of all elements of defined type, with their parameters in columns"
-
-##    type_id_list = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))["ID"].tolist()
-##    type_data = data[data.ID.isin(type_id_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
-
+    # Get all ID-s of rows where Type == type_name
     type_id  = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
+
+    # Filter original data by found type_id data
     type_data = pandas.merge(type_id[["ID"]], data, right_on = "ID", left_on = "ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
+    # Convert form triplets to a table view all objects of same type
     data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
-    data_view = data_view.apply(pandas.to_numeric, errors='ignore') # Convert to numbers all columns that contain only numbers
+
+    # Convert to data type to numeric in columns that contain only numbers (for easier data usage later on)
+    data_view = data_view.apply(pandas.to_numeric, errors='ignore')
 
     return data_view
 
-pandas.DataFrame.type_tableview = type_tableview #Lets extend this fuctionality to pandas DataFrame
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.type_tableview = type_tableview
 
 
-def reference_tableview(data, reference):
+def references_to(data, reference, columns=["Type"]):
+    """Creates a table view of all elements that refer to specified element
+        by default returns two columns ID and Type, but this can be extended"""
 
-    "Creates a table view of all elements that refer to specific element, returns only id, type, name"
+    # Get all row ID-s where VALUE == reference
+    reference_id = data.query("VALUE == '{}'".format(reference))[["ID"]]
 
-    reference_list = data.query("VALUE == '{}'".format(reference))["ID"].tolist()
-    reference_data = data[data.ID.isin(reference_list)].drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot
+    # Filter original data by found references data
+    # TODO this is used to get object type and name, but maybe it would make sense just get ID-s (speed)
+    reference_data = pandas.merge(reference_id, data, on="ID").drop_duplicates(["ID", "KEY"])
 
-    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][["Type", "IdentifiedObject.name"]]
+    # Convert form triplets to a table view with three columns - ID, Type, IdentifiedObject.name
+    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
 
     return data_view
 
-pandas.DataFrame.reference_tabeleview = reference_tableview #Lets extend this fuctionality to pandas DataFrame
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.references_to = references_to
+
+
+def references_from(data, reference, columns=["Type"]):
+    """Creates a table view of all elements that specified element refers to,
+     by default returns two columns ID and Type, but this can be extended"""
+
+    # Get all values of reference object VALUE columns
+    reference_id = data.query("ID == '{}'".format(reference))[["VALUE"]]
+
+    # Filter original data ID-s by values form reference object
+    # TODO this is used to get object type, but maybe it would make sense just get ID-s (speed)
+    reference_data = pandas.merge(reference_id, data,
+                                  left_on="VALUE",
+                                  right_on="ID",
+                                  suffixes=("REFERENCE","")).drop_duplicates(["ID", "KEY"])
+
+    # TODO maybe return also all reference objects
+
+    # Convert form triplets to a table view with columns - ID, Type by default
+    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
+
+    return data_view
+
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.references_from = references_from
 
 
 def types_dict(data):
-
-    "Returns dictionary with all types as keys and number of their occurrences as values"
+    """Returns dictionary with all types as keys and number of their occurrences as values"""
 
     types_dictionary = data[(data.KEY == "Type")]["VALUE"].value_counts().to_dict()
 
-    return  types_dictionary
+    return types_dictionary
 
+
+# Extend this functionality to pandas DataFrame
 pandas.DataFrame.types_dict = types_dict
 
 
 # END OF FUNCTIONS
 
 
-# TEST and examples
+# TEST AND EXAMPLES
 if __name__ == '__main__':
 
-
-    path = "FlowExample.zip"
-
-    path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
-
-    #path = r"C:\Users\kristjan.vilgo\Downloads\20190216T2130Z_1D_LITGRID_TP_001.zip"
+    path = "TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
     data = load_all_to_dataframe([path], debug = True)
 
-    #print("Loaded types")
-    #print(data[(data.KEY == "Type")]["VALUE"].value_counts())
+    print("Loaded types")
+    print(data.query("KEY == 'Type'")["VALUE"].value_counts())
 
-    #print(data.type_tableview("ACLineSegment"))
+    print("Example how to get table view of all objects of specified type")
+    print(data.type_tableview("ACLineSegment"))
+
+    print("Example how to get objects referring to specified object")
+    print(data.references_to("99722373_VL_TN1", columns = ['Type', 'IdentifiedObject.name']))
+
+    print("Example how to get objects that specified object refers to")
+    print(data.references_from("99722373_VL_TN1", columns = ['Type', 'IdentifiedObject.name']))
 
 
     # model = "FlowExample.zip"
