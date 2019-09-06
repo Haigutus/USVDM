@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        ENTSOE_TSO_MAP_REPORT
+# Purpose:      Make coloured maps from CVG template
 #
 # Author:      kristjan.vilgo
 #
 # Created:     20.03.2018
 # Copyright:   (c) kristjan.vilgo 2018
-# Licence:     <your licence>
+# Licence:     GPL2
 #-------------------------------------------------------------------------------
 
 from __future__ import print_function
