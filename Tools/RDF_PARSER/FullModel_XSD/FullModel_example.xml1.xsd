@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="RDF" type="rdf:RDFType" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  <xs:attribute name="about" type="xs:string"/>
+  <xs:attribute name="resource" type="xs:string"/>
+  <xs:complexType name="RDFType">
+    <xs:sequence>
+      <xs:element ref="ns:FullModel" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
