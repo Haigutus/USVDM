@@ -271,47 +271,124 @@ def type_tableview(data, type_name):
 pandas.DataFrame.type_tableview = type_tableview
 
 
-def references_to(data, reference, columns=["Type"]):
-    """Creates a table view of all elements that refer to specified element
-        by default returns two columns ID and Type, but this can be extended"""
+def references_to_simple(data, reference, columns=["Type"]):
+    """Creates a table view of all elements that specified element refers to,
+    by default returns two columns ID and Type, but this can be extended"""
 
-    # Get all row ID-s where VALUE == reference
-    reference_id = data.query("VALUE == '{}'".format(reference))[["ID"]]
+    reference_data = data.references_to(reference, levels=1).drop_duplicates(["ID", "KEY"])
 
-    # Filter original data by found references data
-    # TODO this is used to get object type and name, but maybe it would make sense just get ID-s (speed)
-    reference_data = pandas.merge(reference_id, data, on="ID").drop_duplicates(["ID", "KEY"])
-
-    # Convert form triplets to a table view with three columns - ID, Type, IdentifiedObject.name
+    # Convert form triplets to a table view with columns - ID, Type by default
     data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
 
     return data_view
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.references_to_simple = references_to_simple
+
+
+def references_to(data, reference, levels=1):
+    """Return all triplets referred by reference object"""
+
+    # Get all values of reference object VALUE columns
+
+    objects_data = pandas.DataFrame()
+
+    object_data = data.query("VALUE == '{}'".format(reference)).copy()
+
+    objects_list = [object_data]
+    level = 0
+
+    for object in objects_list:
+
+        # End loop if we have reached desired level
+        if level > levels:
+            break
+
+        # Set object level
+        object["level"] = level
+
+        # Add objects to general objects dataframe
+        objects_data = objects_data.append(object)
+
+        # Get column where possible reference to other objects reside
+        reference_column = object[["ID"]]
+
+        # Filter original data by found references data
+        reference_data = pandas.merge(reference_column, data, on="ID").drop_duplicates(["ID", "KEY"])
+
+        if not reference_data.empty:
+
+            reference_data["ID_TO"] = reference
+            objects_list.append(reference_data.copy())
+
+        level +=1
+
+    return objects_data
 
 
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.references_to = references_to
 
 
-def references_from(data, reference, columns=["Type"]):
+def references_from_simple(data, reference, columns=["Type"]):
     """Creates a table view of all elements that specified element refers to,
-     by default returns two columns ID and Type, but this can be extended"""
+    by default returns two columns ID and Type, but this can be extended"""
 
-    # Get all values of reference object VALUE columns
-    reference_id = data.query("ID == '{}'".format(reference))[["VALUE"]]
-
-    # Filter original data ID-s by values form reference object
-    # TODO this is used to get object type, but maybe it would make sense just get ID-s (speed)
-    reference_data = pandas.merge(reference_id, data,
-                                  left_on="VALUE",
-                                  right_on="ID",
-                                  suffixes=("REFERENCE","")).drop_duplicates(["ID", "KEY"])
-
-    # TODO maybe return also all reference objects
+    reference_data = data.references_from(reference, levels=1).drop_duplicates(["ID", "KEY"])
 
     # Convert form triplets to a table view with columns - ID, Type by default
     data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
 
     return data_view
+
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.references_from_simple = references_from_simple
+
+
+def references_from(data, reference, levels=1):
+    """Return all triplets referred by reference object"""
+
+    # TODO - add levels
+
+    # Get all values of reference object VALUE columns
+
+    objects_data = pandas.DataFrame()
+
+    object_data = data.query("ID == '{}'".format(reference)).copy()
+
+    objects_list = [object_data]
+    level = 0
+
+    for object in objects_list:
+
+        # End loop if we have reached desired level
+        if level > levels:
+            break
+
+        # Set object level
+        object["level"] = level
+
+        # Add objects to general objects dataframe
+        objects_data = objects_data.append(object)
+
+        # Get column where possible reference to other objects reside
+        reference_column = object[["VALUE"]]
+
+        # Filter original data ID-s by values form reference object
+        reference_data = pandas.merge(reference_column, data,
+                                      left_on="VALUE",
+                                      right_on="ID",
+                                      suffixes=("_FROM",""))
+
+        if not reference_data.empty:
+
+            reference_data["ID_FROM"] = reference
+            objects_list.append(reference_data.copy())
+
+        level +=1
+
+    return objects_data
 
 
 # Extend this functionality to pandas DataFrame
@@ -347,10 +424,10 @@ if __name__ == '__main__':
     print(data.type_tableview("ACLineSegment"))
 
     print("Example how to get objects referring to specified object")
-    print(data.references_to("99722373_VL_TN1", columns = ['Type', 'IdentifiedObject.name']))
+    print(data.references_to_simple("99722373_VL_TN1"))
 
     print("Example how to get objects that specified object refers to")
-    print(data.references_from("99722373_VL_TN1", columns = ['Type', 'IdentifiedObject.name']))
+    print(data.references_from_simple("99722373_VL_TN1"))
 
 
     # model = "FlowExample.zip"
