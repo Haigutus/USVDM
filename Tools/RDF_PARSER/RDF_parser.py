@@ -287,16 +287,22 @@ pandas.DataFrame.references_to_simple = references_to_simple
 
 
 def references_to(data, reference, levels=1):
-    """Return all triplets referred by reference object"""
+    """Return all object pointing towards reference object"""
 
-    # Get all values of reference object VALUE columns
+    # TODO - add the key on which connection was made
 
+    # Get the object itself
+    object_data = data.query("ID == '{}'".format(reference)).copy()
+    object_data["level"] = 0
+
+
+    # Dataframe where to keep the results
     objects_data = pandas.DataFrame()
+    objects_data = objects_data.append(object_data)
 
-    object_data = data.query("VALUE == '{}'".format(reference)).copy()
-
+    # Add object to processing list
     objects_list = [object_data]
-    level = 0
+    level = 1
 
     for object in objects_list:
 
@@ -304,22 +310,29 @@ def references_to(data, reference, levels=1):
         if level > levels:
             break
 
-        # Set object level
-        object["level"] = level
-
-        # Add objects to general objects dataframe
-        objects_data = objects_data.append(object)
 
         # Get column where possible reference to other objects reside
         reference_column = object[["ID"]]
 
-        # Filter original data by found references data
-        reference_data = pandas.merge(reference_column, data, on="ID").drop_duplicates(["ID", "KEY"])
+        # Filter original data VALUE-s by found references ID-s
+        reference_data = pandas.merge(reference_column, data,
+                                      left_on="ID",
+                                      right_on="VALUE",
+                                      suffixes = ("_TO", "_FROM"))[["ID_TO", "ID_FROM"]].drop_duplicates("ID_FROM")
+
+
 
         if not reference_data.empty:
+            referring_objects = pandas.merge(reference_data, data, left_on="ID_FROM", right_on="ID").drop(columns=["ID_FROM"])
 
-            reference_data["ID_TO"] = reference
-            objects_list.append(reference_data.copy())
+            # Add data for future processing
+            objects_list.append(referring_objects.copy())
+
+            # Set object level
+            referring_objects["level"] = level
+
+            # Add objects to general objects dataframe
+            objects_data = objects_data.append(referring_objects)
 
         level +=1
 
@@ -347,9 +360,9 @@ pandas.DataFrame.references_from_simple = references_from_simple
 
 
 def references_from(data, reference, levels=1):
-    """Return all triplets referred by reference object"""
+    """Return all triplets that reference object points to"""
 
-    # TODO - add levels
+    # TODO - add the key on which connection was made
 
     # Get all values of reference object VALUE columns
 
@@ -373,7 +386,7 @@ def references_from(data, reference, levels=1):
         objects_data = objects_data.append(object)
 
         # Get column where possible reference to other objects reside
-        reference_column = object[["VALUE"]]
+        reference_column = object[["ID", "VALUE"]]
 
         # Filter original data ID-s by values form reference object
         reference_data = pandas.merge(reference_column, data,
@@ -383,7 +396,7 @@ def references_from(data, reference, levels=1):
 
         if not reference_data.empty:
 
-            reference_data["ID_FROM"] = reference
+            #reference_data["ID_FROM"] = reference
             objects_list.append(reference_data.copy())
 
         level +=1
