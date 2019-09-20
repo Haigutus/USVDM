@@ -31,8 +31,8 @@ pandas.set_option("display.width", 1000)
 
 # FUNCTIONS - go down for sample code
 
-def print_duration(text, start_time):
 
+def print_duration(text, start_time):
     """Print duration between now and start time
     Input: text, start_time
     Output: duration (in seconds), end_time"""
@@ -43,15 +43,17 @@ def print_duration(text, start_time):
 
     return duration, end_time
 
+
 def remove_prefix(original_string, prefix_string):
     "Removes prefix from a string"
 
-    prefix_lenght = len(prefix_string)
+    prefix_length = len(prefix_string)
 
-    if original_string[0:prefix_lenght] == prefix_string:
-        return original_string[prefix_lenght:]
+    if original_string[0:prefix_length] == prefix_string:
+        return original_string[prefix_length:]
 
     return original_string
+
 
 def clean_ID(ID):
     """Removes ID prefixes used in CIM - first occourance of 'urn:uuid:', '#_', '_' is replaced by empty string"""
@@ -96,17 +98,17 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug = False):
 
 
 def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
-    """Retunrs list of file objects and/or paths"""
+    """Returns list of file objects and/or paths"""
 
     xml_files_list = []
-    zip_files_list = [] # TODO - add support random folders awell
+    zip_files_list = [] # TODO - add support random folders aswell
 
     for item in list_of_paths_to_zip_globalzip_xml:
 
 
         item_lower = item.lower()
 
-        if ".xml" in item_lower or ".rdf" in item_lower: # TODO - add item.lower()
+        if ".xml" in item_lower or ".rdf" in item_lower:
             xml_files_list.append(item)
 
             if debug:
@@ -119,7 +121,6 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
                 print("Added for further processing: {}".format(item))
 
         else: print("WARNING 1 - Not supported file: {}".format(item))
-
 
     for zip_file_path in zip_files_list:
 
@@ -145,7 +146,6 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
                     print("Added for further processing: {}".format(zipped_file))
 
             else: print("WARNING 2 - Not supported file: {}".format(zipped_file))
-
 
     return xml_files_list
 
@@ -275,10 +275,10 @@ def references_to_simple(data, reference, columns=["Type"]):
     """Creates a table view of all elements that specified element refers to,
     by default returns two columns ID and Type, but this can be extended"""
 
-    reference_data = data.references_to(reference, levels=1).drop_duplicates(["ID", "KEY"])
+    reference_data = data.references_to(reference, levels=1).drop_duplicates(["ID_FROM", "KEY"])
 
     # Convert form triplets to a table view with columns - ID, Type by default
-    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
+    data_view = reference_data.pivot(index="ID_FROM", columns="KEY")["VALUE"][columns]
 
     return data_view
 
@@ -294,6 +294,7 @@ def references_to(data, reference, levels=1):
     # Get the object itself
     object_data = data.query("ID == '{}'".format(reference)).copy()
     object_data["level"] = 0
+    object_data["ID_FROM"] = reference
 
 
     # Dataframe where to keep the results
@@ -320,10 +321,10 @@ def references_to(data, reference, levels=1):
                                       right_on="VALUE",
                                       suffixes = ("_TO", "_FROM"))[["ID_TO", "ID_FROM"]].drop_duplicates("ID_FROM")
 
-
-
         if not reference_data.empty:
-            referring_objects = pandas.merge(reference_data, data, left_on="ID_FROM", right_on="ID").drop(columns=["ID_FROM"])
+            referring_objects = pandas.merge(reference_data, data,
+                                             left_on="ID_FROM",
+                                             right_on="ID")#.drop(columns=["ID_FROM"])
 
             # Add data for future processing
             objects_list.append(referring_objects.copy())
@@ -331,12 +332,12 @@ def references_to(data, reference, levels=1):
             # Set object level
             referring_objects["level"] = level
 
-            # Add objects to general objects dataframe
+            # Add objects to general objects data frame
             objects_data = objects_data.append(referring_objects)
 
         level +=1
 
-    return objects_data
+    return objects_data#.rename(columns={"ID":"ID_FROM"})
 
 
 # Extend this functionality to pandas DataFrame
@@ -347,10 +348,10 @@ def references_from_simple(data, reference, columns=["Type"]):
     """Creates a table view of all elements that specified element refers to,
     by default returns two columns ID and Type, but this can be extended"""
 
-    reference_data = data.references_from(reference, levels=1).drop_duplicates(["ID", "KEY"])
+    reference_data = data.references_from(reference, levels=1).drop_duplicates(["ID_TO", "KEY"])
 
     # Convert form triplets to a table view with columns - ID, Type by default
-    data_view = reference_data.pivot(index="ID", columns="KEY")["VALUE"][columns]
+    data_view = reference_data.pivot(index="ID_TO", columns="KEY")["VALUE"][columns]
 
     return data_view
 
@@ -382,7 +383,7 @@ def references_from(data, reference, levels=1):
         # Set object level
         object["level"] = level
 
-        # Add objects to general objects dataframe
+        # Add objects to general objects data frame
         objects_data = objects_data.append(object)
 
         # Get column where possible reference to other objects reside
@@ -401,7 +402,7 @@ def references_from(data, reference, levels=1):
 
         level +=1
 
-    return objects_data
+    return objects_data.rename(columns={"ID":"ID_TO"})
 
 
 # Extend this functionality to pandas DataFrame

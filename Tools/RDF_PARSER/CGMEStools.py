@@ -6,12 +6,13 @@
 #
 # Created:     10.06.2019
 # Copyright:   (c) kristjan.vilgo 2019
-# Licence:     <your licence>
+# Licence:     GPLv2
 #-------------------------------------------------------------------------------
 from __future__ import print_function
 import pandas
 
-from urlparse import urlparse
+#from urlparse import urlparse
+from urllib.parse import urlparse
 from pyvis.network import Network
 import pyvis.options as options
 import os
@@ -66,6 +67,10 @@ def get_metadata_from_filename(file_name):
     return file_metadata
 
 def get_filename_from_metadata(file_metadata):
+    # Separators
+    file_type_separator = "."
+    meta_separator = "_"
+    entity_and_area_separator = "-"
 
     if file_metadata["profile"] == "EQ" or file_metadata["profile"] == "BD":
         file_name = meta_separator.join([file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"]])
@@ -262,9 +267,9 @@ def get_relations_from(data, from_UUID, show = True, notebook = False):
           }
         }
 
-        #graph.show_buttons()
+        graph.show_buttons()
 
-        graph.options = options
+        #graph.options = options
 
         if notebook == False:
             os.chdir(tempfile.mkdtemp())
@@ -285,12 +290,13 @@ def statistics_GeneratingUnit_types(data):
 
     return value_counts
 
+
 def get_GeneratingUnits(data):
     """Returns table of GeneratingUnits"""
-    list_of_generating_units = EQ_data.query("KEY == 'GeneratingUnit.initialP'").ID.tolist()
-    GeneratingUnits = EQ_data[EQ_data.ID.isin(list_of_generating_units)].pivot(index="ID", columns = "KEY")["VALUE"]
+    list_of_generating_units = data.query("KEY == 'GeneratingUnit.initialP'").ID.tolist()
+    generating_units = data[data.ID.isin(list_of_generating_units)].pivot(index="ID", columns = "KEY")["VALUE"]
 
-    return generating_units_data
+    return generating_units
 
 
 def statistics_ConcreteClasses(data):
@@ -306,12 +312,12 @@ def get_diff_between_model_parts(UUID_1, UUID_2):
     return diff
 
 def filter_dataframe_by_dataframe(data, filter_data, filter_column_name):
-    """Filter triplestore on ID column with another dataframe column containing ID-s"""
+    """Filter triplestore on ID column with another data frame column containing ID-s"""
 
     class_name = filter_column_name.split(".")[1]
     meta_separator = "_"
 
-    result = pandas.merge(IDs_dataframe, data, left_on = IDs_column_name, right_on ="ID", how="inner", suffixes=('', meta_separator + class_name))[["ID_" + class_name, "KEY", "VALUE"]]
+    result = pandas.merge(filter_column_name, data, left_on = filter_column_name, right_on ="ID", how="inner", suffixes=('', meta_separator + class_name))[["ID_" + class_name, "KEY", "VALUE"]]
 
     return result
 
@@ -328,7 +334,115 @@ def tableview_by_IDs(data, IDs_dataframe, IDs_column_name):
                           drop_duplicates(["ID" + meta_separator + class_name, "KEY"]).\
                           pivot(index="ID" + meta_separator + class_name, columns ="KEY")["VALUE"]
 
-    return  result
+    return result
+
+
+def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
+    """Creates an temporary XML file to visualize relations
+            returns  temp filename"""
+
+    node_data = reference_data.drop_duplicates([ID_COLUMN, "KEY"]).pivot(index=ID_COLUMN, columns="KEY")["VALUE"]
+
+    columns = node_data.columns
+
+    if "IdentifiedObject.name" in columns:
+        node_data = node_data[["Type", "IdentifiedObject.name"]].rename(columns={"IdentifiedObject.name": "name"})
+    elif "Model.profile" in columns:
+        node_data = node_data[["Type", "Model.profile"]].rename(columns={"Model.profile": "name"})
+    else:
+        node_data = node_data[["Type"]]
+        node_data["name"] = ""
+
+    # Visulise with pyvis
+
+    graph = Network(directed=True, width="100%", height=750, notebook=notebook)
+    # node_name = urlparse(dataframe[dataframe.KEY == "Model.profile"].VALUE.tolist()[0]).path  # FullModel does not have IdentifiedObject.name
+
+    # Add nodes/objects
+    for ID, node in node_data.iterrows():
+        object_data = reference_data.query("{} == '{}'".format(ID_COLUMN, ID))
+        html_table = object_data[[ID_COLUMN, "KEY", "VALUE", "INSTANCE_ID"]].rename(
+            columns={ID_COLUMN: "ID"}).to_html(index=False)
+
+        graph.add_node(ID, node["Type"] + " - " + str(node["name"]), title=html_table, size=10,
+                       level=object_data.level.tolist()[0])
+
+    # Add connections
+
+    connections = list(reference_data[["ID_FROM", "ID_TO"]].dropna().drop_duplicates().to_records(index=False))
+    graph.add_edges(connections)
+
+    # Set options
+
+    graph.set_options("""
+    var options = {
+        "nodes": {
+            "shape": "dot",
+            "size": 10
+        },
+        "edges": {
+            "color": {
+                "inherit": true
+            },
+            "smooth": false
+        },
+        "layout": {
+            "hierarchical": {
+                "enabled": true,
+                "direction": "LR",
+                "sortMethod": "directed"
+            }
+        },
+        "interaction": {
+            "navigationButtons": true
+        },
+        "physics": {
+            "hierarchicalRepulsion": {
+                "centralGravity": 0,
+                "springLength": 75,
+                "nodeDistance": 145,
+                "damping": 0.2
+            },
+            "maxVelocity": 28,
+            "minVelocity": 0.75,
+            "solver": "hierarchicalRepulsion"
+        }
+    }""")
+
+    # graph.show_buttons()
+
+    graph.set_options = options
+
+    if notebook == False:
+        # Change directory to temp
+        os.chdir(tempfile.mkdtemp())
+
+        # Create unique filename
+        from_UUID = reference_data[ID_COLUMN].tolist()[0]
+        file_name = r"{}.html".format(from_UUID)
+
+        # Show graph
+        graph.show(file_name)
+
+        # Returns file path
+        return os.path.abspath(file_name)
+
+
+
+def draw_relations_to(UUID, data, notebook=False):
+    reference_data = data.references_to(UUID, levels=99)
+
+    ID_COLUMN = "ID_FROM"
+
+    return darw_relations_graph(reference_data, ID_COLUMN, notebook)
+
+
+def draw_relations_from(UUID, data, notebook=False):
+    reference_data = data.references_from(UUID, levels=99)
+
+    ID_COLUMN = "ID_TO"
+
+    return darw_relations_graph(reference_data, ID_COLUMN, notebook)
 
 
 
@@ -337,9 +451,22 @@ if __name__ == '__main__':
 
     from RDF_parser import load_all_to_dataframe
 
-    path_list = ["C:\IOPs\IOP160119\BA02_BD16012019_1D_Elering_001_NodeBreaker.zip"]
+    path_list = ["TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"]
 
     data = load_all_to_dataframe(path_list)
+
+
+    object_UUID = "99722373_VL_TN1"
+
+    draw_relations_from(object_UUID, data)
+    draw_relations_to(object_UUID, data)
+
+
+
+
+
+
+
 
 
 
