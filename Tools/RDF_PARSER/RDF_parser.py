@@ -299,13 +299,13 @@ def references_to(data, reference, levels=1):
 
     # Dataframe where to keep the results
     objects_data = pandas.DataFrame()
-    objects_data = objects_data.append(object_data)
+    objects_data = objects_data.append(object_data, sort=False)
 
     # Add object to processing list
     objects_list = [object_data]
     level = 1
 
-    for object in objects_list:
+    for object_data in objects_list:
 
         # End loop if we have reached desired level
         if level > levels:
@@ -313,7 +313,7 @@ def references_to(data, reference, levels=1):
 
 
         # Get column where possible reference to other objects reside
-        reference_column = object[["ID"]]
+        reference_column = object_data[["ID"]]
 
         # Filter original data VALUE-s by found references ID-s
         reference_data = pandas.merge(reference_column, data,
@@ -333,11 +333,11 @@ def references_to(data, reference, levels=1):
             referring_objects["level"] = level
 
             # Add objects to general objects data frame
-            objects_data = objects_data.append(referring_objects)
+            objects_data = objects_data.append(referring_objects, sort=False)
 
         level +=1
 
-    return objects_data#.rename(columns={"ID":"ID_FROM"})
+    return objects_data
 
 
 # Extend this functionality to pandas DataFrame
@@ -370,24 +370,27 @@ def references_from(data, reference, levels=1):
     objects_data = pandas.DataFrame()
 
     object_data = data.query("ID == '{}'".format(reference)).copy()
+    #object_data["ID_FROM"] = object_data["ID"]
 
     objects_list = [object_data]
     level = 0
 
-    for object in objects_list:
+    for object_data in objects_list:
+
+        #print("{}/{}".format(level, levels))
 
         # End loop if we have reached desired level
         if level > levels:
             break
 
         # Set object level
-        object["level"] = level
+        object_data["level"] = level
 
         # Add objects to general objects data frame
-        objects_data = objects_data.append(object)
+        objects_data = objects_data.append(object_data)
 
         # Get column where possible reference to other objects reside
-        reference_column = object[["ID", "VALUE"]]
+        reference_column = object_data[["ID", "VALUE"]]
 
         # Filter original data ID-s by values form reference object
         reference_data = pandas.merge(reference_column, data,
@@ -395,14 +398,16 @@ def references_from(data, reference, levels=1):
                                       right_on="ID",
                                       suffixes=("_FROM",""))
 
+
         if not reference_data.empty:
 
-            #reference_data["ID_FROM"] = reference
             objects_list.append(reference_data.copy())
 
         level +=1
 
-    return objects_data.rename(columns={"ID":"ID_TO"})
+        objects_data["ID_TO"] = objects_data["ID"]
+
+    return objects_data
 
 
 # Extend this functionality to pandas DataFrame

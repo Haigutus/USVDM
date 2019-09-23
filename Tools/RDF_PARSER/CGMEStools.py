@@ -11,8 +11,8 @@
 from __future__ import print_function
 import pandas
 
-#from urlparse import urlparse
-from urllib.parse import urlparse
+from urlparse import urlparse
+#from urllib.parse import urlparse
 from pyvis.network import Network
 import pyvis.options as options
 import os
@@ -364,13 +364,19 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
         html_table = object_data[[ID_COLUMN, "KEY", "VALUE", "INSTANCE_ID"]].rename(
             columns={ID_COLUMN: "ID"}).to_html(index=False)
 
-        graph.add_node(ID, node["Type"] + " - " + str(node["name"]), title=html_table, size=10,
+        #"".join([x if ord(x) < 128 else '?' for x in str(node["name"]]))
+
+        graph.add_node(ID, unicode(node["Type"]) + u" - " + unicode(node["name"]), title=html_table, size=10,
                        level=object_data.level.tolist()[0])
 
     # Add connections
 
-    connections = list(reference_data[["ID_FROM", "ID_TO"]].dropna().drop_duplicates().to_records(index=False))
-    graph.add_edges(connections)
+    reference_data_columns = reference_data.columns
+
+    if "ID_FROM" in reference_data_columns and "ID_TO" in reference_data_columns:
+
+        connections = list(reference_data[["ID_FROM", "ID_TO"]].dropna().drop_duplicates().to_records(index=False))
+        graph.add_edges(connections)
 
     # Set options
 
@@ -427,12 +433,14 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
         # Returns file path
         return os.path.abspath(file_name)
 
+    return graph
+
 
 
 def draw_relations_to(UUID, data, notebook=False):
     reference_data = data.references_to(UUID, levels=99)
 
-    ID_COLUMN = "ID_FROM"
+    ID_COLUMN = "ID"
 
     return darw_relations_graph(reference_data, ID_COLUMN, notebook)
 
@@ -440,7 +448,7 @@ def draw_relations_to(UUID, data, notebook=False):
 def draw_relations_from(UUID, data, notebook=False):
     reference_data = data.references_from(UUID, levels=99)
 
-    ID_COLUMN = "ID_TO"
+    ID_COLUMN = "ID"
 
     return darw_relations_graph(reference_data, ID_COLUMN, notebook)
 
