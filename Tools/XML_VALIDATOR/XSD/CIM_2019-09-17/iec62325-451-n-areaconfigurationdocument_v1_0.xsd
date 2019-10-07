@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ecl="urn:entsoe.eu:wgedi:codelists" xmlns="urn:iec62325.351:tc57wg16:451-n:areaconfigurationdocument:1:0" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:cimp="http://www.iec.ch/cimprofile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:iec62325.351:tc57wg16:451-n:areaconfigurationdocument:1:0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="urn-entsoe-eu-wgedi-codelists.xsd" namespace="urn:entsoe.eu:wgedi:codelists" />
+  <xs:element name="AreaConfiguration_MarketDocument" type="AreaConfiguration_MarketDocument" />
+  <xs:simpleType name="ID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MessageKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="ecl:MessageTypeList" />
+  </xs:simpleType>
+  <xs:simpleType name="ProcessKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="ecl:ProcessTypeList" />
+  </xs:simpleType>
+  <xs:simpleType name="PartyID_String-base" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="16" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PartyID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:simpleContent>
+      <xs:extension base="PartyID_String-base">
+        <xs:attribute name="codingScheme" type="ecl:CodingSchemeTypeList" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MarketRoleKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="ecl:RoleTypeList" />
+  </xs:simpleType>
+  <xs:simpleType name="ESMP_DateTime" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#DateTime">
+    <xs:restriction base="xs:dateTime">
+      <xs:pattern value="((([0-9]{4})[\-](0[13578]|1[02])[\-](0[1-9]|[12][0-9]|3[01])|([0-9]{4})[\-]((0[469])|(11))[\-](0[1-9]|[12][0-9]|30))T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])Z)|(([13579][26][02468][048]|[13579][01345789](0)[48]|[13579][01345789][2468][048]|[02468][048][02468][048]|[02468][1235679](0)[48]|[02468][1235679][2468][048]|[0-9][0-9][13579][26])[\-](02)[\-](0[1-9]|1[0-9]|2[0-9])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])Z)|(([13579][26][02468][1235679]|[13579][01345789](0)[01235679]|[13579][01345789][2468][1235679]|[02468][048][02468][1235679]|[02468][1235679](0)[01235679]|[02468][1235679][2468][1235679]|[0-9][0-9][13579][01345789])[\-](02)[\-](0[1-9]|1[0-9]|2[0-8])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])Z)" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AreaConfiguration_MarketDocument" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MarketDocument">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="ID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="type" type="MessageKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Document.type">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="process.processType" type="ProcessKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Process.processType">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="sender_MarketParticipant.mRID" type="PartyID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="sender_MarketParticipant.marketRole.type" type="MarketRoleKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MarketRole.type">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="receiver_MarketParticipant.mRID" type="PartyID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="receiver_MarketParticipant.marketRole.type" type="MarketRoleKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MarketRole.type">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="createdDateTime" type="ESMP_DateTime" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Document.createdDateTime">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AreaSpecification_Series" type="AreaSpecification_Series" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MarketDocument.AreaSpecification_Series">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AreaID_String-base" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="18" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:simpleContent>
+      <xs:extension base="AreaID_String-base">
+        <xs:attribute name="codingScheme" type="ecl:CodingSchemeTypeList" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ObjectAggregationKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="ecl:ObjectAggregationTypeList" />
+  </xs:simpleType>
+  <xs:complexType name="AreaSpecification_Series" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="ID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="marketParticipant.mRID" type="PartyID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="marketParticipant.marketRole.type" type="MarketRoleKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MarketRole.type">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="area_Domain.mRID" type="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="area_Domain.name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="objectAggregation" type="ObjectAggregationKind_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#TimeSeries.objectAggregation">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="country_Domain.mRID" type="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="areaCharacteristics_Domain.name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="validityStart_DateAndOrTime.dateTime" type="xs:dateTime" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#DateAndOrTime.dateTime">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validityEnd_DateAndOrTime.dateTime" type="xs:dateTime" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#DateAndOrTime.dateTime">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConsistOf_Domain" type="ConsistOf_Domain" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series.ConsistOf_Domain">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Connected_Domain" type="Connected_Domain" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series.Connected_Domain">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BorderConnection_Series" type="BorderConnection_Series" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series.BorderConnection_Series">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AreaConnectionDetail_RegisteredResource" type="ConnectionDetail_RegisteredResource" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series.AreaConnectionDetail_RegisteredResource">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PsrType_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="ecl:AssetTypeList" />
+  </xs:simpleType>
+  <xs:complexType name="BorderConnection_Series" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="ID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="borderComponentType_MktPSRType.psrType" type="PsrType_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MktPSRType.psrType">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="2" name="ConnectionDetail_RegisteredResource" type="ConnectionDetail_RegisteredResource" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Series.ConnectionDetail_RegisteredResource">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Connected_Domain" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Domain">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ResourceID_String-base" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ResourceID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
+    <xs:simpleContent>
+      <xs:extension base="ResourceID_String-base">
+        <xs:attribute name="codingScheme" type="ecl:CodingSchemeTypeList" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConnectionDetail_RegisteredResource" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#RegisteredResource">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="ResourceID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="areaIdentification_Domain.mRID" type="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="componentType_MktPSRType.psrType" type="PsrType_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#MktPSRType.psrType">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsistOf_Domain" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Domain">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mRID" type="AreaID_String" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
