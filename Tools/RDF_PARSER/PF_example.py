@@ -118,11 +118,29 @@ SynchronousMachines = pandas.merge(SynchronousMachines, GeneratingUnits, left_on
 RegulatingControls = tableview_by_IDs(data, SynchronousMachines,'RegulatingCondEq.RegulatingControl')
 
 
+# Get ACLineSegments together with terminals
+
+# Generate classical data views needed to extract relevant data
+ACLineSegments          = data.type_tableview("ACLineSegment").reset_index()
+Terminals               = data.type_tableview("Terminal").reset_index()
+
+# Lets first filter terminals belonging to ACLineSegments to increase performance
+ACLineSegments_terminals = pandas.merge(ACLineSegments[["ID"]].rename(columns={"ID":"ACLineSegment"}),
+                                        Terminals,
+                                        how="inner",
+                                        left_on="ACLineSegment",
+                                        right_on="Terminal.ConductingEquipment").drop(columns="ACLineSegment")
+
+
+
+# Merge terminals connected to same equipment
+branches = pandas.merge(ACLineSegments_terminals, ACLineSegments_terminals, how = "inner", on = "Terminal.ConductingEquipment")
+
+# Filter out termials refering to itself and drop out duplicate entries
+branches = branches[(branches["ID_x"] != branches["ID_y"])].drop_duplicates("Terminal.ConductingEquipment") # Only one entry per ACLineSegment, so we drop duplicate ones
+
 # Join views to get needed AC line data
-ACLineSegments = data.type_tableview("ACLineSegment")
-ACLineSegments = pandas.merge(ACLineSegments.reset_index(), Terminals.reset_index(), suffixes=('', '_Terminal'), how = "inner", left_on = "ID", right_on = 'Terminal.ConductingEquipment')
+ACLineSegments = pandas.merge(ACLineSegments, branches, how = "inner", left_on="ID", right_on = 'Terminal.ConductingEquipment')#.set_index("ID")
 
-#ACLineSegments = pandas.merge(ACLineSegments, SvVoltages,              suffixes=('', '_SvVoltage'),   how = "inner", left_on = 'Terminal.TopologicalNode', right_on = 'SvVoltage.TopologicalNode')
-#ACLineSegments = pandas.merge(ACLineSegments, SvPowerFlows,            suffixes=('', '_SvPowerFlow'), how = "inner", left_on = 'ID_Terminal', right_on = 'SvPowerFlow.Terminal')
-
-ConductingEquipment_terminals = pandas.merge(Terminals.reset_index(), Terminals.reset_index(), how = "inner", on = "Terminal.ConductingEquipment")
+display(ACLineSegments)
+print(len(ACLineSegments)) #DEBUG - check that no lines have been missed

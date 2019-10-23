@@ -425,6 +425,12 @@ def types_dict(data):
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.types_dict = types_dict
 
+def set_value_at_key(data, key, value):
+    "Set all values of provided key to the given vale" #TODO add debug, to print key, initial value and new value.
+    data.loc[data[data.KEY == key].index, "VALUE"] = value
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.set_value_at_key = set_value_at_key
 
 # END OF FUNCTIONS
 
