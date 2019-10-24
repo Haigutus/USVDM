@@ -432,6 +432,32 @@ def set_value_at_key(data, key, value):
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.set_value_at_key = set_value_at_key
 
+
+def export_to_excel(data):
+    "Exports to excel all data with same INSTACE_ID and if Lable element exists for it. Each Type is put to a sheet"
+    # TODO add specific folder path
+
+    lables = data.query("KEY == 'Lable'").iterrows()
+
+    for _, lable in lables:
+        instance_data = data[data.INSTANCE_ID == lable.INSTANCE_ID]
+
+        types = instance_data.types_dict()
+
+        file_name = '{}.xlsx'.format(lable.VALUE.split(".")[0])
+
+        print("INFO - exporting excel: {}".format(file_name))
+        writer = pandas.ExcelWriter(file_name)
+
+        for class_type in types:
+            class_data = data.type_tableview(class_type)
+            class_data.to_excel(writer, class_type)
+
+        writer.save()
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.export_to_excel = export_to_excel
+
 # END OF FUNCTIONS
 
 
