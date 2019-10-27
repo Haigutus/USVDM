@@ -4,101 +4,99 @@
 #
 # Author:      kristjan.vilgo
 #
-# Created:     15.10.2019
+# Created:     24.10.2019
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-
 import pandas
 import RDF_parser
-
+import CGMEStools
 from datetime import datetime
 
-def parse_metadata_from_filename_NMD(file_name):
 
-    meta = {}
+def get_metadata_from_filename_NMD(file_name):
+    """Parse metadata from Network Model Manager export"""
+    meta     = {}
+    raw_meta = file_name.split(".")[0].split("_")
 
-    parsed_meta = file_name.split(".")[0].split("_")
-
-    #meta["Model.scenarioTime"]      = parsed_meta[0] # Not needed, allready in ModelHeader
-    meta["Model.modelingEntity"]     = parsed_meta[1].replace("-","") # - is separator for area, cant be used in a name
-    meta["Model.messageType"]        = parsed_meta[2] + parsed_meta[3]
-    #meta["Model.version"]           = parsed_meta[4] # Not needed, allready in ModelHeader
+    meta["Model.scenarioTime"]       = raw_meta[0]
+    meta["Model.modelingEntity"]     = raw_meta[1].replace("-","") # '-' and '_' are meta separators, can't be used in a name
+    meta["Model.messageType"]        = raw_meta[2] + raw_meta[3]
+    meta["Model.version"]            = raw_meta[4]
     meta["Model.processType"]        = ""
 
     return meta
 
-def set_value_at_key(data, key, value):
-    data.loc[data[data.KEY == key].index, "VALUE"] = value
 
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"
+boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
 
-# 1 Load data from ZIP
+# 1 Load data from CGMES boundary global ZIP, exported by NMD
 data = RDF_parser.load_all_to_dataframe([boundary_path])
 
+# DEBUG export initial data in excel
+#data.export_to_excel()
 
-# Add missing metadata form file name to FullModel
+# Add missing metadata form filename to FullModel
+data = CGMEStools.add_metadata_to_FullModel_from_filename(data, parser=get_metadata_from_filename_NMD)
 
-additional_meta_list = []
-for _,lable in data.query("KEY == 'Lable'").iterrows():
-
-    meta = parse_metadata_from_filename_NMD(lable["VALUE"])
-
-    for key in meta:
-        additional_meta_list.append({"ID":lable.INSTANCE_ID, "KEY": key, "VALUE": meta[key], "INSTANCE_ID": lable.INSTANCE_ID})
-
-data = data.append(pandas.DataFrame(additional_meta_list), ignore_index=True, sort=False)
-
-# 2 Update description
-data.set_value_at_key(key='Model.description', value="Offcial CGM boundary set") # Proposial to add original version nr
-
-# 3 Update modelling AuthoritySet
-data.set_value_at_key(key='Model.modelingAuthoritySet', value="http://tscnet.eu/EMF")
-
-# 4 Update model Scenrio Time
+# Get current time, to update created DateTime and ScenarioTime
 utc_now = datetime.utcnow()
-data.set_value_at_key(key='Model.scenarioTime', value=utc_now.date().isoformat() + "T00:00:00Z")
 
-# 5 Update model Created
-data.set_value_at_key(key='Model.created', value=utc_now.isoformat() + "Z")
+# Update FullModel
+meta_updates = {'Model.description':          "Official CGM boundary set",                # 2 Update description            TODO Proposal to add original BD version nr
+                'Model.modelingAuthoritySet': "http://tscnet.eu/EMF",                     # 3 Update modelling AuthoritySet
+                'Model.scenarioTime':         utc_now.date().isoformat() + "T00:00:00Z",  # 4 Update model Scenario Time    TODO update to 00:30 and test on OPDM
+                'Model.created':              utc_now.isoformat() + "Z",                  # 5 Update model Created
+                'Model.version':              "001"                                       # 6 Set model Version to 001
+                }
 
-# 6 Update model Version
-data.set_value_at_key(key='Model.version', value="001") #Proposial to keep 001
+data = CGMEStools.add_metadata_to_FullModel(data, meta_updates)
 
-# 7 Update AC line name and description
+# 7 Update Line name and description
 
-lines = data.type_tableview("Line")
-nodes = data.type_tableview("ConnectivityNode")
+lines = data.type_tableview("Line").reset_index()
+nodes = data.type_tableview("ConnectivityNode").reset_index()
+
+#TODO filter out AC and DC lines
+line_and_nodes = lines.merge(nodes, left_on="ID",
+                                    right_on='ConnectivityNode.ConnectivityNodeContainer',
+                                    suffixes=("","_node"))
+
+# Update name
+fromEndName = line_and_nodes['ConnectivityNode.fromEndName']
+toEndName   = line_and_nodes['ConnectivityNode.toEndName']
+line_and_nodes["IdentifiedObject.name"] = fromEndName + "-" + toEndName
+
+
+# Update description
+fromEndIsoCode = line_and_nodes['ConnectivityNode.fromEndIsoCode']
+toEndIsoCode   = line_and_nodes['ConnectivityNode.toEndIsoCode']
+line_and_nodes["IdentifiedObject.description"] = "AC tie line between " + fromEndIsoCode + ' and ' + toEndIsoCode
+
+data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedObject.name",
+                                                                   "IdentifiedObject.description"]], add=False)
+
+
+
 
 # TODO make report on lines without EIC
 # TODO make report on line EIC not in cio tool
 
 # 8 Update DC line name and description
 
+# 9 Remove Junctions
 
+# 10 Remove Terminals
 
+# 11 Update version number if it already exists
 
+# 12 Export the boundary
 
-
-
-
-
-##types = data.types_dict()
-##
-##writer = pandas.ExcelWriter('boundary_data_raw.xlsx')
-##
-##for class_type in types:
-##
-##    class_data = data.type_tableview(class_type)
-##    class_data.to_excel(writer, class_type)
-##
-##
-##writer.save()
-
-
-
-
-
+# Export
+filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{modelingEntity}_{processType}_{messageType}_{version:03d}"
+data = CGMEStools.update_filename_from_FullModel(data, filename_mask)
+data.export_to_excel()
 
 

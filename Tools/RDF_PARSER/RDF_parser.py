@@ -157,7 +157,7 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
     if type(path_or_fileobject) != str:
         file_name = path_or_fileobject.name
 
-    print("Loading {}".format(file_name))
+    print("INFO - Loading {}".format(file_name))
 
     RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject, debug)
 
@@ -165,7 +165,7 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
         start_time = datetime.datetime.now()
 
 
-    data_list = [(str(uuid.uuid4()), "Lable", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:Lable
+    data_list = [(str(uuid.uuid4()), "Label", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:label
 
     #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
     ID      = ""
@@ -228,7 +228,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
 
     data_list = []
 
-##    TODO - add paralel processing if number inputs is greater than X - top be decided
+##    TODO - add paralel processing if number inputs is greater than X - to be decided
 ##    process_pool = Pool(5)
 ##    data_list = sum(process_pool.map(load_RDF_to_list, list_of_xmls),[])
 
@@ -425,38 +425,113 @@ def types_dict(data):
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.types_dict = types_dict
 
-def set_value_at_key(data, key, value):
+def set_VALUE_at_KEY(data, key, value):
     "Set all values of provided key to the given vale" #TODO add debug, to print key, initial value and new value.
-    data.loc[data[data.KEY == key].index, "VALUE"] = value
+    data.loc[data[data.KEY == key].index, "VALUE"] = value # TODO add chages to change dataframe
 
 # Extend this functionality to pandas DataFrame
-pandas.DataFrame.set_value_at_key = set_value_at_key
+pandas.DataFrame.set_VALUE_at_KEY = set_VALUE_at_KEY
 
 
 def export_to_excel(data):
-    "Exports to excel all data with same INSTACE_ID and if Lable element exists for it. Each Type is put to a sheet"
+    "Exports to excel all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"
     # TODO add specific folder path
+    # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
 
-    lables = data.query("KEY == 'Lable'").iterrows()
+    labels = data.query("KEY == 'Label'").iterrows()
 
-    for _, lable in lables:
-        instance_data = data[data.INSTANCE_ID == lable.INSTANCE_ID]
+    for _, label in labels:
+        instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
         types = instance_data.types_dict()
 
-        file_name = '{}.xlsx'.format(lable.VALUE.split(".")[0])
+        file_name = '{}.xlsx'.format(label.VALUE.split(".")[0])
 
-        print("INFO - exporting excel: {}".format(file_name))
+        print("INFO - Exporting excel: {}".format(file_name))
         writer = pandas.ExcelWriter(file_name)
 
         for class_type in types:
-            class_data = data.type_tableview(class_type)
+            class_data = instance_data.type_tableview(class_type)
             class_data.to_excel(writer, class_type)
+
+            # Get sheet to do some formatting
+            sheet = writer.sheets[class_type]
+
+            # Set default column size, if this does not work you are missing XslxWriter module
+            first_col = 0
+            last_col  = len(class_data.columns)
+            width     = 38
+            sheet.set_column(first_col, last_col, width)
+
+            #freeze column names and ID column
+            sheet.freeze_panes(1, 1)
 
         writer.save()
 
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.export_to_excel = export_to_excel
+
+
+def get_object_data(data, object_UUID):
+
+    return data.query("ID == '{}'".format(object_UUID)).set_index("KEY")["VALUE"]
+
+pandas.DataFrame.get_object_data = get_object_data
+
+
+def tableview_to_triplet(data):
+    """Makes a triplet of dataview"""
+    # TODO add only when dableveiw is created
+    return data.reset_index().melt(id_vars="ID", value_name="VALUE")
+
+
+pandas.DataFrame.tableview_to_triplet = tableview_to_triplet
+
+
+def update_triplet_from_triplet(data, update_data, update=True, add=True):
+    """Update or add data to current triplet from another one
+    VALUE at ID and KEY is updated and KEY ID pair does not exist it is added together with VALUE
+    you can control if data is added or updated with parameters update and add, by default both are True"""
+    # TODO add changes dataframe, where to keep all changes done by this function
+    # TODO create function to do also ID and KEY changes
+
+    report_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE_old", "VALUE"]
+    write_columns  = ["ID", "INSTANCE_ID", "KEY", "VALUE"]
+
+    # Make merge to see what updated data already exists in old and what needs to be added
+    test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_old", ""))
+
+    if update:
+        print("Data updated")
+        data_to_update = test_merge.query("_merge == 'both'")
+        print(data_to_update[report_columns])   # TODO DEBUG
+        # Get original index for update to work # TODO could be simplified by keeping index at test merge
+        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID","KEY"], how='left', suffixes=("_old","")).dropna()[["VALUE"]]
+        data.update(old_index_new_value)
+        # TODO compare performance of append + drop vs update
+
+    if add:
+        print("Data added")
+        data_to_add = test_merge.query("_merge == 'right_only'")
+        print(data_to_add[report_columns]) # TODO DEBUG
+        data = data.append(data_to_add[write_columns], ignore_index=True)
+
+    return data
+
+
+pandas.DataFrame.update_triplet_from_triplet = update_triplet_from_triplet
+
+
+def update_triplet_from_tableview(data, tableview, update=True, add=True):
+    """Update or add data to current triplet from a tableview
+    VALUE at ID and KEY is updated and KEY ID pair does not exist it is added together with VALUE
+    you can control if data is added or updated with parameters update and add, by default both are True"""
+
+    update_triplet = tableview.tableview_to_triplet()
+    return update_triplet_from_triplet(data, update_triplet, update, add)
+
+
+pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 
 # END OF FUNCTIONS
 

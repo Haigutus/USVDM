@@ -11,11 +11,13 @@
 from __future__ import print_function
 import pandas
 
-from urlparse import urlparse
-#from urllib.parse import urlparse
+#from urlparse import urlparse
+from urllib.parse import urlparse
 from pyvis.network import Network
 import pyvis.options as options
 import os
+
+import aniso8601
 
 import tempfile
 
@@ -24,61 +26,90 @@ from lxml import etree
 def get_metadata_from_filename(file_name):
 
     # Separators
-    file_type_separator = "."
-    meta_separator = "_"
-    entity_and_area_separator = "-"
+    file_type_separator           = "."
+    meta_separator                = "_"
+    entity_and_domain_separator   = "-"
 
     #print(file_name)
     file_metadata = {}
-    file_name, file_metadata["file_type"] = file_name.split(".")
+    file_name, file_type = file_name.split(file_type_separator)
 
     # Parse file metadata
     file_meta_list = file_name.split(meta_separator)
 
+    # Naming before QoDC 2.1, where EQ might not have processType
     if len(file_meta_list) == 4:
 
-        file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_meta_list
-        file_metadata["process_type"] = ""
+        file_metadata["Model.scenarioTime"],\
+        file_metadata["Model.modelingEntity"],\
+        file_metadata["Model.messageType"],\
+        file_metadata["Model.version"] = file_meta_list
+        file_metadata["Model.processType"] = ""
 
-        print("Warning - only 4 meta elements found, expecting 5, setting processtype to empty string")
+        print("Warning - only 4 meta elements found, expecting 5, setting Model.processType to empty string")
 
+    # Naming after QoDC 2.1, always 5 positions
     elif len(file_meta_list) == 5:
 
-            file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"] = file_meta_list
+        file_metadata["Model.scenarioTime"],\
+        file_metadata["Model.processType"],\
+        file_metadata["Model.modelingEntity"],\
+        file_metadata["Model.messageType"],\
+        file_metadata["Model.version"] = file_meta_list
 
     else:
         print("Non CGMES file {}".format(file_name))
 
-    if file_metadata.get("model_authority", False):
-        entity_and_area_list = file_metadata["model_authority"].split(entity_and_area_separator)
+    if file_metadata.get("Model.modelingEntity", False):
+
+        entity_and_area_list = file_metadata["Model.modelingEntity"].split(entity_and_domain_separator)
 
         if len(entity_and_area_list) == 1:
-            file_metadata["TSO"] = entity_and_area_list[0]
-            file_metadata["RSC"], file_metadata["synchronous_area"] = "", ""
+            file_metadata["Model.mergingEntity"],\
+            file_metadata["Model.domain"] = "", "" # Set empty string for both
+            file_metadata["Model.forEntity"] = entity_and_area_list[0]
 
         if len(entity_and_area_list) == 2:
-            file_metadata["RSC"], file_metadata["synchronous_area"] = entity_and_area_list
-            file_metadata["TSO"] = ""
+            file_metadata["Model.mergingEntity"],\
+            file_metadata["Model.domain"] = entity_and_area_list
+            file_metadata["Model.forEntity"] = ""
 
         if len(entity_and_area_list) == 3:
-            file_metadata["RSC"], file_metadata["synchronous_area"], file_metadata["TSO"] = entity_and_area_list
+            file_metadata["Model.mergingEntity"],\
+            file_metadata["Model.domain"],\
+            file_metadata["Model.forEntity"] = entity_and_area_list
 
 
     return file_metadata
 
-def get_filename_from_metadata(file_metadata):
+
+default_filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{modelingEntity}_{processType}_{messageType}_{version:03d}"
+
+
+def get_filename_from_metadata(meta_data, file_type="xml", filename_mask=default_filename_mask):
+
+    """Convert metadata to filename by using filename mask and file type"""
     # Separators
     file_type_separator = "."
     meta_separator = "_"
     entity_and_area_separator = "-"
 
-    if file_metadata["profile"] == "EQ" or file_metadata["profile"] == "BD":
-        file_name = meta_separator.join([file_metadata["date_time"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"]])
+    # Remove Model. form dictionary as python string format can't use . in variable name
+    meta_data = {key.split(".")[1]:meta_data[key] for key in meta_data}
 
-    else:
-        file_name = meta_separator.join([file_metadata["date_time"], file_metadata["process_type"], file_metadata["model_authority"], file_metadata["profile"], file_metadata["version"]])
+    # DateTime fields from text to DateTime
+    DateTime_fields = ["scenarioTime", 'created']
+    for field in DateTime_fields:
+        meta_data[field] = aniso8601.parse_datetime(meta_data[field])
 
-    file_name = ".".join([file_name, file_metadata["file_type"]])
+    # Integers to integers
+    meta_data["version"] = int(meta_data["version"])
+
+    # Add metadata to file name string
+    file_name = filename_mask.format(**meta_data)
+
+    # Add file type to file name string
+    file_name = file_type_separator.join([file_name, file_type])
 
     return file_name
 
@@ -98,14 +129,69 @@ def get_metadata_from_xml(filepath_or_fileobject):
 
     return xml_metadata
 
+
 def get_metadata_from_dataframe(data, UUID):
     """Currently returns all data defined in model header 'FullModel'
-    Returns pandas array which can be accessed the same way as dictionary -> value = meta['meta_key'] """
+    Returns  dictionary -> value = meta['meta_key'] """
     # fileheader metadata keys should be aligned with filename ones
 
-    raw_metadata = data.query("ID == '{}'".format(UUID)).set_index("KEY")["VALUE"]
+    #raw_metadata = data.query("ID == '{}'".format(UUID)).set_index("KEY")["VALUE"]
+    metadata = data.get_object_data(UUID).to_dict()
+    metadata.pop("Type", None) # Remove Type form metadata
 
-    return raw_metadata
+    return metadata
+
+
+def add_metadata_to_FullModel(data, metadata, update=True, add=False):
+
+    additional_meta_list = []
+
+    for INSTANCE_ID in data.INSTANCE_ID.unique():
+        for key in metadata:
+            additional_meta_list.append({"ID": INSTANCE_ID, "KEY": key, "VALUE": metadata[key], "INSTANCE_ID": INSTANCE_ID})
+
+    update_data = pandas.DataFrame(additional_meta_list)
+
+    return data.update_triplet_from_triplet(update_data, update, add)
+
+def add_metadata_to_FullModel_from_filename(data, parser=get_filename_from_metadata, update=False, add=True):
+    """Parses filename from label VALUE and by default adds missing attributes to each FullModel
+    you can provide your own parser, has to return dictionary of attribute names and values"""
+
+    additional_meta_list = []
+
+    # For each instance that has label, as label contains the filename
+    for _, label in data.query("KEY == 'Label'").iterrows():
+        # Parse metadata from filename to dictionary
+        meta = parser(label["VALUE"])
+        # Create triplets form parsed metadata
+        for key in meta:
+            additional_meta_list.append(
+                {"ID": label.INSTANCE_ID, "KEY": key, "VALUE": meta[key], "INSTANCE_ID": label.INSTANCE_ID})
+
+    update_data = pandas.DataFrame(additional_meta_list)
+
+    return data.update_triplet_from_triplet(update_data, update, add)
+
+
+def update_filename_from_FullModel(data, filename_mask=default_filename_mask):
+    """Updates the file names kept under RDF Label tag
+     by constructing it from metadata kept in FullModel in each instance"""
+
+    filename_key = "Label"  # KEY under which the filename is kept
+    list_of_updates = []
+
+    for _, label in data.query("KEY == '{}'".format(filename_key)).iterrows():
+        # Get metadata
+        metadata = get_metadata_from_dataframe(data, label.INSTANCE_ID)
+        # Get new filename
+        filename = get_filename_from_metadata(metadata, filename_mask=filename_mask)
+        # Set new filename
+        # data.loc[_, "VALUE"] = filename
+        list_of_updates.append({"ID": label.ID, "KEY": filename_key, "VALUE": filename, "INSTANCE_ID": label.INSTANCE_ID})
+
+    update_data = pandas.DataFrame(list_of_updates)
+    return data.update_triplet_from_triplet(update_data, add=False)
 
 
 def get_loaded_models(data):
@@ -152,11 +238,7 @@ def get_model_data(data, model_instances_dataframe):
     return IGM_data
 
 
-def get_object_data(data, object_UUID):
 
-    object_data = data.query("ID == '{}'".format(object_UUID)).set_index("KEY")["VALUE"]
-
-    return object_data
 
 
 def get_loaded_model_parts(data):
