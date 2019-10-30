@@ -6,7 +6,7 @@
 #
 # Created:     24.10.2019
 # Copyright:   (c) kristjan.vilgo 2019
-# Licence:     <your licence>
+# Licence:     GPLv2
 #-------------------------------------------------------------------------------
 import pandas
 import RDF_parser
@@ -168,19 +168,61 @@ labels = data.query("KEY == 'label'").iterrows()
 from collections import OrderedDict
 class_KEY = "Type"
 export_undefined = False
+#export_type = "xml_per_instance"
+export_type = "xml_per_instance_zip_per_all"
+#export_type = "xml_per_instance_zip_per_xml"
 
+export_files=[]
+global_zip_metadata = {}
 for _, label in labels:
 
     instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
     xml = CGMEStools.export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", export_undefined=False)
+    # TODO - clean namespaces
 
     print("INFO - Exporting RDF to {}".format(label["VALUE"]))
 
-    # Write to file
-    file = open(label["VALUE"], 'w')
-    file.write(xml.decode())
-    file.close()
+    export_files.append({"filename": label["VALUE"], "file":xml})
+
+    # Keep one set of metadata for global zip
+    global_zip_metadata = CGMEStools.get_metadata_from_dataframe(instance_data, UUID=label.INSTANCE_ID)
+
+# Export XML
+if export_type == "xml_per_instance":
+    for export_file in export_files:
+        # Write to file
+        with open(export_file["filename"], 'w') as file:
+            file.write(export_file["file"].decode())
+            print('INFO - Saved {}'.format(export_file["filename"]))
+
+# Export ZIP containing all xml
+if export_type == "xml_per_instance_zip_per_all":
+    from zipfile import ZipFile, ZIP_DEFLATED
+
+    global_zip_filemask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_BD_{version:03d}"
+    global_zip_filename = CGMEStools.get_filename_from_metadata(global_zip_metadata, file_type="zip", filename_mask=global_zip_filemask)
+
+    with ZipFile(global_zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
+        for export_file in export_files:
+            zip_file.writestr(export_file["filename"], export_file["file"])
+
+    print('INFO - Saved {}'.format(global_zip_filename))
+
+# Export each xml in separate zip
+if export_type == "xml_per_instance_zip_per_xml":
+    from zipfile import ZipFile, ZIP_DEFLATED
+
+    for export_file in export_files:
+
+        zip_filename = export_file["filename"].replace('.xml','.zip')
+        with ZipFile(zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
+            zip_file.writestr(export_file["filename"], export_file["file"])
+
+            print('INFO - Saved {}'.format(zip_filename))
+
+
+
 
 
 
