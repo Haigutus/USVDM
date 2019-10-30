@@ -165,7 +165,7 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
         start_time = datetime.datetime.now()
 
 
-    data_list = [(str(uuid.uuid4()), "Label", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:label
+    data_list = [(str(uuid.uuid4()), "label", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:label
 
     #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
     ID      = ""
@@ -178,6 +178,7 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
         #KEY        = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
         KEY         = 'Type'
         VALUE       = object.tag.split("}")[1]
+        #VALUE       = etree.QName(object).localname
         #ID_TYPE    = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
 
         #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE, maybe also namespace should be kept?
@@ -186,6 +187,7 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
         for element in object.iterchildren():
 
             KEY = element.tag.split("}")[1]
+            #KEY = etree.QName(element).localname
             VALUE = element.text
 
             if VALUE == None and len(element.attrib.values()) > 0:
@@ -249,7 +251,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
     return data
 
 
-def type_tableview(data, type_name):
+def type_tableview(data, type_name, string_to_number=True):
     """Creates a table view of all objects of same type, with their parameters in columns"""
 
     # Get all ID-s of rows where Type == type_name
@@ -261,8 +263,9 @@ def type_tableview(data, type_name):
     # Convert form triplets to a table view all objects of same type
     data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
 
-    # Convert to data type to numeric in columns that contain only numbers (for easier data usage later on)
-    data_view = data_view.apply(pandas.to_numeric, errors='ignore')
+    if string_to_number:
+        # Convert to data type to numeric in columns that contain only numbers (for easier data usage later on)
+        data_view = data_view.apply(pandas.to_numeric, errors='ignore')
 
     return data_view
 
@@ -299,7 +302,7 @@ def references_to(data, reference, levels=1):
 
     # Dataframe where to keep the results
     objects_data = pandas.DataFrame()
-    objects_data = objects_data.append(object_data, sort=False)
+    objects_data = objects_data.append(object_data)
 
     # Add object to processing list
     objects_list = [object_data]
@@ -333,7 +336,7 @@ def references_to(data, reference, levels=1):
             referring_objects["level"] = level
 
             # Add objects to general objects data frame
-            objects_data = objects_data.append(referring_objects, sort=False)
+            objects_data = objects_data.append(referring_objects)
 
         level +=1
 
@@ -438,7 +441,7 @@ def export_to_excel(data):
     # TODO add specific folder path
     # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
 
-    labels = data.query("KEY == 'Label'").iterrows()
+    labels = data.query("KEY == 'label'").iterrows()
 
     for _, label in labels:
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
@@ -541,7 +544,8 @@ if __name__ == '__main__':
 
     path = "TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
-    data = load_all_to_dataframe([path], debug = True)
+    data = load_all_to_dataframe([path], debug = True) # Last took 3.820304 s on 3rd run
+
 
     print("Loaded types")
     print(data.query("KEY == 'Type'")["VALUE"].value_counts())

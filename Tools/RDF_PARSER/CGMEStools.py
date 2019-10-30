@@ -21,7 +21,11 @@ import aniso8601
 
 import tempfile
 
+from lxml.builder import ElementMaker
+from lxml.etree import QName
 from lxml import etree
+
+from collections import OrderedDict
 
 def get_metadata_from_filename(file_name):
 
@@ -83,7 +87,7 @@ def get_metadata_from_filename(file_name):
     return file_metadata
 
 
-default_filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{modelingEntity}_{processType}_{messageType}_{version:03d}"
+default_filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
 
 
 def get_filename_from_metadata(meta_data, file_type="xml", filename_mask=default_filename_mask):
@@ -161,7 +165,7 @@ def add_metadata_to_FullModel_from_filename(data, parser=get_filename_from_metad
     additional_meta_list = []
 
     # For each instance that has label, as label contains the filename
-    for _, label in data.query("KEY == 'Label'").iterrows():
+    for _, label in data.query("KEY == 'label'").iterrows():
         # Parse metadata from filename to dictionary
         meta = parser(label["VALUE"])
         # Create triplets form parsed metadata
@@ -175,10 +179,10 @@ def add_metadata_to_FullModel_from_filename(data, parser=get_filename_from_metad
 
 
 def update_filename_from_FullModel(data, filename_mask=default_filename_mask):
-    """Updates the file names kept under RDF Label tag
+    """Updates the file names kept under RDF label tag
      by constructing it from metadata kept in FullModel in each instance"""
 
-    filename_key = "Label"  # KEY under which the filename is kept
+    filename_key = "label"  # KEY under which the filename is kept
     list_of_updates = []
 
     for _, label in data.query("KEY == '{}'".format(filename_key)).iterrows():
@@ -448,8 +452,8 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
 
         #"".join([x if ord(x) < 128 else '?' for x in str(node["name"]]))
 
-        graph.add_node(ID, unicode(node["Type"]) + u" - " + unicode(node["name"]), title=html_table, size=10,
-                       level=object_data.level.tolist()[0])
+        #graph.add_node(ID, unicode(node["Type"]) + u" - " + unicode(node["name"]), title=html_table, size=10, level=object_data.level.tolist()[0])
+        graph.add_node(ID, node["Type"] + u" - " + node["name"], title=html_table, size=10, level=object_data.level.tolist()[0])
 
     # Add connections
 
@@ -534,6 +538,161 @@ def draw_relations_from(UUID, data, notebook=False):
 
     return darw_relations_graph(reference_data, ID_COLUMN, notebook)
 
+def export_to_cimrdf_depricated(instance_data, rdf_map, namespace_map):
+
+    types = list(instance_data.types_dict())
+
+    print(types)
+
+    header_type = "FullModel"
+
+    # Set Header to first
+    types.remove(header_type)
+    types.insert(0, header_type)
+
+    # Create xml element builder and the root element
+    E = ElementMaker(nsmap=namespace_map)
+    RDF = E(QName(namespace_map["rdf"], "RDF"))
+
+    for class_type in types:
+        class_data = instance_data.type_tableview(class_type, string_to_number=False).drop(columns="Type")
+        class_def = rdf_map.get(class_type, None)
+
+        if class_def:
+
+            for ID, row in class_data.iterrows():
+
+                rdf_object = E(QName(class_def["namespace"], class_type))
+                rdf_object.attrib[QName(class_def["attrib"]["attribute"])] = class_def["attrib"][
+                                                                                 "value_prefix"] + ID
+
+                for KEY, VALUE in row.items():
+
+                    if not pandas.isna(VALUE):
+
+                        tag_def = rdf_map.get(KEY, None)
+
+                        if tag_def:
+
+                            tag = E(QName(tag_def["namespace"], KEY))
+
+                            attrib = tag_def.get("attrib", None)
+
+                            if attrib:
+                                tag.attrib[QName(tag_def["attrib"]["attribute"])] = tag_def["attrib"][
+                                                                                        "value_prefix"] + VALUE
+                            else:
+                                tag.text = str(VALUE)
+
+                            rdf_object.append(tag)
+
+                        else:
+                            print("Definition missing for tag: " + KEY)
+
+                    else:
+                        print(
+                            "WARNING - VALUE is None at ID-> {} and KEY-> {}, will not be exported".format(ID, KEY))
+
+                RDF.append(rdf_object)
+
+        else:
+            print("Definition missing for class: " + class_type)
+
+    # print(etree.tostring(RDF, pretty_print=True).decode())
+    return etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+
+def export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", export_undefined=True):
+
+    # Create xml element builder and the root element
+    E = ElementMaker(nsmap=namespace_map)
+    RDF = E(QName(namespace_map["rdf"], "RDF"))
+
+    # Store created xml rdf class elements
+    objects = OrderedDict()
+    # TODO ensure that the Header class is serialised first
+
+    # Get objects
+    for _, class_data in instance_data.query("KEY=='{}'".format(class_KEY)).iterrows():
+
+        ID         = class_data["ID"]
+        class_name = class_data["VALUE"]
+
+        # Get class export definition
+        class_def  = rdf_map.get(class_name, None)
+
+        if class_def:
+
+            class_namespace = class_def["namespace"]
+            id_name         = class_def["attrib"]["attribute"]
+            id_value_prefix = class_def["attrib"][ "value_prefix"]
+
+        else:
+            #print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
+            pass
+
+            if export_undefined:
+                class_namespace = None
+                id_name = "about"
+                id_value_prefix = "urn:uuid:"
+
+        # Create class element
+        rdf_object = E(QName(class_namespace, class_name))
+        # Add ID attribute
+        rdf_object.attrib[QName(id_name)] = id_value_prefix + ID
+        # Add object to RDF
+        RDF.append(rdf_object)
+        # Add object with it's ID to dict (later we use it to add attributes to that class)
+        objects[ID] = rdf_object
+
+
+    # Add attribute to objects
+    for _, attribute_data in instance_data.query("KEY!='{}'".format(class_KEY)).iterrows():
+
+        ID      = attribute_data["ID"]
+        KEY     = attribute_data["KEY"]
+        VALUE   = attribute_data["VALUE"]
+
+        _object = objects.get(ID, None)
+
+        if _object is not None:
+
+            if not pandas.isna(VALUE):
+
+                tag_def = rdf_map.get(KEY, None)
+
+                if tag_def:
+                    tag     = E(QName(tag_def["namespace"], KEY))
+                    attrib  = tag_def.get("attrib", None)
+
+                    if attrib:
+                        tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + VALUE
+                    else:
+                        tag.text = str(VALUE)
+
+                    _object.append(tag)
+
+                else:
+                    #print("Definition missing for tag: " + KEY)
+
+                    if export_undefined:
+                        tag      = E(KEY)
+                        tag.text = str(VALUE)
+
+                        _object.append(tag)
+
+
+            else:
+                #print("Attribute VALUE is None, thus not exported: ID: {} KEY: {}".format(ID, KEY))
+                pass
+        else:
+            #print("No Object with ID: {}".format(ID))
+            pass
+
+    # etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+    # print(etree.tostring(RDF, pretty_print=True).decode())
+
+    # Convert to XML
+    return etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
 
 
 # TEST and examples

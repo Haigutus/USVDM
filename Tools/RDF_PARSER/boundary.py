@@ -67,7 +67,7 @@ line_and_nodes = lines.merge(nodes, left_on="ID",
 # Update name
 fromEndName = line_and_nodes['ConnectivityNode.fromEndName']
 toEndName   = line_and_nodes['ConnectivityNode.toEndName']
-line_and_nodes["IdentifiedObject.name"] = fromEndName + "-" + toEndName
+line_and_nodes["IdentifiedObject.name"] = fromEndName + " - " + toEndName
 
 
 # Update description
@@ -81,8 +81,7 @@ data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedOb
 
 
 
-# TODO make report on lines without EIC
-# TODO make report on line EIC not in cio tool
+
 
 # 8 Update DC line name and description
 
@@ -90,13 +89,104 @@ data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedOb
 
 # 10 Remove Terminals
 
+# 13 Remove empty EIC
+# TODO make report on lines without EIC
+# TODO make report on line EIC not in CIO tool
+
+data.query("KEY=='IdentifiedObject.energyIdentCodeEic'")
+
 # 11 Update version number if it already exists
 
 # 12 Export the boundary
 
 # Export
-filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{modelingEntity}_{processType}_{messageType}_{version:03d}"
+filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
 data = CGMEStools.update_filename_from_FullModel(data, filename_mask)
-data.export_to_excel()
+#data.export_to_excel()
+
+from lxml.builder import ElementMaker
+from lxml.etree import QName
+from lxml import etree
+"Exports to RDF all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"
+# TODO add specific folder path
+# TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
+
+namespace_map = dict(    cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
+                         cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
+                         entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#",
+                         md="http://iec.ch/TC57/61970-552/ModelDescription/1#",
+                         rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                         rdfs="http://www.w3.org/2000/01/rdf-schema#",
+                         xsd="http://www.w3.org/2001/XMLSchema#")
+
+
+
+rdf_map = {"FullModel":                                 {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
+           "Model.created":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.version":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.description":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.modelingAuthoritySet":                {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+           "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
+           "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+           "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+           "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "IdentifiedObject.energyIdentCodeEic":       {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode":                          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "ConnectivityNode.ConnectivityNodeContainer":{"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+           "ConnectivityNode.TopologicalNode":          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+           "ConnectivityNode.toEndIsoCode":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.toEndName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.toEndNameTso":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.fromEndIsoCode":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.fromEndName":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.fromEndNameTso":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "ConnectivityNode.boundaryPoint":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode":                           {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "TopologicalNode.BaseVoltage":               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+           "TopologicalNode.ConnectivityNodeContainer": {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+           "TopologicalNode.toEndIsoCode":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.toEndName":                 {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.toEndNameTso":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.fromEndIsoCode":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.fromEndName":               {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.fromEndNameTso":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "TopologicalNode.boundaryPoint":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+           "Line":                                      {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "Line.Region":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+           "BaseVoltage":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "BaseVoltage.nominalVoltage":                {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+           "EnergySchedulingType":                      {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "GeographicalRegion":                        {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "SubGeographicalRegion":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+           "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+}
+
+labels = data.query("KEY == 'label'").iterrows()
+
+from collections import OrderedDict
+class_KEY = "Type"
+export_undefined = False
+
+for _, label in labels:
+
+    instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
+
+    xml = CGMEStools.export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", export_undefined=False)
+
+    print("INFO - Exporting RDF to {}".format(label["VALUE"]))
+
+    # Write to file
+    file = open(label["VALUE"], 'w')
+    file.write(xml.decode())
+    file.close()
+
+
+
+#doc.write('output.xml', xml_declaration=True, encoding='utf-16')
+#outFile = open('output.xml', 'w')
+#doc.write(outFile, xml_declaration=True, encoding='utf-16')
+
 
 
