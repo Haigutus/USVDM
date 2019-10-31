@@ -490,7 +490,8 @@ def tableview_to_triplet(data):
 
 pandas.DataFrame.tableview_to_triplet = tableview_to_triplet
 
-
+# Let's add empty dataframe to keep changes
+pandas.DataFrame.changes = pandas.DataFrame()
 def update_triplet_from_triplet(data, update_data, update=True, add=True):
     """Update or add data to current triplet from another one
     VALUE at ID and KEY is updated and KEY ID pair does not exist it is added together with VALUE
@@ -498,18 +499,20 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
     # TODO add changes dataframe, where to keep all changes done by this function
     # TODO create function to do also ID and KEY changes
 
-    report_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE_old", "VALUE"]
+    report_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE", "VALUE_OLD"]
     write_columns  = ["ID", "INSTANCE_ID", "KEY", "VALUE"]
 
     # Make merge to see what updated data already exists in old and what needs to be added
-    test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_old", ""))
+    test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_OLD", ""))
 
     if update:
         print("Data updated")
         data_to_update = test_merge.query("_merge == 'both'")
         print(data_to_update[report_columns])   # TODO DEBUG
+        # Store changes
+        data.changes = data.changes.append(data_to_update[report_columns], ignore_index=True)
         # Get original index for update to work # TODO could be simplified by keeping index at test merge
-        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID","KEY"], how='left', suffixes=("_old","")).dropna()[["VALUE"]]
+        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID","KEY"], how='left', suffixes=("_OLD","")).dropna()[["VALUE"]]
         data.update(old_index_new_value)
         # TODO compare performance of append + drop vs update
 
@@ -518,6 +521,8 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
         data_to_add = test_merge.query("_merge == 'right_only'")
         print(data_to_add[report_columns]) # TODO DEBUG
         data = data.append(data_to_add[write_columns], ignore_index=True)
+        # Store changes
+        data.changes = data.changes.append(data_to_add[report_columns], ignore_index=True)
 
     return data
 
