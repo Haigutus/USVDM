@@ -134,19 +134,19 @@ def get_metadata_from_xml(filepath_or_fileobject):
     return xml_metadata
 
 
-def get_metadata_from_dataframe(data, UUID):
-    """Currently returns all data defined in model header 'FullModel'
+def get_metadata_from_FullModel(data):
+    """Returns all data defined in model header 'FullModel'
     Returns  dictionary -> value = meta['meta_key'] """
     # fileheader metadata keys should be aligned with filename ones
 
-    #raw_metadata = data.query("ID == '{}'".format(UUID)).set_index("KEY")["VALUE"]
+    UUID = data.INSTANCE_ID.unique().tolist()[0]
     metadata = data.get_object_data(UUID).to_dict()
     metadata.pop("Type", None) # Remove Type form metadata
 
     return metadata
 
 
-def add_metadata_to_FullModel(data, metadata, update=True, add=False):
+def update_FullModel_from_dict(data, metadata, update=True, add=False):
 
     additional_meta_list = []
 
@@ -158,7 +158,7 @@ def add_metadata_to_FullModel(data, metadata, update=True, add=False):
 
     return data.update_triplet_from_triplet(update_data, update, add)
 
-def add_metadata_to_FullModel_from_filename(data, parser=get_filename_from_metadata, update=False, add=True):
+def update_FullModel_from_filename(data, parser=get_metadata_from_filename, update=False, add=True):
     """Parses filename from label VALUE and by default adds missing attributes to each FullModel
     you can provide your own parser, has to return dictionary of attribute names and values"""
 
@@ -178,16 +178,15 @@ def add_metadata_to_FullModel_from_filename(data, parser=get_filename_from_metad
     return data.update_triplet_from_triplet(update_data, update, add)
 
 
-def update_filename_from_FullModel(data, filename_mask=default_filename_mask):
-    """Updates the file names kept under RDF label tag
+def update_filename_from_FullModel(data, filename_mask=default_filename_mask, filename_key = "label"):
+    """Updates the file names kept under RDF label tag by default
      by constructing it from metadata kept in FullModel in each instance"""
 
-    filename_key = "label"  # KEY under which the filename is kept
     list_of_updates = []
 
     for _, label in data.query("KEY == '{}'".format(filename_key)).iterrows():
         # Get metadata
-        metadata = get_metadata_from_dataframe(data, label.INSTANCE_ID)
+        metadata = get_metadata_from_FullModel(data.query("INSTANCE_ID == '{}'".format(label.INSTANCE_ID)))
         # Get new filename
         filename = get_filename_from_metadata(metadata, filename_mask=filename_mask)
         # Set new filename

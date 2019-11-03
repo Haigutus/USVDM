@@ -39,7 +39,7 @@ data = RDF_parser.load_all_to_dataframe([boundary_path])
 #data.export_to_excel()
 
 # Add missing metadata form filename to FullModel
-data = CGMEStools.add_metadata_to_FullModel_from_filename(data, parser=get_metadata_from_filename_NMD)
+data = CGMEStools.update_FullModel_from_filename(data, parser=get_metadata_from_filename_NMD)
 
 # Get current time, to update created DateTime and ScenarioTime
 utc_now = datetime.utcnow()
@@ -52,7 +52,8 @@ meta_updates = {'Model.description':          "Official CGM boundary set",      
                 'Model.version':              "001"                                       # 6 Set model Version to 001
                 }
 
-data = CGMEStools.add_metadata_to_FullModel(data, meta_updates)
+# Update metadata
+data = CGMEStools.update_FullModel_from_dict(data, meta_updates)
 
 # 7 Update Line name and description
 
@@ -80,10 +81,16 @@ data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedOb
 
 
 
-
-
-
 # 8 Update DC line name and description
+columns_to_update = ["IdentifiedObject.name", "IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
+
+HVDC_data = pandas.read_csv("HVDC_mapping.csv", index_col=0)
+
+DC_LINES = HVDC_data.rename(columns={"Line.mRID":"ID"}).set_index("ID")[columns_to_update]
+data.update_triplet_from_tableview(DC_LINES, add=False)
+
+DC_NODES = HVDC_data.rename(columns={"ConnectivityNode.mRID":"ID"}).set_index("ID")[columns_to_update]
+data.update_triplet_from_tableview(DC_LINES, add=False)
 
 # 9 Remove Junctions
 
@@ -99,14 +106,8 @@ data.query("KEY=='IdentifiedObject.energyIdentCodeEic'")
 
 # 12 Export the boundary
 
-# Export
-filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
-data = CGMEStools.update_filename_from_FullModel(data, filename_mask)
-#data.export_to_excel()
 
-from lxml.builder import ElementMaker
-from lxml.etree import QName
-from lxml import etree
+
 "Exports to RDF all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"
 # TODO add specific folder path
 # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
@@ -163,72 +164,31 @@ rdf_map = {"FullModel":                                 {"namespace": "http://ie
            "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
 }
 
-labels = data.query("KEY == 'label'").iterrows()
 
-from collections import OrderedDict
-class_KEY = "Type"
-export_undefined = False
-#export_type = "xml_per_instance"
+
+### EXPORT ###
+
+# Update filenames kept in rdfs lable tag
+filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
+data = CGMEStools.update_filename_from_FullModel(data, filename_mask)
+
+# CGMES export
 export_type = "xml_per_instance_zip_per_all"
 #export_type = "xml_per_instance_zip_per_xml"
+#export_type = "xml_per_instance"
+global_zip_filemask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_BD_{version:03d}"
+export_undefined = False
 
-export_files=[]
-global_zip_metadata = {}
-for _, label in labels:
+metadata            = CGMEStools.get_metadata_from_FullModel(data)
+global_zip_filename = CGMEStools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
 
-    instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
+data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined,
+                                                                    export_type=export_type,
+                                                                    global_zip_filename=global_zip_filename)
 
-    xml = CGMEStools.export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", export_undefined=False)
-    # TODO - clean namespaces
+# Excel export
+data.export_to_excel()
 
-    print("INFO - Exporting RDF to {}".format(label["VALUE"]))
-
-    export_files.append({"filename": label["VALUE"], "file":xml})
-
-    # Keep one set of metadata for global zip
-    global_zip_metadata = CGMEStools.get_metadata_from_dataframe(instance_data, UUID=label.INSTANCE_ID)
-
-# Export XML
-if export_type == "xml_per_instance":
-    for export_file in export_files:
-        # Write to file
-        with open(export_file["filename"], 'w') as file:
-            file.write(export_file["file"].decode())
-            print('INFO - Saved {}'.format(export_file["filename"]))
-
-# Export ZIP containing all xml
-if export_type == "xml_per_instance_zip_per_all":
-    from zipfile import ZipFile, ZIP_DEFLATED
-
-    global_zip_filemask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_BD_{version:03d}"
-    global_zip_filename = CGMEStools.get_filename_from_metadata(global_zip_metadata, file_type="zip", filename_mask=global_zip_filemask)
-
-    with ZipFile(global_zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
-        for export_file in export_files:
-            zip_file.writestr(export_file["filename"], export_file["file"])
-
-    print('INFO - Saved {}'.format(global_zip_filename))
-
-# Export each xml in separate zip
-if export_type == "xml_per_instance_zip_per_xml":
-    from zipfile import ZipFile, ZIP_DEFLATED
-
-    for export_file in export_files:
-
-        zip_filename = export_file["filename"].replace('.xml','.zip')
-        with ZipFile(zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
-            zip_file.writestr(export_file["filename"], export_file["file"])
-
-            print('INFO - Saved {}'.format(zip_filename))
-
-
-
-
-
-
-#doc.write('output.xml', xml_declaration=True, encoding='utf-16')
-#outFile = open('output.xml', 'w')
-#doc.write(outFile, xml_declaration=True, encoding='utf-16')
-
-
+# Export changes
+data.changes.to_csv("changes.csv")
 

@@ -13,11 +13,15 @@ from __future__ import print_function
 from io import BytesIO
 
 from lxml import etree
+from lxml.builder import ElementMaker
+from lxml.etree import QName
+
 import pandas
 import datetime
 import zipfile
 import uuid
 
+from collections import OrderedDict
 #from collections import deque
 
 #from multiprocessing import Pool - TODO add parallel loading for import ALL DASK, SPARK, MODIN, VAEX
@@ -474,6 +478,151 @@ def export_to_excel(data):
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.export_to_excel = export_to_excel
 
+def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
+                                    class_KEY="Type",
+                                    export_undefined=True,
+                                    export_type="xml_per_instance_zip_per_instance",
+                                    global_zip_filename="Export"):
+
+    # Filenames are kept under rdfs:lable
+    labels = data.query("KEY == 'label'").iterrows()
+
+    # Keep all filenames and data to be exported
+    export_files = []
+
+    for _, label in labels:
+
+        instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
+
+        # Create xml element builder and the root element
+        E = ElementMaker(nsmap=namespace_map)
+        RDF = E(QName(namespace_map["rdf"], "RDF"))
+
+        # Store created xml rdf class elements
+        objects = OrderedDict()
+        # TODO ensure that the Header class is serialised first
+
+        # Get objects
+        for _, class_data in instance_data.query("KEY=='{}'".format(class_KEY)).iterrows():
+
+            ID = class_data["ID"]
+            class_name = class_data["VALUE"]
+
+            # Get class export definition
+            class_def = rdf_map.get(class_name, None)
+
+            if class_def:
+
+                class_namespace = class_def["namespace"]
+                id_name = class_def["attrib"]["attribute"]
+                id_value_prefix = class_def["attrib"]["value_prefix"]
+
+            else:
+                # print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
+                pass
+
+                if export_undefined:
+                    class_namespace = None
+                    id_name = "about"
+                    id_value_prefix = "urn:uuid:"
+
+            # Create class element
+            rdf_object = E(QName(class_namespace, class_name))
+            # Add ID attribute
+            rdf_object.attrib[QName(id_name)] = id_value_prefix + ID
+            # Add object to RDF
+            RDF.append(rdf_object)
+            # Add object with it's ID to dict (later we use it to add attributes to that class)
+            objects[ID] = rdf_object
+
+        # Add attribute to objects
+        for _, attribute_data in instance_data.query("KEY!='{}'".format(class_KEY)).iterrows():
+
+            ID = attribute_data["ID"]
+            KEY = attribute_data["KEY"]
+            VALUE = attribute_data["VALUE"]
+
+            _object = objects.get(ID, None)
+
+            if _object is not None:
+
+                if not pandas.isna(VALUE):
+
+                    tag_def = rdf_map.get(KEY, None)
+
+                    if tag_def:
+                        tag = E(QName(tag_def["namespace"], KEY))
+                        attrib = tag_def.get("attrib", None)
+
+                        if attrib:
+                            tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + VALUE
+                        else:
+                            tag.text = str(VALUE)
+
+                        _object.append(tag)
+
+                    else:
+                        # print("Definition missing for tag: " + KEY)
+
+                        if export_undefined:
+                            tag = E(KEY)
+                            tag.text = str(VALUE)
+
+                            _object.append(tag)
+
+
+                else:
+                    # print("Attribute VALUE is None, thus not exported: ID: {} KEY: {}".format(ID, KEY))
+                    pass
+            else:
+                # print("No Object with ID: {}".format(ID))
+                pass
+
+        # etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+        # print(etree.tostring(RDF, pretty_print=True).decode())
+
+        # Convert to XML
+        xml = etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+        # TODO - clean namespaces
+
+        print("INFO - Exporting RDF to {}".format(label["VALUE"]))
+
+        export_files.append({"filename": label["VALUE"], "file":xml})
+
+    # Export XML
+    if export_type == "xml_per_instance":
+        for export_file in export_files:
+            # Write to file
+            with open(export_file["filename"], 'w') as file:
+                file.write(export_file["file"].decode())
+                print('INFO - Saved {}'.format(export_file["filename"]))
+
+    # Export ZIP containing all xml
+    if export_type == "xml_per_instance_zip_per_all":
+        from zipfile import ZipFile, ZIP_DEFLATED
+
+        with ZipFile(global_zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
+            for export_file in export_files:
+                zip_file.writestr(export_file["filename"], export_file["file"])
+
+        print('INFO - Saved {}'.format(global_zip_filename))
+
+    # Export each xml in separate zip
+    if export_type == "xml_per_instance_zip_per_xml":
+        from zipfile import ZipFile, ZIP_DEFLATED
+
+        for export_file in export_files:
+
+            zip_filename = export_file["filename"].replace('.xml','.zip')
+            with ZipFile(zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
+                zip_file.writestr(export_file["filename"], export_file["file"])
+
+                print('INFO - Saved {}'.format(zip_filename))
+
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.export_to_cimxml = export_to_cimxml
+
 
 def get_object_data(data, object_UUID):
 
@@ -485,7 +634,7 @@ pandas.DataFrame.get_object_data = get_object_data
 def tableview_to_triplet(data):
     """Makes a triplet of dataview"""
     # TODO add only when dableveiw is created
-    return data.reset_index().melt(id_vars="ID", value_name="VALUE")
+    return data.reset_index().melt(id_vars="ID", value_name="VALUE", var_name="KEY")
 
 
 pandas.DataFrame.tableview_to_triplet = tableview_to_triplet
