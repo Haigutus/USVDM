@@ -11,6 +11,8 @@
 from __future__ import print_function
 import pandas
 
+from uuid import uuid4
+
 #from urlparse import urlparse
 from urllib.parse import urlparse
 from pyvis.network import Network
@@ -26,6 +28,19 @@ from lxml.etree import QName
 from lxml import etree
 
 from collections import OrderedDict
+
+dependencies = dict(EQ   = ["EQBD"],
+                    SSH  = ["EQ"],
+                    TP   = ["EQ"],
+                    SV   = ["TPBD", "TP", "SSH"],
+                    TPBD = ["EQBD"],
+                    EQBD = [])
+
+def generate_instances_ID(dependencies=dependencies):
+    """Generate UUID for each profile defined in dependencies dict"""
+    return {profile:str(uuid4()) for profile in dependencies}
+
+
 
 def get_metadata_from_filename(file_name):
 
