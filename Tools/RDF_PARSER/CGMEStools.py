@@ -13,8 +13,6 @@ import pandas
 
 from uuid import uuid4
 
-#from urlparse import urlparse
-from urllib.parse import urlparse
 from pyvis.network import Network
 import pyvis.options as options
 import os
@@ -39,7 +37,6 @@ dependencies = dict(EQ   = ["EQBD"],
 def generate_instances_ID(dependencies=dependencies):
     """Generate UUID for each profile defined in dependencies dict"""
     return {profile:str(uuid4()) for profile in dependencies}
-
 
 
 def get_metadata_from_filename(file_name):
@@ -257,126 +254,10 @@ def get_model_data(data, model_instances_dataframe):
 
 
 
-
-
 def get_loaded_model_parts(data):
     """Returns a pandas DataFrame of loaded CGMES instance files or model parts with their header (FullModel) data (does not return correct dependant on)"""
     return data.type_tableview("FullModel")
 
-
-def get_relations_from(data, from_UUID, show = True, notebook = False):
-    """Returns all found realtions from given object or model UUID
-    show=True creates an temporary XML file to visualize realations
-    returns connections and identified objects"""
-
-    level = 1
-
-    identified_objects  = {from_UUID:{"data":data[data.ID == from_UUID], "level":level}}
-    connections         = []
-    UUID_list           = [from_UUID]
-
-
-    for UUID in UUID_list:
-
-        level += 1
-
-        # TODO - use merge instead of a loop
-
-        for _, row in identified_objects[UUID]["data"].iterrows():
-
-
-            refered_UUID   = row.VALUE
-            refered_object = data[data.ID == refered_UUID]
-
-            # Test if valid reference to object (if dataframe is empty, no object was found)
-            if refered_object.empty: # All fields are tested, no assumption is if filed contains reference or not
-                continue
-
-            # Lets add connection to valid object
-            connections.append(dict(FROM = UUID, TO = refered_UUID, NAME = row.KEY))
-
-            # Test if we allready don't have the element
-            if refered_UUID in UUID_list:
-                #print("This object is allready analyzed -> {}".format(refered_UUID))
-                continue
-
-            # If not then add it
-            identified_objects[refered_UUID] = {"data":refered_object, "level":level}
-            UUID_list.append(refered_UUID)
-
-
-    # Visulise with pyvis
-
-    if show == True:
-
-        graph = Network(directed = True, width = "100%", height = 750, notebook=notebook)
-
-        for identified_object in identified_objects.keys():
-
-            level     = identified_objects[identified_object]["level"]
-            dataframe = identified_objects[identified_object]["data"]
-            node_type = dataframe[dataframe.KEY == "Type"].VALUE.tolist()[0]
-
-            node_name_list = dataframe[dataframe.KEY == "IdentifiedObject.name"].VALUE.tolist()
-
-            if node_name_list:
-                node_name = node_name_list[0]
-            else:
-                node_name = urlparse(dataframe[dataframe.KEY == "Model.profile"].VALUE.tolist()[0]).path # FullModel does not have IdentifiedObject.name
-
-
-            graph.add_node(identified_object, node_type + " - " + node_name, title = dataframe.to_html(index = False), size = 10, level = level) #[["KEY", "VALUE"]]
-
-        for connection in connections:
-            graph.add_edge(connection["FROM"], connection["TO"], title = connection["NAME"])
-
-
-        # Set options
-
-        options = {
-          "nodes": {
-            "shape": "dot",
-            "size": 10
-          },
-          "edges": {
-            "color": {
-              "inherit": True
-            },
-            "smooth": False
-          },
-          "layout": {
-            "hierarchical": {
-              "enabled": True,
-              "direction": "LR",
-              "sortMethod": "directed"
-            }
-          },
-          "interaction": {
-            "navigationButtons": True
-          },
-          "physics": {
-            "hierarchicalRepulsion": {
-              "centralGravity": 0,
-              "springLength": 75,
-              "nodeDistance": 145,
-              "damping": 0.2
-            },
-            "maxVelocity": 28,
-            "minVelocity": 0.75,
-            "solver": "hierarchicalRepulsion"
-          }
-        }
-
-        graph.show_buttons()
-
-        #graph.options = options
-
-        if notebook == False:
-            os.chdir(tempfile.mkdtemp())
-            graph.show(r"{}.html".format(from_UUID))
-
-
-    return connections, identified_objects, graph
 
 def statistics_GeneratingUnit_types(data):
     """Returns statistics of GeneratingUnit types """
