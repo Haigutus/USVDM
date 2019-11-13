@@ -28,9 +28,9 @@ def get_metadata_from_filename_NMD(file_name):
     return meta
 
 
-#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"
-boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
+#boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
 
 # 1 Load data from CGMES boundary global ZIP, exported by NMD
 data = RDF_parser.load_all_to_dataframe([boundary_path])
@@ -90,7 +90,7 @@ DC_LINES = HVDC_data.rename(columns={"Line.mRID":"ID"}).set_index("ID")[columns_
 data.update_triplet_from_tableview(DC_LINES, add=False)
 
 DC_NODES = HVDC_data.rename(columns={"ConnectivityNode.mRID":"ID"}).set_index("ID")[columns_to_update]
-data.update_triplet_from_tableview(DC_LINES, add=False)
+data.update_triplet_from_tableview(DC_NODES, add=False)
 
 # 9 Remove Junctions
 
@@ -190,5 +190,5 @@ data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undef
 data.export_to_excel()
 
 # Export changes
-data.changes.to_csv("changes.csv")
+data.changes.to_csv("changes.csv", encoding="UTF-8")
 
