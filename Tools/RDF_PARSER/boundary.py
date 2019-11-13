@@ -168,25 +168,37 @@ rdf_map = {"FullModel":                                 {"namespace": "http://ie
 
 ### EXPORT ###
 
-# Update filenames kept in rdfs lable tag
-filename_mask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
-data = CGMEStools.update_filename_from_FullModel(data, filename_mask)
-
-# CGMES export
-export_type = "xml_per_instance_zip_per_all"
-#export_type = "xml_per_instance_zip_per_xml"
-#export_type = "xml_per_instance"
+# Update single xml file names kept in label tag and generate global zip name
+instance_filemask   = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_{messageType}_{version:03d}"
 global_zip_filemask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity}_BD_{version:03d}"
-export_undefined = False
 
+# Set file names for single cimxml
+data = CGMEStools.update_filename_from_FullModel(data, instance_filemask)
+
+# Generate filename for global zip
 metadata            = CGMEStools.get_metadata_from_FullModel(data)
 global_zip_filename = CGMEStools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
 
+existing_instance_ID = data.query("KEY == 'Model.messageType'").set_index("VALUE")["ID"].to_dict()
+updated_instance_ID  = CGMEStools.generate_instances_ID()
+
+
+from os import path
+
+print("Does global zip exist - " + str(path.exists(global_zip_filename)))
+
+# CGMES export
+export_undefined = False
+export_type      = "xml_per_instance_zip_per_all"
+#export_type     = "xml_per_instance_zip_per_xml"
+#export_type     = "xml_per_instance"
+
+# Export triplet to CGMES
 data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined,
                                                                     export_type=export_type,
                                                                     global_zip_filename=global_zip_filename)
 
-# Excel export
+# Excel triplet export
 data.export_to_excel()
 
 # Export changes
