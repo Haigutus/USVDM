@@ -26,6 +26,7 @@ from lxml.etree import QName
 from lxml import etree
 
 from collections import OrderedDict
+from builtins import str
 
 dependencies = dict(EQ   = ["EQBD"],
                     SSH  = ["EQ"],
@@ -342,13 +343,13 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
     # Add nodes/objects
     for ID, node in node_data.iterrows():
         object_data = reference_data.query("{} == '{}'".format(ID_COLUMN, ID))
-        html_table = object_data[[ID_COLUMN, "KEY", "VALUE", "INSTANCE_ID"]].rename(
-            columns={ID_COLUMN: "ID"}).to_html(index=False)
 
-        #"".join([x if ord(x) < 128 else '?' for x in str(node["name"]]))
+        node_name  = u"{} - {}".format(node["Type"], node["name"])
+        node_title = object_data[[ID_COLUMN, "KEY", "VALUE", "INSTANCE_ID"]].rename(columns={ID_COLUMN: "ID"}).to_html(index=False) # Add object data table to node hover titel
+        node_level = object_data.level.tolist()[0]
 
-        #graph.add_node(ID, unicode(node["Type"]) + u" - " + unicode(node["name"]), title=html_table, size=10, level=object_data.level.tolist()[0])
-        graph.add_node(ID, node["Type"] + u" - " + node["name"], title=html_table, size=10, level=object_data.level.tolist()[0])
+        graph.add_node(ID, node_name, title=node_title, size=10, level=node_level)
+
 
     # Add connections
 
