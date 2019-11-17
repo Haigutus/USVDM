@@ -28,9 +28,9 @@ def get_metadata_from_filename_NMD(file_name):
     return meta
 
 
-#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"
-boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
+#boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
 
 # 1 Load data from CGMES boundary global ZIP, exported by NMD
 data = RDF_parser.load_all_to_dataframe([boundary_path])

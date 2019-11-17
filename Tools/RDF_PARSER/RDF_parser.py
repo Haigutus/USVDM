@@ -557,7 +557,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                         if attrib:
                             tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + VALUE
                         else:
-                            tag.text = str(VALUE)
+                            tag.text = VALUE
 
                         _object.append(tag)
 
@@ -655,9 +655,9 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
     test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_OLD", ""))
 
     if update:
-        print("Data updated")
+        #print("Data updated")
         data_to_update = test_merge.query("_merge == 'both'")
-        print(data_to_update[report_columns])   # TODO DEBUG
+        #print(data_to_update[report_columns])   # TODO DEBUG
         # Store changes
         data.changes = data.changes.append(data_to_update[report_columns], ignore_index=True)
         # Get original index for update to work # TODO could be simplified by keeping index at test merge
@@ -666,9 +666,9 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
         # TODO compare performance of append + drop vs update
 
     if add:
-        print("Data added")
+        #print("Data added")
         data_to_add = test_merge.query("_merge == 'right_only'")
-        print(data_to_add[report_columns]) # TODO DEBUG
+        #print(data_to_add[report_columns]) # TODO DEBUG
         data = data.append(data_to_add[write_columns], ignore_index=True)
         # Store changes
         data.changes = data.changes.append(data_to_add[report_columns], ignore_index=True)
