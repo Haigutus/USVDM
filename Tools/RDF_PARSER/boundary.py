@@ -57,31 +57,39 @@ data = CGMEStools.update_FullModel_from_dict(data, meta_updates)
 
 # 7 Update Line name and description
 
-lines = data.type_tableview("Line").reset_index()
-nodes = data.type_tableview("ConnectivityNode").reset_index()
+lines    = data.type_tableview("Line").reset_index()
+cn_nodes = data.type_tableview("ConnectivityNode").reset_index()
+tp_nodes = data.type_tableview("TopologicalNode").reset_index()
 
-#TODO filter out AC and DC lines
-line_and_nodes = lines.merge(nodes, left_on="ID",
+#TODO add name and description to ConnectivityNode and TopologicalNode?
+line_and_nodes = lines.merge(cn_nodes, left_on="ID",
                                     right_on='ConnectivityNode.ConnectivityNodeContainer',
-                                    suffixes=("","_node"))
+                                    suffixes=("","_ConnectivityNode"))
 
-# Update name
+line_and_nodes = line_and_nodes.merge(tp_nodes, left_on="ConnectivityNode.TopologicalNode",
+                                      right_index=True,
+                                      suffixes=("","_TopologicalNode"))
+
+# Create new Line name
 fromEndName = line_and_nodes['ConnectivityNode.fromEndName']
 toEndName   = line_and_nodes['ConnectivityNode.toEndName']
-line_and_nodes["IdentifiedObject.name"] = fromEndName + " - " + toEndName
+line_and_nodes["IdentifiedObject.name"] = (fromEndName + " - " + toEndName).str[:32] # Limit to 32 character
 
 
-# Update description
+# Create new Line description
 fromEndIsoCode = line_and_nodes['ConnectivityNode.fromEndIsoCode']
 toEndIsoCode   = line_and_nodes['ConnectivityNode.toEndIsoCode']
 line_and_nodes["IdentifiedObject.description"] = "AC tie line between " + fromEndIsoCode + ' and ' + toEndIsoCode
 
+# Update Line data
 data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedObject.name",
                                                                    "IdentifiedObject.description"]], add=False)
 
 
 
 # 8 Update DC line name and description
+
+# Update Lines
 columns_to_update = ["IdentifiedObject.name", "IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
 
 HVDC_data = pandas.read_csv("HVDC_mapping.csv", index_col=0)
@@ -89,18 +97,40 @@ HVDC_data = pandas.read_csv("HVDC_mapping.csv", index_col=0)
 DC_LINES = HVDC_data.rename(columns={"Line.mRID":"ID"}).set_index("ID")[columns_to_update]
 data.update_triplet_from_tableview(DC_LINES, add=False)
 
-DC_NODES = HVDC_data.rename(columns={"ConnectivityNode.mRID":"ID"}).set_index("ID")[columns_to_update]
-data.update_triplet_from_tableview(DC_NODES, add=False)
+# Update ConnectivityNodes
+columns_to_update = ["IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
+DC_CN_NODES = HVDC_data.rename(columns={"ConnectivityNode.mRID":"ID"}).set_index("ID")[columns_to_update]
+data.update_triplet_from_tableview(DC_CN_NODES, add=False)
+
+# Update TopologicalNodes
+DC_TP_NODES = HVDC_data.merge(tp_nodes[["ID", "TopologicalNode.ConnectivityNodeContainer"]],
+                              left_on='Line.mRID',
+                              right_on='TopologicalNode.ConnectivityNodeContainer').set_index("ID")[columns_to_update]
+data.update_triplet_from_tableview(DC_TP_NODES, add=False)
 
 # 9 Remove Junctions
 
 # 10 Remove Terminals
 
+# Add additional Areas
+
+mapping_table = pandas.read_excel("MAP_AREA_PARTY.xlsx").dropna(how="all")
+column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "AREA" in column}
+areas         = mapping_table[list(column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
+areas["Type"] = "GeographicalRegion"
+
+INSTANCE_ID = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
+
+areas_triplet = RDF_parser.tableview_to_triplet(areas)
+areas_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
+
 # 13 Remove empty EIC
 # TODO make report on lines without EIC
 # TODO make report on line EIC not in CIO tool
 
-data.query("KEY=='IdentifiedObject.energyIdentCodeEic'")
+#data.query("KEY=='IdentifiedObject.energyIdentCodeEic'")
 
 # 11 Update version number if it already exists
 
