@@ -494,6 +494,17 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
+        instance_type = instance_data.query("KEY == 'Model.messageType'").VALUE.item()
+
+        instance_rdf_map = rdf_map.get(instance_type, None)
+
+        if instance_rdf_map is None:
+            print("WARNING - No rdf mapping available for {}".format(instance_type))
+            if export_undefined == False:
+                print("File not created for {}".format(label.VALUE))
+                continue
+
+
         # Create xml element builder and the root element
         E = ElementMaker(nsmap=namespace_map)
         RDF = E(QName(namespace_map["rdf"], "RDF"))
@@ -509,22 +520,24 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
             class_name = class_data["VALUE"]
 
             # Get class export definition
-            class_def = rdf_map.get(class_name, None)
+            class_def = instance_rdf_map.get(class_name, None)
 
-            if class_def:
+            if class_def is not None:
 
                 class_namespace = class_def["namespace"]
                 id_name = class_def["attrib"]["attribute"]
                 id_value_prefix = class_def["attrib"]["value_prefix"]
 
             else:
-                # print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
-                pass
+                print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
 
                 if export_undefined:
                     class_namespace = None
                     id_name = "about"
                     id_value_prefix = "urn:uuid:"
+                else:
+                    print("Not Exported")
+                    continue
 
             # Create class element
             rdf_object = E(QName(class_namespace, class_name))
@@ -548,9 +561,9 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
                 if not pandas.isna(VALUE):
 
-                    tag_def = rdf_map.get(KEY, None)
+                    tag_def = instance_rdf_map.get(KEY, None)
 
-                    if tag_def:
+                    if tag_def is not None:
                         tag = E(QName(tag_def["namespace"], KEY))
                         attrib = tag_def.get("attrib", None)
 
@@ -562,7 +575,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                         _object.append(tag)
 
                     else:
-                        # print("Definition missing for tag: " + KEY)
+                        print("Definition missing for tag: " + KEY)
 
                         if export_undefined:
                             tag = E(KEY)
@@ -572,7 +585,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
 
                 else:
-                    # print("Attribute VALUE is None, thus not exported: ID: {} KEY: {}".format(ID, KEY))
+                    print("Attribute VALUE is None, thus not exported: ID: {} KEY: {}".format(ID, KEY))
                     pass
             else:
                 # print("No Object with ID: {}".format(ID))

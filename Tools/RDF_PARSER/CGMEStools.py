@@ -516,14 +516,14 @@ def export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", ex
         # Get class export definition
         class_def  = rdf_map.get(class_name, None)
 
-        if class_def:
+        if class_def is not None:
 
             class_namespace = class_def["namespace"]
             id_name         = class_def["attrib"]["attribute"]
             id_value_prefix = class_def["attrib"][ "value_prefix"]
 
         else:
-            #print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
+            print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
             pass
 
             if export_undefined:
@@ -568,7 +568,7 @@ def export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", ex
                     _object.append(tag)
 
                 else:
-                    #print("Definition missing for tag: " + KEY)
+                    print("Definition missing for tag: " + KEY)
 
                     if export_undefined:
                         tag      = E(KEY)
@@ -603,8 +603,8 @@ if __name__ == '__main__':
 
     object_UUID = "99722373_VL_TN1"
 
-    draw_relations_from(object_UUID, data)
-    draw_relations_to(object_UUID, data)
+    #draw_relations_from(object_UUID, data)
+    #draw_relations_to(object_UUID, data)
 
 
 

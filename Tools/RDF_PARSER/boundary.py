@@ -66,9 +66,9 @@ line_and_nodes = lines.merge(cn_nodes, left_on="ID",
                                     right_on='ConnectivityNode.ConnectivityNodeContainer',
                                     suffixes=("","_ConnectivityNode"))
 
-line_and_nodes = line_and_nodes.merge(tp_nodes, left_on="ConnectivityNode.TopologicalNode",
-                                      right_index=True,
-                                      suffixes=("","_TopologicalNode"))
+#line_and_nodes = line_and_nodes.merge(tp_nodes, left_on="ConnectivityNode.TopologicalNode",
+#                                      right_index=True,
+#                                      suffixes=("","_TopologicalNode"))
 
 # Create new Line name
 fromEndName = line_and_nodes['ConnectivityNode.fromEndName']
@@ -82,7 +82,7 @@ toEndIsoCode   = line_and_nodes['ConnectivityNode.toEndIsoCode']
 line_and_nodes["IdentifiedObject.description"] = "AC tie line between " + fromEndIsoCode + ' and ' + toEndIsoCode
 
 # Update Line data
-data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedObject.name",
+data = data.update_triplet_from_tableview(line_and_nodes.set_index("ID")[["IdentifiedObject.name",
                                                                    "IdentifiedObject.description"]], add=False)
 
 
@@ -95,18 +95,18 @@ columns_to_update = ["IdentifiedObject.name", "IdentifiedObject.description", "I
 HVDC_data = pandas.read_csv("HVDC_mapping.csv", index_col=0)
 
 DC_LINES = HVDC_data.rename(columns={"Line.mRID":"ID"}).set_index("ID")[columns_to_update]
-data.update_triplet_from_tableview(DC_LINES, add=False)
+data = data.update_triplet_from_tableview(DC_LINES, add=False)
 
 # Update ConnectivityNodes
 columns_to_update = ["IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
 DC_CN_NODES = HVDC_data.rename(columns={"ConnectivityNode.mRID":"ID"}).set_index("ID")[columns_to_update]
-data.update_triplet_from_tableview(DC_CN_NODES, add=False)
+data = data.update_triplet_from_tableview(DC_CN_NODES, add=False)
 
 # Update TopologicalNodes
 DC_TP_NODES = HVDC_data.merge(tp_nodes[["ID", "TopologicalNode.ConnectivityNodeContainer"]],
                               left_on='Line.mRID',
                               right_on='TopologicalNode.ConnectivityNodeContainer').set_index("ID")[columns_to_update]
-data.update_triplet_from_tableview(DC_TP_NODES, add=False)
+data = data.update_triplet_from_tableview(DC_TP_NODES, add=False)
 
 # 9 Remove Junctions
 
@@ -152,46 +152,61 @@ namespace_map = dict(    cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
 
 
 
-rdf_map = {"FullModel":                                 {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
-           "Model.created":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.version":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.description":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.modelingAuthoritySet":                {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
-           "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
-           "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
-           "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
-           "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "IdentifiedObject.energyIdentCodeEic":       {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode":                          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "ConnectivityNode.ConnectivityNodeContainer":{"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-           "ConnectivityNode.TopologicalNode":          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-           "ConnectivityNode.toEndIsoCode":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.toEndName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.toEndNameTso":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.fromEndIsoCode":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.fromEndName":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.fromEndNameTso":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "ConnectivityNode.boundaryPoint":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode":                           {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "TopologicalNode.BaseVoltage":               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-           "TopologicalNode.ConnectivityNodeContainer": {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-           "TopologicalNode.toEndIsoCode":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.toEndName":                 {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.toEndNameTso":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.fromEndIsoCode":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.fromEndName":               {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.fromEndNameTso":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "TopologicalNode.boundaryPoint":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
-           "Line":                                      {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "Line.Region":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-           "BaseVoltage":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "BaseVoltage.nominalVoltage":                {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
-           "EnergySchedulingType":                      {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "GeographicalRegion":                        {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "SubGeographicalRegion":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-           "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
+                   "Model.created":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.version":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.description":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.modelingAuthoritySet":                {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
+                   "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+                   "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+                   "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "IdentifiedObject.energyIdentCodeEic":       {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode":                          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "ConnectivityNode.ConnectivityNodeContainer":{"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "ConnectivityNode.toEndIsoCode":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.toEndName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.toEndNameTso":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.fromEndIsoCode":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.fromEndName":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.fromEndNameTso":           {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode.boundaryPoint":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "Line":                                      {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "Line.Region":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "BaseVoltage":                               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "BaseVoltage.nominalVoltage":                {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+                   "EnergySchedulingType":                      {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "GeographicalRegion":                        {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "SubGeographicalRegion":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+            },
+
+            "TPBD": { "FullModel":                              {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
+                   "Model.created":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.version":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.description":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.modelingAuthoritySet":                {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+                   "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
+                   "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "IdentifiedObject.energyIdentCodeEic":       {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode":                           {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "TopologicalNode.BaseVoltage":               {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "TopologicalNode.ConnectivityNodeContainer": {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "TopologicalNode.toEndIsoCode":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.toEndName":                 {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.toEndNameTso":              {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.fromEndIsoCode":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.fromEndName":               {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.fromEndNameTso":            {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "TopologicalNode.boundaryPoint":             {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
+                   "ConnectivityNode":                          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",      "value_prefix": "#_"}},
+                   "ConnectivityNode.TopologicalNode":          {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+            }
 }
 
 
