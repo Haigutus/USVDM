@@ -123,6 +123,7 @@ boundary_data["IdentifiedObject.name"] = boundary_data["IdentifiedObject.name"].
 boundary_data = boundary_data.set_index("ID")
 data = data.update_triplet_from_tableview(boundary_data[["IdentifiedObject.name"]], add=False)
 
+
 # 9 Remove Junctions
 
 # 10 Remove Terminals
@@ -145,6 +146,7 @@ data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
 # Add Party
 
 party_column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "PARTY" in column}
+
 party               = mapping_table[list(party_column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
 
 party_column_map["Party.Region"] = "AREA_ID"
