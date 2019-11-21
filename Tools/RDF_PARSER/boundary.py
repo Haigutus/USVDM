@@ -112,7 +112,7 @@ DC_TP_NODES = HVDC_data.merge(tp_nodes[["ID", "TopologicalNode.ConnectivityNodeC
                               right_on='TopologicalNode.ConnectivityNodeContainer').set_index("ID")[columns_to_update]
 data = data.update_triplet_from_tableview(DC_TP_NODES, add=False)
 
-boundary_data = pandas.read_excel("C:\USVDM\Tools\RDF_PARSER\DATE_NOT_SELECTED_ENTSO-E_XLS_BD_1128_BoundaryUpgrade.xlsx", sheet="BoundaryPoints", header=1)
+boundary_data = pandas.read_excel(r"C:\USVDM\Tools\RDF_PARSER\DATE_NOT_SELECTED_ENTSO-E_XLS_BD_1128_BoundaryUpgrade.xlsx", sheet="BoundaryPoints", header=1)
 
 boundary_data = boundary_data.rename(columns={"Boundary Point Line CIM ID":"ID", "NEW Line Name ": "IdentifiedObject.name"})
 
@@ -130,16 +130,31 @@ data = data.update_triplet_from_tableview(boundary_data[["IdentifiedObject.name"
 # Add additional Areas
 
 mapping_table = pandas.read_excel("MAP_AREA_PARTY.xlsx").dropna(how="all")
+INSTANCE_ID   = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
+
+
 column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "AREA" in column}
 areas         = mapping_table[list(column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
 areas["Type"] = "GeographicalRegion"
-
-INSTANCE_ID = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
 
 areas_triplet = RDF_parser.tableview_to_triplet(areas)
 areas_triplet["INSTANCE_ID"] = INSTANCE_ID
 
 data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
+
+# Add Party
+
+party_column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "PARTY" in column}
+party               = mapping_table[list(party_column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
+
+party_column_map["Party.Region"] = "AREA_ID"
+party["Type"]       = "Party"
+
+party_triplet = RDF_parser.tableview_to_triplet(party)
+party_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+data = data.update_triplet_from_triplet(party_triplet, add=True, update=False)
+
 
 # 13 Remove empty EIC
 # TODO make report on lines without EIC
@@ -160,6 +175,7 @@ data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
 namespace_map = dict(    cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                          cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
                          entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#",
+                         cgm= 'http://entsoe.eu/CIM/Extensions/CGM/2019#',
                          md="http://iec.ch/TC57/61970-552/ModelDescription/1#",
                          rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                          rdfs="http://www.w3.org/2000/01/rdf-schema#",
@@ -196,6 +212,9 @@ rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "h
                    "GeographicalRegion":                        {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
                    "SubGeographicalRegion":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
                    "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "Party":                                     {"namespace": 'http://entsoe.eu/CIM/Extensions/CGM/2019#',        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "Party.Region":                              {"namespace": 'http://entsoe.eu/CIM/Extensions/CGM/2019#',        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+
             },
 
             "TPBD": { "FullModel":                              {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
