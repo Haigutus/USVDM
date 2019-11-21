@@ -135,7 +135,7 @@ INSTANCE_ID   = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1
 
 
 column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "AREA" in column}
-areas         = mapping_table[list(column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
+areas         = mapping_table[list(column_map.keys())].rename(columns=column_map).drop_duplicates("ID").dropna(subset=["ID"]).set_index("ID")
 areas["Type"] = "GeographicalRegion"
 
 areas_triplet = RDF_parser.tableview_to_triplet(areas)
@@ -146,10 +146,12 @@ data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
 # Add Party
 
 party_column_map    = {column:column.split("_")[1] for column in mapping_table.columns if "PARTY" in column}
+party_column_map["AREA_ID"] = "Party.Region"
+party = mapping_table[list(party_column_map.keys())].rename(columns=party_column_map).drop_duplicates("ID").dropna(subset=["ID"]).set_index("ID")
 
-party               = mapping_table[list(party_column_map.keys())].rename(columns=column_map).drop_duplicates("ID").set_index("ID")
 
-party_column_map["Party.Region"] = "AREA_ID"
+
+
 party["Type"]       = "Party"
 
 party_triplet = RDF_parser.tableview_to_triplet(party)
