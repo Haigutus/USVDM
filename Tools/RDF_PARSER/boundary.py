@@ -75,6 +75,10 @@ fromEndName = line_and_nodes['ConnectivityNode.fromEndName']
 toEndName   = line_and_nodes['ConnectivityNode.toEndName']
 line_and_nodes["IdentifiedObject.name"] = (fromEndName + " - " + toEndName).str[:32] # Limit to 32 character
 
+# Update to have unique line name, add last char from boundary point name
+#line_cb_id = line_and_nodes["IdentifiedObject.name_ConnectivityNode"].str[-1]
+#line_and_nodes["IdentifiedObject.name"] = (line_cb_id +"-" + fromEndName + "-" + toEndName).str[:32] # Limit to 32 character
+
 
 # Create new Line description
 fromEndIsoCode = line_and_nodes['ConnectivityNode.fromEndIsoCode']
@@ -107,6 +111,17 @@ DC_TP_NODES = HVDC_data.merge(tp_nodes[["ID", "TopologicalNode.ConnectivityNodeC
                               left_on='Line.mRID',
                               right_on='TopologicalNode.ConnectivityNodeContainer').set_index("ID")[columns_to_update]
 data = data.update_triplet_from_tableview(DC_TP_NODES, add=False)
+
+boundary_data = pandas.read_excel("C:\USVDM\Tools\RDF_PARSER\DATE_NOT_SELECTED_ENTSO-E_XLS_BD_1128_BoundaryUpgrade.xlsx", sheet="BoundaryPoints", header=1)
+
+boundary_data = boundary_data.rename(columns={"Boundary Point Line CIM ID":"ID", "NEW Line Name ": "IdentifiedObject.name"})
+
+#boundary_data[["Boundary Point Line CIM ID", "Line Name", "NEW Line Name "]]
+#lines.merge(boundary_data, left_on="ID", right_on="Boundary Point Line CIM ID")
+boundary_data["ID"] = boundary_data["ID"].str[1:]
+boundary_data["IdentifiedObject.name"] = boundary_data["IdentifiedObject.name"].str[:32]
+boundary_data = boundary_data.set_index("ID")
+data = data.update_triplet_from_tableview(boundary_data[["IdentifiedObject.name"]], add=False)
 
 # 9 Remove Junctions
 
@@ -190,6 +205,7 @@ rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "h
                    "Model.modelingAuthoritySet":                {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
+                   "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
                    "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
