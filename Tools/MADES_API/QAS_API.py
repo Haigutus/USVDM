@@ -12,14 +12,17 @@
 from EDX import create_client
 from lxml.builder import ElementMaker
 from lxml import etree
+
 from datetime import datetime
+import pytz
+import aniso8601
 
 import zipfile
-import StringIO
+import io
 
 import time
 
-
+from uuid import uuid4
 
 from collections import OrderedDict
 
@@ -28,6 +31,63 @@ import pandas
 pandas.set_option('display.max_rows', 500)
 pandas.set_option('display.max_columns', 500)
 pandas.set_option('display.width', 1000)
+
+
+CET = pytz.timezone("Europe/Brussels")
+now = datetime.now(CET)
+
+def get_year_start(date_time = now):
+
+    year_start = date_time.replace(month = 1, day = 1, hour = 0, minute = 0, second = 0, microsecond = 0)
+
+    return year_start
+
+
+def get_month_start(date_time = now):
+
+    month_start = date_time.replace(day = 1, hour = 0, minute = 0, second = 0, microsecond = 0)
+
+    return month_start
+
+
+def get_week_start(date_time = now):
+
+    weekday = date_time.weekday()
+
+    day_start = get_day_start(date_time)
+
+    week_start = day_start - datetime.timedelta(days = weekday)
+
+    return week_start
+
+
+def get_day_start(date_time = now):
+
+    day_start =  date_time.replace(hour = 0, minute = 0, second = 0, microsecond = 0)
+
+    return day_start
+
+
+def get_hour_start(date_time = now):
+
+    hour_start =  date_time.replace(minute = 0, second = 0, microsecond = 0)
+
+    return hour_start
+
+
+
+
+def timestamp_range(start_date, end_date, ISO_step):
+
+    timestamp_list = []
+    timestamp = start_date
+
+    while timestamp <= end_date:
+
+        timestamp_list.append(timestamp)
+        timestamp += aniso8601.parse_duration(ISO_step)
+
+    return timestamp_list
 
 
 def create_message(query_type, meta):
@@ -100,7 +160,7 @@ def CGM_query_message(processType, RSCName, CGMType, scenarioDate, scenarioTime=
 
 def parse_zip_attachment(message):
     "Parses base64 mime attachment to zip instance"
-    return zipfile.ZipFile(StringIO.StringIO(message.attachments[0].content))
+    return zipfile.ZipFile(io.BytesIO(message['receivedMessage']['content']))
 
 def save_zip_message(message, path):
     "Saves ZIP message to path"
@@ -117,8 +177,17 @@ def parse_QAReport(xml_string):
 
     QAReport_element = xml.find(".//{*}QAReport")
 
+    if QAReport_element is None:
+        QAReport_element = xml
+
     meta = {'QAReport_' + k: v for k, v in QAReport_element.attrib.items()}
     meta["opdm_version"] = xml.get("opdm-version", "")
+
+    if xml.find(".//{*}Id") is not None:
+        meta["opde_id"] = xml.find(".//{*}Id").text
+
+    if xml.find(".//{*}processible") is not None:
+        meta["processible"] = xml.find(".//{*}processible").text
 
 
     for report in QAReport_element.getchildren():
@@ -131,22 +200,30 @@ def parse_QAReport(xml_string):
 
         # Get violations
         violations = []
+        violations_dict = []
         for violation_element in report.findall("{*}RuleViolation"):
 
             # Extract violation data
-            viloation = violation_element.attrib
-            message   = violation_element.find("{*}Message").text
+            viloation = dict(violation_element.attrib)
+            message   = str(violation_element.find("{*}Message").text)
 
             # Add to violoations list
             violations.append((viloation["ruleId"], viloation["validationLevel"], viloation["severity"], message))
 
+            # Make dict
+            viloation["message"]=message
+            violations_dict.append(viloation)
+
     # Add viloations to meta
     current_meta["violations"]      = pandas.DataFrame(violations, columns = ["ruleId", "validationLevel", "severity", "message"])
-    current_meta["WARNINGS"]        = current_meta["violations"].query("severity == 'WARNING'")["severity"].count()
+
+    current_meta["WARNINGS"]        = str(current_meta["violations"].query("severity == 'WARNING'")["severity"].count())
     current_meta["WARNINGS_INFO"]   = current_meta["violations"].query("severity == 'WARNING'")["ruleId"].value_counts().to_dict()
-    current_meta["ERRORS"]          = current_meta["violations"].query("severity == 'ERROR'")["severity"].count()
+    current_meta["ERRORS"]          = int(current_meta["violations"].query("severity == 'ERROR'")["severity"].count())
     current_meta["ERRORS_INFO"]     = current_meta["violations"].query("severity == 'ERROR'")["ruleId"].value_counts().to_dict()
-    current_meta["MAX_ERROR_LEVEL"] = current_meta["violations"].query("severity == 'ERROR'")["validationLevel"].max()
+    current_meta["MAX_ERROR_LEVEL"] = str(current_meta["violations"].query("severity == 'ERROR'")["validationLevel"].fillna(0).max())
+
+    current_meta["violations"]      = violations_dict
 
 
 
@@ -161,8 +238,8 @@ tso_list = ['50Hertz', 'Amprion', 'APG', 'CEPS', 'CGES', 'ELES', 'ELIA', 'EMS',
 'Energinet.DK West', 'ESO', 'HOPS', 'IPTO', 'MAVIR', 'MEPSO', 'NOSBiH', 'OST',
 'PSE', 'REE', 'REN', 'RTE', 'SEPS', 'Swissgrid', 'TEIAS', 'TenneT Neth.',
 'TenneT. Ger', 'Terna', 'Transelectrica', 'TransnetBW', 'Creos',
-'Energinet.DK East', 'Fingrid', 'Statnett', 'SE', # 'Svenska Kraftn\xc3\xa4t' python 27 does not support well non ascii
-'AST', 'Elering', 'Litgrid', 'National Grid', 'Eirgrid/SONI', 'UKRENERGO']
+'Energinet.DK East', 'Fingrid', 'Statnett', 'Svenska Kraftnät',
+'AST', 'Elering', 'Litgrid', 'National Grid', 'Eirgrid', 'UKRENERGO'] #'Eirgrid/SONI'
 
 RSCname_list  = ['balticrsc', 'coreso', 'nordicrsc', 'sccrsci', 'tscnet']
 
@@ -170,8 +247,10 @@ CGMType_list  = ['ba', 'ce', 'eu', 'in', 'no', 'uk']
 
 
 def parse_error_message(message):
-    "Prints error message in response"
-    print etree.fromstring(message.attachments[0].content).find(".{*}message").text
+    "Extract error message"
+    error_message = etree.fromstring(message['receivedMessage']['content']).find(".{*}message").text
+
+    return error_message
 
 
 def remove_message():
@@ -181,75 +260,8 @@ def remove_message():
     print(message['remainingMessagesCount'])
 
 
-# PROCESS START
 
 
-server = "https://test-ba-opde.elering.sise"
-
-# Neede only if basic auth is set up for UI
-username = "admin"  #raw_input("UserName")
-password = "sadmin" #raw_input("PassWord")
-
-service = create_client(server, username, password, debug = False)
-
-
-TSOs = ["AST", "ELERING", "Litgrid"]
-TSOs = tso_list
-
-query_counter = 0
-
-for TSO in TSOs:
-    query_message = IGM_query_message(processType="1D", tso=TSO, scenarioDate="2019-09-01", scenarioTime="09:30:00")
-    message_ID = service.send_message("SERVICE-QAS", "ENTSOE-QAS-Query", query_message)
-    print(message_ID)
-
-    ##status = service.check_message_status(message_ID)
-
-    query_counter += 1
-
-
-while query_counter > 0:
-
-    message = service.receive_message("ENTSOE-QAS-QueryResult")
-
-    error = False
-    try:
-        parse_error_message(message)
-        error = True
-
-        print("Removing error message")
-        service.confirm_received_message(message['receivedMessage']['messageID'])
-        print(message['receivedMessage']['messageID'])
-
-        query_counter -= 1
-
-
-
-    except:
-        pass
-
-
-    if error == False and type(message) != dict:
-        zip_file = parse_zip_attachment(message)
-        print(zip_file.namelist())
-
-        raw_files = [zip_file.read(name) for name in zip_file.namelist()]
-
-        meta_list = []
-        for xml_string in raw_files:
-
-            meta_list.append(parse_QAReport(xml_string))
-
-        print(pandas.DataFrame(meta_list).drop(columns=["violations", "ERRORS_INFO", "WARNINGS_INFO"]))
-
-    #pandas.DataFrame(meta_list)#.drop(columns=["violations"]).to_csv("C:\Users\kristjan.vilgo\Downloads\example_data.csv")
-
-    message = service.receive_message("ENTSOE-QAS-QueryResult", False)
-    service.confirm_received_message(message['receivedMessage']['messageID'])
-
-
-    time.sleep(1)
-    query_counter -= 1
 
 ##message = service.receive_message("ENTSOE-QAS-QueryResult", False)
 ##service.confirm_received_message(message['receivedMessage']['messageID'])
@@ -272,16 +284,16 @@ while query_counter > 0:
 ##</q:QASQuery>
 ##"""
 ##
-IGM_example_query = """
-<q:QASQuery created="2008-09-29T03:49:45" schemeVersion="1" xmlns:q="http://entsoe.eu/checks">
-  <q:IGM>
-    <q:processType>1D</q:processType>
-    <q:tso>ELERING</q:tso>
-    <q:scenarioDate>2019-06-25</q:scenarioDate>
-    <!--Optional:-->
-    <q:scenarioTime>00:30:00</q:scenarioTime> <!-- if defined, only one timestamp will be returned -->
-    <!--<q:version>3</q:version> -->          <!-- if not defined, latest version will be returned -->
-  </q:IGM>
-</q:QASQuery>
-"""
+##IGM_example_query = """
+##<q:QASQuery created="2008-09-29T03:49:45" schemeVersion="1" xmlns:q="http://entsoe.eu/checks">
+##  <q:IGM>
+##    <q:processType>1D</q:processType>
+##    <q:tso>ELERING</q:tso>
+##    <q:scenarioDate>2019-06-25</q:scenarioDate>
+##    <!--Optional:-->
+##    <q:scenarioTime>00:30:00</q:scenarioTime> <!-- if defined, only one timestamp will be returned -->
+##    <!--<q:version>3</q:version> -->          <!-- if not defined, latest version will be returned -->
+##  </q:IGM>
+##</q:QASQuery>
+##"""
 
