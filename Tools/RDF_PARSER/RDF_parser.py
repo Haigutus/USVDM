@@ -254,6 +254,9 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
 
     return data
 
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.from_RDF = load_all_to_dataframe
+
 
 def type_tableview(data, type_name, string_to_number=True):
     """Creates a table view of all objects of same type, with their parameters in columns"""
