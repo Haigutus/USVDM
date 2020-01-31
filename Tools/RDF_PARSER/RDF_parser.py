@@ -532,7 +532,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                 id_value_prefix = class_def["attrib"]["value_prefix"]
 
             else:
-                print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)
+                print("WARNING - Definition missing for class: {} with {}: ".format(class_name, ID))
 
                 if export_undefined:
                     class_namespace = None
@@ -571,9 +571,11 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                         attrib = tag_def.get("attrib", None)
 
                         if attrib:
-                            tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + VALUE
+                            tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + str(VALUE)
                         else:
-                            tag.text = VALUE
+                            #print(ID, KEY, VALUE)  # DEBUG
+                            tag.text = str(VALUE)
+
 
                         _object.append(tag)
 

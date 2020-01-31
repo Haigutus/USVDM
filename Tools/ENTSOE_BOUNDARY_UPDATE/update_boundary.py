@@ -15,7 +15,7 @@ import pandas
 
 sys.path.append("../RDF_PARSER")
 import RDF_parser
-import CGMEStools
+import CGMES_tools
 from datetime import datetime
 
 from uuid import uuid4
@@ -47,7 +47,7 @@ data = RDF_parser.load_all_to_dataframe([boundary_path])
 #data.export_to_excel()
 
 # Add missing metadata form filename to FullModel
-data = CGMEStools.update_FullModel_from_filename(data, parser=get_metadata_from_filename_NMD)
+data = CGMES_tools.update_FullModel_from_filename(data, parser=get_metadata_from_filename_NMD)
 
 # Get current time, to update created DateTime and ScenarioTime
 utc_now = datetime.utcnow()
@@ -62,7 +62,7 @@ meta_updates = {'Model.description':          "Official CGM boundary set +//-2 y
                 }
 
 # Update metadata
-data = CGMEStools.update_FullModel_from_dict(data, meta_updates)
+data = CGMES_tools.update_FullModel_from_dict(data, meta_updates)
 
 # Update uuid
 
@@ -250,6 +250,18 @@ area_referneces["INSTANCE_ID"] = INSTANCE_ID
 data = data.update_triplet_from_triplet(area_referneces, add=True, update=False)
 
 
+# 22.1 Add or update common enumerations
+
+enumerations = pandas.read_excel("configurations/ENUMERATIONS.xlsx", sheet_name=None)
+
+for enumeration in enumerations:
+    print("Adding enumerations for {}".format(enumeration))
+    enumeration_triplet = RDF_parser.tableview_to_triplet(enumerations[enumeration].set_index("ID"))
+    enumeration_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+    data = data.update_triplet_from_triplet(enumeration_triplet, add=True, update=False)
+
+
 
 
 # 13 Remove empty EIC
@@ -266,7 +278,7 @@ data = data.update_triplet_from_triplet(area_referneces, add=True, update=False)
 namespace_map = dict(    cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                          cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
                          entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#",
-                         cgm= 'http://entsoe.eu/CIM/Extensions/CGM/2019#',
+                         cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
                          md="http://iec.ch/TC57/61970-552/ModelDescription/1#",
                          rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                          rdfs="http://www.w3.org/2000/01/rdf-schema#",
@@ -282,6 +294,9 @@ rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "h
                    "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
+                   "Model.modelingEntity":                      {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
+                   "Model.messageType":                         {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
+                   "Model.processType":                         {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
                    "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
@@ -303,9 +318,11 @@ rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "h
                    "GeographicalRegion":                        {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
                    "SubGeographicalRegion":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
                    "SubGeographicalRegion.Region":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-                   "Party":                                     {"namespace": 'http://entsoe.eu/CIM/Extensions/CGM/2019#',        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
-                   "Party.Region":                              {"namespace": 'http://entsoe.eu/CIM/Extensions/CGM/2019#',        "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
-
+                   "Party":                                     {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "Party.Region":                              {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",   "value_prefix": "#_"}},
+                   "MessageType":                               {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "ProcessType":                               {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "attrib":{"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",         "value_prefix": "_"}},
+                   "EntsoeCodelist.code":                       {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"},
             },
 
             "TPBD": { "FullModel":                              {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",       "value_prefix":"urn:uuid:"}},
@@ -316,6 +333,9 @@ rdf_map = {"EQBD":{"FullModel":                                 {"namespace": "h
                    "Model.profile":                             {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.scenarioTime":                        {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "text": ""},
                    "Model.DependentOn":                         {"namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#", "attrib":{"attribute":"{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",    "value_prefix":"urn:uuid:"}},
+                   "Model.modelingEntity":                      {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
+                   "Model.messageType":                         {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
+                   "Model.processType":                         {"namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",     "text": ""},
                    "IdentifiedObject.name":                     {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.description":              {"namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",        "text": ""},
                    "IdentifiedObject.shortName":                {"namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",        "text": ""},
@@ -346,14 +366,14 @@ global_zip_filemask = "{scenarioTime:%Y%m%dT%H%MZ}_{processType}_{modelingEntity
 def set_export_filenames(data):
 
     # Set file names for single cimxml
-    data = CGMEStools.update_filename_from_FullModel(data, instance_filemask)
+    data = CGMES_tools.update_filename_from_FullModel(data, instance_filemask)
 
     # Generate filename for global zip
-    metadata            = CGMEStools.get_metadata_from_FullModel(data)
-    global_zip_filename = CGMEStools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
+    metadata            = CGMES_tools.get_metadata_from_FullModel(data)
+    global_zip_filename = CGMES_tools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
 
     # existing_instance_ID = data.query("KEY == 'Model.messageType'").set_index("VALUE")["ID"].to_dict()
-    # updated_instance_ID  = CGMEStools.generate_instances_ID()
+    # updated_instance_ID  = CGMES_tools.generate_instances_ID()
 
     if path.exists(global_zip_filename):
         print("File all ready exists {}".format(global_zip_filename))
@@ -362,7 +382,7 @@ def set_export_filenames(data):
         meta_updates = {'Model.version': "{:03d}".format(int(metadata["Model.version"]) + 1)}
 
         # Update metadata
-        data = CGMEStools.update_FullModel_from_dict(data, meta_updates)
+        data = CGMES_tools.update_FullModel_from_dict(data, meta_updates)
 
         data, global_zip_filename = set_export_filenames(data)
 
