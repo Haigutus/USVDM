@@ -19,7 +19,6 @@ pandas.set_option("display.width", 1000)
 
 def create_conf_from_XSD(xsd_path):
 
-#xsd_path = r"C:\USVDM\Tools\XML_GENERATOR\10-MarketSituation\urn-easee-gas-eu-edigas-marketbalancing-marketsituationdocument-5-1-5.xsd"
 
     xsd_tree = etree.parse(open(xsd_path))
 
@@ -133,70 +132,70 @@ def create_message(xsd_path, root_name, header_meta_dict, data, debug = False):
 
 
 
-    for key in header_meta_dict:
-        element = root.find(key)
-
-        if element is not None:
-            value = header_meta_dict[key]
-
-            if type(value) is str:
-                element.text = header_meta_dict[key]
-
-            if type(value) is dict:
-                element.text    = value["text"]
-                element.attrib.update(value["attributes"])
-
-        else:
-            print("WARNING - '{}' not found in  in XSD".format(key))
-
-
-    for _, row in data["dataframe"].iterrows():
-
-        insertion_point = root.find(data["insert_to"])
-        initial_parent = E(data["parent"])
-
-        for key in row.keys():
-
-            parent = initial_parent
-            elements = key.split("/")
-
-            for element_name in elements:
-                element = parent.find("./{*}" + element_name)
-
-                if element is None:
-                    element = E(element_name)
-
-
-                parent.append(element)
-                parent = element
-
-            element.text = str(row[key])
-            insertion_point.append(initial_parent)
+##    for key in header_meta_dict:
+##        element = root.find(key)
+##
+##        if element is not None:
+##            value = header_meta_dict[key]
+##
+##            if type(value) is str:
+##                element.text = header_meta_dict[key]
+##
+##            if type(value) is dict:
+##                element.text    = value["text"]
+##                element.attrib.update(value["attributes"])
+##
+##        else:
+##            print("WARNING - '{}' not found in  in XSD".format(key))
+##
+##
+##    for _, row in data["dataframe"].iterrows():
+##
+##        insertion_point = root.find(data["insert_to"])
+##        initial_parent = E(data["parent"])
+##
+##        for key in row.keys():
+##
+##            parent = initial_parent
+##            elements = key.split("/")
+##
+##            for element_name in elements:
+##                element = parent.find("./{*}" + element_name)
+##
+##                if element is None:
+##                    element = E(element_name)
+##
+##
+##                parent.append(element)
+##                parent = element
+##
+##            element.text = str(row[key])
+##            insertion_point.append(initial_parent)
 
     if debug == True:
         print "Full XML structure"
         print etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='UTF-8')
 
-    context = etree.iterwalk(root)
-    for action, elem in context:
-        parent = elem.getparent()
-        if recursively_empty(elem):
-            parent.remove(elem)
-
-    final_xml = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='UTF-8')
-
-    if debug == True:
-        print "Final XML"
-        print final_xml
-
-        xmlschema_doc = etree.parse(xsd_path)
-        xmlschema = etree.XMLSchema(xmlschema_doc)
-
-        print " XML is valid -> {}".format(xmlschema.validate(root))
-        print xmlschema.error_log
-
-
-    return final_xml
+##    context = etree.iterwalk(root)
+##    for action, elem in context:
+##        parent = elem.getparent()
+##        if recursively_empty(elem):
+##            parent.remove(elem)
+##
+##    final_xml = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+##
+##    if debug == True:
+##        print "Final XML"
+##        print final_xml
+##
+##        xmlschema_doc = etree.parse(xsd_path)
+##        xmlschema = etree.XMLSchema(xmlschema_doc)
+##
+##        print " XML is valid -> {}".format(xmlschema.validate(root))
+##        print xmlschema.error_log
+##
+##
+##    return final_xml
 
 
 
@@ -245,8 +244,8 @@ if __name__ == '__main__':
             "dataframe": dataframe[['timeInterval', 'Price/amount', 'Price/type']]}
 
 
-    root_name = 'MarketSituation_Document'
+    root_name = 'ReserveBid_MarketDocument'
 
-    xsd_path = r"C:\USVDM\Tools\XML_VALIDATOR\XSD\EAP-Schemas\10-MarketSituation\urn-easee-gas-eu-edigas-marketbalancing-marketsituationdocument-5-1-5.xsd"
+    xsd_path = r"C:\USVDM\Tools\XML_VALIDATOR\XSD\CIM_2019-09-17\iec62325-451-7-reservebiddocument_v7_1.xsd"
 
     create_message(xsd_path, root_name, header_meta_dict, data, debug = True)
