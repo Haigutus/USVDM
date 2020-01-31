@@ -6,3 +6,6 @@
 *.pyc
 
 *.csv
+*.iml
+*.zip
+*.xlsx
