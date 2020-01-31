@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://entsoe.eu/opde/ObjectModel/1/0"
+    xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0" xmlns="http://entsoe.eu/opde/ObjectModel/1/0"
+    elementFormDefault="qualified" vc:minVersion="1.1"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xsd:import namespace="http://entsoe.eu/opdm/ObjectModel/1/0"
+                schemaLocation="opdm-object-model.xsd"/>
+
+    <xsd:element name="Id" type="xsd:string"/>
+    <xsd:element name="Content-Type" type="xsd:string"/>
+    <xsd:element name="Content">
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any namespace="##other" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Object-Type" type="xsd:string"/>
+    <xsd:element name="Component">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:any namespace="http://entsoe.eu/opdm/ObjectModel/1/0" maxOccurs="1" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Dependencies">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                   <xsd:element name="DependsOn">
+                       <xsd:complexType>
+                           <xsd:choice>
+                               <xsd:element ref="opdm:Profile"/>
+                               <xsd:element ref="opdm:OPDMObject"/>
+                           </xsd:choice>
+                       </xsd:complexType>
+                   </xsd:element>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

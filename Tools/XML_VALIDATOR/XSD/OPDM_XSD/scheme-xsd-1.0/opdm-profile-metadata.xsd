@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://entsoe.eu/opdm/ProfileMetaData/1/0"
+            elementFormDefault="qualified">
+    <xsd:element name="cgmesProfile" type="xsd:string"/>
+    <xsd:element name="timeHorizon" type="xsd:string"/>
+    <xsd:element name="versionNumber" type="xsd:int"/>
+    <xsd:element name="scenarioDate" type="xsd:dateTime"/>
+    <xsd:element name="creationDate" type="xsd:dateTime"/>
+    <xsd:element name="modelPartReference" type="xsd:string"/>
+    <xsd:element name="modelid" type="xsd:string"/>
+    <xsd:element name="Object-Type" type="xsd:string"/>
+    <xsd:element name="validFrom" type="xsd:string"/>
+    <xsd:element name="isFullModel" type="xsd:string"/>
+    <xsd:element name="content-reference" type="xsd:string"/>
+    <xsd:element name="fileName" type="xsd:string"/>
+    <xsd:element name="contentType" type="xsd:string"/>
+    <xsd:element name="modelProfile" type="xsd:string"/>
+    <xsd:element name="modelingAuthoritySet" type="xsd:string"/>
+    <xsd:element name="conversationId" type="xsd:string"/>
+    <xsd:element name="description" type="xsd:string"/>
+    <xsd:element name="fullModel_ID" type="xsd:string"/>
+    <xsd:element name="creator" type="xsd:string"/>
+    <xsd:element name="TSO" type="xsd:string"/>
+    <xsd:element name="Dependencies" type="xsd:string"/>
+</xsd:schema>

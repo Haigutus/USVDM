@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
+            xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0"
+            targetNamespace="http://entsoe.eu/opdm/ObjectModel/1/0"
+            vc:minVersion="1.1"
+            elementFormDefault="qualified">
+    <xsd:import namespace="http://entsoe.eu/opde/ObjectModel/1/0" schemaLocation="opde-object-model.xsd"/>
+
+    <xsd:element name="OPDMObject">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="opde:Id" maxOccurs="1" minOccurs="0"/>
+                <xsd:element ref="opde:Object-Type" maxOccurs="1" minOccurs="0"/>
+                <xsd:any namespace="http://entsoe.eu/opdm/ProfileMetaData/1/0" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="opde:Component" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="opde:Dependencies" maxOccurs="1" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Profile">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="opde:Id" maxOccurs="1" minOccurs="0"/>
+                <xsd:element ref="opde:Content-Type" maxOccurs="1" minOccurs="0"/>
+                <xsd:any namespace="http://entsoe.eu/opdm/ProfileMetaData/1/0" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="opde:Dependencies" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="OPDEFile">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="opde:Id"/>
+                <xsd:element ref="opde:Content-Type"/>
+                <xsd:element ref="opde:Content"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
