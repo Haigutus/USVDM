@@ -15,6 +15,9 @@ from requests.auth import HTTPBasicAuth
 from zeep import Client
 from zeep.transports import Transport
 
+import urllib3
+urllib3.disable_warnings()
+
 class EDXService():
 
     def __init__(self, server, username = "", password = "", debug = False):
@@ -63,10 +66,10 @@ class EDXService():
         status = self.service.CheckMessageStatus(message_id)
         return status
 
-    def recieve_message(self, business_type, number_of_files_to_download):
+    def recieve_message(self, business_type, download_message=True):
         """ReceiveMessage(businessType: xsd:string, downloadMessage: xsd:boolean) -> receivedMessage: ns0:ReceivedMessage, remainingMessagesCount: xsd:long"""
 
-        recieved_message = self.service.ReceiveMessage(business_type, number_of_files_to_download)
+        recieved_message = self.service.ReceiveMessage(business_type, download_message)
 
         return recieved_message
 
@@ -85,12 +88,18 @@ class EDXService():
 if __name__ == '__main__':
 
     server = "https://er-opdm.elering.sise"
+    #server = "https://test-ba-opde.elering.sise"
+
+    # Neede only if basic auth is set up for UI
     username = raw_input("UserName")
     password = raw_input("PassWord")
 
     service = EDXService(server, username, password, debug = True)
 
-    test_message_ID = service.send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+    #test_message_ID = service.send_message("10V000000000011Q", "RIMD", "C:/Users/kristjan.vilgo/Desktop/13681847.xml", "38V-EE-OPDM----S", "", "")
+    #test_message_ID = service.send_message("10V1001A1001B106", "PEVF-EXPORT", r"C:\Users\kristjan.vilgo\Downloads\20190605_CGM_10V1001C--00012J_10V000000000011Q_A01_002.xml", "38V-EE-OPDM----S", "", "")
+
+    test_message_ID = "deea65ad-a0a0-458b-b301-dccb0cf0d75f"
 
     status = service.check_message_status(test_message_ID)
 
