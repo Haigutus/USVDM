@@ -8,6 +8,8 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import sys
+sys.path.append("..")
 
 import RDF_parser
 import pandas

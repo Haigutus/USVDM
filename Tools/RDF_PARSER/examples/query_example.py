@@ -8,6 +8,8 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import sys
+sys.path.append("..")
 
 from RDF_parser import load_all_to_dataframe
 
@@ -39,7 +41,7 @@ data = load_all_to_dataframe(path_list)
 print("Loaded types")
 print(data[(data.KEY == "Type")]["VALUE"].value_counts())
 
-print(data.type_tabelview("ACLineSegment"))
+print(data.type_tableview("ACLineSegment"))
 
 print("One winding data")
 print(data.query("ID == '12d773ab-1521-4e09-8a45-88b5eebf6fdd'"))
@@ -84,7 +86,7 @@ terminals_conducting_equipment = data.query("KEY == 'Terminal.ConductingEquipmen
 terminals_svpowerflow = data.query("KEY == 'SvPowerFlow.Terminal'")
 terminals_svvoltage   = data.query("KEY == 'SvVoltage.TopologicalNode'")
 
-eq_container_terminals = pandas.merge(power_transformers, terminals_conducting_equipment, how = "inner", left_on = 'ID', right_on = 'VALUE', suffixes = ["_eqcontainer", "_terminal"])
+eq_container_terminals = pandas.merge(power_transformers, terminals_conducting_equipment, how="inner", left_on='ID', right_on='VALUE', suffixes=["_eqcontainer", "_terminal"])
 
-sv_powerflows = pandas.merge(eq_container_terminals, terminals_svpowerflow, how = "inner", left_on = "ID_terminal", right_on = "VALUE", suffixes = ["", "_svpowerflow"])
+sv_powerflows = pandas.merge(eq_container_terminals, terminals_svpowerflow, how="inner", left_on="ID_terminal", right_on="VALUE", suffixes=["", "_svpowerflow"])
 

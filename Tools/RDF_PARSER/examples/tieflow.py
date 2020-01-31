@@ -8,9 +8,11 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import sys
+sys.path.append("..")
 
 from RDF_parser import load_all_to_dataframe, get_object_data
-from CGMEStools import get_loaded_models, get_metadata_from_FullModel, get_model_data
+from CGMES_tools import get_loaded_models, get_metadata_from_FullModel, get_model_data
 
 import aniso8601
 import pandas
@@ -147,7 +149,7 @@ if __name__ == '__main__':
     #list_of_regulating_controls = data.query("KEY == 'RegulatingControl.mode'").ID.tolist()
     model_path = r'C:/IOPs/IOP210819/BA02_BD21082019_1D_Elering_001_NodeBreaker.zip'
     model_path = r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_TERNA_EQ_001 (2).zip"
-    dataframe = load_all_to_dataframe([model_path, r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_ELES_TP_002 (2).zip",  r"\\elering.sise\teenused\NMM\data\ACG\BOUNDARY\20190624T0000Z__ENTSOE_BD_001.zip"
+    dataframe = load_all_to_dataframe([model_path, r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_ELES_TP_002 (2).zip",  r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
                                        ])
     #dataframe = load_all_to_dataframe([r"C:\Users\kristjan.vilgo\Downloads\20190624T2330Z_1D_RTEFRANCE_739.zip", r"C:\Users\kristjan.vilgo\Downloads\20190625T0030Z_1D_RTEFRANCE_777.zip"])
     tieflows = get_EquivalentInjections_NetInterchange_TieFlows(dataframe)

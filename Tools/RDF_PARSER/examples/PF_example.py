@@ -8,15 +8,17 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import sys
+sys.path.append("..")
 
 from numpy import sin, cos, deg2rad, triu
 from RDF_parser import load_all_to_dataframe
 import pandas
 
 
-path = "FlowExample.zip"
+path = "../test_models/FlowExample.zip"
 
-path = "/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/TestConfigurations_packageCASv2.0/MicroGrid/BaseCase_BC/CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip"
+path = "../test_models/TestConfigurations_packageCASv2.0/MicroGrid/BaseCase_BC/CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip"
 
 #path = r"C:\Users\kristjan.vilgo\Downloads\20180829T0130Z_NG_EQ_001.zip"
 
@@ -142,5 +144,4 @@ branches = branches[(branches["ID_x"] != branches["ID_y"])].drop_duplicates("Ter
 # Join views to get needed AC line data
 ACLineSegments = pandas.merge(ACLineSegments, branches, how = "inner", left_on="ID", right_on = 'Terminal.ConductingEquipment')#.set_index("ID")
 
-display(ACLineSegments)
 print(len(ACLineSegments)) #DEBUG - check that no lines have been missed

@@ -8,12 +8,15 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import sys
+sys.path.append("..")
+
 from RDF_parser import load_all_to_dataframe
 
 from itertools import permutations
 
 import pandas
-from urlparse import urlparse
+#from urlparse import urlparse
 
 from pyvis.network import Network
 import pyvis.options as options
@@ -22,7 +25,7 @@ import os
 import tempfile
 
 
-from CGMEStools import *
+from CGMES_tools import *
 
 
 
