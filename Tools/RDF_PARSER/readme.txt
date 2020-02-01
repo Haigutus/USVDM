@@ -1,4 +1,4 @@
-Short explanation how my RDF parser works:
+Short explanation how RDF parser works:
 
 It parses all the data to pandas dataframe with 4 columns [ID, KEY, VALULE, INSTANCE_ID] (sort of triplestore like)
 path = "CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
