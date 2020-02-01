@@ -1,7 +1,6 @@
 from RDF_parser import load_all_to_dataframe
 
 import pandas
-import urlparse
 import os
 
 pandas.set_option("display.max_rows", 15)
@@ -40,7 +39,7 @@ def list_of_files(root_path,file_extension, go_deep = False):
 
 
 
-def get_all_class_parameters(class_name):
+def get_all_class_parameters(data, class_name):
 
     all_class_parameters = pandas.DataFrame()
     class_name_list = [class_name]
@@ -66,9 +65,9 @@ def get_all_class_parameters(class_name):
     return all_class_parameters
 
 
-def parameter_tableview(class_name):
+def parameter_tableview(data, class_name):
 
-    all_class_parameters = get_all_class_parameters(class_name)
+    all_class_parameters = get_all_class_parameters(data, class_name)
 
     parameter_id_list = all_class_parameters["ID"].tolist()
 
@@ -78,10 +77,10 @@ def parameter_tableview(class_name):
     return data_view
 
 
-def validation_view(class_name):
+def validation_view(data, class_name):
 
 
-    data_view = parameter_tableview(class_name)
+    data_view = parameter_tableview(data, class_name)
 
     validation_data = data_view.join(data_view['multiplicity'].
                                      str.split("#M:", expand=True)[1].
@@ -92,7 +91,7 @@ def validation_view(class_name):
     return validation_data
 
 
-def concrete_classes_list():
+def concrete_classes_list(data):
     return list(data.query("VALUE == 'http://iec.ch/TC57/NonStandard/UML#concrete'")["ID"])
 
 
@@ -108,7 +107,16 @@ def list_of_files(path,file_extension):
 
     return matches
 
-data = load_all_to_dataframe([r"C:\USVDM\Tools\RDF_PARSER\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"])
+
+if __name__ == '__main__':
+
+    path = r"C:\USVDM\Tools\RDF_PARSER\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
+    path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
+
+    data = load_all_to_dataframe([path])
+
+    profiles = data["INSTANCE_ID"].unique()
+
 
 #files_list = list_of_files(r"C:\USVDM\Tools\RDF_PARSER\ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS", ".rdf")
 

@@ -4,8 +4,7 @@
 *.conf
 *.png
 *.pyc
-
 *.csv
 *.iml
-*.zip
 *.xlsx
+Tools/CGMES_VALIDATOR/OPDE-validation-tool-1.0.28.zip
