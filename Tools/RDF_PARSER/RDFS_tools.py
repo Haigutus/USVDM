@@ -69,7 +69,7 @@ def parameter_tableview(data, class_name):
 
     all_class_parameters = get_all_class_parameters(data, class_name)
 
-    parameter_id_list = all_class_parameters["ID"].tolist()
+    parameter_id_list = all_class_parameters["ID"].tolist()  # TODO use merge here insetad isin method - it is faster
 
     type_data = data[data.ID.isin(parameter_id_list)].drop_duplicates(["ID", "KEY"])  # There can't be duplicate ID and KEY pairs for pivot.
     data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
@@ -107,15 +107,136 @@ def list_of_files(path,file_extension):
 
     return matches
 
+def get_profile_metadata(data):
+    """Returns metadata about CIM profile defined in RDFS"""
+
+    profile_domain = data.query("VALUE == 'baseUML'")["ID"].item().split(".")[0]
+    profile_metadata = data[data.ID.str.contains(profile_domain)].query("KEY == 'isFixed'").copy(deep=True)
+
+    profile_metadata["ID"] = profile_metadata.ID.str.split("#", expand=True)[1].str.split(".", expand=True)[1]
+
+    return profile_metadata.set_index("ID")["VALUE"]
+
+# Full Model class is missing in RDFS, thus added here manually # TODO add Supersedes
+fullmodel_conf = { "FullModel": {
+                        "attrib": {
+                            "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                            "value_prefix": "urn:uuid:"
+                            },
+                            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"},
+
+                    "Model.DependentOn": {
+                        "attrib": {
+                            "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                            "value_prefix": "urn:uuid:"
+                        },
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+
+                    "Model.Supersedes": {
+                        "attrib": {
+                            "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                            "value_prefix": "urn:uuid:"
+                        },
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+
+                    "Model.created": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+                    "Model.description": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+                    "Model.messageType": {
+                        "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+                    },
+                    "Model.modelingAuthoritySet": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+                    "Model.modelingEntity": {
+                        "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+                    },
+                    "Model.processType": {
+                        "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+                    },
+                    "Model.profile": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+                    "Model.scenarioTime": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    },
+                    "Model.version": {
+                        "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+                    }}
 
 if __name__ == '__main__':
 
-    path = r"C:\USVDM\Tools\RDF_PARSER\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
-    path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
+    path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
+    #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
 
     data = load_all_to_dataframe([path])
 
+    # Dictionary to keep all configurations
+    conf_dict = {}
+
+    # For each profile in loaded RDFS
     profiles = data["INSTANCE_ID"].unique()
+
+    # Get current profile metadata
+    metadata = get_profile_metadata(data).to_dict()
+    profile_name = metadata["shortName"].replace("_", "")
+
+    # Dictionary to keep current profile metadata
+    conf_dict[profile_name] = {}
+
+    # Add concrete classes
+
+    cim_namespace = metadata["namespaceUML"]
+    rdf_namespace = metadata["namespaceRDF"]
+
+    for concrete_class in concrete_classes_list(data):
+
+        class_namespace, class_name = concrete_class.split("#")
+
+        if class_namespace == "":
+            parameter_namespace = cim_namespace
+
+        conf_dict[profile_name][class_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                                                          "value_prefix": "_"},
+                                               "namespace": class_namespace}
+
+        # Add attributes
+
+        for parameter, parameter_meta in parameter_tableview(data, concrete_class).iterrows():
+
+            association_used = parameter_meta.to_dict().get("AssociationUsed", "NaN")
+
+            # If it is association but not used, we don't export it
+            if association_used == 'No':
+                continue
+
+            # If it is used association or regular parameter, then we need the name and namespace
+            parameter_namespace, parameter_name = parameter.split("#")
+
+            if parameter_namespace == "":
+                parameter_namespace = cim_namespace
+
+            # If association
+            if association_used == 'Yes':
+                conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                                                                      "value_prefix": "#_"},
+                                                           "namespace": parameter_namespace}
+
+            # If regular parameter
+            else:
+                conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
+
+        for profile_name in conf_dict:
+            conf_dict[profile_name].update(fullmodel_conf)
+
+
+
+
 
 
 #files_list = list_of_files(r"C:\USVDM\Tools\RDF_PARSER\ENTSOE_CGMES_v2.4.15_04Jul2016_RDFS", ".rdf")
@@ -134,14 +255,7 @@ if __name__ == '__main__':
 ##
 ##    # Profile metadata
 ##
-##    profile_domain = data.query("VALUE == 'baseUML'")["ID"].item().split(".")[0]
-##
-##    profile_metadata = data[data.ID.str.contains(profile_domain)].query("KEY == 'isFixed'")[["ID", "VALUE"]]
-##    simple_profile_metadata = profile_metadata.copy(deep=True)
-##    simple_profile_metadata["ID"] = simple_profile_metadata.ID.str.split("#", expand = True)[1].str.split(".", expand = True)[1]
-##    #simple_profile_metadata = simple_profile_metadata[["ID", "VALUE"]]
-##
-##    metadata = simple_profile_metadata.set_index("ID")["VALUE"].to_dict()
+##    metadata = get_profile_metadata(data).to_dict()
 ##
 ##    # entsoeURI
 ##    entsoeURI_url_list = profile_metadata[profile_metadata.ID.str.contains("entsoeURI")].VALUE.tolist()

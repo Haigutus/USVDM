@@ -714,7 +714,7 @@ pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 # TEST AND EXAMPLES
 if __name__ == '__main__':
 
-    path = "TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
+    path = "test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
     data = load_all_to_dataframe([path], debug = True) # Last took 3.820304 s on 3rd run
 
