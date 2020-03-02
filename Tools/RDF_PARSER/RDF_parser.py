@@ -485,7 +485,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                                     class_KEY="Type",
                                     export_undefined=True,
                                     export_type="xml_per_instance_zip_per_instance",
-                                    global_zip_filename="Export"):
+                                    global_zip_filename="Export.zip"):
 
     # Filenames are kept under rdfs:lable
     labels = data.query("KEY == 'label'").iterrows()
@@ -543,6 +543,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                     continue
 
             # Create class element
+            #print(class_namespace, class_name) # DEBUG
             rdf_object = E(QName(class_namespace, class_name))
             # Add ID attribute
             rdf_object.attrib[QName(id_name)] = id_value_prefix + ID
@@ -569,11 +570,14 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                     if tag_def is not None:
                         tag = E(QName(tag_def["namespace"], KEY))
                         attrib = tag_def.get("attrib", None)
+                        text_prefix = tag_def.get("text", "")
 
                         if attrib:
                             tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + str(VALUE)
                         else:
-                            #print(ID, KEY, VALUE)  # DEBUG
+                            if text_prefix != "":
+                                print(ID, KEY, VALUE)  # DEBUG
+                            #tag.text = text_prefix + str(VALUE)
                             tag.text = str(VALUE)
 
 

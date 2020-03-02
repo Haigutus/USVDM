@@ -105,7 +105,7 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
 
         # Add Equivalent Injection sum
         try:
-            TP_BOUNDARY_ID = dependancies_list.query("PROFILE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
+            TP_BOUNDARY_ID = dependancies.query("PROFILE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
             TP_TopologicalNodes = IGM_data.query("INSTANCE_ID == '{}'".format(TP_BOUNDARY_ID)).type_tableview("TopologicalNode")
         except:
             #print("No boundary present, using ENTSO-E latest boundary")
@@ -149,8 +149,8 @@ if __name__ == '__main__':
     #list_of_regulating_controls = data.query("KEY == 'RegulatingControl.mode'").ID.tolist()
     model_path = r'C:/IOPs/IOP210819/BA02_BD21082019_1D_Elering_001_NodeBreaker.zip'
     model_path = r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_TERNA_EQ_001 (2).zip"
-    dataframe = load_all_to_dataframe([model_path, r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_ELES_TP_002 (2).zip",  r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
-                                       ])
+    model_path = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
+    dataframe = load_all_to_dataframe([model_path, r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"])
     #dataframe = load_all_to_dataframe([r"C:\Users\kristjan.vilgo\Downloads\20190624T2330Z_1D_RTEFRANCE_739.zip", r"C:\Users\kristjan.vilgo\Downloads\20190625T0030Z_1D_RTEFRANCE_777.zip"])
     tieflows = get_EquivalentInjections_NetInterchange_TieFlows(dataframe)
     print(tieflows)

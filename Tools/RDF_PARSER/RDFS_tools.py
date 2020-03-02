@@ -171,8 +171,11 @@ fullmodel_conf = { "FullModel": {
 
 if __name__ == '__main__':
 
-    path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
+    import json
+
+    #path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
     #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
+    path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
 
     data = load_all_to_dataframe([path])
 
@@ -182,58 +185,82 @@ if __name__ == '__main__':
     # For each profile in loaded RDFS
     profiles = data["INSTANCE_ID"].unique()
 
-    # Get current profile metadata
-    metadata = get_profile_metadata(data).to_dict()
-    profile_name = metadata["shortName"].replace("_", "")
+    for profile in profiles:
+        profile_data = data.query(f"INSTANCE_ID == '{profile}'")
 
-    # Dictionary to keep current profile metadata
-    conf_dict[profile_name] = {}
+        # Get current profile metadata
+        metadata = get_profile_metadata(profile_data).to_dict()
+        profile_name = metadata["shortName"].replace("_", "")
 
-    # Add concrete classes
+        # Dictionary to keep current profile metadata
+        conf_dict[profile_name] = {}
 
-    cim_namespace = metadata["namespaceUML"]
-    rdf_namespace = metadata["namespaceRDF"]
+        # Add concrete classes
 
-    for concrete_class in concrete_classes_list(data):
+        cim_namespace = metadata["namespaceUML"]
+        rdf_namespace = metadata["namespaceRDF"]
 
-        class_namespace, class_name = concrete_class.split("#")
+        for concrete_class in concrete_classes_list(profile_data):
 
-        if class_namespace == "":
-            parameter_namespace = cim_namespace
+            class_namespace, class_name = concrete_class.split("#")
 
-        conf_dict[profile_name][class_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                                                          "value_prefix": "_"},
-                                               "namespace": class_namespace}
+            if class_namespace == "":
+                class_namespace = cim_namespace
 
-        # Add attributes
+            conf_dict[profile_name][class_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                                                              "value_prefix": "_"},
+                                                   "namespace": class_namespace}
 
-        for parameter, parameter_meta in parameter_tableview(data, concrete_class).iterrows():
+            # Add attributes
 
-            association_used = parameter_meta.to_dict().get("AssociationUsed", "NaN")
+            for parameter, parameter_meta in parameter_tableview(profile_data, concrete_class).iterrows():
 
-            # If it is association but not used, we don't export it
-            if association_used == 'No':
-                continue
+                parameter_dict = parameter_meta.to_dict()
 
-            # If it is used association or regular parameter, then we need the name and namespace
-            parameter_namespace, parameter_name = parameter.split("#")
+                association_used = parameter_dict.get("AssociationUsed", "NaN")
 
-            if parameter_namespace == "":
-                parameter_namespace = cim_namespace
+                # If it is association but not used, we don't export it
+                if association_used == 'No':
+                    continue
 
-            # If association
-            if association_used == 'Yes':
-                conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                                                                      "value_prefix": "#_"},
-                                                           "namespace": parameter_namespace}
+                # If it is used association or regular parameter, then we need the name and namespace
+                parameter_namespace, parameter_name = parameter.split("#")
 
-            # If regular parameter
-            else:
-                conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
+                if parameter_namespace == "":
+                    parameter_namespace = cim_namespace
 
-        for profile_name in conf_dict:
-            conf_dict[profile_name].update(fullmodel_conf)
+                # If association
+                if association_used == 'Yes':
+                    conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                                                                          "value_prefix": "#_"},
+                                                               "namespace": parameter_namespace}
 
+                # If regular parameter
+                else:
+
+                    range = parameter_dict.get("range", None)
+                    stereotype = parameter_dict.get("stereotype", None)
+
+                    if range is not pandas.np.nan and stereotype is not pandas.np.nan:
+                        conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                                                                            "value_prefix": ""},
+                                                                            "namespace": parameter_namespace}
+
+                    else:
+                        conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
+
+    # Add FullModel definiton
+
+    for profile_name in conf_dict:
+        conf_dict[profile_name].update(fullmodel_conf)
+
+    # Export conf
+
+    file_name = "{entsoeUML}_{date}.json".format(**metadata)
+    #file_name = "{profileUML}_{date}.json".format(**metadata)
+
+    with open(file_name, "w") as file_object:
+        json.dump(conf_dict, file_object, indent=4)
 
 
 
