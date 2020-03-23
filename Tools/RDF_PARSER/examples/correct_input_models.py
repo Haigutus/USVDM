@@ -15,8 +15,9 @@ from uuid import uuid4
 
 import json
 
-input_data = r"C:\Users\kristjan.vilgo\Downloads\20200115T0930Z_1D_RTEFRANCE_EQ_001.zip"
-input_data = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
+#input_data = r"C:\Users\kristjan.vilgo\Downloads\20200115T0930Z_1D_RTEFRANCE_EQ_001.zip"
+#input_data = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
+input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
 boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 
 xnode_conf = r"C:\USVDM\Tools\RDF_PARSER\examples\xnodes_for_tieflows.xlsx"
@@ -31,10 +32,12 @@ data = CGMES_tools.update_FullModel_from_filename(data)
 
 # Fix all EnergyConsumers to ConformLoads
 loads = data.query("KEY == 'Type' & VALUE == 'EnergyConsumer'")
+loads.VALUE = "ConformLoad"
+data.update(loads)
 
-import tieflow
+#import tieflow
 
-initial_flow = tieflow.get_EquivalentInjections_NetInterchange_TieFlows(data)
+#initial_flow = tieflow.get_EquivalentInjections_NetInterchange_TieFlows(data)
 
 
 ### Fix Tieflows ###
@@ -86,7 +89,7 @@ new_tieflows_triplet = new_tieflows_triplet.merge(new_tieflows.reset_index()[["I
 # Add to data
 data = data.append(new_tieflows_triplet, ignore_index=True)
 
-final_flow = tieflow.get_EquivalentInjections_NetInterchange_TieFlows(data)
+#final_flow = tieflow.get_EquivalentInjections_NetInterchange_TieFlows(data)
 
 
 ## EXPORT ###

@@ -237,17 +237,28 @@ if __name__ == '__main__':
 
                 # If regular parameter
                 else:
+                    data_type = parameter_dict.get("dataType", "nan")
 
-                    range = parameter_dict.get("range", None)
-                    stereotype = parameter_dict.get("stereotype", None)
-
-                    if range is not pandas.np.nan and stereotype is not pandas.np.nan:
-                        conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                                                                            "value_prefix": ""},
-                                                                            "namespace": parameter_namespace}
+                    if str(data_type) != "nan":
+                        conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
 
                     else:
-                        conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
+                        conf_dict[profile_name][parameter_name] = {
+                            "attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                                       "value_prefix": ""},
+                            "namespace": parameter_namespace}
+
+
+                    # range = parameter_dict.get("range", None)
+                    # stereotype = parameter_dict.get("stereotype", None)
+                    #
+                    # if range is not pandas.np.nan and stereotype is not pandas.np.nan:
+                    #     conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                    #                                                         "value_prefix": ""},
+                    #                                                         "namespace": parameter_namespace}
+                    #
+                    # else:
+                    #     conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
 
     # Add FullModel definiton
 
