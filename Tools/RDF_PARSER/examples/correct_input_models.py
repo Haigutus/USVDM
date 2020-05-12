@@ -40,12 +40,7 @@ data = pandas.read_RDF([input_data, boundary])
 # Parse metadata to file header
 data = CGMES_tools.update_FullModel_from_filename(data)
 
-### Fix EnergyConsumers ###
 
-# Fix all EnergyConsumers to ConformLoads
-loads = data.query("KEY == 'Type' & VALUE == 'EnergyConsumer'")
-loads.VALUE = "ConformLoad"
-data.update(loads)
 
 #import tieflow
 
@@ -105,10 +100,23 @@ data = data.append(new_tieflows_triplet, ignore_index=True)
 
 #final_flow = tieflow.get_EquivalentInjections_NetInterchange_TieFlows(data)
 
+### Disable regulation on EquivalentInjection ###
+
+injections = data.query("KEY == 'EquivalentInjection.regulationStatus' and VALUE == 'true'")
+injections.VALUE = 'false'
+data.update(injections)
 
 
+### Fix EnergyConsumers to ConformLoads ###
 
-# ConformLoad -> ConformLoadGroup -> SubLoadArea -> LoadArea -> ControlArea
+loads = data.query("KEY == 'Type' & VALUE == 'EnergyConsumer'")
+loads.VALUE = "ConformLoad"
+data.update(loads)
+
+
+### Link ConformLoads to ControlArea ###
+
+# ConformLoad -> ConformLoadGroup -> SubLoadArea -> LoadArea <- ControlArea
 
 items = ["ControlArea", "LoadArea", "SubLoadArea", "ConformLoadGroup"]
 
