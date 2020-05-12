@@ -32,7 +32,7 @@ def create_object_data_from_dict(object_id, object_type, object_data):
 input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
 boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 
-xnode_conf = r"C:\USVDM\Tools\RDF_PARSER\examples\xnodes_for_tieflows.xlsx"
+xnode_conf = r"C:\USVDM\Tools\RDF_PARSER\examples\xnodes_for_tieflows_052020.xlsx"
 
 # Read data
 data = pandas.read_RDF([input_data, boundary])
@@ -51,7 +51,6 @@ data = CGMES_tools.update_FullModel_from_filename(data)
 
 # Get all EQ instances
 eq_instances = data.query("KEY == 'Model.profile' & VALUE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")
-
 
 
 # Get all ControlAreas in EQ instances
@@ -212,7 +211,8 @@ for instance_id in eq_instances.ID.to_list():
         data_to_add = data_to_add.append(Not_Contained_ConformLoads, ignore_index=True)
 
 data = data.append(data_to_add, ignore_index=True)
-
+data = data.drop_duplicates()
+#data = data.update_triplet_from_triplet(data_to_add, update=True, add=True)
 
 # TODO Turn off voltage control on Injections
 
