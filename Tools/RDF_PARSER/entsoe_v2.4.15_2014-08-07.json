@@ -237,31 +237,31 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ConnectivityNode.boundaryPoint": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.fromEndIsoCode": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.fromEndName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.fromEndNameTso": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.toEndIsoCode": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.toEndName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ConnectivityNode.toEndNameTso": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "IdentifiedObject.energyIdentCodeEic": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "IdentifiedObject.shortName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "Terminal": {
             "attrib": {
@@ -285,10 +285,6 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "BaseVoltage.nominalVoltage": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "GeographicalRegion": {
@@ -317,7 +313,7 @@
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
                 "value_prefix": "_"
             },
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "Junction": {
             "attrib": {
@@ -445,10 +441,10 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "IdentifiedObject.energyIdentCodeEic": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "IdentifiedObject.shortName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "CsConverter": {
             "attrib": {
@@ -1220,7 +1216,7 @@
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
                 "value_prefix": "_"
             },
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "EnergySource": {
             "attrib": {
@@ -1261,7 +1257,7 @@
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
                 "value_prefix": "#_"
             },
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "FossilFuel": {
             "attrib": {
@@ -1713,7 +1709,7 @@
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
                 "value_prefix": ""
             },
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "VoltageLimit": {
             "attrib": {
@@ -2240,45 +2236,21 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.b": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.g": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.r": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.ratio": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.step": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChangerTablePoint.x": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "PhaseTapChangerTabular": {
@@ -3238,8 +3210,8 @@
     "SV": {
         "CsConverter": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3283,8 +3255,8 @@
         },
         "VsConverter": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3478,64 +3450,44 @@
     "SSH": {
         "Terminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ACDCTerminal.connected": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "IdentifiedObject.mRID": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "IdentifiedObject.name": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ControlArea": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ControlArea.netInterchange": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ControlArea.pTolerance": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ACDCConverterDCTerminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "CsConverter": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3576,15 +3528,15 @@
         },
         "DCTerminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "VsConverter": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3619,92 +3571,72 @@
         },
         "EquivalentInjection": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EquivalentInjection.p": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EquivalentInjection.q": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EquivalentInjection.regulationStatus": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EquivalentInjection.regulationTarget": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "GeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "GeneratingUnit.normalPF": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "HydroGeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "NuclearGeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "SolarGeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ThermalGeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "WindGeneratingUnit": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "AsynchronousMachine": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3716,10 +3648,6 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "RegulatingCondEq.controlEnabled": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "RotatingMachine.p": {
@@ -3730,183 +3658,139 @@
         },
         "Breaker": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "Switch.open": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "Disconnector": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergyConsumer": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergyConsumer.p": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergyConsumer.q": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergySource": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergySource.activePower": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "EnergySource.reactivePower": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ExternalNetworkInjection": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ExternalNetworkInjection.p": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ExternalNetworkInjection.q": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ExternalNetworkInjection.referencePriority": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "GroundDisconnector": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "LoadBreakSwitch": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "PhaseTapChangerAsymmetrical": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChanger.controlEnabled": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "TapChanger.step": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "PhaseTapChangerLinear": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "PhaseTapChangerSymmetrical": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "PhaseTapChangerTabular": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "RatioTapChanger": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "StaticVarCompensator": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "StaticVarCompensator.q": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "Switch": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "SynchronousMachine": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3922,8 +3806,8 @@
         },
         "TapChangerControl": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -3948,50 +3832,46 @@
         },
         "LinearShuntCompensator": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ShuntCompensator.sections": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": ""
-            },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "NonlinearShuntCompensator": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "RegulatingControl": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "ConformLoad": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "NonConformLoad": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "StationSupply": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4047,8 +3927,8 @@
     "TPBD": {
         "ConnectivityNode": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4090,31 +3970,31 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "IdentifiedObject.energyIdentCodeEic": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "IdentifiedObject.shortName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.boundaryPoint": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.fromEndIsoCode": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.fromEndName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.fromEndNameTso": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.toEndIsoCode": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.toEndName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "TopologicalNode.toEndNameTso": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "FullModel": {
             "attrib": {
@@ -4168,8 +4048,8 @@
     "TP": {
         "ConnectivityNode": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4182,8 +4062,8 @@
         },
         "Terminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4204,15 +4084,15 @@
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
         "IdentifiedObject.energyIdentCodeEic": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "IdentifiedObject.shortName": {
-            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1"
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
         },
         "ACDCConverterDCTerminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4225,8 +4105,8 @@
         },
         "DCNode": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },
@@ -4239,8 +4119,8 @@
         },
         "DCTerminal": {
             "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
             },
             "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
         },

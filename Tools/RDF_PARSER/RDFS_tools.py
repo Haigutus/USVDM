@@ -200,15 +200,29 @@ if __name__ == '__main__':
         cim_namespace = metadata["namespaceUML"]
         rdf_namespace = metadata["namespaceRDF"]
 
+        classes_defined_externally = profile_data.query("KEY == 'stereotype' and VALUE == 'Description'").ID.to_list()
+
         for concrete_class in concrete_classes_list(profile_data):
 
+            # Define class namespace
             class_namespace, class_name = concrete_class.split("#")
 
             if class_namespace == "":
                 class_namespace = cim_namespace
+            else:
+                class_namespace = class_namespace + "#"
 
-            conf_dict[profile_name][class_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                                                              "value_prefix": "_"},
+            # Define class ID attribute #TODO add conf for this, foreseen to change in CGMES 3.0, use rdf:about everywhere
+            class_ID_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID"
+            class_ID_prefix = "_"
+
+            if concrete_class in classes_defined_externally:
+                class_ID_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
+                class_ID_prefix = "#_"
+
+            # Add class definition
+            conf_dict[profile_name][class_name] = {"attrib": {"attribute": class_ID_attribute,
+                                                              "value_prefix": class_ID_prefix},
                                                    "namespace": class_namespace}
 
             # Add attributes
@@ -228,6 +242,9 @@ if __name__ == '__main__':
 
                 if parameter_namespace == "":
                     parameter_namespace = cim_namespace
+
+                else:
+                    parameter_namespace = parameter_namespace + "#"
 
                 # If association
                 if association_used == 'Yes':
