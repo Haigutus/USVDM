@@ -20,6 +20,7 @@ import pandas
 import datetime
 import zipfile
 import uuid
+import time
 
 from collections import OrderedDict
 #from collections import deque
@@ -42,7 +43,7 @@ def print_duration(text, start_time):
     Output: duration (in seconds), end_time"""
 
     end_time = datetime.datetime.now()
-    duration = (end_time - start_time).total_seconds()
+    duration = end_time - start_time
     print(text, duration)
 
     return duration, end_time
@@ -485,15 +486,23 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                                     class_KEY="Type",
                                     export_undefined=True,
                                     export_type="xml_per_instance_zip_per_instance",
-                                    global_zip_filename="Export.zip"):
+                                    global_zip_filename="Export.zip",
+                                    debug=False):
+
+    if debug:
+        start_time = datetime.datetime.now()
+        init_time = start_time
 
     # Filenames are kept under rdfs:lable
-    labels = data.query("KEY == 'label'").iterrows()
+    labels = data.query("KEY == 'label'").itertuples()
 
     # Keep all filenames and data to be exported
     export_files = []
 
-    for _, label in labels:
+    if debug:
+        _, start_time = print_duration("All file instance ID-s identified", start_time)
+
+    for label in labels:
 
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
@@ -516,11 +525,14 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
         objects = OrderedDict()
         # TODO ensure that the Header class is serialised first
 
-        # Get objects
-        for _, class_data in instance_data.query("KEY=='{}'".format(class_KEY)).iterrows():
+        if debug:
+            _, start_time = print_duration("File root generated", start_time)
 
-            ID = class_data["ID"]
-            class_name = class_data["VALUE"]
+        # Get objects
+        for class_data in instance_data.query("KEY=='{}'".format(class_KEY)).itertuples():
+
+            ID = class_data.ID
+            class_name = class_data.VALUE
 
             # Get class export definition
             class_def = instance_rdf_map.get(class_name, None)
@@ -552,12 +564,15 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
             # Add object with it's ID to dict (later we use it to add attributes to that class)
             objects[ID] = rdf_object
 
-        # Add attribute to objects
-        for _, attribute_data in instance_data.query("KEY!='{}'".format(class_KEY)).iterrows():
+        if debug:
+            _, start_time = print_duration("Objects added", start_time)
 
-            ID = attribute_data["ID"]
-            KEY = attribute_data["KEY"]
-            VALUE = attribute_data["VALUE"]
+        # Add attribute to objects
+        for attribute_data in instance_data.query("KEY!='{}'".format(class_KEY)).itertuples():
+
+            ID = attribute_data.ID
+            KEY = attribute_data.KEY
+            VALUE = attribute_data.VALUE
 
             _object = objects.get(ID, None)
 
@@ -596,9 +611,14 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                 else:
                     print("Attribute VALUE is None, thus not exported: ID: {} KEY: {}".format(ID, KEY))
                     pass
+
             else:
                 # print("No Object with ID: {}".format(ID))
                 pass
+
+        if debug:
+            _, start_time = print_duration("Attributes added", start_time)
+
 
         # etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
         # print(etree.tostring(RDF, pretty_print=True).decode())
@@ -607,9 +627,12 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
         xml = etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
         # TODO - clean namespaces
 
-        print("INFO - Exporting RDF to {}".format(label["VALUE"]))
+        print("INFO - Exporting RDF to {}".format(label.VALUE))
 
-        export_files.append({"filename": label["VALUE"], "file":xml})
+        export_files.append({"filename": label.VALUE, "file": xml})
+
+        if debug:
+            _, start_time = print_duration("XML created", start_time)
 
     # Export XML
     if export_type == "xml_per_instance":
@@ -641,6 +664,10 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
                 print('INFO - Saved {}'.format(zip_filename))
 
+    if debug:
+        print_duration("Files saved in", start_time)
+        print_duration("Whole Export done in", init_time)
+
 
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.export_to_cimxml = export_to_cimxml
@@ -655,7 +682,7 @@ pandas.DataFrame.get_object_data = get_object_data
 
 def tableview_to_triplet(data):
     """Makes a triplet of dataview"""
-    # TODO add only when dableveiw is created
+    # TODO add only when tableveiw is created
     return data.reset_index().melt(id_vars="ID", value_name="VALUE", var_name="KEY")
 
 
