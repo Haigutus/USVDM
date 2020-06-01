@@ -112,12 +112,28 @@ loads = data.query("KEY == 'Type' & VALUE == 'EnergyConsumer'")
 loads.VALUE = "ConformLoad"
 data.update(loads)
 
+### Fix negative ConformLoads to NonConformLoads
+
+# Find all negative loads
+negative_loads = data.query("KEY == 'EnergyConsumer.p'").astype({'VALUE': 'float'}).query("VALUE < 0")
+
+# Find negative ConformLoads
+negative_conform_loads = data.reset_index().merge(negative_loads.ID).query("KEY == 'Type' & VALUE == 'ConformLoad'").set_index("index")
+
+# Change class to NonConformLoad on negative Conformloads
+negative_conform_loads.VALUE = "NonConformLoad"
+data.update(negative_conform_loads)
+
+# Remove reference to Conformload LoadGroup as we need to add NonConform LoadGroup later
+data = data.drop(data.reset_index().merge(negative_conform_loads.ID).query("KEY == 'ConformLoad.LoadGroup'")["index"])
+
+
 
 ### Link ConformLoads to ControlArea ###
 
 # ConformLoad -> ConformLoadGroup -> SubLoadArea -> LoadArea <- ControlArea
 
-items = ["ControlArea", "LoadArea", "SubLoadArea", "ConformLoadGroup"]
+items = ["ControlArea", "LoadArea", "SubLoadArea", "ConformLoadGroup", "NonConformLoadGroup"]
 
 data_to_add = pandas.DataFrame()
 
@@ -133,7 +149,7 @@ for instance_id in eq_instances.ID.to_list():
     for item in items:
         item_data = eq.query("KEY == 'Type' & VALUE == @item")
 
-        if item_data.empty or item == "ConformLoadGroup":
+        if item_data.empty or "LoadGroup" in item:
             item_ID = str(uuid4())
             item_exists = False
 
@@ -169,6 +185,7 @@ for instance_id in eq_instances.ID.to_list():
     items_links = [
                    #{"from": "ConformLoad", "to": "ConformLoadGroup", "link_name": "ConformLoad.ConformLoadGroup"},
                    {"from": "ConformLoadGroup", "to": "SubLoadArea", "link_name": "LoadGroup.SubLoadArea"},
+                   {"from": "NonConformLoadGroup", "to": "SubLoadArea", "link_name": "LoadGroup.SubLoadArea"},
                    {"from": "SubLoadArea", "to": "LoadArea", "link_name": "SubLoadArea.LoadArea"},
                    #{"from": "LoadArea", "to": "ControlArea", "link_name": "EnergyArea.ControlArea"},
                    {"from": "ControlArea", "to": "LoadArea", "link_name": "ControlArea.EnergyArea"}
@@ -180,7 +197,7 @@ for instance_id in eq_instances.ID.to_list():
 
     data_to_add = data_to_add.append(pandas.DataFrame(objects_list, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"]), ignore_index=True)
 
-    # Add LoadGroups to deafault SubLoadArea
+    # Add LoadGroups to default SubLoadArea
 
     All_ConformLoadGroups_ID = eq.query("KEY == 'Type' & VALUE == 'ConformLoadGroup'")
     All_ConformLoadGroups = eq.merge(All_ConformLoadGroups_ID.ID, on="ID")
@@ -195,7 +212,7 @@ for instance_id in eq_instances.ID.to_list():
 
         data_to_add = data_to_add.append(Not_Contained_ConformLoadGroups, ignore_index=True)
 
-    # Add ConformLoads to deafult LoadGroup
+    # Add ConformLoads to default LoadGroup
 
     All_ConformLoads_ID = eq.query("KEY == 'Type' & VALUE == 'ConformLoad'")
     All_ConformLoads    = eq.merge(All_ConformLoads_ID.ID, on="ID")
@@ -209,6 +226,21 @@ for instance_id in eq_instances.ID.to_list():
         Not_Contained_ConformLoads["INSTANCE_ID"] = instance_id
 
         data_to_add = data_to_add.append(Not_Contained_ConformLoads, ignore_index=True)
+
+    # Add NonConformLoads to default LoadGroup
+
+    All_NonConformLoads_ID = eq.query("KEY == 'Type' & VALUE == 'NonConformLoad'")
+    All_NonConformLoads = eq.merge(All_NonConformLoads_ID.ID, on="ID")
+    Contained_NonConformLoads_ID = All_NonConformLoads.query("KEY == 'NonConformLoad.LoadGroup'")
+
+    Not_Contained_NonConformLoads = Contained_NonConformLoads_ID.append(All_NonConformLoads_ID)[["ID"]].drop_duplicates(keep=False)
+
+    if not Not_Contained_ConformLoads.empty:
+        Not_Contained_NonConformLoads["KEY"] = "NonConformLoad.LoadGroup"
+        Not_Contained_NonConformLoads["VALUE"] = items_data["NonConformLoadGroup"]["ID"]
+        Not_Contained_NonConformLoads["INSTANCE_ID"] = instance_id
+
+        data_to_add = data_to_add.append(Not_Contained_NonConformLoads, ignore_index=True)
 
 data = data.append(data_to_add, ignore_index=True)
 data = data.drop_duplicates()
@@ -238,6 +270,6 @@ with open(r"C:\USVDM\Tools\RDF_PARSER\entsoe_v2.4.15_2014-08-07.json", "r") as c
     rdf_map = json.load(conf_file)
 
 # Export triplet to CGMES
-#data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
+data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
 
 
