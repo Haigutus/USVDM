@@ -20,8 +20,6 @@ sys.path.append("../RDF_PARSER")
 import RDF_parser
 import CGMES_tools
 
-
-
 def get_metadata_from_filename_NMD(file_name):
     """Parse metadata from Network Model Manager export"""
     meta     = {}
@@ -36,11 +34,20 @@ def get_metadata_from_filename_NMD(file_name):
     return meta
 
 ### Input conf ###
-data_to_add = pandas.read_excel("configurations/MAP_AREA_PARTY.xlsx", sheet_name=None)
+
+debug = False
+
+# Mapping tables #
+mapping_conf_path = "configurations/MAP_AREA_PARTY.xlsx"
+enumerations_path = "configurations/ENUMERATIONS.xlsx"
+
+# Input Boundary #
 boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20191023T0000Z_ENTSO-E_BD_1130.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20190304T0000Z_ENTSO-E_BD_001.zip"
 #boundary_path = r"/home/kristjan/Downloads/20191023T0000Z_ENTSO-E_BD_1130.zip"
+
+### Output conf ###
 
 # CGMES export
 export_undefined = False
@@ -49,9 +56,14 @@ export_type      = "xml_per_instance_zip_per_all"
 #export_type     = "xml_per_instance"
 export_format    = "configurations/CGMES_2_4_15.json"
 
-
-### Output conf ###
+# EIC validation
+eic_report = True
 eic_report_path = "EIC_report.xlsx"
+
+### Start Process ###
+# Load configurations
+data_to_add  = pandas.read_excel(mapping_conf_path, sheet_name=None)
+enumerations = pandas.read_excel(enumerations_path, sheet_name=None)
 
 # 1 Load data from CGMES boundary global ZIP, exported by NMD
 data = RDF_parser.load_all_to_dataframe([boundary_path])
@@ -99,72 +111,74 @@ line_and_nodes = line_and_nodes.merge(tp_nodes, left_on="ID",
                                       suffixes=("", "_TopologicalNode"))
 
 ### EIC REPORT ###
-# TODO move eic report to seperate script
-# TODO report per TSO not per Country
+if eic_report is True:
 
-eic_report_columns = ['ID', 'IdentifiedObject.description', 'IdentifiedObject.energyIdentCodeEic', 'IdentifiedObject.name', 'IdentifiedObject.shortName']
+    # TODO move eic report to seperate script
+    # TODO report per TSO not per Country
 
-# Find lines with out EIC
-Lines_without_EIC = line_and_nodes[~(line_and_nodes["IdentifiedObject.energyIdentCodeEic"].notna())]
-unique_country = pandas.unique(Lines_without_EIC[['ConnectivityNode.fromEndIsoCode', 'ConnectivityNode.toEndIsoCode']].values.ravel())
+    eic_report_columns = ['ID', 'IdentifiedObject.description', 'IdentifiedObject.energyIdentCodeEic', 'IdentifiedObject.name', 'IdentifiedObject.shortName']
 
-missing_eic_report_dict = {}
+    # Find lines with out EIC
+    Lines_without_EIC = line_and_nodes[~(line_and_nodes["IdentifiedObject.energyIdentCodeEic"].notna())]
+    unique_country = pandas.unique(Lines_without_EIC[['ConnectivityNode.fromEndIsoCode', 'ConnectivityNode.toEndIsoCode']].values.ravel())
 
-for country in unique_country:
-    missing_eic = Lines_without_EIC[(Lines_without_EIC['ConnectivityNode.fromEndIsoCode'] == country) | (Lines_without_EIC['ConnectivityNode.toEndIsoCode'] == country)]
-    missing_eic_report_dict[country] = missing_eic
+    missing_eic_report_dict = {}
 
-report_columns = ["ID","IdentifiedObject.name_ConnectivityNode", "IdentifiedObject.name", 'IdentifiedObject.energyIdentCodeEic', 'ConnectivityNode.fromEndName', 'ConnectivityNode.toEndName', 'ConnectivityNode.fromEndIsoCode', 'ConnectivityNode.toEndIsoCode']
+    for country in unique_country:
+        missing_eic = Lines_without_EIC[(Lines_without_EIC['ConnectivityNode.fromEndIsoCode'] == country) | (Lines_without_EIC['ConnectivityNode.toEndIsoCode'] == country)]
+        missing_eic_report_dict[country] = missing_eic
 
-
-# check if EIC is valid
-from stdnum.eu import eic
-Lines_with_EIC = line_and_nodes[(line_and_nodes["IdentifiedObject.energyIdentCodeEic"].notna())]
-InvalidEIC = Lines_with_EIC[~Lines_with_EIC["IdentifiedObject.energyIdentCodeEic"].apply(eic.is_valid)]
-
-# check if EIC is in CIO list
-from entsoe_eic_registry import get_allocated_eic
-
-# create excel file where to write reports
-
-writer = pandas.ExcelWriter(eic_report_path)
-
-try:
-    allocated_eic = get_allocated_eic()
-    eic_not_registered = Lines_with_EIC.merge(allocated_eic, left_on="IdentifiedObject.energyIdentCodeEic", right_on="mRID", indicator=True, how="outer").query("_merge=='left_only'")
-    eic_not_registered[report_columns].to_excel(writer, "EIC_NotRegistered", index=False)
-
-except:
-    print("Error getting ENTSO-E EIC registry")
+    report_columns = ["ID","IdentifiedObject.name_ConnectivityNode", "IdentifiedObject.name", 'IdentifiedObject.energyIdentCodeEic', 'ConnectivityNode.fromEndName', 'ConnectivityNode.toEndName', 'ConnectivityNode.fromEndIsoCode', 'ConnectivityNode.toEndIsoCode']
 
 
-# check if there are duplicated boundary names
-duplicated_boundary_names = line_and_nodes[line_and_nodes.duplicated("IdentifiedObject.name_ConnectivityNode", keep=False)][report_columns]
+    # check if EIC is valid
+    from stdnum.eu import eic
+    Lines_with_EIC = line_and_nodes[(line_and_nodes["IdentifiedObject.energyIdentCodeEic"].notna())]
+    InvalidEIC = Lines_with_EIC[~Lines_with_EIC["IdentifiedObject.energyIdentCodeEic"].apply(eic.is_valid)]
 
-# Export to excel EIC check results
+    # check if EIC is in CIO list
+    from entsoe_eic_registry import get_allocated_eic
 
-duplicated_boundary_names[report_columns].to_excel(writer, "DuplicatedBoundaryPointName", index=False)
+    # create excel file where to write reports
 
-InvalidEIC[report_columns].to_excel(writer, "EIC_Invalid", index=False)
+    writer = pandas.ExcelWriter(eic_report_path)
 
-for country in missing_eic_report_dict:
-    missing_eic_report_dict[country][report_columns].to_excel(writer, country, index=False)
+    try:
+        allocated_eic = get_allocated_eic()
+        eic_not_registered = Lines_with_EIC.merge(allocated_eic, left_on="IdentifiedObject.energyIdentCodeEic", right_on="mRID", indicator=True, how="outer").query("_merge=='left_only'")
+        eic_not_registered[report_columns].to_excel(writer, "EIC_NotRegistered", index=False)
 
-# Get sheet to do some formatting
-for sheet_name in writer.sheets:
+    except:
+        print("Error getting ENTSO-E EIC registry")
 
-    sheet = writer.sheets[sheet_name]
 
-    # Set default column size, if this does not work you are missing XslxWriter module
-    first_col = 0
-    last_col = len(report_columns)
-    width = 38
-    sheet.set_column(first_col, last_col, width)
+    # check if there are duplicated boundary names
+    duplicated_boundary_names = line_and_nodes[line_and_nodes.duplicated("IdentifiedObject.name_ConnectivityNode", keep=False)][report_columns]
 
-    # freeze column names and ID column
-    sheet.freeze_panes(1, 1)
+    # Export to excel EIC check results
 
-writer.close()
+    duplicated_boundary_names[report_columns].to_excel(writer, "DuplicatedBoundaryPointName", index=False)
+
+    InvalidEIC[report_columns].to_excel(writer, "EIC_Invalid", index=False)
+
+    for country in missing_eic_report_dict:
+        missing_eic_report_dict[country][report_columns].to_excel(writer, country, index=False)
+
+    # Get sheet to do some formatting
+    for sheet_name in writer.sheets:
+
+        sheet = writer.sheets[sheet_name]
+
+        # Set default column size, if this does not work you are missing XslxWriter module
+        first_col = 0
+        last_col = len(report_columns)
+        width = 38
+        sheet.set_column(first_col, last_col, width)
+
+        # freeze column names and ID column
+        sheet.freeze_panes(1, 1)
+
+    writer.close()
 
 ### EIC check end ###
 
@@ -216,9 +230,9 @@ DC_TP_NODES = HVDC_lines_and_nodes.rename(columns={"ID_TopologicalNode": "ID"}).
 data = data.update_triplet_from_tableview(DC_TP_NODES, add=False)
 
 
-# 9 Remove Junctions
+# 9 Remove Junctions - Removed in export configuration
 
-# 10 Remove Terminals
+# 10 Remove Terminals - Removed in export configuration
 
 # Add additional Areas
 
@@ -259,7 +273,7 @@ data = data.update_triplet_from_triplet(area_referneces, add=True, update=False)
 
 # 22.1 Add or update common enumerations
 
-enumerations = pandas.read_excel("configurations/ENUMERATIONS.xlsx", sheet_name=None)
+
 
 for enumeration in enumerations:
     print("Adding enumerations for {}".format(enumeration))

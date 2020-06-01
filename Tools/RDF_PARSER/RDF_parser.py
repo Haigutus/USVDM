@@ -683,7 +683,7 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
         # Store changes
         data.changes = data.changes.append(data_to_update[report_columns], ignore_index=True)
         # Get original index for update to work # TODO could be simplified by keeping index at test merge
-        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID","KEY"], how='left', suffixes=("_OLD","")).dropna()[["VALUE"]]
+        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID", "KEY"], how='left', suffixes=("_OLD", "")).dropna()[["VALUE"]]
         data.update(old_index_new_value)
         # TODO compare performance of append + drop vs update
 
