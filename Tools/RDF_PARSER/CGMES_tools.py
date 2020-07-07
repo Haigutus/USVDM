@@ -275,10 +275,7 @@ def statistics_GeneratingUnit_types(data):
 
 def get_GeneratingUnits(data):
     """Returns table of GeneratingUnits"""
-    list_of_generating_units = data.query("KEY == 'GeneratingUnit.initialP'").ID.tolist()
-    generating_units = data[data.ID.isin(list_of_generating_units)].pivot(index="ID", columns = "KEY")["VALUE"]
-
-    return generating_units
+    return data.merge(data.query("KEY == 'GeneratingUnit.initialP'").ID).drop_duplicates(["ID", "KEY"]).pivot(index="ID", columns="KEY")["VALUE"]
 
 
 def statistics_ConcreteClasses(data):
@@ -289,7 +286,7 @@ def statistics_ConcreteClasses(data):
 
 def get_diff_between_model_parts(UUID_1, UUID_2):
 
-    diff = data.query("INSTANCE_ID == '{}' or INSTANCE_ID == '{}'".format(UUID_1,UUID_2)).drop_duplicates(["ID","KEY","VALUE"],keep = False)
+    diff = data.query("INSTANCE_ID == '{}' or INSTANCE_ID == '{}'".format(UUID_1, UUID_2)).drop_duplicates(["ID", "KEY", "VALUE"], keep=False)
 
     return diff
 
