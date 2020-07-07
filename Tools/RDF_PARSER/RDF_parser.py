@@ -246,7 +246,7 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
     if debug:
         start_time = datetime.datetime.now()
 
-    data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
+    data = pandas.DataFrame(data_list, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"])
 
     if debug:
         print_duration("Data list loaded to DataFrame", start_time)
@@ -263,13 +263,13 @@ def type_tableview(data, type_name, string_to_number=True):
     """Creates a table view of all objects of same type, with their parameters in columns"""
 
     # Get all ID-s of rows where Type == type_name
-    type_id  = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
+    type_id = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
 
     # Filter original data by found type_id data
-    type_data = pandas.merge(type_id[["ID"]], data, right_on = "ID", left_on = "ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
     # Convert form triplets to a table view all objects of same type
-    data_view = type_data.pivot(index="ID", columns = "KEY")["VALUE"]
+    data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
 
     if string_to_number:
         # Convert to data type to numeric in columns that contain only numbers (for easier data usage later on)
@@ -436,16 +436,18 @@ def types_dict(data):
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.types_dict = types_dict
 
+
 def set_VALUE_at_KEY(data, key, value):
-    "Set all values of provided key to the given vale" #TODO add debug, to print key, initial value and new value.
-    data.loc[data[data.KEY == key].index, "VALUE"] = value # TODO add chages to change dataframe
+    """Set all values of provided key to the given vale"""  # TODO add debug, to print key, initial value and new value.
+    data.loc[data[data.KEY == key].index, "VALUE"] = value  # TODO add changes to change DataFrame
+
 
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.set_VALUE_at_KEY = set_VALUE_at_KEY
 
 
 def export_to_excel(data):
-    "Exports to excel all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"
+    """Exports to excel all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"""
     # TODO add specific folder path
     # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
 
@@ -747,7 +749,7 @@ if __name__ == '__main__':
 
     path = "test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
-    data = load_all_to_dataframe([path], debug = True) # Last took 3.820304 s on 3rd run
+    data = load_all_to_dataframe([path], debug=True) # Last took 3.820304 s on 3rd run
 
 
     print("Loaded types")
