@@ -6,6 +6,7 @@
 # Copyright:   (c) kristjan.vilgo 2019
 # Licence:     GPLv2
 #-------------------------------------------------------------------------------
+from shapely.geometry import Point, MultiPoint, box
 import sys
 sys.path.append("..")
 import RDF_parser
@@ -13,6 +14,7 @@ import CGMES_tools
 import pandas
 from uuid import uuid4
 import json
+
 
 
 def create_object_data_from_dict(object_id, object_type, object_data):
@@ -246,7 +248,99 @@ data = data.append(data_to_add, ignore_index=True)
 data = data.drop_duplicates()
 #data = data.update_triplet_from_triplet(data_to_add, update=True, add=True)
 
-# TODO Turn off voltage control on Injections
+### Find all machines out of PQ limits and disable regulating controls ###
+curve_data = data.type_tableview("CurveData")
+synchronous_machine = data.type_tableview("SynchronousMachine").reset_index()
+generating_units = CGMES_tools.get_GeneratingUnits(data)
+
+# Separate to coordinate pairs
+first_point = curve_data[["CurveData.Curve", "CurveData.xvalue", "CurveData.y1value"]].rename(columns={"CurveData.xvalue": "x", "CurveData.y1value": "y"})
+second_point = curve_data[["CurveData.Curve", "CurveData.xvalue", "CurveData.y2value"]].rename(columns={"CurveData.xvalue": "x", "CurveData.y2value": "y"})  # TODO Y2 might not exist, so drop NA?
+all_points = first_point.append(second_point)
+
+# Convert to coordinate points
+all_points["PQ_area"] = all_points[["x", "y"]].apply(Point, axis=1)
+
+# Lets group points and create polygons by using the convex hull function
+curve_polygons = all_points.groupby("CurveData.Curve")["PQ_area"].apply(lambda x: MultiPoint(x).convex_hull)
+
+
+machine_curve = synchronous_machine.merge(curve_polygons, left_on="SynchronousMachine.InitialReactiveCapabilityCurve", right_on="CurveData.Curve", how="left")
+machine_curve = machine_curve.merge(generating_units, left_on='RotatingMachine.GeneratingUnit', right_index=True, how="left", suffixes=("", "GeneratingUnit"))
+machine_curve["PQ_setpoint"] = machine_curve[['RotatingMachine.p', 'RotatingMachine.q']].multiply(-1).apply(Point, axis=1)
+machine_curve["PQ_limits"] = machine_curve[['GeneratingUnit.minOperatingP', 'SynchronousMachine.minQ', 'GeneratingUnit.maxOperatingP', 'SynchronousMachine.maxQ']].dropna().apply(pandas.to_numeric, errors='ignore').apply(lambda x: box(x['GeneratingUnit.minOperatingP'], x['SynchronousMachine.minQ'], x['GeneratingUnit.maxOperatingP'], x['SynchronousMachine.maxQ']), axis=1)
+
+#out_of_limits = machine_curve[~machine_curve.apply(lambda x: x["point"].contains(x["solution"]), axis=1)]
+machine_curve["area_distance"] = machine_curve.dropna(subset=["PQ_area"]).apply(lambda x: x["PQ_area"].distance(x["PQ_setpoint"]), axis=1)
+machine_curve["limits_distance"] = machine_curve.dropna(subset=["PQ_limits"]).apply(lambda x: x["PQ_limits"].distance(x["PQ_setpoint"]), axis=1)
+
+# Find machines outside of PQ area or PQ limits
+out_of_limits = machine_curve.query("area_distance > 0 or limits_distance > 0")
+
+# Set Regulating Control to False on all out of bounds machines
+#out_of_limits['RegulatingCondEq.controlEnabled'] = "false"
+RegulatingCondEq = data.query("KEY == 'RegulatingCondEq.controlEnabled'").reset_index().merge(out_of_limits.ID).set_index("index")
+RegulatingCondEq.VALUE = "false"
+data.update(RegulatingCondEq)
+
+RegulatingControl = data.reset_index().merge(out_of_limits["RegulatingCondEq.RegulatingControl"], left_on="ID", right_on="RegulatingCondEq.RegulatingControl").set_index("index").query("KEY == 'RegulatingControl.enabled'")
+RegulatingControl.VALUE = "false"
+data.update(RegulatingControl)
+
+# TODO - extract reporting and drawing of PQ curves to seperate file
+# Filter out switched off generators
+#out_of_limits = out_of_limits[~((out_of_limits['RotatingMachine.p'] == 0) & (out_of_limits['RotatingMachine.q'] == 0))]
+
+# Add modelingEntity
+#out_of_limits = data.query("KEY == 'Model.modelingEntity'")[['VALUE', 'INSTANCE_ID']].merge(out_of_limits.merge(data.query("KEY == 'Type'")).drop_duplicates("ID"), on="INSTANCE_ID", suffixes=("_PARTY", ""))
+
+
+# import matplotlib.pyplot as plt
+# def draw_chart(index):
+#     fig, ax = plt.subplots()
+#
+#     # PQ curve
+#     if pandas.notna(out_of_limits["PQ_area"][index]):
+#         ax.scatter(*out_of_limits["PQ_area"][index].exterior.xy)
+#         ax.plot(*out_of_limits["PQ_area"][index].exterior.xy, label='PQ_area')
+#
+#     # PQ limits
+#     if pandas.notna(out_of_limits["PQ_limits"][index]):
+#         ax.scatter(*out_of_limits["PQ_limits"][index].exterior.xy)
+#         ax.plot(*out_of_limits["PQ_limits"][index].exterior.xy, label='PQ_limits')
+#
+#     # Rated S
+#     if pandas.notna(out_of_limits["RotatingMachine.ratedS"][index]):
+#         S = out_of_limits["RotatingMachine.ratedS"][index]
+#         circle = plt.Circle((0, 0), S, fill=False, color='g', label="S_rated")
+#         ax.add_artist(circle)
+#
+#     # PQ powerflow solution
+#     ax.plot(out_of_limits["PQ_setpoint"][index].x, out_of_limits["PQ_setpoint"][index].y, "or", label="PQ_setpoint")
+#     #ax.annotate("SV_PQ", (out_of_limits.solution[1].x, out_of_limits.solution[1].y))
+#
+#     # Annotations
+#
+#     ax.set_xlabel('P')
+#     ax.set_ylabel('Q')
+#     #ax.legend([circle], ["S_rated"])
+#     ax.legend()
+#     ax.grid(True)
+#
+#     id = out_of_limits["ID"][index]
+#     party = out_of_limits["VALUE_PARTY"][index]
+#     name = out_of_limits["IdentifiedObject.name"][index]
+#
+#     fig.suptitle(f'{party} -> {name} \n {id}', fontsize=16)
+#     fig.savefig(f'{party}_{id}')
+
+
+#for machine_id in out_of_limits.index:
+#    draw_chart(machine_id)
+
+# print(out_of_limits.VALUE_PARTY.value_counts())
+
+# machine_curve[machine_curve["PQ_area"].apply(lambda x: type(x) == LineString)]
 
 
 ## EXPORT ###
