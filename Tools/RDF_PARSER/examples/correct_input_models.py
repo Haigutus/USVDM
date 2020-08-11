@@ -18,7 +18,7 @@ import json
 
 
 def create_object_data_from_dict(object_id, object_type, object_data):
-    """Creates triplet representation of key-value par dictionary of object data"""
+    """Creates triplet representation of key-value pair dictionary of object data"""
 
     columns = ["ID", "KEY", "VALUE"]
     object_data["Type"] = object_type
@@ -31,10 +31,11 @@ def create_object_data_from_dict(object_id, object_type, object_data):
 
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\20200115T0930Z_1D_RTEFRANCE_EQ_001.zip"
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
-input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
+#input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
+input_data = r"C:\Users\kristjan.vilgo\Downloads\IGM_Aug_CGM_Comp.zip"
 boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 
-xnode_conf = r"C:\USVDM\Tools\RDF_PARSER\examples\xnodes_for_tieflows_052020.xlsx"
+xnode_conf = r"xnodes_for_tieflows_052020.xlsx"
 
 # Read data
 data = pandas.read_RDF([input_data, boundary])
@@ -53,7 +54,6 @@ data = CGMES_tools.update_FullModel_from_filename(data)
 
 # Get all EQ instances
 eq_instances = data.query("KEY == 'Model.profile' & VALUE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")
-
 
 # Get all ControlAreas in EQ instances
 control_areas = data.query("KEY == 'Type' & VALUE == 'ControlArea'").merge(eq_instances["INSTANCE_ID"], on="INSTANCE_ID")
@@ -144,6 +144,9 @@ for instance_id in eq_instances.ID.to_list():
     objects_list = []
 
     eq = data.query("INSTANCE_ID == @instance_id")
+    entity = eq.get_object_data(instance_id)["Model.modelingEntity"]
+
+    print(f"INFO - START fixing Loads for {entity} in EQ {instance_id}")
 
     # Lets first check if all needed items exist and what is their ID, if it does not exist, lets create ID for them
     items_data = {}
@@ -151,6 +154,7 @@ for instance_id in eq_instances.ID.to_list():
     for item in items:
         item_data = eq.query("KEY == 'Type' & VALUE == @item")
 
+        # In case of missing or if we have a load group, create new object
         if item_data.empty or "LoadGroup" in item:
             item_ID = str(uuid4())
             item_exists = False
@@ -168,10 +172,10 @@ for instance_id in eq_instances.ID.to_list():
 
         if not item["exists"]:
 
-            print(f"Adding {object_type} to {instance_id}")
+            print(f"INFO - Adding {object_type}")
 
             object_data = [
-                (item["ID"], 'IdentifiedObject.name', f'Default {object_type}', instance_id),
+                (item["ID"], 'IdentifiedObject.name', f'Default{object_type}', instance_id),
                 (item["ID"], 'IdentifiedObject.description', 'Added for CGM BP IOP', instance_id),
                 (item["ID"], 'Type', object_type, instance_id),
             ]
@@ -208,6 +212,8 @@ for instance_id in eq_instances.ID.to_list():
     Not_Contained_ConformLoadGroups = Contained_ConformLoadGroups_ID.append(All_ConformLoadGroups_ID)[["ID"]].drop_duplicates(keep=False)
 
     if not Not_Contained_ConformLoadGroups.empty:
+        print(f"INFO - Adding {len(Not_Contained_ConformLoadGroups)} ConformLoadGroups to SubLoadArea {items_data['SubLoadArea']['ID']}")
+
         Not_Contained_ConformLoadGroups["KEY"] = "LoadGroup.SubLoadArea"
         Not_Contained_ConformLoadGroups["VALUE"] = items_data["SubLoadArea"]["ID"]
         Not_Contained_ConformLoadGroups["INSTANCE_ID"] = instance_id
@@ -222,7 +228,11 @@ for instance_id in eq_instances.ID.to_list():
 
     Not_Contained_ConformLoads = Contained_ConformLoads_ID.append(All_ConformLoads_ID)[["ID"]].drop_duplicates(keep=False)
 
+
     if not Not_Contained_ConformLoads.empty:
+
+        print(f"INFO - Adding {len(Not_Contained_ConformLoads)} ConformLoads to ConformLoadGroup {items_data['ConformLoadGroup']['ID']}")
+
         Not_Contained_ConformLoads["KEY"] = "ConformLoad.LoadGroup"
         Not_Contained_ConformLoads["VALUE"] = items_data["ConformLoadGroup"]["ID"]
         Not_Contained_ConformLoads["INSTANCE_ID"] = instance_id
@@ -237,12 +247,17 @@ for instance_id in eq_instances.ID.to_list():
 
     Not_Contained_NonConformLoads = Contained_NonConformLoads_ID.append(All_NonConformLoads_ID)[["ID"]].drop_duplicates(keep=False)
 
-    if not Not_Contained_ConformLoads.empty:
+    if not Not_Contained_NonConformLoads.empty:
+
+        print(f"INFO - Adding {len(Not_Contained_NonConformLoads)} NonConformLoads to NonConformLoadGroup {items_data['NonConformLoadGroup']['ID']}")
+
         Not_Contained_NonConformLoads["KEY"] = "NonConformLoad.LoadGroup"
         Not_Contained_NonConformLoads["VALUE"] = items_data["NonConformLoadGroup"]["ID"]
         Not_Contained_NonConformLoads["INSTANCE_ID"] = instance_id
 
         data_to_add = data_to_add.append(Not_Contained_NonConformLoads, ignore_index=True)
+
+    print(f"INFO - END fixing Loads for {entity} in EQ {instance_id}")
 
 data = data.append(data_to_add, ignore_index=True)
 data = data.drop_duplicates()
@@ -360,10 +375,10 @@ export_undefined = False
 export_type      = "xml_per_instance_zip_per_all"
 
 # Load export format configuration
-with open(r"C:\USVDM\Tools\RDF_PARSER\entsoe_v2.4.15_2014-08-07.json", "r") as conf_file:
+with open(r"..\entsoe_v2.4.15_2014-08-07.json", "r") as conf_file:
     rdf_map = json.load(conf_file)
 
 # Export triplet to CGMES
-data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
+#data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
 
 
