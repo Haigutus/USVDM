@@ -1,11 +1,11 @@
 #-------------------------------------------------------------------------------
-# Name:        EDX_client
+# Name:        ECP_client
 # Purpose:
 #
 # Author:      kristjan.vilgo
 #
-# Created:     27.03.2018
-# Copyright:   (c) kristjan.vilgo 2018
+# Created:     25.08.2020
+# Copyright:   (c) kristjan.vilgo 2020
 # Licence:     GPL2
 #-------------------------------------------------------------------------------
 from __future__ import print_function
@@ -25,7 +25,7 @@ class create_client():
 
         """At minimum server address or IP must be provided"""
 
-        wsdl = '{}/ws/madesInWSInterface.wsdl'.format(server)
+        wsdl = '{}/ECP_MODULE/services/ECPEndpointService.wsdl'.format(server)
 
         session        = Session()
         session.verify = False
@@ -37,8 +37,8 @@ class create_client():
         client.debug = debug
 
         self.service = client.create_service(
-            '{http://mades.entsoe.eu/}MadesEndpointSOAP12',
-            '{}/ws/madesInWSInterface'.format(server))
+            '{http://ecp.entso-e.eu/}ECPEndpointSOAP12',
+            '{}/ECP_MODULE/services/ECPEndpointService.wsdl'.format(server))
 
 
     def connectivity_test(self, reciver_EIC, business_type):
@@ -104,7 +104,7 @@ if __name__ == '__main__':
 
     # Retrieve message example
 
-    message = service.receive_message("RIMD")
+    message = service.receive_message("*")
     service.confirm_received_message(message["receivedMessage"]["messageID"])
 
 

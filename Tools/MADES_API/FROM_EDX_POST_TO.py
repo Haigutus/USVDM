@@ -10,9 +10,11 @@
 #-------------------------------------------------------------------------------
 import os
 import requests
-from EDX_MADES_client import EDXService
+#from EDX_MADES_client import EDXService
+from EDX import create_client as EDXService
 import argparse
 import json
+import time
 
 # Example settings, these will be used if nothing else is defined
 
@@ -45,7 +47,7 @@ else:
 parser = argparse.ArgumentParser()
 
 # EDX parameters
-parser.add_argument('--edx_server',     '-es',  help="base URL to EDX webserver, wothout port",                                                                 type= str,  default= settings["edx_server"])
+parser.add_argument('--edx_server',     '-es',  help="base URL to EDX webserver, without port",                                                                 type= str,  default= settings["edx_server"])
 parser.add_argument('--edx_username',   '-eu',  help="BasicAuth username for EDX webserver, if not implemented on EDX, then it is not needed",                  type= str,  default= settings["edx_username"])
 parser.add_argument('--edx_password',   '-ep',  help="BasicAuth password for EDX webserver, if not implemented on EDX, then it is not needed",                  type= str,  default= settings["edx_password"])
 parser.add_argument('--edx_messages',   '-em',  help="List of EDX message types to be forwarded. example: -em RIMD ESR EAD",                         nargs='+', type= str,  default= settings["edx_messages"])
@@ -67,22 +69,29 @@ API = EDXService(args.edx_server, args.edx_username, args.edx_password)
 for message_type in args.edx_messages:
 
     # Reset retry count
-    retry_count = 1
+    retry_count = 0
+    que_size    = 0
 
-    # Initial que size
-    que_size    = API.recieve_message(message_type,0)['remainingMessagesCount']
+
+    test_message = API.receive_message(message_type)
+
+    if test_message["receivedMessage"] != None:
+
+        # Initial que size
+        que_size  = test_message['remainingMessagesCount'] + 1
 
     print("Sending '{}' messages to {} -> que size = {}".format(message_type, args.post_endpoint, que_size))
 
 
     while que_size > 0 and retry_count <= args.post_retry:
 
-        message  = API.recieve_message(message_type, 1)
+        message  = API.receive_message(message_type)
         response = requests.post(args.post_endpoint, data=message["receivedMessage"]["content"], headers=args.post_headers)
+        #print(response.text)
 
 
-        if response.status_code == requests.codes.ok:
-            API.confirm_recieved_message(message["receivedMessage"]["messageID"])
+        if response.ok:
+            API.confirm_received_message(message["receivedMessage"]["messageID"])
             que_size = message['remainingMessagesCount'] #Update que size
             print("Number of remaining messages {}".format(que_size))
 
