@@ -49,7 +49,7 @@ parser.add_argument('--post_retry',     '-pr',  help="Number of times to retry t
 
 # Continuous process
 parser.add_argument('--continuous_process',           '-cp',    help="If the process should run continuously, no parameters expected",                          default=settings["continuous_process"], action='store_true')
-parser.add_argument('--continuous_process_frequency', '-cpf',   help="If continuous process is enabeled, how often is should run [s] float",                    type=float,default=settings["continuous_process_frequency"])
+parser.add_argument('--continuous_process_frequency', '-cpf',   help="If continuous process is enabeled, how often it should run [s] float",                    type=float,default=settings["continuous_process_frequency"])
 
 args = parser.parse_args()
 
@@ -85,7 +85,7 @@ while process:
         while que_size > 0 and retry_count <= args.post_retry:
 
             message  = API.receive_message(message_type)
-            response = requests.post(args.post_endpoint, data=message["receivedMessage"]["content"], headers=args.post_headers)
+            response = requests.post(args.post_endpoint, data=message["receivedMessage"]["content"].decode(), headers=args.post_headers)
             #print(response.text)
 
 
@@ -94,10 +94,15 @@ while process:
                 que_size = message['remainingMessagesCount'] #Update que size
                 print("INFO - Number of remaining messages {}".format(que_size))
 
-            else:
+            elif args.post_retry != 0:
                 retry_count += 1
                 print("WARNING - try {}/{} failed, trying again in {}s".format(retry_count, args.post_retry, args.post_retry_time))
                 time.sleep(args.post_retry_time) #Lets try again
+
+            else:
+                API.confirm_received_message(message["receivedMessage"]["messageID"])
+                que_size = message['remainingMessagesCount'] #Update que size
+                print("ERROR - Message delivery failed, removed from que")
 
     # Next run
     process = args.continuous_process
