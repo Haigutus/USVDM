@@ -265,6 +265,10 @@ def type_tableview(data, type_name, string_to_number=True):
     # Get all ID-s of rows where Type == type_name
     type_id = data.query("VALUE == '{}' & KEY == 'Type'".format(type_name))
 
+    if type_id.empty:
+        print('WARNING - No data available for {}'.format(type_name))
+        return None
+
     # Filter original data by found type_id data
     type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
@@ -330,7 +334,7 @@ def references_to(data, reference, levels=1):
         reference_data = pandas.merge(reference_column, data,
                                       left_on="ID",
                                       right_on="VALUE",
-                                      suffixes = ("_TO", "_FROM"))[["ID_TO", "ID_FROM"]].drop_duplicates("ID_FROM")
+                                      suffixes=("_TO", "_FROM"))[["ID_TO", "ID_FROM"]].drop_duplicates("ID_FROM")
 
         if not reference_data.empty:
             referring_objects = pandas.merge(reference_data, data,
@@ -438,7 +442,7 @@ pandas.DataFrame.types_dict = types_dict
 
 
 def set_VALUE_at_KEY(data, key, value):
-    """Set all values of provided key to the given vale"""  # TODO add debug, to print key, initial value and new value.
+    """Set all values of provided key to the given value"""  # TODO add debug, to print key, initial value and new value.
     data.loc[data[data.KEY == key].index, "VALUE"] = value  # TODO add changes to change DataFrame
 
 
