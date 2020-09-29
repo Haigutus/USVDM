@@ -59,28 +59,37 @@ def y_out_of_bounds(y, y_range, tolerance=0.001):
                     (y - y_max) - abs(y_max * tolerance)])
 
 
-
 def draw_chart(out_of_limits, index, save=False, show=True):
+    """
+    Draw PQ chart for synchronous machine
+    """
     fig, ax = plt.subplots()
 
     if curve_data is not None:
         # PQ curve
         if pandas.notna(out_of_limits["PQ_area"][index]):
-            try:
-                ax.scatter(*out_of_limits["PQ_area"][index].exterior.xy)
-                ax.plot(*out_of_limits["PQ_area"][index].exterior.xy, label='PQ_area')
-            except:
-                print("ERROR - Curve is not polygon for Synchronous Machine -> {}".format(out_of_limits["ID"][index]))
+
+            colour = "#1f77b4"  # Blue
+
+            if out_of_limits["PQ_area"][index].type == "Polygon":
+                ax.scatter(*out_of_limits["PQ_area"][index].exterior.xy, color=colour)
+                ax.plot(*out_of_limits["PQ_area"][index].exterior.xy, label='PQ_area', color=colour)
+            else:
+                ax.scatter(*out_of_limits["PQ_area"][index].xy, color=colour)
+                ax.plot(*out_of_limits["PQ_area"][index].xy, label='PQ_area', color=colour)
+
 
     # PQ limits
     if pandas.notna(out_of_limits["PQ_limits"][index]):
-        ax.scatter(*out_of_limits["PQ_limits"][index].exterior.xy)
-        ax.plot(*out_of_limits["PQ_limits"][index].exterior.xy, label='PQ_limits')
+        colour = "#ff7f0e"  # Orange
+        ax.scatter(*out_of_limits["PQ_limits"][index].exterior.xy, color=colour)
+        ax.plot(*out_of_limits["PQ_limits"][index].exterior.xy, label='PQ_limits', color=colour)
 
     # Rated S
     if pandas.notna(out_of_limits["RotatingMachine.ratedS"][index]):
+        colour = "#2ca02c"  # Green
         S = out_of_limits["RotatingMachine.ratedS"][index]
-        circle = plt.Circle((0, 0), S, fill=False, color='g', label="S_rated")
+        circle = plt.Circle((0, 0), S, fill=False, color=colour, label="S_rated")
         ax.add_artist(circle)
 
     # PQ SSH setpoint
@@ -209,7 +218,7 @@ print("WARNING - {}/{} Machines SV PF Q outside their limits or curve".format(le
 print("WARNING - {}/{} Machines SSH Q setpoint outside their limits or curve".format(len(out_of_limits_setpoint_Q), len(machine_data)))
 
 
-for machine_id in out_of_limits_solution_Q.index:
+for machine_id in out_of_limits_solution_PQ.index:
     draw_chart(machine_data, machine_id, save=True)
 
 reports = {"PQ_solution_violations": out_of_limits_solution_PQ,
