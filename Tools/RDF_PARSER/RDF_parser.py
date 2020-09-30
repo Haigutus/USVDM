@@ -82,10 +82,11 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug = False):
 
     # LOAD XML
     parser     = etree.XMLParser(remove_comments=True, collect_ids=False, remove_blank_text=True)
-    parsed_xml = etree.parse(path_or_fileobject, parser = parser)           # TODO - add iterparse for Python3
+    parsed_xml = etree.parse(path_or_fileobject, parser=parser)           # TODO - add iterparse for Python3
 
     # Get unique ID for loaded instance
-    instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
+    #instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
+    instance_id = str(uuid.uuid4())  # Guarantees unique ID for each loaded instance of data
 
     if debug:
         _, start_time = print_duration("XML loaded to tree object", start_time)
@@ -96,8 +97,6 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug = False):
 
     if debug:
         _, start_time = print_duration("All children put to a generator", start_time)
-
-
 
     return RDF_objects, instance_id
 
@@ -411,14 +410,13 @@ def references_from(data, reference, levels=1):
         reference_data = pandas.merge(reference_column, data,
                                       left_on="VALUE",
                                       right_on="ID",
-                                      suffixes=("_FROM",""))
-
+                                      suffixes=("_FROM", ""))
 
         if not reference_data.empty:
 
             objects_list.append(reference_data.copy())
 
-        level +=1
+        level += 1
 
         objects_data["ID_TO"] = objects_data["ID"]
 
@@ -753,7 +751,7 @@ if __name__ == '__main__':
 
     path = "test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
-    data = load_all_to_dataframe([path], debug=True) # Last took 3.820304 s on 3rd run
+    data = pandas.read_RDF([path], debug=True)  # Last took 0:00:05.481340
 
 
     print("Loaded types")
