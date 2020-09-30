@@ -1,4 +1,4 @@
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Name:        RDF parser
 # Purpose:     Loads RDF XMLs from zip and xml files to pandas DataFrame in a triplestore manner
 #
@@ -7,7 +7,7 @@
 # Created:     13.12.2018
 # Copyright:   (c) kristjan.vilgo 2018
 # Licence:     GPLv2
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 from __future__ import print_function
 
 from io import BytesIO
@@ -23,16 +23,19 @@ import uuid
 import time
 
 from collections import OrderedDict
-#from collections import deque
 
-#from multiprocessing import Pool - TODO add parallel loading for import ALL DASK, SPARK, MODIN, VAEX
+# from collections import deque
+
+# from multiprocessing import Pool - TODO add parallel loading for import ALL DASK, SPARK, MODIN, VAEX
 
 
-#pandas.set_option("display.height", 1000)
+# pandas.set_option("display.height", 1000)
 pandas.set_option("display.max_rows", 15)
 pandas.set_option("display.max_columns", 8)
 pandas.set_option("display.width", 1000)
-#pandas.set_option('display.max_colwidth', -1)
+
+
+# pandas.set_option('display.max_colwidth', -1)
 
 # FUNCTIONS - go down for sample code
 
@@ -50,7 +53,7 @@ def print_duration(text, start_time):
 
 
 def remove_prefix(original_string, prefix_string):
-    "Removes prefix from a string"
+    """Removes prefix from a string"""
 
     prefix_length = len(prefix_string)
 
@@ -65,8 +68,8 @@ def clean_ID(ID):
 
     # TODO - a lot of replacements have been done using replace function, but is it valid that these charecaters are not present in UUID-s? is replace once sufficent?
 
-    #replace_count = 1 # Remove only once the ID prefix string, otherwise we risk of removing characters from within ID
-    #clean_ID      = ID.replace("urn:uuid:", "", replace_count).replace("#_", "", replace_count).replace("_", "", replace_count)
+    # replace_count = 1 # Remove only once the ID prefix string, otherwise we risk of removing characters from within ID
+    # clean_ID      = ID.replace("urn:uuid:", "", replace_count).replace("#_", "", replace_count).replace("_", "", replace_count)
     ID = remove_prefix(ID, "urn:uuid:")
     ID = remove_prefix(ID, "#_")
     ID = remove_prefix(ID, "_")
@@ -74,23 +77,23 @@ def clean_ID(ID):
     return ID
 
 
-def load_RDF_objects_from_XML(path_or_fileobject, debug = False):
+def load_RDF_objects_from_XML(path_or_fileobject, debug=False):
+    """Parse XML and return iterator of RDF objects and instance ID"""
 
     # START TIMER
     if debug:
         start_time = datetime.datetime.now()
 
     # LOAD XML
-    parser     = etree.XMLParser(remove_comments=True, collect_ids=False, remove_blank_text=True)
-    parsed_xml = etree.parse(path_or_fileobject, parser=parser)           # TODO - add iterparse for Python3
+    parser = etree.XMLParser(remove_comments=True, collect_ids=False, remove_blank_text=True)
+    parsed_xml = etree.parse(path_or_fileobject, parser=parser)  # TODO - add iterparse for Python3
 
     # Get unique ID for loaded instance
-    #instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
+    # instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
     instance_id = str(uuid.uuid4())  # Guarantees unique ID for each loaded instance of data
 
     if debug:
         _, start_time = print_duration("XML loaded to tree object", start_time)
-
 
     # EXTRACT RDF OBJECTS
     RDF_objects = parsed_xml.getroot().iterchildren()
@@ -101,14 +104,13 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug = False):
     return RDF_objects, instance_id
 
 
-def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
-    """Returns list of file objects and/or paths"""
+def find_all_xml(list_of_paths_to_zip_globalzip_xml, debug=False):
+    """Returns list of XML file objects and/or paths in ZIP file"""
 
     xml_files_list = []
-    zip_files_list = [] # TODO - add support random folders aswell
+    zip_files_list = []  # TODO - add support random folders as well
 
     for item in list_of_paths_to_zip_globalzip_xml:
-
 
         item_lower = item.lower()
 
@@ -124,12 +126,13 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
             if debug:
                 print("Added for further processing: {}".format(item))
 
-        else: print("WARNING 1 - Not supported file: {}".format(item))
+        else:
+            print("WARNING 1 - Not supported file: {}".format(item))
 
     for zip_file_path in zip_files_list:
 
         zip_container = zipfile.ZipFile(zip_file_path)
-        zipped_files  = zip_container.namelist()
+        zipped_files = zip_container.namelist()
 
         for zipped_file in zipped_files:
 
@@ -141,20 +144,22 @@ def find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug = False):
                 xml_files_list.append(file_object)
 
                 if debug:
-                    print("Added: {}".format(zipped_file))
+                    print("INFO - Added: {}".format(zipped_file))
 
             elif ".zip" in zipped_file_lower:
                 zip_files_list.append(BytesIO(zip_container.read(zipped_file)))
 
                 if debug:
-                    print("Added for further processing: {}".format(zipped_file))
+                    print("INFO - Added for further processing: {}".format(zipped_file))
 
-            else: print("WARNING 2 - Not supported file: {}".format(zipped_file))
+            else:
+                print("WARNING - Not supported file: {}".format(zipped_file))
 
     return xml_files_list
 
 
-def load_RDF_to_list(path_or_fileobject, debug = False):
+def load_RDF_to_list(path_or_fileobject, debug=False):
+    """Parse single file to triplestore list"""
 
     file_name = path_or_fileobject
 
@@ -168,78 +173,75 @@ def load_RDF_to_list(path_or_fileobject, debug = False):
     if debug:
         start_time = datetime.datetime.now()
 
+    # Lets generate list for RDF data and store the original filename under rdf:label
+    data_list = [(str(uuid.uuid4()), "label", file_name, INSTANCE_ID)]
 
-    data_list = [(str(uuid.uuid4()), "label", file_name, INSTANCE_ID)] # Lets generate list object for all of the RDF data and store the original filename under rdf:label
+    # lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
+    ID = ""
+    KEY = ""
+    VALUE = ""
 
-    #lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
-    ID      = ""
-    KEY     = ""
-    VALUE   = ""
+    for RDF_object in RDF_objects:
 
-    for object in RDF_objects:
+        ID = clean_ID(RDF_object.attrib.values()[0])
+        # KEY        = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
+        KEY = 'Type'
+        VALUE = RDF_object.tag.split("}")[1]
+        # VALUE       = etree.QName(object).localname
+        # ID_TYPE    = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
 
-        ID          = clean_ID(object.attrib.values()[0])
-        #KEY        = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
-        KEY         = 'Type'
-        VALUE       = object.tag.split("}")[1]
-        #VALUE       = etree.QName(object).localname
-        #ID_TYPE    = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
-
-        #data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE, maybe also namespace should be kept?
+        # data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE, maybe also namespace should be kept?
         data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
-        for element in object.iterchildren():
+        for element in RDF_object.iterchildren():
 
             KEY = element.tag.split("}")[1]
-            #KEY = etree.QName(element).localname
+            # KEY = etree.QName(element).localname
             VALUE = element.text
 
-            if VALUE == None and len(element.attrib.values()) > 0:
-
+            if VALUE is None and len(element.attrib.values()) > 0:
                 VALUE = clean_ID(element.attrib.values()[0])
 
-            #data_list.append([ID, ID_TYPE, KEY_NAMESPACE, KEY, VALUE]) # If using ID TYPE
+            # data_list.append([ID, ID_TYPE, KEY_NAMESPACE, KEY, VALUE]) # If using ID TYPE
             data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
     if debug:
-        _,start_time = print_duration("All values put to data list", start_time)
+        _, start_time = print_duration("All values put to data list", start_time)
 
     return data_list
 
 
-
-def load_RDF_to_dataframe(path_or_fileobject, debug = False):
+def load_RDF_to_dataframe(path_or_fileobject, debug=False):
     """Parse single file to Pandas DataFrame"""
 
     data_list = load_RDF_to_list(path_or_fileobject, debug)
 
-
     if debug:
         start_time = datetime.datetime.now()
 
-    data = pandas.DataFrame(data_list, columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"])
+    data = pandas.DataFrame(data_list, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"])
 
     if debug:
         _, start_time = print_duration("List of data loaded to DataFrame", start_time)
 
     return data
 
-def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
+
+def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug=False):
     """Parse contents of provided list of paths to Pandas DataFrame (zip, global zip or XML)"""
 
     if debug:
         process_start = datetime.datetime.now()
 
-    list_of_xmls = find_all_xmls(list_of_paths_to_zip_globalzip_xml, debug)
+    list_of_xmls = find_all_xml(list_of_paths_to_zip_globalzip_xml, debug)
 
     data_list = []
 
-##    TODO - add paralel processing if number inputs is greater than X - to be decided
-##    process_pool = Pool(5)
-##    data_list = sum(process_pool.map(load_RDF_to_list, list_of_xmls),[])
+    #    TODO - add parallel processing if number inputs is greater than X - to be decided
+    #    process_pool = Pool(5)
+    #    data_list = sum(process_pool.map(load_RDF_to_list, list_of_xml),[])
 
     for xml in list_of_xmls:
-
         data_list.extend(load_RDF_to_list(xml, debug))
 
     if debug:
@@ -250,9 +252,10 @@ def load_all_to_dataframe(list_of_paths_to_zip_globalzip_xml, debug = False):
     if debug:
         print_duration("Data list loaded to DataFrame", start_time)
         print_duration("All loaded in ", process_start)
-        #print(data.info())
+        # print(data.info())
 
     return data
+
 
 # Extend this functionality to pandas DataFrame
 pandas.read_RDF = load_all_to_dataframe
@@ -269,7 +272,8 @@ def type_tableview(data, type_name, string_to_number=True):
         return None
 
     # Filter original data by found type_id data
-    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID", "KEY"]) # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID",
+                                                                                                  "KEY"])  # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
 
     # Convert form triplets to a table view all objects of same type
     data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
@@ -296,6 +300,7 @@ def references_to_simple(data, reference, columns=["Type"]):
 
     return data_view
 
+
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.references_to_simple = references_to_simple
 
@@ -309,7 +314,6 @@ def references_to(data, reference, levels=1):
     object_data = data.query("ID == '{}'".format(reference)).copy()
     object_data["level"] = 0
     object_data["ID_FROM"] = reference
-
 
     # Dataframe where to keep the results
     objects_data = pandas.DataFrame()
@@ -325,7 +329,6 @@ def references_to(data, reference, levels=1):
         if level > levels:
             break
 
-
         # Get column where possible reference to other objects reside
         reference_column = object_data[["ID"]]
 
@@ -338,7 +341,7 @@ def references_to(data, reference, levels=1):
         if not reference_data.empty:
             referring_objects = pandas.merge(reference_data, data,
                                              left_on="ID_FROM",
-                                             right_on="ID")#.drop(columns=["ID_FROM"])
+                                             right_on="ID")  # .drop(columns=["ID_FROM"])
 
             # Add data for future processing
             objects_list.append(referring_objects.copy())
@@ -349,7 +352,7 @@ def references_to(data, reference, levels=1):
             # Add objects to general objects data frame
             objects_data = objects_data.append(referring_objects)
 
-        level +=1
+        level += 1
 
     return objects_data
 
@@ -384,14 +387,14 @@ def references_from(data, reference, levels=1):
     objects_data = pandas.DataFrame()
 
     object_data = data.query("ID == '{}'".format(reference)).copy()
-    #object_data["ID_FROM"] = object_data["ID"]
+    # object_data["ID_FROM"] = object_data["ID"]
 
     objects_list = [object_data]
     level = 0
 
     for object_data in objects_list:
 
-        #print("{}/{}".format(level, levels))
+        # print("{}/{}".format(level, levels))
 
         # End loop if we have reached desired level
         if level > levels:
@@ -413,7 +416,6 @@ def references_from(data, reference, levels=1):
                                       suffixes=("_FROM", ""))
 
         if not reference_data.empty:
-
             objects_list.append(reference_data.copy())
 
         level += 1
@@ -474,33 +476,34 @@ def export_to_excel(data):
 
             # Set default column size, if this does not work you are missing XslxWriter module
             first_col = 0
-            last_col  = len(class_data.columns)
-            width     = 38
+            last_col = len(class_data.columns)
+            width = 38
             sheet.set_column(first_col, last_col, width)
 
-            #freeze column names and ID column
+            # freeze column names and ID column
             sheet.freeze_panes(1, 1)
 
         writer.save()
 
+
 # Extend this functionality to pandas DataFrame
 pandas.DataFrame.export_to_excel = export_to_excel
 
-def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
-                                    class_KEY="Type",
-                                    export_undefined=True,
-                                    export_type="xml_per_instance_zip_per_instance",
-                                    global_zip_filename="Export.zip",
-                                    debug=False):
 
+def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
+                     class_KEY="Type",
+                     export_undefined=True,
+                     export_type="xml_per_instance_zip_per_instance",
+                     global_zip_filename="Export.zip",
+                     debug=False):
     if debug:
         start_time = datetime.datetime.now()
         init_time = start_time
 
-    # Filenames are kept under rdfs:lable
+    # File names are kept under rdfs:lable
     labels = data.query("KEY == 'label'").itertuples()
 
-    # Keep all filenames and data to be exported
+    # Keep all file names and data to be exported
     export_files = []
 
     if debug:
@@ -516,10 +519,9 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
         if instance_rdf_map is None:
             print("WARNING - No rdf mapping available for {}".format(instance_type))
-            if export_undefined == False:
-                print("File not created for {}".format(label.VALUE))
+            if not export_undefined:
+                print("INFO - File not created for {}".format(label.VALUE))
                 continue
-
 
         # Create xml element builder and the root element
         E = ElementMaker(nsmap=namespace_map)
@@ -555,11 +557,11 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                     id_name = "about"
                     id_value_prefix = "urn:uuid:"
                 else:
-                    print("Not Exported")
+                    print("INFO - Not Exported")
                     continue
 
             # Create class element
-            #print(class_namespace, class_name) # DEBUG
+            # print(class_namespace, class_name) # DEBUG
             rdf_object = E(QName(class_namespace, class_name))
             # Add ID attribute
             rdf_object.attrib[QName(id_name)] = id_value_prefix + ID
@@ -596,9 +598,8 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
                         else:
                             if text_prefix != "":
                                 print(ID, KEY, VALUE)  # DEBUG
-                            #tag.text = text_prefix + str(VALUE)
+                            # tag.text = text_prefix + str(VALUE)
                             tag.text = str(VALUE)
-
 
                         _object.append(tag)
 
@@ -622,7 +623,6 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
 
         if debug:
             _, start_time = print_duration("Attributes added", start_time)
-
 
         # etree.tostring(RDF, pretty_print=True, xml_declaration=True, encoding='UTF-8')
         # print(etree.tostring(RDF, pretty_print=True).decode())
@@ -661,16 +661,15 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf":"http://www.w3.org/1
         from zipfile import ZipFile, ZIP_DEFLATED
 
         for export_file in export_files:
-
-            zip_filename = export_file["filename"].replace('.xml','.zip')
+            zip_filename = export_file["filename"].replace('.xml', '.zip')
             with ZipFile(zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
                 zip_file.writestr(export_file["filename"], export_file["file"])
 
                 print('INFO - Saved {}'.format(zip_filename))
 
     if debug:
-        print_duration("Files saved in", start_time)
-        print_duration("Whole Export done in", init_time)
+        print_duration("DEBUG - Files saved in", start_time)
+        print_duration("DEBUG - Whole Export done in", init_time)
 
 
 # Extend this functionality to pandas DataFrame
@@ -678,8 +677,8 @@ pandas.DataFrame.export_to_cimxml = export_to_cimxml
 
 
 def get_object_data(data, object_UUID):
-
     return data.query("ID == '{}'".format(object_UUID)).set_index("KEY")["VALUE"]
+
 
 pandas.DataFrame.get_object_data = get_object_data
 
@@ -694,6 +693,8 @@ pandas.DataFrame.tableview_to_triplet = tableview_to_triplet
 
 # Let's add empty dataframe to keep changes
 pandas.DataFrame.changes = pandas.DataFrame()
+
+
 def update_triplet_from_triplet(data, update_data, update=True, add=True):
     """Update or add data to current triplet from another one
     VALUE at ID and KEY is updated and KEY ID pair does not exist it is added together with VALUE
@@ -702,26 +703,28 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
     # TODO create function to do also ID and KEY changes
 
     report_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE", "VALUE_OLD"]
-    write_columns  = ["ID", "INSTANCE_ID", "KEY", "VALUE"]
+    write_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE"]
 
     # Make merge to see what updated data already exists in old and what needs to be added
     test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_OLD", ""))
 
     if update:
-        #print("Data updated")
+        # print("Data updated")
         data_to_update = test_merge.query("_merge == 'both'")
-        #print(data_to_update[report_columns])   # TODO DEBUG
+        # print(data_to_update[report_columns])   # TODO DEBUG
         # Store changes
         data.changes = data.changes.append(data_to_update[report_columns], ignore_index=True)
         # Get original index for update to work # TODO could be simplified by keeping index at test merge
-        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID", "KEY"], how='left', suffixes=("_OLD", "")).dropna()[["VALUE"]]
+        old_index_new_value = \
+        data.merge(data_to_update[write_columns], on=["ID", "KEY"], how='left', suffixes=("_OLD", "")).dropna()[
+            ["VALUE"]]
         data.update(old_index_new_value)
         # TODO compare performance of append + drop vs update
 
     if add:
-        #print("Data added")
+        # print("Data added")
         data_to_add = test_merge.query("_merge == 'right_only'")
-        #print(data_to_add[report_columns]) # TODO DEBUG
+        # print(data_to_add[report_columns]) # TODO DEBUG
         data = data.append(data_to_add[write_columns], ignore_index=True)
         # Store changes
         data.changes = data.changes.append(data_to_add[report_columns], ignore_index=True)
@@ -748,11 +751,9 @@ pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 
 # TEST AND EXAMPLES
 if __name__ == '__main__':
-
     path = "test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
     data = pandas.read_RDF([path], debug=True)  # Last took 0:00:05.481340
-
 
     print("Loaded types")
     print(data.query("KEY == 'Type'")["VALUE"].value_counts())
@@ -765,7 +766,6 @@ if __name__ == '__main__':
 
     print("Example how to get objects that specified object refers to")
     print(data.references_from_simple("99722373_VL_TN1"))
-
 
     # model = "FlowExample.zip"
     #
@@ -781,9 +781,4 @@ if __name__ == '__main__':
     #
     # data_types = data.query("KEY == 'dataType'")["VALUE"].drop_duplicates()
 
-
-
-
-# for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
-
-
+    # for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
