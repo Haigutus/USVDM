@@ -429,6 +429,20 @@ def references_from(data, reference, levels=1):
 pandas.DataFrame.references_from = references_from
 
 
+def references_all(data):
+    """Finds all unique references (links, edges, etc.)
+    merges data with itself on ID and VALUE
+    INSTANCE ID is not taken into account
+
+    returns DataFrame["ID_FROM", "KEY", "ID_TO"]"""
+
+    return data[["ID", "KEY", "VALUE"]].drop_duplicates().merge(data[["ID"]].drop_duplicates(), left_on="VALUE", right_on="ID", suffixes=("_FROM", "_TO"))[["ID_FROM", "KEY", "ID_TO"]]
+
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.references_all = references_all
+
+
 def types_dict(data):
     """Returns dictionary with all types as keys and number of their occurrences as values"""
 
