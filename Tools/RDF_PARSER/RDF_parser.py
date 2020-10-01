@@ -760,6 +760,27 @@ def update_triplet_from_tableview(data, tableview, update=True, add=True):
 
 pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 
+
+def export_to_networkx(data):
+    """Converts triplet to networkx graph"""
+    import networkx
+
+    #  TODO - Add all node data
+    #  TODO - Add all supported graph export formats
+
+    edges = data.references_all()
+    nodes = data[["ID", "KEY", "VALUE"]].drop_duplicates().query("KEY == 'Type'")[["ID", "VALUE"]]
+
+    graph = networkx.Graph()
+
+    graph.add_nodes_from([(ID, {"Type": VALUE}) for ID, VALUE in nodes.values])
+    graph.add_edges_from([(FROM, TO, {"Type": KEY}) for FROM, KEY, TO in edges.values])
+
+    return graph
+
+
+pandas.DataFrame.to_networkx = export_to_networkx
+
 # END OF FUNCTIONS
 
 
@@ -796,3 +817,6 @@ if __name__ == '__main__':
     # data_types = data.query("KEY == 'dataType'")["VALUE"].drop_duplicates()
 
     # for quick export of data use data[data.VALUE == "PowerTransformer"].to_csv(export.csv) or data[data.VALUE == "PowerTransformer"].to_clipboard() and  paste to excel, for other method refer to pandas manual
+
+
+
