@@ -37,7 +37,7 @@ dependencies = dict(EQ   = ["EQBD"],
 
 def generate_instances_ID(dependencies=dependencies):
     """Generate UUID for each profile defined in dependencies dict"""
-    return {profile:str(uuid4()) for profile in dependencies}
+    return {profile: str(uuid4()) for profile in dependencies}
 
 
 def get_metadata_from_filename(file_name):
@@ -142,7 +142,7 @@ def get_metadata_from_xml(filepath_or_fileobject):
     for element in meta_elements:
          meta_list.append([element.tag, element.text, element.attrib])
 
-    xml_metadata = pandas.DataFrame(meta_list, columns = ["tag", "text", "attrib"])
+    xml_metadata = pandas.DataFrame(meta_list, columns=["tag", "text", "attrib"])
 
     return xml_metadata
 
@@ -152,7 +152,7 @@ def get_metadata_from_FullModel(data):
     Returns  dictionary -> value = meta['meta_key'] """
     # fileheader metadata keys should be aligned with filename ones
 
-    UUID = data.INSTANCE_ID.unique().tolist()[0]
+    UUID = data.query("KEY == 'Type' and VALUE == 'FullModel'").ID.to_list()[0]
     metadata = data.get_object_data(UUID).to_dict()
     metadata.pop("Type", None) # Remove Type form metadata
 
@@ -163,9 +163,9 @@ def update_FullModel_from_dict(data, metadata, update=True, add=False):
 
     additional_meta_list = []
 
-    for INSTANCE_ID in data.INSTANCE_ID.unique():
+    for row in data.query("KEY == 'Type' and VALUE == 'FullModel'").itertuples():
         for key in metadata:
-            additional_meta_list.append({"ID": INSTANCE_ID, "KEY": key, "VALUE": metadata[key], "INSTANCE_ID": INSTANCE_ID})
+            additional_meta_list.append({"ID": row.ID, "KEY": key, "VALUE": metadata[key], "INSTANCE_ID": row.INSTANCE_ID})
 
     update_data = pandas.DataFrame(additional_meta_list)
 
@@ -178,20 +178,21 @@ def update_FullModel_from_filename(data, parser=get_metadata_from_filename, upda
     additional_meta_list = []
 
     # For each instance that has label, as label contains the filename
-    for _, label in data.query("KEY == 'label'").iterrows():
+    for label in data.query("KEY == 'label'").itertuples():
         # Parse metadata from filename to dictionary
-        meta = parser(label["VALUE"])
+        metadata = parser(label.VALUE)
+
         # Create triplets form parsed metadata
-        for key in meta:
-            additional_meta_list.append(
-                {"ID": label.INSTANCE_ID, "KEY": key, "VALUE": meta[key], "INSTANCE_ID": label.INSTANCE_ID})
+        for row in data.query("KEY == 'Type' and VALUE == 'FullModel' and INSTANCE_ID == '{}'".format(label.INSTANCE_ID)).itertuples():
+            for key in metadata:
+                additional_meta_list.append({"ID": row.ID, "KEY": key, "VALUE": metadata[key], "INSTANCE_ID": row.INSTANCE_ID})
 
     update_data = pandas.DataFrame(additional_meta_list)
 
     return data.update_triplet_from_triplet(update_data, update, add)
 
 
-def update_filename_from_FullModel(data, filename_mask=default_filename_mask, filename_key = "label"):
+def update_filename_from_FullModel(data, filename_mask=default_filename_mask, filename_key="label"):
     """Updates the file names kept under RDF label tag by default
      by constructing it from metadata kept in FullModel in each instance"""
 
@@ -249,7 +250,7 @@ def get_loaded_models(data):
 def get_model_data(data, model_instances_dataframe):
     """Input is one DataFrame of model instances returned by function get_loaded_models"""
 
-    IGM_data = pandas.merge(data, model_instances_dataframe[["INSTANCE_ID"]].drop_duplicates(), right_on = "INSTANCE_ID", left_on = "INSTANCE_ID")
+    IGM_data = pandas.merge(data, model_instances_dataframe[["INSTANCE_ID"]].drop_duplicates(), right_on="INSTANCE_ID", left_on="INSTANCE_ID")
 
     return IGM_data
 
@@ -296,7 +297,7 @@ def filter_dataframe_by_dataframe(data, filter_data, filter_column_name):
     class_name = filter_column_name.split(".")[1]
     meta_separator = "_"
 
-    result = pandas.merge(filter_column_name, data, left_on = filter_column_name, right_on ="ID", how="inner", suffixes=('', meta_separator + class_name))[["ID_" + class_name, "KEY", "VALUE"]]
+    result = pandas.merge(filter_column_name, data, left_on=filter_column_name, right_on="ID", how="inner", suffixes=('', meta_separator + class_name))[["ID_" + class_name, "KEY", "VALUE"]]
 
     return result
 
@@ -456,8 +457,7 @@ def export_to_cimrdf_depricated(instance_data, rdf_map, namespace_map):
             for ID, row in class_data.iterrows():
 
                 rdf_object = E(QName(class_def["namespace"], class_type))
-                rdf_object.attrib[QName(class_def["attrib"]["attribute"])] = class_def["attrib"][
-                                                                                 "value_prefix"] + ID
+                rdf_object.attrib[QName(class_def["attrib"]["attribute"])] = class_def["attrib"]["value_prefix"] + ID
 
                 for KEY, VALUE in row.items():
 
@@ -472,8 +472,7 @@ def export_to_cimrdf_depricated(instance_data, rdf_map, namespace_map):
                             attrib = tag_def.get("attrib", None)
 
                             if attrib:
-                                tag.attrib[QName(tag_def["attrib"]["attribute"])] = tag_def["attrib"][
-                                                                                        "value_prefix"] + VALUE
+                                tag.attrib[QName(tag_def["attrib"]["attribute"])] = tag_def["attrib"]["value_prefix"] + VALUE
                             else:
                                 tag.text = str(VALUE)
 
@@ -517,7 +516,7 @@ def export_to_cimrdf(instance_data, rdf_map, namespace_map, class_KEY="Type", ex
 
             class_namespace = class_def["namespace"]
             id_name         = class_def["attrib"]["attribute"]
-            id_value_prefix = class_def["attrib"][ "value_prefix"]
+            id_value_prefix = class_def["attrib"]["value_prefix"]
 
         else:
             print("WARNING - Definition missing for class: " + class_name + " with ID: " + ID)

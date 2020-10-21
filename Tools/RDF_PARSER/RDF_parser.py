@@ -661,7 +661,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                 print('INFO - Saved {}'.format(export_file["filename"]))
 
     # Export ZIP containing all xml
-    if export_type == "xml_per_instance_zip_per_all":
+    elif export_type == "xml_per_instance_zip_per_all":
         from zipfile import ZipFile, ZIP_DEFLATED
 
         with ZipFile(global_zip_filename, mode='w', compression=ZIP_DEFLATED) as zip_file:
@@ -671,7 +671,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
         print('INFO - Saved {}'.format(global_zip_filename))
 
     # Export each xml in separate zip
-    if export_type == "xml_per_instance_zip_per_xml":
+    elif export_type == "xml_per_instance_zip_per_xml":
         from zipfile import ZipFile, ZIP_DEFLATED
 
         for export_file in export_files:
@@ -680,6 +680,10 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                 zip_file.writestr(export_file["filename"], export_file["file"])
 
                 print('INFO - Saved {}'.format(zip_filename))
+
+    else:
+        print("Not supported option")
+        print("Supported options are: xml_per_instance, xml_per_instance_zip_per_all, xml_per_instance_zip_per_xml")
 
     if debug:
         print_duration("DEBUG - Files saved in", start_time)

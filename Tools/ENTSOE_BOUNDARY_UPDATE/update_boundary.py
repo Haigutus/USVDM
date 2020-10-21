@@ -26,7 +26,7 @@ def get_metadata_from_filename_NMD(file_name):
     raw_meta = file_name.split(".")[0].split("_")
 
     meta["Model.scenarioTime"]       = raw_meta[0]
-    meta["Model.modelingEntity"]     = raw_meta[1].replace("-","") # '-' and '_' are meta separators, can't be used in a name
+    meta["Model.modelingEntity"]     = raw_meta[1].replace("-", "") # '-' and '_' are meta separators, can't be used in a name
     meta["Model.messageType"]        = raw_meta[2] + raw_meta[3]
     meta["Model.version"]            = raw_meta[4]
     meta["Model.processType"]        = ""
@@ -90,8 +90,7 @@ meta_updates = {'Model.description':          "Official CGM boundary set +//-2 y
 data = CGMES_tools.update_FullModel_from_dict(data, meta_updates)
 
 # Update uuid
-
-for INSTANCE_ID in data.INSTANCE_ID.unique():
+for INSTANCE_ID in data.query("KEY == 'Type' and VALUE == 'FullModel'").ID.unique():
     data = data.replace(INSTANCE_ID, str(uuid4()))
 
 
@@ -219,7 +218,7 @@ data = data.update_triplet_from_tableview(DC_LINES, add=False)
 
 # Update nodes
 columns_to_update = ["IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
-HVDC_lines_and_nodes = HVDC_data.merge(line_and_nodes, on='ID', suffixes=("", "_old"))
+HVDC_lines_and_nodes = HVDC_data.merge(line_and_nodes, on='ID', suffixes=("", "_old")).set_index("ID")
 
 # Update ConnectivityNodes
 DC_CN_NODES = HVDC_lines_and_nodes.rename(columns={"ID_ConnectivityNode": "ID"}).set_index("ID")[columns_to_update]
