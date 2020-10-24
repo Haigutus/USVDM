@@ -9,10 +9,7 @@ import CGMES_tools
 
 
 # Input settings
-input_data = [r"\\elering.sise\teenused\NMM\data\ACG\Generated Cases Archive\20201022T1830Z_2D_ELERING_TP_001.zip",
-              r"\\elering.sise\teenused\NMM\data\ACG\Generated Cases Archive\20201022T1830Z_2D_ELERING_SV_001.zip",
-              r"\\elering.sise\teenused\NMM\data\ACG\Generated Cases Archive\20201022T1830Z_2D_ELERING_EQ_001.zip",
-              r"\\elering.sise\teenused\NMM\data\ACG\Generated Cases Archive\20201022T1830Z_2D_ELERING_SSH_001.zip"]
+input_data = [r"C:\Users\kristjan.vilgo\Downloads\20201017T1330Z_1D_APG_001\20201017T1330Z_1D_APG_001.zip"]
 
 
 # Set namepsaces for export
