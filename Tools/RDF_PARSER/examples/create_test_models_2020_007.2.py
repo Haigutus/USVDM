@@ -38,7 +38,7 @@ data = pandas.read_RDF(input_data)
 # Parse metadata to file header
 data = CGMES_tools.update_FullModel_from_filename(data)
 
-test_description = "Test model created for Change Request 2020_007.2. Code used for generation: "
+test_description = "Test model created for Change Request 2020_007.2. Code used for generation: https://github.com/Haigutus/USVDM/blob/master/Tools/RDF_PARSER/examples/create_test_models_2020_007.2.py"
 
 versions = [{"HEADER": {"Model.modelingEntity": "ELERING",
                         "Model.created": f"{datetime.datetime.utcnow().isoformat()}Z",
