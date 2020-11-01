@@ -5,7 +5,8 @@ Collection of tools that helps one to use and exchange CIM based gridmodels (CIM
 
 
 # Tools made into python modules:
-* [EDX api](https://pypi.org/project/EDX) - used for direct data exchange, mainly for market messages (like CGMA and PEVF)
+* [EDX Mades api](https://pypi.org/project/EDX) - used for subscribe and fanout like data exchange, extra level on ECP
+* [ECP Mades api](https://pypi.org/project/ecp-api) - used for direct data exchange
 
 # Tools that work but not made to python modules
 
