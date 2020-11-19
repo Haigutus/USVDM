@@ -14,6 +14,10 @@ import CGMES_tools
 import pandas
 from uuid import uuid4
 import json
+from tkinter import filedialog
+from tkinter import *
+
+
 
 
 
@@ -32,13 +36,15 @@ def create_object_data_from_dict(object_id, object_type, object_data):
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\20200115T0930Z_1D_RTEFRANCE_EQ_001.zip"
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
-input_data = r"C:\Users\kristjan.vilgo\Downloads\IGM_Aug_CGM_Comp.zip"
+input_data = [r"C:\Users\kristjan.vilgo\Downloads\IGM_Aug_CGM_Comp.zip"]
+#input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMXML files", filetypes=(("CIMXML", "*.zip"), ("CIMXML","*.xml"))))
 boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
+input_data.append(boundary)
 
 xnode_conf = r"xnodes_for_tieflows_052020.xlsx"
 
 # Read data
-data = pandas.read_RDF([input_data, boundary])
+data = pandas.read_RDF(input_data)
 
 # Parse metadata to file header
 data = CGMES_tools.update_FullModel_from_filename(data)
@@ -139,12 +145,12 @@ items = ["ControlArea", "LoadArea", "SubLoadArea", "ConformLoadGroup", "NonConfo
 
 data_to_add = pandas.DataFrame()
 
-for instance_id in eq_instances.ID.to_list():
+for instance_id in eq_instances.INSTANCE_ID.to_list():
 
     objects_list = []
 
     eq = data.query("INSTANCE_ID == @instance_id")
-    entity = eq.get_object_data(instance_id)["Model.modelingEntity"]
+    entity = eq.query("KEY == 'Model.modelingEntity'")["VALUE"].item()
 
     print(f"INFO - START fixing Loads for {entity} in EQ {instance_id}")
 
@@ -179,6 +185,10 @@ for instance_id in eq_instances.ID.to_list():
                 (item["ID"], 'IdentifiedObject.description', 'Added for CGM BP IOP', instance_id),
                 (item["ID"], 'Type', object_type, instance_id),
             ]
+
+            # TODO - add also correct EIC form boundary
+            if object_type == "ControlArea":
+                object_data.append((item["ID"], "ControlArea.type", r"http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Interchange"))
 
             objects_list.extend(object_data)
 
@@ -379,6 +389,6 @@ with open(r"..\entsoe_v2.4.15_2014-08-07.json", "r") as conf_file:
     rdf_map = json.load(conf_file)
 
 # Export triplet to CGMES
-#data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
+data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
 
 
