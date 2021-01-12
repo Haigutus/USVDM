@@ -9,7 +9,7 @@ pandas.set_option("display.width", 1000)
 pandas.set_option('display.max_colwidth', None)
 
 
-def list_of_files(root_path,file_extension, go_deep = False):
+def list_of_files(root_path, file_extension, go_deep=False):
 
     path_list = [root_path]
 
@@ -48,52 +48,86 @@ def list_of_files(path, file_extension):
     return matches
 
 
+def get_class_parameters(data, class_name):
+    """Returns parameters of the class and all the class names it extends"""
+
+    class_data = {"name": class_name}
+
+    # Get parameters
+    class_data["parameters"] = data.query("VALUE == @class_name & KEY == 'domain'")
+
+    # Add parent classes (if present)
+    class_data["extends"] = list(data.query("ID == @class_name and KEY == 'subClassOf'")["VALUE"].unique())
+
+    # Usually only one inheritance, warn if not
+    if len(class_data["extends"]) > 1:
+        print(f"WARNING - {class_name} is inheriting form more than one class -> {class_data['extends']}")
+
+    return class_data
+
 
 def get_all_class_parameters(data, class_name):
+    """Returns all parameters of the class including from classes it extends"""
 
-    all_class_parameters = pandas.DataFrame()  # TODO, use list or tuple
+    all_class_parameters = pandas.DataFrame()
     class_name_list = [class_name]
 
     for class_name in class_name_list:
 
-        # Get parameters and add to parameter dataframe
-        class_parameters = data.query("VALUE == '{}' & KEY == 'domain'".format(class_name))
-        all_class_parameters = all_class_parameters.append(class_parameters)
-        #print all_class_parameters
+        # Get current class parameters
+        class_data = get_class_parameters(data, class_name)
 
-        # Look if the class has a parent class, if yes add to further parsing
-        cim_class = data.query("ID == '{}'".format(class_name))
-        #print cim_class
-        parent_class = cim_class.query("KEY == 'subClassOf'")["VALUE"]
+        # Add parameters to others
+        all_class_parameters = all_class_parameters.append(class_data["parameters"])
 
-        if parent_class.empty == False:
-            class_name_list.append(parent_class.to_list()[0])  # In case multiple profiles loaded together
+        # Add classes that this class extends to processing
+        class_name_list.extend(class_data["extends"])
 
-    print("Inheritance sequence")
+    print("Inheritance sequence")  # TODO add this as a output
     print(" -> ".join(class_name_list))
 
     return all_class_parameters
 
 
-def parameter_tableview(data, class_name):
+def parameters_tableview_all(data, class_name):
+    """Provide class name to get table of all class parameters"""
 
+    # Get All parameter names of class (natural and inherited)
     all_class_parameters = get_all_class_parameters(data, class_name)
 
-    #parameter_id_list = all_class_parameters["ID"].tolist()  # TODO use merge here insetad isin method - it is faster
-
-    #type_data = data[data.ID.isin(parameter_id_list)].drop_duplicates(["ID", "KEY"])  # There can't be duplicate ID and KEY pairs for pivot.
-
+    # Get parameters data
     type_data = all_class_parameters[["ID"]].merge(data, on="ID").drop_duplicates(["ID", "KEY"])
 
+    # Pivot to table
     data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
 
     return data_view
 
 
+def parameters_tableview(data, class_name):
+    """Provide class name to get table of class parameters and names of classes it extends"""
+
+    # Get All parameter names of class (natural and inherited)
+    class_data = get_class_parameters(data, class_name)
+
+    #print(class_data)
+
+    if not class_data["parameters"].empty:
+        # Get parameters data
+        type_data = (class_data["parameters"])[["ID"]].merge(data, on="ID").drop_duplicates(["ID", "KEY"])
+
+        # Pivot to table
+        data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
+    else:
+        data_view = None
+
+    return data_view, class_data["extends"]
+
+
 def validation_view(data, class_name):
 
 
-    data_view = parameter_tableview(data, class_name)
+    data_view = parameters_tableview_all(data, class_name)
 
     validation_data = multiplicity_to_XSD_format(data_view)
 

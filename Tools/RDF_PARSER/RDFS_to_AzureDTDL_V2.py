@@ -2,6 +2,7 @@ import json
 import os
 from RDFS_tools import *
 
+
 def get_description(meta_dict):
     description = meta_dict.get("comment", "")
     if len(str(description)) <= 3:
@@ -61,12 +62,8 @@ data = load_all_to_dataframe([path])
 # Dictionary to keep all configurations
 conf_dict = []
 
-
-
 # Get current profile metadata
 metadata = get_profile_metadata(data).to_dict()
-
-
 
 # Add concrete classes
 
@@ -75,12 +72,14 @@ rdf_namespace = metadata["namespaceRDF"]
 
 #classes_defined_externally = profile_data.query("KEY == 'stereotype' and VALUE == 'Description'").ID.to_list()
 
-for concrete_class in concrete_classes_list(data):
+interfaces_list = concrete_classes_list(data)
+
+for interface_uri in interfaces_list:
 
     # Define class namespace
-    class_namespace, class_name = get_namespace_and_name(concrete_class, default_namespace=cim_namespace)
+    class_namespace, class_name = get_namespace_and_name(interface_uri, default_namespace=cim_namespace)
 
-    class_meta = data.get_object_data(concrete_class).to_dict()
+    class_meta = data.get_object_data(interface_uri).to_dict()
 
     description = get_description(class_meta)
 
@@ -88,116 +87,133 @@ for concrete_class in concrete_classes_list(data):
 
     # Add class definition
     interface = {
-                                            "@context": "dtmi:dtdl:context;2",
-                                            "@type": "Interface",
-                                            "@id": f"dtmi:cim:{class_name};16",
-
-                                            "displayName": class_name,
-                                            "description": description[:511],
-
-                                            "contents": []
-                                            }
+                "@context": "dtmi:dtdl:context;2",
+                "@type": "Interface",
+                "@id": f"dtmi:cim:{class_name};16",
+                "displayName": class_name,
+                "description": description[:511],
+                #"comment": "public"/"private"  # TODO - define if class is private or public (concrete)
+                #"contents": []
+                }
 
     # Add attributes
 
-    for parameter, parameter_meta in parameter_tableview(data, concrete_class).iterrows():
-
-        parameter_dict = parameter_meta.to_dict()
-
-        association_used = parameter_dict.get("AssociationUsed", "NaN")
-
-        # If it is association but not used, we don't export it
-        if association_used == 'No':
-            continue
-
-        # If it is used association or regular parameter, then we need the name and namespace
-        parameter_namespace, parameter_name = get_namespace_and_name(parameter, default_namespace=cim_namespace)
-
-        description = get_description(parameter_dict)
-
-        parameter_def = {
-                #"@id": f"dtmi:cim16:{parameter_name}",
-                #"name": parameter_name.replace(".", "_"),
-                "name": parameter_meta["label"],
-                "displayName": parameter_name,
-                #"writable": True,
-                "description": description[:511],
-            }
+    parameters_table, extends = parameters_tableview(data, interface_uri)
 
 
-        # If association
-        if association_used == 'Yes':
+    if len(extends) > 0:
+        interface["extends"] = []
 
-            parameter_def["@type"] = "Relationship"
-            parameter_def["target"] = f"dtmi:cim:{parameter_dict['range'].replace('#', '')};16"
+        for parent_class in extends:
 
-        else:
-            data_type = parameter_dict.get("dataType", "nan")
+            if parent_class not in interfaces_list:
+                interfaces_list.append(parent_class)
 
-            # If regular parameter
-            if str(data_type) != "nan":
+            namespace, name = get_namespace_and_name(parent_class, default_namespace=cim_namespace)
 
-                parameter_def["@type"] = "Property"
-                parameter_def["schema"] = data_types_map[data_type]
+            interface["extends"].append(f"dtmi:cim:{name};16")
 
+    if parameters_table is not None:
+        interface["contents"] = []
 
+        for parameter, parameter_meta in parameters_table.iterrows():  # TODO - replace with itertuples
 
-                # data_type_namespace, data_type_name = data_type.split("#")
-                #
-                # data_type_meta = data.get_object_data(data_type).to_dict()
-                #
-                # if data_type_namespace == "":
-                #     data_type_namespace = cim_namespace
-                #
-                # data_type_def = {
-                #     "description": data_type_meta.get("comment", ""),
-                #     "type": data_type_meta.get("stereotype", ""),
-                #     "namespace": data_type_namespace
-                # }
-                #
-                # parameter_def["type"] = data_type_name
-                #conf_dict[profile_name][data_type_name] = data_type_def
+            parameter_dict = parameter_meta.to_dict()
 
-            # If enumeration
-            else:
+            association_used = parameter_dict.get("AssociationUsed", "NaN")
 
-                parameter_def["@type"] = "Property"
-                parameter_def["schema"] = { "@type": "Enum",
-                                            "valueSchema": "string",
-                                            "enumValues": []
+            # If it is association but not used, we don't export it
+            if association_used == 'No':
+                continue
+
+            # If it is used association or regular parameter, then we need the name and namespace
+            parameter_namespace, parameter_name = get_namespace_and_name(parameter, default_namespace=cim_namespace)
+
+            description = get_description(parameter_dict)
+
+            parameter_def = {
+                    #"@id": f"dtmi:cim16:{parameter_name}",
+                    #"name": parameter_name.replace(".", "_"),
+                    "name": parameter_meta["label"],
+                    "displayName": parameter_name,
+                    #"writable": True,
+                    "description": description[:511],
                 }
 
 
-                # Add allowed values
-                values = data.query(f"VALUE == '{parameter_dict['range']}' and KEY == 'type'").ID.tolist()
+            # If association
+            if association_used == 'Yes':
 
-                for value in values:
+                parameter_def["@type"] = "Relationship"
+                parameter_def["target"] = f"dtmi:cim:{parameter_dict['range'].replace('#', '')};16"
 
-                    value_namespace, value_name = get_namespace_and_name(value, default_namespace=cim_namespace)
+            else:
+                data_type = parameter_dict.get("dataType", "nan")
 
-                    value_meta = data.get_object_data(value).to_dict()
+                # If regular parameter
+                if str(data_type) != "nan":
 
-                    description = get_description(value_meta)
-
-                    value_def = {
-                                    #"@id": f"dtmi:cim16:{value_name}",
-                                    #"name": value_name.replace(".", "_"),
-                                    "name": value_meta["label"],
-                                    #"displayName": value_name,
-                                    "enumValue": value_name,
-                                    "description": description[:511],
-                                }
-
-
-                    parameter_def["schema"]["enumValues"].append(value_def)
+                    parameter_def["@type"] = "Property"
+                    parameter_def["schema"] = data_types_map[data_type]
 
 
 
-        # Add parameter definition
-        #conf_dict[profile_name][parameter_name] = parameter_def
+                    # data_type_namespace, data_type_name = data_type.split("#")
+                    #
+                    # data_type_meta = data.get_object_data(data_type).to_dict()
+                    #
+                    # if data_type_namespace == "":
+                    #     data_type_namespace = cim_namespace
+                    #
+                    # data_type_def = {
+                    #     "description": data_type_meta.get("comment", ""),
+                    #     "type": data_type_meta.get("stereotype", ""),
+                    #     "namespace": data_type_namespace
+                    # }
+                    #
+                    # parameter_def["type"] = data_type_name
+                    #conf_dict[profile_name][data_type_name] = data_type_def
 
-        # Add content to Interface
-        interface["contents"].append(parameter_def)
+                # If enumeration
+                else:
+
+                    parameter_def["@type"] = "Property"
+                    parameter_def["schema"] = { "@type": "Enum",
+                                                "valueSchema": "string",
+                                                "enumValues": []
+                    }
+
+
+                    # Add allowed values
+                    values = data.query(f"VALUE == '{parameter_dict['range']}' and KEY == 'type'").ID.tolist()
+
+                    for value in values:
+
+                        value_namespace, value_name = get_namespace_and_name(value, default_namespace=cim_namespace)
+
+                        value_meta = data.get_object_data(value).to_dict()
+
+                        description = get_description(value_meta)
+
+                        value_def = {
+                                        #"@id": f"dtmi:cim16:{value_name}",
+                                        #"name": value_name.replace(".", "_"),
+                                        "name": value_meta["label"],
+                                        #"displayName": value_name,
+                                        "enumValue": value_name,
+                                        "description": description[:511],
+                                    }
+
+
+                        parameter_def["schema"]["enumValues"].append(value_def)
+
+
+
+            # Add parameter definition
+            #conf_dict[profile_name][parameter_name] = parameter_def
+
+            # Add content to Interface
+            interface["contents"].append(parameter_def)
 
     # Add Interface to def
     #conf_dict.append(interface)

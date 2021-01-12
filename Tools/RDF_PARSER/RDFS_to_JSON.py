@@ -63,7 +63,7 @@ for profile in profiles:
 
         # Add attributes
 
-        for parameter, parameter_meta in parameter_tableview(profile_data, concrete_class).iterrows():
+        for parameter, parameter_meta in parameters_tableview_all(profile_data, concrete_class).iterrows():
 
             parameter_dict = parameter_meta.to_dict()
 
