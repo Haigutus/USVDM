@@ -3,7 +3,7 @@
     "@type": "Interface",
     "@id": "dtmi:cim:PowerTransformerEnd;16",
     "displayName": "PowerTransformerEnd",
-    "description": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows\n1) for a two Terminal PowerTransformer the high voltage PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage PowerTransformerEnd has zero values for r, r0, x, and x0.\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represents a star equivalent with each leg in the star represented by r, r0, x, and x0 values.\n3) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.",
+    "description": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows\n1) for a two Terminal PowerTransformer the high voltage PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage PowerTransformerEnd has zero values for r, r0, x, and x0.\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represents a star equivalent with each leg in the star represe",
     "contents": [
         {
             "name": "IdentifiedObject_description",
@@ -64,7 +64,7 @@
                     {
                         "name": "WindingConnection_Y",
                         "enumValue": "WindingConnection.Y",
-                        "description": "Wye"
+                        "description": ""
                     },
                     {
                         "name": "WindingConnection_Z",

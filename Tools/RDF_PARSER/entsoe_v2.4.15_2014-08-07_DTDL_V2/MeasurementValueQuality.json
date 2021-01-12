@@ -50,7 +50,7 @@
         {
             "name": "Quality61850_oscillatory",
             "displayName": "Quality61850.oscillatory",
-            "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still in the oscillating state the value shall be set either to the opposite state of the previous stable value or to a defined default value. In this case the validity status \"questionable\" is reset and \"invalid\" is set as long as the signal is oscillating. If it is configured such that no transient changes should be passed by then the validity status \"invalid\" is set immediately in addition to the detail quality identifier \"oscillatory\" (used for status information only).",
+            "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still ",
             "@type": "Property",
             "schema": "string"
         },

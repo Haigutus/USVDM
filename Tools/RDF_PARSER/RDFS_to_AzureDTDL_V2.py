@@ -2,6 +2,15 @@ import json
 import os
 from RDFS_tools import *
 
+def get_description(meta_dict):
+    description = meta_dict.get("comment", "")
+    if len(str(description)) <= 3:
+        description = ""
+        print(f"WARNING - {meta_dict['label']} is missing description")
+
+    return description
+
+
 #path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
 #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
 path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
@@ -34,6 +43,10 @@ for concrete_class in concrete_classes_list(data):
 
     class_meta = data.get_object_data(concrete_class).to_dict()
 
+    description = get_description(class_meta)
+
+
+
     # Add class definition
     interface = {
                                             "@context": "dtmi:dtdl:context;2",
@@ -41,7 +54,7 @@ for concrete_class in concrete_classes_list(data):
                                             "@id": f"dtmi:cim:{class_name};16",
 
                                             "displayName": class_name,
-                                            "description": class_meta.get("comment", ""),
+                                            "description": description[:511],
 
                                             "contents": []
                                             }
@@ -61,17 +74,14 @@ for concrete_class in concrete_classes_list(data):
         # If it is used association or regular parameter, then we need the name and namespace
         parameter_namespace, parameter_name = get_namespace_and_name(parameter, default_namespace=cim_namespace)
 
-        description = parameter_dict.get("comment", "")
-        if str(description) == "NaN":
-            description = ""
-            print(f"WARNING - {parameter_name} is missing description")
+        description = get_description(parameter_dict)
 
         parameter_def = {
                 #"@id": f"dtmi:cim16:{parameter_name}",
                 "name": parameter_name.replace(".", "_"),
                 "displayName": parameter_name,
                 #"writable": True,
-                "description": parameter_dict.get("comment", ""),
+                "description": description[:511],
             }
 
 
@@ -127,12 +137,14 @@ for concrete_class in concrete_classes_list(data):
 
                     value_meta = data.get_object_data(value).to_dict()
 
+                    description = get_description(value_meta)
+
                     value_def = {
                                     #"@id": f"dtmi:cim16:{value_name}",
                                     "name": value_name.replace(".", "_"),
                                     #"displayName": value_name,
                                     "enumValue": value_name,
-                                    "description": value_meta.get("comment", ""),
+                                    "description": description[:511],
                                 }
 
 

@@ -36,7 +36,7 @@
         {
             "name": "OperationalLimitSet_Terminal",
             "displayName": "OperationalLimitSet.Terminal",
-            "description": NaN,
+            "description": "",
             "@type": "Relationship",
             "target": "dtmi:cim:ACDCTerminal;16"
         },

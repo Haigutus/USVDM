@@ -8,7 +8,7 @@
         {
             "name": "DCLine_Region",
             "displayName": "DCLine.Region",
-            "description": NaN,
+            "description": "",
             "@type": "Relationship",
             "target": "dtmi:cim:SubGeographicalRegion;16"
         },

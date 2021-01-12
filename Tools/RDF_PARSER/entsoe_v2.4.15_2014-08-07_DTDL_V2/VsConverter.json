@@ -255,7 +255,7 @@
         {
             "name": "VsConverter_qPccControl",
             "displayName": "VsConverter.qPccControl",
-            "description": NaN,
+            "description": "",
             "@type": "Property",
             "schema": {
                 "@type": "Enum",

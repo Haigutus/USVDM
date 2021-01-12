@@ -8,7 +8,7 @@
         {
             "name": "DCTopologicalIsland_DCTopologicalNodes",
             "displayName": "DCTopologicalIsland.DCTopologicalNodes",
-            "description": NaN,
+            "description": "",
             "@type": "Relationship",
             "target": "dtmi:cim:DCTopologicalNode;16"
         },

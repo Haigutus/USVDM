@@ -219,7 +219,7 @@
         {
             "name": "CsConverter_pPccControl",
             "displayName": "CsConverter.pPccControl",
-            "description": NaN,
+            "description": "",
             "@type": "Property",
             "schema": {
                 "@type": "Enum",

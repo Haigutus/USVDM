@@ -8,14 +8,14 @@
         {
             "name": "DCConverterUnit_Substation",
             "displayName": "DCConverterUnit.Substation",
-            "description": NaN,
+            "description": "",
             "@type": "Relationship",
             "target": "dtmi:cim:Substation;16"
         },
         {
             "name": "DCConverterUnit_operationMode",
             "displayName": "DCConverterUnit.operationMode",
-            "description": NaN,
+            "description": "",
             "@type": "Property",
             "schema": {
                 "@type": "Enum",

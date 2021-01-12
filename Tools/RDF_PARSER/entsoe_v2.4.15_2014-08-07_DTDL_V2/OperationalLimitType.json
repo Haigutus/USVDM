@@ -101,7 +101,7 @@
                     {
                         "name": "LimitTypeKind_tc",
                         "enumValue": "LimitTypeKind.tc",
-                        "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exists for the TC type."
+                        "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exi"
                     },
                     {
                         "name": "LimitTypeKind_tct",
