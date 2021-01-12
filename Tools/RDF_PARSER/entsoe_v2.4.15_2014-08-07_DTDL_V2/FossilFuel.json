@@ -1,0 +1,93 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:FossilFuel;16",
+    "displayName": "FossilFuel",
+    "description": "The fossil fuel consumed by the non-nuclear thermal generating unit.   For example, coal, oil, gas, etc.   This a the specific fuels that the generating unit can consume.",
+    "contents": [
+        {
+            "name": "FossilFuel_ThermalGeneratingUnit",
+            "displayName": "FossilFuel.ThermalGeneratingUnit",
+            "description": "A thermal generating unit may have one or more fossil fuels.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:ThermalGeneratingUnit;16"
+        },
+        {
+            "name": "FossilFuel_fossilFuelType",
+            "displayName": "FossilFuel.fossilFuelType",
+            "description": "The type of fossil fuel, such as coal, oil, or gas.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "FuelType_coal",
+                        "enumValue": "FuelType.coal",
+                        "description": "Generic coal, not including lignite type."
+                    },
+                    {
+                        "name": "FuelType_oil",
+                        "enumValue": "FuelType.oil",
+                        "description": "Oil."
+                    },
+                    {
+                        "name": "FuelType_gas",
+                        "enumValue": "FuelType.gas",
+                        "description": "Natural gas."
+                    },
+                    {
+                        "name": "FuelType_lignite",
+                        "enumValue": "FuelType.lignite",
+                        "description": "The fuel is lignite coal.  Note that this is a special type of coal, so the other enum of coal is reserved for hard coal types or if the exact type of coal is not known."
+                    },
+                    {
+                        "name": "FuelType_hardCoal",
+                        "enumValue": "FuelType.hardCoal",
+                        "description": "Hard coal"
+                    },
+                    {
+                        "name": "FuelType_oilShale",
+                        "enumValue": "FuelType.oilShale",
+                        "description": "Oil Shale"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:SvInjection;16",
+    "displayName": "SvInjection",
+    "description": "The SvInjection is reporting the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation.",
+    "contents": [
+        {
+            "name": "SvInjection_TopologicalNode",
+            "displayName": "SvInjection.TopologicalNode",
+            "description": "The injection flows state variables associated with the topological node.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:TopologicalNode;16"
+        },
+        {
+            "name": "SvInjection_pInjection",
+            "displayName": "SvInjection.pInjection",
+            "description": "The active power injected into the bus in addition to injections from equipment terminals.  Positive sign means injection into the TopologicalNode (bus).",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SvInjection_qInjection",
+            "displayName": "SvInjection.qInjection",
+            "description": "The reactive power injected into the bus in addition to injections from equipment terminals. Positive sign means injection into the TopologicalNode (bus).",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

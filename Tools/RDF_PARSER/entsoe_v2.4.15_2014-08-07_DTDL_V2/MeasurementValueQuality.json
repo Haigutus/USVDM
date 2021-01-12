@@ -1,0 +1,140 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:MeasurementValueQuality;16",
+    "displayName": "MeasurementValueQuality",
+    "description": "Measurement quality flags. Bits 0-10 are defined for substation automation in draft IEC 61850 part 7-3. Bits 11-15 are reserved for future expansion by that document. Bits 16-31 are reserved for EMS applications.",
+    "contents": [
+        {
+            "name": "MeasurementValueQuality_MeasurementValue",
+            "displayName": "MeasurementValueQuality.MeasurementValue",
+            "description": "A MeasurementValue has a MeasurementValueQuality associated with it.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:MeasurementValue;16"
+        },
+        {
+            "name": "Quality61850_badReference",
+            "displayName": "Quality61850.badReference",
+            "description": "Measurement value may be incorrect due to a reference being out of calibration.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_estimatorReplaced",
+            "displayName": "Quality61850.estimatorReplaced",
+            "description": "Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_failure",
+            "displayName": "Quality61850.failure",
+            "description": "This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_oldData",
+            "displayName": "Quality61850.oldData",
+            "description": "Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_operatorBlocked",
+            "displayName": "Quality61850.operatorBlocked",
+            "description": "Measurement value is blocked and hence unavailable for transmission. ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_oscillatory",
+            "displayName": "Quality61850.oscillatory",
+            "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still in the oscillating state the value shall be set either to the opposite state of the previous stable value or to a defined default value. In this case the validity status \"questionable\" is reset and \"invalid\" is set as long as the signal is oscillating. If it is configured such that no transient changes should be passed by then the validity status \"invalid\" is set immediately in addition to the detail quality identifier \"oscillatory\" (used for status information only).",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_outOfRange",
+            "displayName": "Quality61850.outOfRange",
+            "description": "Measurement value is beyond a predefined range of value.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_overFlow",
+            "displayName": "Quality61850.overFlow",
+            "description": "Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero. ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_source",
+            "displayName": "Quality61850.source",
+            "description": "Source gives information related to the origin of a value. The value may be acquired from the process, defaulted or substituted.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "Source_PROCESS",
+                        "enumValue": "Source.PROCESS",
+                        "description": "The value is provided by input from the process I/O or being calculated from some function."
+                    },
+                    {
+                        "name": "Source_DEFAULTED",
+                        "enumValue": "Source.DEFAULTED",
+                        "description": "The value contains a default value."
+                    },
+                    {
+                        "name": "Source_SUBSTITUTED",
+                        "enumValue": "Source.SUBSTITUTED",
+                        "description": "The value is provided by input of an operator or by an automatic source."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Quality61850_suspect",
+            "displayName": "Quality61850.suspect",
+            "description": "A correlation function has detected that the value is not consitent with other values. Typically set by a network State Estimator.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_test",
+            "displayName": "Quality61850.test",
+            "description": "Measurement value is transmitted for test purposes.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Quality61850_validity",
+            "displayName": "Quality61850.validity",
+            "description": "Validity of the measurement value.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "Validity_GOOD",
+                        "enumValue": "Validity.GOOD",
+                        "description": "The value is marked good if no abnormal condition of the acquisition function or the information source is detected."
+                    },
+                    {
+                        "name": "Validity_QUESTIONABLE",
+                        "enumValue": "Validity.QUESTIONABLE",
+                        "description": "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked \"questionable\" should be used."
+                    },
+                    {
+                        "name": "Validity_INVALID",
+                        "enumValue": "Validity.INVALID",
+                        "description": "The value is marked invalid when a supervision function recognises abnormal conditions of the acquisition function or the information source (missing or non-operating updating devices). The value is not defined under this condition. The mark invalid is used to indicate to the client that the value may be incorrect and shall not be used."
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,325 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:VsConverter;16",
+    "displayName": "VsConverter",
+    "description": "DC side of the voltage source converter (VSC).",
+    "contents": [
+        {
+            "name": "ACDCConverter_PccTerminal",
+            "displayName": "ACDCConverter.PccTerminal",
+            "description": "All converters' DC sides linked to this point of common coupling terminal.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "ACDCConverter_baseS",
+            "displayName": "ACDCConverter.baseS",
+            "description": "Base apparent power of the converter pole.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_idc",
+            "displayName": "ACDCConverter.idc",
+            "description": "Converter DC current, also called Id. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_idleLoss",
+            "displayName": "ACDCConverter.idleLoss",
+            "description": "Active power loss in pole at no power transfer. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_maxUdc",
+            "displayName": "ACDCConverter.maxUdc",
+            "description": "The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_minUdc",
+            "displayName": "ACDCConverter.minUdc",
+            "description": "Min allowed converter DC voltage. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_numberOfValves",
+            "displayName": "ACDCConverter.numberOfValves",
+            "description": "Number of valves in the converter. Used in loss calculations.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_p",
+            "displayName": "ACDCConverter.p",
+            "description": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_poleLossP",
+            "displayName": "ACDCConverter.poleLossP",
+            "description": "The active power loss at a DC Pole \n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2\nFor lossless operation Pdc=Pac\nFor rectifier operation with losses Pdc=Pac-lossP\nFor inverter operation with losses Pdc=Pac+lossP\nConverter state variable used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_q",
+            "displayName": "ACDCConverter.q",
+            "description": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_ratedUdc",
+            "displayName": "ACDCConverter.ratedUdc",
+            "description": "Rated converter DC voltage, also called UdN. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_resistiveLoss",
+            "displayName": "ACDCConverter.resistiveLoss",
+            "description": "Converter configuration data used in power flow. Refer to poleLossP.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_switchingLoss",
+            "displayName": "ACDCConverter.switchingLoss",
+            "description": "Switching losses, relative to the base apparent power 'baseS'.\nRefer to poleLossP.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_targetPpcc",
+            "displayName": "ACDCConverter.targetPpcc",
+            "description": "Real power injection target in AC grid, at point of common coupling.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_targetUdc",
+            "displayName": "ACDCConverter.targetUdc",
+            "description": "Target value for DC voltage magnitude.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_uc",
+            "displayName": "ACDCConverter.uc",
+            "description": "Converter voltage, the voltage at the AC side of the bridge. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_udc",
+            "displayName": "ACDCConverter.udc",
+            "description": "Converter voltage at the DC side, also called Ud. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ACDCConverter_valveU0",
+            "displayName": "ACDCConverter.valveU0",
+            "description": "Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ConductingEquipment_BaseVoltage",
+            "displayName": "ConductingEquipment.BaseVoltage",
+            "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:BaseVoltage;16"
+        },
+        {
+            "name": "Equipment_EquipmentContainer",
+            "displayName": "Equipment.EquipmentContainer",
+            "description": "Container of this equipment.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquipmentContainer;16"
+        },
+        {
+            "name": "Equipment_aggregate",
+            "displayName": "Equipment.aggregate",
+            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_CapabilityCurve",
+            "displayName": "VsConverter.CapabilityCurve",
+            "description": "All converters with this capability curve.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:VsCapabilityCurve;16"
+        },
+        {
+            "name": "VsConverter_delta",
+            "displayName": "VsConverter.delta",
+            "description": "Angle between uf and uc. Converter state variable used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_droop",
+            "displayName": "VsConverter.droop",
+            "description": "Droop constant; pu value is obtained as D [kV^2 / MW] x Sb / Ubdc^2.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_droopCompensation",
+            "displayName": "VsConverter.droopCompensation",
+            "description": "Compensation (resistance) constant. Used to compensate for voltage drop when controlling voltage at a distant bus.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_maxModulationIndex",
+            "displayName": "VsConverter.maxModulationIndex",
+            "description": "The max quotient between the AC converter voltage (Uc) and DC voltage (Ud). A factor typically less than 1. VSC configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_maxValveCurrent",
+            "displayName": "VsConverter.maxValveCurrent",
+            "description": "The maximum current through a valve. This current limit is the basis for calculating the capability diagram. VSC  configuration data.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_pPccControl",
+            "displayName": "VsConverter.pPccControl",
+            "description": "Kind of control of real power and/or DC voltage.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "VsPpccControlKind_pPcc",
+                        "enumValue": "VsPpccControlKind.pPcc",
+                        "description": "Control variable (target) is real power at PCC bus."
+                    },
+                    {
+                        "name": "VsPpccControlKind_udc",
+                        "enumValue": "VsPpccControlKind.udc",
+                        "description": "Control variable (target) is DC voltage and real power at PCC bus is derived."
+                    },
+                    {
+                        "name": "VsPpccControlKind_pPccAndUdcDroop",
+                        "enumValue": "VsPpccControlKind.pPccAndUdcDroop",
+                        "description": "Control variables (targets) are both active power at point of common coupling and local DC voltage, with the droop."
+                    },
+                    {
+                        "name": "VsPpccControlKind_pPccAndUdcDroopWithCompensation",
+                        "enumValue": "VsPpccControlKind.pPccAndUdcDroopWithCompensation",
+                        "description": "Control variables (targets) are both active power at point of common coupling and compensated DC voltage, with the droop; compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network."
+                    },
+                    {
+                        "name": "VsPpccControlKind_pPccAndUdcDroopPilot",
+                        "enumValue": "VsPpccControlKind.pPccAndUdcDroopPilot",
+                        "description": "Control variables (targets) are both active power at point of common coupling and the pilot DC voltage, with the droop."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "VsConverter_qPccControl",
+            "displayName": "VsConverter.qPccControl",
+            "description": NaN,
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "VsQpccControlKind_reactivePcc",
+                        "enumValue": "VsQpccControlKind.reactivePcc",
+                        "description": ""
+                    },
+                    {
+                        "name": "VsQpccControlKind_voltagePcc",
+                        "enumValue": "VsQpccControlKind.voltagePcc",
+                        "description": ""
+                    },
+                    {
+                        "name": "VsQpccControlKind_powerFactorPcc",
+                        "enumValue": "VsQpccControlKind.powerFactorPcc",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        {
+            "name": "VsConverter_qShare",
+            "displayName": "VsConverter.qShare",
+            "description": "Reactive power sharing factor among parallel converters on Uac control.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_targetQpcc",
+            "displayName": "VsConverter.targetQpcc",
+            "description": "Reactive power injection target in AC grid, at point of common coupling.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_targetUpcc",
+            "displayName": "VsConverter.targetUpcc",
+            "description": "Voltage target in AC grid, at point of common coupling.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "VsConverter_uf",
+            "displayName": "VsConverter.uf",
+            "description": "Filter bus voltage. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

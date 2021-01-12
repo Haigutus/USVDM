@@ -1,0 +1,114 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:MutualCoupling;16",
+    "displayName": "MutualCoupling",
+    "description": "This class represents the zero sequence line mutual coupling.",
+    "contents": [
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_First_Terminal",
+            "displayName": "MutualCoupling.First_Terminal",
+            "description": "The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "MutualCoupling_Second_Terminal",
+            "displayName": "MutualCoupling.Second_Terminal",
+            "description": "The starting terminal for the calculation of distances along the second branch of the mutual coupling.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "MutualCoupling_b0ch",
+            "displayName": "MutualCoupling.b0ch",
+            "description": "Zero sequence mutual coupling shunt (charging) susceptance, uniformly distributed, of the entire line section.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_distance11",
+            "displayName": "MutualCoupling.distance11",
+            "description": "Distance to the start of the coupled region from the first line's terminal having sequence number equal to 1.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_distance12",
+            "displayName": "MutualCoupling.distance12",
+            "description": "Distance to the end of the coupled region from the first line's terminal with sequence number equal to 1.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_distance21",
+            "displayName": "MutualCoupling.distance21",
+            "description": "Distance to the start of coupled region from the second line's terminal with sequence number equal to 1.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_distance22",
+            "displayName": "MutualCoupling.distance22",
+            "description": "Distance to the end of coupled region from the second line's terminal with sequence number equal to 1.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_g0ch",
+            "displayName": "MutualCoupling.g0ch",
+            "description": "Zero sequence mutual coupling shunt (charging) conductance, uniformly distributed, of the entire line section.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_r0",
+            "displayName": "MutualCoupling.r0",
+            "description": "Zero sequence branch-to-branch mutual impedance coupling, resistance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "MutualCoupling_x0",
+            "displayName": "MutualCoupling.x0",
+            "description": "Zero sequence branch-to-branch mutual impedance coupling, reactance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

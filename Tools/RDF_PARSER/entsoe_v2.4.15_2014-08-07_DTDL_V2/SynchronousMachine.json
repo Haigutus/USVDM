@@ -1,0 +1,360 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:SynchronousMachine;16",
+    "displayName": "SynchronousMachine",
+    "description": "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump.",
+    "contents": [
+        {
+            "name": "ConductingEquipment_BaseVoltage",
+            "displayName": "ConductingEquipment.BaseVoltage",
+            "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:BaseVoltage;16"
+        },
+        {
+            "name": "Equipment_EquipmentContainer",
+            "displayName": "Equipment.EquipmentContainer",
+            "description": "Container of this equipment.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquipmentContainer;16"
+        },
+        {
+            "name": "Equipment_aggregate",
+            "displayName": "Equipment.aggregate",
+            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingCondEq_RegulatingControl",
+            "displayName": "RegulatingCondEq.RegulatingControl",
+            "description": "The regulating control scheme in which this equipment participates.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:RegulatingControl;16"
+        },
+        {
+            "name": "RegulatingCondEq_controlEnabled",
+            "displayName": "RegulatingCondEq.controlEnabled",
+            "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RotatingMachine_GeneratingUnit",
+            "displayName": "RotatingMachine.GeneratingUnit",
+            "description": "A synchronous machine may operate as a generator and as such becomes a member of a generating unit.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:GeneratingUnit;16"
+        },
+        {
+            "name": "RotatingMachine_p",
+            "displayName": "RotatingMachine.p",
+            "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RotatingMachine_q",
+            "displayName": "RotatingMachine.q",
+            "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RotatingMachine_ratedPowerFactor",
+            "displayName": "RotatingMachine.ratedPowerFactor",
+            "description": "Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RotatingMachine_ratedS",
+            "displayName": "RotatingMachine.ratedS",
+            "description": "Nameplate apparent power rating for the unit.\nThe attribute shall have a positive value.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RotatingMachine_ratedU",
+            "displayName": "RotatingMachine.ratedU",
+            "description": "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_InitialReactiveCapabilityCurve",
+            "displayName": "SynchronousMachine.InitialReactiveCapabilityCurve",
+            "description": "Synchronous machines using this curve as default.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:ReactiveCapabilityCurve;16"
+        },
+        {
+            "name": "SynchronousMachine_earthing",
+            "displayName": "SynchronousMachine.earthing",
+            "description": "Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_earthingStarPointR",
+            "displayName": "SynchronousMachine.earthingStarPointR",
+            "description": "Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_earthingStarPointX",
+            "displayName": "SynchronousMachine.earthingStarPointX",
+            "description": "Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_ikk",
+            "displayName": "SynchronousMachine.ikk",
+            "description": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\n- Ikk=0: Generator with no compound excitation.\n- Ikk?0: Generator with compound excitation.\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation\n(Section 4.6.1.2 in the IEC 60909-0)\nUsed only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0)",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_maxQ",
+            "displayName": "SynchronousMachine.maxQ",
+            "description": "Maximum reactive power limit. This is the maximum (nameplate) limit for the unit.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_minQ",
+            "displayName": "SynchronousMachine.minQ",
+            "description": "Minimum reactive power limit for the unit.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_mu",
+            "displayName": "SynchronousMachine.mu",
+            "description": "Factor to calculate the breaking current (Section 4.5.2.1 in the IEC 60909-0).\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in the IEC 60909-0).",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_operatingMode",
+            "displayName": "SynchronousMachine.operatingMode",
+            "description": "Current mode of operation.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "SynchronousMachineOperatingMode_generator",
+                        "enumValue": "SynchronousMachineOperatingMode.generator",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineOperatingMode_condenser",
+                        "enumValue": "SynchronousMachineOperatingMode.condenser",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineOperatingMode_motor",
+                        "enumValue": "SynchronousMachineOperatingMode.motor",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SynchronousMachine_qPercent",
+            "displayName": "SynchronousMachine.qPercent",
+            "description": "Percent of the coordinated reactive control that comes from this machine.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_r",
+            "displayName": "SynchronousMachine.r",
+            "description": "Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_r0",
+            "displayName": "SynchronousMachine.r0",
+            "description": "Zero sequence resistance of the synchronous machine.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_r2",
+            "displayName": "SynchronousMachine.r2",
+            "description": "Negative sequence resistance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_referencePriority",
+            "displayName": "SynchronousMachine.referencePriority",
+            "description": "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_satDirectSubtransX",
+            "displayName": "SynchronousMachine.satDirectSubtransX",
+            "description": "Direct-axis subtransient reactance saturated, also known as Xd\"sat.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_satDirectSyncX",
+            "displayName": "SynchronousMachine.satDirectSyncX",
+            "description": "Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0).",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_satDirectTransX",
+            "displayName": "SynchronousMachine.satDirectTransX",
+            "description": "Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_shortCircuitRotorType",
+            "displayName": "SynchronousMachine.shortCircuitRotorType",
+            "description": "Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "ShortCircuitRotorKind_salientPole1",
+                        "enumValue": "ShortCircuitRotorKind.salientPole1",
+                        "description": "Salient pole 1 in the IEC 60909"
+                    },
+                    {
+                        "name": "ShortCircuitRotorKind_salientPole2",
+                        "enumValue": "ShortCircuitRotorKind.salientPole2",
+                        "description": "Salient pole 2 in IEC 60909"
+                    },
+                    {
+                        "name": "ShortCircuitRotorKind_turboSeries1",
+                        "enumValue": "ShortCircuitRotorKind.turboSeries1",
+                        "description": "Turbo Series 1 in the IEC 60909"
+                    },
+                    {
+                        "name": "ShortCircuitRotorKind_turboSeries2",
+                        "enumValue": "ShortCircuitRotorKind.turboSeries2",
+                        "description": "Turbo series 2 in IEC 60909"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SynchronousMachine_type",
+            "displayName": "SynchronousMachine.type",
+            "description": "Modes that this synchronous machine can operate in.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "SynchronousMachineKind_generator",
+                        "enumValue": "SynchronousMachineKind.generator",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_condenser",
+                        "enumValue": "SynchronousMachineKind.condenser",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_generatorOrCondenser",
+                        "enumValue": "SynchronousMachineKind.generatorOrCondenser",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_motor",
+                        "enumValue": "SynchronousMachineKind.motor",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_generatorOrMotor",
+                        "enumValue": "SynchronousMachineKind.generatorOrMotor",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_motorOrCondenser",
+                        "enumValue": "SynchronousMachineKind.motorOrCondenser",
+                        "description": ""
+                    },
+                    {
+                        "name": "SynchronousMachineKind_generatorOrCondenserOrMotor",
+                        "enumValue": "SynchronousMachineKind.generatorOrCondenserOrMotor",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SynchronousMachine_voltageRegulationRange",
+            "displayName": "SynchronousMachine.voltageRegulationRange",
+            "description": "Range of generator voltage regulation (PG in the IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0\nThis attribute is used to describe the operating voltage of the generating unit.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_x0",
+            "displayName": "SynchronousMachine.x0",
+            "description": "Zero sequence reactance of the synchronous machine.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SynchronousMachine_x2",
+            "displayName": "SynchronousMachine.x2",
+            "description": "Negative sequence reactance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

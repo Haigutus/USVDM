@@ -1,0 +1,1460 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:NonConformLoadSchedule;16",
+    "displayName": "NonConformLoadSchedule",
+    "description": "An active power (Y1-axis) and reactive power (Y2-axis) schedule (curves) versus time (X-axis) for non-conforming loads, e.g., large industrial load or power station service (where modeled).",
+    "contents": [
+        {
+            "name": "BasicIntervalSchedule_startTime",
+            "displayName": "BasicIntervalSchedule.startTime",
+            "description": "The time for the first time point.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "BasicIntervalSchedule_value1Unit",
+            "displayName": "BasicIntervalSchedule.value1Unit",
+            "description": "Value1 units of measure.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "BasicIntervalSchedule_value2Unit",
+            "displayName": "BasicIntervalSchedule.value2Unit",
+            "description": "Value2 units of measure.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "UnitSymbol_VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "UnitSymbol_VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "UnitSymbol_VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "UnitSymbol_Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "UnitSymbol_VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "UnitSymbol_V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "UnitSymbol_ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "UnitSymbol_A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "UnitSymbol_F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "UnitSymbol_H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "UnitSymbol_degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "UnitSymbol_s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "UnitSymbol_min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "UnitSymbol_h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "UnitSymbol_deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "UnitSymbol_rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "UnitSymbol_J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "UnitSymbol_N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "UnitSymbol_S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "UnitSymbol_none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "UnitSymbol_Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "UnitSymbol_g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "UnitSymbol_Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "UnitSymbol_m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "UnitSymbol_m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "UnitSymbol_m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "NonConformLoadSchedule_NonConformLoadGroup",
+            "displayName": "NonConformLoadSchedule.NonConformLoadGroup",
+            "description": "The NonConformLoadGroup where the NonConformLoadSchedule belongs.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:NonConformLoadGroup;16"
+        },
+        {
+            "name": "RegularIntervalSchedule_endTime",
+            "displayName": "RegularIntervalSchedule.endTime",
+            "description": "The time for the last time point.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegularIntervalSchedule_timeStep",
+            "displayName": "RegularIntervalSchedule.timeStep",
+            "description": "The time between each pair of subsequent regular time points in sequence order.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "SeasonDayTypeSchedule_DayType",
+            "displayName": "SeasonDayTypeSchedule.DayType",
+            "description": "Schedules that use this DayType.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:DayType;16"
+        },
+        {
+            "name": "SeasonDayTypeSchedule_Season",
+            "displayName": "SeasonDayTypeSchedule.Season",
+            "description": "Schedules that use this Season.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Season;16"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

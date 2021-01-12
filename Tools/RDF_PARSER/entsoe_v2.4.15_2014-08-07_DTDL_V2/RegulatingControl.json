@@ -1,0 +1,418 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:RegulatingControl;16",
+    "displayName": "RegulatingControl",
+    "description": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nIn case multiple equipment, possibly of different types, control same terminal there must be only one RegulatingControl at that terminal. The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\nFor flow control  load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
+    "contents": [
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingControl_Terminal",
+            "displayName": "RegulatingControl.Terminal",
+            "description": "The controls regulating this terminal.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "RegulatingControl_discrete",
+            "displayName": "RegulatingControl.discrete",
+            "description": "The regulation is performed in a discrete mode. This applies to equipment with discrete controls, e.g. tap changers and shunt compensators.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingControl_enabled",
+            "displayName": "RegulatingControl.enabled",
+            "description": "The flag tells if regulation is enabled.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingControl_mode",
+            "displayName": "RegulatingControl.mode",
+            "description": "The regulating control mode presently available.  This specification allows for determining the kind of regulation without need for obtaining the units from a schedule.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "RegulatingControlModeKind_voltage",
+                        "enumValue": "RegulatingControlModeKind.voltage",
+                        "description": "Voltage is specified."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_activePower",
+                        "enumValue": "RegulatingControlModeKind.activePower",
+                        "description": "Active power is specified."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_reactivePower",
+                        "enumValue": "RegulatingControlModeKind.reactivePower",
+                        "description": "Reactive power is specified."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_currentFlow",
+                        "enumValue": "RegulatingControlModeKind.currentFlow",
+                        "description": "Current flow is specified."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_admittance",
+                        "enumValue": "RegulatingControlModeKind.admittance",
+                        "description": "Admittance is specified."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_timeScheduled",
+                        "enumValue": "RegulatingControlModeKind.timeScheduled",
+                        "description": "Control switches on/off by time of day. The times may change on the weekend, or in different seasons."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_temperature",
+                        "enumValue": "RegulatingControlModeKind.temperature",
+                        "description": "Control switches on/off based on the local temperature (i.e., a thermostat)."
+                    },
+                    {
+                        "name": "RegulatingControlModeKind_powerFactor",
+                        "enumValue": "RegulatingControlModeKind.powerFactor",
+                        "description": "Power factor is specified."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "RegulatingControl_targetDeadband",
+            "displayName": "RegulatingControl.targetDeadband",
+            "description": "This is a deadband used with discrete control to avoid excessive update of controls like tap changers and shunt compensator banks while regulating.\nThe units of those appropriate for the mode.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingControl_targetValue",
+            "displayName": "RegulatingControl.targetValue",
+            "description": "The target value specified for case input.   This value can be used for the target value without the use of schedules. The value has the units appropriate to the mode attribute.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingControl_targetValueUnitMultiplier",
+            "displayName": "RegulatingControl.targetValueUnitMultiplier",
+            "description": "Specify the multiplier for used for the targetValue.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "UnitMultiplier_p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "UnitMultiplier_n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "UnitMultiplier_micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "UnitMultiplier_m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "UnitMultiplier_c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "UnitMultiplier_d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "UnitMultiplier_k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "UnitMultiplier_M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "UnitMultiplier_G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "UnitMultiplier_T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "UnitMultiplier_none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "UnitMultiplier_p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "UnitMultiplier_n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "UnitMultiplier_micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "UnitMultiplier_m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "UnitMultiplier_c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "UnitMultiplier_d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "UnitMultiplier_k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "UnitMultiplier_M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "UnitMultiplier_G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "UnitMultiplier_T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "UnitMultiplier_none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "UnitMultiplier_p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "UnitMultiplier_n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "UnitMultiplier_micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "UnitMultiplier_m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "UnitMultiplier_c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "UnitMultiplier_d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "UnitMultiplier_k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "UnitMultiplier_M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "UnitMultiplier_G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "UnitMultiplier_T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "UnitMultiplier_none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "UnitMultiplier_p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "UnitMultiplier_n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "UnitMultiplier_micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "UnitMultiplier_m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "UnitMultiplier_c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "UnitMultiplier_d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "UnitMultiplier_k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "UnitMultiplier_M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "UnitMultiplier_G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "UnitMultiplier_T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "UnitMultiplier_none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "UnitMultiplier_p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "UnitMultiplier_n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "UnitMultiplier_micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "UnitMultiplier_m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "UnitMultiplier_c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "UnitMultiplier_d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "UnitMultiplier_k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "UnitMultiplier_M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "UnitMultiplier_G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "UnitMultiplier_T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "UnitMultiplier_none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

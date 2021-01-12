@@ -1,0 +1,92 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:ControlArea;16",
+    "displayName": "ControlArea",
+    "description": "A control area",
+    "contents": [
+        {
+            "name": "ControlArea_EnergyArea",
+            "displayName": "ControlArea.EnergyArea",
+            "description": "The energy area that is forecast from this control area specification.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EnergyArea;16"
+        },
+        {
+            "name": "ControlArea_netInterchange",
+            "displayName": "ControlArea.netInterchange",
+            "description": "The specified positive net interchange into the control area, i.e. positive sign means flow in to the area.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ControlArea_pTolerance",
+            "displayName": "ControlArea.pTolerance",
+            "description": "Active power net interchange tolerance",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "ControlArea_type",
+            "displayName": "ControlArea.type",
+            "description": "The primary type of control area definition used to determine if this is used for automatic generation control, for planning interchange control, or other purposes.   A control area specified with primary type of automatic generation control could still be forecast and used as an interchange area in power flow analysis.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "ControlAreaTypeKind_AGC",
+                        "enumValue": "ControlAreaTypeKind.AGC",
+                        "description": "Used for automatic generation control."
+                    },
+                    {
+                        "name": "ControlAreaTypeKind_Forecast",
+                        "enumValue": "ControlAreaTypeKind.Forecast",
+                        "description": "Used for load forecast."
+                    },
+                    {
+                        "name": "ControlAreaTypeKind_Interchange",
+                        "enumValue": "ControlAreaTypeKind.Interchange",
+                        "description": "Used for interchange specification or control."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

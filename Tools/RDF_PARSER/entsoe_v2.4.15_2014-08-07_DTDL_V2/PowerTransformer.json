@@ -1,0 +1,107 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:PowerTransformer;16",
+    "displayName": "PowerTransformer",
+    "description": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modeled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.\nThe inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.",
+    "contents": [
+        {
+            "name": "ConductingEquipment_BaseVoltage",
+            "displayName": "ConductingEquipment.BaseVoltage",
+            "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:BaseVoltage;16"
+        },
+        {
+            "name": "Equipment_EquipmentContainer",
+            "displayName": "Equipment.EquipmentContainer",
+            "description": "Container of this equipment.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquipmentContainer;16"
+        },
+        {
+            "name": "Equipment_aggregate",
+            "displayName": "Equipment.aggregate",
+            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_beforeShCircuitHighestOperatingCurrent",
+            "displayName": "PowerTransformer.beforeShCircuitHighestOperatingCurrent",
+            "description": "The highest operating current (Ib in the IEC 60909-0) before short circuit (depends on network configuration and relevant reliability philosophy). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_beforeShCircuitHighestOperatingVoltage",
+            "displayName": "PowerTransformer.beforeShCircuitHighestOperatingVoltage",
+            "description": "The highest operating voltage (Ub in the IEC 60909-0) before short circuit. It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is worst case voltage on the low side winding (Section 3.7.1 in the standard). Used to define operating conditions.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_beforeShortCircuitAnglePf",
+            "displayName": "PowerTransformer.beforeShortCircuitAnglePf",
+            "description": "The angle of power factor before short circuit (phib in the IEC 60909-0). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is the worst case power factor. Used to define operating conditions.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_highSideMinOperatingU",
+            "displayName": "PowerTransformer.highSideMinOperatingU",
+            "description": "The minimum operating voltage (uQmin in the IEC 60909-0) at the high voltage side (Q side) of the unit transformer of the power station unit. A value well established from long-term operating experience of the system. It is used for calculation of the impedance correction factor KG defined in IEC 60909-0",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_isPartOfGeneratorUnit",
+            "displayName": "PowerTransformer.isPartOfGeneratorUnit",
+            "description": "Indicates whether the machine is part of a power station unit. Used for short circuit data exchange according to IEC 60909",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PowerTransformer_operationalValuesConsidered",
+            "displayName": "PowerTransformer.operationalValuesConsidered",
+            "description": "It is used to define if the data (other attributes related to short circuit data exchange) defines long term operational conditions or not. Used for short circuit data exchange according to IEC 60909.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

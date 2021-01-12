@@ -1,0 +1,121 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:LoadResponseCharacteristic;16",
+    "displayName": "LoadResponseCharacteristic",
+    "description": "Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. This is not related to demand response.\n\nIf LoadResponseCharacteristic.exponentModel is True, the voltage exponents are specified and used as to calculate:\n\nActive power component = Pnominal * (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent\n\nReactive power component = Qnominal * (Voltage/cim:BaseVoltage.nominalVoltage)** cim:LoadResponseCharacteristic.qVoltageExponent\n\nWhere  * means \"multiply\" and ** is \"raised to power of\".",
+    "contents": [
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_exponentModel",
+            "displayName": "LoadResponseCharacteristic.exponentModel",
+            "description": "Indicates the exponential voltage dependency model is to be used.   If false, the coefficient model is to be used.\nThe exponential voltage dependency model consist of the attributes\n- pVoltageExponent\n- qVoltageExponent.\nThe coefficient model consist of the attributes\n- pConstantImpedance\n- pConstantCurrent\n- pConstantPower\n- qConstantImpedance\n- qConstantCurrent\n- qConstantPower.\nThe sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\nThe sum of qConstantImpedance, qConstantCurrent and qConstantPower shall equal 1.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_pConstantCurrent",
+            "displayName": "LoadResponseCharacteristic.pConstantCurrent",
+            "description": "Portion of active power load modeled as constant current.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_pConstantImpedance",
+            "displayName": "LoadResponseCharacteristic.pConstantImpedance",
+            "description": "Portion of active power load modeled as constant impedance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_pConstantPower",
+            "displayName": "LoadResponseCharacteristic.pConstantPower",
+            "description": "Portion of active power load modeled as constant power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_pFrequencyExponent",
+            "displayName": "LoadResponseCharacteristic.pFrequencyExponent",
+            "description": "Exponent of per unit frequency effecting active power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_pVoltageExponent",
+            "displayName": "LoadResponseCharacteristic.pVoltageExponent",
+            "description": "Exponent of per unit voltage effecting real power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_qConstantCurrent",
+            "displayName": "LoadResponseCharacteristic.qConstantCurrent",
+            "description": "Portion of reactive power load modeled as constant current.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_qConstantImpedance",
+            "displayName": "LoadResponseCharacteristic.qConstantImpedance",
+            "description": "Portion of reactive power load modeled as constant impedance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_qConstantPower",
+            "displayName": "LoadResponseCharacteristic.qConstantPower",
+            "description": "Portion of reactive power load modeled as constant power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_qFrequencyExponent",
+            "displayName": "LoadResponseCharacteristic.qFrequencyExponent",
+            "description": "Exponent of per unit frequency effecting reactive power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "LoadResponseCharacteristic_qVoltageExponent",
+            "displayName": "LoadResponseCharacteristic.qVoltageExponent",
+            "description": "Exponent of per unit voltage effecting reactive power.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:CurveData;16",
+    "displayName": "CurveData",
+    "description": "Multi-purpose data points for defining a curve.  The use of this generic class is discouraged if a more specific class  can be used to specify the x and y axis values along with their specific data types.",
+    "contents": [
+        {
+            "name": "CurveData_Curve",
+            "displayName": "CurveData.Curve",
+            "description": "The point data values that define this curve.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Curve;16"
+        },
+        {
+            "name": "CurveData_xvalue",
+            "displayName": "CurveData.xvalue",
+            "description": "The data value of the X-axis variable,  depending on the X-axis units.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "CurveData_y1value",
+            "displayName": "CurveData.y1value",
+            "description": "The data value of the  first Y-axis variable, depending on the Y-axis units.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "CurveData_y2value",
+            "displayName": "CurveData.y2value",
+            "description": "The data value of the second Y-axis variable (if present), depending on the Y-axis units.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

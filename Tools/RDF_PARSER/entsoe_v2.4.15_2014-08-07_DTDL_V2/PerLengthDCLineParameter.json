@@ -1,0 +1,30 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:PerLengthDCLineParameter;16",
+    "displayName": "PerLengthDCLineParameter",
+    "description": "",
+    "contents": [
+        {
+            "name": "PerLengthDCLineParameter_capacitance",
+            "displayName": "PerLengthDCLineParameter.capacitance",
+            "description": "Capacitance per unit of length of the DC line segment; significant for cables only.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PerLengthDCLineParameter_inductance",
+            "displayName": "PerLengthDCLineParameter.inductance",
+            "description": "Inductance per unit of length of the DC line segment.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PerLengthDCLineParameter_resistance",
+            "displayName": "PerLengthDCLineParameter.resistance",
+            "description": "Resistance per length of the DC line segment.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

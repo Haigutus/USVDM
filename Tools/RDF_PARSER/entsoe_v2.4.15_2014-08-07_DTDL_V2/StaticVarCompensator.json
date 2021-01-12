@@ -1,0 +1,136 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:StaticVarCompensator;16",
+    "displayName": "StaticVarCompensator",
+    "description": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
+    "contents": [
+        {
+            "name": "ConductingEquipment_BaseVoltage",
+            "displayName": "ConductingEquipment.BaseVoltage",
+            "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:BaseVoltage;16"
+        },
+        {
+            "name": "Equipment_EquipmentContainer",
+            "displayName": "Equipment.EquipmentContainer",
+            "description": "Container of this equipment.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquipmentContainer;16"
+        },
+        {
+            "name": "Equipment_aggregate",
+            "displayName": "Equipment.aggregate",
+            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "RegulatingCondEq_RegulatingControl",
+            "displayName": "RegulatingCondEq.RegulatingControl",
+            "description": "The regulating control scheme in which this equipment participates.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:RegulatingControl;16"
+        },
+        {
+            "name": "RegulatingCondEq_controlEnabled",
+            "displayName": "RegulatingCondEq.controlEnabled",
+            "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "StaticVarCompensator_capacitiveRating",
+            "displayName": "StaticVarCompensator.capacitiveRating",
+            "description": "Maximum available capacitive reactance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "StaticVarCompensator_inductiveRating",
+            "displayName": "StaticVarCompensator.inductiveRating",
+            "description": "Maximum available inductive reactance.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "StaticVarCompensator_q",
+            "displayName": "StaticVarCompensator.q",
+            "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "StaticVarCompensator_sVCControlMode",
+            "displayName": "StaticVarCompensator.sVCControlMode",
+            "description": "SVC control mode.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "SVCControlMode_reactivePower",
+                        "enumValue": "SVCControlMode.reactivePower",
+                        "description": ""
+                    },
+                    {
+                        "name": "SVCControlMode_voltage",
+                        "enumValue": "SVCControlMode.voltage",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        {
+            "name": "StaticVarCompensator_slope",
+            "displayName": "StaticVarCompensator.slope",
+            "description": "The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "StaticVarCompensator_voltageSetPoint",
+            "displayName": "StaticVarCompensator.voltageSetPoint",
+            "description": "The reactive power output of the SVC is proportional to the difference between the voltage at the regulated bus and the voltage setpoint.  When the regulated bus voltage is equal to the voltage setpoint, the reactive power output is zero.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

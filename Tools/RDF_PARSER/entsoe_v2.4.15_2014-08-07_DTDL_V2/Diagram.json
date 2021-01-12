@@ -1,0 +1,96 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:Diagram;16",
+    "displayName": "Diagram",
+    "description": "The diagram being exchanged.  The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation.",
+    "contents": [
+        {
+            "name": "Diagram_DiagramStyle",
+            "displayName": "Diagram.DiagramStyle",
+            "description": "A Diagram may have a DiagramStyle.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:DiagramStyle;16"
+        },
+        {
+            "name": "Diagram_orientation",
+            "displayName": "Diagram.orientation",
+            "description": "Coordinate system orientation of the diagram.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "OrientationKind_negative",
+                        "enumValue": "OrientationKind.negative",
+                        "description": "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Diagram_x1InitialView",
+            "displayName": "Diagram.x1InitialView",
+            "description": "X coordinate of the first corner of the initial view.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Diagram_x2InitialView",
+            "displayName": "Diagram.x2InitialView",
+            "description": "X coordinate of the second corner of the initial view.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Diagram_y1InitialView",
+            "displayName": "Diagram.y1InitialView",
+            "description": "Y coordinate of the first corner of the initial view.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "Diagram_y2InitialView",
+            "displayName": "Diagram.y2InitialView",
+            "description": "Y coordinate of the second corner of the initial view.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

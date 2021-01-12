@@ -1,0 +1,78 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:DCConverterUnit;16",
+    "displayName": "DCConverterUnit",
+    "description": "Indivisible operative unit comprising all equipment between the point of common coupling on the AC side and the point of common coupling \u2013 DC side, essentially one or more converters, together with one or more converter transformers, converter control equipment, essential protective and switching devices and auxiliaries, if any, used for conversion.",
+    "contents": [
+        {
+            "name": "DCConverterUnit_Substation",
+            "displayName": "DCConverterUnit.Substation",
+            "description": NaN,
+            "@type": "Relationship",
+            "target": "dtmi:cim:Substation;16"
+        },
+        {
+            "name": "DCConverterUnit_operationMode",
+            "displayName": "DCConverterUnit.operationMode",
+            "description": NaN,
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "DCConverterOperatingModeKind_bipolar",
+                        "enumValue": "DCConverterOperatingModeKind.bipolar",
+                        "description": "Bipolar operation."
+                    },
+                    {
+                        "name": "DCConverterOperatingModeKind_monopolarMetallicReturn",
+                        "enumValue": "DCConverterOperatingModeKind.monopolarMetallicReturn",
+                        "description": "Monopolar operation with metallic return"
+                    },
+                    {
+                        "name": "DCConverterOperatingModeKind_monopolarGroundReturn",
+                        "enumValue": "DCConverterOperatingModeKind.monopolarGroundReturn",
+                        "description": "Monopolar operation with ground return"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "IdentifiedObject_description",
+            "displayName": "IdentifiedObject.description",
+            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_mRID",
+            "displayName": "IdentifiedObject.mRID",
+            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_name",
+            "displayName": "IdentifiedObject.name",
+            "description": "The name is any free human readable and possibly non unique text naming the object.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_energyIdentCodeEic",
+            "displayName": "IdentifiedObject.energyIdentCodeEic",
+            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "IdentifiedObject_shortName",
+            "displayName": "IdentifiedObject.shortName",
+            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}

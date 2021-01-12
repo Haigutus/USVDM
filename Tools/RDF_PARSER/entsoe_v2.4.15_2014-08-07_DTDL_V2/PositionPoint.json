@@ -1,0 +1,44 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:PositionPoint;16",
+    "displayName": "PositionPoint",
+    "description": "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to desribe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).",
+    "contents": [
+        {
+            "name": "PositionPoint_Location",
+            "displayName": "PositionPoint.Location",
+            "description": "Location described by this position point.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Location;16"
+        },
+        {
+            "name": "PositionPoint_sequenceNumber",
+            "displayName": "PositionPoint.sequenceNumber",
+            "description": "Zero-relative sequence number of this point within a series of points.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PositionPoint_xPosition",
+            "displayName": "PositionPoint.xPosition",
+            "description": "X axis position.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PositionPoint_yPosition",
+            "displayName": "PositionPoint.yPosition",
+            "description": "Y axis position.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "PositionPoint_zPosition",
+            "displayName": "PositionPoint.zPosition",
+            "description": "(if applicable) Z axis position.",
+            "@type": "Property",
+            "schema": "string"
+        }
+    ]
+}
