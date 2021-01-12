@@ -1,0 +1,19 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:LoadGroup;16",
+    "displayName": "LoadGroup",
+    "description": "The class is the third level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling.",
+    "extends": [
+        "dtmi:cim:IdentifiedObject;16"
+    ],
+    "contents": [
+        {
+            "name": "SubLoadArea",
+            "displayName": "LoadGroup.SubLoadArea",
+            "description": "The SubLoadArea where the Loadgroup belongs.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:SubLoadArea;16"
+        }
+    ]
+}

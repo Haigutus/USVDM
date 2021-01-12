@@ -1,0 +1,11 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:ConnectivityNodeContainer;16",
+    "displayName": "ConnectivityNodeContainer",
+    "description": "A base class for all objects that may contain connectivity nodes or topological nodes.",
+    "extends": [
+        "dtmi:cim:PowerSystemResource;16"
+    ],
+    "contents": []
+}

@@ -4,139 +4,16 @@
     "@id": "dtmi:cim:PhaseTapChangerAsymmetrical;16",
     "displayName": "PhaseTapChangerAsymmetrical",
     "description": "Describes the tap model for an asymmetrical phase shifting transformer in which the difference voltage vector adds to the primary side voltage. The angle between the primary side voltage and the difference voltage is named the winding connection angle. The phase shift depends on both the difference voltage magnitude and the winding connection angle.",
+    "extends": [
+        "dtmi:cim:PhaseTapChangerNonLinear;16"
+    ],
     "contents": [
-        {
-            "name": "description",
-            "displayName": "IdentifiedObject.description",
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "mRID",
-            "displayName": "IdentifiedObject.mRID",
-            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "name",
-            "displayName": "IdentifiedObject.name",
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "TransformerEnd",
-            "displayName": "PhaseTapChanger.TransformerEnd",
-            "description": "Phase tap changer associated with this transformer end.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:TransformerEnd;16"
-        },
         {
             "name": "windingConnectionAngle",
             "displayName": "PhaseTapChangerAsymmetrical.windingConnectionAngle",
             "description": "The phase angle between the in-phase winding and the out-of -phase winding used for creating phase shift. The out-of-phase winding produces what is known as the difference voltage.  Setting this angle to 90 degrees is not the same as a symmemtrical transformer.",
             "@type": "Property",
             "schema": "float"
-        },
-        {
-            "name": "voltageStepIncrement",
-            "displayName": "PhaseTapChangerNonLinear.voltageStepIncrement",
-            "description": "The voltage step increment on the out of phase winding specified in percent of nominal voltage of the transformer end.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "xMax",
-            "displayName": "PhaseTapChangerNonLinear.xMax",
-            "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The maximum reactance (xMax) appear at the low and high tap positions.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "xMin",
-            "displayName": "PhaseTapChangerNonLinear.xMin",
-            "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The minimum reactance (xMin) appear at the mid tap position.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "TapChangerControl",
-            "displayName": "TapChanger.TapChangerControl",
-            "description": "The tap changers that participates in this regulating tap control scheme.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:TapChangerControl;16"
-        },
-        {
-            "name": "controlEnabled",
-            "displayName": "TapChanger.controlEnabled",
-            "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
-            "@type": "Property",
-            "schema": "boolean"
-        },
-        {
-            "name": "highStep",
-            "displayName": "TapChanger.highStep",
-            "description": "Highest possible tap step position, advance from neutral.\nThe attribute shall be greater than lowStep.",
-            "@type": "Property",
-            "schema": "integer"
-        },
-        {
-            "name": "lowStep",
-            "displayName": "TapChanger.lowStep",
-            "description": "Lowest possible tap step position, retard from neutral",
-            "@type": "Property",
-            "schema": "integer"
-        },
-        {
-            "name": "ltcFlag",
-            "displayName": "TapChanger.ltcFlag",
-            "description": "Specifies whether or not a TapChanger has load tap changing capabilities.",
-            "@type": "Property",
-            "schema": "boolean"
-        },
-        {
-            "name": "neutralStep",
-            "displayName": "TapChanger.neutralStep",
-            "description": "The neutral tap step position for this winding.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
-            "@type": "Property",
-            "schema": "integer"
-        },
-        {
-            "name": "neutralU",
-            "displayName": "TapChanger.neutralU",
-            "description": "Voltage at which the winding operates at the neutral tap setting.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "normalStep",
-            "displayName": "TapChanger.normalStep",
-            "description": "The tap step position used in \"normal\" network operation for this winding. For a \"Fixed\" tap changer indicates the current physical tap setting.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
-            "@type": "Property",
-            "schema": "integer"
-        },
-        {
-            "name": "step",
-            "displayName": "TapChanger.step",
-            "description": "Tap changer position.\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changers has yet been designed, a solutions where a narrow voltage band force the tap step to oscillate or accommodate for a continuous solution as input.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "energyIdentCodeEic",
-            "displayName": "IdentifiedObject.energyIdentCodeEic",
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "shortName",
-            "displayName": "IdentifiedObject.shortName",
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "@type": "Property",
-            "schema": "string"
         }
     ]
 }

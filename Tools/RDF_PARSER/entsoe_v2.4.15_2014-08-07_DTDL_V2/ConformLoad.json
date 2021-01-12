@@ -4,118 +4,16 @@
     "@id": "dtmi:cim:ConformLoad;16",
     "displayName": "ConformLoad",
     "description": "ConformLoad represent loads that follow a daily load change pattern where the pattern can be used to scale the load with a system load.",
+    "extends": [
+        "dtmi:cim:EnergyConsumer;16"
+    ],
     "contents": [
-        {
-            "name": "BaseVoltage",
-            "displayName": "ConductingEquipment.BaseVoltage",
-            "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:BaseVoltage;16"
-        },
         {
             "name": "LoadGroup",
             "displayName": "ConformLoad.LoadGroup",
             "description": "Group of this ConformLoad.",
             "@type": "Relationship",
             "target": "dtmi:cim:ConformLoadGroup;16"
-        },
-        {
-            "name": "LoadResponse",
-            "displayName": "EnergyConsumer.LoadResponse",
-            "description": "The load response characteristic of this load.  If missing, this load is assumed to be constant power.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:LoadResponseCharacteristic;16"
-        },
-        {
-            "name": "p",
-            "displayName": "EnergyConsumer.p",
-            "description": "Active power of the load. Load sign convention is used, i.e. positive sign means flow out from a node.\nFor voltage dependent loads the value is at rated voltage.\nStarting value for a steady state solution.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "pfixed",
-            "displayName": "EnergyConsumer.pfixed",
-            "description": "Active power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "pfixedPct",
-            "displayName": "EnergyConsumer.pfixedPct",
-            "description": "Fixed active power as per cent of load group fixed active power. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "q",
-            "displayName": "EnergyConsumer.q",
-            "description": "Reactive power of the load. Load sign convention is used, i.e. positive sign means flow out from a node.\nFor voltage dependent loads the value is at rated voltage.\nStarting value for a steady state solution.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "qfixed",
-            "displayName": "EnergyConsumer.qfixed",
-            "description": "Reactive power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "qfixedPct",
-            "displayName": "EnergyConsumer.qfixedPct",
-            "description": "Fixed reactive power as per cent of load group fixed reactive power. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "EquipmentContainer",
-            "displayName": "Equipment.EquipmentContainer",
-            "description": "Container of this equipment.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:EquipmentContainer;16"
-        },
-        {
-            "name": "aggregate",
-            "displayName": "Equipment.aggregate",
-            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
-            "@type": "Property",
-            "schema": "boolean"
-        },
-        {
-            "name": "description",
-            "displayName": "IdentifiedObject.description",
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "mRID",
-            "displayName": "IdentifiedObject.mRID",
-            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "name",
-            "displayName": "IdentifiedObject.name",
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "energyIdentCodeEic",
-            "displayName": "IdentifiedObject.energyIdentCodeEic",
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "shortName",
-            "displayName": "IdentifiedObject.shortName",
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "@type": "Property",
-            "schema": "string"
         }
     ]
 }

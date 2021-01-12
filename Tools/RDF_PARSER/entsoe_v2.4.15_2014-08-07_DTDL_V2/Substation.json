@@ -4,48 +4,16 @@
     "@id": "dtmi:cim:Substation;16",
     "displayName": "Substation",
     "description": "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. ",
+    "extends": [
+        "dtmi:cim:EquipmentContainer;16"
+    ],
     "contents": [
-        {
-            "name": "description",
-            "displayName": "IdentifiedObject.description",
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "mRID",
-            "displayName": "IdentifiedObject.mRID",
-            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "name",
-            "displayName": "IdentifiedObject.name",
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "@type": "Property",
-            "schema": "string"
-        },
         {
             "name": "Region",
             "displayName": "Substation.Region",
             "description": "The SubGeographicalRegion containing the substation.",
             "@type": "Relationship",
             "target": "dtmi:cim:SubGeographicalRegion;16"
-        },
-        {
-            "name": "energyIdentCodeEic",
-            "displayName": "IdentifiedObject.energyIdentCodeEic",
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "shortName",
-            "displayName": "IdentifiedObject.shortName",
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "@type": "Property",
-            "schema": "string"
         }
     ]
 }

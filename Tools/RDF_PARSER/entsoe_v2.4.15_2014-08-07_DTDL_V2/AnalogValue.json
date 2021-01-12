@@ -4,6 +4,9 @@
     "@id": "dtmi:cim:AnalogValue;16",
     "displayName": "AnalogValue",
     "description": "AnalogValue represents an analog MeasurementValue.",
+    "extends": [
+        "dtmi:cim:MeasurementValue;16"
+    ],
     "contents": [
         {
             "name": "Analog",
@@ -18,62 +21,6 @@
             "description": "The value to supervise.",
             "@type": "Property",
             "schema": "float"
-        },
-        {
-            "name": "description",
-            "displayName": "IdentifiedObject.description",
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "mRID",
-            "displayName": "IdentifiedObject.mRID",
-            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "name",
-            "displayName": "IdentifiedObject.name",
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "MeasurementValueSource",
-            "displayName": "MeasurementValue.MeasurementValueSource",
-            "description": "The MeasurementValues updated by the source.",
-            "@type": "Relationship",
-            "target": "dtmi:cim:MeasurementValueSource;16"
-        },
-        {
-            "name": "sensorAccuracy",
-            "displayName": "MeasurementValue.sensorAccuracy",
-            "description": "The limit, expressed as a percentage of the sensor maximum, that errors will not exceed when the sensor is used under  reference conditions.",
-            "@type": "Property",
-            "schema": "float"
-        },
-        {
-            "name": "timeStamp",
-            "displayName": "MeasurementValue.timeStamp",
-            "description": "The time when the value was last updated",
-            "@type": "Property",
-            "schema": "dateTime"
-        },
-        {
-            "name": "energyIdentCodeEic",
-            "displayName": "IdentifiedObject.energyIdentCodeEic",
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "shortName",
-            "displayName": "IdentifiedObject.shortName",
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "@type": "Property",
-            "schema": "string"
         }
     ]
 }

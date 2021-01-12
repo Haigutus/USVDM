@@ -1,0 +1,19 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:Conductor;16",
+    "displayName": "Conductor",
+    "description": "Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system.  ",
+    "extends": [
+        "dtmi:cim:ConductingEquipment;16"
+    ],
+    "contents": [
+        {
+            "name": "length",
+            "displayName": "Conductor.length",
+            "description": "Segment length for calculating line section capabilities",
+            "@type": "Property",
+            "schema": "float"
+        }
+    ]
+}

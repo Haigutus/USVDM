@@ -1,0 +1,26 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:Equipment;16",
+    "displayName": "Equipment",
+    "description": "The parts of a power system that are physical devices, electronic or mechanical.",
+    "extends": [
+        "dtmi:cim:PowerSystemResource;16"
+    ],
+    "contents": [
+        {
+            "name": "EquipmentContainer",
+            "displayName": "Equipment.EquipmentContainer",
+            "description": "Container of this equipment.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquipmentContainer;16"
+        },
+        {
+            "name": "aggregate",
+            "displayName": "Equipment.aggregate",
+            "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
+            "@type": "Property",
+            "schema": "boolean"
+        }
+    ]
+}

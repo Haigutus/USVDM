@@ -1,0 +1,1124 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:Measurement;16",
+    "displayName": "Measurement",
+    "description": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming ",
+    "extends": [
+        "dtmi:cim:IdentifiedObject;16"
+    ],
+    "contents": [
+        {
+            "name": "PowerSystemResource",
+            "displayName": "Measurement.PowerSystemResource",
+            "description": "The measurements associated with this power system resource.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:PowerSystemResource;16"
+        },
+        {
+            "name": "Terminal",
+            "displayName": "Measurement.Terminal",
+            "description": "One or more measurements may be associated with a terminal in the network.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:ACDCTerminal;16"
+        },
+        {
+            "name": "measurementType",
+            "displayName": "Measurement.measurementType",
+            "description": "Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc.",
+            "@type": "Property",
+            "schema": "string"
+        },
+        {
+            "name": "phases",
+            "displayName": "Measurement.phases",
+            "description": "Indicates to which phases the measurement applies and avoids the need to use 'measurementType' to also encode phase information (which would explode the types). The phase information in Measurement, along with 'measurementType' and 'phases' uniquely defines a Measurement for a device, based on normal network phase. Their meaning will not change when the computed energizing phasing is changed due to jumpers or other reasons.\nIf the attribute is missing three phases (ABC) shall be assumed.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "ABCN",
+                        "enumValue": "PhaseCode.ABCN",
+                        "description": "Phases A, B, C, and N."
+                    },
+                    {
+                        "name": "ABC",
+                        "enumValue": "PhaseCode.ABC",
+                        "description": "Phases A, B, and C."
+                    },
+                    {
+                        "name": "ABN",
+                        "enumValue": "PhaseCode.ABN",
+                        "description": "Phases A, B, and neutral."
+                    },
+                    {
+                        "name": "ACN",
+                        "enumValue": "PhaseCode.ACN",
+                        "description": "Phases A, C and neutral."
+                    },
+                    {
+                        "name": "BCN",
+                        "enumValue": "PhaseCode.BCN",
+                        "description": "Phases B, C, and neutral."
+                    },
+                    {
+                        "name": "AB",
+                        "enumValue": "PhaseCode.AB",
+                        "description": "Phases A and B."
+                    },
+                    {
+                        "name": "AC",
+                        "enumValue": "PhaseCode.AC",
+                        "description": "Phases A and C."
+                    },
+                    {
+                        "name": "BC",
+                        "enumValue": "PhaseCode.BC",
+                        "description": "Phases B and C."
+                    },
+                    {
+                        "name": "AN",
+                        "enumValue": "PhaseCode.AN",
+                        "description": "Phases A and neutral."
+                    },
+                    {
+                        "name": "BN",
+                        "enumValue": "PhaseCode.BN",
+                        "description": "Phases B and neutral."
+                    },
+                    {
+                        "name": "CN",
+                        "enumValue": "PhaseCode.CN",
+                        "description": "Phases C and neutral."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "PhaseCode.A",
+                        "description": "Phase A."
+                    },
+                    {
+                        "name": "B",
+                        "enumValue": "PhaseCode.B",
+                        "description": "Phase B."
+                    },
+                    {
+                        "name": "C",
+                        "enumValue": "PhaseCode.C",
+                        "description": "Phase C."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "PhaseCode.N",
+                        "description": "Neutral phase."
+                    },
+                    {
+                        "name": "s1N",
+                        "enumValue": "PhaseCode.s1N",
+                        "description": "Secondary phase 1 and neutral."
+                    },
+                    {
+                        "name": "s2N",
+                        "enumValue": "PhaseCode.s2N",
+                        "description": "Secondary phase 2 and neutral."
+                    },
+                    {
+                        "name": "s12N",
+                        "enumValue": "PhaseCode.s12N",
+                        "description": "Secondary phases 1, 2, and neutral."
+                    },
+                    {
+                        "name": "s1",
+                        "enumValue": "PhaseCode.s1",
+                        "description": "Secondary phase 1."
+                    },
+                    {
+                        "name": "s2",
+                        "enumValue": "PhaseCode.s2",
+                        "description": "Secondary phase 2."
+                    },
+                    {
+                        "name": "s12",
+                        "enumValue": "PhaseCode.s12",
+                        "description": "Secondary phase 1 and 2."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "unitMultiplier",
+            "displayName": "Measurement.unitMultiplier",
+            "description": "The unit multiplier of the measured quantity.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    },
+                    {
+                        "name": "p",
+                        "enumValue": "UnitMultiplier.p",
+                        "description": "Pico 10**-12."
+                    },
+                    {
+                        "name": "n",
+                        "enumValue": "UnitMultiplier.n",
+                        "description": "Nano 10**-9."
+                    },
+                    {
+                        "name": "micro",
+                        "enumValue": "UnitMultiplier.micro",
+                        "description": "Micro 10**-6."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitMultiplier.m",
+                        "description": "Milli 10**-3."
+                    },
+                    {
+                        "name": "c",
+                        "enumValue": "UnitMultiplier.c",
+                        "description": "Centi 10**-2."
+                    },
+                    {
+                        "name": "d",
+                        "enumValue": "UnitMultiplier.d",
+                        "description": "Deci 10**-1."
+                    },
+                    {
+                        "name": "k",
+                        "enumValue": "UnitMultiplier.k",
+                        "description": "Kilo 10**3."
+                    },
+                    {
+                        "name": "M",
+                        "enumValue": "UnitMultiplier.M",
+                        "description": "Mega 10**6."
+                    },
+                    {
+                        "name": "G",
+                        "enumValue": "UnitMultiplier.G",
+                        "description": "Giga 10**9."
+                    },
+                    {
+                        "name": "T",
+                        "enumValue": "UnitMultiplier.T",
+                        "description": "Tera 10**12."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitMultiplier.none",
+                        "description": "No multiplier or equivalently multiply by 1."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "unitSymbol",
+            "displayName": "Measurement.unitSymbol",
+            "description": "The unit of measure of the measured quantity.",
+            "@type": "Property",
+            "schema": {
+                "@type": "Enum",
+                "valueSchema": "string",
+                "enumValues": [
+                    {
+                        "name": "VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    },
+                    {
+                        "name": "VA",
+                        "enumValue": "UnitSymbol.VA",
+                        "description": "Apparent power in volt ampere."
+                    },
+                    {
+                        "name": "W",
+                        "enumValue": "UnitSymbol.W",
+                        "description": "Active power in watt."
+                    },
+                    {
+                        "name": "VAr",
+                        "enumValue": "UnitSymbol.VAr",
+                        "description": "Reactive power in volt ampere reactive."
+                    },
+                    {
+                        "name": "VAh",
+                        "enumValue": "UnitSymbol.VAh",
+                        "description": "Apparent energy in volt ampere hours."
+                    },
+                    {
+                        "name": "Wh",
+                        "enumValue": "UnitSymbol.Wh",
+                        "description": "Real energy in what hours."
+                    },
+                    {
+                        "name": "VArh",
+                        "enumValue": "UnitSymbol.VArh",
+                        "description": "Reactive energy in volt ampere reactive hours."
+                    },
+                    {
+                        "name": "V",
+                        "enumValue": "UnitSymbol.V",
+                        "description": "Voltage in volt."
+                    },
+                    {
+                        "name": "ohm",
+                        "enumValue": "UnitSymbol.ohm",
+                        "description": "Resistance in ohm."
+                    },
+                    {
+                        "name": "A",
+                        "enumValue": "UnitSymbol.A",
+                        "description": "Current in ampere."
+                    },
+                    {
+                        "name": "F",
+                        "enumValue": "UnitSymbol.F",
+                        "description": "Capacitance in farad."
+                    },
+                    {
+                        "name": "H",
+                        "enumValue": "UnitSymbol.H",
+                        "description": "Inductance in henry."
+                    },
+                    {
+                        "name": "degC",
+                        "enumValue": "UnitSymbol.degC",
+                        "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
+                    },
+                    {
+                        "name": "s",
+                        "enumValue": "UnitSymbol.s",
+                        "description": "Time in seconds."
+                    },
+                    {
+                        "name": "min",
+                        "enumValue": "UnitSymbol.min",
+                        "description": "Time in minutes."
+                    },
+                    {
+                        "name": "h",
+                        "enumValue": "UnitSymbol.h",
+                        "description": "Time in hours."
+                    },
+                    {
+                        "name": "deg",
+                        "enumValue": "UnitSymbol.deg",
+                        "description": "Plane angle in degrees."
+                    },
+                    {
+                        "name": "rad",
+                        "enumValue": "UnitSymbol.rad",
+                        "description": "Plane angle in radians."
+                    },
+                    {
+                        "name": "J",
+                        "enumValue": "UnitSymbol.J",
+                        "description": "Energy in joule."
+                    },
+                    {
+                        "name": "N",
+                        "enumValue": "UnitSymbol.N",
+                        "description": "Force in newton."
+                    },
+                    {
+                        "name": "S",
+                        "enumValue": "UnitSymbol.S",
+                        "description": "Conductance in siemens."
+                    },
+                    {
+                        "name": "none",
+                        "enumValue": "UnitSymbol.none",
+                        "description": "Dimension less quantity, e.g. count, per unit, etc."
+                    },
+                    {
+                        "name": "Hz",
+                        "enumValue": "UnitSymbol.Hz",
+                        "description": "Frequency in hertz."
+                    },
+                    {
+                        "name": "g",
+                        "enumValue": "UnitSymbol.g",
+                        "description": "Mass in gram."
+                    },
+                    {
+                        "name": "Pa",
+                        "enumValue": "UnitSymbol.Pa",
+                        "description": "Pressure in pascal (n/m2)."
+                    },
+                    {
+                        "name": "m",
+                        "enumValue": "UnitSymbol.m",
+                        "description": "Length in meter."
+                    },
+                    {
+                        "name": "m2",
+                        "enumValue": "UnitSymbol.m2",
+                        "description": "Area in square meters."
+                    },
+                    {
+                        "name": "m3",
+                        "enumValue": "UnitSymbol.m3",
+                        "description": "Volume in cubic meters."
+                    }
+                ]
+            }
+        }
+    ]
+}

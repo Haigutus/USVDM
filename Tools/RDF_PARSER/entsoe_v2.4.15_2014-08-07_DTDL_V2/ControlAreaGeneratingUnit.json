@@ -4,6 +4,9 @@
     "@id": "dtmi:cim:ControlAreaGeneratingUnit;16",
     "displayName": "ControlAreaGeneratingUnit",
     "description": "A control area generating unit. This class is needed so that alternate control area definitions may include the same generating unit.   Note only one instance within a control area should reference a specific generating unit.",
+    "extends": [
+        "dtmi:cim:IdentifiedObject;16"
+    ],
     "contents": [
         {
             "name": "ControlArea",
@@ -18,41 +21,6 @@
             "description": "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once.",
             "@type": "Relationship",
             "target": "dtmi:cim:GeneratingUnit;16"
-        },
-        {
-            "name": "description",
-            "displayName": "IdentifiedObject.description",
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "mRID",
-            "displayName": "IdentifiedObject.mRID",
-            "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "name",
-            "displayName": "IdentifiedObject.name",
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "energyIdentCodeEic",
-            "displayName": "IdentifiedObject.energyIdentCodeEic",
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
-            "@type": "Property",
-            "schema": "string"
-        },
-        {
-            "name": "shortName",
-            "displayName": "IdentifiedObject.shortName",
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "@type": "Property",
-            "schema": "string"
         }
     ]
 }

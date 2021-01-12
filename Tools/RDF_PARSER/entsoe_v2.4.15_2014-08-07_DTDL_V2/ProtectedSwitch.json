@@ -1,0 +1,10 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:ProtectedSwitch;16",
+    "displayName": "ProtectedSwitch",
+    "description": "A ProtectedSwitch is a switching device that can be operated by ProtectionEquipment.",
+    "extends": [
+        "dtmi:cim:Switch;16"
+    ]
+}

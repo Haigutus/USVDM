@@ -1,0 +1,54 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:TransformerEnd;16",
+    "displayName": "TransformerEnd",
+    "description": "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.",
+    "extends": [
+        "dtmi:cim:IdentifiedObject;16"
+    ],
+    "contents": [
+        {
+            "name": "BaseVoltage",
+            "displayName": "TransformerEnd.BaseVoltage",
+            "description": "Base voltage of the transformer end.  This is essential for PU calculation.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:BaseVoltage;16"
+        },
+        {
+            "name": "Terminal",
+            "displayName": "TransformerEnd.Terminal",
+            "description": "Terminal of the power transformer to which this transformer end belongs.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "endNumber",
+            "displayName": "TransformerEnd.endNumber",
+            "description": "Number for this transformer end, corresponding to the end's order in the power transformer vector group or phase angle clock number.  Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.   Note the transformer end number need not match the terminal sequence number.",
+            "@type": "Property",
+            "schema": "integer"
+        },
+        {
+            "name": "grounded",
+            "displayName": "TransformerEnd.grounded",
+            "description": "(for Yn and Zn connections) True if the neutral is solidly grounded.",
+            "@type": "Property",
+            "schema": "boolean"
+        },
+        {
+            "name": "rground",
+            "displayName": "TransformerEnd.rground",
+            "description": "(for Yn and Zn connections) Resistance part of neutral impedance where 'grounded' is true.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "xground",
+            "displayName": "TransformerEnd.xground",
+            "description": "(for Yn and Zn connections) Reactive part of neutral impedance where 'grounded' is true.",
+            "@type": "Property",
+            "schema": "float"
+        }
+    ]
+}

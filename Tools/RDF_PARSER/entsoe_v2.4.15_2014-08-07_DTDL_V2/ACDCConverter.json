@@ -1,0 +1,138 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:ACDCConverter;16",
+    "displayName": "ACDCConverter",
+    "description": "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.",
+    "extends": [
+        "dtmi:cim:ConductingEquipment;16"
+    ],
+    "contents": [
+        {
+            "name": "PccTerminal",
+            "displayName": "ACDCConverter.PccTerminal",
+            "description": "All converters' DC sides linked to this point of common coupling terminal.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:Terminal;16"
+        },
+        {
+            "name": "baseS",
+            "displayName": "ACDCConverter.baseS",
+            "description": "Base apparent power of the converter pole.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "idc",
+            "displayName": "ACDCConverter.idc",
+            "description": "Converter DC current, also called Id. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "idleLoss",
+            "displayName": "ACDCConverter.idleLoss",
+            "description": "Active power loss in pole at no power transfer. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "maxUdc",
+            "displayName": "ACDCConverter.maxUdc",
+            "description": "The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "minUdc",
+            "displayName": "ACDCConverter.minUdc",
+            "description": "Min allowed converter DC voltage. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "numberOfValves",
+            "displayName": "ACDCConverter.numberOfValves",
+            "description": "Number of valves in the converter. Used in loss calculations.",
+            "@type": "Property",
+            "schema": "integer"
+        },
+        {
+            "name": "p",
+            "displayName": "ACDCConverter.p",
+            "description": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "poleLossP",
+            "displayName": "ACDCConverter.poleLossP",
+            "description": "The active power loss at a DC Pole \n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2\nFor lossless operation Pdc=Pac\nFor rectifier operation with losses Pdc=Pac-lossP\nFor inverter operation with losses Pdc=Pac+lossP\nConverter state variable used in power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "q",
+            "displayName": "ACDCConverter.q",
+            "description": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "ratedUdc",
+            "displayName": "ACDCConverter.ratedUdc",
+            "description": "Rated converter DC voltage, also called UdN. Converter configuration data used in power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "resistiveLoss",
+            "displayName": "ACDCConverter.resistiveLoss",
+            "description": "Converter configuration data used in power flow. Refer to poleLossP.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "switchingLoss",
+            "displayName": "ACDCConverter.switchingLoss",
+            "description": "Switching losses, relative to the base apparent power 'baseS'.\nRefer to poleLossP.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "targetPpcc",
+            "displayName": "ACDCConverter.targetPpcc",
+            "description": "Real power injection target in AC grid, at point of common coupling.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "targetUdc",
+            "displayName": "ACDCConverter.targetUdc",
+            "description": "Target value for DC voltage magnitude.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "uc",
+            "displayName": "ACDCConverter.uc",
+            "description": "Converter voltage, the voltage at the AC side of the bridge. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "udc",
+            "displayName": "ACDCConverter.udc",
+            "description": "Converter voltage at the DC side, also called Ud. Converter state variable, result from power flow.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "valveU0",
+            "displayName": "ACDCConverter.valveU0",
+            "description": "Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0.",
+            "@type": "Property",
+            "schema": "float"
+        }
+    ]
+}

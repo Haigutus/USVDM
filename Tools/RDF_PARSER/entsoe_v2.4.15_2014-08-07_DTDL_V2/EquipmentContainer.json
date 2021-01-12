@@ -1,0 +1,11 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:EquipmentContainer;16",
+    "displayName": "EquipmentContainer",
+    "description": "A modeling construct to provide a root class for containing equipment. ",
+    "extends": [
+        "dtmi:cim:ConnectivityNodeContainer;16"
+    ],
+    "contents": []
+}

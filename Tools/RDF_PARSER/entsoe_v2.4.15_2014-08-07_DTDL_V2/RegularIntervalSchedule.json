@@ -1,0 +1,26 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:RegularIntervalSchedule;16",
+    "displayName": "RegularIntervalSchedule",
+    "description": "The schedule has time points where the time between them is constant.",
+    "extends": [
+        "dtmi:cim:BasicIntervalSchedule;16"
+    ],
+    "contents": [
+        {
+            "name": "endTime",
+            "displayName": "RegularIntervalSchedule.endTime",
+            "description": "The time for the last time point.",
+            "@type": "Property",
+            "schema": "dateTime"
+        },
+        {
+            "name": "timeStep",
+            "displayName": "RegularIntervalSchedule.timeStep",
+            "description": "The time between each pair of subsequent regular time points in sequence order.",
+            "@type": "Property",
+            "schema": "float"
+        }
+    ]
+}

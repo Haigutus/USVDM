@@ -1,0 +1,19 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:PhaseTapChanger;16",
+    "displayName": "PhaseTapChanger",
+    "description": "A transformer phase shifting tap model that controls the phase angle difference across the power transformer and potentially the active power flow through the power transformer.  This phase tap model may also impact the voltage magnitude.",
+    "extends": [
+        "dtmi:cim:TapChanger;16"
+    ],
+    "contents": [
+        {
+            "name": "TransformerEnd",
+            "displayName": "PhaseTapChanger.TransformerEnd",
+            "description": "Phase tap changer associated with this transformer end.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:TransformerEnd;16"
+        }
+    ]
+}

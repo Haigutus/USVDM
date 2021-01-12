@@ -1,0 +1,33 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:MeasurementValue;16",
+    "displayName": "MeasurementValue",
+    "description": "The current state for a measurement. A state value is an instance of a measurement from a specific source. Measurements can be associated with many state values, each representing a different source for the measurement.",
+    "extends": [
+        "dtmi:cim:IdentifiedObject;16"
+    ],
+    "contents": [
+        {
+            "name": "MeasurementValueSource",
+            "displayName": "MeasurementValue.MeasurementValueSource",
+            "description": "The MeasurementValues updated by the source.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:MeasurementValueSource;16"
+        },
+        {
+            "name": "sensorAccuracy",
+            "displayName": "MeasurementValue.sensorAccuracy",
+            "description": "The limit, expressed as a percentage of the sensor maximum, that errors will not exceed when the sensor is used under  reference conditions.",
+            "@type": "Property",
+            "schema": "float"
+        },
+        {
+            "name": "timeStamp",
+            "displayName": "MeasurementValue.timeStamp",
+            "description": "The time when the value was last updated",
+            "@type": "Property",
+            "schema": "dateTime"
+        }
+    ]
+}

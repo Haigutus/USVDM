@@ -1,0 +1,19 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:cim:EquivalentEquipment;16",
+    "displayName": "EquivalentEquipment",
+    "description": "The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.",
+    "extends": [
+        "dtmi:cim:ConductingEquipment;16"
+    ],
+    "contents": [
+        {
+            "name": "EquivalentNetwork",
+            "displayName": "EquivalentEquipment.EquivalentNetwork",
+            "description": "The associated reduced equivalents.",
+            "@type": "Relationship",
+            "target": "dtmi:cim:EquivalentNetwork;16"
+        }
+    ]
+}
