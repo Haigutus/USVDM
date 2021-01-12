@@ -11,6 +11,45 @@ def get_description(meta_dict):
     return description
 
 
+data_types_map = {
+ '#String': "string",
+ '#Simple_Float': "float",
+ '#Float': "float",
+ '#Boolean': "boolean",
+ '#Reactance': "float",
+ '#Resistance': "float",
+ '#Voltage': "float",
+ '#Integer': "integer",
+ '#ActivePower': "float",
+ '#ReactivePower': "float",
+ '#CurrentFlow': "float",
+ '#AngleDegrees': "float",
+ '#PerCent': "float",
+ '#Conductance': "float",
+ '#Susceptance': "float",
+ '#PU': "float",
+ '#Date': "date",
+ '#Length': "float",
+ '#DateTime': "dateTime",
+ '#ApparentPower': "float",
+ '#Seconds': "float",
+ '#Inductance': "float",
+ '#Money': "float",
+ '#MonthDay': "integer",
+ '#VoltagePerReactivePower': "float",
+ '#Capacitance': "float",
+ '#ActivePowerPerFrequency': "float",
+ '#ResistancePerLength': "float",
+ '#RotationSpeed': "float",
+ '#AngleRadians': "float",
+ '#InductancePerLength': "float",
+ '#ActivePowerPerCurrentFlow': "float",
+ '#CapacitancePerLength': "float",
+ '#Decimal': "float",
+ '#Frequency': "float",
+ '#Temperature': "float"}
+
+
 #path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
 #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
 path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
@@ -78,7 +117,8 @@ for concrete_class in concrete_classes_list(data):
 
         parameter_def = {
                 #"@id": f"dtmi:cim16:{parameter_name}",
-                "name": parameter_name.replace(".", "_"),
+                #"name": parameter_name.replace(".", "_"),
+                "name": parameter_meta["label"],
                 "displayName": parameter_name,
                 #"writable": True,
                 "description": description[:511],
@@ -98,7 +138,7 @@ for concrete_class in concrete_classes_list(data):
             if str(data_type) != "nan":
 
                 parameter_def["@type"] = "Property"
-                parameter_def["schema"] = "string"
+                parameter_def["schema"] = data_types_map[data_type]
 
 
 
@@ -141,7 +181,8 @@ for concrete_class in concrete_classes_list(data):
 
                     value_def = {
                                     #"@id": f"dtmi:cim16:{value_name}",
-                                    "name": value_name.replace(".", "_"),
+                                    #"name": value_name.replace(".", "_"),
+                                    "name": value_meta["label"],
                                     #"displayName": value_name,
                                     "enumValue": value_name,
                                     "description": description[:511],
