@@ -6,196 +6,196 @@
     "description": "DC side of the current source converter (CSC).",
     "contents": [
         {
-            "name": "ACDCConverter_PccTerminal",
+            "name": "PccTerminal",
             "displayName": "ACDCConverter.PccTerminal",
             "description": "All converters' DC sides linked to this point of common coupling terminal.",
             "@type": "Relationship",
             "target": "dtmi:cim:Terminal;16"
         },
         {
-            "name": "ACDCConverter_baseS",
+            "name": "baseS",
             "displayName": "ACDCConverter.baseS",
             "description": "Base apparent power of the converter pole.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_idc",
+            "name": "idc",
             "displayName": "ACDCConverter.idc",
             "description": "Converter DC current, also called Id. Converter state variable, result from power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_idleLoss",
+            "name": "idleLoss",
             "displayName": "ACDCConverter.idleLoss",
             "description": "Active power loss in pole at no power transfer. Converter configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_maxUdc",
+            "name": "maxUdc",
             "displayName": "ACDCConverter.maxUdc",
             "description": "The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_minUdc",
+            "name": "minUdc",
             "displayName": "ACDCConverter.minUdc",
             "description": "Min allowed converter DC voltage. Converter configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_numberOfValves",
+            "name": "numberOfValves",
             "displayName": "ACDCConverter.numberOfValves",
             "description": "Number of valves in the converter. Used in loss calculations.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "integer"
         },
         {
-            "name": "ACDCConverter_p",
+            "name": "p",
             "displayName": "ACDCConverter.p",
             "description": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_poleLossP",
+            "name": "poleLossP",
             "displayName": "ACDCConverter.poleLossP",
             "description": "The active power loss at a DC Pole \n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2\nFor lossless operation Pdc=Pac\nFor rectifier operation with losses Pdc=Pac-lossP\nFor inverter operation with losses Pdc=Pac+lossP\nConverter state variable used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_q",
+            "name": "q",
             "displayName": "ACDCConverter.q",
             "description": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_ratedUdc",
+            "name": "ratedUdc",
             "displayName": "ACDCConverter.ratedUdc",
             "description": "Rated converter DC voltage, also called UdN. Converter configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_resistiveLoss",
+            "name": "resistiveLoss",
             "displayName": "ACDCConverter.resistiveLoss",
             "description": "Converter configuration data used in power flow. Refer to poleLossP.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_switchingLoss",
+            "name": "switchingLoss",
             "displayName": "ACDCConverter.switchingLoss",
             "description": "Switching losses, relative to the base apparent power 'baseS'.\nRefer to poleLossP.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_targetPpcc",
+            "name": "targetPpcc",
             "displayName": "ACDCConverter.targetPpcc",
             "description": "Real power injection target in AC grid, at point of common coupling.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_targetUdc",
+            "name": "targetUdc",
             "displayName": "ACDCConverter.targetUdc",
             "description": "Target value for DC voltage magnitude.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_uc",
+            "name": "uc",
             "displayName": "ACDCConverter.uc",
             "description": "Converter voltage, the voltage at the AC side of the bridge. Converter state variable, result from power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_udc",
+            "name": "udc",
             "displayName": "ACDCConverter.udc",
             "description": "Converter voltage at the DC side, also called Ud. Converter state variable, result from power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACDCConverter_valveU0",
+            "name": "valveU0",
             "displayName": "ACDCConverter.valveU0",
             "description": "Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ConductingEquipment_BaseVoltage",
+            "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
             "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         },
         {
-            "name": "CsConverter_alpha",
+            "name": "alpha",
             "displayName": "CsConverter.alpha",
             "description": "Firing angle, typical value between 10 and 18 degrees for a rectifier. CSC state variable, result from power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_gamma",
+            "name": "gamma",
             "displayName": "CsConverter.gamma",
             "description": "Extinction angle. CSC state variable, result from power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_maxAlpha",
+            "name": "maxAlpha",
             "displayName": "CsConverter.maxAlpha",
             "description": "Maximum firing angle. CSC configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_maxGamma",
+            "name": "maxGamma",
             "displayName": "CsConverter.maxGamma",
             "description": "Maximum extinction angle. CSC configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_maxIdc",
+            "name": "maxIdc",
             "displayName": "CsConverter.maxIdc",
             "description": "The maximum direct current (Id) on the DC side at which the converter should operate. Converter configuration data use in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_minAlpha",
+            "name": "minAlpha",
             "displayName": "CsConverter.minAlpha",
             "description": "Minimum firing angle. CSC configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_minGamma",
+            "name": "minGamma",
             "displayName": "CsConverter.minGamma",
             "description": "Minimum extinction angle. CSC configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_minIdc",
+            "name": "minIdc",
             "displayName": "CsConverter.minIdc",
             "description": "The minimum direct current (Id) on the DC side at which the converter should operate. CSC configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_operatingMode",
+            "name": "operatingMode",
             "displayName": "CsConverter.operatingMode",
             "description": "Indicates whether the DC pole is operating as an inverter or as a rectifier. CSC control variable used in power flow.",
             "@type": "Property",
@@ -204,12 +204,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "CsOperatingModeKind_inverter",
+                        "name": "inverter",
                         "enumValue": "CsOperatingModeKind.inverter",
                         "description": "Operating as inverter"
                     },
                     {
-                        "name": "CsOperatingModeKind_rectifier",
+                        "name": "rectifier",
                         "enumValue": "CsOperatingModeKind.rectifier",
                         "description": "Operating as rectifier."
                     }
@@ -217,7 +217,7 @@
             }
         },
         {
-            "name": "CsConverter_pPccControl",
+            "name": "pPccControl",
             "displayName": "CsConverter.pPccControl",
             "description": "",
             "@type": "Property",
@@ -226,17 +226,17 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "CsPpccControlKind_activePower",
+                        "name": "activePower",
                         "enumValue": "CsPpccControlKind.activePower",
                         "description": "Active power control at AC side."
                     },
                     {
-                        "name": "CsPpccControlKind_dcVoltage",
+                        "name": "dcVoltage",
                         "enumValue": "CsPpccControlKind.dcVoltage",
                         "description": "DC voltage control."
                     },
                     {
-                        "name": "CsPpccControlKind_dcCurrent",
+                        "name": "dcCurrent",
                         "enumValue": "CsPpccControlKind.dcCurrent",
                         "description": "DC current control"
                     }
@@ -244,77 +244,77 @@
             }
         },
         {
-            "name": "CsConverter_ratedIdc",
+            "name": "ratedIdc",
             "displayName": "CsConverter.ratedIdc",
             "description": "Rated converter DC current, also called IdN. Converter configuration data used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_targetAlpha",
+            "name": "targetAlpha",
             "displayName": "CsConverter.targetAlpha",
             "description": "Target firing angle. CSC control variable used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_targetGamma",
+            "name": "targetGamma",
             "displayName": "CsConverter.targetGamma",
             "description": "Target extinction angle. CSC  control variable used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "CsConverter_targetIdc",
+            "name": "targetIdc",
             "displayName": "CsConverter.targetIdc",
             "description": "DC current target value. CSC control variable used in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "Equipment_EquipmentContainer",
+            "name": "EquipmentContainer",
             "displayName": "Equipment.EquipmentContainer",
             "description": "Container of this equipment.",
             "@type": "Relationship",
             "target": "dtmi:cim:EquipmentContainer;16"
         },
         {
-            "name": "Equipment_aggregate",
+            "name": "aggregate",
             "displayName": "Equipment.aggregate",
             "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",

@@ -6,7 +6,7 @@
     "description": "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g squirrel-cage induction machine.",
     "contents": [
         {
-            "name": "AsynchronousMachine_asynchronousMachineType",
+            "name": "asynchronousMachineType",
             "displayName": "AsynchronousMachine.asynchronousMachineType",
             "description": "Indicates the type of Asynchronous Machine (motor or generator).",
             "@type": "Property",
@@ -15,12 +15,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "AsynchronousMachineKind_generator",
+                        "name": "generator",
                         "enumValue": "AsynchronousMachineKind.generator",
                         "description": "The Asynchronous Machine is a generator."
                     },
                     {
-                        "name": "AsynchronousMachineKind_motor",
+                        "name": "motor",
                         "enumValue": "AsynchronousMachineKind.motor",
                         "description": "The Asynchronous Machine is a motor."
                     }
@@ -28,175 +28,175 @@
             }
         },
         {
-            "name": "AsynchronousMachine_converterFedDrive",
+            "name": "converterFedDrive",
             "displayName": "AsynchronousMachine.converterFedDrive",
             "description": "Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "AsynchronousMachine_efficiency",
+            "name": "efficiency",
             "displayName": "AsynchronousMachine.efficiency",
             "description": "Efficiency of the asynchronous machine at nominal operation in percent. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "AsynchronousMachine_iaIrRatio",
+            "name": "iaIrRatio",
             "displayName": "AsynchronousMachine.iaIrRatio",
             "description": "Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "AsynchronousMachine_nominalFrequency",
+            "name": "nominalFrequency",
             "displayName": "AsynchronousMachine.nominalFrequency",
             "description": "Nameplate data indicates if the machine is 50 or 60 Hz.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "AsynchronousMachine_nominalSpeed",
+            "name": "nominalSpeed",
             "displayName": "AsynchronousMachine.nominalSpeed",
             "description": "Nameplate data.  Depends on the slip and number of pole pairs.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "AsynchronousMachine_polePairNumber",
+            "name": "polePairNumber",
             "displayName": "AsynchronousMachine.polePairNumber",
             "description": "Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "integer"
         },
         {
-            "name": "AsynchronousMachine_ratedMechanicalPower",
+            "name": "ratedMechanicalPower",
             "displayName": "AsynchronousMachine.ratedMechanicalPower",
             "description": "Rated mechanical power (Pr in the IEC 60909-0). Used for short circuit data exchange according to IEC 60909.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "AsynchronousMachine_reversible",
+            "name": "reversible",
             "displayName": "AsynchronousMachine.reversible",
             "description": "Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "AsynchronousMachine_rxLockedRotorRatio",
+            "name": "rxLockedRotorRatio",
             "displayName": "AsynchronousMachine.rxLockedRotorRatio",
             "description": "Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ConductingEquipment_BaseVoltage",
+            "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
             "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         },
         {
-            "name": "Equipment_EquipmentContainer",
+            "name": "EquipmentContainer",
             "displayName": "Equipment.EquipmentContainer",
             "description": "Container of this equipment.",
             "@type": "Relationship",
             "target": "dtmi:cim:EquipmentContainer;16"
         },
         {
-            "name": "Equipment_aggregate",
+            "name": "aggregate",
             "displayName": "Equipment.aggregate",
             "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "RegulatingCondEq_RegulatingControl",
+            "name": "RegulatingControl",
             "displayName": "RegulatingCondEq.RegulatingControl",
             "description": "The regulating control scheme in which this equipment participates.",
             "@type": "Relationship",
             "target": "dtmi:cim:RegulatingControl;16"
         },
         {
-            "name": "RegulatingCondEq_controlEnabled",
+            "name": "controlEnabled",
             "displayName": "RegulatingCondEq.controlEnabled",
             "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "RotatingMachine_GeneratingUnit",
+            "name": "GeneratingUnit",
             "displayName": "RotatingMachine.GeneratingUnit",
             "description": "A synchronous machine may operate as a generator and as such becomes a member of a generating unit.",
             "@type": "Relationship",
             "target": "dtmi:cim:GeneratingUnit;16"
         },
         {
-            "name": "RotatingMachine_p",
+            "name": "p",
             "displayName": "RotatingMachine.p",
             "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "RotatingMachine_q",
+            "name": "q",
             "displayName": "RotatingMachine.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "RotatingMachine_ratedPowerFactor",
+            "name": "ratedPowerFactor",
             "displayName": "RotatingMachine.ratedPowerFactor",
             "description": "Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "RotatingMachine_ratedS",
+            "name": "ratedS",
             "displayName": "RotatingMachine.ratedS",
             "description": "Nameplate apparent power rating for the unit.\nThe attribute shall have a positive value.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "RotatingMachine_ratedU",
+            "name": "ratedU",
             "displayName": "RotatingMachine.ratedU",
             "description": "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",

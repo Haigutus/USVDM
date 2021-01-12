@@ -6,35 +6,35 @@
     "description": "The operational meaning of a category of limits.",
     "contents": [
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "OperationalLimitType_acceptableDuration",
+            "name": "acceptableDuration",
             "displayName": "OperationalLimitType.acceptableDuration",
             "description": "The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "OperationalLimitType_direction",
+            "name": "direction",
             "displayName": "OperationalLimitType.direction",
             "description": "The direction of the limit.",
             "@type": "Property",
@@ -43,17 +43,17 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "OperationalLimitDirectionKind_high",
+                        "name": "high",
                         "enumValue": "OperationalLimitDirectionKind.high",
                         "description": "High means that a monitored value above the limit value is a violation.   If applied to a terminal flow, the positive direction is into the terminal."
                     },
                     {
-                        "name": "OperationalLimitDirectionKind_low",
+                        "name": "low",
                         "enumValue": "OperationalLimitDirectionKind.low",
                         "description": "Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal."
                     },
                     {
-                        "name": "OperationalLimitDirectionKind_absoluteValue",
+                        "name": "absoluteValue",
                         "enumValue": "OperationalLimitDirectionKind.absoluteValue",
                         "description": "An absoluteValue limit means that a monitored absolute value above the limit value is a violation."
                     }
@@ -61,21 +61,21 @@
             }
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "OperationalLimitType_limitType",
+            "name": "limitType",
             "displayName": "OperationalLimitType.limitType",
             "description": "Types of limits defined in the ENTSO-E Operational Handbook Policy 3.",
             "@type": "Property",
@@ -84,37 +84,37 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "LimitTypeKind_patl",
+                        "name": "patl",
                         "enumValue": "LimitTypeKind.patl",
                         "description": "The Permanent Admissible Transmission Loading (PATL) is the loading in Amps, MVA or MW that can be accepted by a network branch for an unlimited duration without any risk for the material.\nThe duration attribute is not used and shall be excluded for the PATL limit type. Hence only one limit value exists for the PATL type."
                     },
                     {
-                        "name": "LimitTypeKind_patlt",
+                        "name": "patlt",
                         "enumValue": "LimitTypeKind.patlt",
                         "description": "Permanent Admissible Transmission Loading Threshold  (PATLT) is a value in engineering units defined for PATL and calculated using percentage less than 100 of the PATL type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit."
                     },
                     {
-                        "name": "LimitTypeKind_tatl",
+                        "name": "tatl",
                         "enumValue": "LimitTypeKind.tatl",
                         "description": "Temporarily Admissible Transmission Loading (TATL) which is the loading in Amps, MVA or MW that can be accepted by a branch for a certain limited duration.\nThe TATL can be defined in different ways:\n"
                     },
                     {
-                        "name": "LimitTypeKind_tc",
+                        "name": "tc",
                         "enumValue": "LimitTypeKind.tc",
                         "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exi"
                     },
                     {
-                        "name": "LimitTypeKind_tct",
+                        "name": "tct",
                         "enumValue": "LimitTypeKind.tct",
                         "description": "Tripping Current Threshold  (TCT) is a value in engineering units defined for TC and calculated using percentage less than 100 of the TC type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit."
                     },
                     {
-                        "name": "LimitTypeKind_highVoltage",
+                        "name": "highVoltage",
                         "enumValue": "LimitTypeKind.highVoltage",
                         "description": "Referring to the rating of the equipments, a voltage too high can lead to accelerated ageing or the destruction of the equipment. \nThis limit type may or may not have duration."
                     },
                     {
-                        "name": "LimitTypeKind_lowVoltage",
+                        "name": "lowVoltage",
                         "enumValue": "LimitTypeKind.lowVoltage",
                         "description": "A too low voltage can disturb the normal operation of some protections and transformer equipped with on-load tap changers, electronic power devices or can affect the behaviour of the auxiliaries of generation units.\nThis limit type may or may not have duration."
                     }

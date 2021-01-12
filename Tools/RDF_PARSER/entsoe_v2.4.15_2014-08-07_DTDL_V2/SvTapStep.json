@@ -6,18 +6,18 @@
     "description": "State variable for transformer tap step.     This class is to be used for taps of LTC (load tap changing) transformers, not fixed tap transformers.",
     "contents": [
         {
-            "name": "SvTapStep_TapChanger",
+            "name": "TapChanger",
             "displayName": "SvTapStep.TapChanger",
             "description": "The tap changer associated with the tap step state.",
             "@type": "Relationship",
             "target": "dtmi:cim:TapChanger;16"
         },
         {
-            "name": "SvTapStep_position",
+            "name": "position",
             "displayName": "SvTapStep.position",
             "description": "The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined by the related tap changer model and normally is constrained to be within the range of minimum and maximum tap positions.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         }
     ]
 }

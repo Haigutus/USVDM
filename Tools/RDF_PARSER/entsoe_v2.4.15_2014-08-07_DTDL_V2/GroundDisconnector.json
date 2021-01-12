@@ -6,84 +6,84 @@
     "description": "A manually operated or motor operated mechanical switching device used for isolating a circuit or equipment from ground.",
     "contents": [
         {
-            "name": "ConductingEquipment_BaseVoltage",
+            "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
             "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         },
         {
-            "name": "Equipment_EquipmentContainer",
+            "name": "EquipmentContainer",
             "displayName": "Equipment.EquipmentContainer",
             "description": "Container of this equipment.",
             "@type": "Relationship",
             "target": "dtmi:cim:EquipmentContainer;16"
         },
         {
-            "name": "Equipment_aggregate",
+            "name": "aggregate",
             "displayName": "Equipment.aggregate",
             "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "Switch_normalOpen",
+            "name": "normalOpen",
             "displayName": "Switch.normalOpen",
             "description": "The attribute is used in cases when no Measurement for the status value is present. If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "Switch_open",
+            "name": "open",
             "displayName": "Switch.open",
             "description": "The attribute tells if the switch is considered open when used as input to topology processing.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "Switch_ratedCurrent",
+            "name": "ratedCurrent",
             "displayName": "Switch.ratedCurrent",
             "description": "The maximum continuous current carrying capacity in amps governed by the device material and construction.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "Switch_retained",
+            "name": "retained",
             "displayName": "Switch.retained",
             "description": "Branch is retained in a bus branch model.  The flow through retained switches will normally be calculated in power flow.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",

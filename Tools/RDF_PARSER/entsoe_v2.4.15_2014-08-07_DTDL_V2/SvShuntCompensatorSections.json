@@ -6,18 +6,18 @@
     "description": "State variable for the number of sections in service for a shunt compensator.",
     "contents": [
         {
-            "name": "SvShuntCompensatorSections_ShuntCompensator",
+            "name": "ShuntCompensator",
             "displayName": "SvShuntCompensatorSections.ShuntCompensator",
             "description": "The shunt compensator for which the state applies.",
             "@type": "Relationship",
             "target": "dtmi:cim:ShuntCompensator;16"
         },
         {
-            "name": "SvShuntCompensatorSections_sections",
+            "name": "sections",
             "displayName": "SvShuntCompensatorSections.sections",
             "description": "The number of sections in service as a continous variable. To get integer value scale with ShuntCompensator.bPerSection.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         }
     ]
 }

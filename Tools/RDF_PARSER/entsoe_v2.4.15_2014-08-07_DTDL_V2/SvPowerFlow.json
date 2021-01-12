@@ -6,25 +6,25 @@
     "description": "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.",
     "contents": [
         {
-            "name": "SvPowerFlow_Terminal",
+            "name": "Terminal",
             "displayName": "SvPowerFlow.Terminal",
             "description": "The terminal associated with the power flow state variable.",
             "@type": "Relationship",
             "target": "dtmi:cim:Terminal;16"
         },
         {
-            "name": "SvPowerFlow_p",
+            "name": "p",
             "displayName": "SvPowerFlow.p",
             "description": "The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "SvPowerFlow_q",
+            "name": "q",
             "displayName": "SvPowerFlow.q",
             "description": "The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         }
     ]
 }

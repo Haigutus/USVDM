@@ -6,25 +6,25 @@
     "description": "A flow specification in terms of location and direction for a control area.",
     "contents": [
         {
-            "name": "TieFlow_ControlArea",
+            "name": "ControlArea",
             "displayName": "TieFlow.ControlArea",
             "description": "The control area of the tie flows.",
             "@type": "Relationship",
             "target": "dtmi:cim:ControlArea;16"
         },
         {
-            "name": "TieFlow_Terminal",
+            "name": "Terminal",
             "displayName": "TieFlow.Terminal",
             "description": "The terminal to which this tie flow belongs.",
             "@type": "Relationship",
             "target": "dtmi:cim:Terminal;16"
         },
         {
-            "name": "TieFlow_positiveFlowIn",
+            "name": "positiveFlowIn",
             "displayName": "TieFlow.positiveFlowIn",
             "description": "True if the flow into the terminal (load convention) is also flow into the control area.  For example, this attribute should be true if using the tie line terminal further away from the control area. For example to represent a tie to a shunt component (like a load or generator) in another area, this is the near end of a branch and this attribute would be specified as false.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         }
     ]
 }

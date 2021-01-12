@@ -6,126 +6,126 @@
     "description": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed 3ph lines, it is sufficient to use  attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Li",
     "contents": [
         {
-            "name": "ACLineSegment_b0ch",
+            "name": "b0ch",
             "displayName": "ACLineSegment.b0ch",
             "description": "Zero sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_bch",
+            "name": "bch",
             "displayName": "ACLineSegment.bch",
             "description": "Positive sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.  This value represents the full charging over the full length of the line.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_g0ch",
+            "name": "g0ch",
             "displayName": "ACLineSegment.g0ch",
             "description": "Zero sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_gch",
+            "name": "gch",
             "displayName": "ACLineSegment.gch",
             "description": "Positive sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_r",
+            "name": "r",
             "displayName": "ACLineSegment.r",
             "description": "Positive sequence series resistance of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_r0",
+            "name": "r0",
             "displayName": "ACLineSegment.r0",
             "description": "Zero sequence series resistance of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_shortCircuitEndTemperature",
+            "name": "shortCircuitEndTemperature",
             "displayName": "ACLineSegment.shortCircuitEndTemperature",
             "description": "Maximum permitted temperature at the end of SC for the calculation of minimum short-circuit currents. Used for short circuit data exchange according to IEC 60909",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_x",
+            "name": "x",
             "displayName": "ACLineSegment.x",
             "description": "Positive sequence series reactance of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ACLineSegment_x0",
+            "name": "x0",
             "displayName": "ACLineSegment.x0",
             "description": "Zero sequence series reactance of the entire line section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "ConductingEquipment_BaseVoltage",
+            "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
             "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         },
         {
-            "name": "Conductor_length",
+            "name": "length",
             "displayName": "Conductor.length",
             "description": "Segment length for calculating line section capabilities",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "Equipment_EquipmentContainer",
+            "name": "EquipmentContainer",
             "displayName": "Equipment.EquipmentContainer",
             "description": "Container of this equipment.",
             "@type": "Relationship",
             "target": "dtmi:cim:EquipmentContainer;16"
         },
         {
-            "name": "Equipment_aggregate",
+            "name": "aggregate",
             "displayName": "Equipment.aggregate",
             "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",

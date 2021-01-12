@@ -6,46 +6,46 @@
     "description": "A non linear shunt compensator bank or section admittance value.",
     "contents": [
         {
-            "name": "NonlinearShuntCompensatorPoint_NonlinearShuntCompensator",
+            "name": "NonlinearShuntCompensator",
             "displayName": "NonlinearShuntCompensatorPoint.NonlinearShuntCompensator",
             "description": "Non-linear shunt compensator owning this point.",
             "@type": "Relationship",
             "target": "dtmi:cim:NonlinearShuntCompensator;16"
         },
         {
-            "name": "NonlinearShuntCompensatorPoint_b",
+            "name": "b",
             "displayName": "NonlinearShuntCompensatorPoint.b",
             "description": "Positive sequence shunt (charging) susceptance per section",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "NonlinearShuntCompensatorPoint_b0",
+            "name": "b0",
             "displayName": "NonlinearShuntCompensatorPoint.b0",
             "description": "Zero sequence shunt (charging) susceptance per section",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "NonlinearShuntCompensatorPoint_g",
+            "name": "g",
             "displayName": "NonlinearShuntCompensatorPoint.g",
             "description": "Positive sequence shunt (charging) conductance per section",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "NonlinearShuntCompensatorPoint_g0",
+            "name": "g0",
             "displayName": "NonlinearShuntCompensatorPoint.g0",
             "description": "Zero sequence shunt (charging) conductance per section",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "NonlinearShuntCompensatorPoint_sectionNumber",
+            "name": "sectionNumber",
             "displayName": "NonlinearShuntCompensatorPoint.sectionNumber",
             "description": "The number of the section.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "integer"
         }
     ]
 }

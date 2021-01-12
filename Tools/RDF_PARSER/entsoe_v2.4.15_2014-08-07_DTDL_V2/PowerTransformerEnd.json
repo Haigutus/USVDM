@@ -6,49 +6,49 @@
     "description": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows\n1) for a two Terminal PowerTransformer the high voltage PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage PowerTransformerEnd has zero values for r, r0, x, and x0.\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represents a star equivalent with each leg in the star represe",
     "contents": [
         {
-            "name": "IdentifiedObject_description",
+            "name": "description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_mRID",
+            "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_name",
+            "name": "name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "PowerTransformerEnd_PowerTransformer",
+            "name": "PowerTransformer",
             "displayName": "PowerTransformerEnd.PowerTransformer",
             "description": "The ends of this power transformer.",
             "@type": "Relationship",
             "target": "dtmi:cim:PowerTransformer;16"
         },
         {
-            "name": "PowerTransformerEnd_b",
+            "name": "b",
             "displayName": "PowerTransformerEnd.b",
             "description": "Magnetizing branch susceptance (B mag).  The value can be positive or negative.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_b0",
+            "name": "b0",
             "displayName": "PowerTransformerEnd.b0",
             "description": "Zero sequence magnetizing branch susceptance.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_connectionKind",
+            "name": "connectionKind",
             "displayName": "PowerTransformerEnd.connectionKind",
             "description": "Kind of connection.",
             "@type": "Property",
@@ -57,37 +57,37 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "WindingConnection_D",
+                        "name": "D",
                         "enumValue": "WindingConnection.D",
                         "description": "Delta"
                     },
                     {
-                        "name": "WindingConnection_Y",
+                        "name": "Y",
                         "enumValue": "WindingConnection.Y",
                         "description": ""
                     },
                     {
-                        "name": "WindingConnection_Z",
+                        "name": "Z",
                         "enumValue": "WindingConnection.Z",
                         "description": "ZigZag"
                     },
                     {
-                        "name": "WindingConnection_Yn",
+                        "name": "Yn",
                         "enumValue": "WindingConnection.Yn",
                         "description": "Wye, with neutral brought out for grounding."
                     },
                     {
-                        "name": "WindingConnection_Zn",
+                        "name": "Zn",
                         "enumValue": "WindingConnection.Zn",
                         "description": "ZigZag, with neutral brought out for grounding."
                     },
                     {
-                        "name": "WindingConnection_A",
+                        "name": "A",
                         "enumValue": "WindingConnection.A",
                         "description": "Autotransformer common winding"
                     },
                     {
-                        "name": "WindingConnection_I",
+                        "name": "I",
                         "enumValue": "WindingConnection.I",
                         "description": "Independent winding, for single-phase connections"
                     }
@@ -95,119 +95,119 @@
             }
         },
         {
-            "name": "PowerTransformerEnd_g",
+            "name": "g",
             "displayName": "PowerTransformerEnd.g",
             "description": "Magnetizing branch conductance.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_g0",
+            "name": "g0",
             "displayName": "PowerTransformerEnd.g0",
             "description": "Zero sequence magnetizing branch conductance (star-model).",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_phaseAngleClock",
+            "name": "phaseAngleClock",
             "displayName": "PowerTransformerEnd.phaseAngleClock",
             "description": "Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "integer"
         },
         {
-            "name": "PowerTransformerEnd_r",
+            "name": "r",
             "displayName": "PowerTransformerEnd.r",
             "description": "Resistance (star-model) of the transformer end.\nThe attribute shall be equal or greater than zero for non-equivalent transformers.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_r0",
+            "name": "r0",
             "displayName": "PowerTransformerEnd.r0",
             "description": "Zero sequence series resistance (star-model) of the transformer end.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_ratedS",
+            "name": "ratedS",
             "displayName": "PowerTransformerEnd.ratedS",
             "description": "Normal apparent power rating.\nThe attribute shall be a positive value. For a two-winding transformer the values for the high and low voltage sides shall be identical. ",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_ratedU",
+            "name": "ratedU",
             "displayName": "PowerTransformerEnd.ratedU",
             "description": "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.\nA high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater or equal than ratedU for the lower voltage sides.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_x",
+            "name": "x",
             "displayName": "PowerTransformerEnd.x",
             "description": "Positive sequence series reactance (star-model) of the transformer end.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "PowerTransformerEnd_x0",
+            "name": "x0",
             "displayName": "PowerTransformerEnd.x0",
             "description": "Zero sequence series reactance of the transformer end.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "TransformerEnd_BaseVoltage",
+            "name": "BaseVoltage",
             "displayName": "TransformerEnd.BaseVoltage",
             "description": "Base voltage of the transformer end.  This is essential for PU calculation.",
             "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         },
         {
-            "name": "TransformerEnd_Terminal",
+            "name": "Terminal",
             "displayName": "TransformerEnd.Terminal",
             "description": "Terminal of the power transformer to which this transformer end belongs.",
             "@type": "Relationship",
             "target": "dtmi:cim:Terminal;16"
         },
         {
-            "name": "TransformerEnd_endNumber",
+            "name": "endNumber",
             "displayName": "TransformerEnd.endNumber",
             "description": "Number for this transformer end, corresponding to the end's order in the power transformer vector group or phase angle clock number.  Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.   Note the transformer end number need not match the terminal sequence number.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "integer"
         },
         {
-            "name": "TransformerEnd_grounded",
+            "name": "grounded",
             "displayName": "TransformerEnd.grounded",
             "description": "(for Yn and Zn connections) True if the neutral is solidly grounded.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "boolean"
         },
         {
-            "name": "TransformerEnd_rground",
+            "name": "rground",
             "displayName": "TransformerEnd.rground",
             "description": "(for Yn and Zn connections) Resistance part of neutral impedance where 'grounded' is true.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "TransformerEnd_xground",
+            "name": "xground",
             "displayName": "TransformerEnd.xground",
             "description": "(for Yn and Zn connections) Reactive part of neutral impedance where 'grounded' is true.",
             "@type": "Property",
-            "schema": "string"
+            "schema": "float"
         },
         {
-            "name": "IdentifiedObject_energyIdentCodeEic",
+            "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "@type": "Property",
             "schema": "string"
         },
         {
-            "name": "IdentifiedObject_shortName",
+            "name": "shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "@type": "Property",
