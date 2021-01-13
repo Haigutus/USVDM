@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConformLoad;1",
+    "@id": "dtmi:iec:cim:schema:ConformLoad;16",
     "displayName": "ConformLoad",
     "description": "ConformLoad represent loads that follow a daily load change pattern where the pattern can be used to scale the load with a system load.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyConsumer;1"
+        "dtmi:iec:cim:schema:EnergyConsumer;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ConformLoad:LoadGroup;16",
             "@type": "Relationship",
             "name": "LoadGroup",
             "displayName": "ConformLoad.LoadGroup",
             "description": "Group of this ConformLoad.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConformLoadGroup;1"
+            "target": "dtmi:iec:cim:schema:ConformLoadGroup;16",
+            "maxMultiplicity": 1
         }
     ]
 }

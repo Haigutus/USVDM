@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonlinearShuntCompensatorPoint;1",
+    "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint;16",
     "displayName": "NonlinearShuntCompensatorPoint",
     "description": "A non linear shunt compensator bank or section admittance value.",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:NonlinearShuntCompensator;16",
             "@type": "Relationship",
             "name": "NonlinearShuntCompensator",
             "displayName": "NonlinearShuntCompensatorPoint.NonlinearShuntCompensator",
             "description": "Non-linear shunt compensator owning this point.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonlinearShuntCompensator;1"
+            "target": "dtmi:iec:cim:schema:NonlinearShuntCompensator;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:b;16",
             "@type": "Property",
             "name": "b",
             "displayName": "NonlinearShuntCompensatorPoint.b",
@@ -20,6 +24,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:b0;16",
             "@type": "Property",
             "name": "b0",
             "displayName": "NonlinearShuntCompensatorPoint.b0",
@@ -27,6 +32,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:g;16",
             "@type": "Property",
             "name": "g",
             "displayName": "NonlinearShuntCompensatorPoint.g",
@@ -34,6 +40,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:g0;16",
             "@type": "Property",
             "name": "g0",
             "displayName": "NonlinearShuntCompensatorPoint.g0",
@@ -41,6 +48,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:sectionNumber;16",
             "@type": "Property",
             "name": "sectionNumber",
             "displayName": "NonlinearShuntCompensatorPoint.sectionNumber",

@@ -1,14 +1,15 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EarthFaultCompensator;1",
+    "@id": "dtmi:iec:cim:schema:EarthFaultCompensator;16",
     "displayName": "EarthFaultCompensator",
     "description": "A conducting equipment used to represent a connection to ground which is typically used to compensate earth faults..   An earth fault compensator device modeled with a single terminal implies a second terminal solidly connected to ground.  If two terminals are modeled, the ground is not assumed and normal connection rules apply.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EarthFaultCompensator:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "EarthFaultCompensator.r",

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1",
+    "@id": "dtmi:iec:cim:schema:DCConductingEquipment;16",
     "displayName": "DCConductingEquipment",
     "description": "The parts of the DC power system that are designed to carry current or that are conductively connected through DC terminals.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Equipment;1"
+        "dtmi:iec:cim:schema:Equipment;16"
     ],
     "contents": []
 }

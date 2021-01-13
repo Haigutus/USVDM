@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:VsCapabilityCurve;1",
+    "@id": "dtmi:iec:cim:schema:VsCapabilityCurve;16",
     "displayName": "VsCapabilityCurve",
     "description": "The P-Q capability curve for a voltage source converter, with P on x-axis and Qmin and Qmax on y1-axis and y2-axis.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Curve;1"
+        "dtmi:iec:cim:schema:Curve;16"
     ],
     "contents": []
 }

@@ -1,10 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GroundDisconnector;1",
+    "@id": "dtmi:iec:cim:schema:GroundDisconnector;16",
     "displayName": "GroundDisconnector",
     "description": "A manually operated or motor operated mechanical switching device used for isolating a circuit or equipment from ground.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Switch;1"
+        "dtmi:iec:cim:schema:Switch;16"
     ]
 }

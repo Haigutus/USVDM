@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCShunt;1",
+    "@id": "dtmi:iec:cim:schema:DCShunt;16",
     "displayName": "DCShunt",
     "description": "A shunt device within the DC system, typically used for filtering.  Needed for transient and short circuit studies.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1"
+        "dtmi:iec:cim:schema:DCConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCShunt:capacitance;16",
             "@type": "Property",
             "name": "capacitance",
             "displayName": "DCShunt.capacitance",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCShunt:ratedUdc;16",
             "@type": "Property",
             "name": "ratedUdc",
             "displayName": "DCShunt.ratedUdc",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCShunt:resistance;16",
             "@type": "Property",
             "name": "resistance",
             "displayName": "DCShunt.resistance",

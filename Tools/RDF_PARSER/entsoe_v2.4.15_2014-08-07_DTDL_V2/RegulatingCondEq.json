@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingCondEq;1",
+    "@id": "dtmi:iec:cim:schema:RegulatingCondEq;16",
     "displayName": "RegulatingCondEq",
     "description": "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network. ",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:RegulatingCondEq:RegulatingControl;16",
             "@type": "Relationship",
             "name": "RegulatingControl",
             "displayName": "RegulatingCondEq.RegulatingControl",
             "description": "The regulating control scheme in which this equipment participates.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingControl;1"
+            "target": "dtmi:iec:cim:schema:RegulatingControl;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:RegulatingCondEq:controlEnabled;16",
             "@type": "Property",
             "name": "controlEnabled",
             "displayName": "RegulatingCondEq.controlEnabled",

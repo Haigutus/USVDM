@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegularTimePoint;1",
+    "@id": "dtmi:iec:cim:schema:RegularTimePoint;16",
     "displayName": "RegularTimePoint",
     "description": "Time point for a schedule where the time between the consecutive points is constant.",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:RegularTimePoint:IntervalSchedule;16",
             "@type": "Relationship",
             "name": "IntervalSchedule",
             "displayName": "RegularTimePoint.IntervalSchedule",
             "description": "Regular interval schedule containing this time point.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegularIntervalSchedule;1"
+            "target": "dtmi:iec:cim:schema:RegularIntervalSchedule;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:RegularTimePoint:sequenceNumber;16",
             "@type": "Property",
             "name": "sequenceNumber",
             "displayName": "RegularTimePoint.sequenceNumber",
@@ -20,6 +24,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RegularTimePoint:value1;16",
             "@type": "Property",
             "name": "value1",
             "displayName": "RegularTimePoint.value1",
@@ -27,6 +32,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RegularTimePoint:value2;16",
             "@type": "Property",
             "name": "value2",
             "displayName": "RegularTimePoint.value2",

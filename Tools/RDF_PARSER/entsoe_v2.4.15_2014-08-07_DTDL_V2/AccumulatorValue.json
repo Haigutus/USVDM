@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AccumulatorValue;1",
+    "@id": "dtmi:iec:cim:schema:AccumulatorValue;16",
     "displayName": "AccumulatorValue",
     "description": "AccumulatorValue represents an accumulated (counted) MeasurementValue.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:MeasurementValue;1"
+        "dtmi:iec:cim:schema:MeasurementValue;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:AccumulatorValue:Accumulator;16",
             "@type": "Relationship",
             "name": "Accumulator",
             "displayName": "AccumulatorValue.Accumulator",
             "description": "The values connected to this measurement.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Accumulator;1"
+            "target": "dtmi:iec:cim:schema:Accumulator;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:AccumulatorValue:value;16",
             "@type": "Property",
             "name": "value",
             "displayName": "AccumulatorValue.value",

@@ -1,19 +1,21 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadGroup;1",
+    "@id": "dtmi:iec:cim:schema:LoadGroup;16",
     "displayName": "LoadGroup",
     "description": "The class is the third level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:LoadGroup:SubLoadArea;16",
             "@type": "Relationship",
             "name": "SubLoadArea",
             "displayName": "LoadGroup.SubLoadArea",
             "description": "The SubLoadArea where the Loadgroup belongs.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SubLoadArea;1"
+            "target": "dtmi:iec:cim:schema:SubLoadArea;16",
+            "maxMultiplicity": 1
         }
     ]
 }

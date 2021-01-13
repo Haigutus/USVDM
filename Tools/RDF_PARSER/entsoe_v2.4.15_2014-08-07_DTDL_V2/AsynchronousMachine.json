@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AsynchronousMachine;1",
+    "@id": "dtmi:iec:cim:schema:AsynchronousMachine;16",
     "displayName": "AsynchronousMachine",
     "description": "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g squirrel-cage induction machine.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RotatingMachine;1"
+        "dtmi:iec:cim:schema:RotatingMachine;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:asynchronousMachineType;16",
             "@type": "Property",
             "name": "asynchronousMachineType",
             "displayName": "AsynchronousMachine.asynchronousMachineType",
@@ -18,19 +20,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:AsynchronousMachineKind:generator;16",
                         "name": "generator",
-                        "enumValue": "AsynchronousMachineKind.generator",
+                        "displayName": "AsynchronousMachineKind.generator",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.generator",
                         "description": "The Asynchronous Machine is a generator."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:AsynchronousMachineKind:motor;16",
                         "name": "motor",
-                        "enumValue": "AsynchronousMachineKind.motor",
+                        "displayName": "AsynchronousMachineKind.motor",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.motor",
                         "description": "The Asynchronous Machine is a motor."
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:converterFedDrive;16",
             "@type": "Property",
             "name": "converterFedDrive",
             "displayName": "AsynchronousMachine.converterFedDrive",
@@ -38,6 +45,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:efficiency;16",
             "@type": "Property",
             "name": "efficiency",
             "displayName": "AsynchronousMachine.efficiency",
@@ -45,6 +53,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:iaIrRatio;16",
             "@type": "Property",
             "name": "iaIrRatio",
             "displayName": "AsynchronousMachine.iaIrRatio",
@@ -52,6 +61,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:nominalFrequency;16",
             "@type": "Property",
             "name": "nominalFrequency",
             "displayName": "AsynchronousMachine.nominalFrequency",
@@ -59,6 +69,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:nominalSpeed;16",
             "@type": "Property",
             "name": "nominalSpeed",
             "displayName": "AsynchronousMachine.nominalSpeed",
@@ -66,6 +77,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:polePairNumber;16",
             "@type": "Property",
             "name": "polePairNumber",
             "displayName": "AsynchronousMachine.polePairNumber",
@@ -73,6 +85,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:ratedMechanicalPower;16",
             "@type": "Property",
             "name": "ratedMechanicalPower",
             "displayName": "AsynchronousMachine.ratedMechanicalPower",
@@ -80,6 +93,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:reversible;16",
             "@type": "Property",
             "name": "reversible",
             "displayName": "AsynchronousMachine.reversible",
@@ -87,6 +101,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AsynchronousMachine:rxLockedRotorRatio;16",
             "@type": "Property",
             "name": "rxLockedRotorRatio",
             "displayName": "AsynchronousMachine.rxLockedRotorRatio",

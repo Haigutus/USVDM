@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCLine;1",
+    "@id": "dtmi:iec:cim:schema:DCLine;16",
     "displayName": "DCLine",
     "description": "Overhead lines and/or cables connecting two or more HVDC substations.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCEquipmentContainer;1"
+        "dtmi:iec:cim:schema:DCEquipmentContainer;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCLine:Region;16",
             "@type": "Relationship",
             "name": "Region",
             "displayName": "DCLine.Region",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SubGeographicalRegion;1"
+            "target": "dtmi:iec:cim:schema:SubGeographicalRegion;16",
+            "maxMultiplicity": 1
         }
     ]
 }

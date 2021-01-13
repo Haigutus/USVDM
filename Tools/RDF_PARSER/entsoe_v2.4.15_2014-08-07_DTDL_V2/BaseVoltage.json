@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BaseVoltage;1",
+    "@id": "dtmi:iec:cim:schema:BaseVoltage;16",
     "displayName": "BaseVoltage",
     "description": "Defines a system base voltage which is referenced. ",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:BaseVoltage:nominalVoltage;16",
             "@type": "Property",
             "name": "nominalVoltage",
             "displayName": "BaseVoltage.nominalVoltage",

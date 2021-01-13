@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:CoordinateSystem;1",
+    "@id": "dtmi:iec:cim:schema:CoordinateSystem;16",
     "displayName": "CoordinateSystem",
     "description": "Coordinate reference system.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:CoordinateSystem:crsUrn;16",
             "@type": "Property",
             "name": "crsUrn",
             "displayName": "CoordinateSystem.crsUrn",

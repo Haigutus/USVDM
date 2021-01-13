@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Diagram;1",
+    "@id": "dtmi:iec:cim:schema:Diagram;16",
     "displayName": "Diagram",
     "description": "The diagram being exchanged.  The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:DiagramStyle;16",
             "@type": "Relationship",
             "name": "DiagramStyle",
             "displayName": "Diagram.DiagramStyle",
             "description": "A Diagram may have a DiagramStyle.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramStyle;1"
+            "target": "dtmi:iec:cim:schema:DiagramStyle;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:orientation;16",
             "@type": "Property",
             "name": "orientation",
             "displayName": "Diagram.orientation",
@@ -25,14 +29,17 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:OrientationKind:negative;16",
                         "name": "negative",
-                        "enumValue": "OrientationKind.negative",
+                        "displayName": "OrientationKind.negative",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OrientationKind.negative",
                         "description": "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:x1InitialView;16",
             "@type": "Property",
             "name": "x1InitialView",
             "displayName": "Diagram.x1InitialView",
@@ -40,6 +47,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:x2InitialView;16",
             "@type": "Property",
             "name": "x2InitialView",
             "displayName": "Diagram.x2InitialView",
@@ -47,6 +55,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:y1InitialView;16",
             "@type": "Property",
             "name": "y1InitialView",
             "displayName": "Diagram.y1InitialView",
@@ -54,6 +63,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Diagram:y2InitialView;16",
             "@type": "Property",
             "name": "y2InitialView",
             "displayName": "Diagram.y2InitialView",

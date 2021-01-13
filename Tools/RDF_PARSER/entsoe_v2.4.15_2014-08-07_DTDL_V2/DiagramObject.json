@@ -1,35 +1,43 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObject;1",
+    "@id": "dtmi:iec:cim:schema:DiagramObject;16",
     "displayName": "DiagramObject",
     "description": "An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:Diagram;16",
             "@type": "Relationship",
             "name": "Diagram",
             "displayName": "DiagramObject.Diagram",
             "description": "A diagram object is part of a diagram.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Diagram;1"
+            "target": "dtmi:iec:cim:schema:Diagram;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:DiagramObjectStyle;16",
             "@type": "Relationship",
             "name": "DiagramObjectStyle",
             "displayName": "DiagramObject.DiagramObjectStyle",
             "description": "A diagram object has a style associated that provides a reference for the style used in the originating system.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObjectStyle;1"
+            "target": "dtmi:iec:cim:schema:DiagramObjectStyle;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:IdentifiedObject;16",
             "@type": "Relationship",
             "name": "IdentifiedObject",
             "displayName": "DiagramObject.IdentifiedObject",
             "description": "The diagram objects that are associated with the domain object.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+            "target": "dtmi:iec:cim:schema:IdentifiedObject;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:drawingOrder;16",
             "@type": "Property",
             "name": "drawingOrder",
             "displayName": "DiagramObject.drawingOrder",
@@ -37,6 +45,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:isPolygon;16",
             "@type": "Property",
             "name": "isPolygon",
             "displayName": "DiagramObject.isPolygon",
@@ -44,6 +53,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:offsetX;16",
             "@type": "Property",
             "name": "offsetX",
             "displayName": "DiagramObject.offsetX",
@@ -51,6 +61,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:offsetY;16",
             "@type": "Property",
             "name": "offsetY",
             "displayName": "DiagramObject.offsetY",
@@ -58,6 +69,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObject:rotation;16",
             "@type": "Property",
             "name": "rotation",
             "displayName": "DiagramObject.rotation",

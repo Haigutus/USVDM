@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:VsConverter;1",
+    "@id": "dtmi:iec:cim:schema:VsConverter;16",
     "displayName": "VsConverter",
     "description": "DC side of the voltage source converter (VSC).",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCConverter;1"
+        "dtmi:iec:cim:schema:ACDCConverter;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:CapabilityCurve;16",
             "@type": "Relationship",
             "name": "CapabilityCurve",
             "displayName": "VsConverter.CapabilityCurve",
             "description": "All converters with this capability curve.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:VsCapabilityCurve;1"
+            "target": "dtmi:iec:cim:schema:VsCapabilityCurve;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:delta;16",
             "@type": "Property",
             "name": "delta",
             "displayName": "VsConverter.delta",
@@ -23,6 +27,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:droop;16",
             "@type": "Property",
             "name": "droop",
             "displayName": "VsConverter.droop",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:droopCompensation;16",
             "@type": "Property",
             "name": "droopCompensation",
             "displayName": "VsConverter.droopCompensation",
@@ -37,6 +43,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:maxModulationIndex;16",
             "@type": "Property",
             "name": "maxModulationIndex",
             "displayName": "VsConverter.maxModulationIndex",
@@ -44,6 +51,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:maxValveCurrent;16",
             "@type": "Property",
             "name": "maxValveCurrent",
             "displayName": "VsConverter.maxValveCurrent",
@@ -51,6 +59,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:pPccControl;16",
             "@type": "Property",
             "name": "pPccControl",
             "displayName": "VsConverter.pPccControl",
@@ -60,34 +69,45 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:VsPpccControlKind:pPcc;16",
                         "name": "pPcc",
-                        "enumValue": "VsPpccControlKind.pPcc",
+                        "displayName": "VsPpccControlKind.pPcc",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPcc",
                         "description": "Control variable (target) is real power at PCC bus."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsPpccControlKind:udc;16",
                         "name": "udc",
-                        "enumValue": "VsPpccControlKind.udc",
+                        "displayName": "VsPpccControlKind.udc",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.udc",
                         "description": "Control variable (target) is DC voltage and real power at PCC bus is derived."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsPpccControlKind:pPccAndUdcDroop;16",
                         "name": "pPccAndUdcDroop",
-                        "enumValue": "VsPpccControlKind.pPccAndUdcDroop",
+                        "displayName": "VsPpccControlKind.pPccAndUdcDroop",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroop",
                         "description": "Control variables (targets) are both active power at point of common coupling and local DC voltage, with the droop."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsPpccControlKind:pPccAndUdcDroopWithCompensation;16",
                         "name": "pPccAndUdcDroopWithCompensation",
-                        "enumValue": "VsPpccControlKind.pPccAndUdcDroopWithCompensation",
+                        "displayName": "VsPpccControlKind.pPccAndUdcDroopWithCompensation",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopWithCompensation",
                         "description": "Control variables (targets) are both active power at point of common coupling and compensated DC voltage, with the droop; compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsPpccControlKind:pPccAndUdcDroopPilot;16",
                         "name": "pPccAndUdcDroopPilot",
-                        "enumValue": "VsPpccControlKind.pPccAndUdcDroopPilot",
+                        "displayName": "VsPpccControlKind.pPccAndUdcDroopPilot",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopPilot",
                         "description": "Control variables (targets) are both active power at point of common coupling and the pilot DC voltage, with the droop."
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:qPccControl;16",
             "@type": "Property",
             "name": "qPccControl",
             "displayName": "VsConverter.qPccControl",
@@ -97,24 +117,31 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:VsQpccControlKind:reactivePcc;16",
                         "name": "reactivePcc",
-                        "enumValue": "VsQpccControlKind.reactivePcc",
+                        "displayName": "VsQpccControlKind.reactivePcc",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.reactivePcc",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsQpccControlKind:voltagePcc;16",
                         "name": "voltagePcc",
-                        "enumValue": "VsQpccControlKind.voltagePcc",
+                        "displayName": "VsQpccControlKind.voltagePcc",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.voltagePcc",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:VsQpccControlKind:powerFactorPcc;16",
                         "name": "powerFactorPcc",
-                        "enumValue": "VsQpccControlKind.powerFactorPcc",
+                        "displayName": "VsQpccControlKind.powerFactorPcc",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.powerFactorPcc",
                         "description": ""
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:qShare;16",
             "@type": "Property",
             "name": "qShare",
             "displayName": "VsConverter.qShare",
@@ -122,6 +149,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:targetQpcc;16",
             "@type": "Property",
             "name": "targetQpcc",
             "displayName": "VsConverter.targetQpcc",
@@ -129,6 +157,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:targetUpcc;16",
             "@type": "Property",
             "name": "targetUpcc",
             "displayName": "VsConverter.targetUpcc",
@@ -136,6 +165,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VsConverter:uf;16",
             "@type": "Property",
             "name": "uf",
             "displayName": "VsConverter.uf",

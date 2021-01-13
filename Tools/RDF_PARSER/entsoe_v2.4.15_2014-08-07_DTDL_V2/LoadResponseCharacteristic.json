@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadResponseCharacteristic;1",
+    "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic;16",
     "displayName": "LoadResponseCharacteristic",
     "description": "Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. This is not related to demand response.\n\nIf LoadResponseCharacteristic.exponentModel is True, the voltage exponents are specified and used as to calculate:\n\nActive power component = Pnominal * (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent\n\nReactive power component = Qnominal * (Voltage/cim:BaseVoltage.nominalVoltage)** cim:LoadResponseCharacte",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:exponentModel;16",
             "@type": "Property",
             "name": "exponentModel",
             "displayName": "LoadResponseCharacteristic.exponentModel",
@@ -16,6 +18,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantCurrent;16",
             "@type": "Property",
             "name": "pConstantCurrent",
             "displayName": "LoadResponseCharacteristic.pConstantCurrent",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantImpedance;16",
             "@type": "Property",
             "name": "pConstantImpedance",
             "displayName": "LoadResponseCharacteristic.pConstantImpedance",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantPower;16",
             "@type": "Property",
             "name": "pConstantPower",
             "displayName": "LoadResponseCharacteristic.pConstantPower",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pFrequencyExponent;16",
             "@type": "Property",
             "name": "pFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.pFrequencyExponent",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pVoltageExponent;16",
             "@type": "Property",
             "name": "pVoltageExponent",
             "displayName": "LoadResponseCharacteristic.pVoltageExponent",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantCurrent;16",
             "@type": "Property",
             "name": "qConstantCurrent",
             "displayName": "LoadResponseCharacteristic.qConstantCurrent",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantImpedance;16",
             "@type": "Property",
             "name": "qConstantImpedance",
             "displayName": "LoadResponseCharacteristic.qConstantImpedance",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantPower;16",
             "@type": "Property",
             "name": "qConstantPower",
             "displayName": "LoadResponseCharacteristic.qConstantPower",
@@ -72,6 +82,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qFrequencyExponent;16",
             "@type": "Property",
             "name": "qFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.qFrequencyExponent",
@@ -79,6 +90,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qVoltageExponent;16",
             "@type": "Property",
             "name": "qVoltageExponent",
             "displayName": "LoadResponseCharacteristic.qVoltageExponent",

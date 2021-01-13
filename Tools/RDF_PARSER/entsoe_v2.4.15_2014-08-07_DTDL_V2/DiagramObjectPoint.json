@@ -1,25 +1,31 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObjectPoint;1",
+    "@id": "dtmi:iec:cim:schema:DiagramObjectPoint;16",
     "displayName": "DiagramObjectPoint",
     "description": "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.  ",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:DiagramObject;16",
             "@type": "Relationship",
             "name": "DiagramObject",
             "displayName": "DiagramObjectPoint.DiagramObject",
             "description": "The diagram object with which the points are associated.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObject;1"
+            "target": "dtmi:iec:cim:schema:DiagramObject;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:DiagramObjectGluePoint;16",
             "@type": "Relationship",
             "name": "DiagramObjectGluePoint",
             "displayName": "DiagramObjectPoint.DiagramObjectGluePoint",
             "description": "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObjectGluePoint;1"
+            "target": "dtmi:iec:cim:schema:DiagramObjectGluePoint;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:sequenceNumber;16",
             "@type": "Property",
             "name": "sequenceNumber",
             "displayName": "DiagramObjectPoint.sequenceNumber",
@@ -27,6 +33,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:xPosition;16",
             "@type": "Property",
             "name": "xPosition",
             "displayName": "DiagramObjectPoint.xPosition",
@@ -34,6 +41,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:yPosition;16",
             "@type": "Property",
             "name": "yPosition",
             "displayName": "DiagramObjectPoint.yPosition",
@@ -41,6 +49,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:zPosition;16",
             "@type": "Property",
             "name": "zPosition",
             "displayName": "DiagramObjectPoint.zPosition",

@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACLineSegment;1",
+    "@id": "dtmi:iec:cim:schema:ACLineSegment;16",
     "displayName": "ACLineSegment",
     "description": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed 3ph lines, it is sufficient to use  attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Lin",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Conductor;1"
+        "dtmi:iec:cim:schema:Conductor;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:b0ch;16",
             "@type": "Property",
             "name": "b0ch",
             "displayName": "ACLineSegment.b0ch",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:bch;16",
             "@type": "Property",
             "name": "bch",
             "displayName": "ACLineSegment.bch",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:g0ch;16",
             "@type": "Property",
             "name": "g0ch",
             "displayName": "ACLineSegment.g0ch",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:gch;16",
             "@type": "Property",
             "name": "gch",
             "displayName": "ACLineSegment.gch",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "ACLineSegment.r",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:r0;16",
             "@type": "Property",
             "name": "r0",
             "displayName": "ACLineSegment.r0",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:shortCircuitEndTemperature;16",
             "@type": "Property",
             "name": "shortCircuitEndTemperature",
             "displayName": "ACLineSegment.shortCircuitEndTemperature",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:x;16",
             "@type": "Property",
             "name": "x",
             "displayName": "ACLineSegment.x",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACLineSegment:x0;16",
             "@type": "Property",
             "name": "x0",
             "displayName": "ACLineSegment.x0",

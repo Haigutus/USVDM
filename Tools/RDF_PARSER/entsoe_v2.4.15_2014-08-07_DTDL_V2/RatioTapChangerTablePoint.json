@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RatioTapChangerTablePoint;1",
+    "@id": "dtmi:iec:cim:schema:RatioTapChangerTablePoint;16",
     "displayName": "RatioTapChangerTablePoint",
     "description": "Describes each tap step in the ratio tap changer tabular curve.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChangerTablePoint;1"
+        "dtmi:iec:cim:schema:TapChangerTablePoint;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:RatioTapChangerTablePoint:RatioTapChangerTable;16",
             "@type": "Relationship",
             "name": "RatioTapChangerTable",
             "displayName": "RatioTapChangerTablePoint.RatioTapChangerTable",
             "description": "Points of this table.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RatioTapChangerTable;1"
+            "target": "dtmi:iec:cim:schema:RatioTapChangerTable;16",
+            "maxMultiplicity": 1
         }
     ]
 }

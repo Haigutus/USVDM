@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ControlArea;1",
+    "@id": "dtmi:iec:cim:schema:ControlArea;16",
     "displayName": "ControlArea",
     "description": "A control area",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
+        "dtmi:iec:cim:schema:PowerSystemResource;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ControlArea:EnergyArea;16",
             "@type": "Relationship",
             "name": "EnergyArea",
             "displayName": "ControlArea.EnergyArea",
             "description": "The energy area that is forecast from this control area specification.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyArea;1"
+            "target": "dtmi:iec:cim:schema:EnergyArea;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ControlArea:netInterchange;16",
             "@type": "Property",
             "name": "netInterchange",
             "displayName": "ControlArea.netInterchange",
@@ -23,6 +27,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ControlArea:pTolerance;16",
             "@type": "Property",
             "name": "pTolerance",
             "displayName": "ControlArea.pTolerance",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ControlArea:type;16",
             "@type": "Property",
             "name": "type",
             "displayName": "ControlArea.type",
@@ -39,18 +45,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:ControlAreaTypeKind:AGC;16",
                         "name": "AGC",
-                        "enumValue": "ControlAreaTypeKind.AGC",
+                        "displayName": "ControlAreaTypeKind.AGC",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.AGC",
                         "description": "Used for automatic generation control."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:ControlAreaTypeKind:Forecast;16",
                         "name": "Forecast",
-                        "enumValue": "ControlAreaTypeKind.Forecast",
+                        "displayName": "ControlAreaTypeKind.Forecast",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Forecast",
                         "description": "Used for load forecast."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:ControlAreaTypeKind:Interchange;16",
                         "name": "Interchange",
-                        "enumValue": "ControlAreaTypeKind.Interchange",
+                        "displayName": "ControlAreaTypeKind.Interchange",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Interchange",
                         "description": "Used for interchange specification or control."
                     }
                 ]

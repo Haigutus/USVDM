@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:HydroGeneratingUnit;1",
+    "@id": "dtmi:iec:cim:schema:HydroGeneratingUnit;16",
     "displayName": "HydroGeneratingUnit",
     "description": "A generating unit whose prime mover is a hydraulic turbine (e.g., Francis, Pelton, Kaplan).",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
+        "dtmi:iec:cim:schema:GeneratingUnit;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:HydroGeneratingUnit:HydroPowerPlant;16",
             "@type": "Relationship",
             "name": "HydroPowerPlant",
             "displayName": "HydroGeneratingUnit.HydroPowerPlant",
             "description": "The hydro generating unit belongs to a hydro power plant.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:HydroPowerPlant;1"
+            "target": "dtmi:iec:cim:schema:HydroPowerPlant;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:HydroGeneratingUnit:energyConversionCapability;16",
             "@type": "Property",
             "name": "energyConversionCapability",
             "displayName": "HydroGeneratingUnit.energyConversionCapability",
@@ -25,13 +29,17 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:HydroEnergyConversionKind:generator;16",
                         "name": "generator",
-                        "enumValue": "HydroEnergyConversionKind.generator",
+                        "displayName": "HydroEnergyConversionKind.generator",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.generator",
                         "description": "Able to generate power, but not able to pump water for energy storage."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:HydroEnergyConversionKind:pumpAndGenerator;16",
                         "name": "pumpAndGenerator",
-                        "enumValue": "HydroEnergyConversionKind.pumpAndGenerator",
+                        "displayName": "HydroEnergyConversionKind.pumpAndGenerator",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.pumpAndGenerator",
                         "description": "Able to both generate power and pump water for energy storage."
                     }
                 ]

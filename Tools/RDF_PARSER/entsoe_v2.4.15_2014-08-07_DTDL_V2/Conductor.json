@@ -1,14 +1,15 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Conductor;1",
+    "@id": "dtmi:iec:cim:schema:Conductor;16",
     "displayName": "Conductor",
     "description": "Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system.  ",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:Conductor:length;16",
             "@type": "Property",
             "name": "length",
             "displayName": "Conductor.length",

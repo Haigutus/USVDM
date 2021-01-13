@@ -1,26 +1,31 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ControlAreaGeneratingUnit;1",
+    "@id": "dtmi:iec:cim:schema:ControlAreaGeneratingUnit;16",
     "displayName": "ControlAreaGeneratingUnit",
     "description": "A control area generating unit. This class is needed so that alternate control area definitions may include the same generating unit.   Note only one instance within a control area should reference a specific generating unit.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ControlAreaGeneratingUnit:ControlArea;16",
             "@type": "Relationship",
             "name": "ControlArea",
             "displayName": "ControlAreaGeneratingUnit.ControlArea",
             "description": "The parent control area for the generating unit specifications.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ControlArea;1"
+            "target": "dtmi:iec:cim:schema:ControlArea;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ControlAreaGeneratingUnit:GeneratingUnit;16",
             "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "ControlAreaGeneratingUnit.GeneratingUnit",
             "description": "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
+            "target": "dtmi:iec:cim:schema:GeneratingUnit;16",
+            "maxMultiplicity": 1
         }
     ]
 }

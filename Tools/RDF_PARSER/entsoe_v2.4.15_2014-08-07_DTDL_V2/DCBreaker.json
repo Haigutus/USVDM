@@ -1,10 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCBreaker;1",
+    "@id": "dtmi:iec:cim:schema:DCBreaker;16",
     "displayName": "DCBreaker",
     "description": "A breaker within a DC system. ",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCSwitch;1"
+        "dtmi:iec:cim:schema:DCSwitch;16"
     ]
 }

@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerTransformer;1",
+    "@id": "dtmi:iec:cim:schema:PowerTransformer;16",
     "displayName": "PowerTransformer",
     "description": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modeled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShCircuitHighestOperatingCurrent;16",
             "@type": "Property",
             "name": "beforeShCircuitHighestOperatingCurrent",
             "displayName": "PowerTransformer.beforeShCircuitHighestOperatingCurrent",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShCircuitHighestOperatingVoltage;16",
             "@type": "Property",
             "name": "beforeShCircuitHighestOperatingVoltage",
             "displayName": "PowerTransformer.beforeShCircuitHighestOperatingVoltage",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShortCircuitAnglePf;16",
             "@type": "Property",
             "name": "beforeShortCircuitAnglePf",
             "displayName": "PowerTransformer.beforeShortCircuitAnglePf",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:highSideMinOperatingU;16",
             "@type": "Property",
             "name": "highSideMinOperatingU",
             "displayName": "PowerTransformer.highSideMinOperatingU",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:isPartOfGeneratorUnit;16",
             "@type": "Property",
             "name": "isPartOfGeneratorUnit",
             "displayName": "PowerTransformer.isPartOfGeneratorUnit",
@@ -44,6 +50,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PowerTransformer:operationalValuesConsidered;16",
             "@type": "Property",
             "name": "operationalValuesConsidered",
             "displayName": "PowerTransformer.operationalValuesConsidered",

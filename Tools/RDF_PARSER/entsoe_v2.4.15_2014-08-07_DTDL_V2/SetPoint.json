@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SetPoint;1",
+    "@id": "dtmi:iec:cim:schema:SetPoint;16",
     "displayName": "SetPoint",
     "description": "An analog control that issue a set point value.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AnalogControl;1"
+        "dtmi:iec:cim:schema:AnalogControl;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:SetPoint:normalValue;16",
             "@type": "Property",
             "name": "normalValue",
             "displayName": "SetPoint.normalValue",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SetPoint:value;16",
             "@type": "Property",
             "name": "value",
             "displayName": "SetPoint.value",

@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1",
+    "@id": "dtmi:iec:cim:schema:IdentifiedObject;16",
     "displayName": "IdentifiedObject",
     "description": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:IdentifiedObject:description;16",
             "@type": "Property",
             "name": "description",
             "displayName": "IdentifiedObject.description",
@@ -13,6 +14,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:iec:cim:schema:IdentifiedObject:mRID;16",
             "@type": "Property",
             "name": "mRID",
             "displayName": "IdentifiedObject.mRID",
@@ -20,6 +22,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:iec:cim:schema:IdentifiedObject:name;16",
             "@type": "Property",
             "name": "name",
             "displayName": "IdentifiedObject.name",
@@ -27,6 +30,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:IdentifiedObject:energyIdentCodeEic;31",
             "@type": "Property",
             "name": "energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
@@ -34,6 +38,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:IdentifiedObject:shortName;31",
             "@type": "Property",
             "name": "shortName",
             "displayName": "IdentifiedObject.shortName",

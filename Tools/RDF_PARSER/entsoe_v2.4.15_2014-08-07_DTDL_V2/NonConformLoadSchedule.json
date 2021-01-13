@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonConformLoadSchedule;1",
+    "@id": "dtmi:iec:cim:schema:NonConformLoadSchedule;16",
     "displayName": "NonConformLoadSchedule",
     "description": "An active power (Y1-axis) and reactive power (Y2-axis) schedule (curves) versus time (X-axis) for non-conforming loads, e.g., large industrial load or power station service (where modeled).",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SeasonDayTypeSchedule;1"
+        "dtmi:iec:cim:schema:SeasonDayTypeSchedule;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:NonConformLoadSchedule:NonConformLoadGroup;16",
             "@type": "Relationship",
             "name": "NonConformLoadGroup",
             "displayName": "NonConformLoadSchedule.NonConformLoadGroup",
             "description": "The NonConformLoadGroup where the NonConformLoadSchedule belongs.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonConformLoadGroup;1"
+            "target": "dtmi:iec:cim:schema:NonConformLoadGroup;16",
+            "maxMultiplicity": 1
         }
     ]
 }

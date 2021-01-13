@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentBranch;1",
+    "@id": "dtmi:iec:cim:schema:EquivalentBranch;16",
     "displayName": "EquivalentBranch",
     "description": "The class represents equivalent branches.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentEquipment;1"
+        "dtmi:iec:cim:schema:EquivalentEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeR12;16",
             "@type": "Property",
             "name": "negativeR12",
             "displayName": "EquivalentBranch.negativeR12",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeR21;16",
             "@type": "Property",
             "name": "negativeR21",
             "displayName": "EquivalentBranch.negativeR21",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeX12;16",
             "@type": "Property",
             "name": "negativeX12",
             "displayName": "EquivalentBranch.negativeX12",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeX21;16",
             "@type": "Property",
             "name": "negativeX21",
             "displayName": "EquivalentBranch.negativeX21",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveR12;16",
             "@type": "Property",
             "name": "positiveR12",
             "displayName": "EquivalentBranch.positiveR12",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveR21;16",
             "@type": "Property",
             "name": "positiveR21",
             "displayName": "EquivalentBranch.positiveR21",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveX12;16",
             "@type": "Property",
             "name": "positiveX12",
             "displayName": "EquivalentBranch.positiveX12",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveX21;16",
             "@type": "Property",
             "name": "positiveX21",
             "displayName": "EquivalentBranch.positiveX21",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "EquivalentBranch.r",
@@ -72,6 +82,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:r21;16",
             "@type": "Property",
             "name": "r21",
             "displayName": "EquivalentBranch.r21",
@@ -79,6 +90,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:x;16",
             "@type": "Property",
             "name": "x",
             "displayName": "EquivalentBranch.x",
@@ -86,6 +98,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:x21;16",
             "@type": "Property",
             "name": "x21",
             "displayName": "EquivalentBranch.x21",
@@ -93,6 +106,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroR12;16",
             "@type": "Property",
             "name": "zeroR12",
             "displayName": "EquivalentBranch.zeroR12",
@@ -100,6 +114,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroR21;16",
             "@type": "Property",
             "name": "zeroR21",
             "displayName": "EquivalentBranch.zeroR21",
@@ -107,6 +122,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroX12;16",
             "@type": "Property",
             "name": "zeroX12",
             "displayName": "EquivalentBranch.zeroX12",
@@ -114,6 +130,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroX21;16",
             "@type": "Property",
             "name": "zeroX21",
             "displayName": "EquivalentBranch.zeroX21",

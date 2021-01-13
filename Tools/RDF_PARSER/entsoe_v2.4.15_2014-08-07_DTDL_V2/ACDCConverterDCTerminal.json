@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCConverterDCTerminal;1",
+    "@id": "dtmi:iec:cim:schema:ACDCConverterDCTerminal;16",
     "displayName": "ACDCConverterDCTerminal",
     "description": "A DC electrical connection point at the AC/DC converter. The AC/DC converter is electrically connected also to the AC side. The AC connection is inherited from the AC conducting equipment in the same way as any other AC equipment. The AC/DC converter DC terminal is separate from generic DC terminal to restrict the connection with the AC side to AC/DC converter and so that no other DC conducting equipment can be connected to the AC side.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCBaseTerminal;1"
+        "dtmi:iec:cim:schema:DCBaseTerminal;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverterDCTerminal:DCConductingEquipment;16",
             "@type": "Relationship",
             "name": "DCConductingEquipment",
             "displayName": "ACDCConverterDCTerminal.DCConductingEquipment",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCConverter;1"
+            "target": "dtmi:iec:cim:schema:ACDCConverter;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverterDCTerminal:polarity;16",
             "@type": "Property",
             "name": "polarity",
             "displayName": "ACDCConverterDCTerminal.polarity",
@@ -25,18 +29,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:positive;16",
                         "name": "positive",
-                        "enumValue": "DCPolarityKind.positive",
+                        "displayName": "DCPolarityKind.positive",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.positive",
                         "description": "Positive pole."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:middle;16",
                         "name": "middle",
-                        "enumValue": "DCPolarityKind.middle",
+                        "displayName": "DCPolarityKind.middle",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.middle",
                         "description": "Middle pole, potentially grounded."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:negative;16",
                         "name": "negative",
-                        "enumValue": "DCPolarityKind.negative",
+                        "displayName": "DCPolarityKind.negative",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.negative",
                         "description": "Negative pole."
                     }
                 ]

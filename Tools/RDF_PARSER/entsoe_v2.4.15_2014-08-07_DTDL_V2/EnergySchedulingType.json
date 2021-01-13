@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:entsoe:eu_CIM_SchemaExtension_3_1:EnergySchedulingType;1",
+    "@id": "dtmi:eu:cim:extension:EnergySchedulingType;31",
     "displayName": "EnergySchedulingType",
     "description": "Used to define the type of generation for scheduling purposes.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": []
 }

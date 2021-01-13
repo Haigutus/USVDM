@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTerminal;1",
+    "@id": "dtmi:iec:cim:schema:DCTerminal;16",
     "displayName": "DCTerminal",
     "description": "An electrical connection point to generic DC conducting equipment.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCBaseTerminal;1"
+        "dtmi:iec:cim:schema:DCBaseTerminal;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCTerminal:DCConductingEquipment;16",
             "@type": "Relationship",
             "name": "DCConductingEquipment",
             "displayName": "DCTerminal.DCConductingEquipment",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1"
+            "target": "dtmi:iec:cim:schema:DCConductingEquipment;16",
+            "maxMultiplicity": 1
         }
     ]
 }

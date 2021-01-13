@@ -1,10 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Breaker;1",
+    "@id": "dtmi:iec:cim:schema:Breaker;16",
     "displayName": "Breaker",
     "description": "A mechanical switching device capable of making, carrying, and breaking currents under normal circuit conditions and also making, carrying for a specified time, and breaking currents under specified abnormal circuit conditions e.g.  those of short circuit.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ProtectedSwitch;1"
+        "dtmi:iec:cim:schema:ProtectedSwitch;16"
     ]
 }

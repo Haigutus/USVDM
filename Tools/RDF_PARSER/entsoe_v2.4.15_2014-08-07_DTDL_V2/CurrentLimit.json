@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:CurrentLimit;1",
+    "@id": "dtmi:iec:cim:schema:CurrentLimit;16",
     "displayName": "CurrentLimit",
     "description": "Operational limit on current. ",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:OperationalLimit;1"
+        "dtmi:iec:cim:schema:OperationalLimit;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:CurrentLimit:value;16",
             "@type": "Property",
             "name": "value",
             "displayName": "CurrentLimit.value",

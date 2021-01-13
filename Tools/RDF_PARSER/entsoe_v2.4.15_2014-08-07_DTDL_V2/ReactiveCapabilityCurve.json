@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ReactiveCapabilityCurve;1",
+    "@id": "dtmi:iec:cim:schema:ReactiveCapabilityCurve;16",
     "displayName": "ReactiveCapabilityCurve",
     "description": "Reactive power rating envelope versus the synchronous machine's active power, in both the generating and motoring modes. For each active power value there is a corresponding high and low reactive power limit  value. Typically there will be a separate curve for each coolant condition, such as hydrogen pressure.  The Y1 axis values represent reactive minimum and the Y2 axis values represent reactive maximum.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Curve;1"
+        "dtmi:iec:cim:schema:Curve;16"
     ],
     "contents": []
 }

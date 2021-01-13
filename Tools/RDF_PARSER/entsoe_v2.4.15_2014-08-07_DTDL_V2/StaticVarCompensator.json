@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:StaticVarCompensator;1",
+    "@id": "dtmi:iec:cim:schema:StaticVarCompensator;16",
     "displayName": "StaticVarCompensator",
     "description": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the contro",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingCondEq;1"
+        "dtmi:iec:cim:schema:RegulatingCondEq;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:capacitiveRating;16",
             "@type": "Property",
             "name": "capacitiveRating",
             "displayName": "StaticVarCompensator.capacitiveRating",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:inductiveRating;16",
             "@type": "Property",
             "name": "inductiveRating",
             "displayName": "StaticVarCompensator.inductiveRating",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "StaticVarCompensator.q",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:sVCControlMode;16",
             "@type": "Property",
             "name": "sVCControlMode",
             "displayName": "StaticVarCompensator.sVCControlMode",
@@ -39,19 +44,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:SVCControlMode:reactivePower;16",
                         "name": "reactivePower",
-                        "enumValue": "SVCControlMode.reactivePower",
+                        "displayName": "SVCControlMode.reactivePower",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.reactivePower",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SVCControlMode:voltage;16",
                         "name": "voltage",
-                        "enumValue": "SVCControlMode.voltage",
+                        "displayName": "SVCControlMode.voltage",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.voltage",
                         "description": ""
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:slope;16",
             "@type": "Property",
             "name": "slope",
             "displayName": "StaticVarCompensator.slope",
@@ -59,6 +69,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:StaticVarCompensator:voltageSetPoint;16",
             "@type": "Property",
             "name": "voltageSetPoint",
             "displayName": "StaticVarCompensator.voltageSetPoint",

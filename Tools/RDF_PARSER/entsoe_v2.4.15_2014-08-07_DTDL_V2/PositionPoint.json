@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PositionPoint;1",
+    "@id": "dtmi:iec:cim:schema:PositionPoint;16",
     "displayName": "PositionPoint",
     "description": "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to desribe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PositionPoint:Location;16",
             "@type": "Relationship",
             "name": "Location",
             "displayName": "PositionPoint.Location",
             "description": "Location described by this position point.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Location;1"
+            "target": "dtmi:iec:cim:schema:Location;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:PositionPoint:sequenceNumber;16",
             "@type": "Property",
             "name": "sequenceNumber",
             "displayName": "PositionPoint.sequenceNumber",
@@ -20,6 +24,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PositionPoint:xPosition;16",
             "@type": "Property",
             "name": "xPosition",
             "displayName": "PositionPoint.xPosition",
@@ -27,6 +32,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PositionPoint:yPosition;16",
             "@type": "Property",
             "name": "yPosition",
             "displayName": "PositionPoint.yPosition",
@@ -34,6 +40,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PositionPoint:zPosition;16",
             "@type": "Property",
             "name": "zPosition",
             "displayName": "PositionPoint.zPosition",

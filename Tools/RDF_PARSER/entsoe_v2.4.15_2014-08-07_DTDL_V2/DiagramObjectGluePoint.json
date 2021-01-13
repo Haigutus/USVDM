@@ -1,8 +1,9 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObjectGluePoint;1",
+    "@id": "dtmi:iec:cim:schema:DiagramObjectGluePoint;16",
     "displayName": "DiagramObjectGluePoint",
     "description": "This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates.",
+    "comment": "concrete",
     "contents": []
 }

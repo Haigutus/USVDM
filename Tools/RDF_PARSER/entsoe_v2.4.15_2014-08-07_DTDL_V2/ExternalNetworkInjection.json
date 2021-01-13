@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ExternalNetworkInjection;1",
+    "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection;16",
     "displayName": "ExternalNetworkInjection",
     "description": "This class represents external network and it is used for IEC 60909 calculations.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingCondEq;1"
+        "dtmi:iec:cim:schema:RegulatingCondEq;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:governorSCD;16",
             "@type": "Property",
             "name": "governorSCD",
             "displayName": "ExternalNetworkInjection.governorSCD",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:ikSecond;16",
             "@type": "Property",
             "name": "ikSecond",
             "displayName": "ExternalNetworkInjection.ikSecond",
@@ -23,6 +26,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxInitialSymShCCurrent;16",
             "@type": "Property",
             "name": "maxInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.maxInitialSymShCCurrent",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxP;16",
             "@type": "Property",
             "name": "maxP",
             "displayName": "ExternalNetworkInjection.maxP",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxQ;16",
             "@type": "Property",
             "name": "maxQ",
             "displayName": "ExternalNetworkInjection.maxQ",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxR0ToX0Ratio;16",
             "@type": "Property",
             "name": "maxR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.maxR0ToX0Ratio",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxR1ToX1Ratio;16",
             "@type": "Property",
             "name": "maxR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.maxR1ToX1Ratio",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxZ0ToZ1Ratio;16",
             "@type": "Property",
             "name": "maxZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.maxZ0ToZ1Ratio",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minInitialSymShCCurrent;16",
             "@type": "Property",
             "name": "minInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.minInitialSymShCCurrent",
@@ -72,6 +82,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minP;16",
             "@type": "Property",
             "name": "minP",
             "displayName": "ExternalNetworkInjection.minP",
@@ -79,6 +90,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minQ;16",
             "@type": "Property",
             "name": "minQ",
             "displayName": "ExternalNetworkInjection.minQ",
@@ -86,6 +98,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minR0ToX0Ratio;16",
             "@type": "Property",
             "name": "minR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.minR0ToX0Ratio",
@@ -93,6 +106,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minR1ToX1Ratio;16",
             "@type": "Property",
             "name": "minR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.minR1ToX1Ratio",
@@ -100,6 +114,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minZ0ToZ1Ratio;16",
             "@type": "Property",
             "name": "minZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.minZ0ToZ1Ratio",
@@ -107,6 +122,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:p;16",
             "@type": "Property",
             "name": "p",
             "displayName": "ExternalNetworkInjection.p",
@@ -114,6 +130,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "ExternalNetworkInjection.q",
@@ -121,6 +138,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:referencePriority;16",
             "@type": "Property",
             "name": "referencePriority",
             "displayName": "ExternalNetworkInjection.referencePriority",
@@ -128,6 +146,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:voltageFactor;16",
             "@type": "Property",
             "name": "voltageFactor",
             "displayName": "ExternalNetworkInjection.voltageFactor",

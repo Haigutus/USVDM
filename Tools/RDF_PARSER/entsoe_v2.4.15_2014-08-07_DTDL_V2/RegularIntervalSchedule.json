@@ -1,14 +1,15 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegularIntervalSchedule;1",
+    "@id": "dtmi:iec:cim:schema:RegularIntervalSchedule;16",
     "displayName": "RegularIntervalSchedule",
     "description": "The schedule has time points where the time between them is constant.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BasicIntervalSchedule;1"
+        "dtmi:iec:cim:schema:BasicIntervalSchedule;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:RegularIntervalSchedule:endTime;16",
             "@type": "Property",
             "name": "endTime",
             "displayName": "RegularIntervalSchedule.endTime",
@@ -16,6 +17,7 @@
             "schema": "dateTime"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RegularIntervalSchedule:timeStep;16",
             "@type": "Property",
             "name": "timeStep",
             "displayName": "RegularIntervalSchedule.timeStep",

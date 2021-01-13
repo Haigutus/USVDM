@@ -1,14 +1,15 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ShuntCompensator;1",
+    "@id": "dtmi:iec:cim:schema:ShuntCompensator;16",
     "displayName": "ShuntCompensator",
     "description": "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor.  A negative value for reactivePerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingCondEq;1"
+        "dtmi:iec:cim:schema:RegulatingCondEq;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:aVRDelay;16",
             "@type": "Property",
             "name": "aVRDelay",
             "displayName": "ShuntCompensator.aVRDelay",
@@ -16,6 +17,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:grounded;16",
             "@type": "Property",
             "name": "grounded",
             "displayName": "ShuntCompensator.grounded",
@@ -23,6 +25,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:maximumSections;16",
             "@type": "Property",
             "name": "maximumSections",
             "displayName": "ShuntCompensator.maximumSections",
@@ -30,6 +33,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:nomU;16",
             "@type": "Property",
             "name": "nomU",
             "displayName": "ShuntCompensator.nomU",
@@ -37,6 +41,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:normalSections;16",
             "@type": "Property",
             "name": "normalSections",
             "displayName": "ShuntCompensator.normalSections",
@@ -44,6 +49,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:sections;16",
             "@type": "Property",
             "name": "sections",
             "displayName": "ShuntCompensator.sections",
@@ -51,6 +57,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:switchOnCount;16",
             "@type": "Property",
             "name": "switchOnCount",
             "displayName": "ShuntCompensator.switchOnCount",
@@ -58,6 +65,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:switchOnDate;16",
             "@type": "Property",
             "name": "switchOnDate",
             "displayName": "ShuntCompensator.switchOnDate",
@@ -65,6 +73,7 @@
             "schema": "dateTime"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ShuntCompensator:voltageSensitivity;16",
             "@type": "Property",
             "name": "voltageSensitivity",
             "displayName": "ShuntCompensator.voltageSensitivity",

@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Accumulator;1",
+    "@id": "dtmi:iec:cim:schema:Accumulator;16",
     "displayName": "Accumulator",
     "description": "Accumulator represents an accumulated (counted) Measurement, e.g. an energy value.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Measurement;1"
+        "dtmi:iec:cim:schema:Measurement;16"
     ],
     "contents": []
 }

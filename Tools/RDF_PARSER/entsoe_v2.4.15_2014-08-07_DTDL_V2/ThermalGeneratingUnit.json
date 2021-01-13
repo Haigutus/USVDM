@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ThermalGeneratingUnit;1",
+    "@id": "dtmi:iec:cim:schema:ThermalGeneratingUnit;16",
     "displayName": "ThermalGeneratingUnit",
     "description": "A generating unit whose prime mover could be a steam turbine, combustion turbine, or diesel engine.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
+        "dtmi:iec:cim:schema:GeneratingUnit;16"
     ],
     "contents": []
 }

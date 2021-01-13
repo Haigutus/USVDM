@@ -5,12 +5,48 @@ from Tools.RDF_PARSER.RDFS_tools import *
 
 
 def get_description(meta_dict):
+    """Parse description"""
+
+    max_lenght = 512
     description = meta_dict.get("comment", "")
-    if len(str(description)) <= 3:
+    description_length = len(str(description))
+
+    # If description is missing
+    if description_length <= 3:
         description = ""
         print(f"WARNING - {meta_dict['label']} is missing description")
 
+    # If description exceeds max length
+    if description_length > max_lenght:
+        description = description[:max_lenght]
+        print(f"WARNING - {meta_dict['label']} description is truncated to {max_lenght} from {description_length}")
+
     return description
+
+
+URI_map = {
+    "http://iec.ch/TC57/2013/CIM-schema-cim16#": {"path": "iec:cim:schema",
+                                                  "version": 16},
+    "http://entsoe.eu/CIM/SchemaExtension/3/1#": {"path": "eu:cim:extension",
+                                                  "version": 31}
+
+}
+
+
+def URI_to_DTMI(uri, default_namespace):
+    """Convert URI to DTMI
+    URI  -> https://www.w3.org/Addressing/URL/uri-spec.html
+    DTMI -> https://github.com/Azure/digital-twin-model-identifier"""
+
+    namespace, name = get_namespace_and_name(uri, default_namespace)
+
+    clean_name      = name.replace(".", ":")
+    #clean_namespace = namespace.split("//")[1].replace("/", "_").replace(".", ":").replace("-", "__").replace("#", "")
+    clean_namespace = URI_map[f"{namespace}#"]
+
+    return f"dtmi:{clean_namespace['path']}:{clean_name};{clean_namespace['version']}"
+
+
 
 
 data_types_map = {
@@ -56,6 +92,7 @@ data_types_map = {
 #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
 path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
 
+
 # https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md
 
 data = load_all_to_dataframe([path])
@@ -71,37 +108,36 @@ metadata = get_profile_metadata(data).to_dict()
 cim_namespace = metadata["namespaceUML"]
 rdf_namespace = metadata["namespaceRDF"]
 
-#classes_defined_externally = profile_data.query("KEY == 'stereotype' and VALUE == 'Description'").ID.to_list()
+concrete_interfaces_list = concrete_classes_list(data)
 
-interfaces_list = concrete_classes_list(data)
+interfaces_list = []
+interfaces_list.extend(concrete_interfaces_list)
 
 for interface_uri in interfaces_list:
 
     # Define class namespace
     class_namespace, class_name = get_namespace_and_name(interface_uri, default_namespace=cim_namespace)
 
+    # Get class meta
     class_meta = data.get_object_data(interface_uri).to_dict()
 
-    description = get_description(class_meta)
-
-
-
-    # Add class definition
+    # Create class definition
     interface = {
                 "@context": "dtmi:dtdl:context;2",
                 "@type": "Interface",
-                "@id": f"dtmi:cim:{class_name};16",
+                "@id": URI_to_DTMI(interface_uri, cim_namespace),
                 "displayName": class_name,
-                "description": description[:511],
-                #"comment": "public"/"private"  # TODO - define if class is private or public (concrete)
-                #"contents": []
+                "description": get_description(class_meta),
                 }
 
-    # Add attributes
+    # Check and mark if interface/class is public/concrete
+    if interface_uri in concrete_interfaces_list:
+        interface["comment"] = "concrete"
 
+    # Get parameters and parents
     parameters_table, extends = parameters_tableview(data, interface_uri)
 
-
+    # Add parent classes (extended) to processing (if present)
     if len(extends) > 0:
         interface["extends"] = []
 
@@ -110,10 +146,9 @@ for interface_uri in interfaces_list:
             if parent_class not in interfaces_list:
                 interfaces_list.append(parent_class)
 
-            namespace, name = get_namespace_and_name(parent_class, default_namespace=cim_namespace)
+            interface["extends"].append(URI_to_DTMI(parent_class, cim_namespace))
 
-            interface["extends"].append(f"dtmi:cim:{name};16")
-
+    # Add attributes
     if parameters_table is not None:
         interface["contents"] = []
 
@@ -130,28 +165,25 @@ for interface_uri in interfaces_list:
             # If it is used association or regular parameter, then we need the name and namespace
             parameter_namespace, parameter_name = get_namespace_and_name(parameter, default_namespace=cim_namespace)
 
-            description = get_description(parameter_dict)
-
             parameter_def = {
-                    #"@id": f"dtmi:cim16:{parameter_name}",
-                    #"name": parameter_name.replace(".", "_"),
-
+                    "@id": URI_to_DTMI(parameter, cim_namespace),
                     "@type": "Property",
                     "name": parameter_meta["label"],
                     "displayName": parameter_name,
-                    #"writable": True,
-                    "description": description[:511],
+                    "description": get_description(parameter_dict),
                 }
-
 
             # If association
             if association_used == 'Yes':
 
                 parameter_def["@type"] = "Relationship"
+                parameter_def["target"] = URI_to_DTMI(parameter_dict['range'], cim_namespace)
 
-                target_namespace, target_name = get_namespace_and_name(parameter_dict['range'], rdf_namespace)
+                # Add max relations (min relations available, but not added)
+                maxOccours = parse_multiplicity(parameter_dict["multiplicity"])[0]
 
-                parameter_def["target"] = f"dtmi:cim:{target_name};16"  # TODO - namespace and name
+                if str(maxOccours) != "unbounded":
+                    parameter_def["maxMultiplicity"] = int(maxOccours)
 
             else:
                 data_type = parameter_dict.get("dataType", "nan")
@@ -179,15 +211,12 @@ for interface_uri in interfaces_list:
 
                         value_meta = data.get_object_data(value).to_dict()
 
-                        description = get_description(value_meta)
-
                         value_def = {
-                                        #"@id": f"dtmi:cim16:{value_name}",
-                                        #"name": value_name.replace(".", "_"),
+                                        "@id": URI_to_DTMI(value, cim_namespace),
                                         "name": value_meta["label"],
-                                        #"displayName": value_name,
-                                        "enumValue": value_name,
-                                        "description": description[:511],
+                                        "displayName": value_name,
+                                        "enumValue": f"{value_namespace}#{value_name}",
+                                        "description": get_description(value_meta),
                                     }
 
                         parameter_def["schema"]["enumValues"].append(value_def)
@@ -207,7 +236,6 @@ for interface_uri in interfaces_list:
         os.makedirs(path_name)
 
     file_name = f"{class_name}.json"
-    # file_name = "{profileUML}_{date}.json".format(**metadata)
 
     with open(os.path.join(path_name, file_name), "w") as file_object:
         json.dump(interface, file_object, indent=4)

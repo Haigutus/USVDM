@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergySource;1",
+    "@id": "dtmi:iec:cim:schema:EnergySource;16",
     "displayName": "EnergySource",
     "description": "A generic equivalent for an energy supplier on a transmission or distribution voltage level.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:activePower;16",
             "@type": "Property",
             "name": "activePower",
             "displayName": "EnergySource.activePower",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:nominalVoltage;16",
             "@type": "Property",
             "name": "nominalVoltage",
             "displayName": "EnergySource.nominalVoltage",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "EnergySource.r",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:r0;16",
             "@type": "Property",
             "name": "r0",
             "displayName": "EnergySource.r0",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:reactivePower;16",
             "@type": "Property",
             "name": "reactivePower",
             "displayName": "EnergySource.reactivePower",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:rn;16",
             "@type": "Property",
             "name": "rn",
             "displayName": "EnergySource.rn",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:voltageAngle;16",
             "@type": "Property",
             "name": "voltageAngle",
             "displayName": "EnergySource.voltageAngle",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:voltageMagnitude;16",
             "@type": "Property",
             "name": "voltageMagnitude",
             "displayName": "EnergySource.voltageMagnitude",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:x;16",
             "@type": "Property",
             "name": "x",
             "displayName": "EnergySource.x",
@@ -72,6 +82,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:x0;16",
             "@type": "Property",
             "name": "x0",
             "displayName": "EnergySource.x0",
@@ -79,6 +90,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergySource:xn;16",
             "@type": "Property",
             "name": "xn",
             "displayName": "EnergySource.xn",
@@ -86,11 +98,13 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:eu:cim:extension:EnergySource:EnergySchedulingType;31",
             "@type": "Relationship",
             "name": "EnergySchedulingType",
             "displayName": "EnergySource.EnergySchedulingType",
             "description": "Energy Scheduling Type of an Energy Source",
-            "target": "dtmi:entsoe:eu_CIM_SchemaExtension_3_1:EnergySchedulingType;1"
+            "target": "dtmi:eu:cim:extension:EnergySchedulingType;31",
+            "maxMultiplicity": 1
         }
     ]
 }

@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCTerminal;1",
+    "@id": "dtmi:iec:cim:schema:ACDCTerminal;16",
     "displayName": "ACDCTerminal",
     "description": "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ACDCTerminal:BusNameMarker;16",
             "@type": "Relationship",
             "name": "BusNameMarker",
             "displayName": "ACDCTerminal.BusNameMarker",
             "description": "The bus name marker used to name the bus (topological node).",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BusNameMarker;1"
+            "target": "dtmi:iec:cim:schema:BusNameMarker;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCTerminal:connected;16",
             "@type": "Property",
             "name": "connected",
             "displayName": "ACDCTerminal.connected",
@@ -23,6 +26,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCTerminal:sequenceNumber;16",
             "@type": "Property",
             "name": "sequenceNumber",
             "displayName": "ACDCTerminal.sequenceNumber",

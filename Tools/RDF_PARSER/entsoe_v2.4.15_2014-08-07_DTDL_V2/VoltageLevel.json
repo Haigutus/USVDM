@@ -1,28 +1,34 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:VoltageLevel;1",
+    "@id": "dtmi:iec:cim:schema:VoltageLevel;16",
     "displayName": "VoltageLevel",
     "description": "A collection of equipment at one common system voltage forming a switchgear. The equipment typically consist of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquipmentContainer;1"
+        "dtmi:iec:cim:schema:EquipmentContainer;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:VoltageLevel:BaseVoltage;16",
             "@type": "Relationship",
             "name": "BaseVoltage",
             "displayName": "VoltageLevel.BaseVoltage",
             "description": "The base voltage used for all equipment within the voltage level.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BaseVoltage;1"
+            "target": "dtmi:iec:cim:schema:BaseVoltage;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:VoltageLevel:Substation;16",
             "@type": "Relationship",
             "name": "Substation",
             "displayName": "VoltageLevel.Substation",
             "description": "The substation of the voltage level.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Substation;1"
+            "target": "dtmi:iec:cim:schema:Substation;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:VoltageLevel:highVoltageLimit;16",
             "@type": "Property",
             "name": "highVoltageLimit",
             "displayName": "VoltageLevel.highVoltageLimit",
@@ -30,6 +36,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:VoltageLevel:lowVoltageLimit;16",
             "@type": "Property",
             "name": "lowVoltageLimit",
             "displayName": "VoltageLevel.lowVoltageLimit",

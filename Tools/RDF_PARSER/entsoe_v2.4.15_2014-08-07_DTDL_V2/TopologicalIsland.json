@@ -1,26 +1,30 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TopologicalIsland;1",
+    "@id": "dtmi:iec:cim:schema:TopologicalIsland;16",
     "displayName": "TopologicalIsland",
     "description": "An electrically connected subset of the network. Topological islands can change as the current network state changes: e.g. due to \n- disconnect switches or breakers change state in a SCADA/EMS\n- manual creation, change or deletion of topological nodes in a planning tool.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:TopologicalIsland:AngleRefTopologicalNode;16",
             "@type": "Relationship",
             "name": "AngleRefTopologicalNode",
             "displayName": "TopologicalIsland.AngleRefTopologicalNode",
             "description": "The angle reference for the island.   Normally there is one TopologicalNode that is selected as the angle reference for each island.   Other reference schemes exist, so the association is typically optional.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TopologicalNode;1"
+            "target": "dtmi:iec:cim:schema:TopologicalNode;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TopologicalIsland:TopologicalNodes;16",
             "@type": "Relationship",
             "name": "TopologicalNodes",
             "displayName": "TopologicalIsland.TopologicalNodes",
             "description": "A topological node belongs to a topological island.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TopologicalNode;1"
+            "target": "dtmi:iec:cim:schema:TopologicalNode;16"
         }
     ]
 }

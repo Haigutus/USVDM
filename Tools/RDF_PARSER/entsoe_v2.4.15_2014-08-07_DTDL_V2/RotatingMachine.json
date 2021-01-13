@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RotatingMachine;1",
+    "@id": "dtmi:iec:cim:schema:RotatingMachine;16",
     "displayName": "RotatingMachine",
     "description": "A rotating machine which may be used as a generator or motor.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RegulatingCondEq;1"
+        "dtmi:iec:cim:schema:RegulatingCondEq;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:GeneratingUnit;16",
             "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "RotatingMachine.GeneratingUnit",
             "description": "A synchronous machine may operate as a generator and as such becomes a member of a generating unit.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
+            "target": "dtmi:iec:cim:schema:GeneratingUnit;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:p;16",
             "@type": "Property",
             "name": "p",
             "displayName": "RotatingMachine.p",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "RotatingMachine.q",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedPowerFactor;16",
             "@type": "Property",
             "name": "ratedPowerFactor",
             "displayName": "RotatingMachine.ratedPowerFactor",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedS;16",
             "@type": "Property",
             "name": "ratedS",
             "displayName": "RotatingMachine.ratedS",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedU;16",
             "@type": "Property",
             "name": "ratedU",
             "displayName": "RotatingMachine.ratedU",

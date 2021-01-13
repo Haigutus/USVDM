@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:HydroPowerPlant;1",
+    "@id": "dtmi:iec:cim:schema:HydroPowerPlant;16",
     "displayName": "HydroPowerPlant",
     "description": "A hydro power station which can generate or pump. When generating, the generator turbines receive water from an upper reservoir. When pumping, the pumps receive their water from a lower reservoir.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
+        "dtmi:iec:cim:schema:PowerSystemResource;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:HydroPowerPlant:hydroPlantStorageType;16",
             "@type": "Property",
             "name": "hydroPlantStorageType",
             "displayName": "HydroPowerPlant.hydroPlantStorageType",
@@ -18,18 +20,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:runOfRiver;16",
                         "name": "runOfRiver",
-                        "enumValue": "HydroPlantStorageKind.runOfRiver",
+                        "displayName": "HydroPlantStorageKind.runOfRiver",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.runOfRiver",
                         "description": "Run of river."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:pumpedStorage;16",
                         "name": "pumpedStorage",
-                        "enumValue": "HydroPlantStorageKind.pumpedStorage",
+                        "displayName": "HydroPlantStorageKind.pumpedStorage",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.pumpedStorage",
                         "description": "Pumped storage."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:storage;16",
                         "name": "storage",
-                        "enumValue": "HydroPlantStorageKind.storage",
+                        "displayName": "HydroPlantStorageKind.storage",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.storage",
                         "description": "Storage."
                     }
                 ]

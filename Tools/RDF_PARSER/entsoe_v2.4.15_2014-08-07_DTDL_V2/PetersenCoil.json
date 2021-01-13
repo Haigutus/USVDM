@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PetersenCoil;1",
+    "@id": "dtmi:iec:cim:schema:PetersenCoil;16",
     "displayName": "PetersenCoil",
     "description": "A tunable impedance device normally used to offset line charging during single line faults in an ungrounded section of network.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EarthFaultCompensator;1"
+        "dtmi:iec:cim:schema:EarthFaultCompensator;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:mode;16",
             "@type": "Property",
             "name": "mode",
             "displayName": "PetersenCoil.mode",
@@ -18,24 +20,31 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:PetersenCoilModeKind:fixed;16",
                         "name": "fixed",
-                        "enumValue": "PetersenCoilModeKind.fixed",
+                        "displayName": "PetersenCoilModeKind.fixed",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.fixed",
                         "description": "Fixed position."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:PetersenCoilModeKind:manual;16",
                         "name": "manual",
-                        "enumValue": "PetersenCoilModeKind.manual",
+                        "displayName": "PetersenCoilModeKind.manual",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.manual",
                         "description": "Manual positioning."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:PetersenCoilModeKind:automaticPositioning;16",
                         "name": "automaticPositioning",
-                        "enumValue": "PetersenCoilModeKind.automaticPositioning",
+                        "displayName": "PetersenCoilModeKind.automaticPositioning",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.automaticPositioning",
                         "description": "Automatic positioning."
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:nominalU;16",
             "@type": "Property",
             "name": "nominalU",
             "displayName": "PetersenCoil.nominalU",
@@ -43,6 +52,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:offsetCurrent;16",
             "@type": "Property",
             "name": "offsetCurrent",
             "displayName": "PetersenCoil.offsetCurrent",
@@ -50,6 +60,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:positionCurrent;16",
             "@type": "Property",
             "name": "positionCurrent",
             "displayName": "PetersenCoil.positionCurrent",
@@ -57,6 +68,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundMax;16",
             "@type": "Property",
             "name": "xGroundMax",
             "displayName": "PetersenCoil.xGroundMax",
@@ -64,6 +76,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundMin;16",
             "@type": "Property",
             "name": "xGroundMin",
             "displayName": "PetersenCoil.xGroundMin",
@@ -71,6 +84,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundNominal;16",
             "@type": "Property",
             "name": "xGroundNominal",
             "displayName": "PetersenCoil.xGroundNominal",

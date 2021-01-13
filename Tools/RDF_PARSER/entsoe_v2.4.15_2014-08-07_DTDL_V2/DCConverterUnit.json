@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConverterUnit;1",
+    "@id": "dtmi:iec:cim:schema:DCConverterUnit;16",
     "displayName": "DCConverterUnit",
     "description": "Indivisible operative unit comprising all equipment between the point of common coupling on the AC side and the point of common coupling \u2013 DC side, essentially one or more converters, together with one or more converter transformers, converter control equipment, essential protective and switching devices and auxiliaries, if any, used for conversion.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCEquipmentContainer;1"
+        "dtmi:iec:cim:schema:DCEquipmentContainer;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCConverterUnit:Substation;16",
             "@type": "Relationship",
             "name": "Substation",
             "displayName": "DCConverterUnit.Substation",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Substation;1"
+            "target": "dtmi:iec:cim:schema:Substation;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCConverterUnit:operationMode;16",
             "@type": "Property",
             "name": "operationMode",
             "displayName": "DCConverterUnit.operationMode",
@@ -25,18 +29,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:DCConverterOperatingModeKind:bipolar;16",
                         "name": "bipolar",
-                        "enumValue": "DCConverterOperatingModeKind.bipolar",
+                        "displayName": "DCConverterOperatingModeKind.bipolar",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.bipolar",
                         "description": "Bipolar operation."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:DCConverterOperatingModeKind:monopolarMetallicReturn;16",
                         "name": "monopolarMetallicReturn",
-                        "enumValue": "DCConverterOperatingModeKind.monopolarMetallicReturn",
+                        "displayName": "DCConverterOperatingModeKind.monopolarMetallicReturn",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarMetallicReturn",
                         "description": "Monopolar operation with metallic return"
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:DCConverterOperatingModeKind:monopolarGroundReturn;16",
                         "name": "monopolarGroundReturn",
-                        "enumValue": "DCConverterOperatingModeKind.monopolarGroundReturn",
+                        "displayName": "DCConverterOperatingModeKind.monopolarGroundReturn",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarGroundReturn",
                         "description": "Monopolar operation with ground return"
                     }
                 ]

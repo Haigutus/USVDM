@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCSeriesDevice;1",
+    "@id": "dtmi:iec:cim:schema:DCSeriesDevice;16",
     "displayName": "DCSeriesDevice",
     "description": "A series device within the DC system, typically a reactor used for filtering or smoothing.  Needed for transient and short circuit studies.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1"
+        "dtmi:iec:cim:schema:DCConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCSeriesDevice:inductance;16",
             "@type": "Property",
             "name": "inductance",
             "displayName": "DCSeriesDevice.inductance",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCSeriesDevice:ratedUdc;16",
             "@type": "Property",
             "name": "ratedUdc",
             "displayName": "DCSeriesDevice.ratedUdc",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCSeriesDevice:resistance;16",
             "@type": "Property",
             "name": "resistance",
             "displayName": "DCSeriesDevice.resistance",

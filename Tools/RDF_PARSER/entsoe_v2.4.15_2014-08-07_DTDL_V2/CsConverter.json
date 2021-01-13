@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:CsConverter;1",
+    "@id": "dtmi:iec:cim:schema:CsConverter;16",
     "displayName": "CsConverter",
     "description": "DC side of the current source converter (CSC).",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCConverter;1"
+        "dtmi:iec:cim:schema:ACDCConverter;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:alpha;16",
             "@type": "Property",
             "name": "alpha",
             "displayName": "CsConverter.alpha",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:gamma;16",
             "@type": "Property",
             "name": "gamma",
             "displayName": "CsConverter.gamma",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:maxAlpha;16",
             "@type": "Property",
             "name": "maxAlpha",
             "displayName": "CsConverter.maxAlpha",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:maxGamma;16",
             "@type": "Property",
             "name": "maxGamma",
             "displayName": "CsConverter.maxGamma",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:maxIdc;16",
             "@type": "Property",
             "name": "maxIdc",
             "displayName": "CsConverter.maxIdc",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:minAlpha;16",
             "@type": "Property",
             "name": "minAlpha",
             "displayName": "CsConverter.minAlpha",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:minGamma;16",
             "@type": "Property",
             "name": "minGamma",
             "displayName": "CsConverter.minGamma",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:minIdc;16",
             "@type": "Property",
             "name": "minIdc",
             "displayName": "CsConverter.minIdc",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:operatingMode;16",
             "@type": "Property",
             "name": "operatingMode",
             "displayName": "CsConverter.operatingMode",
@@ -74,19 +84,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:CsOperatingModeKind:inverter;16",
                         "name": "inverter",
-                        "enumValue": "CsOperatingModeKind.inverter",
+                        "displayName": "CsOperatingModeKind.inverter",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.inverter",
                         "description": "Operating as inverter"
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:CsOperatingModeKind:rectifier;16",
                         "name": "rectifier",
-                        "enumValue": "CsOperatingModeKind.rectifier",
+                        "displayName": "CsOperatingModeKind.rectifier",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.rectifier",
                         "description": "Operating as rectifier."
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:pPccControl;16",
             "@type": "Property",
             "name": "pPccControl",
             "displayName": "CsConverter.pPccControl",
@@ -96,24 +111,31 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:activePower;16",
                         "name": "activePower",
-                        "enumValue": "CsPpccControlKind.activePower",
+                        "displayName": "CsPpccControlKind.activePower",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.activePower",
                         "description": "Active power control at AC side."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:dcVoltage;16",
                         "name": "dcVoltage",
-                        "enumValue": "CsPpccControlKind.dcVoltage",
+                        "displayName": "CsPpccControlKind.dcVoltage",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcVoltage",
                         "description": "DC voltage control."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:dcCurrent;16",
                         "name": "dcCurrent",
-                        "enumValue": "CsPpccControlKind.dcCurrent",
+                        "displayName": "CsPpccControlKind.dcCurrent",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcCurrent",
                         "description": "DC current control"
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:ratedIdc;16",
             "@type": "Property",
             "name": "ratedIdc",
             "displayName": "CsConverter.ratedIdc",
@@ -121,6 +143,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:targetAlpha;16",
             "@type": "Property",
             "name": "targetAlpha",
             "displayName": "CsConverter.targetAlpha",
@@ -128,6 +151,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:targetGamma;16",
             "@type": "Property",
             "name": "targetGamma",
             "displayName": "CsConverter.targetGamma",
@@ -135,6 +159,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CsConverter:targetIdc;16",
             "@type": "Property",
             "name": "targetIdc",
             "displayName": "CsConverter.targetIdc",

@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LinearShuntCompensator;1",
+    "@id": "dtmi:iec:cim:schema:LinearShuntCompensator;16",
     "displayName": "LinearShuntCompensator",
     "description": "A linear shunt compensator has banks or sections with equal admittance values.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ShuntCompensator;1"
+        "dtmi:iec:cim:schema:ShuntCompensator;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:b0PerSection;16",
             "@type": "Property",
             "name": "b0PerSection",
             "displayName": "LinearShuntCompensator.b0PerSection",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:bPerSection;16",
             "@type": "Property",
             "name": "bPerSection",
             "displayName": "LinearShuntCompensator.bPerSection",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:g0PerSection;16",
             "@type": "Property",
             "name": "g0PerSection",
             "displayName": "LinearShuntCompensator.g0PerSection",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:gPerSection;16",
             "@type": "Property",
             "name": "gPerSection",
             "displayName": "LinearShuntCompensator.gPerSection",

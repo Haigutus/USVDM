@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonlinearShuntCompensator;1",
+    "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensator;16",
     "displayName": "NonlinearShuntCompensator",
     "description": "A non linear shunt compensator has bank or section admittance values that differs.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ShuntCompensator;1"
+        "dtmi:iec:cim:schema:ShuntCompensator;16"
     ],
     "contents": []
 }

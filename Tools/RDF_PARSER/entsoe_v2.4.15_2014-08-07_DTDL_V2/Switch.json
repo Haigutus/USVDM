@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Switch;1",
+    "@id": "dtmi:iec:cim:schema:Switch;16",
     "displayName": "Switch",
     "description": "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:Switch:normalOpen;16",
             "@type": "Property",
             "name": "normalOpen",
             "displayName": "Switch.normalOpen",
@@ -16,6 +18,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Switch:open;16",
             "@type": "Property",
             "name": "open",
             "displayName": "Switch.open",
@@ -23,6 +26,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Switch:ratedCurrent;16",
             "@type": "Property",
             "name": "ratedCurrent",
             "displayName": "Switch.ratedCurrent",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Switch:retained;16",
             "@type": "Property",
             "name": "retained",
             "displayName": "Switch.retained",

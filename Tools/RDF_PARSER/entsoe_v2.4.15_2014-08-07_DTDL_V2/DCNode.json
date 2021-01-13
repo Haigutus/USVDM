@@ -1,26 +1,31 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCNode;1",
+    "@id": "dtmi:iec:cim:schema:DCNode;16",
     "displayName": "DCNode",
     "description": "DC nodes are points where terminals of DC conducting equipment are connected together with zero impedance.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCNode:DCEquipmentContainer;16",
             "@type": "Relationship",
             "name": "DCEquipmentContainer",
             "displayName": "DCNode.DCEquipmentContainer",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCEquipmentContainer;1"
+            "target": "dtmi:iec:cim:schema:DCEquipmentContainer;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCNode:DCTopologicalNode;16",
             "@type": "Relationship",
             "name": "DCTopologicalNode",
             "displayName": "DCNode.DCTopologicalNode",
             "description": "See association end TopologicalNode.ConnectivityNodes.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTopologicalNode;1"
+            "target": "dtmi:iec:cim:schema:DCTopologicalNode;16",
+            "maxMultiplicity": 1
         }
     ]
 }

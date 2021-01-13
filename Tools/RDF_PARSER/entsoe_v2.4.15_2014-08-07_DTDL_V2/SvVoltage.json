@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SvVoltage;1",
+    "@id": "dtmi:iec:cim:schema:SvVoltage;16",
     "displayName": "SvVoltage",
     "description": "State variable for voltage.",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:SvVoltage:TopologicalNode;16",
             "@type": "Relationship",
             "name": "TopologicalNode",
             "displayName": "SvVoltage.TopologicalNode",
             "description": "The state voltage associated with the topological node.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TopologicalNode;1"
+            "target": "dtmi:iec:cim:schema:TopologicalNode;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:SvVoltage:angle;16",
             "@type": "Property",
             "name": "angle",
             "displayName": "SvVoltage.angle",
@@ -20,6 +24,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SvVoltage:v;16",
             "@type": "Property",
             "name": "v",
             "displayName": "SvVoltage.v",

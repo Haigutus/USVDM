@@ -1,35 +1,43 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TopologicalNode;1",
+    "@id": "dtmi:iec:cim:schema:TopologicalNode;16",
     "displayName": "TopologicalNode",
     "description": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"bu",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:TopologicalNode:BaseVoltage;16",
             "@type": "Relationship",
             "name": "BaseVoltage",
             "displayName": "TopologicalNode.BaseVoltage",
             "description": "The base voltage of the topologocial node.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BaseVoltage;1"
+            "target": "dtmi:iec:cim:schema:BaseVoltage;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TopologicalNode:ConnectivityNodeContainer;16",
             "@type": "Relationship",
             "name": "ConnectivityNodeContainer",
             "displayName": "TopologicalNode.ConnectivityNodeContainer",
             "description": "The connectivity node container to which the toplogical node belongs.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConnectivityNodeContainer;1"
+            "target": "dtmi:iec:cim:schema:ConnectivityNodeContainer;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TopologicalNode:ReportingGroup;16",
             "@type": "Relationship",
             "name": "ReportingGroup",
             "displayName": "TopologicalNode.ReportingGroup",
             "description": "The topological nodes that belong to the reporting group.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ReportingGroup;1"
+            "target": "dtmi:iec:cim:schema:ReportingGroup;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:boundaryPoint;31",
             "@type": "Property",
             "name": "boundaryPoint",
             "displayName": "TopologicalNode.boundaryPoint",
@@ -37,6 +45,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndIsoCode;31",
             "@type": "Property",
             "name": "fromEndIsoCode",
             "displayName": "TopologicalNode.fromEndIsoCode",
@@ -44,6 +53,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndName;31",
             "@type": "Property",
             "name": "fromEndName",
             "displayName": "TopologicalNode.fromEndName",
@@ -51,6 +61,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndNameTso;31",
             "@type": "Property",
             "name": "fromEndNameTso",
             "displayName": "TopologicalNode.fromEndNameTso",
@@ -58,6 +69,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndIsoCode;31",
             "@type": "Property",
             "name": "toEndIsoCode",
             "displayName": "TopologicalNode.toEndIsoCode",
@@ -65,6 +77,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndName;31",
             "@type": "Property",
             "name": "toEndName",
             "displayName": "TopologicalNode.toEndName",
@@ -72,6 +85,7 @@
             "schema": "string"
         },
         {
+            "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndNameTso;31",
             "@type": "Property",
             "name": "toEndNameTso",
             "displayName": "TopologicalNode.toEndNameTso",

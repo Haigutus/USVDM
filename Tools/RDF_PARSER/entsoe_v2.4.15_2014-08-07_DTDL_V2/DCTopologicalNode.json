@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTopologicalNode;1",
+    "@id": "dtmi:iec:cim:schema:DCTopologicalNode;16",
     "displayName": "DCTopologicalNode",
     "description": "DC bus.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCTopologicalNode:DCEquipmentContainer;16",
             "@type": "Relationship",
             "name": "DCEquipmentContainer",
             "displayName": "DCTopologicalNode.DCEquipmentContainer",
             "description": "",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCEquipmentContainer;1"
+            "target": "dtmi:iec:cim:schema:DCEquipmentContainer;16",
+            "maxMultiplicity": 1
         }
     ]
 }

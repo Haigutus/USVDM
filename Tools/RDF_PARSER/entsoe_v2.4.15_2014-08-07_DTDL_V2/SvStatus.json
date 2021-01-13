@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SvStatus;1",
+    "@id": "dtmi:iec:cim:schema:SvStatus;16",
     "displayName": "SvStatus",
     "description": "State variable for status.",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:SvStatus:ConductingEquipment;16",
             "@type": "Relationship",
             "name": "ConductingEquipment",
             "displayName": "SvStatus.ConductingEquipment",
             "description": "The conducting equipment associated with the status state variable.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+            "target": "dtmi:iec:cim:schema:ConductingEquipment;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:SvStatus:inService;16",
             "@type": "Property",
             "name": "inService",
             "displayName": "SvStatus.inService",

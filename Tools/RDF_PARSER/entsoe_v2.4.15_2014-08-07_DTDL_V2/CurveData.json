@@ -1,18 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:CurveData;1",
+    "@id": "dtmi:iec:cim:schema:CurveData;16",
     "displayName": "CurveData",
     "description": "Multi-purpose data points for defining a curve.  The use of this generic class is discouraged if a more specific class  can be used to specify the x and y axis values along with their specific data types.",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:CurveData:Curve;16",
             "@type": "Relationship",
             "name": "Curve",
             "displayName": "CurveData.Curve",
             "description": "The point data values that define this curve.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Curve;1"
+            "target": "dtmi:iec:cim:schema:Curve;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:CurveData:xvalue;16",
             "@type": "Property",
             "name": "xvalue",
             "displayName": "CurveData.xvalue",
@@ -20,6 +24,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CurveData:y1value;16",
             "@type": "Property",
             "name": "y1value",
             "displayName": "CurveData.y1value",
@@ -27,6 +32,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:CurveData:y2value;16",
             "@type": "Property",
             "name": "y2value",
             "displayName": "CurveData.y2value",

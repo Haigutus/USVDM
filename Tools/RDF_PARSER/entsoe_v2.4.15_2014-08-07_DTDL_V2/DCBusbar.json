@@ -1,10 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCBusbar;1",
+    "@id": "dtmi:iec:cim:schema:DCBusbar;16",
     "displayName": "DCBusbar",
     "description": "A busbar within a DC system.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1"
+        "dtmi:iec:cim:schema:DCConductingEquipment;16"
     ]
 }

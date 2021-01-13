@@ -1,11 +1,13 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PerLengthDCLineParameter;1",
+    "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter;16",
     "displayName": "PerLengthDCLineParameter",
     "description": "",
+    "comment": "concrete",
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:capacitance;16",
             "@type": "Property",
             "name": "capacitance",
             "displayName": "PerLengthDCLineParameter.capacitance",
@@ -13,6 +15,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:inductance;16",
             "@type": "Property",
             "name": "inductance",
             "displayName": "PerLengthDCLineParameter.inductance",
@@ -20,6 +23,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:resistance;16",
             "@type": "Property",
             "name": "resistance",
             "displayName": "PerLengthDCLineParameter.resistance",

@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:WindGeneratingUnit;1",
+    "@id": "dtmi:iec:cim:schema:WindGeneratingUnit;16",
     "displayName": "WindGeneratingUnit",
     "description": "A wind driven generating unit.  May be used to represent a single turbine or an aggregation.  ",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
+        "dtmi:iec:cim:schema:GeneratingUnit;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:WindGeneratingUnit:windGenUnitType;16",
             "@type": "Property",
             "name": "windGenUnitType",
             "displayName": "WindGeneratingUnit.windGenUnitType",
@@ -18,13 +20,17 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:WindGenUnitKind:offshore;16",
                         "name": "offshore",
-                        "enumValue": "WindGenUnitKind.offshore",
+                        "displayName": "WindGenUnitKind.offshore",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.offshore",
                         "description": "The wind generating unit is located offshore."
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:WindGenUnitKind:onshore;16",
                         "name": "onshore",
-                        "enumValue": "WindGenUnitKind.onshore",
+                        "displayName": "WindGenUnitKind.onshore",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.onshore",
                         "description": "The wind generating unit is located onshore."
                     }
                 ]

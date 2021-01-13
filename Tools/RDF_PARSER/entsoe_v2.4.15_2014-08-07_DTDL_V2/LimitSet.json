@@ -1,14 +1,15 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LimitSet;1",
+    "@id": "dtmi:iec:cim:schema:LimitSet;16",
     "displayName": "LimitSet",
     "description": "Specifies a set of Limits that are associated with a Measurement. A Measurement may have several LimitSets corresponding to seasonal or other changing conditions. The condition is captured in the name and description attributes. The same LimitSet may be used for several Measurements. In particular percentage limits are used this way.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:LimitSet:isPercentageLimits;16",
             "@type": "Property",
             "name": "isPercentageLimits",
             "displayName": "LimitSet.isPercentageLimits",

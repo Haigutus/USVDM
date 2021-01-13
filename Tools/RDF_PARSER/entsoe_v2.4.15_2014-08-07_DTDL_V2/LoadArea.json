@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadArea;1",
+    "@id": "dtmi:iec:cim:schema:LoadArea;16",
     "displayName": "LoadArea",
     "description": "The class is the root or first level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyArea;1"
+        "dtmi:iec:cim:schema:EnergyArea;16"
     ],
     "contents": []
 }

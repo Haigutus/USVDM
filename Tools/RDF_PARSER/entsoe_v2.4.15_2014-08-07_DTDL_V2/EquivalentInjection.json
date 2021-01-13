@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentInjection;1",
+    "@id": "dtmi:iec:cim:schema:EquivalentInjection;16",
     "displayName": "EquivalentInjection",
     "description": "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentEquipment;1"
+        "dtmi:iec:cim:schema:EquivalentEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:ReactiveCapabilityCurve;16",
             "@type": "Relationship",
             "name": "ReactiveCapabilityCurve",
             "displayName": "EquivalentInjection.ReactiveCapabilityCurve",
             "description": "The equivalent injection using this reactive capability curve.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ReactiveCapabilityCurve;1"
+            "target": "dtmi:iec:cim:schema:ReactiveCapabilityCurve;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:maxP;16",
             "@type": "Property",
             "name": "maxP",
             "displayName": "EquivalentInjection.maxP",
@@ -23,6 +27,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:maxQ;16",
             "@type": "Property",
             "name": "maxQ",
             "displayName": "EquivalentInjection.maxQ",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:minP;16",
             "@type": "Property",
             "name": "minP",
             "displayName": "EquivalentInjection.minP",
@@ -37,6 +43,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:minQ;16",
             "@type": "Property",
             "name": "minQ",
             "displayName": "EquivalentInjection.minQ",
@@ -44,6 +51,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:p;16",
             "@type": "Property",
             "name": "p",
             "displayName": "EquivalentInjection.p",
@@ -51,6 +59,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "EquivalentInjection.q",
@@ -58,6 +67,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "EquivalentInjection.r",
@@ -65,6 +75,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:r0;16",
             "@type": "Property",
             "name": "r0",
             "displayName": "EquivalentInjection.r0",
@@ -72,6 +83,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:r2;16",
             "@type": "Property",
             "name": "r2",
             "displayName": "EquivalentInjection.r2",
@@ -79,6 +91,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationCapability;16",
             "@type": "Property",
             "name": "regulationCapability",
             "displayName": "EquivalentInjection.regulationCapability",
@@ -86,6 +99,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationStatus;16",
             "@type": "Property",
             "name": "regulationStatus",
             "displayName": "EquivalentInjection.regulationStatus",
@@ -93,6 +107,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationTarget;16",
             "@type": "Property",
             "name": "regulationTarget",
             "displayName": "EquivalentInjection.regulationTarget",
@@ -100,6 +115,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:x;16",
             "@type": "Property",
             "name": "x",
             "displayName": "EquivalentInjection.x",
@@ -107,6 +123,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:x0;16",
             "@type": "Property",
             "name": "x0",
             "displayName": "EquivalentInjection.x0",
@@ -114,6 +131,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentInjection:x2;16",
             "@type": "Property",
             "name": "x2",
             "displayName": "EquivalentInjection.x2",

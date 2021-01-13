@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCConverter;1",
+    "@id": "dtmi:iec:cim:schema:ACDCConverter;16",
     "displayName": "ACDCConverter",
     "description": "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:PccTerminal;16",
             "@type": "Relationship",
             "name": "PccTerminal",
             "displayName": "ACDCConverter.PccTerminal",
             "description": "All converters' DC sides linked to this point of common coupling terminal.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Terminal;1"
+            "target": "dtmi:iec:cim:schema:Terminal;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:baseS;16",
             "@type": "Property",
             "name": "baseS",
             "displayName": "ACDCConverter.baseS",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:idc;16",
             "@type": "Property",
             "name": "idc",
             "displayName": "ACDCConverter.idc",
@@ -30,6 +34,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:idleLoss;16",
             "@type": "Property",
             "name": "idleLoss",
             "displayName": "ACDCConverter.idleLoss",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:maxUdc;16",
             "@type": "Property",
             "name": "maxUdc",
             "displayName": "ACDCConverter.maxUdc",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:minUdc;16",
             "@type": "Property",
             "name": "minUdc",
             "displayName": "ACDCConverter.minUdc",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:numberOfValves;16",
             "@type": "Property",
             "name": "numberOfValves",
             "displayName": "ACDCConverter.numberOfValves",
@@ -58,6 +66,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:p;16",
             "@type": "Property",
             "name": "p",
             "displayName": "ACDCConverter.p",
@@ -65,6 +74,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:poleLossP;16",
             "@type": "Property",
             "name": "poleLossP",
             "displayName": "ACDCConverter.poleLossP",
@@ -72,6 +82,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "ACDCConverter.q",
@@ -79,6 +90,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:ratedUdc;16",
             "@type": "Property",
             "name": "ratedUdc",
             "displayName": "ACDCConverter.ratedUdc",
@@ -86,6 +98,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:resistiveLoss;16",
             "@type": "Property",
             "name": "resistiveLoss",
             "displayName": "ACDCConverter.resistiveLoss",
@@ -93,6 +106,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:switchingLoss;16",
             "@type": "Property",
             "name": "switchingLoss",
             "displayName": "ACDCConverter.switchingLoss",
@@ -100,6 +114,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:targetPpcc;16",
             "@type": "Property",
             "name": "targetPpcc",
             "displayName": "ACDCConverter.targetPpcc",
@@ -107,6 +122,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:targetUdc;16",
             "@type": "Property",
             "name": "targetUdc",
             "displayName": "ACDCConverter.targetUdc",
@@ -114,6 +130,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:uc;16",
             "@type": "Property",
             "name": "uc",
             "displayName": "ACDCConverter.uc",
@@ -121,6 +138,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:udc;16",
             "@type": "Property",
             "name": "udc",
             "displayName": "ACDCConverter.udc",
@@ -128,6 +146,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:ACDCConverter:valveU0;16",
             "@type": "Property",
             "name": "valveU0",
             "displayName": "ACDCConverter.valveU0",

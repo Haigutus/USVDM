@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AnalogControl;1",
+    "@id": "dtmi:iec:cim:schema:AnalogControl;16",
     "displayName": "AnalogControl",
     "description": "An analog control used for supervisory control.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Control;1"
+        "dtmi:iec:cim:schema:Control;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:AnalogControl:AnalogValue;16",
             "@type": "Relationship",
             "name": "AnalogValue",
             "displayName": "AnalogControl.AnalogValue",
             "description": "The Control variable associated with the MeasurementValue.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AnalogValue;1"
+            "target": "dtmi:iec:cim:schema:AnalogValue;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:AnalogControl:maxValue;16",
             "@type": "Property",
             "name": "maxValue",
             "displayName": "AnalogControl.maxValue",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:AnalogControl:minValue;16",
             "@type": "Property",
             "name": "minValue",
             "displayName": "AnalogControl.minValue",

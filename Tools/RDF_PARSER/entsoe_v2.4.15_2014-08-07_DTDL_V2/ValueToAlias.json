@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ValueToAlias;1",
+    "@id": "dtmi:iec:cim:schema:ValueToAlias;16",
     "displayName": "ValueToAlias",
     "description": "Describes the translation of one particular value into a name, e.g. 1 as \"Open\".",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ValueToAlias:ValueAliasSet;16",
             "@type": "Relationship",
             "name": "ValueAliasSet",
             "displayName": "ValueToAlias.ValueAliasSet",
             "description": "The ValueToAlias mappings included in the set.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ValueAliasSet;1"
+            "target": "dtmi:iec:cim:schema:ValueAliasSet;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:ValueToAlias:value;16",
             "@type": "Property",
             "name": "value",
             "displayName": "ValueToAlias.value",

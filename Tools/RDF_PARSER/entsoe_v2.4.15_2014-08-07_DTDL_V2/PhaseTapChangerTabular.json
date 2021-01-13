@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerTabular;1",
+    "@id": "dtmi:iec:cim:schema:PhaseTapChangerTabular;16",
     "displayName": "PhaseTapChangerTabular",
     "description": "",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChanger;1"
+        "dtmi:iec:cim:schema:PhaseTapChanger;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PhaseTapChangerTabular:PhaseTapChangerTable;16",
             "@type": "Relationship",
             "name": "PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTabular.PhaseTapChangerTable",
             "description": "The phase tap changer table for this phase tap changer.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerTable;1"
+            "target": "dtmi:iec:cim:schema:PhaseTapChangerTable;16",
+            "maxMultiplicity": 1
         }
     ]
 }

@@ -1,19 +1,22 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConformLoadSchedule;1",
+    "@id": "dtmi:iec:cim:schema:ConformLoadSchedule;16",
     "displayName": "ConformLoadSchedule",
     "description": "A curve of load  versus time (X-axis) showing the active power values (Y1-axis) and reactive power (Y2-axis) for each unit of the period covered. This curve represents a typical pattern of load over the time period for a given day type and season.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SeasonDayTypeSchedule;1"
+        "dtmi:iec:cim:schema:SeasonDayTypeSchedule;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ConformLoadSchedule:ConformLoadGroup;16",
             "@type": "Relationship",
             "name": "ConformLoadGroup",
             "displayName": "ConformLoadSchedule.ConformLoadGroup",
             "description": "The ConformLoadGroup where the ConformLoadSchedule belongs.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConformLoadGroup;1"
+            "target": "dtmi:iec:cim:schema:ConformLoadGroup;16",
+            "maxMultiplicity": 1
         }
     ]
 }

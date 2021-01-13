@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Season;1",
+    "@id": "dtmi:iec:cim:schema:Season;16",
     "displayName": "Season",
     "description": "A specified time period of the year.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:Season:endDate;16",
             "@type": "Property",
             "name": "endDate",
             "displayName": "Season.endDate",
@@ -16,6 +18,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:Season:startDate;16",
             "@type": "Property",
             "name": "startDate",
             "displayName": "Season.startDate",

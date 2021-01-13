@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerTablePoint;1",
+    "@id": "dtmi:iec:cim:schema:PhaseTapChangerTablePoint;16",
     "displayName": "PhaseTapChangerTablePoint",
     "description": "Describes each tap step in the phase tap changer tabular curve.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChangerTablePoint;1"
+        "dtmi:iec:cim:schema:TapChangerTablePoint;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:PhaseTapChangerTablePoint:PhaseTapChangerTable;16",
             "@type": "Relationship",
             "name": "PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTablePoint.PhaseTapChangerTable",
             "description": "The table of this point.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerTable;1"
+            "target": "dtmi:iec:cim:schema:PhaseTapChangerTable;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:PhaseTapChangerTablePoint:angle;16",
             "@type": "Property",
             "name": "angle",
             "displayName": "PhaseTapChangerTablePoint.angle",

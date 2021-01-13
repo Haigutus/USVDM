@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SynchronousMachine;1",
+    "@id": "dtmi:iec:cim:schema:SynchronousMachine;16",
     "displayName": "SynchronousMachine",
     "description": "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RotatingMachine;1"
+        "dtmi:iec:cim:schema:RotatingMachine;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:InitialReactiveCapabilityCurve;16",
             "@type": "Relationship",
             "name": "InitialReactiveCapabilityCurve",
             "displayName": "SynchronousMachine.InitialReactiveCapabilityCurve",
             "description": "Synchronous machines using this curve as default.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ReactiveCapabilityCurve;1"
+            "target": "dtmi:iec:cim:schema:ReactiveCapabilityCurve;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthing;16",
             "@type": "Property",
             "name": "earthing",
             "displayName": "SynchronousMachine.earthing",
@@ -23,6 +27,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthingStarPointR;16",
             "@type": "Property",
             "name": "earthingStarPointR",
             "displayName": "SynchronousMachine.earthingStarPointR",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthingStarPointX;16",
             "@type": "Property",
             "name": "earthingStarPointX",
             "displayName": "SynchronousMachine.earthingStarPointX",
@@ -37,6 +43,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:ikk;16",
             "@type": "Property",
             "name": "ikk",
             "displayName": "SynchronousMachine.ikk",
@@ -44,6 +51,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:maxQ;16",
             "@type": "Property",
             "name": "maxQ",
             "displayName": "SynchronousMachine.maxQ",
@@ -51,6 +59,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:minQ;16",
             "@type": "Property",
             "name": "minQ",
             "displayName": "SynchronousMachine.minQ",
@@ -58,6 +67,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:mu;16",
             "@type": "Property",
             "name": "mu",
             "displayName": "SynchronousMachine.mu",
@@ -65,6 +75,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:operatingMode;16",
             "@type": "Property",
             "name": "operatingMode",
             "displayName": "SynchronousMachine.operatingMode",
@@ -74,24 +85,31 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineOperatingMode:generator;16",
                         "name": "generator",
-                        "enumValue": "SynchronousMachineOperatingMode.generator",
+                        "displayName": "SynchronousMachineOperatingMode.generator",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.generator",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineOperatingMode:condenser;16",
                         "name": "condenser",
-                        "enumValue": "SynchronousMachineOperatingMode.condenser",
+                        "displayName": "SynchronousMachineOperatingMode.condenser",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.condenser",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineOperatingMode:motor;16",
                         "name": "motor",
-                        "enumValue": "SynchronousMachineOperatingMode.motor",
+                        "displayName": "SynchronousMachineOperatingMode.motor",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.motor",
                         "description": ""
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:qPercent;16",
             "@type": "Property",
             "name": "qPercent",
             "displayName": "SynchronousMachine.qPercent",
@@ -99,6 +117,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "SynchronousMachine.r",
@@ -106,6 +125,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:r0;16",
             "@type": "Property",
             "name": "r0",
             "displayName": "SynchronousMachine.r0",
@@ -113,6 +133,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:r2;16",
             "@type": "Property",
             "name": "r2",
             "displayName": "SynchronousMachine.r2",
@@ -120,6 +141,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:referencePriority;16",
             "@type": "Property",
             "name": "referencePriority",
             "displayName": "SynchronousMachine.referencePriority",
@@ -127,6 +149,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectSubtransX;16",
             "@type": "Property",
             "name": "satDirectSubtransX",
             "displayName": "SynchronousMachine.satDirectSubtransX",
@@ -134,6 +157,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectSyncX;16",
             "@type": "Property",
             "name": "satDirectSyncX",
             "displayName": "SynchronousMachine.satDirectSyncX",
@@ -141,6 +165,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectTransX;16",
             "@type": "Property",
             "name": "satDirectTransX",
             "displayName": "SynchronousMachine.satDirectTransX",
@@ -148,6 +173,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:shortCircuitRotorType;16",
             "@type": "Property",
             "name": "shortCircuitRotorType",
             "displayName": "SynchronousMachine.shortCircuitRotorType",
@@ -157,29 +183,38 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:ShortCircuitRotorKind:salientPole1;16",
                         "name": "salientPole1",
-                        "enumValue": "ShortCircuitRotorKind.salientPole1",
+                        "displayName": "ShortCircuitRotorKind.salientPole1",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole1",
                         "description": "Salient pole 1 in the IEC 60909"
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:ShortCircuitRotorKind:salientPole2;16",
                         "name": "salientPole2",
-                        "enumValue": "ShortCircuitRotorKind.salientPole2",
+                        "displayName": "ShortCircuitRotorKind.salientPole2",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole2",
                         "description": "Salient pole 2 in IEC 60909"
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:ShortCircuitRotorKind:turboSeries1;16",
                         "name": "turboSeries1",
-                        "enumValue": "ShortCircuitRotorKind.turboSeries1",
+                        "displayName": "ShortCircuitRotorKind.turboSeries1",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries1",
                         "description": "Turbo Series 1 in the IEC 60909"
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:ShortCircuitRotorKind:turboSeries2;16",
                         "name": "turboSeries2",
-                        "enumValue": "ShortCircuitRotorKind.turboSeries2",
+                        "displayName": "ShortCircuitRotorKind.turboSeries2",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries2",
                         "description": "Turbo series 2 in IEC 60909"
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:type;16",
             "@type": "Property",
             "name": "type",
             "displayName": "SynchronousMachine.type",
@@ -189,44 +224,59 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:generator;16",
                         "name": "generator",
-                        "enumValue": "SynchronousMachineKind.generator",
+                        "displayName": "SynchronousMachineKind.generator",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generator",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:condenser;16",
                         "name": "condenser",
-                        "enumValue": "SynchronousMachineKind.condenser",
+                        "displayName": "SynchronousMachineKind.condenser",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.condenser",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:generatorOrCondenser;16",
                         "name": "generatorOrCondenser",
-                        "enumValue": "SynchronousMachineKind.generatorOrCondenser",
+                        "displayName": "SynchronousMachineKind.generatorOrCondenser",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenser",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:motor;16",
                         "name": "motor",
-                        "enumValue": "SynchronousMachineKind.motor",
+                        "displayName": "SynchronousMachineKind.motor",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motor",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:generatorOrMotor;16",
                         "name": "generatorOrMotor",
-                        "enumValue": "SynchronousMachineKind.generatorOrMotor",
+                        "displayName": "SynchronousMachineKind.generatorOrMotor",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrMotor",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:motorOrCondenser;16",
                         "name": "motorOrCondenser",
-                        "enumValue": "SynchronousMachineKind.motorOrCondenser",
+                        "displayName": "SynchronousMachineKind.motorOrCondenser",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motorOrCondenser",
                         "description": ""
                     },
                     {
+                        "@id": "dtmi:iec:cim:schema:SynchronousMachineKind:generatorOrCondenserOrMotor;16",
                         "name": "generatorOrCondenserOrMotor",
-                        "enumValue": "SynchronousMachineKind.generatorOrCondenserOrMotor",
+                        "displayName": "SynchronousMachineKind.generatorOrCondenserOrMotor",
+                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenserOrMotor",
                         "description": ""
                     }
                 ]
             }
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:voltageRegulationRange;16",
             "@type": "Property",
             "name": "voltageRegulationRange",
             "displayName": "SynchronousMachine.voltageRegulationRange",
@@ -234,6 +284,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:x0;16",
             "@type": "Property",
             "name": "x0",
             "displayName": "SynchronousMachine.x0",
@@ -241,6 +292,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SynchronousMachine:x2;16",
             "@type": "Property",
             "name": "x2",
             "displayName": "SynchronousMachine.x2",

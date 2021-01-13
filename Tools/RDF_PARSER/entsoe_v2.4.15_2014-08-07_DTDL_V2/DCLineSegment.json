@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCLineSegment;1",
+    "@id": "dtmi:iec:cim:schema:DCLineSegment;16",
     "displayName": "DCLineSegment",
     "description": "A wire or combination of wires not insulated from one another, with consistent electrical characteristics, used to carry direct current between points in the DC region of the power system.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCConductingEquipment;1"
+        "dtmi:iec:cim:schema:DCConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:DCLineSegment:PerLengthParameter;16",
             "@type": "Relationship",
             "name": "PerLengthParameter",
             "displayName": "DCLineSegment.PerLengthParameter",
             "description": "Set of per-length parameters for this line segment.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PerLengthDCLineParameter;1"
+            "target": "dtmi:iec:cim:schema:PerLengthDCLineParameter;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCLineSegment:capacitance;16",
             "@type": "Property",
             "name": "capacitance",
             "displayName": "DCLineSegment.capacitance",
@@ -23,6 +27,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCLineSegment:inductance;16",
             "@type": "Property",
             "name": "inductance",
             "displayName": "DCLineSegment.inductance",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCLineSegment:length;16",
             "@type": "Property",
             "name": "length",
             "displayName": "DCLineSegment.length",
@@ -37,6 +43,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:DCLineSegment:resistance;16",
             "@type": "Property",
             "name": "resistance",
             "displayName": "DCLineSegment.resistance",

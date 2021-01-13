@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentShunt;1",
+    "@id": "dtmi:iec:cim:schema:EquivalentShunt;16",
     "displayName": "EquivalentShunt",
     "description": "The class represents equivalent shunts.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentEquipment;1"
+        "dtmi:iec:cim:schema:EquivalentEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentShunt:b;16",
             "@type": "Property",
             "name": "b",
             "displayName": "EquivalentShunt.b",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentShunt:g;16",
             "@type": "Property",
             "name": "g",
             "displayName": "EquivalentShunt.g",

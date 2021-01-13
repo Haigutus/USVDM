@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ActivePowerLimit;1",
+    "@id": "dtmi:iec:cim:schema:ActivePowerLimit;16",
     "displayName": "ActivePowerLimit",
     "description": "Limit on active power flow.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:OperationalLimit;1"
+        "dtmi:iec:cim:schema:OperationalLimit;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:ActivePowerLimit:value;16",
             "@type": "Property",
             "name": "value",
             "displayName": "ActivePowerLimit.value",

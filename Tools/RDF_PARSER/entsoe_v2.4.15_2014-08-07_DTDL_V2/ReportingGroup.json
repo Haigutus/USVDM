@@ -1,11 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ReportingGroup;1",
+    "@id": "dtmi:iec:cim:schema:ReportingGroup;16",
     "displayName": "ReportingGroup",
     "description": "A reporting group is used for various ad-hoc groupings used for reporting.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": []
 }

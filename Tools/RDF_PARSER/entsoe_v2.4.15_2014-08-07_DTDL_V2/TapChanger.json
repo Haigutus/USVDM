@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChanger;1",
+    "@id": "dtmi:iec:cim:schema:TapChanger;16",
     "displayName": "TapChanger",
     "description": "Mechanism for changing transformer winding tap positions.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
+        "dtmi:iec:cim:schema:PowerSystemResource;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:TapChangerControl;16",
             "@type": "Relationship",
             "name": "TapChangerControl",
             "displayName": "TapChanger.TapChangerControl",
             "description": "The tap changers that participates in this regulating tap control scheme.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChangerControl;1"
+            "target": "dtmi:iec:cim:schema:TapChangerControl;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:controlEnabled;16",
             "@type": "Property",
             "name": "controlEnabled",
             "displayName": "TapChanger.controlEnabled",
@@ -23,6 +26,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:highStep;16",
             "@type": "Property",
             "name": "highStep",
             "displayName": "TapChanger.highStep",
@@ -30,6 +34,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:lowStep;16",
             "@type": "Property",
             "name": "lowStep",
             "displayName": "TapChanger.lowStep",
@@ -37,6 +42,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:ltcFlag;16",
             "@type": "Property",
             "name": "ltcFlag",
             "displayName": "TapChanger.ltcFlag",
@@ -44,6 +50,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:neutralStep;16",
             "@type": "Property",
             "name": "neutralStep",
             "displayName": "TapChanger.neutralStep",
@@ -51,6 +58,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:neutralU;16",
             "@type": "Property",
             "name": "neutralU",
             "displayName": "TapChanger.neutralU",
@@ -58,6 +66,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:normalStep;16",
             "@type": "Property",
             "name": "normalStep",
             "displayName": "TapChanger.normalStep",
@@ -65,6 +74,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TapChanger:step;16",
             "@type": "Property",
             "name": "step",
             "displayName": "TapChanger.step",

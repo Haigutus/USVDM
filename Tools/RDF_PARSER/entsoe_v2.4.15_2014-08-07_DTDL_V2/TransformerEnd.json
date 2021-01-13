@@ -1,28 +1,33 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TransformerEnd;1",
+    "@id": "dtmi:iec:cim:schema:TransformerEnd;16",
     "displayName": "TransformerEnd",
     "description": "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:BaseVoltage;16",
             "@type": "Relationship",
             "name": "BaseVoltage",
             "displayName": "TransformerEnd.BaseVoltage",
             "description": "Base voltage of the transformer end.  This is essential for PU calculation.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BaseVoltage;1"
+            "target": "dtmi:iec:cim:schema:BaseVoltage;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:Terminal;16",
             "@type": "Relationship",
             "name": "Terminal",
             "displayName": "TransformerEnd.Terminal",
             "description": "Terminal of the power transformer to which this transformer end belongs.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Terminal;1"
+            "target": "dtmi:iec:cim:schema:Terminal;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:endNumber;16",
             "@type": "Property",
             "name": "endNumber",
             "displayName": "TransformerEnd.endNumber",
@@ -30,6 +35,7 @@
             "schema": "integer"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:grounded;16",
             "@type": "Property",
             "name": "grounded",
             "displayName": "TransformerEnd.grounded",
@@ -37,6 +43,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:rground;16",
             "@type": "Property",
             "name": "rground",
             "displayName": "TransformerEnd.rground",
@@ -44,6 +51,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:TransformerEnd:xground;16",
             "@type": "Property",
             "name": "xground",
             "displayName": "TransformerEnd.xground",

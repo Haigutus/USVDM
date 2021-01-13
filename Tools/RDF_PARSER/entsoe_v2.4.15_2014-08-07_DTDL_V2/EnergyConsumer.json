@@ -1,21 +1,25 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyConsumer;1",
+    "@id": "dtmi:iec:cim:schema:EnergyConsumer;16",
     "displayName": "EnergyConsumer",
     "description": "Generic user of energy - a  point of consumption on the power system model.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:LoadResponse;16",
             "@type": "Relationship",
             "name": "LoadResponse",
             "displayName": "EnergyConsumer.LoadResponse",
             "description": "The load response characteristic of this load.  If missing, this load is assumed to be constant power.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadResponseCharacteristic;1"
+            "target": "dtmi:iec:cim:schema:LoadResponseCharacteristic;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:p;16",
             "@type": "Property",
             "name": "p",
             "displayName": "EnergyConsumer.p",
@@ -23,6 +27,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:pfixed;16",
             "@type": "Property",
             "name": "pfixed",
             "displayName": "EnergyConsumer.pfixed",
@@ -30,6 +35,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:pfixedPct;16",
             "@type": "Property",
             "name": "pfixedPct",
             "displayName": "EnergyConsumer.pfixedPct",
@@ -37,6 +43,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:q;16",
             "@type": "Property",
             "name": "q",
             "displayName": "EnergyConsumer.q",
@@ -44,6 +51,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:qfixed;16",
             "@type": "Property",
             "name": "qfixed",
             "displayName": "EnergyConsumer.qfixed",
@@ -51,6 +59,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:EnergyConsumer:qfixedPct;16",
             "@type": "Property",
             "name": "qfixedPct",
             "displayName": "EnergyConsumer.qfixedPct",

@@ -1,19 +1,21 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentEquipment;1",
+    "@id": "dtmi:iec:cim:schema:EquivalentEquipment;16",
     "displayName": "EquivalentEquipment",
     "description": "The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:EquivalentEquipment:EquivalentNetwork;16",
             "@type": "Relationship",
             "name": "EquivalentNetwork",
             "displayName": "EquivalentEquipment.EquivalentNetwork",
             "description": "The associated reduced equivalents.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EquivalentNetwork;1"
+            "target": "dtmi:iec:cim:schema:EquivalentNetwork;16",
+            "maxMultiplicity": 1
         }
     ]
 }

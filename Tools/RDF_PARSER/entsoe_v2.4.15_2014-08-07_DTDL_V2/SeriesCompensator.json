@@ -1,14 +1,16 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SeriesCompensator;1",
+    "@id": "dtmi:iec:cim:schema:SeriesCompensator;16",
     "displayName": "SeriesCompensator",
     "description": "A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device.",
+    "comment": "concrete",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ConductingEquipment;1"
+        "dtmi:iec:cim:schema:ConductingEquipment;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:r;16",
             "@type": "Property",
             "name": "r",
             "displayName": "SeriesCompensator.r",
@@ -16,6 +18,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:r0;16",
             "@type": "Property",
             "name": "r0",
             "displayName": "SeriesCompensator.r0",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorPresent;16",
             "@type": "Property",
             "name": "varistorPresent",
             "displayName": "SeriesCompensator.varistorPresent",
@@ -30,6 +34,7 @@
             "schema": "boolean"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorRatedCurrent;16",
             "@type": "Property",
             "name": "varistorRatedCurrent",
             "displayName": "SeriesCompensator.varistorRatedCurrent",
@@ -37,6 +42,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorVoltageThreshold;16",
             "@type": "Property",
             "name": "varistorVoltageThreshold",
             "displayName": "SeriesCompensator.varistorVoltageThreshold",
@@ -44,6 +50,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:x;16",
             "@type": "Property",
             "name": "x",
             "displayName": "SeriesCompensator.x",
@@ -51,6 +58,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:SeriesCompensator:x0;16",
             "@type": "Property",
             "name": "x0",
             "displayName": "SeriesCompensator.x0",

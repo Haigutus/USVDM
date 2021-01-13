@@ -1,21 +1,24 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:MeasurementValue;1",
+    "@id": "dtmi:iec:cim:schema:MeasurementValue;16",
     "displayName": "MeasurementValue",
     "description": "The current state for a measurement. A state value is an instance of a measurement from a specific source. Measurements can be associated with many state values, each representing a different source for the measurement.",
     "extends": [
-        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
+        "dtmi:iec:cim:schema:IdentifiedObject;16"
     ],
     "contents": [
         {
+            "@id": "dtmi:iec:cim:schema:MeasurementValue:MeasurementValueSource;16",
             "@type": "Relationship",
             "name": "MeasurementValueSource",
             "displayName": "MeasurementValue.MeasurementValueSource",
             "description": "The MeasurementValues updated by the source.",
-            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:MeasurementValueSource;1"
+            "target": "dtmi:iec:cim:schema:MeasurementValueSource;16",
+            "maxMultiplicity": 1
         },
         {
+            "@id": "dtmi:iec:cim:schema:MeasurementValue:sensorAccuracy;16",
             "@type": "Property",
             "name": "sensorAccuracy",
             "displayName": "MeasurementValue.sensorAccuracy",
@@ -23,6 +26,7 @@
             "schema": "float"
         },
         {
+            "@id": "dtmi:iec:cim:schema:MeasurementValue:timeStamp;16",
             "@type": "Property",
             "name": "timeStamp",
             "displayName": "MeasurementValue.timeStamp",
