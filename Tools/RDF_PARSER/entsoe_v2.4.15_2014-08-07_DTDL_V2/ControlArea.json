@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ControlArea;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ControlArea;1",
     "displayName": "ControlArea",
     "description": "A control area",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "EnergyArea",
             "displayName": "ControlArea.EnergyArea",
             "description": "The energy area that is forecast from this control area specification.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EnergyArea;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyArea;1"
         },
         {
             "@type": "Property",

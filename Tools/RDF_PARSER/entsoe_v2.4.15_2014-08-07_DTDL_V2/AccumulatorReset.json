@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AccumulatorReset;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AccumulatorReset;1",
     "displayName": "AccumulatorReset",
     "description": "This command reset the counter value to zero.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Control;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Control;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "AccumulatorValue",
             "displayName": "AccumulatorReset.AccumulatorValue",
             "description": "The accumulator value that is reset by the command.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AccumulatorValue;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AccumulatorValue;1"
         }
     ]
 }

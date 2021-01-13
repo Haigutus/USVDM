@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerNonLinear;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerNonLinear;1",
     "displayName": "PhaseTapChangerNonLinear",
     "description": "The non-linear phase tap changer describes the non-linear behavior of a phase tap changer. This is a base class for the symmetrical and asymmetrical phase tap changer models. The details of these models can be found in the IEC 61970-301 document.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChanger;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChanger;1"
     ],
     "contents": [
         {

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChanger;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChanger;1",
     "displayName": "TapChanger",
     "description": "Mechanism for changing transformer winding tap positions.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "TapChangerControl",
             "displayName": "TapChanger.TapChangerControl",
             "description": "The tap changers that participates in this regulating tap control scheme.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChangerControl;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TapChangerControl;1"
         },
         {
             "@type": "Property",

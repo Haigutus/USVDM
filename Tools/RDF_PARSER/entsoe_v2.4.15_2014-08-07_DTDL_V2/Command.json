@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Command;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Command;1",
     "displayName": "Command",
     "description": "A Command is a discrete control used for supervisory control.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Control;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Control;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "DiscreteValue",
             "displayName": "Command.DiscreteValue",
             "description": "The Control variable associated with the MeasurementValue.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiscreteValue;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiscreteValue;1"
         },
         {
             "@type": "Relationship",
             "name": "ValueAliasSet",
             "displayName": "Command.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ValueAliasSet;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ValueAliasSet;1"
         },
         {
             "@type": "Property",

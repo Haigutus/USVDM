@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Disconnector;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Disconnector;1",
     "displayName": "Disconnector",
     "description": "A manually operated or motor operated mechanical switching device used for changing the connections in a circuit, or for isolating a circuit or equipment from a source of power. It is required to open or close circuits when negligible current is broken or made. ",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Switch;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Switch;1"
     ]
 }

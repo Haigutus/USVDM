@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EnergyArea;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyArea;1",
     "displayName": "EnergyArea",
     "description": "Describes an area having energy production or consumption.  Specializations are intended to support the load allocation function as typically required in energy management systems or planning studies to allocate hypothesized load levels to individual load points for power flow analysis.  Often the energy area can be linked to both measured and forecast load levels.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": []
 }

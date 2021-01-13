@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1",
     "displayName": "GeneratingUnit",
     "description": "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Equipment;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Equipment;1"
     ],
     "contents": [
         {

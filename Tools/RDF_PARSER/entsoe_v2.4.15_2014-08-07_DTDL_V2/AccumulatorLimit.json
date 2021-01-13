@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AccumulatorLimit;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AccumulatorLimit;1",
     "displayName": "AccumulatorLimit",
     "description": "Limit values for Accumulator measurements.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Limit;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Limit;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "LimitSet",
             "displayName": "AccumulatorLimit.LimitSet",
             "description": "The limit values used for supervision of Measurements.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AccumulatorLimitSet;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AccumulatorLimitSet;1"
         },
         {
             "@type": "Property",

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiscreteValue;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiscreteValue;1",
     "displayName": "DiscreteValue",
     "description": "DiscreteValue represents a discrete MeasurementValue.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:MeasurementValue;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:MeasurementValue;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Discrete",
             "displayName": "DiscreteValue.Discrete",
             "description": "The values connected to this measurement.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Discrete;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Discrete;1"
         },
         {
             "@type": "Property",

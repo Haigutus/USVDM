@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GrossToNetActivePowerCurve;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GrossToNetActivePowerCurve;1",
     "displayName": "GrossToNetActivePowerCurve",
     "description": "Relationship between the generating unit's gross active power output on the X-axis (measured at the terminals of the machine(s)) and the generating unit's net active power output on the Y-axis (based on utility-defined measurements at the power station). Station service loads, when modeled, should be treated as non-conforming bus loads. There may be more than one curve, depending on the auxiliary equipment that is in service.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Curve;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Curve;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "GeneratingUnit",
             "displayName": "GrossToNetActivePowerCurve.GeneratingUnit",
             "description": "A generating unit may have a gross active power to net active power curve, describing the losses and auxiliary power requirements of the unit.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:GeneratingUnit;1"
         }
     ]
 }

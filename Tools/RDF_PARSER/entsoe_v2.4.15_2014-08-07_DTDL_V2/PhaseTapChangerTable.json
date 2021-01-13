@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerTable;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerTable;1",
     "displayName": "PhaseTapChangerTable",
     "description": "Describes a tabular curve for how the phase angle difference and impedance varies with the tap step.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": []
 }

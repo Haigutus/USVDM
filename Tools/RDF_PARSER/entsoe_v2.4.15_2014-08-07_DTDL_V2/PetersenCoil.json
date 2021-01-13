@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PetersenCoil;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PetersenCoil;1",
     "displayName": "PetersenCoil",
     "description": "A tunable impedance device normally used to offset line charging during single line faults in an ungrounded section of network.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EarthFaultCompensator;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EarthFaultCompensator;1"
     ],
     "contents": [
         {

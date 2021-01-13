@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCBaseTerminal;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCBaseTerminal;1",
     "displayName": "DCBaseTerminal",
     "description": "An electrical connection point at a piece of DC conducting equipment. DC terminals are connected at one physical DC node that may have multiple DC terminals connected. A DC node is similar to an AC connectivity node. The model enforces that DC connections are distinct from AC connections. ",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ACDCTerminal;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ACDCTerminal;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "DCNode",
             "displayName": "DCBaseTerminal.DCNode",
             "description": "",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCNode;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCNode;1"
         },
         {
             "@type": "Relationship",
             "name": "DCTopologicalNode",
             "displayName": "DCBaseTerminal.DCTopologicalNode",
             "description": "See association end TopologicalNode.Terminal.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCTopologicalNode;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTopologicalNode;1"
         }
     ]
 }

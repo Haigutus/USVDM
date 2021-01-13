@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AsynchronousMachine;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:AsynchronousMachine;1",
     "displayName": "AsynchronousMachine",
     "description": "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g squirrel-cage induction machine.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RotatingMachine;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RotatingMachine;1"
     ],
     "contents": [
         {

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerAsymmetrical;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerAsymmetrical;1",
     "displayName": "PhaseTapChangerAsymmetrical",
     "description": "Describes the tap model for an asymmetrical phase shifting transformer in which the difference voltage vector adds to the primary side voltage. The angle between the primary side voltage and the difference voltage is named the winding connection angle. The phase shift depends on both the difference voltage magnitude and the winding connection angle.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerNonLinear;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PhaseTapChangerNonLinear;1"
     ],
     "contents": [
         {

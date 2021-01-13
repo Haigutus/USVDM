@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:HydroPump;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:HydroPump;1",
     "displayName": "HydroPump",
     "description": "A synchronous motor-driven pump, typically associated with a pumped storage plant.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Equipment;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Equipment;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "HydroPowerPlant",
             "displayName": "HydroPump.HydroPowerPlant",
             "description": "The hydro pump may be a member of a pumped storage plant or a pump for distributing water.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:HydroPowerPlant;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:HydroPowerPlant;1"
         },
         {
             "@type": "Relationship",
             "name": "RotatingMachine",
             "displayName": "HydroPump.RotatingMachine",
             "description": "The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RotatingMachine;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:RotatingMachine;1"
         }
     ]
 }

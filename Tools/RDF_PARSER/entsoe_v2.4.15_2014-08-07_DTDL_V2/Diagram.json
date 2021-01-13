@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Diagram;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Diagram;1",
     "displayName": "Diagram",
     "description": "The diagram being exchanged.  The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "DiagramStyle",
             "displayName": "Diagram.DiagramStyle",
             "description": "A Diagram may have a DiagramStyle.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramStyle;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramStyle;1"
         },
         {
             "@type": "Property",

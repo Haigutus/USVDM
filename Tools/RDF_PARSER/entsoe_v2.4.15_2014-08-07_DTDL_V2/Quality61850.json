@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Quality61850;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Quality61850;1",
     "displayName": "Quality61850",
     "description": "Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience.",
     "contents": [

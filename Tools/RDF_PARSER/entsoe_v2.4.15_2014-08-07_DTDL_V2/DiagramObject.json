@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObject;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObject;1",
     "displayName": "DiagramObject",
     "description": "An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,21 +13,21 @@
             "name": "Diagram",
             "displayName": "DiagramObject.Diagram",
             "description": "A diagram object is part of a diagram.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Diagram;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Diagram;1"
         },
         {
             "@type": "Relationship",
             "name": "DiagramObjectStyle",
             "displayName": "DiagramObject.DiagramObjectStyle",
             "description": "A diagram object has a style associated that provides a reference for the style used in the originating system.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObjectStyle;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DiagramObjectStyle;1"
         },
         {
             "@type": "Relationship",
             "name": "IdentifiedObject",
             "displayName": "DiagramObject.IdentifiedObject",
             "description": "The diagram objects that are associated with the domain object.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
         },
         {
             "@type": "Property",

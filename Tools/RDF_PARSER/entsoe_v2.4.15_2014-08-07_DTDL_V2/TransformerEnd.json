@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TransformerEnd;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:TransformerEnd;1",
     "displayName": "TransformerEnd",
     "description": "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "BaseVoltage",
             "displayName": "TransformerEnd.BaseVoltage",
             "description": "Base voltage of the transformer end.  This is essential for PU calculation.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:BaseVoltage;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:BaseVoltage;1"
         },
         {
             "@type": "Relationship",
             "name": "Terminal",
             "displayName": "TransformerEnd.Terminal",
             "description": "Terminal of the power transformer to which this transformer end belongs.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Terminal;1"
         },
         {
             "@type": "Property",

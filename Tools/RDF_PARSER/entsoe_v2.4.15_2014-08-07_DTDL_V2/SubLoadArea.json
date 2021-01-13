@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SubLoadArea;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SubLoadArea;1",
     "displayName": "SubLoadArea",
     "description": "The class is the second level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EnergyArea;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:EnergyArea;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "LoadArea",
             "displayName": "SubLoadArea.LoadArea",
             "description": "The LoadArea where the SubLoadArea belongs.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LoadArea;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadArea;1"
         }
     ]
 }

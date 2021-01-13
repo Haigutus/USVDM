@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NonlinearShuntCompensatorPoint;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonlinearShuntCompensatorPoint;1",
     "displayName": "NonlinearShuntCompensatorPoint",
     "description": "A non linear shunt compensator bank or section admittance value.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "NonlinearShuntCompensator",
             "displayName": "NonlinearShuntCompensatorPoint.NonlinearShuntCompensator",
             "description": "Non-linear shunt compensator owning this point.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NonlinearShuntCompensator;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:NonlinearShuntCompensator;1"
         },
         {
             "@type": "Property",

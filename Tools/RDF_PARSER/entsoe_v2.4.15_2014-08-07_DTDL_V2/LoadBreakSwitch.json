@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LoadBreakSwitch;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:LoadBreakSwitch;1",
     "displayName": "LoadBreakSwitch",
     "description": "A mechanical switching device capable of making, carrying, and breaking currents under normal operating conditions.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ProtectedSwitch;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:ProtectedSwitch;1"
     ]
 }

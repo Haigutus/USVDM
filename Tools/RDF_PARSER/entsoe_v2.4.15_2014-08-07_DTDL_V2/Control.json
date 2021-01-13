@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Control;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Control;1",
     "displayName": "Control",
     "description": "Control is used for supervisory/device control. It represents control outputs that are used to change the state in a process, e.g. close or open breaker, a set point value or a raise lower command.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "PowerSystemResource",
             "displayName": "Control.PowerSystemResource",
             "description": "The controller outputs used to actually govern a regulating device, e.g. the magnetization of a synchronous machine or capacitor bank breaker actuator.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:PowerSystemResource;1"
         },
         {
             "@type": "Property",

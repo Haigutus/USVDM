@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCTopologicalIsland;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTopologicalIsland;1",
     "displayName": "DCTopologicalIsland",
     "description": "An electrically connected subset of the network. DC topological islands can change as the current network state changes: e.g. due to \n- disconnect switches or breakers change state in a SCADA/EMS\n- manual creation, change or deletion of topological nodes in a planning tool.",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "DCTopologicalNodes",
             "displayName": "DCTopologicalIsland.DCTopologicalNodes",
             "description": "",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCTopologicalNode;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:DCTopologicalNode;1"
         }
     ]
 }

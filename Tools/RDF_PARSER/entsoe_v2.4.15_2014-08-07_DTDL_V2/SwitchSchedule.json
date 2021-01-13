@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SwitchSchedule;1",
+    "@id": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SwitchSchedule;1",
     "displayName": "SwitchSchedule",
     "description": "A schedule of switch positions.  If RegularTimePoint.value1 is 0, the switch is open.  If 1, the switch is closed.  ",
     "extends": [
-        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SeasonDayTypeSchedule;1"
+        "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:SeasonDayTypeSchedule;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Switch",
             "displayName": "SwitchSchedule.Switch",
             "description": "A Switch can be associated with SwitchSchedules.",
-            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Switch;1"
+            "target": "dtmi:iec:ch_TC57_2013_CIM__schema__cim16:Switch;1"
         }
     ]
 }
