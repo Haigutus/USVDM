@@ -29,42 +29,36 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:coal;16",
                         "name": "coal",
                         "displayName": "FuelType.coal",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.coal",
                         "description": "Generic coal, not including lignite type."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:oil;16",
                         "name": "oil",
                         "displayName": "FuelType.oil",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.oil",
                         "description": "Oil."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:gas;16",
                         "name": "gas",
                         "displayName": "FuelType.gas",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.gas",
                         "description": "Natural gas."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:lignite;16",
                         "name": "lignite",
                         "displayName": "FuelType.lignite",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.lignite",
                         "description": "The fuel is lignite coal.  Note that this is a special type of coal, so the other enum of coal is reserved for hard coal types or if the exact type of coal is not known."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:hardCoal;16",
                         "name": "hardCoal",
                         "displayName": "FuelType.hardCoal",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.hardCoal",
                         "description": "Hard coal"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:FuelType:oilShale;16",
                         "name": "oilShale",
                         "displayName": "FuelType.oilShale",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.oilShale",

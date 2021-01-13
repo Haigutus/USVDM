@@ -20,14 +20,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:WindGenUnitKind:offshore;16",
                         "name": "offshore",
                         "displayName": "WindGenUnitKind.offshore",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.offshore",
                         "description": "The wind generating unit is located offshore."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindGenUnitKind:onshore;16",
                         "name": "onshore",
                         "displayName": "WindGenUnitKind.onshore",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.onshore",

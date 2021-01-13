@@ -29,14 +29,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:HydroEnergyConversionKind:generator;16",
                         "name": "generator",
                         "displayName": "HydroEnergyConversionKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.generator",
                         "description": "Able to generate power, but not able to pump water for energy storage."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:HydroEnergyConversionKind:pumpAndGenerator;16",
                         "name": "pumpAndGenerator",
                         "displayName": "HydroEnergyConversionKind.pumpAndGenerator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.pumpAndGenerator",

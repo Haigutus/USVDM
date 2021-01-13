@@ -27,700 +27,600 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
@@ -740,700 +640,600 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:S;16",
                         "name": "S",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:none;16",
                         "name": "none",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Hz;16",
                         "name": "Hz",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:g;16",
                         "name": "g",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Pa;16",
                         "name": "Pa",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m;16",
                         "name": "m",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m2;16",
                         "name": "m2",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:m3;16",
                         "name": "m3",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VA;16",
                         "name": "VA",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:W;16",
                         "name": "W",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAr;16",
                         "name": "VAr",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VAh;16",
                         "name": "VAh",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:Wh;16",
                         "name": "Wh",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:VArh;16",
                         "name": "VArh",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:V;16",
                         "name": "V",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:ohm;16",
                         "name": "ohm",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:A;16",
                         "name": "A",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:F;16",
                         "name": "F",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:H;16",
                         "name": "H",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:degC;16",
                         "name": "degC",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:s;16",
                         "name": "s",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:min;16",
                         "name": "min",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:h;16",
                         "name": "h",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:deg;16",
                         "name": "deg",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:rad;16",
                         "name": "rad",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:J;16",
                         "name": "J",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:UnitSymbol:N;16",
                         "name": "N",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",

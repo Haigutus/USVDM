@@ -45,49 +45,42 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:D;16",
                         "name": "D",
                         "displayName": "WindingConnection.D",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.D",
                         "description": "Delta"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:Y;16",
                         "name": "Y",
                         "displayName": "WindingConnection.Y",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Y",
                         "description": ""
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:Z;16",
                         "name": "Z",
                         "displayName": "WindingConnection.Z",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Z",
                         "description": "ZigZag"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:Yn;16",
                         "name": "Yn",
                         "displayName": "WindingConnection.Yn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Yn",
                         "description": "Wye, with neutral brought out for grounding."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:Zn;16",
                         "name": "Zn",
                         "displayName": "WindingConnection.Zn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Zn",
                         "description": "ZigZag, with neutral brought out for grounding."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:A;16",
                         "name": "A",
                         "displayName": "WindingConnection.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.A",
                         "description": "Autotransformer common winding"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:WindingConnection:I;16",
                         "name": "I",
                         "displayName": "WindingConnection.I",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.I",

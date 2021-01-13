@@ -212,7 +212,7 @@ for interface_uri in interfaces_list:
                         value_meta = data.get_object_data(value).to_dict()
 
                         value_def = {
-                                        "@id": URI_to_DTMI(value, cim_namespace),
+                                        #"@id": URI_to_DTMI(value, cim_namespace),
                                         "name": value_meta["label"],
                                         "displayName": value_name,
                                         "enumValue": f"{value_namespace}#{value_name}",

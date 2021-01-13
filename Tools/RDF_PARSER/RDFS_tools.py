@@ -152,7 +152,7 @@ def get_namespace_and_name(uri, default_namespace):
     namespace, name = uri.split("#")
 
     if namespace == "":
-        namespace = default_namespace
+        namespace = default_namespace.replace("#", "")
 
     return namespace, name
 

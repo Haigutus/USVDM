@@ -84,14 +84,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:CsOperatingModeKind:inverter;16",
                         "name": "inverter",
                         "displayName": "CsOperatingModeKind.inverter",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.inverter",
                         "description": "Operating as inverter"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:CsOperatingModeKind:rectifier;16",
                         "name": "rectifier",
                         "displayName": "CsOperatingModeKind.rectifier",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.rectifier",
@@ -111,21 +109,18 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:activePower;16",
                         "name": "activePower",
                         "displayName": "CsPpccControlKind.activePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.activePower",
                         "description": "Active power control at AC side."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:dcVoltage;16",
                         "name": "dcVoltage",
                         "displayName": "CsPpccControlKind.dcVoltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcVoltage",
                         "description": "DC voltage control."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:CsPpccControlKind:dcCurrent;16",
                         "name": "dcCurrent",
                         "displayName": "CsPpccControlKind.dcCurrent",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcCurrent",

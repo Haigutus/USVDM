@@ -46,14 +46,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:TransformerControlMode:volt;16",
                         "name": "volt",
                         "displayName": "TransformerControlMode.volt",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.volt",
                         "description": "Voltage control"
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:TransformerControlMode:reactive;16",
                         "name": "reactive",
                         "displayName": "TransformerControlMode.reactive",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.reactive",

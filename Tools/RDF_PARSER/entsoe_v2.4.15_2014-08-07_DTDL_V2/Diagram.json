@@ -29,7 +29,6 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:OrientationKind:negative;16",
                         "name": "negative",
                         "displayName": "OrientationKind.negative",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OrientationKind.negative",

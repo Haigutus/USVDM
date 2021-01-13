@@ -20,14 +20,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:AsynchronousMachineKind:generator;16",
                         "name": "generator",
                         "displayName": "AsynchronousMachineKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.generator",
                         "description": "The Asynchronous Machine is a generator."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:AsynchronousMachineKind:motor;16",
                         "name": "motor",
                         "displayName": "AsynchronousMachineKind.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.motor",

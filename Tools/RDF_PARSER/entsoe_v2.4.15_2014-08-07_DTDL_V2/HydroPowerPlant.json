@@ -20,21 +20,18 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:runOfRiver;16",
                         "name": "runOfRiver",
                         "displayName": "HydroPlantStorageKind.runOfRiver",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.runOfRiver",
                         "description": "Run of river."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:pumpedStorage;16",
                         "name": "pumpedStorage",
                         "displayName": "HydroPlantStorageKind.pumpedStorage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.pumpedStorage",
                         "description": "Pumped storage."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:HydroPlantStorageKind:storage;16",
                         "name": "storage",
                         "displayName": "HydroPlantStorageKind.storage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.storage",

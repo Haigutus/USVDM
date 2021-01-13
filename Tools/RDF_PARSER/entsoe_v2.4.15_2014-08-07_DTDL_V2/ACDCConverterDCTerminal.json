@@ -29,21 +29,18 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:positive;16",
                         "name": "positive",
                         "displayName": "DCPolarityKind.positive",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.positive",
                         "description": "Positive pole."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:middle;16",
                         "name": "middle",
                         "displayName": "DCPolarityKind.middle",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.middle",
                         "description": "Middle pole, potentially grounded."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:DCPolarityKind:negative;16",
                         "name": "negative",
                         "displayName": "DCPolarityKind.negative",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.negative",

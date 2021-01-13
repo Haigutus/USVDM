@@ -44,14 +44,12 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:SVCControlMode:reactivePower;16",
                         "name": "reactivePower",
                         "displayName": "SVCControlMode.reactivePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.reactivePower",
                         "description": ""
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:SVCControlMode:voltage;16",
                         "name": "voltage",
                         "displayName": "SVCControlMode.voltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.voltage",

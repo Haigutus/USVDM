@@ -80,21 +80,18 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:Source:PROCESS;16",
                         "name": "PROCESS",
                         "displayName": "Source.PROCESS",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.PROCESS",
                         "description": "The value is provided by input from the process I/O or being calculated from some function."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:Source:DEFAULTED;16",
                         "name": "DEFAULTED",
                         "displayName": "Source.DEFAULTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.DEFAULTED",
                         "description": "The value contains a default value."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:Source:SUBSTITUTED;16",
                         "name": "SUBSTITUTED",
                         "displayName": "Source.SUBSTITUTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.SUBSTITUTED",
@@ -130,21 +127,18 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:Validity:GOOD;16",
                         "name": "GOOD",
                         "displayName": "Validity.GOOD",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.GOOD",
                         "description": "The value is marked good if no abnormal condition of the acquisition function or the information source is detected."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:Validity:QUESTIONABLE;16",
                         "name": "QUESTIONABLE",
                         "displayName": "Validity.QUESTIONABLE",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.QUESTIONABLE",
                         "description": "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked \"questionable\" should be used."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:Validity:INVALID;16",
                         "name": "INVALID",
                         "displayName": "Validity.INVALID",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.INVALID",

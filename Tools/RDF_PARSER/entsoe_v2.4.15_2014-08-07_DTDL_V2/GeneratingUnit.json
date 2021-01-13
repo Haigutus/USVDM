@@ -20,28 +20,24 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "@id": "dtmi:iec:cim:schema:GeneratorControlSource:unavailable;16",
                         "name": "unavailable",
                         "displayName": "GeneratorControlSource.unavailable",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.unavailable",
                         "description": "Not available."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:GeneratorControlSource:offAGC;16",
                         "name": "offAGC",
                         "displayName": "GeneratorControlSource.offAGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.offAGC",
                         "description": "Off of automatic generation control (AGC)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:GeneratorControlSource:onAGC;16",
                         "name": "onAGC",
                         "displayName": "GeneratorControlSource.onAGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.onAGC",
                         "description": "On automatic generation control (AGC)."
                     },
                     {
-                        "@id": "dtmi:iec:cim:schema:GeneratorControlSource:plantControl;16",
                         "name": "plantControl",
                         "displayName": "GeneratorControlSource.plantControl",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.plantControl",
