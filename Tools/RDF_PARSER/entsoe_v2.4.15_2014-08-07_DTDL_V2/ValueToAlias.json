@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ValueAliasSet",
             "displayName": "ValueToAlias.ValueAliasSet",
             "description": "The ValueToAlias mappings included in the set.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ValueAliasSet;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "ValueToAlias.value",
             "description": "The value that is mapped.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

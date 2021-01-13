@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "MeasurementValue",
             "displayName": "MeasurementValueQuality.MeasurementValue",
             "description": "A MeasurementValue has a MeasurementValueQuality associated with it.",
-            "@type": "Relationship",
             "target": "dtmi:cim:MeasurementValue;16"
         }
     ]

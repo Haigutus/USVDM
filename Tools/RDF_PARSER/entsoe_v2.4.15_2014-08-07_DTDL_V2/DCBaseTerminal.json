@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DCNode",
             "displayName": "DCBaseTerminal.DCNode",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:DCNode;16"
         },
         {
+            "@type": "Relationship",
             "name": "DCTopologicalNode",
             "displayName": "DCBaseTerminal.DCTopologicalNode",
             "description": "See association end TopologicalNode.Terminal.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DCTopologicalNode;16"
         }
     ]

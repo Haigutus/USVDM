@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Region",
             "displayName": "Substation.Region",
             "description": "The SubGeographicalRegion containing the substation.",
-            "@type": "Relationship",
             "target": "dtmi:cim:SubGeographicalRegion;16"
         }
     ]

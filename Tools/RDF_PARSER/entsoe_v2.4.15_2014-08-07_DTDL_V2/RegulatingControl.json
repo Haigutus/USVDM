@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Terminal",
             "displayName": "RegulatingControl.Terminal",
             "description": "The controls regulating this terminal.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Terminal;16"
         },
         {
+            "@type": "Property",
             "name": "discrete",
             "displayName": "RegulatingControl.discrete",
             "description": "The regulation is performed in a discrete mode. This applies to equipment with discrete controls, e.g. tap changers and shunt compensators.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "enabled",
             "displayName": "RegulatingControl.enabled",
             "description": "The flag tells if regulation is enabled.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "mode",
             "displayName": "RegulatingControl.mode",
             "description": "The regulating control mode presently available.  This specification allows for determining the kind of regulation without need for obtaining the units from a schedule.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -82,24 +82,24 @@
             }
         },
         {
+            "@type": "Property",
             "name": "targetDeadband",
             "displayName": "RegulatingControl.targetDeadband",
             "description": "This is a deadband used with discrete control to avoid excessive update of controls like tap changers and shunt compensator banks while regulating.\nThe units of those appropriate for the mode.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetValue",
             "displayName": "RegulatingControl.targetValue",
             "description": "The target value specified for case input.   This value can be used for the target value without the use of schedules. The value has the units appropriate to the mode attribute.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetValueUnitMultiplier",
             "displayName": "RegulatingControl.targetValueUnitMultiplier",
             "description": "Specify the multiplier for used for the targetValue.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

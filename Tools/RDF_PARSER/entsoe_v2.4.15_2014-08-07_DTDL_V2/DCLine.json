@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Region",
             "displayName": "DCLine.Region",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:SubGeographicalRegion;16"
         }
     ]

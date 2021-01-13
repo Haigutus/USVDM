@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "EquivalentNetwork",
             "displayName": "EquivalentEquipment.EquivalentNetwork",
             "description": "The associated reduced equivalents.",
-            "@type": "Relationship",
             "target": "dtmi:cim:EquivalentNetwork;16"
         }
     ]

@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "acceptableDuration",
             "displayName": "OperationalLimitType.acceptableDuration",
             "description": "The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "direction",
             "displayName": "OperationalLimitType.direction",
             "description": "The direction of the limit.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -43,10 +43,10 @@
             }
         },
         {
+            "@type": "Property",
             "name": "limitType",
             "displayName": "OperationalLimitType.limitType",
             "description": "Types of limits defined in the ENTSO-E Operational Handbook Policy 3.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

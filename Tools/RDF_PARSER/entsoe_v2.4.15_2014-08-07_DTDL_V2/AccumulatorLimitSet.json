@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Measurements",
             "displayName": "AccumulatorLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Accumulator;16"
         }
     ]

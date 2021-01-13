@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Equipment",
             "displayName": "OperationalLimitSet.Equipment",
             "description": "The equipment to which the limit set applies.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Equipment;16"
         },
         {
+            "@type": "Relationship",
             "name": "Terminal",
             "displayName": "OperationalLimitSet.Terminal",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:ACDCTerminal;16"
         }
     ]

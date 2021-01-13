@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "LimitSet",
             "displayName": "AnalogLimit.LimitSet",
             "description": "The limit values used for supervision of Measurements.",
-            "@type": "Relationship",
             "target": "dtmi:cim:AnalogLimitSet;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "AnalogLimit.value",
             "description": "The value to supervise against.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

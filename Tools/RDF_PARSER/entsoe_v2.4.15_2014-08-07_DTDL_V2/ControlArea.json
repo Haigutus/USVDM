@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "EnergyArea",
             "displayName": "ControlArea.EnergyArea",
             "description": "The energy area that is forecast from this control area specification.",
-            "@type": "Relationship",
             "target": "dtmi:cim:EnergyArea;16"
         },
         {
+            "@type": "Property",
             "name": "netInterchange",
             "displayName": "ControlArea.netInterchange",
             "description": "The specified positive net interchange into the control area, i.e. positive sign means flow in to the area.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pTolerance",
             "displayName": "ControlArea.pTolerance",
             "description": "Active power net interchange tolerance",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "type",
             "displayName": "ControlArea.type",
             "description": "The primary type of control area definition used to determine if this is used for automatic generation control, for planning interchange control, or other purposes.   A control area specified with primary type of automatic generation control could still be forecast and used as an interchange area in power flow analysis.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

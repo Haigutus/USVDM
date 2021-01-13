@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "hydroPlantStorageType",
             "displayName": "HydroPowerPlant.hydroPlantStorageType",
             "description": "The type of hydro power plant water storage.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

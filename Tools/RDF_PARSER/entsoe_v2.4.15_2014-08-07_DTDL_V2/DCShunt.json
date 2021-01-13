@@ -9,24 +9,24 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "capacitance",
             "displayName": "DCShunt.capacitance",
             "description": "Capacitance of the DC shunt.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedUdc",
             "displayName": "DCShunt.ratedUdc",
             "description": "Rated DC device voltage. Converter configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "resistance",
             "displayName": "DCShunt.resistance",
             "description": "Resistance of the DC device.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

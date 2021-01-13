@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "inductance",
             "displayName": "DCGround.inductance",
             "description": "Inductance to ground.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "DCGround.r",
             "description": "Resistance to ground.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

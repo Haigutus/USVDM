@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ReportingGroup",
             "displayName": "BusNameMarker.ReportingGroup",
             "description": "The bus name markers that belong to this reporting group.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ReportingGroup;16"
         },
         {
+            "@type": "Property",
             "name": "priority",
             "displayName": "BusNameMarker.priority",
             "description": "Priority of bus name marker for use as topology bus name.  Use 0 for don t care.  Use 1 for highest priority.  Use 2 as priority is less than 1 and so on.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

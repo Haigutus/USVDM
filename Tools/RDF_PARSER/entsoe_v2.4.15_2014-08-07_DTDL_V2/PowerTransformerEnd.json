@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "PowerTransformer",
             "displayName": "PowerTransformerEnd.PowerTransformer",
             "description": "The ends of this power transformer.",
-            "@type": "Relationship",
             "target": "dtmi:cim:PowerTransformer;16"
         },
         {
+            "@type": "Property",
             "name": "b",
             "displayName": "PowerTransformerEnd.b",
             "description": "Magnetizing branch susceptance (B mag).  The value can be positive or negative.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "b0",
             "displayName": "PowerTransformerEnd.b0",
             "description": "Zero sequence magnetizing branch susceptance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "connectionKind",
             "displayName": "PowerTransformerEnd.connectionKind",
             "description": "Kind of connection.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -77,66 +77,66 @@
             }
         },
         {
+            "@type": "Property",
             "name": "g",
             "displayName": "PowerTransformerEnd.g",
             "description": "Magnetizing branch conductance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "g0",
             "displayName": "PowerTransformerEnd.g0",
             "description": "Zero sequence magnetizing branch conductance (star-model).",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "phaseAngleClock",
             "displayName": "PowerTransformerEnd.phaseAngleClock",
             "description": "Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "PowerTransformerEnd.r",
             "description": "Resistance (star-model) of the transformer end.\nThe attribute shall be equal or greater than zero for non-equivalent transformers.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "PowerTransformerEnd.r0",
             "description": "Zero sequence series resistance (star-model) of the transformer end.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedS",
             "displayName": "PowerTransformerEnd.ratedS",
             "description": "Normal apparent power rating.\nThe attribute shall be a positive value. For a two-winding transformer the values for the high and low voltage sides shall be identical. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedU",
             "displayName": "PowerTransformerEnd.ratedU",
             "description": "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.\nA high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater or equal than ratedU for the lower voltage sides.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "PowerTransformerEnd.x",
             "description": "Positive sequence series reactance (star-model) of the transformer end.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "PowerTransformerEnd.x0",
             "description": "Zero sequence series reactance of the transformer end.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

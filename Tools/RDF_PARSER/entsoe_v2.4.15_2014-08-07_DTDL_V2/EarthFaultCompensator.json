@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "EarthFaultCompensator.r",
             "description": "Nominal resistance of device.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

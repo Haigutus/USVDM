@@ -6,66 +6,66 @@
     "description": "Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience.",
     "contents": [
         {
+            "@type": "Property",
             "name": "badReference",
             "displayName": "Quality61850.badReference",
             "description": "Measurement value may be incorrect due to a reference being out of calibration.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "estimatorReplaced",
             "displayName": "Quality61850.estimatorReplaced",
             "description": "Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "failure",
             "displayName": "Quality61850.failure",
             "description": "This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "oldData",
             "displayName": "Quality61850.oldData",
             "description": "Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "operatorBlocked",
             "displayName": "Quality61850.operatorBlocked",
             "description": "Measurement value is blocked and hence unavailable for transmission. ",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "oscillatory",
             "displayName": "Quality61850.oscillatory",
             "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still ",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "outOfRange",
             "displayName": "Quality61850.outOfRange",
             "description": "Measurement value is beyond a predefined range of value.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "overFlow",
             "displayName": "Quality61850.overFlow",
             "description": "Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero. ",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "source",
             "displayName": "Quality61850.source",
             "description": "Source gives information related to the origin of a value. The value may be acquired from the process, defaulted or substituted.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -89,24 +89,24 @@
             }
         },
         {
+            "@type": "Property",
             "name": "suspect",
             "displayName": "Quality61850.suspect",
             "description": "A correlation function has detected that the value is not consitent with other values. Typically set by a network State Estimator.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "test",
             "displayName": "Quality61850.test",
             "description": "Measurement value is transmitted for test purposes.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "validity",
             "displayName": "Quality61850.validity",
             "description": "Validity of the measurement value.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

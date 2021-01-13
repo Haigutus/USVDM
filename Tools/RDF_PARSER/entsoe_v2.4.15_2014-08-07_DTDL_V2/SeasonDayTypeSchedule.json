@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DayType",
             "displayName": "SeasonDayTypeSchedule.DayType",
             "description": "Schedules that use this DayType.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DayType;16"
         },
         {
+            "@type": "Relationship",
             "name": "Season",
             "displayName": "SeasonDayTypeSchedule.Season",
             "description": "Schedules that use this Season.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Season;16"
         }
     ]

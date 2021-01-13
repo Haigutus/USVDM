@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "RatioTapChangerTable",
             "displayName": "RatioTapChangerTablePoint.RatioTapChangerTable",
             "description": "Points of this table.",
-            "@type": "Relationship",
             "target": "dtmi:cim:RatioTapChangerTable;16"
         }
     ]

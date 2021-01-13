@@ -9,38 +9,38 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "PerLengthParameter",
             "displayName": "DCLineSegment.PerLengthParameter",
             "description": "Set of per-length parameters for this line segment.",
-            "@type": "Relationship",
             "target": "dtmi:cim:PerLengthDCLineParameter;16"
         },
         {
+            "@type": "Property",
             "name": "capacitance",
             "displayName": "DCLineSegment.capacitance",
             "description": "Capacitance of the DC line segment. Significant for cables only.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "inductance",
             "displayName": "DCLineSegment.inductance",
             "description": "Inductance of the DC line segment. Neglectable compared with DCSeriesDevice used for smoothing.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "length",
             "displayName": "DCLineSegment.length",
             "description": "Segment length for calculating line section capabilities.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "resistance",
             "displayName": "DCLineSegment.resistance",
             "description": "Resistance of the DC line segment.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

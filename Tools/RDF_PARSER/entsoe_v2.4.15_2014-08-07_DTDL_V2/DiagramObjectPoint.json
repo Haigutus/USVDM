@@ -6,45 +6,45 @@
     "description": "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.  ",
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DiagramObject",
             "displayName": "DiagramObjectPoint.DiagramObject",
             "description": "The diagram object with which the points are associated.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DiagramObject;16"
         },
         {
+            "@type": "Relationship",
             "name": "DiagramObjectGluePoint",
             "displayName": "DiagramObjectPoint.DiagramObjectGluePoint",
             "description": "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DiagramObjectGluePoint;16"
         },
         {
+            "@type": "Property",
             "name": "sequenceNumber",
             "displayName": "DiagramObjectPoint.sequenceNumber",
             "description": "The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "xPosition",
             "displayName": "DiagramObjectPoint.xPosition",
             "description": "The X coordinate of this point.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "yPosition",
             "displayName": "DiagramObjectPoint.yPosition",
             "description": "The Y coordinate of this point.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "zPosition",
             "displayName": "DiagramObjectPoint.zPosition",
             "description": "The Z coordinate of this point.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

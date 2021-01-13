@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "StringMeasurement",
             "displayName": "StringMeasurementValue.StringMeasurement",
             "description": "Measurement to which this value is connected.",
-            "@type": "Relationship",
             "target": "dtmi:cim:StringMeasurement;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "StringMeasurementValue.value",
             "description": "The value to supervise.",
-            "@type": "Property",
             "schema": "string"
         }
     ]

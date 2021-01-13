@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "ActivePowerLimit.value",
             "description": "Value of active power limit.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

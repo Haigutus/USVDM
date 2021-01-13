@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "VoltageLevel",
             "displayName": "Bay.VoltageLevel",
             "description": "The voltage level containing this bay.",
-            "@type": "Relationship",
             "target": "dtmi:cim:VoltageLevel;16"
         }
     ]

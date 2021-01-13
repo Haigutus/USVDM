@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DCTopologicalNodes",
             "displayName": "DCTopologicalIsland.DCTopologicalNodes",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:DCTopologicalNode;16"
         }
     ]

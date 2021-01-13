@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "RegulatingControl",
             "displayName": "RegulatingCondEq.RegulatingControl",
             "description": "The regulating control scheme in which this equipment participates.",
-            "@type": "Relationship",
             "target": "dtmi:cim:RegulatingControl;16"
         },
         {
+            "@type": "Property",
             "name": "controlEnabled",
             "displayName": "RegulatingCondEq.controlEnabled",
             "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
-            "@type": "Property",
             "schema": "boolean"
         }
     ]

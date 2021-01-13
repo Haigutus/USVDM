@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTablePoint.PhaseTapChangerTable",
             "description": "The table of this point.",
-            "@type": "Relationship",
             "target": "dtmi:cim:PhaseTapChangerTable;16"
         },
         {
+            "@type": "Property",
             "name": "angle",
             "displayName": "PhaseTapChangerTablePoint.angle",
             "description": "The angle difference in degrees.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

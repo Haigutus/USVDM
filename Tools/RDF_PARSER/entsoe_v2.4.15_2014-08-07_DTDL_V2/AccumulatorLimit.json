@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "LimitSet",
             "displayName": "AccumulatorLimit.LimitSet",
             "description": "The limit values used for supervision of Measurements.",
-            "@type": "Relationship",
             "target": "dtmi:cim:AccumulatorLimitSet;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "AccumulatorLimit.value",
             "description": "The value to supervise against. The value is positive.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "CurrentLimit.value",
             "description": "Limit on current flow.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

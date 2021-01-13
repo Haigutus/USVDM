@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "windGenUnitType",
             "displayName": "WindGeneratingUnit.windGenUnitType",
             "description": "The kind of wind generating unit",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

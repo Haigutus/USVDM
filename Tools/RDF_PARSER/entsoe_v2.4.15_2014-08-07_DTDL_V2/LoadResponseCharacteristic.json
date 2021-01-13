@@ -9,80 +9,80 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "exponentModel",
             "displayName": "LoadResponseCharacteristic.exponentModel",
             "description": "Indicates the exponential voltage dependency model is to be used.   If false, the coefficient model is to be used.\nThe exponential voltage dependency model consist of the attributes\n- pVoltageExponent\n- qVoltageExponent.\nThe coefficient model consist of the attributes\n- pConstantImpedance\n- pConstantCurrent\n- pConstantPower\n- qConstantImpedance\n- qConstantCurrent\n- qConstantPower.\nThe sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\nThe sum of qConstantImpedance, qConstantCurre",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "pConstantCurrent",
             "displayName": "LoadResponseCharacteristic.pConstantCurrent",
             "description": "Portion of active power load modeled as constant current.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pConstantImpedance",
             "displayName": "LoadResponseCharacteristic.pConstantImpedance",
             "description": "Portion of active power load modeled as constant impedance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pConstantPower",
             "displayName": "LoadResponseCharacteristic.pConstantPower",
             "description": "Portion of active power load modeled as constant power.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.pFrequencyExponent",
             "description": "Exponent of per unit frequency effecting active power.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pVoltageExponent",
             "displayName": "LoadResponseCharacteristic.pVoltageExponent",
             "description": "Exponent of per unit voltage effecting real power.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qConstantCurrent",
             "displayName": "LoadResponseCharacteristic.qConstantCurrent",
             "description": "Portion of reactive power load modeled as constant current.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qConstantImpedance",
             "displayName": "LoadResponseCharacteristic.qConstantImpedance",
             "description": "Portion of reactive power load modeled as constant impedance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qConstantPower",
             "displayName": "LoadResponseCharacteristic.qConstantPower",
             "description": "Portion of reactive power load modeled as constant power.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.qFrequencyExponent",
             "description": "Exponent of per unit frequency effecting reactive power.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qVoltageExponent",
             "displayName": "LoadResponseCharacteristic.qVoltageExponent",
             "description": "Exponent of per unit voltage effecting reactive power.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

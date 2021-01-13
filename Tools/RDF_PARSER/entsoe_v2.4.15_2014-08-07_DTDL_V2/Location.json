@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "CoordinateSystem",
             "displayName": "Location.CoordinateSystem",
             "description": "Coordinate system used to describe position points of this location.",
-            "@type": "Relationship",
             "target": "dtmi:cim:CoordinateSystem;16"
         },
         {
+            "@type": "Relationship",
             "name": "PowerSystemResources",
             "displayName": "Location.PowerSystemResources",
             "description": "All power system resources at this location.",
-            "@type": "Relationship",
             "target": "dtmi:cim:PowerSystemResource;16"
         }
     ]

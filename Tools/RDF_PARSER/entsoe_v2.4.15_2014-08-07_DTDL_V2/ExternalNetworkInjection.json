@@ -9,129 +9,129 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "governorSCD",
             "displayName": "ExternalNetworkInjection.governorSCD",
             "description": "Power Frequency Bias. This is the change in power injection divided by the change in frequency and negated.  A positive value of the power frequency bias provides additional power injection upon a drop in frequency.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ikSecond",
             "displayName": "ExternalNetworkInjection.ikSecond",
             "description": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\").",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "maxInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.maxInitialSymShCCurrent",
             "description": "  Maximum initial symmetrical short-circuit currents (Ik\" max) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxP",
             "displayName": "ExternalNetworkInjection.maxP",
             "description": "Maximum active power of the injection.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxQ",
             "displayName": "ExternalNetworkInjection.maxQ",
             "description": "Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.maxR0ToX0Ratio",
             "description": "Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.maxR1ToX1Ratio",
             "description": "Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.maxZ0ToZ1Ratio",
             "description": "Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.minInitialSymShCCurrent",
             "description": "Minimum initial symmetrical short-circuit currents (Ik\" min) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minP",
             "displayName": "ExternalNetworkInjection.minP",
             "description": "Minimum active power of the injection.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minQ",
             "displayName": "ExternalNetworkInjection.minQ",
             "description": "Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.minR0ToX0Ratio",
             "description": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\"). Used for short circuit data exchange according to IEC 6090",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.minR1ToX1Ratio",
             "description": "Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.minZ0ToZ1Ratio",
             "description": "Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "p",
             "displayName": "ExternalNetworkInjection.p",
             "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "q",
             "displayName": "ExternalNetworkInjection.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "referencePriority",
             "displayName": "ExternalNetworkInjection.referencePriority",
             "description": "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "voltageFactor",
             "displayName": "ExternalNetworkInjection.voltageFactor",
             "description": "Voltage factor in pu, which was used to calculate short-circuit current Ik\" and power Sk\".",
-            "@type": "Property",
             "schema": "float"
         }
     ]

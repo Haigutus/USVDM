@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "RatioTapChangerTable",
             "displayName": "RatioTapChanger.RatioTapChangerTable",
             "description": "The ratio tap changer of this tap ratio table.",
-            "@type": "Relationship",
             "target": "dtmi:cim:RatioTapChangerTable;16"
         },
         {
+            "@type": "Relationship",
             "name": "TransformerEnd",
             "displayName": "RatioTapChanger.TransformerEnd",
             "description": "Ratio tap changer associated with this transformer end.",
-            "@type": "Relationship",
             "target": "dtmi:cim:TransformerEnd;16"
         },
         {
+            "@type": "Property",
             "name": "stepVoltageIncrement",
             "displayName": "RatioTapChanger.stepVoltageIncrement",
             "description": "Tap step increment, in per cent of nominal voltage, per step position.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "tculControlMode",
             "displayName": "RatioTapChanger.tculControlMode",
             "description": "Specifies the regulation control mode (voltage or reactive) of the RatioTapChanger.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

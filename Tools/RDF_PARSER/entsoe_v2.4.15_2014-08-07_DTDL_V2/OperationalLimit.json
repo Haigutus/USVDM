@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "OperationalLimitSet",
             "displayName": "OperationalLimit.OperationalLimitSet",
             "description": "Values of equipment limits.",
-            "@type": "Relationship",
             "target": "dtmi:cim:OperationalLimitSet;16"
         },
         {
+            "@type": "Relationship",
             "name": "OperationalLimitType",
             "displayName": "OperationalLimit.OperationalLimitType",
             "description": "The limit type associated with this limit.",
-            "@type": "Relationship",
             "target": "dtmi:cim:OperationalLimitType;16"
         }
     ]

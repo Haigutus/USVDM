@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "length",
             "displayName": "Conductor.length",
             "description": "Segment length for calculating line section capabilities",
-            "@type": "Property",
             "schema": "float"
         }
     ]

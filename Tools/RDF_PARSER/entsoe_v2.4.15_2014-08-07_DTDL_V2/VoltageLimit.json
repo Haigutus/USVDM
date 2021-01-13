@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "VoltageLimit.value",
             "description": "Limit on voltage. High or low limit nature of the limit depends upon the properties of the operational limit type.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "ApparentPowerLimit.value",
             "description": "The apparent power limit.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

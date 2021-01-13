@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "b",
             "displayName": "EquivalentShunt.b",
             "description": "Positive sequence shunt susceptance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "g",
             "displayName": "EquivalentShunt.g",
             "description": "Positive sequence shunt conductance.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

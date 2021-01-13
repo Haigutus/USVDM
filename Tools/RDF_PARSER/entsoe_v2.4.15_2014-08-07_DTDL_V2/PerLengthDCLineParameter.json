@@ -6,24 +6,24 @@
     "description": "",
     "contents": [
         {
+            "@type": "Property",
             "name": "capacitance",
             "displayName": "PerLengthDCLineParameter.capacitance",
             "description": "Capacitance per unit of length of the DC line segment; significant for cables only.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "inductance",
             "displayName": "PerLengthDCLineParameter.inductance",
             "description": "Inductance per unit of length of the DC line segment.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "resistance",
             "displayName": "PerLengthDCLineParameter.resistance",
             "description": "Resistance per length of the DC line segment.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

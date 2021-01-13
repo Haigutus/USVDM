@@ -6,24 +6,24 @@
     "description": "State variable for voltage.",
     "contents": [
         {
+            "@type": "Relationship",
             "name": "TopologicalNode",
             "displayName": "SvVoltage.TopologicalNode",
             "description": "The state voltage associated with the topological node.",
-            "@type": "Relationship",
             "target": "dtmi:cim:TopologicalNode;16"
         },
         {
+            "@type": "Property",
             "name": "angle",
             "displayName": "SvVoltage.angle",
             "description": "The voltage angle of the topological node complex voltage with respect to system reference.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "v",
             "displayName": "SvVoltage.v",
             "description": "The voltage magnitude of the topological node.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

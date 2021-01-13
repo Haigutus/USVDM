@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DCEquipmentContainer",
             "displayName": "DCNode.DCEquipmentContainer",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:DCEquipmentContainer;16"
         },
         {
+            "@type": "Relationship",
             "name": "DCTopologicalNode",
             "displayName": "DCNode.DCTopologicalNode",
             "description": "See association end TopologicalNode.ConnectivityNodes.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DCTopologicalNode;16"
         }
     ]

@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTabular.PhaseTapChangerTable",
             "description": "The phase tap changer table for this phase tap changer.",
-            "@type": "Relationship",
             "target": "dtmi:cim:PhaseTapChangerTable;16"
         }
     ]

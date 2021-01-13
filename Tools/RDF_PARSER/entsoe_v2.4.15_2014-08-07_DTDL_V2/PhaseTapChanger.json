@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "TransformerEnd",
             "displayName": "PhaseTapChanger.TransformerEnd",
             "description": "Phase tap changer associated with this transformer end.",
-            "@type": "Relationship",
             "target": "dtmi:cim:TransformerEnd;16"
         }
     ]

@@ -6,17 +6,17 @@
     "description": "State variable for status.",
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ConductingEquipment",
             "displayName": "SvStatus.ConductingEquipment",
             "description": "The conducting equipment associated with the status state variable.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ConductingEquipment;16"
         },
         {
+            "@type": "Property",
             "name": "inService",
             "displayName": "SvStatus.inService",
             "description": "The in service status as a result of topology processing.",
-            "@type": "Property",
             "schema": "boolean"
         }
     ]

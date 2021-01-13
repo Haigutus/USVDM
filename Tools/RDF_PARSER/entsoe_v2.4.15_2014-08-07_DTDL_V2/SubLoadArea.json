@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "LoadArea",
             "displayName": "SubLoadArea.LoadArea",
             "description": "The LoadArea where the SubLoadArea belongs.",
-            "@type": "Relationship",
             "target": "dtmi:cim:LoadArea;16"
         }
     ]

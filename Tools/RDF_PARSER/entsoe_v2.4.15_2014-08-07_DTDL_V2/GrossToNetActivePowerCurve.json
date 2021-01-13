@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "GrossToNetActivePowerCurve.GeneratingUnit",
             "description": "A generating unit may have a gross active power to net active power curve, describing the losses and auxiliary power requirements of the unit.",
-            "@type": "Relationship",
             "target": "dtmi:cim:GeneratingUnit;16"
         }
     ]

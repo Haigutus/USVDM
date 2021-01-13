@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "TapChanger",
             "displayName": "TapSchedule.TapChanger",
             "description": "A TapChanger can have TapSchedules.",
-            "@type": "Relationship",
             "target": "dtmi:cim:TapChanger;16"
         }
     ]

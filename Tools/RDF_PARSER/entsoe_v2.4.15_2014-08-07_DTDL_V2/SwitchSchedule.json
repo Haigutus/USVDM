@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Switch",
             "displayName": "SwitchSchedule.Switch",
             "description": "A Switch can be associated with SwitchSchedules.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Switch;16"
         }
     ]

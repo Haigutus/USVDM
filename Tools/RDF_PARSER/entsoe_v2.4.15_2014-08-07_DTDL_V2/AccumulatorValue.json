@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Accumulator",
             "displayName": "AccumulatorValue.Accumulator",
             "description": "The values connected to this measurement.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Accumulator;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "AccumulatorValue.value",
             "description": "The value to supervise. The value is positive.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

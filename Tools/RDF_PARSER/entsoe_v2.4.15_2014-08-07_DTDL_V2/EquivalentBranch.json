@@ -9,115 +9,115 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "negativeR12",
             "displayName": "EquivalentBranch.negativeR12",
             "description": "Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "negativeR21",
             "displayName": "EquivalentBranch.negativeR21",
             "description": "Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "negativeX12",
             "displayName": "EquivalentBranch.negativeX12",
             "description": "Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "negativeX21",
             "displayName": "EquivalentBranch.negativeX21",
             "description": "Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage: EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "positiveR12",
             "displayName": "EquivalentBranch.positiveR12",
             "description": "Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. \nEquivalentBranch is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "positiveR21",
             "displayName": "EquivalentBranch.positiveR21",
             "description": "Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "positiveX12",
             "displayName": "EquivalentBranch.positiveX12",
             "description": "Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "positiveX21",
             "displayName": "EquivalentBranch.positiveX21",
             "description": "Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "EquivalentBranch.r",
             "description": "Positive sequence series resistance of the reduced branch.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r21",
             "displayName": "EquivalentBranch.r21",
             "description": "Resistance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.\nUsage rule : EquivalentBranch is a result of network reduction prior to the data exchange.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "EquivalentBranch.x",
             "description": "Positive sequence series reactance of the reduced branch.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x21",
             "displayName": "EquivalentBranch.x21",
             "description": "Reactance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.\nUsage rule : EquivalentBranch is a result of network reduction prior to the data exchange.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "zeroR12",
             "displayName": "EquivalentBranch.zeroR12",
             "description": "Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "zeroR21",
             "displayName": "EquivalentBranch.zeroR21",
             "description": "Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "zeroX12",
             "displayName": "EquivalentBranch.zeroX12",
             "description": "Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "zeroX21",
             "displayName": "EquivalentBranch.zeroX21",
             "description": "Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
-            "@type": "Property",
             "schema": "float"
         }
     ]

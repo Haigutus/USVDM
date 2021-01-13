@@ -9,88 +9,88 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "activePower",
             "displayName": "EnergySource.activePower",
             "description": "High voltage source active injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "nominalVoltage",
             "displayName": "EnergySource.nominalVoltage",
             "description": "Phase-to-phase nominal voltage.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "EnergySource.r",
             "description": "Positive sequence Thevenin resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "EnergySource.r0",
             "description": "Zero sequence Thevenin resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "reactivePower",
             "displayName": "EnergySource.reactivePower",
             "description": "High voltage source reactive injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "rn",
             "displayName": "EnergySource.rn",
             "description": "Negative sequence Thevenin resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "voltageAngle",
             "displayName": "EnergySource.voltageAngle",
             "description": "Phase angle of a-phase open circuit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "voltageMagnitude",
             "displayName": "EnergySource.voltageMagnitude",
             "description": "Phase-to-phase open circuit voltage magnitude.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "EnergySource.x",
             "description": "Positive sequence Thevenin reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "EnergySource.x0",
             "description": "Zero sequence Thevenin reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "xn",
             "displayName": "EnergySource.xn",
             "description": "Negative sequence Thevenin reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Relationship",
             "name": "EnergySchedulingType",
             "displayName": "EnergySource.EnergySchedulingType",
             "description": "Energy Scheduling Type of an Energy Source",
-            "@type": "Relationship",
-            "target": "dtmi:cim:http://entsoe.eu/CIM/SchemaExtension/3/1EnergySchedulingType;16"
+            "target": "dtmi:cim:EnergySchedulingType;16"
         }
     ]
 }

@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "GroundingImpedance.x",
             "description": "Reactance of device.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

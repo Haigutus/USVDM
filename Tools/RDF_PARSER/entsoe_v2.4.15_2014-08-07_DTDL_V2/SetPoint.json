@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "normalValue",
             "displayName": "SetPoint.normalValue",
             "description": "Normal value for Control.value e.g. used for percentage scaling.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "SetPoint.value",
             "description": "The value representing the actuator output.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

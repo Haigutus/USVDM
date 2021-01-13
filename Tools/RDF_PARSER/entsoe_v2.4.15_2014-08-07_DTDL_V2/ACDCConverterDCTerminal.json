@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DCConductingEquipment",
             "displayName": "ACDCConverterDCTerminal.DCConductingEquipment",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:ACDCConverter;16"
         },
         {
+            "@type": "Property",
             "name": "polarity",
             "displayName": "ACDCConverterDCTerminal.polarity",
             "description": "Represents the normal network polarity condition.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

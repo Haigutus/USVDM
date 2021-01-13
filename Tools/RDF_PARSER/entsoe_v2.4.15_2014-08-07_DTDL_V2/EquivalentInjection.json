@@ -9,115 +9,115 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ReactiveCapabilityCurve",
             "displayName": "EquivalentInjection.ReactiveCapabilityCurve",
             "description": "The equivalent injection using this reactive capability curve.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ReactiveCapabilityCurve;16"
         },
         {
+            "@type": "Property",
             "name": "maxP",
             "displayName": "EquivalentInjection.maxP",
             "description": "Maximum active power of the injection.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxQ",
             "displayName": "EquivalentInjection.maxQ",
             "description": "Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used.   ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minP",
             "displayName": "EquivalentInjection.minP",
             "description": "Minimum active power of the injection.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minQ",
             "displayName": "EquivalentInjection.minQ",
             "description": "Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "p",
             "displayName": "EquivalentInjection.p",
             "description": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "q",
             "displayName": "EquivalentInjection.q",
             "description": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "EquivalentInjection.r",
             "description": "Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "EquivalentInjection.r0",
             "description": "Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r2",
             "displayName": "EquivalentInjection.r2",
             "description": "Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "regulationCapability",
             "displayName": "EquivalentInjection.regulationCapability",
             "description": "Specifies whether or not the EquivalentInjection has the capability to regulate the local voltage.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "regulationStatus",
             "displayName": "EquivalentInjection.regulationStatus",
             "description": "Specifies the default regulation status of the EquivalentInjection.  True is regulating.  False is not regulating.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "regulationTarget",
             "displayName": "EquivalentInjection.regulationTarget",
             "description": "The target voltage for voltage regulation.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "EquivalentInjection.x",
             "description": "Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "EquivalentInjection.x0",
             "description": "Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x2",
             "displayName": "EquivalentInjection.x2",
             "description": "Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
-            "@type": "Property",
             "schema": "float"
         }
     ]

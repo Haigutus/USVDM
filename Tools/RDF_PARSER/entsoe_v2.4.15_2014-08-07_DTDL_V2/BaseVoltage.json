@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "nominalVoltage",
             "displayName": "BaseVoltage.nominalVoltage",
             "description": "The power system resource's base voltage.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

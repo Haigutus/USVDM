@@ -9,24 +9,24 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "inductance",
             "displayName": "DCSeriesDevice.inductance",
             "description": "Inductance of the device.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedUdc",
             "displayName": "DCSeriesDevice.ratedUdc",
             "description": "Rated DC device voltage. Converter configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "resistance",
             "displayName": "DCSeriesDevice.resistance",
             "description": "Resistance of the DC device.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

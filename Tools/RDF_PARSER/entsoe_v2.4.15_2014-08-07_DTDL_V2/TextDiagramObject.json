@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "text",
             "displayName": "TextDiagramObject.text",
             "description": "The text that is displayed by this text diagram object.",
-            "@type": "Property",
             "schema": "string"
         }
     ]

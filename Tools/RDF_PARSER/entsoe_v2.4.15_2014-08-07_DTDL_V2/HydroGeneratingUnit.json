@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "HydroPowerPlant",
             "displayName": "HydroGeneratingUnit.HydroPowerPlant",
             "description": "The hydro generating unit belongs to a hydro power plant.",
-            "@type": "Relationship",
             "target": "dtmi:cim:HydroPowerPlant;16"
         },
         {
+            "@type": "Property",
             "name": "energyConversionCapability",
             "displayName": "HydroGeneratingUnit.energyConversionCapability",
             "description": "Energy conversion capability for generating.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "endTime",
             "displayName": "RegularIntervalSchedule.endTime",
             "description": "The time for the last time point.",
-            "@type": "Property",
             "schema": "dateTime"
         },
         {
+            "@type": "Property",
             "name": "timeStep",
             "displayName": "RegularIntervalSchedule.timeStep",
             "description": "The time between each pair of subsequent regular time points in sequence order.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

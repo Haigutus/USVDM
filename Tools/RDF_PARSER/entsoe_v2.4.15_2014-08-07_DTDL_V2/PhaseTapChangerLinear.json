@@ -9,24 +9,24 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "stepPhaseShiftIncrement",
             "displayName": "PhaseTapChangerLinear.stepPhaseShiftIncrement",
             "description": "Phase shift per step position. A positive value indicates a positive phase shift from the winding where the tap is located to the other winding (for a two-winding transformer).\nThe actual phase shift increment might be more accurately computed from the symmetrical or asymmetrical models or a tap step table lookup if those are available.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "xMax",
             "displayName": "PhaseTapChangerLinear.xMax",
             "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The maximum reactance (xMax) appear at the low and high tap positions.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "xMin",
             "displayName": "PhaseTapChangerLinear.xMin",
             "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The minimum reactance (xMin) appear at the mid tap position.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

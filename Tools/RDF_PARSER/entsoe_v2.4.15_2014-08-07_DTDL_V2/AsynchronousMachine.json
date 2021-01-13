@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "asynchronousMachineType",
             "displayName": "AsynchronousMachine.asynchronousMachineType",
             "description": "Indicates the type of Asynchronous Machine (motor or generator).",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -31,66 +31,66 @@
             }
         },
         {
+            "@type": "Property",
             "name": "converterFedDrive",
             "displayName": "AsynchronousMachine.converterFedDrive",
             "description": "Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "efficiency",
             "displayName": "AsynchronousMachine.efficiency",
             "description": "Efficiency of the asynchronous machine at nominal operation in percent. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "iaIrRatio",
             "displayName": "AsynchronousMachine.iaIrRatio",
             "description": "Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "nominalFrequency",
             "displayName": "AsynchronousMachine.nominalFrequency",
             "description": "Nameplate data indicates if the machine is 50 or 60 Hz.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "nominalSpeed",
             "displayName": "AsynchronousMachine.nominalSpeed",
             "description": "Nameplate data.  Depends on the slip and number of pole pairs.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "polePairNumber",
             "displayName": "AsynchronousMachine.polePairNumber",
             "description": "Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "ratedMechanicalPower",
             "displayName": "AsynchronousMachine.ratedMechanicalPower",
             "description": "Rated mechanical power (Pr in the IEC 60909-0). Used for short circuit data exchange according to IEC 60909.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "reversible",
             "displayName": "AsynchronousMachine.reversible",
             "description": "Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "rxLockedRotorRatio",
             "displayName": "AsynchronousMachine.rxLockedRotorRatio",
             "description": "Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         }
     ]

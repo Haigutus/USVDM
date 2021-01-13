@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "b0PerSection",
             "displayName": "LinearShuntCompensator.b0PerSection",
             "description": "Zero sequence shunt (charging) susceptance per section",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "bPerSection",
             "displayName": "LinearShuntCompensator.bPerSection",
             "description": "Positive sequence shunt (charging) susceptance per section",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "g0PerSection",
             "displayName": "LinearShuntCompensator.g0PerSection",
             "description": "Zero sequence shunt (charging) conductance per section",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "gPerSection",
             "displayName": "LinearShuntCompensator.gPerSection",
             "description": "Positive sequence shunt (charging) conductance per section",
-            "@type": "Property",
             "schema": "float"
         }
     ]

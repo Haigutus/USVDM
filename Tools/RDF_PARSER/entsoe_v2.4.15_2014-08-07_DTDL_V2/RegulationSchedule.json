@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "RegulatingControl",
             "displayName": "RegulationSchedule.RegulatingControl",
             "description": "Regulating controls that have this Schedule.",
-            "@type": "Relationship",
             "target": "dtmi:cim:RegulatingControl;16"
         }
     ]

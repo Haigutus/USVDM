@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "NonConformLoadGroup",
             "displayName": "NonConformLoadSchedule.NonConformLoadGroup",
             "description": "The NonConformLoadGroup where the NonConformLoadSchedule belongs.",
-            "@type": "Relationship",
             "target": "dtmi:cim:NonConformLoadGroup;16"
         }
     ]

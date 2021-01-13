@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ValueAliasSet",
             "displayName": "RaiseLowerCommand.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ValueAliasSet;16"
         }
     ]

@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "capacitiveRating",
             "displayName": "StaticVarCompensator.capacitiveRating",
             "description": "Maximum available capacitive reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "inductiveRating",
             "displayName": "StaticVarCompensator.inductiveRating",
             "description": "Maximum available inductive reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "q",
             "displayName": "StaticVarCompensator.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "sVCControlMode",
             "displayName": "StaticVarCompensator.sVCControlMode",
             "description": "SVC control mode.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -52,17 +52,17 @@
             }
         },
         {
+            "@type": "Property",
             "name": "slope",
             "displayName": "StaticVarCompensator.slope",
             "description": "The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "voltageSetPoint",
             "displayName": "StaticVarCompensator.voltageSetPoint",
             "description": "The reactive power output of the SVC is proportional to the difference between the voltage at the regulated bus and the voltage setpoint.  When the regulated bus voltage is equal to the voltage setpoint, the reactive power output is zero.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

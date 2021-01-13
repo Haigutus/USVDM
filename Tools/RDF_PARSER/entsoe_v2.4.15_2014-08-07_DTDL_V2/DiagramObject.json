@@ -9,59 +9,59 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Diagram",
             "displayName": "DiagramObject.Diagram",
             "description": "A diagram object is part of a diagram.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Diagram;16"
         },
         {
+            "@type": "Relationship",
             "name": "DiagramObjectStyle",
             "displayName": "DiagramObject.DiagramObjectStyle",
             "description": "A diagram object has a style associated that provides a reference for the style used in the originating system.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DiagramObjectStyle;16"
         },
         {
+            "@type": "Relationship",
             "name": "IdentifiedObject",
             "displayName": "DiagramObject.IdentifiedObject",
             "description": "The diagram objects that are associated with the domain object.",
-            "@type": "Relationship",
             "target": "dtmi:cim:IdentifiedObject;16"
         },
         {
+            "@type": "Property",
             "name": "drawingOrder",
             "displayName": "DiagramObject.drawingOrder",
             "description": "The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "isPolygon",
             "displayName": "DiagramObject.isPolygon",
             "description": "Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "offsetX",
             "displayName": "DiagramObject.offsetX",
             "description": "The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "offsetY",
             "displayName": "DiagramObject.offsetY",
             "description": "The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "rotation",
             "displayName": "DiagramObject.rotation",
             "description": "Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

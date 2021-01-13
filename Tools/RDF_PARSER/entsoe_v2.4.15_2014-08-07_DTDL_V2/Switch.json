@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "normalOpen",
             "displayName": "Switch.normalOpen",
             "description": "The attribute is used in cases when no Measurement for the status value is present. If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "open",
             "displayName": "Switch.open",
             "description": "The attribute tells if the switch is considered open when used as input to topology processing.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "ratedCurrent",
             "displayName": "Switch.ratedCurrent",
             "description": "The maximum continuous current carrying capacity in amps governed by the device material and construction.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "retained",
             "displayName": "Switch.retained",
             "description": "Branch is retained in a bus branch model.  The flow through retained switches will normally be calculated in power flow.",
-            "@type": "Property",
             "schema": "boolean"
         }
     ]

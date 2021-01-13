@@ -9,24 +9,24 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "AnalogValue",
             "displayName": "AnalogControl.AnalogValue",
             "description": "The Control variable associated with the MeasurementValue.",
-            "@type": "Relationship",
             "target": "dtmi:cim:AnalogValue;16"
         },
         {
+            "@type": "Property",
             "name": "maxValue",
             "displayName": "AnalogControl.maxValue",
             "description": "Normal value range maximum for any of the Control.value. Used for scaling, e.g. in bar graphs.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minValue",
             "displayName": "AnalogControl.minValue",
             "description": "Normal value range minimum for any of the Control.value. Used for scaling, e.g. in bar graphs.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

@@ -9,66 +9,66 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "InitialReactiveCapabilityCurve",
             "displayName": "SynchronousMachine.InitialReactiveCapabilityCurve",
             "description": "Synchronous machines using this curve as default.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ReactiveCapabilityCurve;16"
         },
         {
+            "@type": "Property",
             "name": "earthing",
             "displayName": "SynchronousMachine.earthing",
             "description": "Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "earthingStarPointR",
             "displayName": "SynchronousMachine.earthingStarPointR",
             "description": "Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "earthingStarPointX",
             "displayName": "SynchronousMachine.earthingStarPointX",
             "description": "Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ikk",
             "displayName": "SynchronousMachine.ikk",
             "description": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\n- Ikk=0: Generator with no compound excitation.\n- Ikk?0: Generator with compound excitation.\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation\n(Section 4.6.1.2 in the IEC 60909-0)\nUsed only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0)",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxQ",
             "displayName": "SynchronousMachine.maxQ",
             "description": "Maximum reactive power limit. This is the maximum (nameplate) limit for the unit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minQ",
             "displayName": "SynchronousMachine.minQ",
             "description": "Minimum reactive power limit for the unit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "mu",
             "displayName": "SynchronousMachine.mu",
             "description": "Factor to calculate the breaking current (Section 4.5.2.1 in the IEC 60909-0).\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in the IEC 60909-0).",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "operatingMode",
             "displayName": "SynchronousMachine.operatingMode",
             "description": "Current mode of operation.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -92,66 +92,66 @@
             }
         },
         {
+            "@type": "Property",
             "name": "qPercent",
             "displayName": "SynchronousMachine.qPercent",
             "description": "Percent of the coordinated reactive control that comes from this machine.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "SynchronousMachine.r",
             "description": "Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "SynchronousMachine.r0",
             "description": "Zero sequence resistance of the synchronous machine.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r2",
             "displayName": "SynchronousMachine.r2",
             "description": "Negative sequence resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "referencePriority",
             "displayName": "SynchronousMachine.referencePriority",
             "description": "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "satDirectSubtransX",
             "displayName": "SynchronousMachine.satDirectSubtransX",
             "description": "Direct-axis subtransient reactance saturated, also known as Xd\"sat.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "satDirectSyncX",
             "displayName": "SynchronousMachine.satDirectSyncX",
             "description": "Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0).",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "satDirectTransX",
             "displayName": "SynchronousMachine.satDirectTransX",
             "description": "Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "shortCircuitRotorType",
             "displayName": "SynchronousMachine.shortCircuitRotorType",
             "description": "Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -180,10 +180,10 @@
             }
         },
         {
+            "@type": "Property",
             "name": "type",
             "displayName": "SynchronousMachine.type",
             "description": "Modes that this synchronous machine can operate in.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -227,24 +227,24 @@
             }
         },
         {
+            "@type": "Property",
             "name": "voltageRegulationRange",
             "displayName": "SynchronousMachine.voltageRegulationRange",
             "description": "Range of generator voltage regulation (PG in the IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0\nThis attribute is used to describe the operating voltage of the generating unit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "SynchronousMachine.x0",
             "description": "Zero sequence reactance of the synchronous machine.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x2",
             "displayName": "SynchronousMachine.x2",
             "description": "Negative sequence reactance.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

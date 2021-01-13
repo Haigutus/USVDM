@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "genControlSource",
             "displayName": "GeneratingUnit.genControlSource",
             "description": "The source of controls for a generating unit.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -41,108 +41,108 @@
             }
         },
         {
+            "@type": "Property",
             "name": "governorSCD",
             "displayName": "GeneratingUnit.governorSCD",
             "description": "Governor Speed Changer Droop.   This is the change in generator power output divided by the change in frequency normalized by the nominal power of the generator and the nominal frequency and expressed in percent and negated. A positive value of speed change droop provides additional generator output upon a drop in frequency.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "initialP",
             "displayName": "GeneratingUnit.initialP",
             "description": "Default initial active power  which is used to store a powerflow result for the initial active power for this unit in this network configuration.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "longPF",
             "displayName": "GeneratingUnit.longPF",
             "description": "Generating unit long term economic participation factor.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxOperatingP",
             "displayName": "GeneratingUnit.maxOperatingP",
             "description": "This is the maximum operating active power limit the dispatcher can enter for this unit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maximumAllowableSpinningReserve",
             "displayName": "GeneratingUnit.maximumAllowableSpinningReserve",
             "description": "Maximum allowable spinning reserve. Spinning reserve will never be considered greater than this value regardless of the current operating point.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minOperatingP",
             "displayName": "GeneratingUnit.minOperatingP",
             "description": "This is the minimum operating active power limit the dispatcher can enter for this unit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "nominalP",
             "displayName": "GeneratingUnit.nominalP",
             "description": "The nominal power of the generating unit.  Used to give precise meaning to percentage based attributes such as the governor speed change droop (governorSCD attribute).\nThe attribute shall be a positive value equal or less than RotatingMachine.ratedS.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "normalPF",
             "displayName": "GeneratingUnit.normalPF",
             "description": "Generating unit economic participation factor.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedGrossMaxP",
             "displayName": "GeneratingUnit.ratedGrossMaxP",
             "description": "The unit's gross rated maximum capacity (book value).",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedGrossMinP",
             "displayName": "GeneratingUnit.ratedGrossMinP",
             "description": "The gross rated minimum generation level which the unit can safely operate at while delivering power to the transmission grid.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedNetMaxP",
             "displayName": "GeneratingUnit.ratedNetMaxP",
             "description": "The net rated maximum capacity determined by subtracting the auxiliary power used to operate the internal plant machinery from the rated gross maximum capacity.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "shortPF",
             "displayName": "GeneratingUnit.shortPF",
             "description": "Generating unit short term economic participation factor.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "startupCost",
             "displayName": "GeneratingUnit.startupCost",
             "description": "The initial startup cost incurred for each start of the GeneratingUnit.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "totalEfficiency",
             "displayName": "GeneratingUnit.totalEfficiency",
             "description": "The efficiency of the unit in converting the fuel into electrical energy.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "variableCost",
             "displayName": "GeneratingUnit.variableCost",
             "description": "The variable cost component of production per unit of ActivePower.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

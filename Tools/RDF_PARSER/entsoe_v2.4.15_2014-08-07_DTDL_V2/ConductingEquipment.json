@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
-            "@type": "Relationship",
             "target": "dtmi:cim:BaseVoltage;16"
         }
     ]

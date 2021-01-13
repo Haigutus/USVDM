@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ThermalGeneratingUnit",
             "displayName": "FossilFuel.ThermalGeneratingUnit",
             "description": "A thermal generating unit may have one or more fossil fuels.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ThermalGeneratingUnit;16"
         },
         {
+            "@type": "Property",
             "name": "fossilFuelType",
             "displayName": "FossilFuel.fossilFuelType",
             "description": "The type of fossil fuel, such as coal, oil, or gas.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

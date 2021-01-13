@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Region",
             "displayName": "SubGeographicalRegion.Region",
             "description": "The geographical region to which this sub-geographical region is within.",
-            "@type": "Relationship",
             "target": "dtmi:cim:GeographicalRegion;16"
         }
     ]

@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Measurements",
             "displayName": "AnalogLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Analog;16"
         }
     ]

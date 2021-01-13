@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ControlArea",
             "displayName": "ControlAreaGeneratingUnit.ControlArea",
             "description": "The parent control area for the generating unit specifications.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ControlArea;16"
         },
         {
+            "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "ControlAreaGeneratingUnit.GeneratingUnit",
             "description": "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once.",
-            "@type": "Relationship",
             "target": "dtmi:cim:GeneratingUnit;16"
         }
     ]

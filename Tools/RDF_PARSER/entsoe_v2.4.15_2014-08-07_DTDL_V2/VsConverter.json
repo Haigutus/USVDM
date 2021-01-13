@@ -9,52 +9,52 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "CapabilityCurve",
             "displayName": "VsConverter.CapabilityCurve",
             "description": "All converters with this capability curve.",
-            "@type": "Relationship",
             "target": "dtmi:cim:VsCapabilityCurve;16"
         },
         {
+            "@type": "Property",
             "name": "delta",
             "displayName": "VsConverter.delta",
             "description": "Angle between uf and uc. Converter state variable used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "droop",
             "displayName": "VsConverter.droop",
             "description": "Droop constant; pu value is obtained as D [kV^2 / MW] x Sb / Ubdc^2.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "droopCompensation",
             "displayName": "VsConverter.droopCompensation",
             "description": "Compensation (resistance) constant. Used to compensate for voltage drop when controlling voltage at a distant bus.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxModulationIndex",
             "displayName": "VsConverter.maxModulationIndex",
             "description": "The max quotient between the AC converter voltage (Uc) and DC voltage (Ud). A factor typically less than 1. VSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxValveCurrent",
             "displayName": "VsConverter.maxValveCurrent",
             "description": "The maximum current through a valve. This current limit is the basis for calculating the capability diagram. VSC  configuration data.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pPccControl",
             "displayName": "VsConverter.pPccControl",
             "description": "Kind of control of real power and/or DC voltage.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -88,10 +88,10 @@
             }
         },
         {
+            "@type": "Property",
             "name": "qPccControl",
             "displayName": "VsConverter.qPccControl",
             "description": "",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -115,31 +115,31 @@
             }
         },
         {
+            "@type": "Property",
             "name": "qShare",
             "displayName": "VsConverter.qShare",
             "description": "Reactive power sharing factor among parallel converters on Uac control.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetQpcc",
             "displayName": "VsConverter.targetQpcc",
             "description": "Reactive power injection target in AC grid, at point of common coupling.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetUpcc",
             "displayName": "VsConverter.targetUpcc",
             "description": "Voltage target in AC grid, at point of common coupling.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "uf",
             "displayName": "VsConverter.uf",
             "description": "Filter bus voltage. Converter state variable, result from power flow.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

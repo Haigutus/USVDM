@@ -9,66 +9,66 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "alpha",
             "displayName": "CsConverter.alpha",
             "description": "Firing angle, typical value between 10 and 18 degrees for a rectifier. CSC state variable, result from power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "gamma",
             "displayName": "CsConverter.gamma",
             "description": "Extinction angle. CSC state variable, result from power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxAlpha",
             "displayName": "CsConverter.maxAlpha",
             "description": "Maximum firing angle. CSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxGamma",
             "displayName": "CsConverter.maxGamma",
             "description": "Maximum extinction angle. CSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "maxIdc",
             "displayName": "CsConverter.maxIdc",
             "description": "The maximum direct current (Id) on the DC side at which the converter should operate. Converter configuration data use in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minAlpha",
             "displayName": "CsConverter.minAlpha",
             "description": "Minimum firing angle. CSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minGamma",
             "displayName": "CsConverter.minGamma",
             "description": "Minimum extinction angle. CSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "minIdc",
             "displayName": "CsConverter.minIdc",
             "description": "The minimum direct current (Id) on the DC side at which the converter should operate. CSC configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "operatingMode",
             "displayName": "CsConverter.operatingMode",
             "description": "Indicates whether the DC pole is operating as an inverter or as a rectifier. CSC control variable used in power flow.",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -87,10 +87,10 @@
             }
         },
         {
+            "@type": "Property",
             "name": "pPccControl",
             "displayName": "CsConverter.pPccControl",
             "description": "",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",
@@ -114,31 +114,31 @@
             }
         },
         {
+            "@type": "Property",
             "name": "ratedIdc",
             "displayName": "CsConverter.ratedIdc",
             "description": "Rated converter DC current, also called IdN. Converter configuration data used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetAlpha",
             "displayName": "CsConverter.targetAlpha",
             "description": "Target firing angle. CSC control variable used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetGamma",
             "displayName": "CsConverter.targetGamma",
             "description": "Target extinction angle. CSC  control variable used in power flow.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "targetIdc",
             "displayName": "CsConverter.targetIdc",
             "description": "DC current target value. CSC control variable used in power flow.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

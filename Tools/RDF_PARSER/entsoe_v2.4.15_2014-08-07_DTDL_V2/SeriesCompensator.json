@@ -9,52 +9,52 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "SeriesCompensator.r",
             "description": "Positive sequence resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "SeriesCompensator.r0",
             "description": "Zero sequence resistance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "varistorPresent",
             "displayName": "SeriesCompensator.varistorPresent",
             "description": "Describe if a metal oxide varistor (mov) for over voltage protection is configured at the series compensator.",
-            "@type": "Property",
             "schema": "boolean"
         },
         {
+            "@type": "Property",
             "name": "varistorRatedCurrent",
             "displayName": "SeriesCompensator.varistorRatedCurrent",
             "description": "The maximum current the varistor is designed to handle at specified duration.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "varistorVoltageThreshold",
             "displayName": "SeriesCompensator.varistorVoltageThreshold",
             "description": "The dc voltage at which the varistor start conducting.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "SeriesCompensator.x",
             "description": "Positive sequence reactance.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "SeriesCompensator.x0",
             "description": "Zero sequence reactance.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

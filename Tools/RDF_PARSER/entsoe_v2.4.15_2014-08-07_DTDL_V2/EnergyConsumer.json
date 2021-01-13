@@ -9,52 +9,52 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "LoadResponse",
             "displayName": "EnergyConsumer.LoadResponse",
             "description": "The load response characteristic of this load.  If missing, this load is assumed to be constant power.",
-            "@type": "Relationship",
             "target": "dtmi:cim:LoadResponseCharacteristic;16"
         },
         {
+            "@type": "Property",
             "name": "p",
             "displayName": "EnergyConsumer.p",
             "description": "Active power of the load. Load sign convention is used, i.e. positive sign means flow out from a node.\nFor voltage dependent loads the value is at rated voltage.\nStarting value for a steady state solution.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pfixed",
             "displayName": "EnergyConsumer.pfixed",
             "description": "Active power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "pfixedPct",
             "displayName": "EnergyConsumer.pfixedPct",
             "description": "Fixed active power as per cent of load group fixed active power. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "q",
             "displayName": "EnergyConsumer.q",
             "description": "Reactive power of the load. Load sign convention is used, i.e. positive sign means flow out from a node.\nFor voltage dependent loads the value is at rated voltage.\nStarting value for a steady state solution.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qfixed",
             "displayName": "EnergyConsumer.qfixed",
             "description": "Reactive power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "qfixedPct",
             "displayName": "EnergyConsumer.qfixedPct",
             "description": "Fixed reactive power as per cent of load group fixed reactive power. Load sign convention is used, i.e. positive sign means flow out from a node.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

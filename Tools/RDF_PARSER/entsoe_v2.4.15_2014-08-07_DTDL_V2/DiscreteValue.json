@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Discrete",
             "displayName": "DiscreteValue.Discrete",
             "description": "The values connected to this measurement.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Discrete;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "DiscreteValue.value",
             "description": "The value to supervise.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

@@ -9,31 +9,31 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "DiscreteValue",
             "displayName": "Command.DiscreteValue",
             "description": "The Control variable associated with the MeasurementValue.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DiscreteValue;16"
         },
         {
+            "@type": "Relationship",
             "name": "ValueAliasSet",
             "displayName": "Command.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ValueAliasSet;16"
         },
         {
+            "@type": "Property",
             "name": "normalValue",
             "displayName": "Command.normalValue",
             "description": "Normal value for Control.value e.g. used for percentage scaling.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "Command.value",
             "description": "The value representing the actuator output.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

@@ -9,66 +9,66 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "b0ch",
             "displayName": "ACLineSegment.b0ch",
             "description": "Zero sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "bch",
             "displayName": "ACLineSegment.bch",
             "description": "Positive sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.  This value represents the full charging over the full length of the line.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "g0ch",
             "displayName": "ACLineSegment.g0ch",
             "description": "Zero sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "gch",
             "displayName": "ACLineSegment.gch",
             "description": "Positive sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r",
             "displayName": "ACLineSegment.r",
             "description": "Positive sequence series resistance of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "r0",
             "displayName": "ACLineSegment.r0",
             "description": "Zero sequence series resistance of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "shortCircuitEndTemperature",
             "displayName": "ACLineSegment.shortCircuitEndTemperature",
             "description": "Maximum permitted temperature at the end of SC for the calculation of minimum short-circuit currents. Used for short circuit data exchange according to IEC 60909",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x",
             "displayName": "ACLineSegment.x",
             "description": "Positive sequence series reactance of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "x0",
             "displayName": "ACLineSegment.x0",
             "description": "Zero sequence series reactance of the entire line section.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

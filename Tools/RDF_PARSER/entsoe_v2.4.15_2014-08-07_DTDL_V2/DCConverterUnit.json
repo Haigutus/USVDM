@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Substation",
             "displayName": "DCConverterUnit.Substation",
             "description": "",
-            "@type": "Relationship",
             "target": "dtmi:cim:Substation;16"
         },
         {
+            "@type": "Property",
             "name": "operationMode",
             "displayName": "DCConverterUnit.operationMode",
             "description": "",
-            "@type": "Property",
             "schema": {
                 "@type": "Enum",
                 "valueSchema": "string",

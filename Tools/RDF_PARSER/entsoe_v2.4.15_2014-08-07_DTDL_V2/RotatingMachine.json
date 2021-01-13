@@ -9,45 +9,45 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "RotatingMachine.GeneratingUnit",
             "description": "A synchronous machine may operate as a generator and as such becomes a member of a generating unit.",
-            "@type": "Relationship",
             "target": "dtmi:cim:GeneratingUnit;16"
         },
         {
+            "@type": "Property",
             "name": "p",
             "displayName": "RotatingMachine.p",
             "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "q",
             "displayName": "RotatingMachine.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedPowerFactor",
             "displayName": "RotatingMachine.ratedPowerFactor",
             "description": "Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedS",
             "displayName": "RotatingMachine.ratedS",
             "description": "Nameplate apparent power rating for the unit.\nThe attribute shall have a positive value.",
-            "@type": "Property",
             "schema": "float"
         },
         {
+            "@type": "Property",
             "name": "ratedU",
             "displayName": "RotatingMachine.ratedU",
             "description": "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

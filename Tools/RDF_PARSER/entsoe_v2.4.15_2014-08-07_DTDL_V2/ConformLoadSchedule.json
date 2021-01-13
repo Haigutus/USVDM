@@ -9,10 +9,10 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "ConformLoadGroup",
             "displayName": "ConformLoadSchedule.ConformLoadGroup",
             "description": "The ConformLoadGroup where the ConformLoadSchedule belongs.",
-            "@type": "Relationship",
             "target": "dtmi:cim:ConformLoadGroup;16"
         }
     ]

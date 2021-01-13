@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Property",
             "name": "endDate",
             "displayName": "Season.endDate",
             "description": "Date season ends.",
-            "@type": "Property",
             "schema": "integer"
         },
         {
+            "@type": "Property",
             "name": "startDate",
             "displayName": "Season.startDate",
             "description": "Date season starts.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "VisibleObjects",
             "displayName": "VisibilityLayer.VisibleObjects",
             "description": "A visibility layer can contain one or more diagram objects.",
-            "@type": "Relationship",
             "target": "dtmi:cim:DiagramObject;16"
         },
         {
+            "@type": "Property",
             "name": "drawingOrder",
             "displayName": "VisibilityLayer.drawingOrder",
             "description": "The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered.",
-            "@type": "Property",
             "schema": "integer"
         }
     ]

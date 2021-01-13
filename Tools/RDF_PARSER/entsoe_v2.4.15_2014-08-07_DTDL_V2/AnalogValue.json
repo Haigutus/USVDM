@@ -9,17 +9,17 @@
     ],
     "contents": [
         {
+            "@type": "Relationship",
             "name": "Analog",
             "displayName": "AnalogValue.Analog",
             "description": "The values connected to this measurement.",
-            "@type": "Relationship",
             "target": "dtmi:cim:Analog;16"
         },
         {
+            "@type": "Property",
             "name": "value",
             "displayName": "AnalogValue.value",
             "description": "The value to supervise.",
-            "@type": "Property",
             "schema": "float"
         }
     ]

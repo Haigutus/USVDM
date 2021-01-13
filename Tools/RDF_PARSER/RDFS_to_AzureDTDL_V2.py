@@ -1,6 +1,7 @@
 import json
 import os
-from RDFS_tools import *
+from Tools.RDF_PARSER.RDFS_tools import *
+#from RDFS_tools import *
 
 
 def get_description(meta_dict):
@@ -134,6 +135,8 @@ for interface_uri in interfaces_list:
             parameter_def = {
                     #"@id": f"dtmi:cim16:{parameter_name}",
                     #"name": parameter_name.replace(".", "_"),
+
+                    "@type": "Property",
                     "name": parameter_meta["label"],
                     "displayName": parameter_name,
                     #"writable": True,
@@ -145,7 +148,10 @@ for interface_uri in interfaces_list:
             if association_used == 'Yes':
 
                 parameter_def["@type"] = "Relationship"
-                parameter_def["target"] = f"dtmi:cim:{parameter_dict['range'].replace('#', '')};16"
+
+                target_namespace, target_name = get_namespace_and_name(parameter_dict['range'], rdf_namespace)
+
+                parameter_def["target"] = f"dtmi:cim:{target_name};16"  # TODO - namespace and name
 
             else:
                 data_type = parameter_dict.get("dataType", "nan")
@@ -153,38 +159,18 @@ for interface_uri in interfaces_list:
                 # If regular parameter
                 if str(data_type) != "nan":
 
-                    parameter_def["@type"] = "Property"
                     parameter_def["schema"] = data_types_map[data_type]
-
-
-
-                    # data_type_namespace, data_type_name = data_type.split("#")
-                    #
-                    # data_type_meta = data.get_object_data(data_type).to_dict()
-                    #
-                    # if data_type_namespace == "":
-                    #     data_type_namespace = cim_namespace
-                    #
-                    # data_type_def = {
-                    #     "description": data_type_meta.get("comment", ""),
-                    #     "type": data_type_meta.get("stereotype", ""),
-                    #     "namespace": data_type_namespace
-                    # }
-                    #
-                    # parameter_def["type"] = data_type_name
-                    #conf_dict[profile_name][data_type_name] = data_type_def
 
                 # If enumeration
                 else:
 
-                    parameter_def["@type"] = "Property"
-                    parameter_def["schema"] = { "@type": "Enum",
+                    parameter_def["schema"] = {
+                                                "@type": "Enum",
                                                 "valueSchema": "string",
                                                 "enumValues": []
-                    }
+                                               }
 
-
-                    # Add allowed values
+                    # Add allowed values for enumeration
                     values = data.query(f"VALUE == '{parameter_dict['range']}' and KEY == 'type'").ID.tolist()
 
                     for value in values:
@@ -204,22 +190,17 @@ for interface_uri in interfaces_list:
                                         "description": description[:511],
                                     }
 
-
                         parameter_def["schema"]["enumValues"].append(value_def)
 
-
-
-            # Add parameter definition
-            #conf_dict[profile_name][parameter_name] = parameter_def
+                    # Limit enumerations to 100 (Azure DT limitation)
+                    if len(parameter_def["schema"]["enumValues"]) > 100:
+                        parameter_def["schema"]["enumValues"] = parameter_def["schema"]["enumValues"][:100]
+                        print(f"WARNING - Enumerations capped to 100 for {parameter_name}")
 
             # Add content to Interface
             interface["contents"].append(parameter_def)
 
-    # Add Interface to def
-    #conf_dict.append(interface)
-
     # Export conf
-
     path_name = "{entsoeUML}_{date}_DTDL_V2".format(**metadata)
 
     if not os.path.exists(path_name):
@@ -230,21 +211,3 @@ for interface_uri in interfaces_list:
 
     with open(os.path.join(path_name, file_name), "w") as file_object:
         json.dump(interface, file_object, indent=4)
-
-
-            # range = parameter_dict.get("range", None)
-            # stereotype = parameter_dict.get("stereotype", None)
-            #
-            # if range is not pandas.np.nan and stereotype is not pandas.np.nan:
-            #     conf_dict[profile_name][parameter_name] = {"attrib": {"attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-            #                                                         "value_prefix": ""},
-            #                                                         "namespace": parameter_namespace}
-            #
-            # else:
-            #     conf_dict[profile_name][parameter_name] = {"namespace": parameter_namespace}
-
-# Add FullModel definiton
-
-#for profile_name in conf_dict:
-#    conf_dict[profile_name].update(fullmodel_conf)
-
