@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RegularIntervalSchedule;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegularIntervalSchedule;1",
     "displayName": "RegularIntervalSchedule",
     "description": "The schedule has time points where the time between them is constant.",
     "extends": [
-        "dtmi:cim:BasicIntervalSchedule;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:BasicIntervalSchedule;1"
     ],
     "contents": [
         {

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RatioTapChangerTable;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RatioTapChangerTable;1",
     "displayName": "RatioTapChangerTable",
     "description": "Describes a curve for how the voltage magnitude and impedance varies with the tap step. ",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": []
 }

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Location;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Location;1",
     "displayName": "Location",
     "description": "The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more postition points (coordinates) in a given coordinate system.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "CoordinateSystem",
             "displayName": "Location.CoordinateSystem",
             "description": "Coordinate system used to describe position points of this location.",
-            "target": "dtmi:cim:CoordinateSystem;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:CoordinateSystem;1"
         },
         {
             "@type": "Relationship",
             "name": "PowerSystemResources",
             "displayName": "Location.PowerSystemResources",
             "description": "All power system resources at this location.",
-            "target": "dtmi:cim:PowerSystemResource;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
         }
     ]
 }

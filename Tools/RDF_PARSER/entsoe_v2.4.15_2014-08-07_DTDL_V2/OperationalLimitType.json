@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:OperationalLimitType;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimitType;1",
     "displayName": "OperationalLimitType",
     "description": "The operational meaning of a category of limits.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -69,7 +69,7 @@
                     {
                         "name": "tc",
                         "enumValue": "LimitTypeKind.tc",
-                        "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exi"
+                        "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exis"
                     },
                     {
                         "name": "tct",

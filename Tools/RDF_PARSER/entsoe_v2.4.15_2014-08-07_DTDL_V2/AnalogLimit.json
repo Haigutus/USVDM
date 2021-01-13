@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:AnalogLimit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogLimit;1",
     "displayName": "AnalogLimit",
     "description": "Limit values for Analog measurements.",
     "extends": [
-        "dtmi:cim:Limit;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Limit;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "LimitSet",
             "displayName": "AnalogLimit.LimitSet",
             "description": "The limit values used for supervision of Measurements.",
-            "target": "dtmi:cim:AnalogLimitSet;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogLimitSet;1"
         },
         {
             "@type": "Property",

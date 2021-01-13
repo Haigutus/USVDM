@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RatioTapChanger;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RatioTapChanger;1",
     "displayName": "RatioTapChanger",
     "description": "A tap changer that changes the voltage ratio impacting the voltage magnitude but not the phase angle across the transformer.",
     "extends": [
-        "dtmi:cim:TapChanger;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChanger;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "RatioTapChangerTable",
             "displayName": "RatioTapChanger.RatioTapChangerTable",
             "description": "The ratio tap changer of this tap ratio table.",
-            "target": "dtmi:cim:RatioTapChangerTable;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RatioTapChangerTable;1"
         },
         {
             "@type": "Relationship",
             "name": "TransformerEnd",
             "displayName": "RatioTapChanger.TransformerEnd",
             "description": "Ratio tap changer associated with this transformer end.",
-            "target": "dtmi:cim:TransformerEnd;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TransformerEnd;1"
         },
         {
             "@type": "Property",

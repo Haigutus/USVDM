@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:EquivalentShunt;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EquivalentShunt;1",
     "displayName": "EquivalentShunt",
     "description": "The class represents equivalent shunts.",
     "extends": [
-        "dtmi:cim:EquivalentEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EquivalentEquipment;1"
     ],
     "contents": [
         {

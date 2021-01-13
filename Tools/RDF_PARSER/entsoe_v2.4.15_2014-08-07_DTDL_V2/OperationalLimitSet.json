@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:OperationalLimitSet;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimitSet;1",
     "displayName": "OperationalLimitSet",
     "description": "A set of limits associated with equipment.  Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain different severities of limit levels that would apply to the same equipment. The set may contain limits of different types such as apparent power and current limits or high and low voltage limits  that are logically applied together as a set.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "Equipment",
             "displayName": "OperationalLimitSet.Equipment",
             "description": "The equipment to which the limit set applies.",
-            "target": "dtmi:cim:Equipment;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Equipment;1"
         },
         {
             "@type": "Relationship",
             "name": "Terminal",
             "displayName": "OperationalLimitSet.Terminal",
             "description": "",
-            "target": "dtmi:cim:ACDCTerminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ACDCTerminal;1"
         }
     ]
 }

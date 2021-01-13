@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:TapChangerControl;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChangerControl;1",
     "displayName": "TapChangerControl",
     "description": "Describes behavior specific to tap changers, e.g. how the voltage at the end of a line varies with the load level and compensation of the voltage drop by tap adjustment.",
     "extends": [
-        "dtmi:cim:RegulatingControl;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegulatingControl;1"
     ],
     "contents": []
 }

@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Ground;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Ground;1",
     "displayName": "Ground",
     "description": "A point where the system is grounded used for connecting conducting equipment to ground. The power system model can have any number of grounds.",
     "extends": [
-        "dtmi:cim:ConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1"
     ]
 }

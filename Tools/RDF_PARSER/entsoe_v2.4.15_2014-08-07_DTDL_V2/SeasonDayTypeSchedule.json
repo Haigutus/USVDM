@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SeasonDayTypeSchedule;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SeasonDayTypeSchedule;1",
     "displayName": "SeasonDayTypeSchedule",
     "description": "A time schedule covering a 24 hour period, with curve data for a specific type of season and day.",
     "extends": [
-        "dtmi:cim:RegularIntervalSchedule;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegularIntervalSchedule;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "DayType",
             "displayName": "SeasonDayTypeSchedule.DayType",
             "description": "Schedules that use this DayType.",
-            "target": "dtmi:cim:DayType;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DayType;1"
         },
         {
             "@type": "Relationship",
             "name": "Season",
             "displayName": "SeasonDayTypeSchedule.Season",
             "description": "Schedules that use this Season.",
-            "target": "dtmi:cim:Season;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Season;1"
         }
     ]
 }

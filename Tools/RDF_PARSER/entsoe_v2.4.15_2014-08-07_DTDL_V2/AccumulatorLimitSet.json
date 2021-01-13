@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:AccumulatorLimitSet;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AccumulatorLimitSet;1",
     "displayName": "AccumulatorLimitSet",
     "description": "An AccumulatorLimitSet specifies a set of Limits that are associated with an Accumulator measurement.",
     "extends": [
-        "dtmi:cim:LimitSet;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LimitSet;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Measurements",
             "displayName": "AccumulatorLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
-            "target": "dtmi:cim:Accumulator;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Accumulator;1"
         }
     ]
 }

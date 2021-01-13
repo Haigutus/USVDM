@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCConverterUnit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCConverterUnit;1",
     "displayName": "DCConverterUnit",
     "description": "Indivisible operative unit comprising all equipment between the point of common coupling on the AC side and the point of common coupling \u2013 DC side, essentially one or more converters, together with one or more converter transformers, converter control equipment, essential protective and switching devices and auxiliaries, if any, used for conversion.",
     "extends": [
-        "dtmi:cim:DCEquipmentContainer;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCEquipmentContainer;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Substation",
             "displayName": "DCConverterUnit.Substation",
             "description": "",
-            "target": "dtmi:cim:Substation;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Substation;1"
         },
         {
             "@type": "Property",

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Bay;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Bay;1",
     "displayName": "Bay",
     "description": "A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment.",
     "extends": [
-        "dtmi:cim:EquipmentContainer;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EquipmentContainer;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "VoltageLevel",
             "displayName": "Bay.VoltageLevel",
             "description": "The voltage level containing this bay.",
-            "target": "dtmi:cim:VoltageLevel;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:VoltageLevel;1"
         }
     ]
 }

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:NonConformLoadGroup;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NonConformLoadGroup;1",
     "displayName": "NonConformLoadGroup",
     "description": "Loads that do not follow a daily and seasonal load variation pattern.",
     "extends": [
-        "dtmi:cim:LoadGroup;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LoadGroup;1"
     ],
     "contents": []
 }

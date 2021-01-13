@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCSwitch;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCSwitch;1",
     "displayName": "DCSwitch",
     "description": "A switch within the DC system.",
     "extends": [
-        "dtmi:cim:DCConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCConductingEquipment;1"
     ]
 }

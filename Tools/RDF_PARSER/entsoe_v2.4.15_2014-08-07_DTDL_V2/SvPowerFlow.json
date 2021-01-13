@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SvPowerFlow;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SvPowerFlow;1",
     "displayName": "SvPowerFlow",
     "description": "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "Terminal",
             "displayName": "SvPowerFlow.Terminal",
             "description": "The terminal associated with the power flow state variable.",
-            "target": "dtmi:cim:Terminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
         },
         {
             "@type": "Property",

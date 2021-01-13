@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:ControlAreaGeneratingUnit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ControlAreaGeneratingUnit;1",
     "displayName": "ControlAreaGeneratingUnit",
     "description": "A control area generating unit. This class is needed so that alternate control area definitions may include the same generating unit.   Note only one instance within a control area should reference a specific generating unit.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "ControlArea",
             "displayName": "ControlAreaGeneratingUnit.ControlArea",
             "description": "The parent control area for the generating unit specifications.",
-            "target": "dtmi:cim:ControlArea;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ControlArea;1"
         },
         {
             "@type": "Relationship",
             "name": "GeneratingUnit",
             "displayName": "ControlAreaGeneratingUnit.GeneratingUnit",
             "description": "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once.",
-            "target": "dtmi:cim:GeneratingUnit;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1"
         }
     ]
 }

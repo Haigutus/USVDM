@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:CurveData;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:CurveData;1",
     "displayName": "CurveData",
     "description": "Multi-purpose data points for defining a curve.  The use of this generic class is discouraged if a more specific class  can be used to specify the x and y axis values along with their specific data types.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "Curve",
             "displayName": "CurveData.Curve",
             "description": "The point data values that define this curve.",
-            "target": "dtmi:cim:Curve;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Curve;1"
         },
         {
             "@type": "Property",

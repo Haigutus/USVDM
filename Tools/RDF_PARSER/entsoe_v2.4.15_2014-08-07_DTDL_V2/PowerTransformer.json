@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:PowerTransformer;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerTransformer;1",
     "displayName": "PowerTransformer",
-    "description": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modeled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminal",
+    "description": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modeled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals",
     "extends": [
-        "dtmi:cim:ConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1"
     ],
     "contents": [
         {

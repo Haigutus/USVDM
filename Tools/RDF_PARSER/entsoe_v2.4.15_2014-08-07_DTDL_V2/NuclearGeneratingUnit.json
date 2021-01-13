@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:NuclearGeneratingUnit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NuclearGeneratingUnit;1",
     "displayName": "NuclearGeneratingUnit",
     "description": "A nuclear generating unit.",
     "extends": [
-        "dtmi:cim:GeneratingUnit;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1"
     ]
 }

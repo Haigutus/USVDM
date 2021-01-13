@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:ACLineSegment;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ACLineSegment;1",
     "displayName": "ACLineSegment",
-    "description": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed 3ph lines, it is sufficient to use  attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Li",
+    "description": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed 3ph lines, it is sufficient to use  attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Lin",
     "extends": [
-        "dtmi:cim:Conductor;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Conductor;1"
     ],
     "contents": [
         {

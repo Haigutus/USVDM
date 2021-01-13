@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SvVoltage;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SvVoltage;1",
     "displayName": "SvVoltage",
     "description": "State variable for voltage.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "TopologicalNode",
             "displayName": "SvVoltage.TopologicalNode",
             "description": "The state voltage associated with the topological node.",
-            "target": "dtmi:cim:TopologicalNode;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TopologicalNode;1"
         },
         {
             "@type": "Property",

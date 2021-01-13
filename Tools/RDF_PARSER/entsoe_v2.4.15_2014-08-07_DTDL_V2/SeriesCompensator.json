@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SeriesCompensator;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SeriesCompensator;1",
     "displayName": "SeriesCompensator",
     "description": "A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device.",
     "extends": [
-        "dtmi:cim:ConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1"
     ],
     "contents": [
         {

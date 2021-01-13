@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SvShuntCompensatorSections;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SvShuntCompensatorSections;1",
     "displayName": "SvShuntCompensatorSections",
     "description": "State variable for the number of sections in service for a shunt compensator.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "ShuntCompensator",
             "displayName": "SvShuntCompensatorSections.ShuntCompensator",
             "description": "The shunt compensator for which the state applies.",
-            "target": "dtmi:cim:ShuntCompensator;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ShuntCompensator;1"
         },
         {
             "@type": "Property",

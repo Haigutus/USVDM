@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:ConductingEquipment;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1",
     "displayName": "ConductingEquipment",
     "description": "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.",
     "extends": [
-        "dtmi:cim:Equipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Equipment;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
-            "target": "dtmi:cim:BaseVoltage;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:BaseVoltage;1"
         }
     ]
 }

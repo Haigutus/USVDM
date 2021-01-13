@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SolarGeneratingUnit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SolarGeneratingUnit;1",
     "displayName": "SolarGeneratingUnit",
     "description": "A solar thermal generating unit.",
     "extends": [
-        "dtmi:cim:GeneratingUnit;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1"
     ]
 }

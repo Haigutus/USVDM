@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:AnalogLimitSet;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogLimitSet;1",
     "displayName": "AnalogLimitSet",
     "description": "An AnalogLimitSet specifies a set of Limits that are associated with an Analog measurement.",
     "extends": [
-        "dtmi:cim:LimitSet;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LimitSet;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Measurements",
             "displayName": "AnalogLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
-            "target": "dtmi:cim:Analog;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Analog;1"
         }
     ]
 }

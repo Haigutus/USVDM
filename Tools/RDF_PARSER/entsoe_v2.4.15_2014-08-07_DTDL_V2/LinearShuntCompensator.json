@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:LinearShuntCompensator;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LinearShuntCompensator;1",
     "displayName": "LinearShuntCompensator",
     "description": "A linear shunt compensator has banks or sections with equal admittance values.",
     "extends": [
-        "dtmi:cim:ShuntCompensator;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ShuntCompensator;1"
     ],
     "contents": [
         {

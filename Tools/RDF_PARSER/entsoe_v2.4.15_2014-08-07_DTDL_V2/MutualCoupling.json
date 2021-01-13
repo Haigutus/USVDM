@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:MutualCoupling;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:MutualCoupling;1",
     "displayName": "MutualCoupling",
     "description": "This class represents the zero sequence line mutual coupling.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "First_Terminal",
             "displayName": "MutualCoupling.First_Terminal",
             "description": "The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments.",
-            "target": "dtmi:cim:Terminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
         },
         {
             "@type": "Relationship",
             "name": "Second_Terminal",
             "displayName": "MutualCoupling.Second_Terminal",
             "description": "The starting terminal for the calculation of distances along the second branch of the mutual coupling.",
-            "target": "dtmi:cim:Terminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
         },
         {
             "@type": "Property",

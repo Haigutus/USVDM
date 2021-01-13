@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:AnalogValue;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogValue;1",
     "displayName": "AnalogValue",
     "description": "AnalogValue represents an analog MeasurementValue.",
     "extends": [
-        "dtmi:cim:MeasurementValue;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:MeasurementValue;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Analog",
             "displayName": "AnalogValue.Analog",
             "description": "The values connected to this measurement.",
-            "target": "dtmi:cim:Analog;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Analog;1"
         },
         {
             "@type": "Property",

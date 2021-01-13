@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:WindGeneratingUnit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:WindGeneratingUnit;1",
     "displayName": "WindGeneratingUnit",
     "description": "A wind driven generating unit.  May be used to represent a single turbine or an aggregation.  ",
     "extends": [
-        "dtmi:cim:GeneratingUnit;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeneratingUnit;1"
     ],
     "contents": [
         {

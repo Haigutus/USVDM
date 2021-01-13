@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:OperationalLimit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimit;1",
     "displayName": "OperationalLimit",
-    "description": "A value associated with a specific kind of limit. \nThe sub class value attribute shall be positive. \nThe sub class value attribute is inversely proportional to OperationalLimitType.acceptableDuration (acceptableDuration for short). A pair of value_x and acceptableDuration_x are related to each other as follows:\nif value_1 > value_2 > value_3 >... then\nacceptableDuration_1 < acceptableDuration_2 < acceptableDuration_3 < ...\nA value_x with direction=\"high\" shall be greater than a value_y with direction=\"low\"",
+    "description": "A value associated with a specific kind of limit. \nThe sub class value attribute shall be positive. \nThe sub class value attribute is inversely proportional to OperationalLimitType.acceptableDuration (acceptableDuration for short). A pair of value_x and acceptableDuration_x are related to each other as follows:\nif value_1 > value_2 > value_3 >... then\nacceptableDuration_1 < acceptableDuration_2 < acceptableDuration_3 < ...\nA value_x with direction=\"high\" shall be greater than a value_y with direction=\"low\".",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "OperationalLimitSet",
             "displayName": "OperationalLimit.OperationalLimitSet",
             "description": "Values of equipment limits.",
-            "target": "dtmi:cim:OperationalLimitSet;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimitSet;1"
         },
         {
             "@type": "Relationship",
             "name": "OperationalLimitType",
             "displayName": "OperationalLimit.OperationalLimitType",
             "description": "The limit type associated with this limit.",
-            "target": "dtmi:cim:OperationalLimitType;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimitType;1"
         }
     ]
 }

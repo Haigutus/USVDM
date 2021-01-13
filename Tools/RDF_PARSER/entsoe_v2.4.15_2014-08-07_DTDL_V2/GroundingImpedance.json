@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:GroundingImpedance;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GroundingImpedance;1",
     "displayName": "GroundingImpedance",
     "description": "A fixed impedance device used for grounding.",
     "extends": [
-        "dtmi:cim:EarthFaultCompensator;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EarthFaultCompensator;1"
     ],
     "contents": [
         {

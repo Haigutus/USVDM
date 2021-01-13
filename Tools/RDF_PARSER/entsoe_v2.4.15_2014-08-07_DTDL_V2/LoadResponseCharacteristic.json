@@ -1,18 +1,18 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:LoadResponseCharacteristic;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:LoadResponseCharacteristic;1",
     "displayName": "LoadResponseCharacteristic",
-    "description": "Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. This is not related to demand response.\n\nIf LoadResponseCharacteristic.exponentModel is True, the voltage exponents are specified and used as to calculate:\n\nActive power component = Pnominal * (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent\n\nReactive power component = Qnominal * (Voltage/cim:BaseVoltage.nominalVoltage)** cim:LoadResponseCharact",
+    "description": "Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. This is not related to demand response.\n\nIf LoadResponseCharacteristic.exponentModel is True, the voltage exponents are specified and used as to calculate:\n\nActive power component = Pnominal * (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent\n\nReactive power component = Qnominal * (Voltage/cim:BaseVoltage.nominalVoltage)** cim:LoadResponseCharacte",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
             "@type": "Property",
             "name": "exponentModel",
             "displayName": "LoadResponseCharacteristic.exponentModel",
-            "description": "Indicates the exponential voltage dependency model is to be used.   If false, the coefficient model is to be used.\nThe exponential voltage dependency model consist of the attributes\n- pVoltageExponent\n- qVoltageExponent.\nThe coefficient model consist of the attributes\n- pConstantImpedance\n- pConstantCurrent\n- pConstantPower\n- qConstantImpedance\n- qConstantCurrent\n- qConstantPower.\nThe sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\nThe sum of qConstantImpedance, qConstantCurre",
+            "description": "Indicates the exponential voltage dependency model is to be used.   If false, the coefficient model is to be used.\nThe exponential voltage dependency model consist of the attributes\n- pVoltageExponent\n- qVoltageExponent.\nThe coefficient model consist of the attributes\n- pConstantImpedance\n- pConstantCurrent\n- pConstantPower\n- qConstantImpedance\n- qConstantCurrent\n- qConstantPower.\nThe sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\nThe sum of qConstantImpedance, qConstantCurren",
             "schema": "boolean"
         },
         {

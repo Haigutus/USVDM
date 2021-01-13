@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:GeographicalRegion;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeographicalRegion;1",
     "displayName": "GeographicalRegion",
     "description": "A geographical region of a power system network model.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": []
 }

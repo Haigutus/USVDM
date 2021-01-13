@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SvInjection;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SvInjection;1",
     "displayName": "SvInjection",
     "description": "The SvInjection is reporting the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "TopologicalNode",
             "displayName": "SvInjection.TopologicalNode",
             "description": "The injection flows state variables associated with the topological node.",
-            "target": "dtmi:cim:TopologicalNode;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TopologicalNode;1"
         },
         {
             "@type": "Property",

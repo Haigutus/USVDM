@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RaiseLowerCommand;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RaiseLowerCommand;1",
     "displayName": "RaiseLowerCommand",
     "description": "An analog control that increase or decrease a set point value with pulses.",
     "extends": [
-        "dtmi:cim:AnalogControl;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogControl;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "ValueAliasSet",
             "displayName": "RaiseLowerCommand.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
-            "target": "dtmi:cim:ValueAliasSet;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ValueAliasSet;1"
         }
     ]
 }

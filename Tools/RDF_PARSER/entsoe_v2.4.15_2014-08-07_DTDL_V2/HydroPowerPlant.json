@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:HydroPowerPlant;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:HydroPowerPlant;1",
     "displayName": "HydroPowerPlant",
     "description": "A hydro power station which can generate or pump. When generating, the generator turbines receive water from an upper reservoir. When pumping, the pumps receive their water from a lower reservoir.",
     "extends": [
-        "dtmi:cim:PowerSystemResource;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
     ],
     "contents": [
         {

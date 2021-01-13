@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Quality61850;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Quality61850;1",
     "displayName": "Quality61850",
     "description": "Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience.",
     "contents": [
@@ -44,7 +44,7 @@
             "@type": "Property",
             "name": "oscillatory",
             "displayName": "Quality61850.oscillatory",
-            "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still ",
+            "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still i",
             "schema": "boolean"
         },
         {

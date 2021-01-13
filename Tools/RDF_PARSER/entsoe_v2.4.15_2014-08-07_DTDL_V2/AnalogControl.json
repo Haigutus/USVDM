@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:AnalogControl;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogControl;1",
     "displayName": "AnalogControl",
     "description": "An analog control used for supervisory control.",
     "extends": [
-        "dtmi:cim:Control;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Control;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "AnalogValue",
             "displayName": "AnalogControl.AnalogValue",
             "description": "The Control variable associated with the MeasurementValue.",
-            "target": "dtmi:cim:AnalogValue;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:AnalogValue;1"
         },
         {
             "@type": "Property",

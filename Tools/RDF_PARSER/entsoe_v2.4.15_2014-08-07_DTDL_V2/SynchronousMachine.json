@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SynchronousMachine;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SynchronousMachine;1",
     "displayName": "SynchronousMachine",
     "description": "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump.",
     "extends": [
-        "dtmi:cim:RotatingMachine;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RotatingMachine;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "InitialReactiveCapabilityCurve",
             "displayName": "SynchronousMachine.InitialReactiveCapabilityCurve",
             "description": "Synchronous machines using this curve as default.",
-            "target": "dtmi:cim:ReactiveCapabilityCurve;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ReactiveCapabilityCurve;1"
         },
         {
             "@type": "Property",

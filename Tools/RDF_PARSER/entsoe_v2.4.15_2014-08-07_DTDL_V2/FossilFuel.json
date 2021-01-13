@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:FossilFuel;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:FossilFuel;1",
     "displayName": "FossilFuel",
     "description": "The fossil fuel consumed by the non-nuclear thermal generating unit.   For example, coal, oil, gas, etc.   This a the specific fuels that the generating unit can consume.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "ThermalGeneratingUnit",
             "displayName": "FossilFuel.ThermalGeneratingUnit",
             "description": "A thermal generating unit may have one or more fossil fuels.",
-            "target": "dtmi:cim:ThermalGeneratingUnit;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ThermalGeneratingUnit;1"
         },
         {
             "@type": "Property",

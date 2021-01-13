@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:PerLengthDCLineParameter;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PerLengthDCLineParameter;1",
     "displayName": "PerLengthDCLineParameter",
     "description": "",
     "contents": [

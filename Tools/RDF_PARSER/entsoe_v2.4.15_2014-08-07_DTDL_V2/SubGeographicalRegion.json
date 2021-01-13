@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SubGeographicalRegion;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SubGeographicalRegion;1",
     "displayName": "SubGeographicalRegion",
     "description": "A subset of a geographical region of a power system network model.",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Region",
             "displayName": "SubGeographicalRegion.Region",
             "description": "The geographical region to which this sub-geographical region is within.",
-            "target": "dtmi:cim:GeographicalRegion;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:GeographicalRegion;1"
         }
     ]
 }

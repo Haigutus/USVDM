@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Discrete;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Discrete;1",
     "displayName": "Discrete",
     "description": "Discrete represents a discrete Measurement, i.e. a Measurement representing discrete values, e.g. a Breaker position.",
     "extends": [
-        "dtmi:cim:Measurement;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Measurement;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "ValueAliasSet",
             "displayName": "Discrete.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a MeasurementValue.value to a name.",
-            "target": "dtmi:cim:ValueAliasSet;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ValueAliasSet;1"
         }
     ]
 }

@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:SvTapStep;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SvTapStep;1",
     "displayName": "SvTapStep",
     "description": "State variable for transformer tap step.     This class is to be used for taps of LTC (load tap changing) transformers, not fixed tap transformers.",
     "contents": [
@@ -10,7 +10,7 @@
             "name": "TapChanger",
             "displayName": "SvTapStep.TapChanger",
             "description": "The tap changer associated with the tap step state.",
-            "target": "dtmi:cim:TapChanger;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChanger;1"
         },
         {
             "@type": "Property",

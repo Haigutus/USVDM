@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Switch;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Switch;1",
     "displayName": "Switch",
     "description": "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches.",
     "extends": [
-        "dtmi:cim:ConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1"
     ],
     "contents": [
         {

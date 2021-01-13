@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCLineSegment;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCLineSegment;1",
     "displayName": "DCLineSegment",
     "description": "A wire or combination of wires not insulated from one another, with consistent electrical characteristics, used to carry direct current between points in the DC region of the power system.",
     "extends": [
-        "dtmi:cim:DCConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCConductingEquipment;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "PerLengthParameter",
             "displayName": "DCLineSegment.PerLengthParameter",
             "description": "Set of per-length parameters for this line segment.",
-            "target": "dtmi:cim:PerLengthDCLineParameter;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PerLengthDCLineParameter;1"
         },
         {
             "@type": "Property",

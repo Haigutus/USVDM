@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:TopologicalNode;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TopologicalNode;1",
     "displayName": "TopologicalNode",
-    "description": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"b",
+    "description": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"bu",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,21 +13,21 @@
             "name": "BaseVoltage",
             "displayName": "TopologicalNode.BaseVoltage",
             "description": "The base voltage of the topologocial node.",
-            "target": "dtmi:cim:BaseVoltage;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:BaseVoltage;1"
         },
         {
             "@type": "Relationship",
             "name": "ConnectivityNodeContainer",
             "displayName": "TopologicalNode.ConnectivityNodeContainer",
             "description": "The connectivity node container to which the toplogical node belongs.",
-            "target": "dtmi:cim:ConnectivityNodeContainer;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConnectivityNodeContainer;1"
         },
         {
             "@type": "Relationship",
             "name": "ReportingGroup",
             "displayName": "TopologicalNode.ReportingGroup",
             "description": "The topological nodes that belong to the reporting group.",
-            "target": "dtmi:cim:ReportingGroup;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ReportingGroup;1"
         },
         {
             "@type": "Property",

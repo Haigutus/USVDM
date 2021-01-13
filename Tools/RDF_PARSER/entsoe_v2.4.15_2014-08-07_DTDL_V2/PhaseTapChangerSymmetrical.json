@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:PhaseTapChangerSymmetrical;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerSymmetrical;1",
     "displayName": "PhaseTapChangerSymmetrical",
     "description": "Describes a symmetrical phase shifting transformer tap model in which the secondary side voltage magnitude is the same as at the primary side. The difference voltage magnitude is the base in an equal-sided triangle where the sides corresponds to the primary and secondary voltages. The phase angle difference corresponds to the top angle and can be expressed as twice the arctangent of half the total difference voltage.",
     "extends": [
-        "dtmi:cim:PhaseTapChangerNonLinear;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerNonLinear;1"
     ]
 }

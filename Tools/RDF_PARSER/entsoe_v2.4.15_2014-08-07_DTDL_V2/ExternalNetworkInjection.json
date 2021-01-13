@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:ExternalNetworkInjection;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ExternalNetworkInjection;1",
     "displayName": "ExternalNetworkInjection",
     "description": "This class represents external network and it is used for IEC 60909 calculations.",
     "extends": [
-        "dtmi:cim:RegulatingCondEq;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegulatingCondEq;1"
     ],
     "contents": [
         {

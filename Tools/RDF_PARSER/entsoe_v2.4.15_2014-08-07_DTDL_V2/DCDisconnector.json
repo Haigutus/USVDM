@@ -1,10 +1,10 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCDisconnector;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCDisconnector;1",
     "displayName": "DCDisconnector",
     "description": "A disconnector within a DC system.",
     "extends": [
-        "dtmi:cim:DCSwitch;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCSwitch;1"
     ]
 }

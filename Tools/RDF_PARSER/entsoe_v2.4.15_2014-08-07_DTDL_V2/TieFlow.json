@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:TieFlow;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TieFlow;1",
     "displayName": "TieFlow",
     "description": "A flow specification in terms of location and direction for a control area.",
     "contents": [
@@ -10,14 +10,14 @@
             "name": "ControlArea",
             "displayName": "TieFlow.ControlArea",
             "description": "The control area of the tie flows.",
-            "target": "dtmi:cim:ControlArea;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ControlArea;1"
         },
         {
             "@type": "Relationship",
             "name": "Terminal",
             "displayName": "TieFlow.Terminal",
             "description": "The terminal to which this tie flow belongs.",
-            "target": "dtmi:cim:Terminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
         },
         {
             "@type": "Property",

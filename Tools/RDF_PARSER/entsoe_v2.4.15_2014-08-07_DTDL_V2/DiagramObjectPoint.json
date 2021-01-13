@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DiagramObjectPoint;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObjectPoint;1",
     "displayName": "DiagramObjectPoint",
     "description": "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.  ",
     "contents": [
@@ -10,14 +10,14 @@
             "name": "DiagramObject",
             "displayName": "DiagramObjectPoint.DiagramObject",
             "description": "The diagram object with which the points are associated.",
-            "target": "dtmi:cim:DiagramObject;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObject;1"
         },
         {
             "@type": "Relationship",
             "name": "DiagramObjectGluePoint",
             "displayName": "DiagramObjectPoint.DiagramObjectGluePoint",
             "description": "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together.",
-            "target": "dtmi:cim:DiagramObjectGluePoint;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObjectGluePoint;1"
         },
         {
             "@type": "Property",

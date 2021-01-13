@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:CsConverter;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:CsConverter;1",
     "displayName": "CsConverter",
     "description": "DC side of the current source converter (CSC).",
     "extends": [
-        "dtmi:cim:ACDCConverter;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ACDCConverter;1"
     ],
     "contents": [
         {

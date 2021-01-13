@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Measurement;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Measurement;1",
     "displayName": "Measurement",
-    "description": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming ",
+    "description": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming h",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,14 +13,14 @@
             "name": "PowerSystemResource",
             "displayName": "Measurement.PowerSystemResource",
             "description": "The measurements associated with this power system resource.",
-            "target": "dtmi:cim:PowerSystemResource;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
         },
         {
             "@type": "Relationship",
             "name": "Terminal",
             "displayName": "Measurement.Terminal",
             "description": "One or more measurements may be associated with a terminal in the network.",
-            "target": "dtmi:cim:ACDCTerminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ACDCTerminal;1"
         },
         {
             "@type": "Property",

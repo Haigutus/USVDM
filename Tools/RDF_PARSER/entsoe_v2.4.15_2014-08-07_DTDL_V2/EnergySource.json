@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:EnergySource;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EnergySource;1",
     "displayName": "EnergySource",
     "description": "A generic equivalent for an energy supplier on a transmission or distribution voltage level.",
     "extends": [
-        "dtmi:cim:ConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ConductingEquipment;1"
     ],
     "contents": [
         {
@@ -90,7 +90,7 @@
             "name": "EnergySchedulingType",
             "displayName": "EnergySource.EnergySchedulingType",
             "description": "Energy Scheduling Type of an Energy Source",
-            "target": "dtmi:cim:EnergySchedulingType;16"
+            "target": "dtmi:entsoe_eu:CIM:SchemaExtension:3:1:EnergySchedulingType;1"
         }
     ]
 }

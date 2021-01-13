@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:MeasurementValueQuality;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:MeasurementValueQuality;1",
     "displayName": "MeasurementValueQuality",
     "description": "Measurement quality flags. Bits 0-10 are defined for substation automation in draft IEC 61850 part 7-3. Bits 11-15 are reserved for future expansion by that document. Bits 16-31 are reserved for EMS applications.",
     "extends": [
-        "dtmi:cim:Quality61850;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Quality61850;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "MeasurementValue",
             "displayName": "MeasurementValueQuality.MeasurementValue",
             "description": "A MeasurementValue has a MeasurementValueQuality associated with it.",
-            "target": "dtmi:cim:MeasurementValue;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:MeasurementValue;1"
         }
     ]
 }

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:NonConformLoad;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NonConformLoad;1",
     "displayName": "NonConformLoad",
     "description": "NonConformLoad represent loads that do not follow a daily load change pattern and changes are not correlated with the daily load change pattern.",
     "extends": [
-        "dtmi:cim:EnergyConsumer;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EnergyConsumer;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "LoadGroup",
             "displayName": "NonConformLoad.LoadGroup",
             "description": "Conform loads assigned to this ConformLoadGroup.",
-            "target": "dtmi:cim:NonConformLoadGroup;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:NonConformLoadGroup;1"
         }
     ]
 }

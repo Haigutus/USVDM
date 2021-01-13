@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:BusNameMarker;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:BusNameMarker;1",
     "displayName": "BusNameMarker",
-    "description": "Used to apply user standard names to topology buses. Typically used for \"bus/branch\" case generation. Associated with one or more terminals that are normally connected with the bus name.    The associated terminals are normally connected by non-retained switches. For a ring bus station configuration, all busbar terminals in the ring are typically associated.   For a breaker and a half scheme, both busbars would normally be associated.  For a ring bus, all busbars would normally be associated.  For a \"strai",
+    "description": "Used to apply user standard names to topology buses. Typically used for \"bus/branch\" case generation. Associated with one or more terminals that are normally connected with the bus name.    The associated terminals are normally connected by non-retained switches. For a ring bus station configuration, all busbar terminals in the ring are typically associated.   For a breaker and a half scheme, both busbars would normally be associated.  For a ring bus, all busbars would normally be associated.  For a \"straig",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "ReportingGroup",
             "displayName": "BusNameMarker.ReportingGroup",
             "description": "The bus name markers that belong to this reporting group.",
-            "target": "dtmi:cim:ReportingGroup;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:ReportingGroup;1"
         },
         {
             "@type": "Property",

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:VisibilityLayer;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:VisibilityLayer;1",
     "displayName": "VisibilityLayer",
-    "description": "Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.\n\nCIM based graphics exchange will support an m:n relationship between diagram objects and layers. It will be the task of the importing",
+    "description": "Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.\n\nCIM based graphics exchange will support an m:n relationship between diagram objects and layers. It will be the task of the importing ",
     "extends": [
-        "dtmi:cim:IdentifiedObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:IdentifiedObject;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "VisibleObjects",
             "displayName": "VisibilityLayer.VisibleObjects",
             "description": "A visibility layer can contain one or more diagram objects.",
-            "target": "dtmi:cim:DiagramObject;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObject;1"
         },
         {
             "@type": "Property",

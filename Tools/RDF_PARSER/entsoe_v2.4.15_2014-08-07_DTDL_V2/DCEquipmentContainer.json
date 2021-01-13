@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCEquipmentContainer;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCEquipmentContainer;1",
     "displayName": "DCEquipmentContainer",
     "description": "A modeling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContaner for AC in that it may also contain DCNodes. Hence it can contain both AC and DC equipment.",
     "extends": [
-        "dtmi:cim:EquipmentContainer;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:EquipmentContainer;1"
     ],
     "contents": []
 }

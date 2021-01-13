@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:DCSeriesDevice;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCSeriesDevice;1",
     "displayName": "DCSeriesDevice",
     "description": "A series device within the DC system, typically a reactor used for filtering or smoothing.  Needed for transient and short circuit studies.",
     "extends": [
-        "dtmi:cim:DCConductingEquipment;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DCConductingEquipment;1"
     ],
     "contents": [
         {

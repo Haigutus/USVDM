@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RegulationSchedule;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegulationSchedule;1",
     "displayName": "RegulationSchedule",
     "description": "A pre-established pattern over time for a controlled variable, e.g., busbar voltage.",
     "extends": [
-        "dtmi:cim:SeasonDayTypeSchedule;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:SeasonDayTypeSchedule;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "RegulatingControl",
             "displayName": "RegulationSchedule.RegulatingControl",
             "description": "Regulating controls that have this Schedule.",
-            "target": "dtmi:cim:RegulatingControl;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegulatingControl;1"
         }
     ]
 }

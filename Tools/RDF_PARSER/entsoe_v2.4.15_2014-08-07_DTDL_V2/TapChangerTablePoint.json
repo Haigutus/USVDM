@@ -1,7 +1,7 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:TapChangerTablePoint;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TapChangerTablePoint;1",
     "displayName": "TapChangerTablePoint",
     "description": "",
     "contents": [

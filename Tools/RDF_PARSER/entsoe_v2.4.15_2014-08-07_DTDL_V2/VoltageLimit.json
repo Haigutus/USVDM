@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:VoltageLimit;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:VoltageLimit;1",
     "displayName": "VoltageLimit",
     "description": "Operational limit applied to voltage.",
     "extends": [
-        "dtmi:cim:OperationalLimit;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:OperationalLimit;1"
     ],
     "contents": [
         {

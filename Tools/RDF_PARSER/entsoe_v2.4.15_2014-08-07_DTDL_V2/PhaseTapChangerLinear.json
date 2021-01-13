@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:PhaseTapChangerLinear;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChangerLinear;1",
     "displayName": "PhaseTapChangerLinear",
     "description": "Describes a tap changer with a linear relation between the tap step and the phase angle difference across the transformer. This is a mathematical model that is an approximation of a real phase tap changer.\nThe phase angle is computed as stepPhaseShitfIncrement times the tap position.\nThe secondary side voltage magnitude is the same as at the primary side.",
     "extends": [
-        "dtmi:cim:PhaseTapChanger;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PhaseTapChanger;1"
     ],
     "contents": [
         {

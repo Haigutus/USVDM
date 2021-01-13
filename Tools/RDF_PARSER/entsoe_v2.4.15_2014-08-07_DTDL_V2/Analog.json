@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:Analog;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Analog;1",
     "displayName": "Analog",
     "description": "Analog represents an analog Measurement.",
     "extends": [
-        "dtmi:cim:Measurement;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Measurement;1"
     ],
     "contents": [
         {

@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:RegulatingControl;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:RegulatingControl;1",
     "displayName": "RegulatingControl",
-    "description": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nIn case multiple equipment, possibly of different types, control same terminal there must be only one RegulatingControl at that terminal. The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChang",
+    "description": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nIn case multiple equipment, possibly of different types, control same terminal there must be only one RegulatingControl at that terminal. The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChange",
     "extends": [
-        "dtmi:cim:PowerSystemResource;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:PowerSystemResource;1"
     ],
     "contents": [
         {
@@ -13,7 +13,7 @@
             "name": "Terminal",
             "displayName": "RegulatingControl.Terminal",
             "description": "The controls regulating this terminal.",
-            "target": "dtmi:cim:Terminal;16"
+            "target": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:Terminal;1"
         },
         {
             "@type": "Property",

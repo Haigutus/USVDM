@@ -1,11 +1,11 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:cim:TextDiagramObject;16",
+    "@id": "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:TextDiagramObject;1",
     "displayName": "TextDiagramObject",
     "description": "A diagram object for placing free-text or text derived from an associated domain object.",
     "extends": [
-        "dtmi:cim:DiagramObject;16"
+        "dtmi:iec_ch:TC57:2013:CIM_schema_cim16:DiagramObject;1"
     ],
     "contents": [
         {
