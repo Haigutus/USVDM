@@ -15,24 +15,7 @@
             "name": "WindGeneratingUnit_windGenUnitType",
             "displayName": "WindGeneratingUnit.windGenUnitType",
             "description": "The kind of wind generating unit",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "WindGenUnitKind_offshore",
-                        "displayName": "WindGenUnitKind.offshore",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.offshore",
-                        "description": "The wind generating unit is located offshore."
-                    },
-                    {
-                        "name": "WindGenUnitKind_onshore",
-                        "displayName": "WindGenUnitKind.onshore",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindGenUnitKind.onshore",
-                        "description": "The wind generating unit is located onshore."
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

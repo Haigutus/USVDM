@@ -191,45 +191,50 @@ for interface_uri in interfaces_list:
 
                 if maxOccurs == "unbounded" or int(maxOccurs) > 1:
                     print(f"WARNING - array input not implemented for {parameter_name}")
-                    # TODO - Implement array in case multiple parameters of same type allowed
+                    # TODO - Implement array in case multiple parameters of same type allowed (Needed for Header)
 
                 # If regular parameter
                 if str(data_type) != "nan":
 
                     parameter_def["schema"] = data_types_map[data_type]
+                    # TODO - introduce units that Azure TD supports and can be mapped to CIM
 
                 # If enumeration
                 else:
 
-                    parameter_def["schema"] = {
-                                                "@type": "Enum",
-                                                "valueSchema": "string",
-                                                "enumValues": []
-                                               }
+                    # TODO - Azure enumerations do not work, switched all enumeration to string for now. Issue - https://github.com/Azure-Samples/digital-twins-explorer/issues/91
 
-                    # Add allowed values for enumeration
-                    values = data.query(f"VALUE == '{parameter_dict['range']}' and KEY == 'type'").ID.tolist()
+                    parameter_def["schema"] = "string"
 
-                    for value in values:
-
-                        value_namespace, value_name = get_namespace_and_name(value, default_namespace=cim_namespace)
-
-                        value_meta = data.get_object_data(value).to_dict()
-
-                        value_def = {
-                                        #"@id": URI_to_DTMI(value, cim_namespace),
-                                        "name": parameter_name.replace(".", "_"),
-                                        "displayName": value_name,
-                                        "enumValue": f"{value_namespace}#{value_name}",
-                                        "description": get_description(value_meta),
-                                    }
-
-                        parameter_def["schema"]["enumValues"].append(value_def)
-
-                    # Limit enumerations to 100 (Azure DT limitation)
-                    if len(parameter_def["schema"]["enumValues"]) > 100:
-                        parameter_def["schema"]["enumValues"] = parameter_def["schema"]["enumValues"][:100]
-                        print(f"WARNING - Enumerations capped to 100 for {parameter_name}")
+                    # parameter_def["schema"] = {
+                    #                             "@type": "Enum",
+                    #                             "valueSchema": "string",
+                    #                             "enumValues": []
+                    #                            }
+                    #
+                    # # Add allowed values for enumeration
+                    # values = data.query(f"VALUE == '{parameter_dict['range']}' and KEY == 'type'").ID.tolist()
+                    #
+                    # for value in values:
+                    #
+                    #     value_namespace, value_name = get_namespace_and_name(value, default_namespace=cim_namespace)
+                    #
+                    #     value_meta = data.get_object_data(value).to_dict()
+                    #
+                    #     value_def = {
+                    #                     #"@id": URI_to_DTMI(value, cim_namespace),
+                    #                     "name": value_name.replace(".", "_"),
+                    #                     "displayName": value_name,
+                    #                     "enumValue": f"{value_namespace}#{value_name}",
+                    #                     "description": get_description(value_meta),
+                    #                 }
+                    #
+                    #     parameter_def["schema"]["enumValues"].append(value_def)
+                    #
+                    # # Limit enumerations to 100 (Azure DT limitation)
+                    # if len(parameter_def["schema"]["enumValues"]) > 100:
+                    #     parameter_def["schema"]["enumValues"] = parameter_def["schema"]["enumValues"][:100]
+                    #     print(f"WARNING - Enumerations capped to 100 for {parameter_name}")
 
             # Add content to Interface
             interface["contents"].append(parameter_def)

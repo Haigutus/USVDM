@@ -41,24 +41,7 @@
             "name": "RatioTapChanger_tculControlMode",
             "displayName": "RatioTapChanger.tculControlMode",
             "description": "Specifies the regulation control mode (voltage or reactive) of the RatioTapChanger.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "TransformerControlMode_volt",
-                        "displayName": "TransformerControlMode.volt",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.volt",
-                        "description": "Voltage control"
-                    },
-                    {
-                        "name": "TransformerControlMode_reactive",
-                        "displayName": "TransformerControlMode.reactive",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.reactive",
-                        "description": "Reactive power flow control"
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

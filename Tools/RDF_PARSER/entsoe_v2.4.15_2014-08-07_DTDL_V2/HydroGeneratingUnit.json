@@ -24,24 +24,7 @@
             "name": "HydroGeneratingUnit_energyConversionCapability",
             "displayName": "HydroGeneratingUnit.energyConversionCapability",
             "description": "Energy conversion capability for generating.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "HydroEnergyConversionKind_generator",
-                        "displayName": "HydroEnergyConversionKind.generator",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.generator",
-                        "description": "Able to generate power, but not able to pump water for energy storage."
-                    },
-                    {
-                        "name": "HydroEnergyConversionKind_pumpAndGenerator",
-                        "displayName": "HydroEnergyConversionKind.pumpAndGenerator",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.pumpAndGenerator",
-                        "description": "Able to both generate power and pump water for energy storage."
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

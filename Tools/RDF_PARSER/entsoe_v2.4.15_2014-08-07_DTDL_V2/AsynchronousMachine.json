@@ -15,24 +15,7 @@
             "name": "AsynchronousMachine_asynchronousMachineType",
             "displayName": "AsynchronousMachine.asynchronousMachineType",
             "description": "Indicates the type of Asynchronous Machine (motor or generator).",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "AsynchronousMachineKind_generator",
-                        "displayName": "AsynchronousMachineKind.generator",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.generator",
-                        "description": "The Asynchronous Machine is a generator."
-                    },
-                    {
-                        "name": "AsynchronousMachineKind_motor",
-                        "displayName": "AsynchronousMachineKind.motor",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.motor",
-                        "description": "The Asynchronous Machine is a motor."
-                    }
-                ]
-            }
+            "schema": "string"
         },
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:converterFedDrive;16",

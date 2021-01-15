@@ -24,30 +24,7 @@
             "name": "DCConverterUnit_operationMode",
             "displayName": "DCConverterUnit.operationMode",
             "description": "",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "DCConverterOperatingModeKind_bipolar",
-                        "displayName": "DCConverterOperatingModeKind.bipolar",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.bipolar",
-                        "description": "Bipolar operation."
-                    },
-                    {
-                        "name": "DCConverterOperatingModeKind_monopolarMetallicReturn",
-                        "displayName": "DCConverterOperatingModeKind.monopolarMetallicReturn",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarMetallicReturn",
-                        "description": "Monopolar operation with metallic return"
-                    },
-                    {
-                        "name": "DCConverterOperatingModeKind_monopolarGroundReturn",
-                        "displayName": "DCConverterOperatingModeKind.monopolarGroundReturn",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarGroundReturn",
-                        "description": "Monopolar operation with ground return"
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

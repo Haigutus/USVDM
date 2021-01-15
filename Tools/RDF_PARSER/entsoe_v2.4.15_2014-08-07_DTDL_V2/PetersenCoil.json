@@ -15,30 +15,7 @@
             "name": "PetersenCoil_mode",
             "displayName": "PetersenCoil.mode",
             "description": "The mode of operation of the Petersen coil.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "PetersenCoilModeKind_fixed",
-                        "displayName": "PetersenCoilModeKind.fixed",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.fixed",
-                        "description": "Fixed position."
-                    },
-                    {
-                        "name": "PetersenCoilModeKind_manual",
-                        "displayName": "PetersenCoilModeKind.manual",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.manual",
-                        "description": "Manual positioning."
-                    },
-                    {
-                        "name": "PetersenCoilModeKind_automaticPositioning",
-                        "displayName": "PetersenCoilModeKind.automaticPositioning",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.automaticPositioning",
-                        "description": "Automatic positioning."
-                    }
-                ]
-            }
+            "schema": "string"
         },
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:nominalU;16",

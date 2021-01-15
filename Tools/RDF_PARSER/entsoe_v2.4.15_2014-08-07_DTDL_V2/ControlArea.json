@@ -40,30 +40,7 @@
             "name": "ControlArea_type",
             "displayName": "ControlArea.type",
             "description": "The primary type of control area definition used to determine if this is used for automatic generation control, for planning interchange control, or other purposes.   A control area specified with primary type of automatic generation control could still be forecast and used as an interchange area in power flow analysis.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "ControlAreaTypeKind_AGC",
-                        "displayName": "ControlAreaTypeKind.AGC",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.AGC",
-                        "description": "Used for automatic generation control."
-                    },
-                    {
-                        "name": "ControlAreaTypeKind_Forecast",
-                        "displayName": "ControlAreaTypeKind.Forecast",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Forecast",
-                        "description": "Used for load forecast."
-                    },
-                    {
-                        "name": "ControlAreaTypeKind_Interchange",
-                        "displayName": "ControlAreaTypeKind.Interchange",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Interchange",
-                        "description": "Used for interchange specification or control."
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

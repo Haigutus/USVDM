@@ -24,30 +24,7 @@
             "name": "ACDCConverterDCTerminal_polarity",
             "displayName": "ACDCConverterDCTerminal.polarity",
             "description": "Represents the normal network polarity condition.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "DCPolarityKind_positive",
-                        "displayName": "DCPolarityKind.positive",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.positive",
-                        "description": "Positive pole."
-                    },
-                    {
-                        "name": "DCPolarityKind_middle",
-                        "displayName": "DCPolarityKind.middle",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.middle",
-                        "description": "Middle pole, potentially grounded."
-                    },
-                    {
-                        "name": "DCPolarityKind_negative",
-                        "displayName": "DCPolarityKind.negative",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCPolarityKind.negative",
-                        "description": "Negative pole."
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }

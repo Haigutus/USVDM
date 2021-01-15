@@ -64,42 +64,7 @@
             "name": "VsConverter_pPccControl",
             "displayName": "VsConverter.pPccControl",
             "description": "Kind of control of real power and/or DC voltage.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "VsPpccControlKind_pPcc",
-                        "displayName": "VsPpccControlKind.pPcc",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPcc",
-                        "description": "Control variable (target) is real power at PCC bus."
-                    },
-                    {
-                        "name": "VsPpccControlKind_udc",
-                        "displayName": "VsPpccControlKind.udc",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.udc",
-                        "description": "Control variable (target) is DC voltage and real power at PCC bus is derived."
-                    },
-                    {
-                        "name": "VsPpccControlKind_pPccAndUdcDroop",
-                        "displayName": "VsPpccControlKind.pPccAndUdcDroop",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroop",
-                        "description": "Control variables (targets) are both active power at point of common coupling and local DC voltage, with the droop."
-                    },
-                    {
-                        "name": "VsPpccControlKind_pPccAndUdcDroopWithCompensation",
-                        "displayName": "VsPpccControlKind.pPccAndUdcDroopWithCompensation",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopWithCompensation",
-                        "description": "Control variables (targets) are both active power at point of common coupling and compensated DC voltage, with the droop; compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network."
-                    },
-                    {
-                        "name": "VsPpccControlKind_pPccAndUdcDroopPilot",
-                        "displayName": "VsPpccControlKind.pPccAndUdcDroopPilot",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopPilot",
-                        "description": "Control variables (targets) are both active power at point of common coupling and the pilot DC voltage, with the droop."
-                    }
-                ]
-            }
+            "schema": "string"
         },
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:qPccControl;16",
@@ -107,30 +72,7 @@
             "name": "VsConverter_qPccControl",
             "displayName": "VsConverter.qPccControl",
             "description": "",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "VsQpccControlKind_reactivePcc",
-                        "displayName": "VsQpccControlKind.reactivePcc",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.reactivePcc",
-                        "description": ""
-                    },
-                    {
-                        "name": "VsQpccControlKind_voltagePcc",
-                        "displayName": "VsQpccControlKind.voltagePcc",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.voltagePcc",
-                        "description": ""
-                    },
-                    {
-                        "name": "VsQpccControlKind_powerFactorPcc",
-                        "displayName": "VsQpccControlKind.powerFactorPcc",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.powerFactorPcc",
-                        "description": ""
-                    }
-                ]
-            }
+            "schema": "string"
         },
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:qShare;16",

@@ -15,30 +15,7 @@
             "name": "HydroPowerPlant_hydroPlantStorageType",
             "displayName": "HydroPowerPlant.hydroPlantStorageType",
             "description": "The type of hydro power plant water storage.",
-            "schema": {
-                "@type": "Enum",
-                "valueSchema": "string",
-                "enumValues": [
-                    {
-                        "name": "HydroPlantStorageKind_runOfRiver",
-                        "displayName": "HydroPlantStorageKind.runOfRiver",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.runOfRiver",
-                        "description": "Run of river."
-                    },
-                    {
-                        "name": "HydroPlantStorageKind_pumpedStorage",
-                        "displayName": "HydroPlantStorageKind.pumpedStorage",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.pumpedStorage",
-                        "description": "Pumped storage."
-                    },
-                    {
-                        "name": "HydroPlantStorageKind_storage",
-                        "displayName": "HydroPlantStorageKind.storage",
-                        "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.storage",
-                        "description": "Storage."
-                    }
-                ]
-            }
+            "schema": "string"
         }
     ]
 }
