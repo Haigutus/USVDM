@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:Diagram;16",
             "@type": "Relationship",
-            "name": "Diagram",
+            "name": "DiagramObject_Diagram",
             "displayName": "DiagramObject.Diagram",
             "description": "A diagram object is part of a diagram.",
             "target": "dtmi:iec:cim:schema:Diagram;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:DiagramObjectStyle;16",
             "@type": "Relationship",
-            "name": "DiagramObjectStyle",
+            "name": "DiagramObject_DiagramObjectStyle",
             "displayName": "DiagramObject.DiagramObjectStyle",
             "description": "A diagram object has a style associated that provides a reference for the style used in the originating system.",
             "target": "dtmi:iec:cim:schema:DiagramObjectStyle;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:IdentifiedObject;16",
             "@type": "Relationship",
-            "name": "IdentifiedObject",
+            "name": "DiagramObject_IdentifiedObject",
             "displayName": "DiagramObject.IdentifiedObject",
             "description": "The diagram objects that are associated with the domain object.",
             "target": "dtmi:iec:cim:schema:IdentifiedObject;16",
@@ -39,7 +39,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:drawingOrder;16",
             "@type": "Property",
-            "name": "drawingOrder",
+            "name": "DiagramObject_drawingOrder",
             "displayName": "DiagramObject.drawingOrder",
             "description": "The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.",
             "schema": "integer"
@@ -47,7 +47,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:isPolygon;16",
             "@type": "Property",
-            "name": "isPolygon",
+            "name": "DiagramObject_isPolygon",
             "displayName": "DiagramObject.isPolygon",
             "description": "Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.",
             "schema": "boolean"
@@ -55,7 +55,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:offsetX;16",
             "@type": "Property",
-            "name": "offsetX",
+            "name": "DiagramObject_offsetX",
             "displayName": "DiagramObject.offsetX",
             "description": "The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.",
             "schema": "float"
@@ -63,7 +63,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:offsetY;16",
             "@type": "Property",
-            "name": "offsetY",
+            "name": "DiagramObject_offsetY",
             "displayName": "DiagramObject.offsetY",
             "description": "The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.",
             "schema": "float"
@@ -71,7 +71,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObject:rotation;16",
             "@type": "Property",
-            "name": "rotation",
+            "name": "DiagramObject_rotation",
             "displayName": "DiagramObject.rotation",
             "description": "Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.",
             "schema": "float"

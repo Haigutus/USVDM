@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:capacitance;16",
             "@type": "Property",
-            "name": "capacitance",
+            "name": "PerLengthDCLineParameter_capacitance",
             "displayName": "PerLengthDCLineParameter.capacitance",
             "description": "Capacitance per unit of length of the DC line segment; significant for cables only.",
             "schema": "float"
@@ -17,7 +17,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:inductance;16",
             "@type": "Property",
-            "name": "inductance",
+            "name": "PerLengthDCLineParameter_inductance",
             "displayName": "PerLengthDCLineParameter.inductance",
             "description": "Inductance per unit of length of the DC line segment.",
             "schema": "float"
@@ -25,7 +25,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PerLengthDCLineParameter:resistance;16",
             "@type": "Property",
-            "name": "resistance",
+            "name": "PerLengthDCLineParameter_resistance",
             "displayName": "PerLengthDCLineParameter.resistance",
             "description": "Resistance per length of the DC line segment.",
             "schema": "float"

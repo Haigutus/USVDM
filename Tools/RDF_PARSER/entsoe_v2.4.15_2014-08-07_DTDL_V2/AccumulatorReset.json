@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AccumulatorReset:AccumulatorValue;16",
             "@type": "Relationship",
-            "name": "AccumulatorValue",
+            "name": "AccumulatorReset_AccumulatorValue",
             "displayName": "AccumulatorReset.AccumulatorValue",
             "description": "The accumulator value that is reset by the command.",
             "target": "dtmi:iec:cim:schema:AccumulatorValue;16",

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:BaseVoltage:nominalVoltage;16",
             "@type": "Property",
-            "name": "nominalVoltage",
+            "name": "BaseVoltage_nominalVoltage",
             "displayName": "BaseVoltage.nominalVoltage",
             "description": "The power system resource's base voltage.",
             "schema": "float"

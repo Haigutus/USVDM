@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:activePower;16",
             "@type": "Property",
-            "name": "activePower",
+            "name": "EnergySource_activePower",
             "displayName": "EnergySource.activePower",
             "description": "High voltage source active injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:nominalVoltage;16",
             "@type": "Property",
-            "name": "nominalVoltage",
+            "name": "EnergySource_nominalVoltage",
             "displayName": "EnergySource.nominalVoltage",
             "description": "Phase-to-phase nominal voltage.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "EnergySource_r",
             "displayName": "EnergySource.r",
             "description": "Positive sequence Thevenin resistance.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "EnergySource_r0",
             "displayName": "EnergySource.r0",
             "description": "Zero sequence Thevenin resistance.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:reactivePower;16",
             "@type": "Property",
-            "name": "reactivePower",
+            "name": "EnergySource_reactivePower",
             "displayName": "EnergySource.reactivePower",
             "description": "High voltage source reactive injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:rn;16",
             "@type": "Property",
-            "name": "rn",
+            "name": "EnergySource_rn",
             "displayName": "EnergySource.rn",
             "description": "Negative sequence Thevenin resistance.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:voltageAngle;16",
             "@type": "Property",
-            "name": "voltageAngle",
+            "name": "EnergySource_voltageAngle",
             "displayName": "EnergySource.voltageAngle",
             "description": "Phase angle of a-phase open circuit.",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:voltageMagnitude;16",
             "@type": "Property",
-            "name": "voltageMagnitude",
+            "name": "EnergySource_voltageMagnitude",
             "displayName": "EnergySource.voltageMagnitude",
             "description": "Phase-to-phase open circuit voltage magnitude.",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "EnergySource_x",
             "displayName": "EnergySource.x",
             "description": "Positive sequence Thevenin reactance.",
             "schema": "float"
@@ -84,7 +84,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "EnergySource_x0",
             "displayName": "EnergySource.x0",
             "description": "Zero sequence Thevenin reactance.",
             "schema": "float"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EnergySource:xn;16",
             "@type": "Property",
-            "name": "xn",
+            "name": "EnergySource_xn",
             "displayName": "EnergySource.xn",
             "description": "Negative sequence Thevenin reactance.",
             "schema": "float"
@@ -100,7 +100,7 @@
         {
             "@id": "dtmi:eu:cim:extension:EnergySource:EnergySchedulingType;31",
             "@type": "Relationship",
-            "name": "EnergySchedulingType",
+            "name": "EnergySource_EnergySchedulingType",
             "displayName": "EnergySource.EnergySchedulingType",
             "description": "Energy Scheduling Type of an Energy Source",
             "target": "dtmi:eu:cim:extension:EnergySchedulingType;31",

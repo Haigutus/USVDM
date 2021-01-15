@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulationSchedule:RegulatingControl;16",
             "@type": "Relationship",
-            "name": "RegulatingControl",
+            "name": "RegulationSchedule_RegulatingControl",
             "displayName": "RegulationSchedule.RegulatingControl",
             "description": "Regulating controls that have this Schedule.",
             "target": "dtmi:iec:cim:schema:RegulatingControl;16",

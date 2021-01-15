@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCSeriesDevice:inductance;16",
             "@type": "Property",
-            "name": "inductance",
+            "name": "DCSeriesDevice_inductance",
             "displayName": "DCSeriesDevice.inductance",
             "description": "Inductance of the device.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCSeriesDevice:ratedUdc;16",
             "@type": "Property",
-            "name": "ratedUdc",
+            "name": "DCSeriesDevice_ratedUdc",
             "displayName": "DCSeriesDevice.ratedUdc",
             "description": "Rated DC device voltage. Converter configuration data used in power flow.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCSeriesDevice:resistance;16",
             "@type": "Property",
-            "name": "resistance",
+            "name": "DCSeriesDevice_resistance",
             "displayName": "DCSeriesDevice.resistance",
             "description": "Resistance of the DC device.",
             "schema": "float"

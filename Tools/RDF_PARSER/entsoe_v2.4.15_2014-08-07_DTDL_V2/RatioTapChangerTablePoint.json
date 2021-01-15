@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RatioTapChangerTablePoint:RatioTapChangerTable;16",
             "@type": "Relationship",
-            "name": "RatioTapChangerTable",
+            "name": "RatioTapChangerTablePoint_RatioTapChangerTable",
             "displayName": "RatioTapChangerTablePoint.RatioTapChangerTable",
             "description": "Points of this table.",
             "target": "dtmi:iec:cim:schema:RatioTapChangerTable;16",

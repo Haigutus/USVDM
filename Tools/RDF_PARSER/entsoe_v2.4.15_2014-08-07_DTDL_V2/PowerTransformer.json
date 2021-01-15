@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShCircuitHighestOperatingCurrent;16",
             "@type": "Property",
-            "name": "beforeShCircuitHighestOperatingCurrent",
+            "name": "PowerTransformer_beforeShCircuitHighestOperatingCurrent",
             "displayName": "PowerTransformer.beforeShCircuitHighestOperatingCurrent",
             "description": "The highest operating current (Ib in the IEC 60909-0) before short circuit (depends on network configuration and relevant reliability philosophy). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShCircuitHighestOperatingVoltage;16",
             "@type": "Property",
-            "name": "beforeShCircuitHighestOperatingVoltage",
+            "name": "PowerTransformer_beforeShCircuitHighestOperatingVoltage",
             "displayName": "PowerTransformer.beforeShCircuitHighestOperatingVoltage",
             "description": "The highest operating voltage (Ub in the IEC 60909-0) before short circuit. It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is worst case voltage on the low side winding (Section 3.7.1 in the standard). Used to define operating conditions.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:beforeShortCircuitAnglePf;16",
             "@type": "Property",
-            "name": "beforeShortCircuitAnglePf",
+            "name": "PowerTransformer_beforeShortCircuitAnglePf",
             "displayName": "PowerTransformer.beforeShortCircuitAnglePf",
             "description": "The angle of power factor before short circuit (phib in the IEC 60909-0). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is the worst case power factor. Used to define operating conditions.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:highSideMinOperatingU;16",
             "@type": "Property",
-            "name": "highSideMinOperatingU",
+            "name": "PowerTransformer_highSideMinOperatingU",
             "displayName": "PowerTransformer.highSideMinOperatingU",
             "description": "The minimum operating voltage (uQmin in the IEC 60909-0) at the high voltage side (Q side) of the unit transformer of the power station unit. A value well established from long-term operating experience of the system. It is used for calculation of the impedance correction factor KG defined in IEC 60909-0",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:isPartOfGeneratorUnit;16",
             "@type": "Property",
-            "name": "isPartOfGeneratorUnit",
+            "name": "PowerTransformer_isPartOfGeneratorUnit",
             "displayName": "PowerTransformer.isPartOfGeneratorUnit",
             "description": "Indicates whether the machine is part of a power station unit. Used for short circuit data exchange according to IEC 60909",
             "schema": "boolean"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformer:operationalValuesConsidered;16",
             "@type": "Property",
-            "name": "operationalValuesConsidered",
+            "name": "PowerTransformer_operationalValuesConsidered",
             "displayName": "PowerTransformer.operationalValuesConsidered",
             "description": "It is used to define if the data (other attributes related to short circuit data exchange) defines long term operational conditions or not. Used for short circuit data exchange according to IEC 60909.",
             "schema": "boolean"

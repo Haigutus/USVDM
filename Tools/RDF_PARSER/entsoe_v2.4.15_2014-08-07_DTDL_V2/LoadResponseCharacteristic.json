@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:exponentModel;16",
             "@type": "Property",
-            "name": "exponentModel",
+            "name": "LoadResponseCharacteristic_exponentModel",
             "displayName": "LoadResponseCharacteristic.exponentModel",
             "description": "Indicates the exponential voltage dependency model is to be used.   If false, the coefficient model is to be used.\nThe exponential voltage dependency model consist of the attributes\n- pVoltageExponent\n- qVoltageExponent.\nThe coefficient model consist of the attributes\n- pConstantImpedance\n- pConstantCurrent\n- pConstantPower\n- qConstantImpedance\n- qConstantCurrent\n- qConstantPower.\nThe sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\nThe sum of qConstantImpedance, qConstantCurren",
             "schema": "boolean"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantCurrent;16",
             "@type": "Property",
-            "name": "pConstantCurrent",
+            "name": "LoadResponseCharacteristic_pConstantCurrent",
             "displayName": "LoadResponseCharacteristic.pConstantCurrent",
             "description": "Portion of active power load modeled as constant current.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantImpedance;16",
             "@type": "Property",
-            "name": "pConstantImpedance",
+            "name": "LoadResponseCharacteristic_pConstantImpedance",
             "displayName": "LoadResponseCharacteristic.pConstantImpedance",
             "description": "Portion of active power load modeled as constant impedance.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pConstantPower;16",
             "@type": "Property",
-            "name": "pConstantPower",
+            "name": "LoadResponseCharacteristic_pConstantPower",
             "displayName": "LoadResponseCharacteristic.pConstantPower",
             "description": "Portion of active power load modeled as constant power.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pFrequencyExponent;16",
             "@type": "Property",
-            "name": "pFrequencyExponent",
+            "name": "LoadResponseCharacteristic_pFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.pFrequencyExponent",
             "description": "Exponent of per unit frequency effecting active power.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:pVoltageExponent;16",
             "@type": "Property",
-            "name": "pVoltageExponent",
+            "name": "LoadResponseCharacteristic_pVoltageExponent",
             "displayName": "LoadResponseCharacteristic.pVoltageExponent",
             "description": "Exponent of per unit voltage effecting real power.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantCurrent;16",
             "@type": "Property",
-            "name": "qConstantCurrent",
+            "name": "LoadResponseCharacteristic_qConstantCurrent",
             "displayName": "LoadResponseCharacteristic.qConstantCurrent",
             "description": "Portion of reactive power load modeled as constant current.",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantImpedance;16",
             "@type": "Property",
-            "name": "qConstantImpedance",
+            "name": "LoadResponseCharacteristic_qConstantImpedance",
             "displayName": "LoadResponseCharacteristic.qConstantImpedance",
             "description": "Portion of reactive power load modeled as constant impedance.",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qConstantPower;16",
             "@type": "Property",
-            "name": "qConstantPower",
+            "name": "LoadResponseCharacteristic_qConstantPower",
             "displayName": "LoadResponseCharacteristic.qConstantPower",
             "description": "Portion of reactive power load modeled as constant power.",
             "schema": "float"
@@ -84,7 +84,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qFrequencyExponent;16",
             "@type": "Property",
-            "name": "qFrequencyExponent",
+            "name": "LoadResponseCharacteristic_qFrequencyExponent",
             "displayName": "LoadResponseCharacteristic.qFrequencyExponent",
             "description": "Exponent of per unit frequency effecting reactive power.",
             "schema": "float"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadResponseCharacteristic:qVoltageExponent;16",
             "@type": "Property",
-            "name": "qVoltageExponent",
+            "name": "LoadResponseCharacteristic_qVoltageExponent",
             "displayName": "LoadResponseCharacteristic.qVoltageExponent",
             "description": "Exponent of per unit voltage effecting reactive power.",
             "schema": "float"

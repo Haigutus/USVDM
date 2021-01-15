@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvShuntCompensatorSections:ShuntCompensator;16",
             "@type": "Relationship",
-            "name": "ShuntCompensator",
+            "name": "SvShuntCompensatorSections_ShuntCompensator",
             "displayName": "SvShuntCompensatorSections.ShuntCompensator",
             "description": "The shunt compensator for which the state applies.",
             "target": "dtmi:iec:cim:schema:ShuntCompensator;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvShuntCompensatorSections:sections;16",
             "@type": "Property",
-            "name": "sections",
+            "name": "SvShuntCompensatorSections_sections",
             "displayName": "SvShuntCompensatorSections.sections",
             "description": "The number of sections in service as a continous variable. To get integer value scale with ShuntCompensator.bPerSection.",
             "schema": "float"

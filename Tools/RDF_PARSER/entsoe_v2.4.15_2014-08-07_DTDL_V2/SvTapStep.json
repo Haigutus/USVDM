@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvTapStep:TapChanger;16",
             "@type": "Relationship",
-            "name": "TapChanger",
+            "name": "SvTapStep_TapChanger",
             "displayName": "SvTapStep.TapChanger",
             "description": "The tap changer associated with the tap step state.",
             "target": "dtmi:iec:cim:schema:TapChanger;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvTapStep:position;16",
             "@type": "Property",
-            "name": "position",
+            "name": "SvTapStep_position",
             "displayName": "SvTapStep.position",
             "description": "The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined by the related tap changer model and normally is constrained to be within the range of minimum and maximum tap positions.",
             "schema": "float"

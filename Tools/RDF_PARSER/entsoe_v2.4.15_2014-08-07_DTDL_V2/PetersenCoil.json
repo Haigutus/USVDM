@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:mode;16",
             "@type": "Property",
-            "name": "mode",
+            "name": "PetersenCoil_mode",
             "displayName": "PetersenCoil.mode",
             "description": "The mode of operation of the Petersen coil.",
             "schema": {
@@ -20,19 +20,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "fixed",
+                        "name": "PetersenCoil_mode",
                         "displayName": "PetersenCoilModeKind.fixed",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.fixed",
                         "description": "Fixed position."
                     },
                     {
-                        "name": "manual",
+                        "name": "PetersenCoil_mode",
                         "displayName": "PetersenCoilModeKind.manual",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.manual",
                         "description": "Manual positioning."
                     },
                     {
-                        "name": "automaticPositioning",
+                        "name": "PetersenCoil_mode",
                         "displayName": "PetersenCoilModeKind.automaticPositioning",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.automaticPositioning",
                         "description": "Automatic positioning."
@@ -43,7 +43,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:nominalU;16",
             "@type": "Property",
-            "name": "nominalU",
+            "name": "PetersenCoil_nominalU",
             "displayName": "PetersenCoil.nominalU",
             "description": "The nominal voltage for which the coil is designed.",
             "schema": "float"
@@ -51,7 +51,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:offsetCurrent;16",
             "@type": "Property",
-            "name": "offsetCurrent",
+            "name": "PetersenCoil_offsetCurrent",
             "displayName": "PetersenCoil.offsetCurrent",
             "description": "The offset current that the Petersen coil controller is operating from the resonant point.  This is normally a fixed amount for which the controller is configured and could be positive or negative.  Typically 0 to 60 Amperes depending on voltage and resonance conditions.",
             "schema": "float"
@@ -59,7 +59,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:positionCurrent;16",
             "@type": "Property",
-            "name": "positionCurrent",
+            "name": "PetersenCoil_positionCurrent",
             "displayName": "PetersenCoil.positionCurrent",
             "description": "The control current used to control the Petersen coil also known as the position current.  Typically in the range of 20-200mA.",
             "schema": "float"
@@ -67,7 +67,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundMax;16",
             "@type": "Property",
-            "name": "xGroundMax",
+            "name": "PetersenCoil_xGroundMax",
             "displayName": "PetersenCoil.xGroundMax",
             "description": "The maximum reactance. ",
             "schema": "float"
@@ -75,7 +75,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundMin;16",
             "@type": "Property",
-            "name": "xGroundMin",
+            "name": "PetersenCoil_xGroundMin",
             "displayName": "PetersenCoil.xGroundMin",
             "description": "The minimum reactance.",
             "schema": "float"
@@ -83,7 +83,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PetersenCoil:xGroundNominal;16",
             "@type": "Property",
-            "name": "xGroundNominal",
+            "name": "PetersenCoil_xGroundNominal",
             "displayName": "PetersenCoil.xGroundNominal",
             "description": "The nominal reactance.  This is the operating point (normally over compensation) that is defined based on the resonance point in the healthy network condition.  The impedance is calculated based on nominal voltage divided by position current.",
             "schema": "float"

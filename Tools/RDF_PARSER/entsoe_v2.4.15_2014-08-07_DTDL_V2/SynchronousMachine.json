@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:InitialReactiveCapabilityCurve;16",
             "@type": "Relationship",
-            "name": "InitialReactiveCapabilityCurve",
+            "name": "SynchronousMachine_InitialReactiveCapabilityCurve",
             "displayName": "SynchronousMachine.InitialReactiveCapabilityCurve",
             "description": "Synchronous machines using this curve as default.",
             "target": "dtmi:iec:cim:schema:ReactiveCapabilityCurve;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthing;16",
             "@type": "Property",
-            "name": "earthing",
+            "name": "SynchronousMachine_earthing",
             "displayName": "SynchronousMachine.earthing",
             "description": "Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909",
             "schema": "boolean"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthingStarPointR;16",
             "@type": "Property",
-            "name": "earthingStarPointR",
+            "name": "SynchronousMachine_earthingStarPointR",
             "displayName": "SynchronousMachine.earthingStarPointR",
             "description": "Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:earthingStarPointX;16",
             "@type": "Property",
-            "name": "earthingStarPointX",
+            "name": "SynchronousMachine_earthingStarPointX",
             "displayName": "SynchronousMachine.earthingStarPointX",
             "description": "Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -45,7 +45,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:ikk;16",
             "@type": "Property",
-            "name": "ikk",
+            "name": "SynchronousMachine_ikk",
             "displayName": "SynchronousMachine.ikk",
             "description": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\n- Ikk=0: Generator with no compound excitation.\n- Ikk?0: Generator with compound excitation.\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation\n(Section 4.6.1.2 in the IEC 60909-0)\nUsed only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0)",
             "schema": "float"
@@ -53,7 +53,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:maxQ;16",
             "@type": "Property",
-            "name": "maxQ",
+            "name": "SynchronousMachine_maxQ",
             "displayName": "SynchronousMachine.maxQ",
             "description": "Maximum reactive power limit. This is the maximum (nameplate) limit for the unit.",
             "schema": "float"
@@ -61,7 +61,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:minQ;16",
             "@type": "Property",
-            "name": "minQ",
+            "name": "SynchronousMachine_minQ",
             "displayName": "SynchronousMachine.minQ",
             "description": "Minimum reactive power limit for the unit.",
             "schema": "float"
@@ -69,7 +69,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:mu;16",
             "@type": "Property",
-            "name": "mu",
+            "name": "SynchronousMachine_mu",
             "displayName": "SynchronousMachine.mu",
             "description": "Factor to calculate the breaking current (Section 4.5.2.1 in the IEC 60909-0).\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in the IEC 60909-0).",
             "schema": "float"
@@ -77,7 +77,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:operatingMode;16",
             "@type": "Property",
-            "name": "operatingMode",
+            "name": "SynchronousMachine_operatingMode",
             "displayName": "SynchronousMachine.operatingMode",
             "description": "Current mode of operation.",
             "schema": {
@@ -85,19 +85,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "generator",
+                        "name": "SynchronousMachine_operatingMode",
                         "displayName": "SynchronousMachineOperatingMode.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.generator",
                         "description": ""
                     },
                     {
-                        "name": "condenser",
+                        "name": "SynchronousMachine_operatingMode",
                         "displayName": "SynchronousMachineOperatingMode.condenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.condenser",
                         "description": ""
                     },
                     {
-                        "name": "motor",
+                        "name": "SynchronousMachine_operatingMode",
                         "displayName": "SynchronousMachineOperatingMode.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.motor",
                         "description": ""
@@ -108,7 +108,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:qPercent;16",
             "@type": "Property",
-            "name": "qPercent",
+            "name": "SynchronousMachine_qPercent",
             "displayName": "SynchronousMachine.qPercent",
             "description": "Percent of the coordinated reactive control that comes from this machine.",
             "schema": "float"
@@ -116,7 +116,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "SynchronousMachine_r",
             "displayName": "SynchronousMachine.r",
             "description": "Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -124,7 +124,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "SynchronousMachine_r0",
             "displayName": "SynchronousMachine.r0",
             "description": "Zero sequence resistance of the synchronous machine.",
             "schema": "float"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:r2;16",
             "@type": "Property",
-            "name": "r2",
+            "name": "SynchronousMachine_r2",
             "displayName": "SynchronousMachine.r2",
             "description": "Negative sequence resistance.",
             "schema": "float"
@@ -140,7 +140,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:referencePriority;16",
             "@type": "Property",
-            "name": "referencePriority",
+            "name": "SynchronousMachine_referencePriority",
             "displayName": "SynchronousMachine.referencePriority",
             "description": "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on.",
             "schema": "integer"
@@ -148,7 +148,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectSubtransX;16",
             "@type": "Property",
-            "name": "satDirectSubtransX",
+            "name": "SynchronousMachine_satDirectSubtransX",
             "displayName": "SynchronousMachine.satDirectSubtransX",
             "description": "Direct-axis subtransient reactance saturated, also known as Xd\"sat.",
             "schema": "float"
@@ -156,7 +156,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectSyncX;16",
             "@type": "Property",
-            "name": "satDirectSyncX",
+            "name": "SynchronousMachine_satDirectSyncX",
             "displayName": "SynchronousMachine.satDirectSyncX",
             "description": "Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0).",
             "schema": "float"
@@ -164,7 +164,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:satDirectTransX;16",
             "@type": "Property",
-            "name": "satDirectTransX",
+            "name": "SynchronousMachine_satDirectTransX",
             "displayName": "SynchronousMachine.satDirectTransX",
             "description": "Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI.",
             "schema": "float"
@@ -172,7 +172,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:shortCircuitRotorType;16",
             "@type": "Property",
-            "name": "shortCircuitRotorType",
+            "name": "SynchronousMachine_shortCircuitRotorType",
             "displayName": "SynchronousMachine.shortCircuitRotorType",
             "description": "Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909.",
             "schema": {
@@ -180,25 +180,25 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "salientPole1",
+                        "name": "SynchronousMachine_shortCircuitRotorType",
                         "displayName": "ShortCircuitRotorKind.salientPole1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole1",
                         "description": "Salient pole 1 in the IEC 60909"
                     },
                     {
-                        "name": "salientPole2",
+                        "name": "SynchronousMachine_shortCircuitRotorType",
                         "displayName": "ShortCircuitRotorKind.salientPole2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole2",
                         "description": "Salient pole 2 in IEC 60909"
                     },
                     {
-                        "name": "turboSeries1",
+                        "name": "SynchronousMachine_shortCircuitRotorType",
                         "displayName": "ShortCircuitRotorKind.turboSeries1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries1",
                         "description": "Turbo Series 1 in the IEC 60909"
                     },
                     {
-                        "name": "turboSeries2",
+                        "name": "SynchronousMachine_shortCircuitRotorType",
                         "displayName": "ShortCircuitRotorKind.turboSeries2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries2",
                         "description": "Turbo series 2 in IEC 60909"
@@ -209,7 +209,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:type;16",
             "@type": "Property",
-            "name": "type",
+            "name": "SynchronousMachine_type",
             "displayName": "SynchronousMachine.type",
             "description": "Modes that this synchronous machine can operate in.",
             "schema": {
@@ -217,43 +217,43 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "generator",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generator",
                         "description": ""
                     },
                     {
-                        "name": "condenser",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.condenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.condenser",
                         "description": ""
                     },
                     {
-                        "name": "generatorOrCondenser",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.generatorOrCondenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenser",
                         "description": ""
                     },
                     {
-                        "name": "motor",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motor",
                         "description": ""
                     },
                     {
-                        "name": "generatorOrMotor",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.generatorOrMotor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrMotor",
                         "description": ""
                     },
                     {
-                        "name": "motorOrCondenser",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.motorOrCondenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motorOrCondenser",
                         "description": ""
                     },
                     {
-                        "name": "generatorOrCondenserOrMotor",
+                        "name": "SynchronousMachine_type",
                         "displayName": "SynchronousMachineKind.generatorOrCondenserOrMotor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenserOrMotor",
                         "description": ""
@@ -264,7 +264,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:voltageRegulationRange;16",
             "@type": "Property",
-            "name": "voltageRegulationRange",
+            "name": "SynchronousMachine_voltageRegulationRange",
             "displayName": "SynchronousMachine.voltageRegulationRange",
             "description": "Range of generator voltage regulation (PG in the IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0\nThis attribute is used to describe the operating voltage of the generating unit.",
             "schema": "float"
@@ -272,7 +272,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "SynchronousMachine_x0",
             "displayName": "SynchronousMachine.x0",
             "description": "Zero sequence reactance of the synchronous machine.",
             "schema": "float"
@@ -280,7 +280,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SynchronousMachine:x2;16",
             "@type": "Property",
-            "name": "x2",
+            "name": "SynchronousMachine_x2",
             "displayName": "SynchronousMachine.x2",
             "description": "Negative sequence reactance.",
             "schema": "float"

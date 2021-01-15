@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlAreaGeneratingUnit:ControlArea;16",
             "@type": "Relationship",
-            "name": "ControlArea",
+            "name": "ControlAreaGeneratingUnit_ControlArea",
             "displayName": "ControlAreaGeneratingUnit.ControlArea",
             "description": "The parent control area for the generating unit specifications.",
             "target": "dtmi:iec:cim:schema:ControlArea;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlAreaGeneratingUnit:GeneratingUnit;16",
             "@type": "Relationship",
-            "name": "GeneratingUnit",
+            "name": "ControlAreaGeneratingUnit_GeneratingUnit",
             "displayName": "ControlAreaGeneratingUnit.GeneratingUnit",
             "description": "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once.",
             "target": "dtmi:iec:cim:schema:GeneratingUnit;16",

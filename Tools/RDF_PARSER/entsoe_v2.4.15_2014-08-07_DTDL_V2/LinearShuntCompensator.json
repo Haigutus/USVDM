@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:b0PerSection;16",
             "@type": "Property",
-            "name": "b0PerSection",
+            "name": "LinearShuntCompensator_b0PerSection",
             "displayName": "LinearShuntCompensator.b0PerSection",
             "description": "Zero sequence shunt (charging) susceptance per section",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:bPerSection;16",
             "@type": "Property",
-            "name": "bPerSection",
+            "name": "LinearShuntCompensator_bPerSection",
             "displayName": "LinearShuntCompensator.bPerSection",
             "description": "Positive sequence shunt (charging) susceptance per section",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:g0PerSection;16",
             "@type": "Property",
-            "name": "g0PerSection",
+            "name": "LinearShuntCompensator_g0PerSection",
             "displayName": "LinearShuntCompensator.g0PerSection",
             "description": "Zero sequence shunt (charging) conductance per section",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LinearShuntCompensator:gPerSection;16",
             "@type": "Property",
-            "name": "gPerSection",
+            "name": "LinearShuntCompensator_gPerSection",
             "displayName": "LinearShuntCompensator.gPerSection",
             "description": "Positive sequence shunt (charging) conductance per section",
             "schema": "float"

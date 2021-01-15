@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCLineSegment:PerLengthParameter;16",
             "@type": "Relationship",
-            "name": "PerLengthParameter",
+            "name": "DCLineSegment_PerLengthParameter",
             "displayName": "DCLineSegment.PerLengthParameter",
             "description": "Set of per-length parameters for this line segment.",
             "target": "dtmi:iec:cim:schema:PerLengthDCLineParameter;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCLineSegment:capacitance;16",
             "@type": "Property",
-            "name": "capacitance",
+            "name": "DCLineSegment_capacitance",
             "displayName": "DCLineSegment.capacitance",
             "description": "Capacitance of the DC line segment. Significant for cables only.",
             "schema": "float"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCLineSegment:inductance;16",
             "@type": "Property",
-            "name": "inductance",
+            "name": "DCLineSegment_inductance",
             "displayName": "DCLineSegment.inductance",
             "description": "Inductance of the DC line segment. Neglectable compared with DCSeriesDevice used for smoothing.",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCLineSegment:length;16",
             "@type": "Property",
-            "name": "length",
+            "name": "DCLineSegment_length",
             "displayName": "DCLineSegment.length",
             "description": "Segment length for calculating line section capabilities.",
             "schema": "float"
@@ -45,7 +45,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCLineSegment:resistance;16",
             "@type": "Property",
-            "name": "resistance",
+            "name": "DCLineSegment_resistance",
             "displayName": "DCLineSegment.resistance",
             "description": "Resistance of the DC line segment.",
             "schema": "float"

@@ -8,7 +8,7 @@
         {
             "@id": "dtmi:iec:cim:schema:IdentifiedObject:description;16",
             "@type": "Property",
-            "name": "description",
+            "name": "IdentifiedObject_description",
             "displayName": "IdentifiedObject.description",
             "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "schema": "string"
@@ -16,7 +16,7 @@
         {
             "@id": "dtmi:iec:cim:schema:IdentifiedObject:mRID;16",
             "@type": "Property",
-            "name": "mRID",
+            "name": "IdentifiedObject_mRID",
             "displayName": "IdentifiedObject.mRID",
             "description": "Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "schema": "string"
@@ -24,7 +24,7 @@
         {
             "@id": "dtmi:iec:cim:schema:IdentifiedObject:name;16",
             "@type": "Property",
-            "name": "name",
+            "name": "IdentifiedObject_name",
             "displayName": "IdentifiedObject.name",
             "description": "The name is any free human readable and possibly non unique text naming the object.",
             "schema": "string"
@@ -32,7 +32,7 @@
         {
             "@id": "dtmi:eu:cim:extension:IdentifiedObject:energyIdentCodeEic;31",
             "@type": "Property",
-            "name": "energyIdentCodeEic",
+            "name": "IdentifiedObject_energyIdentCodeEic",
             "displayName": "IdentifiedObject.energyIdentCodeEic",
             "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.\nReferences: \n",
             "schema": "string"
@@ -40,7 +40,7 @@
         {
             "@id": "dtmi:eu:cim:extension:IdentifiedObject:shortName;31",
             "@type": "Property",
-            "name": "shortName",
+            "name": "IdentifiedObject_shortName",
             "displayName": "IdentifiedObject.shortName",
             "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "schema": "string"

@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Equipment:EquipmentContainer;16",
             "@type": "Relationship",
-            "name": "EquipmentContainer",
+            "name": "Equipment_EquipmentContainer",
             "displayName": "Equipment.EquipmentContainer",
             "description": "Container of this equipment.",
             "target": "dtmi:iec:cim:schema:EquipmentContainer;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Equipment:aggregate;16",
             "@type": "Property",
-            "name": "aggregate",
+            "name": "Equipment_aggregate",
             "displayName": "Equipment.aggregate",
             "description": "The single instance of equipment represents multiple pieces of equipment that have been modeled together as an aggregate.  Examples would be power transformers or synchronous machines operating in parallel modeled as a single aggregate power transformer or aggregate synchronous machine.  This is not to be used to indicate equipment that is part of a group of interdependent equipment produced by a network production program.  ",
             "schema": "boolean"

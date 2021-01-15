@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonConformLoadSchedule:NonConformLoadGroup;16",
             "@type": "Relationship",
-            "name": "NonConformLoadGroup",
+            "name": "NonConformLoadSchedule_NonConformLoadGroup",
             "displayName": "NonConformLoadSchedule.NonConformLoadGroup",
             "description": "The NonConformLoadGroup where the NonConformLoadSchedule belongs.",
             "target": "dtmi:iec:cim:schema:NonConformLoadGroup;16",

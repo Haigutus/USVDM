@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VisibilityLayer:VisibleObjects;16",
             "@type": "Relationship",
-            "name": "VisibleObjects",
+            "name": "VisibilityLayer_VisibleObjects",
             "displayName": "VisibilityLayer.VisibleObjects",
             "description": "A visibility layer can contain one or more diagram objects.",
             "target": "dtmi:iec:cim:schema:DiagramObject;16"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VisibilityLayer:drawingOrder;16",
             "@type": "Property",
-            "name": "drawingOrder",
+            "name": "VisibilityLayer_drawingOrder",
             "displayName": "VisibilityLayer.drawingOrder",
             "description": "The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered.",
             "schema": "integer"

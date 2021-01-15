@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingCondEq:RegulatingControl;16",
             "@type": "Relationship",
-            "name": "RegulatingControl",
+            "name": "RegulatingCondEq_RegulatingControl",
             "displayName": "RegulatingCondEq.RegulatingControl",
             "description": "The regulating control scheme in which this equipment participates.",
             "target": "dtmi:iec:cim:schema:RegulatingControl;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingCondEq:controlEnabled;16",
             "@type": "Property",
-            "name": "controlEnabled",
+            "name": "RegulatingCondEq_controlEnabled",
             "displayName": "RegulatingCondEq.controlEnabled",
             "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
             "schema": "boolean"

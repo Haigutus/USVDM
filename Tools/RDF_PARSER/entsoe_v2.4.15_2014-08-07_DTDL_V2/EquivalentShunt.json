@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentShunt:b;16",
             "@type": "Property",
-            "name": "b",
+            "name": "EquivalentShunt_b",
             "displayName": "EquivalentShunt.b",
             "description": "Positive sequence shunt susceptance.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentShunt:g;16",
             "@type": "Property",
-            "name": "g",
+            "name": "EquivalentShunt_g",
             "displayName": "EquivalentShunt.g",
             "description": "Positive sequence shunt conductance.",
             "schema": "float"

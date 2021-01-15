@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCGround:inductance;16",
             "@type": "Property",
-            "name": "inductance",
+            "name": "DCGround_inductance",
             "displayName": "DCGround.inductance",
             "description": "Inductance to ground.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCGround:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "DCGround_r",
             "displayName": "DCGround.r",
             "description": "Resistance to ground.",
             "schema": "float"

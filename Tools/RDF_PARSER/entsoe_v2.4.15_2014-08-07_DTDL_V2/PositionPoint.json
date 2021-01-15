@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PositionPoint:Location;16",
             "@type": "Relationship",
-            "name": "Location",
+            "name": "PositionPoint_Location",
             "displayName": "PositionPoint.Location",
             "description": "Location described by this position point.",
             "target": "dtmi:iec:cim:schema:Location;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PositionPoint:sequenceNumber;16",
             "@type": "Property",
-            "name": "sequenceNumber",
+            "name": "PositionPoint_sequenceNumber",
             "displayName": "PositionPoint.sequenceNumber",
             "description": "Zero-relative sequence number of this point within a series of points.",
             "schema": "integer"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PositionPoint:xPosition;16",
             "@type": "Property",
-            "name": "xPosition",
+            "name": "PositionPoint_xPosition",
             "displayName": "PositionPoint.xPosition",
             "description": "X axis position.",
             "schema": "string"
@@ -34,7 +34,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PositionPoint:yPosition;16",
             "@type": "Property",
-            "name": "yPosition",
+            "name": "PositionPoint_yPosition",
             "displayName": "PositionPoint.yPosition",
             "description": "Y axis position.",
             "schema": "string"
@@ -42,7 +42,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PositionPoint:zPosition;16",
             "@type": "Property",
-            "name": "zPosition",
+            "name": "PositionPoint_zPosition",
             "displayName": "PositionPoint.zPosition",
             "description": "(if applicable) Z axis position.",
             "schema": "string"

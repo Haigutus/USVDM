@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Substation:Region;16",
             "@type": "Relationship",
-            "name": "Region",
+            "name": "Substation_Region",
             "displayName": "Substation.Region",
             "description": "The SubGeographicalRegion containing the substation.",
             "target": "dtmi:iec:cim:schema:SubGeographicalRegion;16",

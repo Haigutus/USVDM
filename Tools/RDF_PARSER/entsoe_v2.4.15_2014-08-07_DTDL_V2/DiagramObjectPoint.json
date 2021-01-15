@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:DiagramObject;16",
             "@type": "Relationship",
-            "name": "DiagramObject",
+            "name": "DiagramObjectPoint_DiagramObject",
             "displayName": "DiagramObjectPoint.DiagramObject",
             "description": "The diagram object with which the points are associated.",
             "target": "dtmi:iec:cim:schema:DiagramObject;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:DiagramObjectGluePoint;16",
             "@type": "Relationship",
-            "name": "DiagramObjectGluePoint",
+            "name": "DiagramObjectPoint_DiagramObjectGluePoint",
             "displayName": "DiagramObjectPoint.DiagramObjectGluePoint",
             "description": "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together.",
             "target": "dtmi:iec:cim:schema:DiagramObjectGluePoint;16",
@@ -27,7 +27,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:sequenceNumber;16",
             "@type": "Property",
-            "name": "sequenceNumber",
+            "name": "DiagramObjectPoint_sequenceNumber",
             "displayName": "DiagramObjectPoint.sequenceNumber",
             "description": "The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point.",
             "schema": "integer"
@@ -35,7 +35,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:xPosition;16",
             "@type": "Property",
-            "name": "xPosition",
+            "name": "DiagramObjectPoint_xPosition",
             "displayName": "DiagramObjectPoint.xPosition",
             "description": "The X coordinate of this point.",
             "schema": "float"
@@ -43,7 +43,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:yPosition;16",
             "@type": "Property",
-            "name": "yPosition",
+            "name": "DiagramObjectPoint_yPosition",
             "displayName": "DiagramObjectPoint.yPosition",
             "description": "The Y coordinate of this point.",
             "schema": "float"
@@ -51,7 +51,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiagramObjectPoint:zPosition;16",
             "@type": "Property",
-            "name": "zPosition",
+            "name": "DiagramObjectPoint_zPosition",
             "displayName": "DiagramObjectPoint.zPosition",
             "description": "The Z coordinate of this point.",
             "schema": "float"

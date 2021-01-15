@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:FossilFuel:ThermalGeneratingUnit;16",
             "@type": "Relationship",
-            "name": "ThermalGeneratingUnit",
+            "name": "FossilFuel_ThermalGeneratingUnit",
             "displayName": "FossilFuel.ThermalGeneratingUnit",
             "description": "A thermal generating unit may have one or more fossil fuels.",
             "target": "dtmi:iec:cim:schema:ThermalGeneratingUnit;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:FossilFuel:fossilFuelType;16",
             "@type": "Property",
-            "name": "fossilFuelType",
+            "name": "FossilFuel_fossilFuelType",
             "displayName": "FossilFuel.fossilFuelType",
             "description": "The type of fossil fuel, such as coal, oil, or gas.",
             "schema": {
@@ -29,37 +29,37 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "coal",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.coal",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.coal",
                         "description": "Generic coal, not including lignite type."
                     },
                     {
-                        "name": "oil",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.oil",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.oil",
                         "description": "Oil."
                     },
                     {
-                        "name": "gas",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.gas",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.gas",
                         "description": "Natural gas."
                     },
                     {
-                        "name": "lignite",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.lignite",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.lignite",
                         "description": "The fuel is lignite coal.  Note that this is a special type of coal, so the other enum of coal is reserved for hard coal types or if the exact type of coal is not known."
                     },
                     {
-                        "name": "hardCoal",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.hardCoal",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.hardCoal",
                         "description": "Hard coal"
                     },
                     {
-                        "name": "oilShale",
+                        "name": "FossilFuel_fossilFuelType",
                         "displayName": "FuelType.oilShale",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#FuelType.oilShale",
                         "description": "Oil Shale"

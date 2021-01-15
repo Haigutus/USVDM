@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ConformLoadSchedule:ConformLoadGroup;16",
             "@type": "Relationship",
-            "name": "ConformLoadGroup",
+            "name": "ConformLoadSchedule_ConformLoadGroup",
             "displayName": "ConformLoadSchedule.ConformLoadGroup",
             "description": "The ConformLoadGroup where the ConformLoadSchedule belongs.",
             "target": "dtmi:iec:cim:schema:ConformLoadGroup;16",

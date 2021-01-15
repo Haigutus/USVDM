@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CurveData:Curve;16",
             "@type": "Relationship",
-            "name": "Curve",
+            "name": "CurveData_Curve",
             "displayName": "CurveData.Curve",
             "description": "The point data values that define this curve.",
             "target": "dtmi:iec:cim:schema:Curve;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CurveData:xvalue;16",
             "@type": "Property",
-            "name": "xvalue",
+            "name": "CurveData_xvalue",
             "displayName": "CurveData.xvalue",
             "description": "The data value of the X-axis variable,  depending on the X-axis units.",
             "schema": "float"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CurveData:y1value;16",
             "@type": "Property",
-            "name": "y1value",
+            "name": "CurveData_y1value",
             "displayName": "CurveData.y1value",
             "description": "The data value of the  first Y-axis variable, depending on the Y-axis units.",
             "schema": "float"
@@ -34,7 +34,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CurveData:y2value;16",
             "@type": "Property",
-            "name": "y2value",
+            "name": "CurveData_y2value",
             "displayName": "CurveData.y2value",
             "description": "The data value of the second Y-axis variable (if present), depending on the Y-axis units.",
             "schema": "float"

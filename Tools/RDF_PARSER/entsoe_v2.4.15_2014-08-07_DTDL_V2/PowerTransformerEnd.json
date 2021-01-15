@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:PowerTransformer;16",
             "@type": "Relationship",
-            "name": "PowerTransformer",
+            "name": "PowerTransformerEnd_PowerTransformer",
             "displayName": "PowerTransformerEnd.PowerTransformer",
             "description": "The ends of this power transformer.",
             "target": "dtmi:iec:cim:schema:PowerTransformer;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:b;16",
             "@type": "Property",
-            "name": "b",
+            "name": "PowerTransformerEnd_b",
             "displayName": "PowerTransformerEnd.b",
             "description": "Magnetizing branch susceptance (B mag).  The value can be positive or negative.",
             "schema": "float"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:b0;16",
             "@type": "Property",
-            "name": "b0",
+            "name": "PowerTransformerEnd_b0",
             "displayName": "PowerTransformerEnd.b0",
             "description": "Zero sequence magnetizing branch susceptance.",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:connectionKind;16",
             "@type": "Property",
-            "name": "connectionKind",
+            "name": "PowerTransformerEnd_connectionKind",
             "displayName": "PowerTransformerEnd.connectionKind",
             "description": "Kind of connection.",
             "schema": {
@@ -45,43 +45,43 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "D",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.D",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.D",
                         "description": "Delta"
                     },
                     {
-                        "name": "Y",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.Y",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Y",
                         "description": ""
                     },
                     {
-                        "name": "Z",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.Z",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Z",
                         "description": "ZigZag"
                     },
                     {
-                        "name": "Yn",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.Yn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Yn",
                         "description": "Wye, with neutral brought out for grounding."
                     },
                     {
-                        "name": "Zn",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.Zn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Zn",
                         "description": "ZigZag, with neutral brought out for grounding."
                     },
                     {
-                        "name": "A",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.A",
                         "description": "Autotransformer common winding"
                     },
                     {
-                        "name": "I",
+                        "name": "PowerTransformerEnd_connectionKind",
                         "displayName": "WindingConnection.I",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.I",
                         "description": "Independent winding, for single-phase connections"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:g;16",
             "@type": "Property",
-            "name": "g",
+            "name": "PowerTransformerEnd_g",
             "displayName": "PowerTransformerEnd.g",
             "description": "Magnetizing branch conductance.",
             "schema": "float"
@@ -100,7 +100,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:g0;16",
             "@type": "Property",
-            "name": "g0",
+            "name": "PowerTransformerEnd_g0",
             "displayName": "PowerTransformerEnd.g0",
             "description": "Zero sequence magnetizing branch conductance (star-model).",
             "schema": "float"
@@ -108,7 +108,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:phaseAngleClock;16",
             "@type": "Property",
-            "name": "phaseAngleClock",
+            "name": "PowerTransformerEnd_phaseAngleClock",
             "displayName": "PowerTransformerEnd.phaseAngleClock",
             "description": "Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number.",
             "schema": "integer"
@@ -116,7 +116,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "PowerTransformerEnd_r",
             "displayName": "PowerTransformerEnd.r",
             "description": "Resistance (star-model) of the transformer end.\nThe attribute shall be equal or greater than zero for non-equivalent transformers.",
             "schema": "float"
@@ -124,7 +124,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "PowerTransformerEnd_r0",
             "displayName": "PowerTransformerEnd.r0",
             "description": "Zero sequence series resistance (star-model) of the transformer end.",
             "schema": "float"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:ratedS;16",
             "@type": "Property",
-            "name": "ratedS",
+            "name": "PowerTransformerEnd_ratedS",
             "displayName": "PowerTransformerEnd.ratedS",
             "description": "Normal apparent power rating.\nThe attribute shall be a positive value. For a two-winding transformer the values for the high and low voltage sides shall be identical. ",
             "schema": "float"
@@ -140,7 +140,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:ratedU;16",
             "@type": "Property",
-            "name": "ratedU",
+            "name": "PowerTransformerEnd_ratedU",
             "displayName": "PowerTransformerEnd.ratedU",
             "description": "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.\nA high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater or equal than ratedU for the lower voltage sides.",
             "schema": "float"
@@ -148,7 +148,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "PowerTransformerEnd_x",
             "displayName": "PowerTransformerEnd.x",
             "description": "Positive sequence series reactance (star-model) of the transformer end.",
             "schema": "float"
@@ -156,7 +156,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PowerTransformerEnd:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "PowerTransformerEnd_x0",
             "displayName": "PowerTransformerEnd.x0",
             "description": "Zero sequence series reactance of the transformer end.",
             "schema": "float"

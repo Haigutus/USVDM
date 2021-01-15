@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeR12;16",
             "@type": "Property",
-            "name": "negativeR12",
+            "name": "EquivalentBranch_negativeR12",
             "displayName": "EquivalentBranch.negativeR12",
             "description": "Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange ",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeR21;16",
             "@type": "Property",
-            "name": "negativeR21",
+            "name": "EquivalentBranch_negativeR21",
             "displayName": "EquivalentBranch.negativeR21",
             "description": "Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeX12;16",
             "@type": "Property",
-            "name": "negativeX12",
+            "name": "EquivalentBranch_negativeX12",
             "displayName": "EquivalentBranch.negativeX12",
             "description": "Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:negativeX21;16",
             "@type": "Property",
-            "name": "negativeX21",
+            "name": "EquivalentBranch_negativeX21",
             "displayName": "EquivalentBranch.negativeX21",
             "description": "Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage: EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveR12;16",
             "@type": "Property",
-            "name": "positiveR12",
+            "name": "EquivalentBranch_positiveR12",
             "displayName": "EquivalentBranch.positiveR12",
             "description": "Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. \nEquivalentBranch is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveR21;16",
             "@type": "Property",
-            "name": "positiveR21",
+            "name": "EquivalentBranch_positiveR21",
             "displayName": "EquivalentBranch.positiveR21",
             "description": "Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveX12;16",
             "@type": "Property",
-            "name": "positiveX12",
+            "name": "EquivalentBranch_positiveX12",
             "displayName": "EquivalentBranch.positiveX12",
             "description": "Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:positiveX21;16",
             "@type": "Property",
-            "name": "positiveX21",
+            "name": "EquivalentBranch_positiveX21",
             "displayName": "EquivalentBranch.positiveX21",
             "description": "Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "EquivalentBranch_r",
             "displayName": "EquivalentBranch.r",
             "description": "Positive sequence series resistance of the reduced branch.",
             "schema": "float"
@@ -84,7 +84,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:r21;16",
             "@type": "Property",
-            "name": "r21",
+            "name": "EquivalentBranch_r21",
             "displayName": "EquivalentBranch.r21",
             "description": "Resistance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.\nUsage rule : EquivalentBranch is a result of network reduction prior to the data exchange.",
             "schema": "float"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "EquivalentBranch_x",
             "displayName": "EquivalentBranch.x",
             "description": "Positive sequence series reactance of the reduced branch.",
             "schema": "float"
@@ -100,7 +100,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:x21;16",
             "@type": "Property",
-            "name": "x21",
+            "name": "EquivalentBranch_x21",
             "displayName": "EquivalentBranch.x21",
             "description": "Reactance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.\nUsage rule : EquivalentBranch is a result of network reduction prior to the data exchange.",
             "schema": "float"
@@ -108,7 +108,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroR12;16",
             "@type": "Property",
-            "name": "zeroR12",
+            "name": "EquivalentBranch_zeroR12",
             "displayName": "EquivalentBranch.zeroR12",
             "description": "Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nEquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -116,7 +116,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroR21;16",
             "@type": "Property",
-            "name": "zeroR21",
+            "name": "EquivalentBranch_zeroR21",
             "displayName": "EquivalentBranch.zeroR21",
             "description": "Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -124,7 +124,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroX12;16",
             "@type": "Property",
-            "name": "zeroX12",
+            "name": "EquivalentBranch_zeroX12",
             "displayName": "EquivalentBranch.zeroX12",
             "description": "Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentBranch:zeroX21;16",
             "@type": "Property",
-            "name": "zeroX21",
+            "name": "EquivalentBranch_zeroX21",
             "displayName": "EquivalentBranch.zeroX21",
             "description": "Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange",
             "schema": "float"

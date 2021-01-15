@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:NonlinearShuntCompensator;16",
             "@type": "Relationship",
-            "name": "NonlinearShuntCompensator",
+            "name": "NonlinearShuntCompensatorPoint_NonlinearShuntCompensator",
             "displayName": "NonlinearShuntCompensatorPoint.NonlinearShuntCompensator",
             "description": "Non-linear shunt compensator owning this point.",
             "target": "dtmi:iec:cim:schema:NonlinearShuntCompensator;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:b;16",
             "@type": "Property",
-            "name": "b",
+            "name": "NonlinearShuntCompensatorPoint_b",
             "displayName": "NonlinearShuntCompensatorPoint.b",
             "description": "Positive sequence shunt (charging) susceptance per section",
             "schema": "float"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:b0;16",
             "@type": "Property",
-            "name": "b0",
+            "name": "NonlinearShuntCompensatorPoint_b0",
             "displayName": "NonlinearShuntCompensatorPoint.b0",
             "description": "Zero sequence shunt (charging) susceptance per section",
             "schema": "float"
@@ -34,7 +34,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:g;16",
             "@type": "Property",
-            "name": "g",
+            "name": "NonlinearShuntCompensatorPoint_g",
             "displayName": "NonlinearShuntCompensatorPoint.g",
             "description": "Positive sequence shunt (charging) conductance per section",
             "schema": "float"
@@ -42,7 +42,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:g0;16",
             "@type": "Property",
-            "name": "g0",
+            "name": "NonlinearShuntCompensatorPoint_g0",
             "displayName": "NonlinearShuntCompensatorPoint.g0",
             "description": "Zero sequence shunt (charging) conductance per section",
             "schema": "float"
@@ -50,7 +50,7 @@
         {
             "@id": "dtmi:iec:cim:schema:NonlinearShuntCompensatorPoint:sectionNumber;16",
             "@type": "Property",
-            "name": "sectionNumber",
+            "name": "NonlinearShuntCompensatorPoint_sectionNumber",
             "displayName": "NonlinearShuntCompensatorPoint.sectionNumber",
             "description": "The number of the section.",
             "schema": "integer"

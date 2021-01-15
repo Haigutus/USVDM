@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Location:CoordinateSystem;16",
             "@type": "Relationship",
-            "name": "CoordinateSystem",
+            "name": "Location_CoordinateSystem",
             "displayName": "Location.CoordinateSystem",
             "description": "Coordinate system used to describe position points of this location.",
             "target": "dtmi:iec:cim:schema:CoordinateSystem;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Location:PowerSystemResources;16",
             "@type": "Relationship",
-            "name": "PowerSystemResources",
+            "name": "Location_PowerSystemResources",
             "displayName": "Location.PowerSystemResources",
             "description": "All power system resources at this location.",
             "target": "dtmi:iec:cim:schema:PowerSystemResource;16",

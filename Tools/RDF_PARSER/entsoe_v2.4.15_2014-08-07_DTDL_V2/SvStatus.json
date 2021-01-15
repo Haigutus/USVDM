@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvStatus:ConductingEquipment;16",
             "@type": "Relationship",
-            "name": "ConductingEquipment",
+            "name": "SvStatus_ConductingEquipment",
             "displayName": "SvStatus.ConductingEquipment",
             "description": "The conducting equipment associated with the status state variable.",
             "target": "dtmi:iec:cim:schema:ConductingEquipment;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvStatus:inService;16",
             "@type": "Property",
-            "name": "inService",
+            "name": "SvStatus_inService",
             "displayName": "SvStatus.inService",
             "description": "The in service status as a result of topology processing.",
             "schema": "boolean"

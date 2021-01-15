@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapSchedule:TapChanger;16",
             "@type": "Relationship",
-            "name": "TapChanger",
+            "name": "TapSchedule_TapChanger",
             "displayName": "TapSchedule.TapChanger",
             "description": "A TapChanger can have TapSchedules.",
             "target": "dtmi:iec:cim:schema:TapChanger;16",

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:Terminal;16",
             "@type": "Relationship",
-            "name": "Terminal",
+            "name": "RegulatingControl_Terminal",
             "displayName": "RegulatingControl.Terminal",
             "description": "The controls regulating this terminal.",
             "target": "dtmi:iec:cim:schema:Terminal;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:discrete;16",
             "@type": "Property",
-            "name": "discrete",
+            "name": "RegulatingControl_discrete",
             "displayName": "RegulatingControl.discrete",
             "description": "The regulation is performed in a discrete mode. This applies to equipment with discrete controls, e.g. tap changers and shunt compensators.",
             "schema": "boolean"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:enabled;16",
             "@type": "Property",
-            "name": "enabled",
+            "name": "RegulatingControl_enabled",
             "displayName": "RegulatingControl.enabled",
             "description": "The flag tells if regulation is enabled.",
             "schema": "boolean"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:mode;16",
             "@type": "Property",
-            "name": "mode",
+            "name": "RegulatingControl_mode",
             "displayName": "RegulatingControl.mode",
             "description": "The regulating control mode presently available.  This specification allows for determining the kind of regulation without need for obtaining the units from a schedule.",
             "schema": {
@@ -45,49 +45,49 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "voltage",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.voltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.voltage",
                         "description": "Voltage is specified."
                     },
                     {
-                        "name": "activePower",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.activePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.activePower",
                         "description": "Active power is specified."
                     },
                     {
-                        "name": "reactivePower",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.reactivePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.reactivePower",
                         "description": "Reactive power is specified."
                     },
                     {
-                        "name": "currentFlow",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.currentFlow",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.currentFlow",
                         "description": "Current flow is specified."
                     },
                     {
-                        "name": "admittance",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.admittance",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.admittance",
                         "description": "Admittance is specified."
                     },
                     {
-                        "name": "timeScheduled",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.timeScheduled",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.timeScheduled",
                         "description": "Control switches on/off by time of day. The times may change on the weekend, or in different seasons."
                     },
                     {
-                        "name": "temperature",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.temperature",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.temperature",
                         "description": "Control switches on/off based on the local temperature (i.e., a thermostat)."
                     },
                     {
-                        "name": "powerFactor",
+                        "name": "RegulatingControl_mode",
                         "displayName": "RegulatingControlModeKind.powerFactor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#RegulatingControlModeKind.powerFactor",
                         "description": "Power factor is specified."
@@ -98,7 +98,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:targetDeadband;16",
             "@type": "Property",
-            "name": "targetDeadband",
+            "name": "RegulatingControl_targetDeadband",
             "displayName": "RegulatingControl.targetDeadband",
             "description": "This is a deadband used with discrete control to avoid excessive update of controls like tap changers and shunt compensator banks while regulating.\nThe units of those appropriate for the mode.",
             "schema": "float"
@@ -106,7 +106,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:targetValue;16",
             "@type": "Property",
-            "name": "targetValue",
+            "name": "RegulatingControl_targetValue",
             "displayName": "RegulatingControl.targetValue",
             "description": "The target value specified for case input.   This value can be used for the target value without the use of schedules. The value has the units appropriate to the mode attribute.",
             "schema": "float"
@@ -114,7 +114,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegulatingControl:targetValueUnitMultiplier;16",
             "@type": "Property",
-            "name": "targetValueUnitMultiplier",
+            "name": "RegulatingControl_targetValueUnitMultiplier",
             "displayName": "RegulatingControl.targetValueUnitMultiplier",
             "description": "Specify the multiplier for used for the targetValue.",
             "schema": {
@@ -122,331 +122,331 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "p",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "RegulatingControl_targetValueUnitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."

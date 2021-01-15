@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Discrete:ValueAliasSet;16",
             "@type": "Relationship",
-            "name": "ValueAliasSet",
+            "name": "Discrete_ValueAliasSet",
             "displayName": "Discrete.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a MeasurementValue.value to a name.",
             "target": "dtmi:iec:cim:schema:ValueAliasSet;16",

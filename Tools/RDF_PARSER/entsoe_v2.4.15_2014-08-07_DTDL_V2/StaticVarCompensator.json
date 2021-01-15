@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:capacitiveRating;16",
             "@type": "Property",
-            "name": "capacitiveRating",
+            "name": "StaticVarCompensator_capacitiveRating",
             "displayName": "StaticVarCompensator.capacitiveRating",
             "description": "Maximum available capacitive reactance.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:inductiveRating;16",
             "@type": "Property",
-            "name": "inductiveRating",
+            "name": "StaticVarCompensator_inductiveRating",
             "displayName": "StaticVarCompensator.inductiveRating",
             "description": "Maximum available inductive reactance.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "StaticVarCompensator_q",
             "displayName": "StaticVarCompensator.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:sVCControlMode;16",
             "@type": "Property",
-            "name": "sVCControlMode",
+            "name": "StaticVarCompensator_sVCControlMode",
             "displayName": "StaticVarCompensator.sVCControlMode",
             "description": "SVC control mode.",
             "schema": {
@@ -44,13 +44,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "reactivePower",
+                        "name": "StaticVarCompensator_sVCControlMode",
                         "displayName": "SVCControlMode.reactivePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.reactivePower",
                         "description": ""
                     },
                     {
-                        "name": "voltage",
+                        "name": "StaticVarCompensator_sVCControlMode",
                         "displayName": "SVCControlMode.voltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.voltage",
                         "description": ""
@@ -61,7 +61,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:slope;16",
             "@type": "Property",
-            "name": "slope",
+            "name": "StaticVarCompensator_slope",
             "displayName": "StaticVarCompensator.slope",
             "description": "The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.",
             "schema": "float"
@@ -69,7 +69,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StaticVarCompensator:voltageSetPoint;16",
             "@type": "Property",
-            "name": "voltageSetPoint",
+            "name": "StaticVarCompensator_voltageSetPoint",
             "displayName": "StaticVarCompensator.voltageSetPoint",
             "description": "The reactive power output of the SVC is proportional to the difference between the voltage at the regulated bus and the voltage setpoint.  When the regulated bus voltage is equal to the voltage setpoint, the reactive power output is zero.",
             "schema": "float"

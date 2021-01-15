@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvInjection:TopologicalNode;16",
             "@type": "Relationship",
-            "name": "TopologicalNode",
+            "name": "SvInjection_TopologicalNode",
             "displayName": "SvInjection.TopologicalNode",
             "description": "The injection flows state variables associated with the topological node.",
             "target": "dtmi:iec:cim:schema:TopologicalNode;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvInjection:pInjection;16",
             "@type": "Property",
-            "name": "pInjection",
+            "name": "SvInjection_pInjection",
             "displayName": "SvInjection.pInjection",
             "description": "The active power injected into the bus in addition to injections from equipment terminals.  Positive sign means injection into the TopologicalNode (bus).",
             "schema": "float"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvInjection:qInjection;16",
             "@type": "Property",
-            "name": "qInjection",
+            "name": "SvInjection_qInjection",
             "displayName": "SvInjection.qInjection",
             "description": "The reactive power injected into the bus in addition to injections from equipment terminals. Positive sign means injection into the TopologicalNode (bus).",
             "schema": "float"

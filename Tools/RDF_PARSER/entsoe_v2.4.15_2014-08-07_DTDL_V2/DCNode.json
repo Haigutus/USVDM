@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCNode:DCEquipmentContainer;16",
             "@type": "Relationship",
-            "name": "DCEquipmentContainer",
+            "name": "DCNode_DCEquipmentContainer",
             "displayName": "DCNode.DCEquipmentContainer",
             "description": "",
             "target": "dtmi:iec:cim:schema:DCEquipmentContainer;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCNode:DCTopologicalNode;16",
             "@type": "Relationship",
-            "name": "DCTopologicalNode",
+            "name": "DCNode_DCTopologicalNode",
             "displayName": "DCNode.DCTopologicalNode",
             "description": "See association end TopologicalNode.ConnectivityNodes.",
             "target": "dtmi:iec:cim:schema:DCTopologicalNode;16",

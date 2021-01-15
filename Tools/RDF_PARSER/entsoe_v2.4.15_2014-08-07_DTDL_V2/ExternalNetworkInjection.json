@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:governorSCD;16",
             "@type": "Property",
-            "name": "governorSCD",
+            "name": "ExternalNetworkInjection_governorSCD",
             "displayName": "ExternalNetworkInjection.governorSCD",
             "description": "Power Frequency Bias. This is the change in power injection divided by the change in frequency and negated.  A positive value of the power frequency bias provides additional power injection upon a drop in frequency.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:ikSecond;16",
             "@type": "Property",
-            "name": "ikSecond",
+            "name": "ExternalNetworkInjection_ikSecond",
             "displayName": "ExternalNetworkInjection.ikSecond",
             "description": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\").",
             "schema": "boolean"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxInitialSymShCCurrent;16",
             "@type": "Property",
-            "name": "maxInitialSymShCCurrent",
+            "name": "ExternalNetworkInjection_maxInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.maxInitialSymShCCurrent",
             "description": "  Maximum initial symmetrical short-circuit currents (Ik\" max) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxP;16",
             "@type": "Property",
-            "name": "maxP",
+            "name": "ExternalNetworkInjection_maxP",
             "displayName": "ExternalNetworkInjection.maxP",
             "description": "Maximum active power of the injection.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxQ;16",
             "@type": "Property",
-            "name": "maxQ",
+            "name": "ExternalNetworkInjection_maxQ",
             "displayName": "ExternalNetworkInjection.maxQ",
             "description": "Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used ",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxR0ToX0Ratio;16",
             "@type": "Property",
-            "name": "maxR0ToX0Ratio",
+            "name": "ExternalNetworkInjection_maxR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.maxR0ToX0Ratio",
             "description": "Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxR1ToX1Ratio;16",
             "@type": "Property",
-            "name": "maxR1ToX1Ratio",
+            "name": "ExternalNetworkInjection_maxR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.maxR1ToX1Ratio",
             "description": "Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:maxZ0ToZ1Ratio;16",
             "@type": "Property",
-            "name": "maxZ0ToZ1Ratio",
+            "name": "ExternalNetworkInjection_maxZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.maxZ0ToZ1Ratio",
             "description": "Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minInitialSymShCCurrent;16",
             "@type": "Property",
-            "name": "minInitialSymShCCurrent",
+            "name": "ExternalNetworkInjection_minInitialSymShCCurrent",
             "displayName": "ExternalNetworkInjection.minInitialSymShCCurrent",
             "description": "Minimum initial symmetrical short-circuit currents (Ik\" min) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -84,7 +84,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minP;16",
             "@type": "Property",
-            "name": "minP",
+            "name": "ExternalNetworkInjection_minP",
             "displayName": "ExternalNetworkInjection.minP",
             "description": "Minimum active power of the injection.",
             "schema": "float"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minQ;16",
             "@type": "Property",
-            "name": "minQ",
+            "name": "ExternalNetworkInjection_minQ",
             "displayName": "ExternalNetworkInjection.minQ",
             "description": "Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used",
             "schema": "float"
@@ -100,7 +100,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minR0ToX0Ratio;16",
             "@type": "Property",
-            "name": "minR0ToX0Ratio",
+            "name": "ExternalNetworkInjection_minR0ToX0Ratio",
             "displayName": "ExternalNetworkInjection.minR0ToX0Ratio",
             "description": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\"). Used for short circuit data exchange according to IEC 6090",
             "schema": "float"
@@ -108,7 +108,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minR1ToX1Ratio;16",
             "@type": "Property",
-            "name": "minR1ToX1Ratio",
+            "name": "ExternalNetworkInjection_minR1ToX1Ratio",
             "displayName": "ExternalNetworkInjection.minR1ToX1Ratio",
             "description": "Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -116,7 +116,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:minZ0ToZ1Ratio;16",
             "@type": "Property",
-            "name": "minZ0ToZ1Ratio",
+            "name": "ExternalNetworkInjection_minZ0ToZ1Ratio",
             "displayName": "ExternalNetworkInjection.minZ0ToZ1Ratio",
             "description": "Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -124,7 +124,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:p;16",
             "@type": "Property",
-            "name": "p",
+            "name": "ExternalNetworkInjection_p",
             "displayName": "ExternalNetworkInjection.p",
             "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "ExternalNetworkInjection_q",
             "displayName": "ExternalNetworkInjection.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -140,7 +140,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:referencePriority;16",
             "@type": "Property",
-            "name": "referencePriority",
+            "name": "ExternalNetworkInjection_referencePriority",
             "displayName": "ExternalNetworkInjection.referencePriority",
             "description": "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on.",
             "schema": "integer"
@@ -148,7 +148,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ExternalNetworkInjection:voltageFactor;16",
             "@type": "Property",
-            "name": "voltageFactor",
+            "name": "ExternalNetworkInjection_voltageFactor",
             "displayName": "ExternalNetworkInjection.voltageFactor",
             "description": "Voltage factor in pu, which was used to calculate short-circuit current Ik\" and power Sk\".",
             "schema": "float"

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "SeriesCompensator_r",
             "displayName": "SeriesCompensator.r",
             "description": "Positive sequence resistance.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "SeriesCompensator_r0",
             "displayName": "SeriesCompensator.r0",
             "description": "Zero sequence resistance.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorPresent;16",
             "@type": "Property",
-            "name": "varistorPresent",
+            "name": "SeriesCompensator_varistorPresent",
             "displayName": "SeriesCompensator.varistorPresent",
             "description": "Describe if a metal oxide varistor (mov) for over voltage protection is configured at the series compensator.",
             "schema": "boolean"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorRatedCurrent;16",
             "@type": "Property",
-            "name": "varistorRatedCurrent",
+            "name": "SeriesCompensator_varistorRatedCurrent",
             "displayName": "SeriesCompensator.varistorRatedCurrent",
             "description": "The maximum current the varistor is designed to handle at specified duration.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:varistorVoltageThreshold;16",
             "@type": "Property",
-            "name": "varistorVoltageThreshold",
+            "name": "SeriesCompensator_varistorVoltageThreshold",
             "displayName": "SeriesCompensator.varistorVoltageThreshold",
             "description": "The dc voltage at which the varistor start conducting.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "SeriesCompensator_x",
             "displayName": "SeriesCompensator.x",
             "description": "Positive sequence reactance.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeriesCompensator:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "SeriesCompensator_x0",
             "displayName": "SeriesCompensator.x0",
             "description": "Zero sequence reactance.",
             "schema": "float"

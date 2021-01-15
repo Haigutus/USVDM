@@ -168,10 +168,13 @@ for interface_uri in interfaces_list:
             parameter_def = {
                     "@id": URI_to_DTMI(parameter, cim_namespace),
                     "@type": "Property",
-                    "name": parameter_meta["label"],
+                    "name": parameter_name.replace(".", "_"),
                     "displayName": parameter_name,
                     "description": get_description(parameter_dict),
                 }
+
+            # Get parameter min and max occurrences
+            maxOccurs, minOccurs = parse_multiplicity(parameter_dict["multiplicity"])
 
             # If association
             if association_used == 'Yes':
@@ -179,14 +182,16 @@ for interface_uri in interfaces_list:
                 parameter_def["@type"] = "Relationship"
                 parameter_def["target"] = URI_to_DTMI(parameter_dict['range'], cim_namespace)
 
-                # Add max relations (min relations available, but not added)
-                maxOccours = parse_multiplicity(parameter_dict["multiplicity"])[0]
-
-                if str(maxOccours) != "unbounded":
-                    parameter_def["maxMultiplicity"] = int(maxOccours)
+                # Add max relations (min relations available, but not added as when defining objects not all relations, parameters might be available)
+                if str(maxOccurs) != "unbounded":
+                    parameter_def["maxMultiplicity"] = int(maxOccurs)
 
             else:
                 data_type = parameter_dict.get("dataType", "nan")
+
+                if maxOccurs == "unbounded" or int(maxOccurs) > 1:
+                    print(f"WARNING - array input not implemented for {parameter_name}")
+                    # TODO - Implement array in case multiple parameters of same type allowed
 
                 # If regular parameter
                 if str(data_type) != "nan":
@@ -213,7 +218,7 @@ for interface_uri in interfaces_list:
 
                         value_def = {
                                         #"@id": URI_to_DTMI(value, cim_namespace),
-                                        "name": value_meta["label"],
+                                        "name": parameter_name.replace(".", "_"),
                                         "displayName": value_name,
                                         "enumValue": f"{value_namespace}#{value_name}",
                                         "description": get_description(value_meta),

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogValue:Analog;16",
             "@type": "Relationship",
-            "name": "Analog",
+            "name": "AnalogValue_Analog",
             "displayName": "AnalogValue.Analog",
             "description": "The values connected to this measurement.",
             "target": "dtmi:iec:cim:schema:Analog;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogValue:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "AnalogValue_value",
             "displayName": "AnalogValue.value",
             "description": "The value to supervise.",
             "schema": "float"

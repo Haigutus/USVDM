@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimit:OperationalLimitSet;16",
             "@type": "Relationship",
-            "name": "OperationalLimitSet",
+            "name": "OperationalLimit_OperationalLimitSet",
             "displayName": "OperationalLimit.OperationalLimitSet",
             "description": "Values of equipment limits.",
             "target": "dtmi:iec:cim:schema:OperationalLimitSet;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimit:OperationalLimitType;16",
             "@type": "Relationship",
-            "name": "OperationalLimitType",
+            "name": "OperationalLimit_OperationalLimitType",
             "displayName": "OperationalLimit.OperationalLimitType",
             "description": "The limit type associated with this limit.",
             "target": "dtmi:iec:cim:schema:OperationalLimitType;16",

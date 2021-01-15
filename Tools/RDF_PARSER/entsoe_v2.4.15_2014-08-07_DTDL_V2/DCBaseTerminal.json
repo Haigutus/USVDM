@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCBaseTerminal:DCNode;16",
             "@type": "Relationship",
-            "name": "DCNode",
+            "name": "DCBaseTerminal_DCNode",
             "displayName": "DCBaseTerminal.DCNode",
             "description": "",
             "target": "dtmi:iec:cim:schema:DCNode;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCBaseTerminal:DCTopologicalNode;16",
             "@type": "Relationship",
-            "name": "DCTopologicalNode",
+            "name": "DCBaseTerminal_DCTopologicalNode",
             "displayName": "DCBaseTerminal.DCTopologicalNode",
             "description": "See association end TopologicalNode.Terminal.",
             "target": "dtmi:iec:cim:schema:DCTopologicalNode;16",

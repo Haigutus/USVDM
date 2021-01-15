@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RaiseLowerCommand:ValueAliasSet;16",
             "@type": "Relationship",
-            "name": "ValueAliasSet",
+            "name": "RaiseLowerCommand_ValueAliasSet",
             "displayName": "RaiseLowerCommand.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
             "target": "dtmi:iec:cim:schema:ValueAliasSet;16",

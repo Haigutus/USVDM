@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiscreteValue:Discrete;16",
             "@type": "Relationship",
-            "name": "Discrete",
+            "name": "DiscreteValue_Discrete",
             "displayName": "DiscreteValue.Discrete",
             "description": "The values connected to this measurement.",
             "target": "dtmi:iec:cim:schema:Discrete;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DiscreteValue:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "DiscreteValue_value",
             "displayName": "DiscreteValue.value",
             "description": "The value to supervise.",
             "schema": "integer"

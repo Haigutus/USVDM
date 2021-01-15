@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerTabular:PhaseTapChangerTable;16",
             "@type": "Relationship",
-            "name": "PhaseTapChangerTable",
+            "name": "PhaseTapChangerTabular_PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTabular.PhaseTapChangerTable",
             "description": "The phase tap changer table for this phase tap changer.",
             "target": "dtmi:iec:cim:schema:PhaseTapChangerTable;16",

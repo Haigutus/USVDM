@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StringMeasurementValue:StringMeasurement;16",
             "@type": "Relationship",
-            "name": "StringMeasurement",
+            "name": "StringMeasurementValue_StringMeasurement",
             "displayName": "StringMeasurementValue.StringMeasurement",
             "description": "Measurement to which this value is connected.",
             "target": "dtmi:iec:cim:schema:StringMeasurement;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:StringMeasurementValue:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "StringMeasurementValue_value",
             "displayName": "StringMeasurementValue.value",
             "description": "The value to supervise.",
             "schema": "string"

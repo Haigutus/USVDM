@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:First_Terminal;16",
             "@type": "Relationship",
-            "name": "First_Terminal",
+            "name": "MutualCoupling_First_Terminal",
             "displayName": "MutualCoupling.First_Terminal",
             "description": "The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments.",
             "target": "dtmi:iec:cim:schema:Terminal;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:Second_Terminal;16",
             "@type": "Relationship",
-            "name": "Second_Terminal",
+            "name": "MutualCoupling_Second_Terminal",
             "displayName": "MutualCoupling.Second_Terminal",
             "description": "The starting terminal for the calculation of distances along the second branch of the mutual coupling.",
             "target": "dtmi:iec:cim:schema:Terminal;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:b0ch;16",
             "@type": "Property",
-            "name": "b0ch",
+            "name": "MutualCoupling_b0ch",
             "displayName": "MutualCoupling.b0ch",
             "description": "Zero sequence mutual coupling shunt (charging) susceptance, uniformly distributed, of the entire line section.",
             "schema": "float"
@@ -38,7 +38,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:distance11;16",
             "@type": "Property",
-            "name": "distance11",
+            "name": "MutualCoupling_distance11",
             "displayName": "MutualCoupling.distance11",
             "description": "Distance to the start of the coupled region from the first line's terminal having sequence number equal to 1.",
             "schema": "float"
@@ -46,7 +46,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:distance12;16",
             "@type": "Property",
-            "name": "distance12",
+            "name": "MutualCoupling_distance12",
             "displayName": "MutualCoupling.distance12",
             "description": "Distance to the end of the coupled region from the first line's terminal with sequence number equal to 1.",
             "schema": "float"
@@ -54,7 +54,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:distance21;16",
             "@type": "Property",
-            "name": "distance21",
+            "name": "MutualCoupling_distance21",
             "displayName": "MutualCoupling.distance21",
             "description": "Distance to the start of coupled region from the second line's terminal with sequence number equal to 1.",
             "schema": "float"
@@ -62,7 +62,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:distance22;16",
             "@type": "Property",
-            "name": "distance22",
+            "name": "MutualCoupling_distance22",
             "displayName": "MutualCoupling.distance22",
             "description": "Distance to the end of coupled region from the second line's terminal with sequence number equal to 1.",
             "schema": "float"
@@ -70,7 +70,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:g0ch;16",
             "@type": "Property",
-            "name": "g0ch",
+            "name": "MutualCoupling_g0ch",
             "displayName": "MutualCoupling.g0ch",
             "description": "Zero sequence mutual coupling shunt (charging) conductance, uniformly distributed, of the entire line section.",
             "schema": "float"
@@ -78,7 +78,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "MutualCoupling_r0",
             "displayName": "MutualCoupling.r0",
             "description": "Zero sequence branch-to-branch mutual impedance coupling, resistance.",
             "schema": "float"
@@ -86,7 +86,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MutualCoupling:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "MutualCoupling_x0",
             "displayName": "MutualCoupling.x0",
             "description": "Zero sequence branch-to-branch mutual impedance coupling, reactance.",
             "schema": "float"

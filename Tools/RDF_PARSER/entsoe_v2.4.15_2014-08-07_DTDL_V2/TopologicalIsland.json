@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TopologicalIsland:AngleRefTopologicalNode;16",
             "@type": "Relationship",
-            "name": "AngleRefTopologicalNode",
+            "name": "TopologicalIsland_AngleRefTopologicalNode",
             "displayName": "TopologicalIsland.AngleRefTopologicalNode",
             "description": "The angle reference for the island.   Normally there is one TopologicalNode that is selected as the angle reference for each island.   Other reference schemes exist, so the association is typically optional.",
             "target": "dtmi:iec:cim:schema:TopologicalNode;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TopologicalIsland:TopologicalNodes;16",
             "@type": "Relationship",
-            "name": "TopologicalNodes",
+            "name": "TopologicalIsland_TopologicalNodes",
             "displayName": "TopologicalIsland.TopologicalNodes",
             "description": "A topological node belongs to a topological island.",
             "target": "dtmi:iec:cim:schema:TopologicalNode;16"

@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ConductingEquipment:BaseVoltage;16",
             "@type": "Relationship",
-            "name": "BaseVoltage",
+            "name": "ConductingEquipment_BaseVoltage",
             "displayName": "ConductingEquipment.BaseVoltage",
             "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
             "target": "dtmi:iec:cim:schema:BaseVoltage;16",

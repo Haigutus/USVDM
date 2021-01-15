@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AccumulatorLimitSet:Measurements;16",
             "@type": "Relationship",
-            "name": "Measurements",
+            "name": "AccumulatorLimitSet_Measurements",
             "displayName": "AccumulatorLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
             "target": "dtmi:iec:cim:schema:Accumulator;16"

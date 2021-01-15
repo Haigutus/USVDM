@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TopologicalNode:BaseVoltage;16",
             "@type": "Relationship",
-            "name": "BaseVoltage",
+            "name": "TopologicalNode_BaseVoltage",
             "displayName": "TopologicalNode.BaseVoltage",
             "description": "The base voltage of the topologocial node.",
             "target": "dtmi:iec:cim:schema:BaseVoltage;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TopologicalNode:ConnectivityNodeContainer;16",
             "@type": "Relationship",
-            "name": "ConnectivityNodeContainer",
+            "name": "TopologicalNode_ConnectivityNodeContainer",
             "displayName": "TopologicalNode.ConnectivityNodeContainer",
             "description": "The connectivity node container to which the toplogical node belongs.",
             "target": "dtmi:iec:cim:schema:ConnectivityNodeContainer;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TopologicalNode:ReportingGroup;16",
             "@type": "Relationship",
-            "name": "ReportingGroup",
+            "name": "TopologicalNode_ReportingGroup",
             "displayName": "TopologicalNode.ReportingGroup",
             "description": "The topological nodes that belong to the reporting group.",
             "target": "dtmi:iec:cim:schema:ReportingGroup;16",
@@ -39,7 +39,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:boundaryPoint;31",
             "@type": "Property",
-            "name": "boundaryPoint",
+            "name": "TopologicalNode_boundaryPoint",
             "displayName": "TopologicalNode.boundaryPoint",
             "description": "Identifies if a node is a BoundaryPoint. If boundaryPoint=true the ConnectivityNode or the TopologicalNode represents a BoundaryPoint. ",
             "schema": "boolean"
@@ -47,7 +47,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndIsoCode;31",
             "@type": "Property",
-            "name": "fromEndIsoCode",
+            "name": "TopologicalNode_fromEndIsoCode",
             "displayName": "TopologicalNode.fromEndIsoCode",
             "description": "The attribute is used for an exchange of the ISO code of the region to which the \u201cFrom\u201d side of the Boundary point belongs to or it is connected to.\nThe ISO code is two characters country code as defined by ISO 3166 (",
             "schema": "string"
@@ -55,7 +55,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndName;31",
             "@type": "Property",
-            "name": "fromEndName",
+            "name": "TopologicalNode_fromEndName",
             "displayName": "TopologicalNode.fromEndName",
             "description": "The attribute is used for an exchange of a human readable name with length of the string 32 characters maximum. The attribute covers two cases:\n",
             "schema": "string"
@@ -63,7 +63,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:fromEndNameTso;31",
             "@type": "Property",
-            "name": "fromEndNameTso",
+            "name": "TopologicalNode_fromEndNameTso",
             "displayName": "TopologicalNode.fromEndNameTso",
             "description": "The attribute is used for an exchange of the name of the TSO to which the \u201cFrom\u201d side of the Boundary point belongs to or it is connected to. The length of the string is 32 characters maximum.\nThe attribute is required for the Boundary Model Authority Set where it is used only for the TopologicalNode in the Boundary Topology profile and ConnectivityNode in the Boundary Equipment profile. ",
             "schema": "string"
@@ -71,7 +71,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndIsoCode;31",
             "@type": "Property",
-            "name": "toEndIsoCode",
+            "name": "TopologicalNode_toEndIsoCode",
             "displayName": "TopologicalNode.toEndIsoCode",
             "description": "The attribute is used for an exchange of the ISO code of the region to which the \u201cTo\u201d side of the Boundary point belongs to or it is connected to.\nThe ISO code is two characters country code as defined by ISO 3166 (",
             "schema": "string"
@@ -79,7 +79,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndName;31",
             "@type": "Property",
-            "name": "toEndName",
+            "name": "TopologicalNode_toEndName",
             "displayName": "TopologicalNode.toEndName",
             "description": "The attribute is used for an exchange of a human readable name with length of the string 32 characters maximum. The attribute covers two cases:\n",
             "schema": "string"
@@ -87,7 +87,7 @@
         {
             "@id": "dtmi:eu:cim:extension:TopologicalNode:toEndNameTso;31",
             "@type": "Property",
-            "name": "toEndNameTso",
+            "name": "TopologicalNode_toEndNameTso",
             "displayName": "TopologicalNode.toEndNameTso",
             "description": "The attribute is used for an exchange of the name of the TSO to which the \u201cTo\u201d side of the Boundary point belongs to or it is connected to. The length of the string is 32 characters maximum.\nThe attribute is required for the Boundary Model Authority Set where it is used only for the TopologicalNode in the Boundary Topology profile and ConnectivityNode in the Boundary Equipment profile. ",
             "schema": "string"

@@ -8,7 +8,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:badReference;16",
             "@type": "Property",
-            "name": "badReference",
+            "name": "Quality61850_badReference",
             "displayName": "Quality61850.badReference",
             "description": "Measurement value may be incorrect due to a reference being out of calibration.",
             "schema": "boolean"
@@ -16,7 +16,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:estimatorReplaced;16",
             "@type": "Property",
-            "name": "estimatorReplaced",
+            "name": "Quality61850_estimatorReplaced",
             "displayName": "Quality61850.estimatorReplaced",
             "description": "Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience.",
             "schema": "boolean"
@@ -24,7 +24,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:failure;16",
             "@type": "Property",
-            "name": "failure",
+            "name": "Quality61850_failure",
             "displayName": "Quality61850.failure",
             "description": "This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure.",
             "schema": "boolean"
@@ -32,7 +32,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:oldData;16",
             "@type": "Property",
-            "name": "oldData",
+            "name": "Quality61850_oldData",
             "displayName": "Quality61850.oldData",
             "description": "Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval.",
             "schema": "boolean"
@@ -40,7 +40,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:operatorBlocked;16",
             "@type": "Property",
-            "name": "operatorBlocked",
+            "name": "Quality61850_operatorBlocked",
             "displayName": "Quality61850.operatorBlocked",
             "description": "Measurement value is blocked and hence unavailable for transmission. ",
             "schema": "boolean"
@@ -48,7 +48,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:oscillatory;16",
             "@type": "Property",
-            "name": "oscillatory",
+            "name": "Quality61850_oscillatory",
             "displayName": "Quality61850.oscillatory",
             "description": "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still i",
             "schema": "boolean"
@@ -56,7 +56,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:outOfRange;16",
             "@type": "Property",
-            "name": "outOfRange",
+            "name": "Quality61850_outOfRange",
             "displayName": "Quality61850.outOfRange",
             "description": "Measurement value is beyond a predefined range of value.",
             "schema": "boolean"
@@ -64,7 +64,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:overFlow;16",
             "@type": "Property",
-            "name": "overFlow",
+            "name": "Quality61850_overFlow",
             "displayName": "Quality61850.overFlow",
             "description": "Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero. ",
             "schema": "boolean"
@@ -72,7 +72,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:source;16",
             "@type": "Property",
-            "name": "source",
+            "name": "Quality61850_source",
             "displayName": "Quality61850.source",
             "description": "Source gives information related to the origin of a value. The value may be acquired from the process, defaulted or substituted.",
             "schema": {
@@ -80,19 +80,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "PROCESS",
+                        "name": "Quality61850_source",
                         "displayName": "Source.PROCESS",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.PROCESS",
                         "description": "The value is provided by input from the process I/O or being calculated from some function."
                     },
                     {
-                        "name": "DEFAULTED",
+                        "name": "Quality61850_source",
                         "displayName": "Source.DEFAULTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.DEFAULTED",
                         "description": "The value contains a default value."
                     },
                     {
-                        "name": "SUBSTITUTED",
+                        "name": "Quality61850_source",
                         "displayName": "Source.SUBSTITUTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.SUBSTITUTED",
                         "description": "The value is provided by input of an operator or by an automatic source."
@@ -103,7 +103,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:suspect;16",
             "@type": "Property",
-            "name": "suspect",
+            "name": "Quality61850_suspect",
             "displayName": "Quality61850.suspect",
             "description": "A correlation function has detected that the value is not consitent with other values. Typically set by a network State Estimator.",
             "schema": "boolean"
@@ -111,7 +111,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:test;16",
             "@type": "Property",
-            "name": "test",
+            "name": "Quality61850_test",
             "displayName": "Quality61850.test",
             "description": "Measurement value is transmitted for test purposes.",
             "schema": "boolean"
@@ -119,7 +119,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Quality61850:validity;16",
             "@type": "Property",
-            "name": "validity",
+            "name": "Quality61850_validity",
             "displayName": "Quality61850.validity",
             "description": "Validity of the measurement value.",
             "schema": {
@@ -127,19 +127,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "GOOD",
+                        "name": "Quality61850_validity",
                         "displayName": "Validity.GOOD",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.GOOD",
                         "description": "The value is marked good if no abnormal condition of the acquisition function or the information source is detected."
                     },
                     {
-                        "name": "QUESTIONABLE",
+                        "name": "Quality61850_validity",
                         "displayName": "Validity.QUESTIONABLE",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.QUESTIONABLE",
                         "description": "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked \"questionable\" should be used."
                     },
                     {
-                        "name": "INVALID",
+                        "name": "Quality61850_validity",
                         "displayName": "Validity.INVALID",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.INVALID",
                         "description": "The value is marked invalid when a supervision function recognises abnormal conditions of the acquisition function or the information source (missing or non-operating updating devices). The value is not defined under this condition. The mark invalid is used to indicate to the client that the value may be incorrect and shall not be used."

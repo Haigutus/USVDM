@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:BusNameMarker:ReportingGroup;16",
             "@type": "Relationship",
-            "name": "ReportingGroup",
+            "name": "BusNameMarker_ReportingGroup",
             "displayName": "BusNameMarker.ReportingGroup",
             "description": "The bus name markers that belong to this reporting group.",
             "target": "dtmi:iec:cim:schema:ReportingGroup;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:BusNameMarker:priority;16",
             "@type": "Property",
-            "name": "priority",
+            "name": "BusNameMarker_priority",
             "displayName": "BusNameMarker.priority",
             "description": "Priority of bus name marker for use as topology bus name.  Use 0 for don t care.  Use 1 for highest priority.  Use 2 as priority is less than 1 and so on.",
             "schema": "integer"

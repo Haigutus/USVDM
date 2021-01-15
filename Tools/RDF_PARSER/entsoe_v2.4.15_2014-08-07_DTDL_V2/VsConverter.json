@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:CapabilityCurve;16",
             "@type": "Relationship",
-            "name": "CapabilityCurve",
+            "name": "VsConverter_CapabilityCurve",
             "displayName": "VsConverter.CapabilityCurve",
             "description": "All converters with this capability curve.",
             "target": "dtmi:iec:cim:schema:VsCapabilityCurve;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:delta;16",
             "@type": "Property",
-            "name": "delta",
+            "name": "VsConverter_delta",
             "displayName": "VsConverter.delta",
             "description": "Angle between uf and uc. Converter state variable used in power flow.",
             "schema": "float"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:droop;16",
             "@type": "Property",
-            "name": "droop",
+            "name": "VsConverter_droop",
             "displayName": "VsConverter.droop",
             "description": "Droop constant; pu value is obtained as D [kV^2 / MW] x Sb / Ubdc^2.",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:droopCompensation;16",
             "@type": "Property",
-            "name": "droopCompensation",
+            "name": "VsConverter_droopCompensation",
             "displayName": "VsConverter.droopCompensation",
             "description": "Compensation (resistance) constant. Used to compensate for voltage drop when controlling voltage at a distant bus.",
             "schema": "float"
@@ -45,7 +45,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:maxModulationIndex;16",
             "@type": "Property",
-            "name": "maxModulationIndex",
+            "name": "VsConverter_maxModulationIndex",
             "displayName": "VsConverter.maxModulationIndex",
             "description": "The max quotient between the AC converter voltage (Uc) and DC voltage (Ud). A factor typically less than 1. VSC configuration data used in power flow.",
             "schema": "float"
@@ -53,7 +53,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:maxValveCurrent;16",
             "@type": "Property",
-            "name": "maxValveCurrent",
+            "name": "VsConverter_maxValveCurrent",
             "displayName": "VsConverter.maxValveCurrent",
             "description": "The maximum current through a valve. This current limit is the basis for calculating the capability diagram. VSC  configuration data.",
             "schema": "float"
@@ -61,7 +61,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:pPccControl;16",
             "@type": "Property",
-            "name": "pPccControl",
+            "name": "VsConverter_pPccControl",
             "displayName": "VsConverter.pPccControl",
             "description": "Kind of control of real power and/or DC voltage.",
             "schema": {
@@ -69,31 +69,31 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "pPcc",
+                        "name": "VsConverter_pPccControl",
                         "displayName": "VsPpccControlKind.pPcc",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPcc",
                         "description": "Control variable (target) is real power at PCC bus."
                     },
                     {
-                        "name": "udc",
+                        "name": "VsConverter_pPccControl",
                         "displayName": "VsPpccControlKind.udc",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.udc",
                         "description": "Control variable (target) is DC voltage and real power at PCC bus is derived."
                     },
                     {
-                        "name": "pPccAndUdcDroop",
+                        "name": "VsConverter_pPccControl",
                         "displayName": "VsPpccControlKind.pPccAndUdcDroop",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroop",
                         "description": "Control variables (targets) are both active power at point of common coupling and local DC voltage, with the droop."
                     },
                     {
-                        "name": "pPccAndUdcDroopWithCompensation",
+                        "name": "VsConverter_pPccControl",
                         "displayName": "VsPpccControlKind.pPccAndUdcDroopWithCompensation",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopWithCompensation",
                         "description": "Control variables (targets) are both active power at point of common coupling and compensated DC voltage, with the droop; compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network."
                     },
                     {
-                        "name": "pPccAndUdcDroopPilot",
+                        "name": "VsConverter_pPccControl",
                         "displayName": "VsPpccControlKind.pPccAndUdcDroopPilot",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsPpccControlKind.pPccAndUdcDroopPilot",
                         "description": "Control variables (targets) are both active power at point of common coupling and the pilot DC voltage, with the droop."
@@ -104,7 +104,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:qPccControl;16",
             "@type": "Property",
-            "name": "qPccControl",
+            "name": "VsConverter_qPccControl",
             "displayName": "VsConverter.qPccControl",
             "description": "",
             "schema": {
@@ -112,19 +112,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "reactivePcc",
+                        "name": "VsConverter_qPccControl",
                         "displayName": "VsQpccControlKind.reactivePcc",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.reactivePcc",
                         "description": ""
                     },
                     {
-                        "name": "voltagePcc",
+                        "name": "VsConverter_qPccControl",
                         "displayName": "VsQpccControlKind.voltagePcc",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.voltagePcc",
                         "description": ""
                     },
                     {
-                        "name": "powerFactorPcc",
+                        "name": "VsConverter_qPccControl",
                         "displayName": "VsQpccControlKind.powerFactorPcc",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#VsQpccControlKind.powerFactorPcc",
                         "description": ""
@@ -135,7 +135,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:qShare;16",
             "@type": "Property",
-            "name": "qShare",
+            "name": "VsConverter_qShare",
             "displayName": "VsConverter.qShare",
             "description": "Reactive power sharing factor among parallel converters on Uac control.",
             "schema": "float"
@@ -143,7 +143,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:targetQpcc;16",
             "@type": "Property",
-            "name": "targetQpcc",
+            "name": "VsConverter_targetQpcc",
             "displayName": "VsConverter.targetQpcc",
             "description": "Reactive power injection target in AC grid, at point of common coupling.",
             "schema": "float"
@@ -151,7 +151,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:targetUpcc;16",
             "@type": "Property",
-            "name": "targetUpcc",
+            "name": "VsConverter_targetUpcc",
             "displayName": "VsConverter.targetUpcc",
             "description": "Voltage target in AC grid, at point of common coupling.",
             "schema": "float"
@@ -159,7 +159,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VsConverter:uf;16",
             "@type": "Property",
-            "name": "uf",
+            "name": "VsConverter_uf",
             "displayName": "VsConverter.uf",
             "description": "Filter bus voltage. Converter state variable, result from power flow.",
             "schema": "float"

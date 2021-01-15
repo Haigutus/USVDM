@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:TapChangerControl;16",
             "@type": "Relationship",
-            "name": "TapChangerControl",
+            "name": "TapChanger_TapChangerControl",
             "displayName": "TapChanger.TapChangerControl",
             "description": "The tap changers that participates in this regulating tap control scheme.",
             "target": "dtmi:iec:cim:schema:TapChangerControl;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:controlEnabled;16",
             "@type": "Property",
-            "name": "controlEnabled",
+            "name": "TapChanger_controlEnabled",
             "displayName": "TapChanger.controlEnabled",
             "description": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
             "schema": "boolean"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:highStep;16",
             "@type": "Property",
-            "name": "highStep",
+            "name": "TapChanger_highStep",
             "displayName": "TapChanger.highStep",
             "description": "Highest possible tap step position, advance from neutral.\nThe attribute shall be greater than lowStep.",
             "schema": "integer"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:lowStep;16",
             "@type": "Property",
-            "name": "lowStep",
+            "name": "TapChanger_lowStep",
             "displayName": "TapChanger.lowStep",
             "description": "Lowest possible tap step position, retard from neutral",
             "schema": "integer"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:ltcFlag;16",
             "@type": "Property",
-            "name": "ltcFlag",
+            "name": "TapChanger_ltcFlag",
             "displayName": "TapChanger.ltcFlag",
             "description": "Specifies whether or not a TapChanger has load tap changing capabilities.",
             "schema": "boolean"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:neutralStep;16",
             "@type": "Property",
-            "name": "neutralStep",
+            "name": "TapChanger_neutralStep",
             "displayName": "TapChanger.neutralStep",
             "description": "The neutral tap step position for this winding.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
             "schema": "integer"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:neutralU;16",
             "@type": "Property",
-            "name": "neutralU",
+            "name": "TapChanger_neutralU",
             "displayName": "TapChanger.neutralU",
             "description": "Voltage at which the winding operates at the neutral tap setting.",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:normalStep;16",
             "@type": "Property",
-            "name": "normalStep",
+            "name": "TapChanger_normalStep",
             "displayName": "TapChanger.normalStep",
             "description": "The tap step position used in \"normal\" network operation for this winding. For a \"Fixed\" tap changer indicates the current physical tap setting.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
             "schema": "integer"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChanger:step;16",
             "@type": "Property",
-            "name": "step",
+            "name": "TapChanger_step",
             "displayName": "TapChanger.step",
             "description": "Tap changer position.\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changers has yet been designed, a solutions where a narrow voltage band force the tap step to oscillate or accommodate for a continuous solution as input.\nThe attribute shall be equal or greater than lowStep and equal or less than highStep.",
             "schema": "float"

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TextDiagramObject:text;16",
             "@type": "Property",
-            "name": "text",
+            "name": "TextDiagramObject_text",
             "displayName": "TextDiagramObject.text",
             "description": "The text that is displayed by this text diagram object.",
             "schema": "string"

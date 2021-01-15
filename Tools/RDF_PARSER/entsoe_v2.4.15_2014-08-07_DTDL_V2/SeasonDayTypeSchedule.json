@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeasonDayTypeSchedule:DayType;16",
             "@type": "Relationship",
-            "name": "DayType",
+            "name": "SeasonDayTypeSchedule_DayType",
             "displayName": "SeasonDayTypeSchedule.DayType",
             "description": "Schedules that use this DayType.",
             "target": "dtmi:iec:cim:schema:DayType;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SeasonDayTypeSchedule:Season;16",
             "@type": "Relationship",
-            "name": "Season",
+            "name": "SeasonDayTypeSchedule_Season",
             "displayName": "SeasonDayTypeSchedule.Season",
             "description": "Schedules that use this Season.",
             "target": "dtmi:iec:cim:schema:Season;16",

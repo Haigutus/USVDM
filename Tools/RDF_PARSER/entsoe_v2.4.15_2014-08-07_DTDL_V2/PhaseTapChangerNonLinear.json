@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerNonLinear:voltageStepIncrement;16",
             "@type": "Property",
-            "name": "voltageStepIncrement",
+            "name": "PhaseTapChangerNonLinear_voltageStepIncrement",
             "displayName": "PhaseTapChangerNonLinear.voltageStepIncrement",
             "description": "The voltage step increment on the out of phase winding specified in percent of nominal voltage of the transformer end.",
             "schema": "float"
@@ -19,7 +19,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerNonLinear:xMax;16",
             "@type": "Property",
-            "name": "xMax",
+            "name": "PhaseTapChangerNonLinear_xMax",
             "displayName": "PhaseTapChangerNonLinear.xMax",
             "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The maximum reactance (xMax) appear at the low and high tap positions.",
             "schema": "float"
@@ -27,7 +27,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerNonLinear:xMin;16",
             "@type": "Property",
-            "name": "xMin",
+            "name": "PhaseTapChangerNonLinear_xMin",
             "displayName": "PhaseTapChangerNonLinear.xMin",
             "description": "The reactance depend on the tap position according to a \"u\" shaped curve. The minimum reactance (xMin) appear at the mid tap position.",
             "schema": "float"

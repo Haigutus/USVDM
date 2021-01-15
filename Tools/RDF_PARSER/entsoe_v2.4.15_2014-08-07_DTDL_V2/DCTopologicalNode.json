@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCTopologicalNode:DCEquipmentContainer;16",
             "@type": "Relationship",
-            "name": "DCEquipmentContainer",
+            "name": "DCTopologicalNode_DCEquipmentContainer",
             "displayName": "DCTopologicalNode.DCEquipmentContainer",
             "description": "",
             "target": "dtmi:iec:cim:schema:DCEquipmentContainer;16",

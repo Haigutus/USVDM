@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MeasurementValueQuality:MeasurementValue;16",
             "@type": "Relationship",
-            "name": "MeasurementValue",
+            "name": "MeasurementValueQuality_MeasurementValue",
             "displayName": "MeasurementValueQuality.MeasurementValue",
             "description": "A MeasurementValue has a MeasurementValueQuality associated with it.",
             "target": "dtmi:iec:cim:schema:MeasurementValue;16",

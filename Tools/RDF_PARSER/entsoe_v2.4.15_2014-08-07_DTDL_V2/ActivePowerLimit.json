@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ActivePowerLimit:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "ActivePowerLimit_value",
             "displayName": "ActivePowerLimit.value",
             "description": "Value of active power limit.",
             "schema": "float"

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SetPoint:normalValue;16",
             "@type": "Property",
-            "name": "normalValue",
+            "name": "SetPoint_normalValue",
             "displayName": "SetPoint.normalValue",
             "description": "Normal value for Control.value e.g. used for percentage scaling.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SetPoint:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "SetPoint_value",
             "displayName": "SetPoint.value",
             "description": "The value representing the actuator output.",
             "schema": "float"

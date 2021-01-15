@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ApparentPowerLimit:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "ApparentPowerLimit_value",
             "displayName": "ApparentPowerLimit.value",
             "description": "The apparent power limit.",
             "schema": "float"

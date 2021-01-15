@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:alpha;16",
             "@type": "Property",
-            "name": "alpha",
+            "name": "CsConverter_alpha",
             "displayName": "CsConverter.alpha",
             "description": "Firing angle, typical value between 10 and 18 degrees for a rectifier. CSC state variable, result from power flow.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:gamma;16",
             "@type": "Property",
-            "name": "gamma",
+            "name": "CsConverter_gamma",
             "displayName": "CsConverter.gamma",
             "description": "Extinction angle. CSC state variable, result from power flow.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:maxAlpha;16",
             "@type": "Property",
-            "name": "maxAlpha",
+            "name": "CsConverter_maxAlpha",
             "displayName": "CsConverter.maxAlpha",
             "description": "Maximum firing angle. CSC configuration data used in power flow.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:maxGamma;16",
             "@type": "Property",
-            "name": "maxGamma",
+            "name": "CsConverter_maxGamma",
             "displayName": "CsConverter.maxGamma",
             "description": "Maximum extinction angle. CSC configuration data used in power flow.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:maxIdc;16",
             "@type": "Property",
-            "name": "maxIdc",
+            "name": "CsConverter_maxIdc",
             "displayName": "CsConverter.maxIdc",
             "description": "The maximum direct current (Id) on the DC side at which the converter should operate. Converter configuration data use in power flow.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:minAlpha;16",
             "@type": "Property",
-            "name": "minAlpha",
+            "name": "CsConverter_minAlpha",
             "displayName": "CsConverter.minAlpha",
             "description": "Minimum firing angle. CSC configuration data used in power flow.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:minGamma;16",
             "@type": "Property",
-            "name": "minGamma",
+            "name": "CsConverter_minGamma",
             "displayName": "CsConverter.minGamma",
             "description": "Minimum extinction angle. CSC configuration data used in power flow.",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:minIdc;16",
             "@type": "Property",
-            "name": "minIdc",
+            "name": "CsConverter_minIdc",
             "displayName": "CsConverter.minIdc",
             "description": "The minimum direct current (Id) on the DC side at which the converter should operate. CSC configuration data used in power flow.",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:operatingMode;16",
             "@type": "Property",
-            "name": "operatingMode",
+            "name": "CsConverter_operatingMode",
             "displayName": "CsConverter.operatingMode",
             "description": "Indicates whether the DC pole is operating as an inverter or as a rectifier. CSC control variable used in power flow.",
             "schema": {
@@ -84,13 +84,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "inverter",
+                        "name": "CsConverter_operatingMode",
                         "displayName": "CsOperatingModeKind.inverter",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.inverter",
                         "description": "Operating as inverter"
                     },
                     {
-                        "name": "rectifier",
+                        "name": "CsConverter_operatingMode",
                         "displayName": "CsOperatingModeKind.rectifier",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsOperatingModeKind.rectifier",
                         "description": "Operating as rectifier."
@@ -101,7 +101,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:pPccControl;16",
             "@type": "Property",
-            "name": "pPccControl",
+            "name": "CsConverter_pPccControl",
             "displayName": "CsConverter.pPccControl",
             "description": "",
             "schema": {
@@ -109,19 +109,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "activePower",
+                        "name": "CsConverter_pPccControl",
                         "displayName": "CsPpccControlKind.activePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.activePower",
                         "description": "Active power control at AC side."
                     },
                     {
-                        "name": "dcVoltage",
+                        "name": "CsConverter_pPccControl",
                         "displayName": "CsPpccControlKind.dcVoltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcVoltage",
                         "description": "DC voltage control."
                     },
                     {
-                        "name": "dcCurrent",
+                        "name": "CsConverter_pPccControl",
                         "displayName": "CsPpccControlKind.dcCurrent",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#CsPpccControlKind.dcCurrent",
                         "description": "DC current control"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:ratedIdc;16",
             "@type": "Property",
-            "name": "ratedIdc",
+            "name": "CsConverter_ratedIdc",
             "displayName": "CsConverter.ratedIdc",
             "description": "Rated converter DC current, also called IdN. Converter configuration data used in power flow.",
             "schema": "float"
@@ -140,7 +140,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:targetAlpha;16",
             "@type": "Property",
-            "name": "targetAlpha",
+            "name": "CsConverter_targetAlpha",
             "displayName": "CsConverter.targetAlpha",
             "description": "Target firing angle. CSC control variable used in power flow.",
             "schema": "float"
@@ -148,7 +148,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:targetGamma;16",
             "@type": "Property",
-            "name": "targetGamma",
+            "name": "CsConverter_targetGamma",
             "displayName": "CsConverter.targetGamma",
             "description": "Target extinction angle. CSC  control variable used in power flow.",
             "schema": "float"
@@ -156,7 +156,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CsConverter:targetIdc;16",
             "@type": "Property",
-            "name": "targetIdc",
+            "name": "CsConverter_targetIdc",
             "displayName": "CsConverter.targetIdc",
             "description": "DC current target value. CSC control variable used in power flow.",
             "schema": "float"

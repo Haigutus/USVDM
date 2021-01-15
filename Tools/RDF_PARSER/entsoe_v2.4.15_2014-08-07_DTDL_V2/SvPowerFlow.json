@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvPowerFlow:Terminal;16",
             "@type": "Relationship",
-            "name": "Terminal",
+            "name": "SvPowerFlow_Terminal",
             "displayName": "SvPowerFlow.Terminal",
             "description": "The terminal associated with the power flow state variable.",
             "target": "dtmi:iec:cim:schema:Terminal;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvPowerFlow:p;16",
             "@type": "Property",
-            "name": "p",
+            "name": "SvPowerFlow_p",
             "displayName": "SvPowerFlow.p",
             "description": "The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
             "schema": "float"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvPowerFlow:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "SvPowerFlow_q",
             "displayName": "SvPowerFlow.q",
             "description": "The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
             "schema": "float"

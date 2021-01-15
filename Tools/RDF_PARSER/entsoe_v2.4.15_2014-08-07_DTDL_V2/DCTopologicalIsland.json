@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCTopologicalIsland:DCTopologicalNodes;16",
             "@type": "Relationship",
-            "name": "DCTopologicalNodes",
+            "name": "DCTopologicalIsland_DCTopologicalNodes",
             "displayName": "DCTopologicalIsland.DCTopologicalNodes",
             "description": "",
             "target": "dtmi:iec:cim:schema:DCTopologicalNode;16"

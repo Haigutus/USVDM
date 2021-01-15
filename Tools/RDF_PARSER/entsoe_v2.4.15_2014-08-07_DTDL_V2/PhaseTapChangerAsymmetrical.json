@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerAsymmetrical:windingConnectionAngle;16",
             "@type": "Property",
-            "name": "windingConnectionAngle",
+            "name": "PhaseTapChangerAsymmetrical_windingConnectionAngle",
             "displayName": "PhaseTapChangerAsymmetrical.windingConnectionAngle",
             "description": "The phase angle between the in-phase winding and the out-of -phase winding used for creating phase shift. The out-of-phase winding produces what is known as the difference voltage.  Setting this angle to 90 degrees is not the same as a symmemtrical transformer.",
             "schema": "float"

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:CurrentLimit:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "CurrentLimit_value",
             "displayName": "CurrentLimit.value",
             "description": "Limit on current flow.",
             "schema": "float"

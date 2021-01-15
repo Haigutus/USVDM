@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:GeneratingUnit;16",
             "@type": "Relationship",
-            "name": "GeneratingUnit",
+            "name": "RotatingMachine_GeneratingUnit",
             "displayName": "RotatingMachine.GeneratingUnit",
             "description": "A synchronous machine may operate as a generator and as such becomes a member of a generating unit.",
             "target": "dtmi:iec:cim:schema:GeneratingUnit;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:p;16",
             "@type": "Property",
-            "name": "p",
+            "name": "RotatingMachine_p",
             "displayName": "RotatingMachine.p",
             "description": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "RotatingMachine_q",
             "displayName": "RotatingMachine.q",
             "description": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedPowerFactor;16",
             "@type": "Property",
-            "name": "ratedPowerFactor",
+            "name": "RotatingMachine_ratedPowerFactor",
             "displayName": "RotatingMachine.ratedPowerFactor",
             "description": "Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedS;16",
             "@type": "Property",
-            "name": "ratedS",
+            "name": "RotatingMachine_ratedS",
             "displayName": "RotatingMachine.ratedS",
             "description": "Nameplate apparent power rating for the unit.\nThe attribute shall have a positive value.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RotatingMachine:ratedU;16",
             "@type": "Property",
-            "name": "ratedU",
+            "name": "RotatingMachine_ratedU",
             "displayName": "RotatingMachine.ratedU",
             "description": "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.",
             "schema": "float"

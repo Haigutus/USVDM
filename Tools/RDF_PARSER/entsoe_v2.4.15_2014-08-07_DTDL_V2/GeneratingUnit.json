@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:genControlSource;16",
             "@type": "Property",
-            "name": "genControlSource",
+            "name": "GeneratingUnit_genControlSource",
             "displayName": "GeneratingUnit.genControlSource",
             "description": "The source of controls for a generating unit.",
             "schema": {
@@ -20,25 +20,25 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "unavailable",
+                        "name": "GeneratingUnit_genControlSource",
                         "displayName": "GeneratorControlSource.unavailable",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.unavailable",
                         "description": "Not available."
                     },
                     {
-                        "name": "offAGC",
+                        "name": "GeneratingUnit_genControlSource",
                         "displayName": "GeneratorControlSource.offAGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.offAGC",
                         "description": "Off of automatic generation control (AGC)."
                     },
                     {
-                        "name": "onAGC",
+                        "name": "GeneratingUnit_genControlSource",
                         "displayName": "GeneratorControlSource.onAGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.onAGC",
                         "description": "On automatic generation control (AGC)."
                     },
                     {
-                        "name": "plantControl",
+                        "name": "GeneratingUnit_genControlSource",
                         "displayName": "GeneratorControlSource.plantControl",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratorControlSource.plantControl",
                         "description": "Plant is controlling."
@@ -49,7 +49,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:governorSCD;16",
             "@type": "Property",
-            "name": "governorSCD",
+            "name": "GeneratingUnit_governorSCD",
             "displayName": "GeneratingUnit.governorSCD",
             "description": "Governor Speed Changer Droop.   This is the change in generator power output divided by the change in frequency normalized by the nominal power of the generator and the nominal frequency and expressed in percent and negated. A positive value of speed change droop provides additional generator output upon a drop in frequency.",
             "schema": "float"
@@ -57,7 +57,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:initialP;16",
             "@type": "Property",
-            "name": "initialP",
+            "name": "GeneratingUnit_initialP",
             "displayName": "GeneratingUnit.initialP",
             "description": "Default initial active power  which is used to store a powerflow result for the initial active power for this unit in this network configuration.",
             "schema": "float"
@@ -65,7 +65,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:longPF;16",
             "@type": "Property",
-            "name": "longPF",
+            "name": "GeneratingUnit_longPF",
             "displayName": "GeneratingUnit.longPF",
             "description": "Generating unit long term economic participation factor.",
             "schema": "float"
@@ -73,7 +73,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:maxOperatingP;16",
             "@type": "Property",
-            "name": "maxOperatingP",
+            "name": "GeneratingUnit_maxOperatingP",
             "displayName": "GeneratingUnit.maxOperatingP",
             "description": "This is the maximum operating active power limit the dispatcher can enter for this unit.",
             "schema": "float"
@@ -81,7 +81,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:maximumAllowableSpinningReserve;16",
             "@type": "Property",
-            "name": "maximumAllowableSpinningReserve",
+            "name": "GeneratingUnit_maximumAllowableSpinningReserve",
             "displayName": "GeneratingUnit.maximumAllowableSpinningReserve",
             "description": "Maximum allowable spinning reserve. Spinning reserve will never be considered greater than this value regardless of the current operating point.",
             "schema": "float"
@@ -89,7 +89,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:minOperatingP;16",
             "@type": "Property",
-            "name": "minOperatingP",
+            "name": "GeneratingUnit_minOperatingP",
             "displayName": "GeneratingUnit.minOperatingP",
             "description": "This is the minimum operating active power limit the dispatcher can enter for this unit.",
             "schema": "float"
@@ -97,7 +97,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:nominalP;16",
             "@type": "Property",
-            "name": "nominalP",
+            "name": "GeneratingUnit_nominalP",
             "displayName": "GeneratingUnit.nominalP",
             "description": "The nominal power of the generating unit.  Used to give precise meaning to percentage based attributes such as the governor speed change droop (governorSCD attribute).\nThe attribute shall be a positive value equal or less than RotatingMachine.ratedS.",
             "schema": "float"
@@ -105,7 +105,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:normalPF;16",
             "@type": "Property",
-            "name": "normalPF",
+            "name": "GeneratingUnit_normalPF",
             "displayName": "GeneratingUnit.normalPF",
             "description": "Generating unit economic participation factor.",
             "schema": "float"
@@ -113,7 +113,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:ratedGrossMaxP;16",
             "@type": "Property",
-            "name": "ratedGrossMaxP",
+            "name": "GeneratingUnit_ratedGrossMaxP",
             "displayName": "GeneratingUnit.ratedGrossMaxP",
             "description": "The unit's gross rated maximum capacity (book value).",
             "schema": "float"
@@ -121,7 +121,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:ratedGrossMinP;16",
             "@type": "Property",
-            "name": "ratedGrossMinP",
+            "name": "GeneratingUnit_ratedGrossMinP",
             "displayName": "GeneratingUnit.ratedGrossMinP",
             "description": "The gross rated minimum generation level which the unit can safely operate at while delivering power to the transmission grid.",
             "schema": "float"
@@ -129,7 +129,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:ratedNetMaxP;16",
             "@type": "Property",
-            "name": "ratedNetMaxP",
+            "name": "GeneratingUnit_ratedNetMaxP",
             "displayName": "GeneratingUnit.ratedNetMaxP",
             "description": "The net rated maximum capacity determined by subtracting the auxiliary power used to operate the internal plant machinery from the rated gross maximum capacity.",
             "schema": "float"
@@ -137,7 +137,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:shortPF;16",
             "@type": "Property",
-            "name": "shortPF",
+            "name": "GeneratingUnit_shortPF",
             "displayName": "GeneratingUnit.shortPF",
             "description": "Generating unit short term economic participation factor.",
             "schema": "float"
@@ -145,7 +145,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:startupCost;16",
             "@type": "Property",
-            "name": "startupCost",
+            "name": "GeneratingUnit_startupCost",
             "displayName": "GeneratingUnit.startupCost",
             "description": "The initial startup cost incurred for each start of the GeneratingUnit.",
             "schema": "float"
@@ -153,7 +153,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:totalEfficiency;16",
             "@type": "Property",
-            "name": "totalEfficiency",
+            "name": "GeneratingUnit_totalEfficiency",
             "displayName": "GeneratingUnit.totalEfficiency",
             "description": "The efficiency of the unit in converting the fuel into electrical energy.",
             "schema": "float"
@@ -161,7 +161,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GeneratingUnit:variableCost;16",
             "@type": "Property",
-            "name": "variableCost",
+            "name": "GeneratingUnit_variableCost",
             "displayName": "GeneratingUnit.variableCost",
             "description": "The variable cost component of production per unit of ActivePower.",
             "schema": "float"

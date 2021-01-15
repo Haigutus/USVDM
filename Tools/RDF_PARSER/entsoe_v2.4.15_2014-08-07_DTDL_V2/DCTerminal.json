@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCTerminal:DCConductingEquipment;16",
             "@type": "Relationship",
-            "name": "DCConductingEquipment",
+            "name": "DCTerminal_DCConductingEquipment",
             "displayName": "DCTerminal.DCConductingEquipment",
             "description": "",
             "target": "dtmi:iec:cim:schema:DCConductingEquipment;16",

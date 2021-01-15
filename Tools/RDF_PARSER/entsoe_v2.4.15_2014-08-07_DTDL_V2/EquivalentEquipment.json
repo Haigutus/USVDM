@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentEquipment:EquivalentNetwork;16",
             "@type": "Relationship",
-            "name": "EquivalentNetwork",
+            "name": "EquivalentEquipment_EquivalentNetwork",
             "displayName": "EquivalentEquipment.EquivalentNetwork",
             "description": "The associated reduced equivalents.",
             "target": "dtmi:iec:cim:schema:EquivalentNetwork;16",

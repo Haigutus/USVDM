@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Bay:VoltageLevel;16",
             "@type": "Relationship",
-            "name": "VoltageLevel",
+            "name": "Bay_VoltageLevel",
             "displayName": "Bay.VoltageLevel",
             "description": "The voltage level containing this bay.",
             "target": "dtmi:iec:cim:schema:VoltageLevel;16",

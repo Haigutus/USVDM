@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogLimit:LimitSet;16",
             "@type": "Relationship",
-            "name": "LimitSet",
+            "name": "AnalogLimit_LimitSet",
             "displayName": "AnalogLimit.LimitSet",
             "description": "The limit values used for supervision of Measurements.",
             "target": "dtmi:iec:cim:schema:AnalogLimitSet;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogLimit:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "AnalogLimit_value",
             "displayName": "AnalogLimit.value",
             "description": "The value to supervise against.",
             "schema": "float"

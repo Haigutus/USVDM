@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvVoltage:TopologicalNode;16",
             "@type": "Relationship",
-            "name": "TopologicalNode",
+            "name": "SvVoltage_TopologicalNode",
             "displayName": "SvVoltage.TopologicalNode",
             "description": "The state voltage associated with the topological node.",
             "target": "dtmi:iec:cim:schema:TopologicalNode;16",
@@ -18,7 +18,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvVoltage:angle;16",
             "@type": "Property",
-            "name": "angle",
+            "name": "SvVoltage_angle",
             "displayName": "SvVoltage.angle",
             "description": "The voltage angle of the topological node complex voltage with respect to system reference.",
             "schema": "float"
@@ -26,7 +26,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SvVoltage:v;16",
             "@type": "Property",
-            "name": "v",
+            "name": "SvVoltage_v",
             "displayName": "SvVoltage.v",
             "description": "The voltage magnitude of the topological node.",
             "schema": "float"

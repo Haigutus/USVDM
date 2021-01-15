@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCShunt:capacitance;16",
             "@type": "Property",
-            "name": "capacitance",
+            "name": "DCShunt_capacitance",
             "displayName": "DCShunt.capacitance",
             "description": "Capacitance of the DC shunt.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCShunt:ratedUdc;16",
             "@type": "Property",
-            "name": "ratedUdc",
+            "name": "DCShunt_ratedUdc",
             "displayName": "DCShunt.ratedUdc",
             "description": "Rated DC device voltage. Converter configuration data used in power flow.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCShunt:resistance;16",
             "@type": "Property",
-            "name": "resistance",
+            "name": "DCShunt_resistance",
             "displayName": "DCShunt.resistance",
             "description": "Resistance of the DC device.",
             "schema": "float"

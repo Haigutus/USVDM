@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SwitchSchedule:Switch;16",
             "@type": "Relationship",
-            "name": "Switch",
+            "name": "SwitchSchedule_Switch",
             "displayName": "SwitchSchedule.Switch",
             "description": "A Switch can be associated with SwitchSchedules.",
             "target": "dtmi:iec:cim:schema:Switch;16",

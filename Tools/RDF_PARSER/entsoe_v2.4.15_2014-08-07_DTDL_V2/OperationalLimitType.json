@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimitType:acceptableDuration;16",
             "@type": "Property",
-            "name": "acceptableDuration",
+            "name": "OperationalLimitType_acceptableDuration",
             "displayName": "OperationalLimitType.acceptableDuration",
             "description": "The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimitType:direction;16",
             "@type": "Property",
-            "name": "direction",
+            "name": "OperationalLimitType_direction",
             "displayName": "OperationalLimitType.direction",
             "description": "The direction of the limit.",
             "schema": {
@@ -28,19 +28,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "high",
+                        "name": "OperationalLimitType_direction",
                         "displayName": "OperationalLimitDirectionKind.high",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OperationalLimitDirectionKind.high",
                         "description": "High means that a monitored value above the limit value is a violation.   If applied to a terminal flow, the positive direction is into the terminal."
                     },
                     {
-                        "name": "low",
+                        "name": "OperationalLimitType_direction",
                         "displayName": "OperationalLimitDirectionKind.low",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OperationalLimitDirectionKind.low",
                         "description": "Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal."
                     },
                     {
-                        "name": "absoluteValue",
+                        "name": "OperationalLimitType_direction",
                         "displayName": "OperationalLimitDirectionKind.absoluteValue",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OperationalLimitDirectionKind.absoluteValue",
                         "description": "An absoluteValue limit means that a monitored absolute value above the limit value is a violation."
@@ -51,7 +51,7 @@
         {
             "@id": "dtmi:eu:cim:extension:OperationalLimitType:limitType;31",
             "@type": "Property",
-            "name": "limitType",
+            "name": "OperationalLimitType_limitType",
             "displayName": "OperationalLimitType.limitType",
             "description": "Types of limits defined in the ENTSO-E Operational Handbook Policy 3.",
             "schema": {
@@ -59,43 +59,43 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "patl",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.patl",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.patl",
                         "description": "The Permanent Admissible Transmission Loading (PATL) is the loading in Amps, MVA or MW that can be accepted by a network branch for an unlimited duration without any risk for the material.\nThe duration attribute is not used and shall be excluded for the PATL limit type. Hence only one limit value exists for the PATL type."
                     },
                     {
-                        "name": "patlt",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.patlt",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.patlt",
                         "description": "Permanent Admissible Transmission Loading Threshold  (PATLT) is a value in engineering units defined for PATL and calculated using percentage less than 100 of the PATL type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit."
                     },
                     {
-                        "name": "tatl",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.tatl",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.tatl",
                         "description": "Temporarily Admissible Transmission Loading (TATL) which is the loading in Amps, MVA or MW that can be accepted by a branch for a certain limited duration.\nThe TATL can be defined in different ways:\n"
                     },
                     {
-                        "name": "tc",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.tc",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.tc",
                         "description": "Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\nThe tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\nThe duration is always zero and the duration attribute may be left out. Hence only one limit value exis"
                     },
                     {
-                        "name": "tct",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.tct",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.tct",
                         "description": "Tripping Current Threshold  (TCT) is a value in engineering units defined for TC and calculated using percentage less than 100 of the TC type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit."
                     },
                     {
-                        "name": "highVoltage",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.highVoltage",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.highVoltage",
                         "description": "Referring to the rating of the equipments, a voltage too high can lead to accelerated ageing or the destruction of the equipment. \nThis limit type may or may not have duration."
                     },
                     {
-                        "name": "lowVoltage",
+                        "name": "OperationalLimitType_limitType",
                         "displayName": "LimitTypeKind.lowVoltage",
                         "enumValue": "http://entsoe.eu/CIM/SchemaExtension/3/1#LimitTypeKind.lowVoltage",
                         "description": "A too low voltage can disturb the normal operation of some protections and transformer equipped with on-load tap changers, electronic power devices or can affect the behaviour of the auxiliaries of generation units.\nThis limit type may or may not have duration."

@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogControl:AnalogValue;16",
             "@type": "Relationship",
-            "name": "AnalogValue",
+            "name": "AnalogControl_AnalogValue",
             "displayName": "AnalogControl.AnalogValue",
             "description": "The Control variable associated with the MeasurementValue.",
             "target": "dtmi:iec:cim:schema:AnalogValue;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogControl:maxValue;16",
             "@type": "Property",
-            "name": "maxValue",
+            "name": "AnalogControl_maxValue",
             "displayName": "AnalogControl.maxValue",
             "description": "Normal value range maximum for any of the Control.value. Used for scaling, e.g. in bar graphs.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogControl:minValue;16",
             "@type": "Property",
-            "name": "minValue",
+            "name": "AnalogControl_minValue",
             "displayName": "AnalogControl.minValue",
             "description": "Normal value range minimum for any of the Control.value. Used for scaling, e.g. in bar graphs.",
             "schema": "float"

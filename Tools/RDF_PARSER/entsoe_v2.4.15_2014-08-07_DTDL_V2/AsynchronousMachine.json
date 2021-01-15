@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:asynchronousMachineType;16",
             "@type": "Property",
-            "name": "asynchronousMachineType",
+            "name": "AsynchronousMachine_asynchronousMachineType",
             "displayName": "AsynchronousMachine.asynchronousMachineType",
             "description": "Indicates the type of Asynchronous Machine (motor or generator).",
             "schema": {
@@ -20,13 +20,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "generator",
+                        "name": "AsynchronousMachine_asynchronousMachineType",
                         "displayName": "AsynchronousMachineKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.generator",
                         "description": "The Asynchronous Machine is a generator."
                     },
                     {
-                        "name": "motor",
+                        "name": "AsynchronousMachine_asynchronousMachineType",
                         "displayName": "AsynchronousMachineKind.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#AsynchronousMachineKind.motor",
                         "description": "The Asynchronous Machine is a motor."
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:converterFedDrive;16",
             "@type": "Property",
-            "name": "converterFedDrive",
+            "name": "AsynchronousMachine_converterFedDrive",
             "displayName": "AsynchronousMachine.converterFedDrive",
             "description": "Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909",
             "schema": "boolean"
@@ -45,7 +45,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:efficiency;16",
             "@type": "Property",
-            "name": "efficiency",
+            "name": "AsynchronousMachine_efficiency",
             "displayName": "AsynchronousMachine.efficiency",
             "description": "Efficiency of the asynchronous machine at nominal operation in percent. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -53,7 +53,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:iaIrRatio;16",
             "@type": "Property",
-            "name": "iaIrRatio",
+            "name": "AsynchronousMachine_iaIrRatio",
             "displayName": "AsynchronousMachine.iaIrRatio",
             "description": "Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -61,7 +61,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:nominalFrequency;16",
             "@type": "Property",
-            "name": "nominalFrequency",
+            "name": "AsynchronousMachine_nominalFrequency",
             "displayName": "AsynchronousMachine.nominalFrequency",
             "description": "Nameplate data indicates if the machine is 50 or 60 Hz.",
             "schema": "float"
@@ -69,7 +69,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:nominalSpeed;16",
             "@type": "Property",
-            "name": "nominalSpeed",
+            "name": "AsynchronousMachine_nominalSpeed",
             "displayName": "AsynchronousMachine.nominalSpeed",
             "description": "Nameplate data.  Depends on the slip and number of pole pairs.",
             "schema": "float"
@@ -77,7 +77,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:polePairNumber;16",
             "@type": "Property",
-            "name": "polePairNumber",
+            "name": "AsynchronousMachine_polePairNumber",
             "displayName": "AsynchronousMachine.polePairNumber",
             "description": "Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909",
             "schema": "integer"
@@ -85,7 +85,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:ratedMechanicalPower;16",
             "@type": "Property",
-            "name": "ratedMechanicalPower",
+            "name": "AsynchronousMachine_ratedMechanicalPower",
             "displayName": "AsynchronousMachine.ratedMechanicalPower",
             "description": "Rated mechanical power (Pr in the IEC 60909-0). Used for short circuit data exchange according to IEC 60909.",
             "schema": "float"
@@ -93,7 +93,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:reversible;16",
             "@type": "Property",
-            "name": "reversible",
+            "name": "AsynchronousMachine_reversible",
             "displayName": "AsynchronousMachine.reversible",
             "description": "Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909",
             "schema": "boolean"
@@ -101,7 +101,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AsynchronousMachine:rxLockedRotorRatio;16",
             "@type": "Property",
-            "name": "rxLockedRotorRatio",
+            "name": "AsynchronousMachine_rxLockedRotorRatio",
             "displayName": "AsynchronousMachine.rxLockedRotorRatio",
             "description": "Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909",
             "schema": "float"

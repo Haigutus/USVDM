@@ -9,7 +9,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:b;16",
             "@type": "Property",
-            "name": "b",
+            "name": "TapChangerTablePoint_b",
             "displayName": "TapChangerTablePoint.b",
             "description": "The magnetizing branch susceptance deviation in percent of nominal value. The actual susceptance is calculated as follows:\ncalculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100).   The b(nominal) is defined as the static magnetizing susceptance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.",
             "schema": "float"
@@ -17,7 +17,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:g;16",
             "@type": "Property",
-            "name": "g",
+            "name": "TapChangerTablePoint_g",
             "displayName": "TapChangerTablePoint.g",
             "description": "The magnetizing branch conductance deviation in percent of nominal value. The actual conductance is calculated as follows:\ncalculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100).   The g(nominal) is defined as the static magnetizing conductance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.",
             "schema": "float"
@@ -25,7 +25,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "TapChangerTablePoint_r",
             "displayName": "TapChangerTablePoint.r",
             "description": "The resistance deviation in percent of nominal value. The actual reactance is calculated as follows:\ncalculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nominal) is defined as the static resistance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.",
             "schema": "float"
@@ -33,7 +33,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:ratio;16",
             "@type": "Property",
-            "name": "ratio",
+            "name": "TapChangerTablePoint_ratio",
             "displayName": "TapChangerTablePoint.ratio",
             "description": "The voltage ratio in per unit. Hence this is a value close to one.",
             "schema": "float"
@@ -41,7 +41,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:step;16",
             "@type": "Property",
-            "name": "step",
+            "name": "TapChangerTablePoint_step",
             "displayName": "TapChangerTablePoint.step",
             "description": "The tap step.",
             "schema": "integer"
@@ -49,7 +49,7 @@
         {
             "@id": "dtmi:iec:cim:schema:TapChangerTablePoint:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "TapChangerTablePoint_x",
             "displayName": "TapChangerTablePoint.x",
             "description": "The series reactance deviation in percent of nominal value. The actual reactance is calculated as follows:\ncalculated reactance = x(nominal) * (1 + x(from this class)/100).   The x(nominal) is defined as the static series reactance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form.",
             "schema": "float"

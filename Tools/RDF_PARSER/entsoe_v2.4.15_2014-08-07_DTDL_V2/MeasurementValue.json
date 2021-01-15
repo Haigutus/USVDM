@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MeasurementValue:MeasurementValueSource;16",
             "@type": "Relationship",
-            "name": "MeasurementValueSource",
+            "name": "MeasurementValue_MeasurementValueSource",
             "displayName": "MeasurementValue.MeasurementValueSource",
             "description": "The MeasurementValues updated by the source.",
             "target": "dtmi:iec:cim:schema:MeasurementValueSource;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MeasurementValue:sensorAccuracy;16",
             "@type": "Property",
-            "name": "sensorAccuracy",
+            "name": "MeasurementValue_sensorAccuracy",
             "displayName": "MeasurementValue.sensorAccuracy",
             "description": "The limit, expressed as a percentage of the sensor maximum, that errors will not exceed when the sensor is used under  reference conditions.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:MeasurementValue:timeStamp;16",
             "@type": "Property",
-            "name": "timeStamp",
+            "name": "MeasurementValue_timeStamp",
             "displayName": "MeasurementValue.timeStamp",
             "description": "The time when the value was last updated",
             "schema": "dateTime"

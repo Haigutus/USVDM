@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChanger:TransformerEnd;16",
             "@type": "Relationship",
-            "name": "TransformerEnd",
+            "name": "PhaseTapChanger_TransformerEnd",
             "displayName": "PhaseTapChanger.TransformerEnd",
             "description": "Phase tap changer associated with this transformer end.",
             "target": "dtmi:iec:cim:schema:TransformerEnd;16",

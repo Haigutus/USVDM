@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:PowerSystemResource;16",
             "@type": "Relationship",
-            "name": "PowerSystemResource",
+            "name": "Measurement_PowerSystemResource",
             "displayName": "Measurement.PowerSystemResource",
             "description": "The measurements associated with this power system resource.",
             "target": "dtmi:iec:cim:schema:PowerSystemResource;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:Terminal;16",
             "@type": "Relationship",
-            "name": "Terminal",
+            "name": "Measurement_Terminal",
             "displayName": "Measurement.Terminal",
             "description": "One or more measurements may be associated with a terminal in the network.",
             "target": "dtmi:iec:cim:schema:ACDCTerminal;16",
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:measurementType;16",
             "@type": "Property",
-            "name": "measurementType",
+            "name": "Measurement_measurementType",
             "displayName": "Measurement.measurementType",
             "description": "Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc.",
             "schema": "string"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:phases;16",
             "@type": "Property",
-            "name": "phases",
+            "name": "Measurement_phases",
             "displayName": "Measurement.phases",
             "description": "Indicates to which phases the measurement applies and avoids the need to use 'measurementType' to also encode phase information (which would explode the types). The phase information in Measurement, along with 'measurementType' and 'phases' uniquely defines a Measurement for a device, based on normal network phase. Their meaning will not change when the computed energizing phasing is changed due to jumpers or other reasons.\nIf the attribute is missing three phases (ABC) shall be assumed.",
             "schema": {
@@ -45,127 +45,127 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "ABCN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.ABCN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABCN",
                         "description": "Phases A, B, C, and N."
                     },
                     {
-                        "name": "ABC",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.ABC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABC",
                         "description": "Phases A, B, and C."
                     },
                     {
-                        "name": "ABN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.ABN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABN",
                         "description": "Phases A, B, and neutral."
                     },
                     {
-                        "name": "ACN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.ACN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ACN",
                         "description": "Phases A, C and neutral."
                     },
                     {
-                        "name": "BCN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.BCN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BCN",
                         "description": "Phases B, C, and neutral."
                     },
                     {
-                        "name": "AB",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.AB",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AB",
                         "description": "Phases A and B."
                     },
                     {
-                        "name": "AC",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.AC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AC",
                         "description": "Phases A and C."
                     },
                     {
-                        "name": "BC",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.BC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BC",
                         "description": "Phases B and C."
                     },
                     {
-                        "name": "AN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.AN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AN",
                         "description": "Phases A and neutral."
                     },
                     {
-                        "name": "BN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.BN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BN",
                         "description": "Phases B and neutral."
                     },
                     {
-                        "name": "CN",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.CN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.CN",
                         "description": "Phases C and neutral."
                     },
                     {
-                        "name": "A",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.A",
                         "description": "Phase A."
                     },
                     {
-                        "name": "B",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.B",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.B",
                         "description": "Phase B."
                     },
                     {
-                        "name": "C",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.C",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.C",
                         "description": "Phase C."
                     },
                     {
-                        "name": "N",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.N",
                         "description": "Neutral phase."
                     },
                     {
-                        "name": "s1N",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s1N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s1N",
                         "description": "Secondary phase 1 and neutral."
                     },
                     {
-                        "name": "s2N",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s2N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s2N",
                         "description": "Secondary phase 2 and neutral."
                     },
                     {
-                        "name": "s12N",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s12N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s12N",
                         "description": "Secondary phases 1, 2, and neutral."
                     },
                     {
-                        "name": "s1",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s1",
                         "description": "Secondary phase 1."
                     },
                     {
-                        "name": "s2",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s2",
                         "description": "Secondary phase 2."
                     },
                     {
-                        "name": "s12",
+                        "name": "Measurement_phases",
                         "displayName": "PhaseCode.s12",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s12",
                         "description": "Secondary phase 1 and 2."
@@ -176,7 +176,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:unitMultiplier;16",
             "@type": "Property",
-            "name": "unitMultiplier",
+            "name": "Measurement_unitMultiplier",
             "displayName": "Measurement.unitMultiplier",
             "description": "The unit multiplier of the measured quantity.",
             "schema": {
@@ -184,331 +184,331 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "p",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
                     },
                     {
-                        "name": "p",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.p",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p",
                         "description": "Pico 10**-12."
                     },
                     {
-                        "name": "n",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.n",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n",
                         "description": "Nano 10**-9."
                     },
                     {
-                        "name": "micro",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.micro",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro",
                         "description": "Micro 10**-6."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m",
                         "description": "Milli 10**-3."
                     },
                     {
-                        "name": "c",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.c",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c",
                         "description": "Centi 10**-2."
                     },
                     {
-                        "name": "d",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.d",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d",
                         "description": "Deci 10**-1."
                     },
                     {
-                        "name": "k",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.k",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k",
                         "description": "Kilo 10**3."
                     },
                     {
-                        "name": "M",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.M",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M",
                         "description": "Mega 10**6."
                     },
                     {
-                        "name": "G",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.G",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G",
                         "description": "Giga 10**9."
                     },
                     {
-                        "name": "T",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.T",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T",
                         "description": "Tera 10**12."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitMultiplier",
                         "displayName": "UnitMultiplier.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none",
                         "description": "No multiplier or equivalently multiply by 1."
@@ -519,7 +519,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Measurement:unitSymbol;16",
             "@type": "Property",
-            "name": "unitSymbol",
+            "name": "Measurement_unitSymbol",
             "displayName": "Measurement.unitSymbol",
             "description": "The unit of measure of the measured quantity.",
             "schema": {
@@ -527,601 +527,601 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "VA",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "name": "W",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "name": "VAr",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "name": "VAh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "name": "Wh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "name": "VArh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "name": "V",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "name": "ohm",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "name": "A",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "name": "F",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "name": "H",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "name": "degC",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "name": "s",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "name": "min",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "name": "h",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "name": "deg",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "name": "rad",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "name": "J",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "name": "N",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "name": "S",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "name": "Hz",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "name": "g",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "name": "Pa",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "name": "m2",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "name": "m3",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "name": "VA",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "name": "W",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "name": "VAr",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "name": "VAh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "name": "Wh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "name": "VArh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "name": "V",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "name": "ohm",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "name": "A",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "name": "F",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "name": "H",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "name": "degC",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "name": "s",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "name": "min",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "name": "h",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "name": "deg",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "name": "rad",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "name": "J",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "name": "N",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "name": "S",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "name": "Hz",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "name": "g",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "name": "Pa",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "name": "m2",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "name": "m3",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "name": "VA",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "name": "W",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "name": "VAr",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "name": "VAh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "name": "Wh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "name": "VArh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "name": "V",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "name": "ohm",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "name": "A",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "name": "F",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "name": "H",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "name": "degC",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "name": "s",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "name": "min",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "name": "h",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "name": "deg",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "name": "rad",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "name": "J",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "name": "N",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."
                     },
                     {
-                        "name": "S",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.S",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S",
                         "description": "Conductance in siemens."
                     },
                     {
-                        "name": "none",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.none",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none",
                         "description": "Dimension less quantity, e.g. count, per unit, etc."
                     },
                     {
-                        "name": "Hz",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Hz",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz",
                         "description": "Frequency in hertz."
                     },
                     {
-                        "name": "g",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.g",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g",
                         "description": "Mass in gram."
                     },
                     {
-                        "name": "Pa",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Pa",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa",
                         "description": "Pressure in pascal (n/m2)."
                     },
                     {
-                        "name": "m",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m",
                         "description": "Length in meter."
                     },
                     {
-                        "name": "m2",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2",
                         "description": "Area in square meters."
                     },
                     {
-                        "name": "m3",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.m3",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3",
                         "description": "Volume in cubic meters."
                     },
                     {
-                        "name": "VA",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VA",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA",
                         "description": "Apparent power in volt ampere."
                     },
                     {
-                        "name": "W",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.W",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W",
                         "description": "Active power in watt."
                     },
                     {
-                        "name": "VAr",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAr",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr",
                         "description": "Reactive power in volt ampere reactive."
                     },
                     {
-                        "name": "VAh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VAh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh",
                         "description": "Apparent energy in volt ampere hours."
                     },
                     {
-                        "name": "Wh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.Wh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh",
                         "description": "Real energy in what hours."
                     },
                     {
-                        "name": "VArh",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.VArh",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh",
                         "description": "Reactive energy in volt ampere reactive hours."
                     },
                     {
-                        "name": "V",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.V",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V",
                         "description": "Voltage in volt."
                     },
                     {
-                        "name": "ohm",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.ohm",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm",
                         "description": "Resistance in ohm."
                     },
                     {
-                        "name": "A",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A",
                         "description": "Current in ampere."
                     },
                     {
-                        "name": "F",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.F",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F",
                         "description": "Capacitance in farad."
                     },
                     {
-                        "name": "H",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.H",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H",
                         "description": "Inductance in henry."
                     },
                     {
-                        "name": "degC",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.degC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC",
                         "description": "Relative temperature in degrees Celsius. In the SI unit system the symbol is \u00baC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using \u00baC is the special character \u00ba is difficult to manage in software."
                     },
                     {
-                        "name": "s",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.s",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s",
                         "description": "Time in seconds."
                     },
                     {
-                        "name": "min",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.min",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min",
                         "description": "Time in minutes."
                     },
                     {
-                        "name": "h",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.h",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h",
                         "description": "Time in hours."
                     },
                     {
-                        "name": "deg",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.deg",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg",
                         "description": "Plane angle in degrees."
                     },
                     {
-                        "name": "rad",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.rad",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad",
                         "description": "Plane angle in radians."
                     },
                     {
-                        "name": "J",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.J",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J",
                         "description": "Energy in joule."
                     },
                     {
-                        "name": "N",
+                        "name": "Measurement_unitSymbol",
                         "displayName": "UnitSymbol.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N",
                         "description": "Force in newton."

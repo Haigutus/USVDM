@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerTablePoint:PhaseTapChangerTable;16",
             "@type": "Relationship",
-            "name": "PhaseTapChangerTable",
+            "name": "PhaseTapChangerTablePoint_PhaseTapChangerTable",
             "displayName": "PhaseTapChangerTablePoint.PhaseTapChangerTable",
             "description": "The table of this point.",
             "target": "dtmi:iec:cim:schema:PhaseTapChangerTable;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:PhaseTapChangerTablePoint:angle;16",
             "@type": "Property",
-            "name": "angle",
+            "name": "PhaseTapChangerTablePoint_angle",
             "displayName": "PhaseTapChangerTablePoint.angle",
             "description": "The angle difference in degrees.",
             "schema": "float"

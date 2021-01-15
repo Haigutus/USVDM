@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Switch:normalOpen;16",
             "@type": "Property",
-            "name": "normalOpen",
+            "name": "Switch_normalOpen",
             "displayName": "Switch.normalOpen",
             "description": "The attribute is used in cases when no Measurement for the status value is present. If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen.",
             "schema": "boolean"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Switch:open;16",
             "@type": "Property",
-            "name": "open",
+            "name": "Switch_open",
             "displayName": "Switch.open",
             "description": "The attribute tells if the switch is considered open when used as input to topology processing.",
             "schema": "boolean"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Switch:ratedCurrent;16",
             "@type": "Property",
-            "name": "ratedCurrent",
+            "name": "Switch_ratedCurrent",
             "displayName": "Switch.ratedCurrent",
             "description": "The maximum continuous current carrying capacity in amps governed by the device material and construction.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Switch:retained;16",
             "@type": "Property",
-            "name": "retained",
+            "name": "Switch_retained",
             "displayName": "Switch.retained",
             "description": "Branch is retained in a bus branch model.  The flow through retained switches will normally be calculated in power flow.",
             "schema": "boolean"

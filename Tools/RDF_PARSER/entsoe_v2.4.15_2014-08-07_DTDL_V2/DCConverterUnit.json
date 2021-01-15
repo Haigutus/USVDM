@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCConverterUnit:Substation;16",
             "@type": "Relationship",
-            "name": "Substation",
+            "name": "DCConverterUnit_Substation",
             "displayName": "DCConverterUnit.Substation",
             "description": "",
             "target": "dtmi:iec:cim:schema:Substation;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:DCConverterUnit:operationMode;16",
             "@type": "Property",
-            "name": "operationMode",
+            "name": "DCConverterUnit_operationMode",
             "displayName": "DCConverterUnit.operationMode",
             "description": "",
             "schema": {
@@ -29,19 +29,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "bipolar",
+                        "name": "DCConverterUnit_operationMode",
                         "displayName": "DCConverterOperatingModeKind.bipolar",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.bipolar",
                         "description": "Bipolar operation."
                     },
                     {
-                        "name": "monopolarMetallicReturn",
+                        "name": "DCConverterUnit_operationMode",
                         "displayName": "DCConverterOperatingModeKind.monopolarMetallicReturn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarMetallicReturn",
                         "description": "Monopolar operation with metallic return"
                     },
                     {
-                        "name": "monopolarGroundReturn",
+                        "name": "DCConverterUnit_operationMode",
                         "displayName": "DCConverterOperatingModeKind.monopolarGroundReturn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#DCConverterOperatingModeKind.monopolarGroundReturn",
                         "description": "Monopolar operation with ground return"

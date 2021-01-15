@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AccumulatorValue:Accumulator;16",
             "@type": "Relationship",
-            "name": "Accumulator",
+            "name": "AccumulatorValue_Accumulator",
             "displayName": "AccumulatorValue.Accumulator",
             "description": "The values connected to this measurement.",
             "target": "dtmi:iec:cim:schema:Accumulator;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AccumulatorValue:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "AccumulatorValue_value",
             "displayName": "AccumulatorValue.value",
             "description": "The value to supervise. The value is positive.",
             "schema": "integer"

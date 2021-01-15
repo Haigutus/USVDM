@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimitSet:Equipment;16",
             "@type": "Relationship",
-            "name": "Equipment",
+            "name": "OperationalLimitSet_Equipment",
             "displayName": "OperationalLimitSet.Equipment",
             "description": "The equipment to which the limit set applies.",
             "target": "dtmi:iec:cim:schema:Equipment;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:OperationalLimitSet:Terminal;16",
             "@type": "Relationship",
-            "name": "Terminal",
+            "name": "OperationalLimitSet_Terminal",
             "displayName": "OperationalLimitSet.Terminal",
             "description": "",
             "target": "dtmi:iec:cim:schema:ACDCTerminal;16",

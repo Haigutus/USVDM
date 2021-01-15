@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Season:endDate;16",
             "@type": "Property",
-            "name": "endDate",
+            "name": "Season_endDate",
             "displayName": "Season.endDate",
             "description": "Date season ends.",
             "schema": "integer"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Season:startDate;16",
             "@type": "Property",
-            "name": "startDate",
+            "name": "Season_startDate",
             "displayName": "Season.startDate",
             "description": "Date season starts.",
             "schema": "integer"

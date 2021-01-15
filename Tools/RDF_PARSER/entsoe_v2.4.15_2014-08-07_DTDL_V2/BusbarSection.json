@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:BusbarSection:ipMax;16",
             "@type": "Property",
-            "name": "ipMax",
+            "name": "BusbarSection_ipMax",
             "displayName": "BusbarSection.ipMax",
             "description": "Maximum allowable peak short-circuit current of busbar (Ipmax in the IEC 60909-0). \nMechanical limit of the busbar in the substation itself. Used for short circuit data exchange according to IEC 60909",
             "schema": "float"

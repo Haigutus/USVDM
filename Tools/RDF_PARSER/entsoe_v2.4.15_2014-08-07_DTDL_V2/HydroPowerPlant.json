@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:HydroPowerPlant:hydroPlantStorageType;16",
             "@type": "Property",
-            "name": "hydroPlantStorageType",
+            "name": "HydroPowerPlant_hydroPlantStorageType",
             "displayName": "HydroPowerPlant.hydroPlantStorageType",
             "description": "The type of hydro power plant water storage.",
             "schema": {
@@ -20,19 +20,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "runOfRiver",
+                        "name": "HydroPowerPlant_hydroPlantStorageType",
                         "displayName": "HydroPlantStorageKind.runOfRiver",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.runOfRiver",
                         "description": "Run of river."
                     },
                     {
-                        "name": "pumpedStorage",
+                        "name": "HydroPowerPlant_hydroPlantStorageType",
                         "displayName": "HydroPlantStorageKind.pumpedStorage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.pumpedStorage",
                         "description": "Pumped storage."
                     },
                     {
-                        "name": "storage",
+                        "name": "HydroPowerPlant_hydroPlantStorageType",
                         "displayName": "HydroPlantStorageKind.storage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroPlantStorageKind.storage",
                         "description": "Storage."

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:HydroPump:HydroPowerPlant;16",
             "@type": "Relationship",
-            "name": "HydroPowerPlant",
+            "name": "HydroPump_HydroPowerPlant",
             "displayName": "HydroPump.HydroPowerPlant",
             "description": "The hydro pump may be a member of a pumped storage plant or a pump for distributing water.",
             "target": "dtmi:iec:cim:schema:HydroPowerPlant;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:HydroPump:RotatingMachine;16",
             "@type": "Relationship",
-            "name": "RotatingMachine",
+            "name": "HydroPump_RotatingMachine",
             "displayName": "HydroPump.RotatingMachine",
             "description": "The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating.",
             "target": "dtmi:iec:cim:schema:RotatingMachine;16",

@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:DiagramStyle;16",
             "@type": "Relationship",
-            "name": "DiagramStyle",
+            "name": "Diagram_DiagramStyle",
             "displayName": "Diagram.DiagramStyle",
             "description": "A Diagram may have a DiagramStyle.",
             "target": "dtmi:iec:cim:schema:DiagramStyle;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:orientation;16",
             "@type": "Property",
-            "name": "orientation",
+            "name": "Diagram_orientation",
             "displayName": "Diagram.orientation",
             "description": "Coordinate system orientation of the diagram.",
             "schema": {
@@ -29,7 +29,7 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "negative",
+                        "name": "Diagram_orientation",
                         "displayName": "OrientationKind.negative",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OrientationKind.negative",
                         "description": "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."
@@ -40,7 +40,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:x1InitialView;16",
             "@type": "Property",
-            "name": "x1InitialView",
+            "name": "Diagram_x1InitialView",
             "displayName": "Diagram.x1InitialView",
             "description": "X coordinate of the first corner of the initial view.",
             "schema": "float"
@@ -48,7 +48,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:x2InitialView;16",
             "@type": "Property",
-            "name": "x2InitialView",
+            "name": "Diagram_x2InitialView",
             "displayName": "Diagram.x2InitialView",
             "description": "X coordinate of the second corner of the initial view.",
             "schema": "float"
@@ -56,7 +56,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:y1InitialView;16",
             "@type": "Property",
-            "name": "y1InitialView",
+            "name": "Diagram_y1InitialView",
             "displayName": "Diagram.y1InitialView",
             "description": "Y coordinate of the first corner of the initial view.",
             "schema": "float"
@@ -64,7 +64,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Diagram:y2InitialView;16",
             "@type": "Property",
-            "name": "y2InitialView",
+            "name": "Diagram_y2InitialView",
             "displayName": "Diagram.y2InitialView",
             "description": "Y coordinate of the second corner of the initial view.",
             "schema": "float"

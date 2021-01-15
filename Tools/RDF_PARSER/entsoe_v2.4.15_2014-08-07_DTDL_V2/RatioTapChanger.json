@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RatioTapChanger:RatioTapChangerTable;16",
             "@type": "Relationship",
-            "name": "RatioTapChangerTable",
+            "name": "RatioTapChanger_RatioTapChangerTable",
             "displayName": "RatioTapChanger.RatioTapChangerTable",
             "description": "The ratio tap changer of this tap ratio table.",
             "target": "dtmi:iec:cim:schema:RatioTapChangerTable;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RatioTapChanger:TransformerEnd;16",
             "@type": "Relationship",
-            "name": "TransformerEnd",
+            "name": "RatioTapChanger_TransformerEnd",
             "displayName": "RatioTapChanger.TransformerEnd",
             "description": "Ratio tap changer associated with this transformer end.",
             "target": "dtmi:iec:cim:schema:TransformerEnd;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RatioTapChanger:stepVoltageIncrement;16",
             "@type": "Property",
-            "name": "stepVoltageIncrement",
+            "name": "RatioTapChanger_stepVoltageIncrement",
             "displayName": "RatioTapChanger.stepVoltageIncrement",
             "description": "Tap step increment, in per cent of nominal voltage, per step position.",
             "schema": "float"
@@ -38,7 +38,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RatioTapChanger:tculControlMode;16",
             "@type": "Property",
-            "name": "tculControlMode",
+            "name": "RatioTapChanger_tculControlMode",
             "displayName": "RatioTapChanger.tculControlMode",
             "description": "Specifies the regulation control mode (voltage or reactive) of the RatioTapChanger.",
             "schema": {
@@ -46,13 +46,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "volt",
+                        "name": "RatioTapChanger_tculControlMode",
                         "displayName": "TransformerControlMode.volt",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.volt",
                         "description": "Voltage control"
                     },
                     {
-                        "name": "reactive",
+                        "name": "RatioTapChanger_tculControlMode",
                         "displayName": "TransformerControlMode.reactive",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.reactive",
                         "description": "Reactive power flow control"

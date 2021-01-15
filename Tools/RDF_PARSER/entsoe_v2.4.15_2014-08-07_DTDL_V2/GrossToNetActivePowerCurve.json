@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GrossToNetActivePowerCurve:GeneratingUnit;16",
             "@type": "Relationship",
-            "name": "GeneratingUnit",
+            "name": "GrossToNetActivePowerCurve_GeneratingUnit",
             "displayName": "GrossToNetActivePowerCurve.GeneratingUnit",
             "description": "A generating unit may have a gross active power to net active power curve, describing the losses and auxiliary power requirements of the unit.",
             "target": "dtmi:iec:cim:schema:GeneratingUnit;16",

@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:LoadGroup:SubLoadArea;16",
             "@type": "Relationship",
-            "name": "SubLoadArea",
+            "name": "LoadGroup_SubLoadArea",
             "displayName": "LoadGroup.SubLoadArea",
             "description": "The SubLoadArea where the Loadgroup belongs.",
             "target": "dtmi:iec:cim:schema:SubLoadArea;16",

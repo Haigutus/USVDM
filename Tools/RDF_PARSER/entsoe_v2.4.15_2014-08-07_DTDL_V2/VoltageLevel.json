@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VoltageLevel:BaseVoltage;16",
             "@type": "Relationship",
-            "name": "BaseVoltage",
+            "name": "VoltageLevel_BaseVoltage",
             "displayName": "VoltageLevel.BaseVoltage",
             "description": "The base voltage used for all equipment within the voltage level.",
             "target": "dtmi:iec:cim:schema:BaseVoltage;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VoltageLevel:Substation;16",
             "@type": "Relationship",
-            "name": "Substation",
+            "name": "VoltageLevel_Substation",
             "displayName": "VoltageLevel.Substation",
             "description": "The substation of the voltage level.",
             "target": "dtmi:iec:cim:schema:Substation;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VoltageLevel:highVoltageLimit;16",
             "@type": "Property",
-            "name": "highVoltageLimit",
+            "name": "VoltageLevel_highVoltageLimit",
             "displayName": "VoltageLevel.highVoltageLimit",
             "description": "The bus bar's high voltage limit",
             "schema": "float"
@@ -38,7 +38,7 @@
         {
             "@id": "dtmi:iec:cim:schema:VoltageLevel:lowVoltageLimit;16",
             "@type": "Property",
-            "name": "lowVoltageLimit",
+            "name": "VoltageLevel_lowVoltageLimit",
             "displayName": "VoltageLevel.lowVoltageLimit",
             "description": "The bus bar's low voltage limit",
             "schema": "float"

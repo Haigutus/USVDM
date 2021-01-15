@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:SubGeographicalRegion:Region;16",
             "@type": "Relationship",
-            "name": "Region",
+            "name": "SubGeographicalRegion_Region",
             "displayName": "SubGeographicalRegion.Region",
             "description": "The geographical region to which this sub-geographical region is within.",
             "target": "dtmi:iec:cim:schema:GeographicalRegion;16",

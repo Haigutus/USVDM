@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlArea:EnergyArea;16",
             "@type": "Relationship",
-            "name": "EnergyArea",
+            "name": "ControlArea_EnergyArea",
             "displayName": "ControlArea.EnergyArea",
             "description": "The energy area that is forecast from this control area specification.",
             "target": "dtmi:iec:cim:schema:EnergyArea;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlArea:netInterchange;16",
             "@type": "Property",
-            "name": "netInterchange",
+            "name": "ControlArea_netInterchange",
             "displayName": "ControlArea.netInterchange",
             "description": "The specified positive net interchange into the control area, i.e. positive sign means flow in to the area.",
             "schema": "float"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlArea:pTolerance;16",
             "@type": "Property",
-            "name": "pTolerance",
+            "name": "ControlArea_pTolerance",
             "displayName": "ControlArea.pTolerance",
             "description": "Active power net interchange tolerance",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ControlArea:type;16",
             "@type": "Property",
-            "name": "type",
+            "name": "ControlArea_type",
             "displayName": "ControlArea.type",
             "description": "The primary type of control area definition used to determine if this is used for automatic generation control, for planning interchange control, or other purposes.   A control area specified with primary type of automatic generation control could still be forecast and used as an interchange area in power flow analysis.",
             "schema": {
@@ -45,19 +45,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "AGC",
+                        "name": "ControlArea_type",
                         "displayName": "ControlAreaTypeKind.AGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.AGC",
                         "description": "Used for automatic generation control."
                     },
                     {
-                        "name": "Forecast",
+                        "name": "ControlArea_type",
                         "displayName": "ControlAreaTypeKind.Forecast",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Forecast",
                         "description": "Used for load forecast."
                     },
                     {
-                        "name": "Interchange",
+                        "name": "ControlArea_type",
                         "displayName": "ControlAreaTypeKind.Interchange",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Interchange",
                         "description": "Used for interchange specification or control."

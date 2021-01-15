@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegularIntervalSchedule:endTime;16",
             "@type": "Property",
-            "name": "endTime",
+            "name": "RegularIntervalSchedule_endTime",
             "displayName": "RegularIntervalSchedule.endTime",
             "description": "The time for the last time point.",
             "schema": "dateTime"
@@ -19,7 +19,7 @@
         {
             "@id": "dtmi:iec:cim:schema:RegularIntervalSchedule:timeStep;16",
             "@type": "Property",
-            "name": "timeStep",
+            "name": "RegularIntervalSchedule_timeStep",
             "displayName": "RegularIntervalSchedule.timeStep",
             "description": "The time between each pair of subsequent regular time points in sequence order.",
             "schema": "float"

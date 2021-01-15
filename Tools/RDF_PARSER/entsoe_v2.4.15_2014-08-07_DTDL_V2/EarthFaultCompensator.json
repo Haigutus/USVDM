@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EarthFaultCompensator:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "EarthFaultCompensator_r",
             "displayName": "EarthFaultCompensator.r",
             "description": "Nominal resistance of device.",
             "schema": "float"

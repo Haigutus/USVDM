@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:b0ch;16",
             "@type": "Property",
-            "name": "b0ch",
+            "name": "ACLineSegment_b0ch",
             "displayName": "ACLineSegment.b0ch",
             "description": "Zero sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.",
             "schema": "float"
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:bch;16",
             "@type": "Property",
-            "name": "bch",
+            "name": "ACLineSegment_bch",
             "displayName": "ACLineSegment.bch",
             "description": "Positive sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.  This value represents the full charging over the full length of the line.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:g0ch;16",
             "@type": "Property",
-            "name": "g0ch",
+            "name": "ACLineSegment_g0ch",
             "displayName": "ACLineSegment.g0ch",
             "description": "Zero sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:gch;16",
             "@type": "Property",
-            "name": "gch",
+            "name": "ACLineSegment_gch",
             "displayName": "ACLineSegment.gch",
             "description": "Positive sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "ACLineSegment_r",
             "displayName": "ACLineSegment.r",
             "description": "Positive sequence series resistance of the entire line section.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "ACLineSegment_r0",
             "displayName": "ACLineSegment.r0",
             "description": "Zero sequence series resistance of the entire line section.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:shortCircuitEndTemperature;16",
             "@type": "Property",
-            "name": "shortCircuitEndTemperature",
+            "name": "ACLineSegment_shortCircuitEndTemperature",
             "displayName": "ACLineSegment.shortCircuitEndTemperature",
             "description": "Maximum permitted temperature at the end of SC for the calculation of minimum short-circuit currents. Used for short circuit data exchange according to IEC 60909",
             "schema": "float"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "ACLineSegment_x",
             "displayName": "ACLineSegment.x",
             "description": "Positive sequence series reactance of the entire line section.",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACLineSegment:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "ACLineSegment_x0",
             "displayName": "ACLineSegment.x0",
             "description": "Zero sequence series reactance of the entire line section.",
             "schema": "float"

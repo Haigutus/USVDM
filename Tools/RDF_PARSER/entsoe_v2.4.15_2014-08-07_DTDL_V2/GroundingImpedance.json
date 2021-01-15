@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:GroundingImpedance:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "GroundingImpedance_x",
             "displayName": "GroundingImpedance.x",
             "description": "Reactance of device.",
             "schema": "float"

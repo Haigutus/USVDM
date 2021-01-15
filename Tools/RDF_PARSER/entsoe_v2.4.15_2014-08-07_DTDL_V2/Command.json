@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Command:DiscreteValue;16",
             "@type": "Relationship",
-            "name": "DiscreteValue",
+            "name": "Command_DiscreteValue",
             "displayName": "Command.DiscreteValue",
             "description": "The Control variable associated with the MeasurementValue.",
             "target": "dtmi:iec:cim:schema:DiscreteValue;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Command:ValueAliasSet;16",
             "@type": "Relationship",
-            "name": "ValueAliasSet",
+            "name": "Command_ValueAliasSet",
             "displayName": "Command.ValueAliasSet",
             "description": "The ValueAliasSet used for translation of a Control value to a name.",
             "target": "dtmi:iec:cim:schema:ValueAliasSet;16",
@@ -30,7 +30,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Command:normalValue;16",
             "@type": "Property",
-            "name": "normalValue",
+            "name": "Command_normalValue",
             "displayName": "Command.normalValue",
             "description": "Normal value for Control.value e.g. used for percentage scaling.",
             "schema": "integer"
@@ -38,7 +38,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Command:value;16",
             "@type": "Property",
-            "name": "value",
+            "name": "Command_value",
             "displayName": "Command.value",
             "description": "The value representing the actuator output.",
             "schema": "integer"

@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:PccTerminal;16",
             "@type": "Relationship",
-            "name": "PccTerminal",
+            "name": "ACDCConverter_PccTerminal",
             "displayName": "ACDCConverter.PccTerminal",
             "description": "All converters' DC sides linked to this point of common coupling terminal.",
             "target": "dtmi:iec:cim:schema:Terminal;16",
@@ -20,7 +20,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:baseS;16",
             "@type": "Property",
-            "name": "baseS",
+            "name": "ACDCConverter_baseS",
             "displayName": "ACDCConverter.baseS",
             "description": "Base apparent power of the converter pole.",
             "schema": "float"
@@ -28,7 +28,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:idc;16",
             "@type": "Property",
-            "name": "idc",
+            "name": "ACDCConverter_idc",
             "displayName": "ACDCConverter.idc",
             "description": "Converter DC current, also called Id. Converter state variable, result from power flow.",
             "schema": "float"
@@ -36,7 +36,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:idleLoss;16",
             "@type": "Property",
-            "name": "idleLoss",
+            "name": "ACDCConverter_idleLoss",
             "displayName": "ACDCConverter.idleLoss",
             "description": "Active power loss in pole at no power transfer. Converter configuration data used in power flow.",
             "schema": "float"
@@ -44,7 +44,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:maxUdc;16",
             "@type": "Property",
-            "name": "maxUdc",
+            "name": "ACDCConverter_maxUdc",
             "displayName": "ACDCConverter.maxUdc",
             "description": "The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow.",
             "schema": "float"
@@ -52,7 +52,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:minUdc;16",
             "@type": "Property",
-            "name": "minUdc",
+            "name": "ACDCConverter_minUdc",
             "displayName": "ACDCConverter.minUdc",
             "description": "Min allowed converter DC voltage. Converter configuration data used in power flow.",
             "schema": "float"
@@ -60,7 +60,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:numberOfValves;16",
             "@type": "Property",
-            "name": "numberOfValves",
+            "name": "ACDCConverter_numberOfValves",
             "displayName": "ACDCConverter.numberOfValves",
             "description": "Number of valves in the converter. Used in loss calculations.",
             "schema": "integer"
@@ -68,7 +68,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:p;16",
             "@type": "Property",
-            "name": "p",
+            "name": "ACDCConverter_p",
             "displayName": "ACDCConverter.p",
             "description": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
             "schema": "float"
@@ -76,7 +76,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:poleLossP;16",
             "@type": "Property",
-            "name": "poleLossP",
+            "name": "ACDCConverter_poleLossP",
             "displayName": "ACDCConverter.poleLossP",
             "description": "The active power loss at a DC Pole \n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2\nFor lossless operation Pdc=Pac\nFor rectifier operation with losses Pdc=Pac-lossP\nFor inverter operation with losses Pdc=Pac+lossP\nConverter state variable used in power flow.",
             "schema": "float"
@@ -84,7 +84,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "ACDCConverter_q",
             "displayName": "ACDCConverter.q",
             "description": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
             "schema": "float"
@@ -92,7 +92,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:ratedUdc;16",
             "@type": "Property",
-            "name": "ratedUdc",
+            "name": "ACDCConverter_ratedUdc",
             "displayName": "ACDCConverter.ratedUdc",
             "description": "Rated converter DC voltage, also called UdN. Converter configuration data used in power flow.",
             "schema": "float"
@@ -100,7 +100,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:resistiveLoss;16",
             "@type": "Property",
-            "name": "resistiveLoss",
+            "name": "ACDCConverter_resistiveLoss",
             "displayName": "ACDCConverter.resistiveLoss",
             "description": "Converter configuration data used in power flow. Refer to poleLossP.",
             "schema": "float"
@@ -108,7 +108,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:switchingLoss;16",
             "@type": "Property",
-            "name": "switchingLoss",
+            "name": "ACDCConverter_switchingLoss",
             "displayName": "ACDCConverter.switchingLoss",
             "description": "Switching losses, relative to the base apparent power 'baseS'.\nRefer to poleLossP.",
             "schema": "float"
@@ -116,7 +116,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:targetPpcc;16",
             "@type": "Property",
-            "name": "targetPpcc",
+            "name": "ACDCConverter_targetPpcc",
             "displayName": "ACDCConverter.targetPpcc",
             "description": "Real power injection target in AC grid, at point of common coupling.",
             "schema": "float"
@@ -124,7 +124,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:targetUdc;16",
             "@type": "Property",
-            "name": "targetUdc",
+            "name": "ACDCConverter_targetUdc",
             "displayName": "ACDCConverter.targetUdc",
             "description": "Target value for DC voltage magnitude.",
             "schema": "float"
@@ -132,7 +132,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:uc;16",
             "@type": "Property",
-            "name": "uc",
+            "name": "ACDCConverter_uc",
             "displayName": "ACDCConverter.uc",
             "description": "Converter voltage, the voltage at the AC side of the bridge. Converter state variable, result from power flow.",
             "schema": "float"
@@ -140,7 +140,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:udc;16",
             "@type": "Property",
-            "name": "udc",
+            "name": "ACDCConverter_udc",
             "displayName": "ACDCConverter.udc",
             "description": "Converter voltage at the DC side, also called Ud. Converter state variable, result from power flow.",
             "schema": "float"
@@ -148,7 +148,7 @@
         {
             "@id": "dtmi:iec:cim:schema:ACDCConverter:valveU0;16",
             "@type": "Property",
-            "name": "valveU0",
+            "name": "ACDCConverter_valveU0",
             "displayName": "ACDCConverter.valveU0",
             "description": "Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0.",
             "schema": "float"

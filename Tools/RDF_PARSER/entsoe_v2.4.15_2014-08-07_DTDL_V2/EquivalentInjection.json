@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:ReactiveCapabilityCurve;16",
             "@type": "Relationship",
-            "name": "ReactiveCapabilityCurve",
+            "name": "EquivalentInjection_ReactiveCapabilityCurve",
             "displayName": "EquivalentInjection.ReactiveCapabilityCurve",
             "description": "The equivalent injection using this reactive capability curve.",
             "target": "dtmi:iec:cim:schema:ReactiveCapabilityCurve;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:maxP;16",
             "@type": "Property",
-            "name": "maxP",
+            "name": "EquivalentInjection_maxP",
             "displayName": "EquivalentInjection.maxP",
             "description": "Maximum active power of the injection.",
             "schema": "float"
@@ -29,7 +29,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:maxQ;16",
             "@type": "Property",
-            "name": "maxQ",
+            "name": "EquivalentInjection_maxQ",
             "displayName": "EquivalentInjection.maxQ",
             "description": "Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used.   ",
             "schema": "float"
@@ -37,7 +37,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:minP;16",
             "@type": "Property",
-            "name": "minP",
+            "name": "EquivalentInjection_minP",
             "displayName": "EquivalentInjection.minP",
             "description": "Minimum active power of the injection.",
             "schema": "float"
@@ -45,7 +45,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:minQ;16",
             "@type": "Property",
-            "name": "minQ",
+            "name": "EquivalentInjection_minQ",
             "displayName": "EquivalentInjection.minQ",
             "description": "Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used.",
             "schema": "float"
@@ -53,7 +53,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:p;16",
             "@type": "Property",
-            "name": "p",
+            "name": "EquivalentInjection_p",
             "displayName": "EquivalentInjection.p",
             "description": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -61,7 +61,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:q;16",
             "@type": "Property",
-            "name": "q",
+            "name": "EquivalentInjection_q",
             "displayName": "EquivalentInjection.q",
             "description": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
             "schema": "float"
@@ -69,7 +69,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:r;16",
             "@type": "Property",
-            "name": "r",
+            "name": "EquivalentInjection_r",
             "displayName": "EquivalentInjection.r",
             "description": "Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -77,7 +77,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:r0;16",
             "@type": "Property",
-            "name": "r0",
+            "name": "EquivalentInjection_r0",
             "displayName": "EquivalentInjection.r0",
             "description": "Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -85,7 +85,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:r2;16",
             "@type": "Property",
-            "name": "r2",
+            "name": "EquivalentInjection_r2",
             "displayName": "EquivalentInjection.r2",
             "description": "Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -93,7 +93,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationCapability;16",
             "@type": "Property",
-            "name": "regulationCapability",
+            "name": "EquivalentInjection_regulationCapability",
             "displayName": "EquivalentInjection.regulationCapability",
             "description": "Specifies whether or not the EquivalentInjection has the capability to regulate the local voltage.",
             "schema": "boolean"
@@ -101,7 +101,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationStatus;16",
             "@type": "Property",
-            "name": "regulationStatus",
+            "name": "EquivalentInjection_regulationStatus",
             "displayName": "EquivalentInjection.regulationStatus",
             "description": "Specifies the default regulation status of the EquivalentInjection.  True is regulating.  False is not regulating.",
             "schema": "boolean"
@@ -109,7 +109,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:regulationTarget;16",
             "@type": "Property",
-            "name": "regulationTarget",
+            "name": "EquivalentInjection_regulationTarget",
             "displayName": "EquivalentInjection.regulationTarget",
             "description": "The target voltage for voltage regulation.",
             "schema": "float"
@@ -117,7 +117,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:x;16",
             "@type": "Property",
-            "name": "x",
+            "name": "EquivalentInjection_x",
             "displayName": "EquivalentInjection.x",
             "description": "Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -125,7 +125,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:x0;16",
             "@type": "Property",
-            "name": "x0",
+            "name": "EquivalentInjection_x0",
             "displayName": "EquivalentInjection.x0",
             "description": "Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"
@@ -133,7 +133,7 @@
         {
             "@id": "dtmi:iec:cim:schema:EquivalentInjection:x2;16",
             "@type": "Property",
-            "name": "x2",
+            "name": "EquivalentInjection_x2",
             "displayName": "EquivalentInjection.x2",
             "description": "Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange. ",
             "schema": "float"

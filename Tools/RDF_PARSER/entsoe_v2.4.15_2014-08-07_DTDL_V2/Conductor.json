@@ -11,7 +11,7 @@
         {
             "@id": "dtmi:iec:cim:schema:Conductor:length;16",
             "@type": "Property",
-            "name": "length",
+            "name": "Conductor_length",
             "displayName": "Conductor.length",
             "description": "Segment length for calculating line section capabilities",
             "schema": "float"

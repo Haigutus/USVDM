@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:HydroGeneratingUnit:HydroPowerPlant;16",
             "@type": "Relationship",
-            "name": "HydroPowerPlant",
+            "name": "HydroGeneratingUnit_HydroPowerPlant",
             "displayName": "HydroGeneratingUnit.HydroPowerPlant",
             "description": "The hydro generating unit belongs to a hydro power plant.",
             "target": "dtmi:iec:cim:schema:HydroPowerPlant;16",
@@ -21,7 +21,7 @@
         {
             "@id": "dtmi:iec:cim:schema:HydroGeneratingUnit:energyConversionCapability;16",
             "@type": "Property",
-            "name": "energyConversionCapability",
+            "name": "HydroGeneratingUnit_energyConversionCapability",
             "displayName": "HydroGeneratingUnit.energyConversionCapability",
             "description": "Energy conversion capability for generating.",
             "schema": {
@@ -29,13 +29,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "generator",
+                        "name": "HydroGeneratingUnit_energyConversionCapability",
                         "displayName": "HydroEnergyConversionKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.generator",
                         "description": "Able to generate power, but not able to pump water for energy storage."
                     },
                     {
-                        "name": "pumpAndGenerator",
+                        "name": "HydroGeneratingUnit_energyConversionCapability",
                         "displayName": "HydroEnergyConversionKind.pumpAndGenerator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#HydroEnergyConversionKind.pumpAndGenerator",
                         "description": "Able to both generate power and pump water for energy storage."

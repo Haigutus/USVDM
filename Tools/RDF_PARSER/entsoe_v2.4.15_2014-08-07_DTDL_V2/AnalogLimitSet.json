@@ -12,7 +12,7 @@
         {
             "@id": "dtmi:iec:cim:schema:AnalogLimitSet:Measurements;16",
             "@type": "Relationship",
-            "name": "Measurements",
+            "name": "AnalogLimitSet_Measurements",
             "displayName": "AnalogLimitSet.Measurements",
             "description": "A measurement may have zero or more limit ranges defined for it.",
             "target": "dtmi:iec:cim:schema:Analog;16"
