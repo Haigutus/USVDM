@@ -20,19 +20,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "PetersenCoil_mode",
+                        "name": "PetersenCoilModeKind_fixed",
                         "displayName": "PetersenCoilModeKind.fixed",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.fixed",
                         "description": "Fixed position."
                     },
                     {
-                        "name": "PetersenCoil_mode",
+                        "name": "PetersenCoilModeKind_manual",
                         "displayName": "PetersenCoilModeKind.manual",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.manual",
                         "description": "Manual positioning."
                     },
                     {
-                        "name": "PetersenCoil_mode",
+                        "name": "PetersenCoilModeKind_automaticPositioning",
                         "displayName": "PetersenCoilModeKind.automaticPositioning",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind.automaticPositioning",
                         "description": "Automatic positioning."

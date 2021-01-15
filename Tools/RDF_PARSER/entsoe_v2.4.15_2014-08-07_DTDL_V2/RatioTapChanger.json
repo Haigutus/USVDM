@@ -46,13 +46,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "RatioTapChanger_tculControlMode",
+                        "name": "TransformerControlMode_volt",
                         "displayName": "TransformerControlMode.volt",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.volt",
                         "description": "Voltage control"
                     },
                     {
-                        "name": "RatioTapChanger_tculControlMode",
+                        "name": "TransformerControlMode_reactive",
                         "displayName": "TransformerControlMode.reactive",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#TransformerControlMode.reactive",
                         "description": "Reactive power flow control"

@@ -45,43 +45,43 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_D",
                         "displayName": "WindingConnection.D",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.D",
                         "description": "Delta"
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_Y",
                         "displayName": "WindingConnection.Y",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Y",
                         "description": ""
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_Z",
                         "displayName": "WindingConnection.Z",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Z",
                         "description": "ZigZag"
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_Yn",
                         "displayName": "WindingConnection.Yn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Yn",
                         "description": "Wye, with neutral brought out for grounding."
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_Zn",
                         "displayName": "WindingConnection.Zn",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.Zn",
                         "description": "ZigZag, with neutral brought out for grounding."
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_A",
                         "displayName": "WindingConnection.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.A",
                         "description": "Autotransformer common winding"
                     },
                     {
-                        "name": "PowerTransformerEnd_connectionKind",
+                        "name": "WindingConnection_I",
                         "displayName": "WindingConnection.I",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#WindingConnection.I",
                         "description": "Independent winding, for single-phase connections"

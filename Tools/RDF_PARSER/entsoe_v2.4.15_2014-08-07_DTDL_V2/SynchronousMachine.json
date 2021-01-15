@@ -85,19 +85,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "SynchronousMachine_operatingMode",
+                        "name": "SynchronousMachineOperatingMode_generator",
                         "displayName": "SynchronousMachineOperatingMode.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.generator",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_operatingMode",
+                        "name": "SynchronousMachineOperatingMode_condenser",
                         "displayName": "SynchronousMachineOperatingMode.condenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.condenser",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_operatingMode",
+                        "name": "SynchronousMachineOperatingMode_motor",
                         "displayName": "SynchronousMachineOperatingMode.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineOperatingMode.motor",
                         "description": ""
@@ -180,25 +180,25 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "SynchronousMachine_shortCircuitRotorType",
+                        "name": "ShortCircuitRotorKind_salientPole1",
                         "displayName": "ShortCircuitRotorKind.salientPole1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole1",
                         "description": "Salient pole 1 in the IEC 60909"
                     },
                     {
-                        "name": "SynchronousMachine_shortCircuitRotorType",
+                        "name": "ShortCircuitRotorKind_salientPole2",
                         "displayName": "ShortCircuitRotorKind.salientPole2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.salientPole2",
                         "description": "Salient pole 2 in IEC 60909"
                     },
                     {
-                        "name": "SynchronousMachine_shortCircuitRotorType",
+                        "name": "ShortCircuitRotorKind_turboSeries1",
                         "displayName": "ShortCircuitRotorKind.turboSeries1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries1",
                         "description": "Turbo Series 1 in the IEC 60909"
                     },
                     {
-                        "name": "SynchronousMachine_shortCircuitRotorType",
+                        "name": "ShortCircuitRotorKind_turboSeries2",
                         "displayName": "ShortCircuitRotorKind.turboSeries2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ShortCircuitRotorKind.turboSeries2",
                         "description": "Turbo series 2 in IEC 60909"
@@ -217,43 +217,43 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_generator",
                         "displayName": "SynchronousMachineKind.generator",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generator",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_condenser",
                         "displayName": "SynchronousMachineKind.condenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.condenser",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_generatorOrCondenser",
                         "displayName": "SynchronousMachineKind.generatorOrCondenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenser",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_motor",
                         "displayName": "SynchronousMachineKind.motor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motor",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_generatorOrMotor",
                         "displayName": "SynchronousMachineKind.generatorOrMotor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrMotor",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_motorOrCondenser",
                         "displayName": "SynchronousMachineKind.motorOrCondenser",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.motorOrCondenser",
                         "description": ""
                     },
                     {
-                        "name": "SynchronousMachine_type",
+                        "name": "SynchronousMachineKind_generatorOrCondenserOrMotor",
                         "displayName": "SynchronousMachineKind.generatorOrCondenserOrMotor",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SynchronousMachineKind.generatorOrCondenserOrMotor",
                         "description": ""

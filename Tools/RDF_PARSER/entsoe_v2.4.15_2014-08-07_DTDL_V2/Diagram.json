@@ -29,7 +29,7 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "Diagram_orientation",
+                        "name": "OrientationKind_negative",
                         "displayName": "OrientationKind.negative",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#OrientationKind.negative",
                         "description": "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."

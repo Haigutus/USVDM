@@ -47,127 +47,127 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_ABCN",
                         "displayName": "PhaseCode.ABCN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABCN",
                         "description": "Phases A, B, C, and N."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_ABC",
                         "displayName": "PhaseCode.ABC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABC",
                         "description": "Phases A, B, and C."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_ABN",
                         "displayName": "PhaseCode.ABN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ABN",
                         "description": "Phases A, B, and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_ACN",
                         "displayName": "PhaseCode.ACN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.ACN",
                         "description": "Phases A, C and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_BCN",
                         "displayName": "PhaseCode.BCN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BCN",
                         "description": "Phases B, C, and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_AB",
                         "displayName": "PhaseCode.AB",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AB",
                         "description": "Phases A and B."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_AC",
                         "displayName": "PhaseCode.AC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AC",
                         "description": "Phases A and C."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_BC",
                         "displayName": "PhaseCode.BC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BC",
                         "description": "Phases B and C."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_AN",
                         "displayName": "PhaseCode.AN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.AN",
                         "description": "Phases A and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_BN",
                         "displayName": "PhaseCode.BN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.BN",
                         "description": "Phases B and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_CN",
                         "displayName": "PhaseCode.CN",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.CN",
                         "description": "Phases C and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_A",
                         "displayName": "PhaseCode.A",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.A",
                         "description": "Phase A."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_B",
                         "displayName": "PhaseCode.B",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.B",
                         "description": "Phase B."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_C",
                         "displayName": "PhaseCode.C",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.C",
                         "description": "Phase C."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_N",
                         "displayName": "PhaseCode.N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.N",
                         "description": "Neutral phase."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s1N",
                         "displayName": "PhaseCode.s1N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s1N",
                         "description": "Secondary phase 1 and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s2N",
                         "displayName": "PhaseCode.s2N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s2N",
                         "description": "Secondary phase 2 and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s12N",
                         "displayName": "PhaseCode.s12N",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s12N",
                         "description": "Secondary phases 1, 2, and neutral."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s1",
                         "displayName": "PhaseCode.s1",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s1",
                         "description": "Secondary phase 1."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s2",
                         "displayName": "PhaseCode.s2",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s2",
                         "description": "Secondary phase 2."
                     },
                     {
-                        "name": "Terminal_phases",
+                        "name": "PhaseCode_s12",
                         "displayName": "PhaseCode.s12",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#PhaseCode.s12",
                         "description": "Secondary phase 1 and 2."

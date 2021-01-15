@@ -44,13 +44,13 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "StaticVarCompensator_sVCControlMode",
+                        "name": "SVCControlMode_reactivePower",
                         "displayName": "SVCControlMode.reactivePower",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.reactivePower",
                         "description": ""
                     },
                     {
-                        "name": "StaticVarCompensator_sVCControlMode",
+                        "name": "SVCControlMode_voltage",
                         "displayName": "SVCControlMode.voltage",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#SVCControlMode.voltage",
                         "description": ""

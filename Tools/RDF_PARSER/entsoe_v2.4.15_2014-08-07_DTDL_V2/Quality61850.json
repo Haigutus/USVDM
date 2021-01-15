@@ -80,19 +80,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "Quality61850_source",
+                        "name": "Source_PROCESS",
                         "displayName": "Source.PROCESS",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.PROCESS",
                         "description": "The value is provided by input from the process I/O or being calculated from some function."
                     },
                     {
-                        "name": "Quality61850_source",
+                        "name": "Source_DEFAULTED",
                         "displayName": "Source.DEFAULTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.DEFAULTED",
                         "description": "The value contains a default value."
                     },
                     {
-                        "name": "Quality61850_source",
+                        "name": "Source_SUBSTITUTED",
                         "displayName": "Source.SUBSTITUTED",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Source.SUBSTITUTED",
                         "description": "The value is provided by input of an operator or by an automatic source."
@@ -127,19 +127,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "Quality61850_validity",
+                        "name": "Validity_GOOD",
                         "displayName": "Validity.GOOD",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.GOOD",
                         "description": "The value is marked good if no abnormal condition of the acquisition function or the information source is detected."
                     },
                     {
-                        "name": "Quality61850_validity",
+                        "name": "Validity_QUESTIONABLE",
                         "displayName": "Validity.QUESTIONABLE",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.QUESTIONABLE",
                         "description": "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked \"questionable\" should be used."
                     },
                     {
-                        "name": "Quality61850_validity",
+                        "name": "Validity_INVALID",
                         "displayName": "Validity.INVALID",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#Validity.INVALID",
                         "description": "The value is marked invalid when a supervision function recognises abnormal conditions of the acquisition function or the information source (missing or non-operating updating devices). The value is not defined under this condition. The mark invalid is used to indicate to the client that the value may be incorrect and shall not be used."

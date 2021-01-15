@@ -45,19 +45,19 @@
                 "valueSchema": "string",
                 "enumValues": [
                     {
-                        "name": "ControlArea_type",
+                        "name": "ControlAreaTypeKind_AGC",
                         "displayName": "ControlAreaTypeKind.AGC",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.AGC",
                         "description": "Used for automatic generation control."
                     },
                     {
-                        "name": "ControlArea_type",
+                        "name": "ControlAreaTypeKind_Forecast",
                         "displayName": "ControlAreaTypeKind.Forecast",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Forecast",
                         "description": "Used for load forecast."
                     },
                     {
-                        "name": "ControlArea_type",
+                        "name": "ControlAreaTypeKind_Interchange",
                         "displayName": "ControlAreaTypeKind.Interchange",
                         "enumValue": "http://iec.ch/TC57/2013/CIM-schema-cim16#ControlAreaTypeKind.Interchange",
                         "description": "Used for interchange specification or control."
