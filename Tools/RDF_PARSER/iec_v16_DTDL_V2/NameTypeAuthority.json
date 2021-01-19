@@ -1,12 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:cim:schema:NameTypeAuthority;17",
+    "@id": "dtmi:iec:cim:schema:NameTypeAuthority;16",
     "displayName": "NameTypeAuthority",
     "description": "Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.",
     "contents": [
 		{
-            "@id": "dtmi:iec:cim:schema:NameTypeAuthority:description;17",
+            "@id": "dtmi:iec:cim:schema:NameTypeAuthority:description;16",
             "@type": "Property",
             "name": "NameTypeAuthority_description",
             "displayName": "NameTypeAuthority.description",
@@ -14,7 +14,7 @@
             "schema": "string"
         },
 		{
-            "@id": "dtmi:iec:cim:schema:NameTypeAuthority:name;17",
+            "@id": "dtmi:iec:cim:schema:NameTypeAuthority:name;16",
             "@type": "Property",
             "name": "NameTypeAuthority_name",
             "displayName": "NameTypeAuthority.name",

@@ -1,12 +1,12 @@
 {
     "@context": "dtmi:dtdl:context;2",
     "@type": "Interface",
-    "@id": "dtmi:iec:cim:schema:NameType;17",
+    "@id": "dtmi:iec:cim:schema:NameType;16",
     "displayName": "NameType",
     "description": "Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system.",
     "contents": [
 		{
-            "@id": "dtmi:iec:cim:schema:NameType:description;17",
+            "@id": "dtmi:iec:cim:schema:NameType:description;16",
             "@type": "Property",
             "name": "NameType_description",
             "displayName": "NameType.description",
@@ -14,7 +14,7 @@
             "schema": "string"
         },
 		{
-            "@id": "dtmi:iec:cim:schema:NameType:name;17",
+            "@id": "dtmi:iec:cim:schema:NameType:name;16",
             "@type": "Property",
             "name": "NameType_name",
             "displayName": "NameType.name",
@@ -22,12 +22,12 @@
             "schema": "string"
         },
 		{
-            "@id": "dtmi:iec:cim:schema:NameType:NameTypeAuthority;17",
+            "@id": "dtmi:iec:cim:schema:NameType:NameTypeAuthority;16",
             "@type": "Relationship",
             "name": "NameType_NameTypeAuthority",
             "displayName": "NameType.NameTypeAuthority",
             "description": "",
-            "target": "dtmi:iec:cim:schema:NameTypeAuthority;17",
+            "target": "dtmi:iec:cim:schema:NameTypeAuthority;16",
             "maxMultiplicity": 1
         }		
 	]
