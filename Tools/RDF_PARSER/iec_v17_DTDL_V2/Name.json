@@ -1,0 +1,35 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:iec:cim:schema:Name;17",
+    "displayName": "Name",
+    "description": "The Name class provides the means to define any number of human readable  names for an object. A name is not to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.",
+    "contents": [
+		{
+            "@id": "dtmi:iec:cim:schema:Name:name;17",
+            "@type": "Property",
+            "name": "Name_name",
+            "displayName": "Name.name",
+            "description": "Any free text that name the object.",
+            "schema": "string"
+        },
+		{
+            "@id": "dtmi:iec:cim:schema:Name:NameType;17",
+            "@type": "Relationship",
+            "name": "Name_NameType",
+            "displayName": "Name.NameType",
+            "description": "",
+            "target": "dtmi:iec:cim:schema:NameType;17",
+            "maxMultiplicity": 1
+        },
+		{
+            "@id": "dtmi:iec:cim:schema:Name:IdentifiedObject;17",
+            "@type": "Relationship",
+            "name": "Name_IdentifiedObject",
+            "displayName": "Name.IdentifiedObject",
+            "description": "",
+            "target": "dtmi:iec:cim:schema:IdentifiedObject;17",
+            "maxMultiplicity": 1
+        }		
+	]
+}
