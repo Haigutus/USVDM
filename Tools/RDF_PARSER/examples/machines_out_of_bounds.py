@@ -1,12 +1,10 @@
 from shapely.geometry import Point, MultiPoint, box, LineString, Polygon
 import matplotlib.pyplot as plt
-import sys
 import pandas
 from tkinter import filedialog
 
-sys.path.append("..")
-import RDF_parser
-import CGMES_tools
+from Tools.RDF_PARSER import RDF_parser
+from Tools.RDF_PARSER import CGMES_tools
 
 
 def y_values_at_x(polygon, x):
@@ -118,16 +116,18 @@ def draw_chart(out_of_limits, index, save=False, show=True):
 
 # Settings
 
-#input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMXML files", filetypes=(("CIMXML", "*.zip"), ("CIMXML", "*.xml"))))
-#input_data = [r"C:\Users\kristjan.vilgo\Downloads\20200923T2230Z_1D_ELERING_IGM_001.zip"]
-#boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
-#input_data.append(boundary)
-input_data = [r"C:\Users\kristjan.vilgo\Downloads\20200929T1130Z_1D_NG_001.zip"]
+input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMXML files", filetypes=(("CIMXML", "*.zip"), ("CIMXML", "*.xml"))))
 
 # Parse data
 data = pandas.read_RDF(input_data)
 # Parse metadata to file header
-data = CGMES_tools.update_FullModel_from_filename(data)
+
+try:
+    data = CGMES_tools.update_FullModel_from_filename(data)
+
+except:
+    print("Parsing of filename failed. Process stopped")
+    raise SystemExit
 
 """6_12. For all Terminals, associated with synchronous machines (including slack generator),
  the negated value of SvPowerFlow.q value must be greater than or equal to the minimum of (SynchronousMachine.minQ and ReactiveCapabilityCurve.y1value at
@@ -145,11 +145,12 @@ SvPowerFlow = data.type_tableview("SvPowerFlow")
 # Add modelingEntity
 machine_data = data.query("KEY == 'Model.modelingEntity'")[['VALUE', 'INSTANCE_ID']].merge(machine_data.merge(data.query("KEY == 'Type'")).drop_duplicates("ID"), on="INSTANCE_ID", suffixes=("_PARTY", ""))
 
+# Merge all needed data
 machine_data = machine_data.merge(generating_units, left_on='RotatingMachine.GeneratingUnit', right_index=True, how="left", suffixes=("", "GeneratingUnit"))
 machine_data = machine_data.merge(Terminals.reset_index(), right_on='Terminal.ConductingEquipment', left_on="ID", how="left", suffixes=("", "_Terminal"))
 machine_data = machine_data.merge(SvPowerFlow.reset_index(), right_on='SvPowerFlow.Terminal', left_on="ID_Terminal", how="left", suffixes=("", "_SvPowerFlow"))
 
-
+# Convert to spacial objects
 machine_data["PQ_setpoint"] = machine_data[['RotatingMachine.p', 'RotatingMachine.q']].multiply(-1).apply(Point, axis=1)
 machine_data["PQ_solution"] = machine_data[['SvPowerFlow.p', 'SvPowerFlow.q']].multiply(-1).apply(Point, axis=1)
 machine_data["PQ_limits"] = machine_data[['GeneratingUnit.minOperatingP', 'SynchronousMachine.minQ', 'GeneratingUnit.maxOperatingP', 'SynchronousMachine.maxQ']].dropna().apply(pandas.to_numeric, errors='ignore').apply(lambda x: box(x['GeneratingUnit.minOperatingP'], x['SynchronousMachine.minQ'], x['GeneratingUnit.maxOperatingP'], x['SynchronousMachine.maxQ']), axis=1)
@@ -199,6 +200,7 @@ machine_data["limits_distance_solution_Q"] = machine_data.dropna(subset=["PQ_lim
 if curve_data is not None:
     machine_data["limits_distance_setpoint_Q"].update(machine_data.dropna(subset=["PQ_area"]).apply(lambda x: y_out_of_bounds(x["PQ_setpoint"].y, y_values_at_x(x["PQ_area"], x["PQ_setpoint"].x)), axis=1))
     machine_data["limits_distance_solution_Q"].update(machine_data.dropna(subset=["PQ_area"]).apply(lambda x: y_out_of_bounds(x["PQ_solution"].y, y_values_at_x(x["PQ_area"], x["PQ_solution"].x)), axis=1))
+    curve_greater_than_limits = machine_data.dropna(subset=["PQ_limits", "PQ_area"])[~(machine_data.dropna(subset=["PQ_limits", "PQ_area"]).apply(lambda x: x["PQ_limits"].contains(x["PQ_area"]), axis=1))]
 
 # Find machines outside of PQ area or PQ limits
 out_of_limits_setpoint_PQ = machine_data.query("limits_distance_setpoint > 0")
@@ -207,31 +209,47 @@ out_of_limits_solution_PQ = machine_data.query("limits_distance_solution > 0")
 out_of_limits_setpoint_Q = machine_data.query("limits_distance_setpoint_Q > 0")
 out_of_limits_solution_Q = machine_data.query("limits_distance_solution_Q > 0")
 
+
 # Filter out switched off generators
 #out_of_limits = out_of_limits[~((out_of_limits['RotatingMachine.p'] == 0) & (out_of_limits['RotatingMachine.q'] == 0))]
 out_of_limits_solution_PQ = out_of_limits_solution_PQ[~((out_of_limits_solution_PQ['RotatingMachine.p'] == 0))]
 out_of_limits_setpoint_PQ = out_of_limits_setpoint_PQ[~((out_of_limits_setpoint_PQ['RotatingMachine.p'] == 0))]
 
-print("WARNING - {}/{} Machines SV PF outside their limits or curve".format(len(out_of_limits_solution_PQ), len(machine_data)))
-print("WARNING - {}/{} Machines SSH setpoint outside their limits or curve".format(len(out_of_limits_setpoint_PQ), len(machine_data)))
-print("WARNING - {}/{} Machines SV PF Q outside their limits or curve".format(len(out_of_limits_solution_Q), len(machine_data)))
-print("WARNING - {}/{} Machines SSH Q setpoint outside their limits or curve".format(len(out_of_limits_setpoint_Q), len(machine_data)))
-
-
-for machine_id in out_of_limits_solution_PQ.index:
-    draw_chart(machine_data, machine_id, save=True)
 
 reports = {"PQ_solution_violations": out_of_limits_solution_PQ,
            "PQ_setpoint_violations": out_of_limits_setpoint_PQ,
            "Q_solution_violations": out_of_limits_solution_Q,
-           "Q_setpoint_violations": out_of_limits_setpoint_Q,}
+           "Q_setpoint_violations": out_of_limits_setpoint_Q}
+
+number_of_machines = len(machine_data)
+
+print("WARNING - {}/{} Machines SV PF outside their limits or curve".format(len(out_of_limits_solution_PQ), number_of_machines))
+print("WARNING - {}/{} Machines SSH setpoint outside their limits or curve".format(len(out_of_limits_setpoint_PQ), number_of_machines))
+print("WARNING - {}/{} Machines SV PF Q outside their limits or curve".format(len(out_of_limits_solution_Q), number_of_machines))
+print("WARNING - {}/{} Machines SSH Q setpoint outside their limits or curve".format(len(out_of_limits_setpoint_Q), number_of_machines))
+
+if curve_data:
+    print("WARNING - {}/{} Machines curve is outside the limits".format(len(curve_greater_than_limits), number_of_machines))
+    reports["curve_outside_limits"] = curve_greater_than_limits
+# TODO - Add check for curve/limits outside rated S
+# TODO - Add check for Machine terminal limits
+
+
+#for machine_id in out_of_limits_solution_PQ.index:
+#    draw_chart(machine_data, machine_id, save=True)
+
+
+
+
+
 
 for report_name, report in reports.items():
     report.to_excel("{}.xlsx".format(report_name))
 
-#for machine_id in out_of_limits.index:
-#    draw_chart(machine_id)
+for machine_id in out_of_limits_solution_Q.index:
+    draw_chart(machine_data, machine_id, save=True)
 
 # print(out_of_limits.VALUE_PARTY.value_counts())
 
+# Test where PQ area is actually not an area, but a line
 # machine_data[machine_data["PQ_area"].apply(lambda x: type(x) == LineString)]
