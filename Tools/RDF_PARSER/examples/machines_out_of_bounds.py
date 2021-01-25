@@ -104,8 +104,13 @@ def draw_chart(out_of_limits, index, save=False, show=True):
     ax.legend()
     ax.grid(True)
 
+    # If name is provided, use it
+    if "VALUE_PARTY" in out_of_limits.columns:
+        party = out_of_limits["VALUE_PARTY"][index]
+    else:
+        party = ""
+
     id = out_of_limits["ID"][index]
-    party = out_of_limits["VALUE_PARTY"][index]
     name = out_of_limits["IdentifiedObject.name"][index]
 
     fig.suptitle(f'{party} -> {name} \n {id}', fontsize=16)
@@ -122,12 +127,13 @@ input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMX
 data = pandas.read_RDF(input_data)
 # Parse metadata to file header
 
+filename_status = True
 try:
     data = CGMES_tools.update_FullModel_from_filename(data)
 
 except:
-    print("Parsing of filename failed. Process stopped")
-    raise SystemExit
+    print("Parsing of filename failed")
+    filename_status = False
 
 """6_12. For all Terminals, associated with synchronous machines (including slack generator),
  the negated value of SvPowerFlow.q value must be greater than or equal to the minimum of (SynchronousMachine.minQ and ReactiveCapabilityCurve.y1value at
@@ -143,7 +149,8 @@ Terminals = data.type_tableview("Terminal")
 SvPowerFlow = data.type_tableview("SvPowerFlow")
 
 # Add modelingEntity
-machine_data = data.query("KEY == 'Model.modelingEntity'")[['VALUE', 'INSTANCE_ID']].merge(machine_data.merge(data.query("KEY == 'Type'")).drop_duplicates("ID"), on="INSTANCE_ID", suffixes=("_PARTY", ""))
+if filename_status:
+    machine_data = data.query("KEY == 'Model.modelingEntity'")[['VALUE', 'INSTANCE_ID']].merge(machine_data.merge(data.query("KEY == 'Type'")).drop_duplicates("ID"), on="INSTANCE_ID", suffixes=("_PARTY", ""))
 
 # Merge all needed data
 machine_data = machine_data.merge(generating_units, left_on='RotatingMachine.GeneratingUnit', right_index=True, how="left", suffixes=("", "GeneratingUnit"))
