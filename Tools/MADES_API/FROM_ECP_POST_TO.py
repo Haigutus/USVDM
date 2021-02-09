@@ -76,7 +76,7 @@ while process:
         if test_message["receivedMessage"] != None:
 
             # Initial que size
-            que_size  = test_message['remainingMessagesCount'] + 1
+            que_size = test_message['remainingMessagesCount'] + 1
 
         if (args.continuous_process and que_size > 0) or not args.continuous_process:
 
