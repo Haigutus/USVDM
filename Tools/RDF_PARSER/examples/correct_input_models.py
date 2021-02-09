@@ -33,15 +33,16 @@ def create_object_data_from_dict(object_id, object_type, object_data):
 
     return object_triplet
 
-#input_data = r"C:\Users\kristjan.vilgo\Downloads\20200115T0930Z_1D_RTEFRANCE_EQ_001.zip"
+
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
 #input_data = r"C:\Users\kristjan.vilgo\Downloads\Input_IGMs.zip"
-input_data = [r"C:\Users\kristjan.vilgo\Downloads\IGM_Aug_CGM_Comp.zip"]
-#input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMXML files", filetypes=(("CIMXML", "*.zip"), ("CIMXML","*.xml"))))
+#input_data = [r"C:\Users\kristjan.vilgo\Downloads\IGM_Aug_CGM_Comp.zip"]
+#input_data = [r"Import.zip"]
+input_data = list(filedialog.askopenfilenames(initialdir="/", title="Select CIMXML files", filetypes=(("CIMXML", "*.zip"), ("CIMXML","*.xml"))))
 boundary = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 input_data.append(boundary)
 
-xnode_conf = r"xnodes_for_tieflows_052020.xlsx"
+xnode_conf = r"xnodes_for_tieflows_012021.xlsx"
 
 # Read data
 data = pandas.read_RDF(input_data)
@@ -301,6 +302,7 @@ machine_curve["limits_distance"] = machine_curve.dropna(subset=["PQ_limits"]).ap
 
 # Find machines outside of PQ area or PQ limits
 out_of_limits = machine_curve.query("area_distance > 0 or limits_distance > 0")
+print(f"WARN - {len(out_of_limits)} Synchronous Machines out of limits")
 
 # Set Regulating Control to False on all out of bounds machines
 #out_of_limits['RegulatingCondEq.controlEnabled'] = "false"
@@ -312,60 +314,7 @@ RegulatingControl = data.reset_index().merge(out_of_limits["RegulatingCondEq.Reg
 RegulatingControl.VALUE = "false"
 data.update(RegulatingControl)
 
-# TODO - extract reporting and drawing of PQ curves to seperate file
-# Filter out switched off generators
-#out_of_limits = out_of_limits[~((out_of_limits['RotatingMachine.p'] == 0) & (out_of_limits['RotatingMachine.q'] == 0))]
-
-# Add modelingEntity
-#out_of_limits = data.query("KEY == 'Model.modelingEntity'")[['VALUE', 'INSTANCE_ID']].merge(out_of_limits.merge(data.query("KEY == 'Type'")).drop_duplicates("ID"), on="INSTANCE_ID", suffixes=("_PARTY", ""))
-
-
-# import matplotlib.pyplot as plt
-# def draw_chart(index):
-#     fig, ax = plt.subplots()
-#
-#     # PQ curve
-#     if pandas.notna(out_of_limits["PQ_area"][index]):
-#         ax.scatter(*out_of_limits["PQ_area"][index].exterior.xy)
-#         ax.plot(*out_of_limits["PQ_area"][index].exterior.xy, label='PQ_area')
-#
-#     # PQ limits
-#     if pandas.notna(out_of_limits["PQ_limits"][index]):
-#         ax.scatter(*out_of_limits["PQ_limits"][index].exterior.xy)
-#         ax.plot(*out_of_limits["PQ_limits"][index].exterior.xy, label='PQ_limits')
-#
-#     # Rated S
-#     if pandas.notna(out_of_limits["RotatingMachine.ratedS"][index]):
-#         S = out_of_limits["RotatingMachine.ratedS"][index]
-#         circle = plt.Circle((0, 0), S, fill=False, color='g', label="S_rated")
-#         ax.add_artist(circle)
-#
-#     # PQ powerflow solution
-#     ax.plot(out_of_limits["PQ_setpoint"][index].x, out_of_limits["PQ_setpoint"][index].y, "or", label="PQ_setpoint")
-#     #ax.annotate("SV_PQ", (out_of_limits.solution[1].x, out_of_limits.solution[1].y))
-#
-#     # Annotations
-#
-#     ax.set_xlabel('P')
-#     ax.set_ylabel('Q')
-#     #ax.legend([circle], ["S_rated"])
-#     ax.legend()
-#     ax.grid(True)
-#
-#     id = out_of_limits["ID"][index]
-#     party = out_of_limits["VALUE_PARTY"][index]
-#     name = out_of_limits["IdentifiedObject.name"][index]
-#
-#     fig.suptitle(f'{party} -> {name} \n {id}', fontsize=16)
-#     fig.savefig(f'{party}_{id}')
-
-
-#for machine_id in out_of_limits.index:
-#    draw_chart(machine_id)
-
-# print(out_of_limits.VALUE_PARTY.value_counts())
-
-# machine_curve[machine_curve["PQ_area"].apply(lambda x: type(x) == LineString)]
+print(f"INFO - Disabled {len(RegulatingControl)} RegulatingControls")
 
 
 ## EXPORT ###
