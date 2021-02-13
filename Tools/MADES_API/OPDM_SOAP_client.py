@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Name:        OPDM_SOAP_API
+# Name:        OPDM_API
 # Purpose:     Expose OPDM functionality in python
 #
 # Author:      kristjan.vilgo
@@ -207,9 +207,12 @@ class OPDMservice():
 
     def create_saml_header(self):
         """Create SOAP SAML authentication header element for zeep"""
-        self.check_token()
-        WSSE = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-        return [ElementMaker(namespace=WSSE).Security(self.token)]
+        if self.auth:
+            self.check_token()
+            WSSE = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+            return [ElementMaker(namespace=WSSE).Security(self.token)]
+        else:
+            return []
 
     def execute_operation(self, operation_xml):
         """ExecuteOperation(payload: xsd:base64Binary) -> return: ns0:resultDto"""
@@ -346,7 +349,6 @@ if __name__ == '__main__':
 
 
     server = 'https://test-ba-opde.elering.sise:8443'
-
     service = OPDMservice(server, username="user", password="pass", debug=True)
 
 
