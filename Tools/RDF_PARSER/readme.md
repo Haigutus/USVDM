@@ -1,10 +1,11 @@
 # RDF parser:
 
-It parses RDF/XML data to pandas dataframe with 4 columns [ID, KEY, VALUE, INSTANCE_ID] (sort of triplestore like)
+ - Parses CIM RDF/XML data to pandas dataframe with 4 columns [ID, KEY, VALUE, INSTANCE_ID] (triplestore like)
+ - The solution does not care about CIM version nor namespaces
+ - Input files can be xml or zip files (containing one or mutiple xml files)
+ - All files are parsed into one and same Pandas DataFrame, thus if you want single file or single data model, you need to filter on INSTANCE_ID column
 
-Input files can be xml or zip files (containgn one or mutiple xml files)
-
-to get started:
+## To get started:
 
 ```python
 import pandas
@@ -14,7 +15,7 @@ path = "CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 data = pandas.read_RDF([path])
 ```
 
-Result:
+## Result:
 
 ![image](https://user-images.githubusercontent.com/11408965/64228384-53350500-ceef-11e9-9a8b-473ed1dc6e4d.png)
 
