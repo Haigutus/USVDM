@@ -333,6 +333,39 @@ class OPDMservice():
 
         return xmltodict.parse(etree.tostring(self.execute_operation(PublicationSubscribe)), xml_attribs=False)
 
+    def get_profile_publication_report(self, model_ID="", filename=""):
+
+        if model_ID == "" and filename =="":
+            print("ERROR - you have to define either model_ID or filename to get the report")
+
+        else:
+            GetProfilePublicationReport = """<sm:GetProfilePublicationReport
+                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                    xsi:schemaLocation="http://entsoe.eu/opde/ServiceModel/1/0 ../scheme/opde-service-model.xsd"
+                                                    xmlns="http://entsoe.eu/opde/ServiceModel/1/0"
+                                                    xmlns:opde="http://entsoe.eu/opde/ObjectModel/1/0"
+                                                    xmlns:sm="http://entsoe.eu/opde/ServiceModel/1/0"
+                                                    xmlns:pmd="http://entsoe.eu/opdm/ProfileMetaData/1/0"
+                                                    xmlns:opdm="http://entsoe.eu/opdm/ObjectModel/1/0">
+                                                <sm:part type="opde:MetaDataPattern">
+                                                    <opdm:Profile>
+                                                    </opdm:Profile>
+                                                </sm:part>
+                                            </sm:GetProfilePublicationReport>
+                                            """.encode()
+
+            if model_ID != "":
+                GetProfilePublicationReport = add_xml_elements(GetProfilePublicationReport, ".//opdm:Profile", {"pmd:modelId": model_ID})
+
+            if filename != "":
+                GetProfilePublicationReport = add_xml_elements(GetProfilePublicationReport, ".//opdm:Profile", {"pmd:filename": filename})
+
+            #import pandas
+            #pandas.DataFrame(status['sm:GetProfilePublicationReportResult']['sm:part']['opdm:PublicationReport']['publication:history']['publication:step'])
+
+            return xmltodict.parse(etree.tostring(self.execute_operation(GetProfilePublicationReport)), xml_attribs=True)
+
+
     def publication_cancel_subscription(self, subscription_id):
         """Cancel subscription by subscription ID"""
 
@@ -349,6 +382,7 @@ if __name__ == '__main__':
 
 
     server = 'https://test-ba-opde.elering.sise:8443'
+
     service = OPDMservice(server, username="user", password="pass", debug=True)
 
 
