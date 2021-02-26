@@ -152,9 +152,9 @@ def get_metadata_from_FullModel(data):
     Returns  dictionary -> value = meta['meta_key'] """
     # fileheader metadata keys should be aligned with filename ones
 
-    UUID = data.query("KEY == 'Type' and VALUE == 'FullModel'").ID.to_list()[0]
+    UUID = data.query("KEY == 'Type' and VALUE == 'FullModel'").ID.iloc[0]
     metadata = data.get_object_data(UUID).to_dict()
-    metadata.pop("Type", None) # Remove Type form metadata
+    metadata.pop("Type", None)  # Remove Type form metadata
 
     return metadata
 
@@ -216,11 +216,11 @@ def get_loaded_models(data):
 
     FullModel_data = data.query("KEY == 'Model.profile' or KEY == 'Model.DependentOn'")
 
-    SV_iterator = FullModel_data.query("VALUE == 'http://entsoe.eu/CIM/StateVariables/4/1'").iterrows()
+    SV_iterator = FullModel_data.query("VALUE == 'http://entsoe.eu/CIM/StateVariables/4/1'").itertuples()
 
     dependancies_dict = {}
 
-    for _, SV in SV_iterator:
+    for SV in SV_iterator:
 
         current_dependencies = []
 
@@ -229,15 +229,13 @@ def get_loaded_models(data):
         for instance in dependancies_list:
 
             # Append current instance
+            PROFILES = FullModel_data.query("ID == @instance & KEY == 'Model.profile'")
 
-            INSTANCE_ID = instance
-            PROFILES    = FullModel_data.query("ID == '{}' & KEY == 'Model.profile'".format(instance)).VALUE.tolist()
-
-            for PROFILE in PROFILES:
-                current_dependencies.append(dict(INSTANCE_ID = INSTANCE_ID, PROFILE = PROFILE))
+            for PROFILE in PROFILES.itertuples():
+                current_dependencies.append(dict(ID=instance, PROFILE=PROFILE.VALUE, INSTANCE_ID=PROFILE.INSTANCE_ID))
 
             # Add newly found dependacies to processing
-            dependancies_list.extend(FullModel_data.query("ID == '{}' & KEY == 'Model.DependentOn'".format(instance)).VALUE.tolist())
+            dependancies_list.extend(FullModel_data.query("ID == @instance & KEY == 'Model.DependentOn'").VALUE.tolist())
 
 
         dependancies_dict[SV.ID] = pandas.DataFrame(current_dependencies).drop_duplicates()
