@@ -6,7 +6,7 @@
 #
 # Created:     28.01.2019
 # Copyright:   (c) kristjan.vilgo 2019
-# Licence:     <your licence>
+# Licence:     GPL 2.0
 #-------------------------------------------------------------------------------
 import sys
 sys.path.append("..")
@@ -34,25 +34,43 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
     equivalentinjections_dc   = pandas.DataFrame()
     equivalentinjections_ac   = pandas.DataFrame()
 
+    # Group all loaded instance files to data models
     loaded_IGMs = get_loaded_models(data)
+
+    # Dictionary to contain the results
+    result_dict = {}
 
     for IGM in loaded_IGMs:
 
+
         dependancies = loaded_IGMs[IGM]
-        IGM_data     = get_model_data(data, dependancies)
 
-        metadata     = get_metadata_from_FullModel(IGM_data)
+        # Filter out all data belonging to given IGM
+        IGM_data = get_model_data(data, dependancies)
 
-        try:
-            EQ_UUID = dependancies.query("PROFILE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")["INSTANCE_ID"].item() #should be faster
-        except:
-            print("EQ missing, skipping")
+        # Get the metadata of given IGM
+        metadata = get_metadata_from_FullModel(IGM_data)
+
+        # Get EQ data
+
+        EQ_UUIDs = dependancies.query("PROFILE == 'http://entsoe.eu/CIM/EquipmentCore/3/1'")
+
+        if len(EQ_UUIDs) == 0:
+            print("ERROR - EQ missing, skipping this IGM")
             print(metadata)
             continue
 
-        EQ_data = data.query("INSTANCE_ID == '{}'".format(EQ_UUID))
+        if len(EQ_UUIDs) > 1:
+            print("ERROR - More than one EQ in IGM, skipping this IGM")
+            print(metadata)
+            continue
 
-        #print("Loading TieFlow data from EQ -> {}".format(EQ_UUID))
+
+        EQ_UUID = EQ_UUIDs.to_dict("records")[0]
+
+        EQ_data = data.query(f"INSTANCE_ID == '{EQ_UUID['INSTANCE_ID']}'")
+
+        print("Loading TieFlow data from EQ -> {}".format(EQ_UUID))
 
 
         TieFlow     = EQ_data.type_tableview("TieFlow")
@@ -62,10 +80,11 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
 
         Tieflow_Terminal = pandas.merge(TieFlow, Terminal, how = "inner", left_on = 'TieFlow.Terminal', right_index = True)
 
-        ConductingEquipment = pandas.merge(Tieflow_Terminal[["Terminal.ConductingEquipment"]], EQ_data, left_on = "Terminal.ConductingEquipment", right_on = "ID")
+        # Statistics, on wich kind of equipment the tieflow sits
+        ConductingEquipment = pandas.merge(Tieflow_Terminal[["Terminal.ConductingEquipment"]], EQ_data, left_on="Terminal.ConductingEquipment", right_on="ID")
 
-        #print(ConductingEquipment_triplet.query("KEY == 'Type'")["VALUE"].value_counts()) # Statistics, on wich kind of equipment the tieflow sits
-        #print(ConductingEquipment_triplet.query("KEY == 'IdentifiedObject.name'")[["ID", "VALUE"]]) # Names of the objects where it sits
+        print(ConductingEquipment.query("KEY == 'Type'")["VALUE"].value_counts())
+        print(ConductingEquipment.query("KEY == 'IdentifiedObject.name'")[["ID", "VALUE"]]) # Names of the objects where it sits
 
 
         Tieflow_SvPowerFlow = pandas.merge(TieFlow, SvPowerFlow, how = "inner", left_on = 'TieFlow.Terminal', right_on = "SvPowerFlow.Terminal")
@@ -87,13 +106,13 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
         area_EIC      = ControlArea["IdentifiedObject.energyIdentCodeEic"]
         #area_EIC = IGM_data.query("ID == '{}' & KEY == 'IdentifiedObject.energyIdentCodeEic'".format(ControlArea_UUID))["VALUE"].item() # Tieflow_SvPowerFlow.at[0,"TieFlow.ControlArea"]
 
-        scenario_time = aniso8601.parse_datetime(metadata['Model.scenarioTime'].replace("Z",""))
+        scenario_time = aniso8601.parse_datetime(metadata['Model.scenarioTime'].replace("Z", ""))
 
 
 
 
         # Add tieflows
-        tieflow_data.loc[scenario_time, area_EIC]= float(tieflow_sum)  # Lets use area EIC and naive datetime
+        tieflow_data.loc[scenario_time, area_EIC] = float(tieflow_sum)  # Lets use area EIC and naive datetime
 
 
         # Add netinterchange
@@ -108,7 +127,7 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
             TP_BOUNDARY_ID = dependancies.query("PROFILE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
             TP_TopologicalNodes = IGM_data.query("INSTANCE_ID == '{}'".format(TP_BOUNDARY_ID)).type_tableview("TopologicalNode")
         except:
-            #print("No boundary present, using ENTSO-E latest boundary")
+            print("Original boundary not present, using any available boundary")
             TP_BOUNDARY_ID = data.query("VALUE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.tolist()[0]
             TP_TopologicalNodes = data.query("INSTANCE_ID == '{}'".format(TP_BOUNDARY_ID)).type_tableview("TopologicalNode")
 
@@ -147,10 +166,26 @@ def get_EquivalentInjections_NetInterchange_TieFlows(data):
 if __name__ == '__main__':
 
     #list_of_regulating_controls = data.query("KEY == 'RegulatingControl.mode'").ID.tolist()
-    model_path = r'C:/IOPs/IOP210819/BA02_BD21082019_1D_Elering_001_NodeBreaker.zip'
-    model_path = r"C:\Users\kristjan.vilgo\Downloads\2019_10_09_InputDataSmallMerge+PEVFv6\2019_10_09_InputDataSmallMerge+PEVFv6\CGM_2_TSOs_ELES_TERNA\20191009T0930Z_1D_TERNA_EQ_001 (2).zip"
-    model_path = r"C:\Users\kristjan.vilgo\Downloads\input_data.zip"
-    dataframe = load_all_to_dataframe([model_path, r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"])
-    #dataframe = load_all_to_dataframe([r"C:\Users\kristjan.vilgo\Downloads\20190624T2330Z_1D_RTEFRANCE_739.zip", r"C:\Users\kristjan.vilgo\Downloads\20190625T0030Z_1D_RTEFRANCE_777.zip"])
-    tieflows = get_EquivalentInjections_NetInterchange_TieFlows(dataframe)
+
+
+    #data = load_all_to_dataframe([
+    #    r"C:\Users\kristjan.vilgo\Documents\GitHub\USVDM\Tools\ENTSOE_BOUNDARY_UPDATE\20200729T0000Z__ENTSOE_BD_001.zip",
+    #    r"\\elering.sise\teenused\NMM\data\ACG\Generated Cases\AC_NP_test.zip"
+    #])
+
+
+    data = load_all_to_dataframe([r"C:\Users\kristjan.vilgo\Downloads\20190624T2330Z_1D_RTEFRANCE_739.zip", r"C:\Users\kristjan.vilgo\Downloads\20190625T0030Z_1D_RTEFRANCE_777.zip"])
+    tieflows = get_EquivalentInjections_NetInterchange_TieFlows(data)
     print(tieflows)
+
+    TopologicalNodes = data.type_tableview("TopologicalNode")
+    HVDC_TP_NODES = TopologicalNodes[TopologicalNodes["IdentifiedObject.description"].str.startswith("HVDC").fillna(False)]
+
+    #connections = data[["ID", "VALUE", "KEY"]].merge(data.query("KEY == 'Type'")[["ID", "VALUE"]], left_on="VALUE", right_on="ID", suffixes=("_FROM", "_TO"))
+    #nodes = data.groupby("ID")
+
+    TieFlow = data.type_tableview("TieFlow")
+    Terminal = data.type_tableview("Terminal")
+    EquivalentInjections = data.type_tableview("EquivalentInjection")
+
+    Tieflow_Terminal = pandas.merge(TieFlow, Terminal, how="inner", left_on='TieFlow.Terminal', right_index=True)
