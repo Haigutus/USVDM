@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/ns/shacl#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="focusNode">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resultMessage" type="xs:string"/>
+  <xs:element name="resultSeverity">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sourceConstraint">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sourceConstraintComponent">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sourceShape">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="value">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+          <xs:attribute ref="rdf:datatype" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="shac:focusNode" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:resultMessage" maxOccurs="unbounded" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:resultPath" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:resultSeverity" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:sourceConstraint" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:sourceConstraintComponent" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:sourceShape" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+        <xs:element ref="shac:value" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resultPath">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="rdf:Description" maxOccurs="unbounded" minOccurs="0" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        <xs:element ref="shac:inversePath" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+      </xs:sequence>
+      <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+      <xs:attribute ref="rdf:parseType" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="inversePath">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conforms" type="xs:string"/>
+  <xs:element name="result">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="shac:ValidationResult" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+      </xs:sequence>
+      <xs:attribute ref="rdf:datatype" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationReport">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="shac:conforms" xmlns:shac="http://www.w3.org/ns/shacl#">
+          <xs:annotation>
+            <xs:documentation>Validation results</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:identifier" xmlns:ns="http://purl.org/dc/terms/#">
+          <xs:annotation>
+            <xs:documentation>Original Document or Model metadata  ID of the Full Model in the Document</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:Model.created" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Creation time of the Document</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:generatedAtTime" xmlns:prov="http://www.w3.org/ns/prov#"/>
+        <xs:element ref="ns:Model.version" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Version of the Document</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:Model.scenarioTime" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Scenario time / period / delivery day /</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="time:inXSDDateTimeStamp" xmlns:time="http://www.w3.org/2006/time#"/>
+        <xs:element ref="time:hasXSDDuration" xmlns:time="http://www.w3.org/2006/time#"/>
+        <xs:element ref="ns:Model.decsription" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Description</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:description" xmlns:ns="http://purl.org/dc/terms/#"/>
+        <xs:element ref="ns:Model.profile" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Profile, Schema or Specification</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:conformsTo" xmlns:ns="http://purl.org/dc/terms/#"/>
+        <xs:element ref="dcat:keyword" xmlns:dcat="http://www.w3.org/ns/dcat#">
+          <xs:annotation>
+            <xs:documentation>Message Type / Model Part</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:Model.DependentOn" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>md:Model.DependentOn</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:wasInfluencedBy" xmlns:prov="http://www.w3.org/ns/prov#"/>
+        <xs:element ref="ns:Model.Supersedes" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>md:Model.Supersedes</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:wasRevisionOf" xmlns:prov="http://www.w3.org/ns/prov#"/>
+        <xs:element ref="ns:Model.modelingAuthoritySet" xmlns:ns="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+          <xs:annotation>
+            <xs:documentation>Modeling Authority Set</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:hadPrimarySource" xmlns:prov="http://www.w3.org/ns/prov#"/>
+        <xs:element ref="ns:creator" xmlns:ns="http://purl.org/dc/terms/#">
+          <xs:annotation>
+            <xs:documentation>Modeling Authority</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:atLocation" xmlns:prov="http://www.w3.org/ns/prov#">
+          <xs:annotation>
+            <xs:documentation>Modeling Region</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="prov:wasAttributedTo" xmlns:prov="http://www.w3.org/ns/prov#">
+          <xs:annotation>
+            <xs:documentation>Service Provider</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="met:serviceDomain" xmlns:met="http://entsoe.eu/ns/Metadata-European#">
+          <xs:annotation>
+            <xs:documentation>Service Region</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="met:processType" xmlns:met="http://entsoe.eu/ns/Metadata-European#">
+          <xs:annotation>
+            <xs:documentation>Process</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ns:accrualPeriodicity" xmlns:ns="http://purl.org/dc/terms/#">
+          <xs:annotation>
+            <xs:documentation>TimeFrame</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="shac:result" maxOccurs="unbounded" minOccurs="0" xmlns:shac="http://www.w3.org/ns/shacl#"/>
+      </xs:choice>
+      <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

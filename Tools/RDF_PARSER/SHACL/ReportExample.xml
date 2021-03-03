@@ -1,0 +1,2932 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    xmlns:dct="http://purl.org/dc/terms/#"
+    xmlns:dcat="http://www.w3.org/ns/dcat#"
+    xmlns:time="http://www.w3.org/2006/time#"
+    xmlns:eumd="http://entsoe.eu/ns/Metadata-European#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:prov="http://www.w3.org/ns/prov#"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+	xml:base="http://www.w3.org/ns/shacl">
+
+  <sh:ValidationReport rdf:resource="urn:uuid:d16c227f-533e-40b2-a557-def321e59e62">
+
+      <!-- Validation results -->
+      <sh:conforms>false</sh:conforms>
+
+
+      <!-- Original Document or Model metadata -->
+
+      <!-- ID of the Full Model in the Document-->
+      <dct:identifier>urn:uuid:d2630bd5-9578-4fab-9647-13991c692d07</dct:identifier>
+
+      <!-- Creation time of the Document  -->
+      <md:Model.created>2021-01-28T17:01:03Z</md:Model.created>
+      <prov:generatedAtTime>2021-01-28T17:01:03Z</prov:generatedAtTime>
+
+      <!-- Version of the Document -->
+      <md:Model.version>1</md:Model.version>
+
+      <!-- Scenario time / period / delivery day /-->
+      <md:Model.scenarioTime>2021-11-25T17:30:00Z</md:Model.scenarioTime>
+      <time:inXSDDateTimeStamp>2021-11-25T17:00:00Z</time:inXSDDateTimeStamp>
+      <time:hasXSDDuration>PT1H</time:hasXSDDuration>
+
+      <!-- Description -->
+      <md:Model.decsription>This is an example metadata of updated SSH by RSC</md:Model.decsription>
+      <dct:description>This is an example metadata of updated SSH by RSC</dct:description>
+
+      <!-- Profile, Schema or Specification -->
+      <md:Model.profile> http://entsoe.eu/CIM/SteadyStateHypothesis/1/1</md:Model.profile>
+      <dct:conformsTo> http://entsoe.eu/CIM/SteadyStateHypothesis/1/1</dct:conformsTo>
+
+      <!-- Message Type / Model Part -->
+      <dcat:keyword>urn:entsoe.eu:MessageTypeList#SSH</dcat:keyword>
+
+      <!-- md:Model.DependentOn -->
+      <md:Model.DependentOn rdf:resource="urn:uuid:f0063d01-1dac-46f0-91a4-2b7479991173" />
+      <prov:wasInfluencedBy rdf:resource="urn:uuid:f0063d01-1dac-46f0-91a4-2b7479991173" />
+
+      <!-- md:Model.Supersedes  -->
+      <md:Model.Supersedes rdf:resource="urn:uuid:8341cd19-779b-4a84-bafb-06b8bb56f767" />
+      <prov:wasRevisionOf rdf:resource="urn:uuid:8341cd19-779b-4a84-bafb-06b8bb56f767" />
+
+      <!-- Modeling Authority Set -->
+      <md:Model.modelingAuthoritySet>http://www.elering.ee/Operation</md:Model.modelingAuthoritySet>
+      <prov:hadPrimarySource>http://www.elering.ee/Operation</prov:hadPrimarySource>
+
+
+      <!-- Modeling Authority -->
+      <dct:creator rdf:resource="urn:eic:10X1001A1001A39W"/>
+
+      <!-- Modeling Region -->
+      <prov:atLocation rdf:resource="urn:eic:10Y1001A1001A39I"/>
+
+      <!-- Service Provider -->
+      <prov:wasAttributedTo rdf:resource="urn:eic:38X-BALTIC-RSC-H"/>
+
+      <!-- Service Region -->
+      <eumd:serviceDomain rdf:resource="urn:eic:10Y1001A1001A94A"/>
+
+      <!-- Process -->
+      <eumd:processType rdf:resource="urn:entsoe.eu:ProcessTypeList#CGM"/>
+
+      <!-- TimeFrame -->
+      <dct:accrualPeriodicity rdf:resource="urn:entsoe.eu:wgedi:TimeFrameList#1D"/>
+
+
+
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:d771118f-36e9-4115-a128-cc3d9ce3e3da"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.tpqo.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tppqo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.tpqo-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f43499bf-6bf3-483d-ae2a-e46d696a66b2"/>
+        <sh:resultMessage>The value is negative.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RegulatingControl.targetDeadband"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinInclusiveConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/3.0#RegulatingControl.targetDeadband-valueRange"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">-1.625</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:df16b3dd-c905-4a6f-84ee-f067be86f5da"/>
+        <sh:resultMessage>The association ConductingEquipment.BaseVoltage is defined for a ConductingEquipment contained in a VoltageLevel.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#ConductingEquipment.BaseVoltage-usageSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#ConductingEquipment.BaseVoltage-usage"/>
+        <sh:value rdf:resource="urn:uuid:d0486169-2205-40b2-895e-b672ecb9e5fc"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:50f02f33-105e-4906-9448-24b0f91cff5e"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#VCompIEEEType1.xc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#VCompIEEEType1.xc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:10f22035-66c6-41de-873a-057e68d153bb"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro1.mwbase"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro1.mwbase-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.tpqo.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tppqo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.tpqo-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >12</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>The value is greater than SynchronousMachineTimeConstantReactance.xQuadTrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.xQuadSubtrans"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanOrEqualsConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xQuadTrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:002b0a40-3957-46db-b84a-30420083558f"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvShuntCompensatorSections.ShuntCompensator"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#ShuntCompensator.SvShuntCompensatorSections-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:9d25a1f9e5d14d47b6dcde99c4380b40"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:408553d5-63fa-4d4e-973d-bef20febd9eb"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for SC profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#AndConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-SC"/>
+        <sh:value rdf:resource="urn:uuid:408553d5-63fa-4d4e-973d-bef20febd9eb"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f7f61a91-eca2-4492-8bd7-9ec2b28fc837"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:7e6dab445e92469892d1dcc3421cce1a"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.ifdBaseType"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.ifdBaseType-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#DynamicsFunctionBlock.enabled"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#DynamicsFunctionBlock.enabled-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:97d7d14a-7294-458f-a8d7-024700a08717"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:14b352cb-5574-40c5-bf83-0ed3574554a3"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2b1757e9-583b-46f7-b826-8bccbc5387dd"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam1.eps"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam1.eps-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:d6986ea6-fadc-4113-806a-a8f95f62c216"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:14b352cb-5574-40c5-bf83-0ed3574554a3"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:608059fa-f262-463d-a8a8-80844a2a7021"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a81d08ed-f51d-4538-8d1e-fb2d0dbd128e"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7"/>
+        <sh:resultMessage>The model does not include any of the  md:Model.profile defined for CGMES.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Model.profile-allowedValues"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/61970-600/EquipmentBoundary-European/3/0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:81bdcb4f-827f-48eb-b8bf-b55f76a14bc3"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#VCompIEEEType1.xc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#VCompIEEEType1.xc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:b1480a00-b427-4001-a26c-51954d2bb7e9"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0442899-8dbe-48c1-a1fa-adb2a5929273"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:bd736b22-dbff-447a-9c91-112e6986e3c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#VCompIEEEType1.xc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#VCompIEEEType1.xc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:b58bf21a-096a-4dae-9a01-3f03b60c24c7"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:ed0c5d75-4a54-43c8-b782-b20d7431630b"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.ks"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.ks-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:5c74cb26-ce2f-40c6-951d-89091eb781b6"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f70f6bad-eb8d-4b8f-8431-4ab93581514e"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.xDirectSubtrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachineDynamics.statorLeakageReactance"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xDirectSubtrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:925a3a38-cd26-4f89-8891-c5bc8494e1ae"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:6f014d4c-c1b0-4eed-8d6d-bae3bc87afcf"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:644936cc-1ea0-46f3-93e6-eed0e0cc8bee"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:1182d878-2eaa-4eec-91be-ce7b2b1e7f9a"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:1182d878-2eaa-4eec-91be-ce7b2b1e7f9a"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.tpqo.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tppqo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.tpqo-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >8.37</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:5c74cb26-ce2f-40c6-951d-89091eb781b6"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.xDirectSubtrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachineDynamics.statorLeakageReactance"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xDirectSubtrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:9d25a1f9e5d14d47b6dcde99c4380b40_X"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:8fa4cc91-bbaf-4799-ad93-5ba73e0e0fe0"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for DL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-DL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:df16b3dd-c905-4a6f-84ee-f067be86f5da"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:6f014d4c-c1b0-4eed-8d6d-bae3bc87afcf"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.efdBaseRatio"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.efdBaseRatio-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:23b65c6b-2351-4673-89e9-1895c7291543"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#DynamicsFunctionBlock.enabled"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#DynamicsFunctionBlock.enabled-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:dad02278-bd25-476f-8f58-dbe44be72586"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:conforms rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</sh:conforms>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:ddc148fc-3abd-459d-aec1-396283e0def6"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:d4affe50316740bdbbf4ae9c7cbf3cfd_X"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a81d08ed-f51d-4538-8d1e-fb2d0dbd128e"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfc68f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfe48f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:9c3b8f97-7972-477d-9dc8-87365cc0ad0e"/>
+        <sh:resultMessage>Assumed generation infeed of cim:SynchronousMachine deviates from calculated  generation infeed more than 10 MW. RotatingMachine.p: -600.4927; SvPowerFlow.p: -567.4967.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Warning"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.p-GenActivePowerInfeedDiffWSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.p-GenActivePowerInfeedDiffW"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >-600.4927</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:f7f61a91-eca2-4492-8bd7-9ec2b28fc837"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:0e8cd279-ad5d-485a-b3a9-093ae8714b72"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:0e8cd279-ad5d-485a-b3a9-093ae8714b72"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:874d67d1-1c18-4feb-86f0-8af2cce65752"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#ControlArea"/>
+        <sh:resultMessage>ControlArea instance is missing or has IdentifiedObject.energyIdentCodeEic where the third character is not Y. </sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/BusinessSpecific-QoCDC/3.0#ControlArea-ControlAreaInstanceCount"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:65dd04e792584b3b912374e35dec032e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2b1757e9-583b-46f7-b826-8bccbc5387dd"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam1.db2"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam1.db2-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:fd136c65-d001-41a1-adc7-c5430b5c5e72"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:fd136c65-d001-41a1-adc7-c5430b5c5e72"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:84d278b9-2b62-4026-bd49-c669b603e4a8"/>
+        <sh:resultMessage>ControlArea instance is missing or has IdentifiedObject.energyIdentCodeEic where the third character is not Y.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/BusinessSpecific-QoCDC/3.0#ControlArea-ControlAreaInstanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/BusinessSpecific-QoCDC/3.0#ControlArea-ControlAreaInstance"/>
+        <sh:value rdf:resource="urn:uuid:84d278b9-2b62-4026-bd49-c669b603e4a8"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:78736387-5f60-4832-b3fe-d50daf81b0a6"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:f04af3a9-24e3-46dd-91c0-97fea3ecc6a7"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:17086487-56ba-4979-b8de-064025a6b4da"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:1fa19c281c8f4e1eaad9e1cab70f923e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:969470b9-e74c-40d2-b3f7-bcfd88400fd1"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:969470b9-e74c-40d2-b3f7-bcfd88400fd1"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.ifdBaseType"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.ifdBaseType-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:874d67d1-1c18-4feb-86f0-8af2cce65752"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#DynamicsFunctionBlock.enabled"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#DynamicsFunctionBlock.enabled-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:83cc66dd-8d93-4a2c-8103-f1f5a9cf7e2e"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:2922c1dd-4113-466e-8cad-002572f3f557"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2e267815-b030-47c1-9c98-a72444e60f2f"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for OP profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#AndConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-OP"/>
+        <sh:value rdf:resource="urn:uuid:2e267815-b030-47c1-9c98-a72444e60f2f"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4bb5407b-b4a5-416c-80ad-1a778ada2b9b"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:4bb5407b-b4a5-416c-80ad-1a778ada2b9b"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:c7d37bc3-196c-4458-896b-614f810cea0f"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:d771118f-36e9-4115-a128-cc3d9ce3e3da"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvShuntCompensatorSections.ShuntCompensator"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#ShuntCompensator.SvShuntCompensatorSections-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:fe25f43a-7341-446e-a71a-8ab7119ba806"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#DynamicsFunctionBlock.enabled"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#DynamicsFunctionBlock.enabled-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:63454a73-f439-45bb-951a-e7b193986571"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:b94318f6-6d24-4f56-96b9-df2531ad6543"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:002b0a40-3957-46db-b84a-30420083558f"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:ed0c5d75-4a54-43c8-b782-b20d7431630b"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:8fdc7abd-3746-481a-a65e-3df56acd8b13"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:550ebe0d-f2b2-48c1-991f-cebea43a21aa"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:fbfed7e3-3dec-4829-a286-029e73535685"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvShuntCompensatorSections.ShuntCompensator"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#ShuntCompensator.SvShuntCompensatorSections-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.efdBaseRatio"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.efdBaseRatio-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:38dfcc80-600f-44e2-8f71-fb595b4f00ac"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2e267815-b030-47c1-9c98-a72444e60f2f"/>
+        <sh:resultMessage>The EQ does not have reference to EQBD. The file header dependencies cardinalities and types for EQ profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraintComponent rdf:resource="#HasValueConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-EQ"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:484536e9-762a-49a3-9970-d60b9fae03fe"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:484536e9-762a-49a3-9970-d60b9fae03fe"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:6b564930-b5e2-49d3-9d06-e1de28d6fd65"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:6b564930-b5e2-49d3-9d06-e1de28d6fd65"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:51AB-2E-F1-031323239373533303630"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:51AB-2E-F1-231323239373533303630"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:78736387-5f60-4832-b3fe-d50daf81b0a6"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2b1757e9-583b-46f7-b826-8bccbc5387dd"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam1.db1"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam1.db1-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:8d7bad8bcc634e0796e362390d9040b6"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e44141af-f1dc-44d3-bfa4-b674e5c953d7"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.tc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:72242f07-189e-4a06-9f7e-f7a2776ecfd9"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:7f43f508-2496-4b64-9146-0a40406cbe49"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:81b0e447-181e-4aec-8921-f1dd7813bebc"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.ifdBaseType"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.ifdBaseType-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:126504bc-15ea-459d-acbe-68c69e340d2b"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro2.eps"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro2.eps-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:f03d65b2a51049ffa533e433721145c1"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.ks"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.ks-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:874d67d1-1c18-4feb-86f0-8af2cce65752"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/Operation-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:925a3a38-cd26-4f89-8891-c5bc8494e1ae"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:925a3a38-cd26-4f89-8891-c5bc8494e1ae"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:10f22035-66c6-41de-873a-057e68d153bb"/>
+        <sh:resultMessage>The value is either equal to or greater than GovHydro1.rperm.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro1.rtemp"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro1.rtemp-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >1.27</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfea8f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:d81ceddefca04ab8960433e4a8839325"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:3b394dab-ab47-4022-98be-8123c6dfe7d4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:cb459405-cc14-4215-a45c-416789205904"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:12baa3f3-23b1-44e0-956f-d331e1527f37"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.version"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/Constraints#Model.version-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:f03d65b2a51049ffa533e433721145c1_X"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:6e86cd52-4594-435e-92ce-6dc673288ab4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:ddc148fc-3abd-459d-aec1-396283e0def6"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:ddc148fc-3abd-459d-aec1-396283e0def6"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:5fb312ad-9f31-4307-8b69-d2dfe4991aa4"/>
+        <sh:resultMessage>ControlArea instance is missing or has IdentifiedObject.energyIdentCodeEic where the third character is not Y.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/BusinessSpecific-QoCDC/3.0#ControlArea-ControlAreaInstanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/BusinessSpecific-QoCDC/3.0#ControlArea-ControlAreaInstance"/>
+        <sh:value rdf:resource="urn:uuid:5fb312ad-9f31-4307-8b69-d2dfe4991aa4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:ef45b632-3028-4afe-bc4c-a4fa323d83fe"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:ce896ac3-b9e3-4b72-abc3-a022a2fa99e4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#VCompIEEEType1.xc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#VCompIEEEType1.xc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:0e8cd279-ad5d-485a-b3a9-093ae8714b72"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:0cc941b6-867b-4ac7-a7dd-3205172ae778"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for SV profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#AndConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-SV"/>
+        <sh:value rdf:resource="urn:uuid:0cc941b6-867b-4ac7-a7dd-3205172ae778"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bff18f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:2b659afe-2ac3-425c-9418-3383e09b4b39"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:7891a026ba2c42098556665efd13ba94"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a603d890-5d9d-42ef-98d0-acf47d121c0e"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:a603d890-5d9d-42ef-98d0-acf47d121c0e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:99b219f3-4593-428b-a4da-124a54630178"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:ad01e5d1-a11b-4e92-af12-25b89daf87be"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro1.mwbase"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro1.mwbase-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:8fa4cc91-bbaf-4799-ad93-5ba73e0e0fe0"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for DL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-DL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/Operation-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:00faa2b5-cb42-4c43-9c9a-2a09dd9c52f5"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:185273ba-a4e8-4754-8038-3b33eb76132e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#GeographicalRegion"/>
+        <sh:resultMessage>Muliple GeographicalRegion-s are present.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-2/3.0#GeographicalRegion-EQ__4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:84ed55f4-61f5-4d9d-8755-bba7b877a246"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:126504bc-15ea-459d-acbe-68c69e340d2b"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro2.db2"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro2.db2-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:c8ce5e08-5ee3-42d9-aa44-5792db252d9f"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:a708c3bc-465d-4fe7-b6ef-6fa6408a62b0"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.tpqo.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tppqo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.tpqo-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >3.54</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.modelingAuthoritySet"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/Constraints#Model.modelingAuthoritySet-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b18cd1aa-7808-49b9-a7cf-605eaf07b006"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:f524d9fc-48be-4feb-9e77-a15696d4210a"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.tc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:e482b89a-fa84-4ea9-8e70-a83d44790957"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:356b1fd1-dca7-4c5c-bd6f-cebddaf5bcd2"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#VCompIEEEType1.xc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#VCompIEEEType1.xc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:64901aec-5a8a-4bcb-8ca7-a3ddbfcd0e6c"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:3c69652c-ff14-4550-9a87-b6fdaccbb5f4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.ifdBaseType"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.ifdBaseType-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:126504bc-15ea-459d-acbe-68c69e340d2b"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro2.mwbase"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro2.mwbase-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#DanglingReferences"/>
+        <sh:resultMessage>Dangling reference is present in the model.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferencesSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#All-DanglingReferences"/>
+        <sh:value rdf:resource="urn:uuid:a8aa134c-be99-4e28-8e51-2d01a3b3e078"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4bbaf84d-2437-44e1-a56c-e79723370e77"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:4bbaf84d-2437-44e1-a56c-e79723370e77"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:38dfcc80-600f-44e2-8f71-fb595b4f00ac"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:38dfcc80-600f-44e2-8f71-fb595b4f00ac"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e305e06d-7dd6-4769-9b1c-5870f0f6cefc"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam0.mwbase"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam0.mwbase-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f96d552a-618d-4d0c-a39a-2dea3c411dee"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.scenarioTime"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/Constraints#Model.scenarioTime-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:23b65c6b-2351-4673-89e9-1895c7291543"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:126504bc-15ea-459d-acbe-68c69e340d2b"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro2.db1"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovHydro2.db1-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:364c9ca2-0d1d-4363-8f46-e586f8f66a8c"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.xQuadSubtrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachineDynamics.statorLeakageReactance"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xQuadSubtrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:44b4277a-0f4b-43a8-ad93-6f7d6ef02061"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5c0378f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfe28f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>The value is greater than SynchronousMachineTimeConstantReactance.xQuadTrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.xQuadSubtrans"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanOrEqualsConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xQuadTrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.318</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2b1757e9-583b-46f7-b826-8bccbc5387dd"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam1.mwbase"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam1.mwbase-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:3a3b27be-b18b-4385-b557-6735d733baf0"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b9376bea-c55d-40f3-93ca-6a81fa1186a0"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:8d7bad8bcc634e0796e362390d9040b6_X"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:51AB-2E-F1-131323239373533303630"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:1fa19c281c8f4e1eaad9e1cab70f923e_X"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:36b83adb-3d45-4693-8967-96627b5f9ec9"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:9b428890-bb82-48f4-af3f-a923ef883d6d"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfde8f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:d4affe50316740bdbbf4ae9c7cbf3cfd"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:3a3b27be-b18b-4385-b557-6735d733baf0"/>
+        <sh:resultMessage>The CurveData.xvalue for ReactveCapabilityCurve are not consistent with GeneratingUnit.minOperatingP and GeneratingUnit.maxOperatingP.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData.xvalue-valueSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData.xvalue-value"/>
+        <sh:value rdf:resource="urn:uuid:3a3b27be-b18b-4385-b557-6735d733baf0"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:6b564930-b5e2-49d3-9d06-e1de28d6fd65"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:87ea56f3-962a-427a-85d6-13b1f9295174"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.ifdBaseType"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.ifdBaseType-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.ks"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.ks-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:14d55344-c118-4f54-a430-72f16d12bf7b"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:14d55344-c118-4f54-a430-72f16d12bf7b"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:927f4dca-e065-4e70-b3da-d2d797fa5fdf"/>
+        <sh:resultMessage>The value is positive or zero.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#ExcIEEEAC1A.vrmin"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxExclusiveConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcIEEEAC1A.vrmin-valueRange"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:ad01e5d1-a11b-4e92-af12-25b89daf87be"/>
+        <sh:resultMessage>The value is either equal to or greater than GovHydro1.rperm.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovHydro1.rtemp"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro1.rtemp-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >1.27</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.tc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:341327c4-9224-40bf-bc33-7a3bb0bae680"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#SvTapStep.TapChanger"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MaxCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/inverseAssociations/3.0#TapChanger.SvTapStep-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.tc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:6e86cd52-4594-435e-92ce-6dc673288ab4"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:6e86cd52-4594-435e-92ce-6dc673288ab4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:a603d890-5d9d-42ef-98d0-acf47d121c0e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tc"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.tc-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.xQuadSubtrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachineDynamics.statorLeakageReactance"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xQuadSubtrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:3b394dab-ab47-4022-98be-8123c6dfe7d4"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:3b394dab-ab47-4022-98be-8123c6dfe7d4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:8da0ff82-2f23-4231-ac9b-28b9c9141432"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f70f6bad-eb8d-4b8f-8431-4ab93581514e"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7"/>
+        <sh:resultMessage>File header Model.created is not a valid UTC date time.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.created"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Model.created-HGEN4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Model.created-HGEN4"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+        >2020-04-11T16:10:00</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:9b428890-bb82-48f4-af3f-a923ef883d6d"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:fd649fe1-bdf5-4062-98ea-bbb66f50402d"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:1dc9afba-23b5-41a0-8540-b479ed8baf4b"/>
+        <sh:resultMessage>Potential reactive power problem located for cim:SynchronousMachine, assumed  reactive power generation of cim:SynchronousMachine deviates from calculated  more than 50 MVAr. RotatingMachine.q: -83.296; SvPowerFlow.q: -20.66018.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Warning"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffWSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffW"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >-83.296</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:87ea56f3-962a-427a-85d6-13b1f9295174"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f43499bf-6bf3-483d-ae2a-e46d696a66b2"/>
+        <sh:resultMessage>Target deadband must be provided if the regulating control is discrete and active.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RegulatingControl.discrete"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/BusinessSpecific-QoCDC/3.0#RegulatingControl.targetDeadband-targetDBSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/BusinessSpecific-QoCDC/3.0#RegulatingControl.targetDeadband-targetDB"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:83bea592-913e-4473-8d17-969968ff83a2"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a279a3dc-550b-426c-af3a-61b7be508dcc"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:0a84038e-1952-4d9d-9909-3b49c364a1ac"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:0a84038e-1952-4d9d-9909-3b49c364a1ac"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f43499bf-6bf3-483d-ae2a-e46d696a66b2"/>
+        <sh:resultMessage>Discrete RegulatingControl with a large RegulatingControl.targetDeadband.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#RegulatingControl.targetDeadband"/>
+        <sh:resultSeverity rdf:resource="#Warning"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/BusinessSpecific-QoCDC/3.0#RegulatingControl-TargetDeadbandOutOfRangeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/BusinessSpecific-QoCDC/3.0#RegulatingControl-TargetDeadbandOutOfRange"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >-1.625</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e44141af-f1dc-44d3-bfa4-b674e5c953d7"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:63f25be7-7592-4cf1-8401-5772046ef2ae"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>The value is greater than or equal to SynchronousMachineTimeConstantReactance.tpqo.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.tppqo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.tpqo-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >8.37</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:99b219f3-4593-428b-a4da-124a54630178"/>
+        <sh:resultMessage>Wrong number of associated instances.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Resource">
+          <sh:inversePath rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TopologicalNode"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/inverseAssociations/3.0#TopologicalNode.Terminal-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:fd136c65-d001-41a1-adc7-c5430b5c5e72"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:cab82e1c-1435-447b-bba0-74b592539eac"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:6bdc33de-d027-49b7-b98f-3b3d87716615"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:3a3b27be-b18b-4385-b557-6735d733baf0"/>
+        <sh:resultMessage>One of the following is not fulfilled: 1)Neither SynchronousMachine.minQ,  SynchronousMachine.maxQ nor SynchronousMachine.InitialReactiveCapabilityCurve are provided 2) Either SynchronousMachine.minQ is not equal to min of CurveData.y1value-s or  SynchronousMachine.maxQ is not equal to max CurveData.y2value-s.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine-reactiveLimitsSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine-reactiveLimits"/>
+        <sh:value rdf:resource="urn:uuid:3a3b27be-b18b-4385-b557-6735d733baf0"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:484536e9-762a-49a3-9970-d60b9fae03fe"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:a45d705f-46f6-4bde-8790-11a762da8c01"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:a45d705f-46f6-4bde-8790-11a762da8c01"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:afddd60d-f7e6-419a-a5c2-be28d29beaf9"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b9376bea-c55d-40f3-93ca-6a81fa1186a0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal.sequenceNumber"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/Constraints#ACDCTerminal.sequenceNumber-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:1c6beed6-1acf-42e7-ba55-0cc9f04bddd8"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:24413233-26c3-4f7e-9f72-4461796938be"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:36b83adb-3d45-4693-8967-96627b5f9ec9"/>
+        <sh:resultMessage>The value is not an integer, multiples of 30 degrees in the range of -150 degrees to 150 degrees excluding 0.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#PhaseTapChangerAsymmetrical.windingConnectionAngle"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PhaseTapChangerAsymmetrical.windingConnectionAngle-valueRangeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PhaseTapChangerAsymmetrical.windingConnectionAngle-valueRange"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >5</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:820d95d7-26d4-4311-8b1f-026f8605b86d"/>
+        <sh:resultMessage>The containment is either missing or it is not VoltageLevel or Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#EquivalentInjection-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:408553d5-63fa-4d4e-973d-bef20febd9eb"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for OP profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#AndConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-OP"/>
+        <sh:value rdf:resource="urn:uuid:408553d5-63fa-4d4e-973d-bef20febd9eb"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:0a84038e-1952-4d9d-9909-3b49c364a1ac"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:795a117d-7caf-4fc2-a8d9-dc8f4cf2344a"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2cd21c77-b8b1-4896-95fb-240f45b9ac89"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:2cd21c77-b8b1-4896-95fb-240f45b9ac89"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:9c3b8f97-7972-477d-9dc8-87365cc0ad0e"/>
+        <sh:resultMessage>Potential reactive power problem located for cim:SynchronousMachine, assumed  reactive power generation of cim:SynchronousMachine deviates from calculated  more than 50 MVAr. RotatingMachine.q: -386.9225; SvPowerFlow.q: -184.1005.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Warning"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffWSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffW"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >-386.9225</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b9376bea-c55d-40f3-93ca-6a81fa1186a0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal.connected"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/Constraints#ACDCTerminal.connected-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:5caf27ed-d2f8-458a-834a-6b3193a982e6"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:310c303a-b0ed-4e42-9854-628f34c53d2b"/>
+        <sh:resultMessage>The Terminal is referenced by a RegulatingControl but is not associated with a TopologicalNode.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNodeSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-600/notSolved/3.0#Terminal-EXCH8TopologicalNode"/>
+        <sh:value rdf:resource="urn:uuid:310c303a-b0ed-4e42-9854-628f34c53d2b"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.efdBaseRatio"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.efdBaseRatio-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:14d55344-c118-4f54-a430-72f16d12bf7b"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:4dfbfe5b-5176-40b8-99d7-82351bf81ec0"/>
+        <sh:resultMessage>The value is greater than SynchronousMachineTimeConstantReactance.xQuadTrans.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.xQuadSubtrans"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#LessThanOrEqualsConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineTimeConstantReactance.xQuadTrans-valueRangePair"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.23</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:ffbabc27-1ccd-4fdc-b037-e341706c8d29"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:408553d5-63fa-4d4e-973d-bef20febd9eb"/>
+        <sh:resultMessage>The EQ does not have reference to EQBD. The file header dependencies cardinalities and types for EQ profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraintComponent rdf:resource="#HasValueConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-EQ"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2922c1dd-4113-466e-8cad-002572f3f557"/>
+        <sh:resultMessage>SvSwitch not instantiated.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instanceSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance"/>
+        <sh:value rdf:resource="urn:uuid:2922c1dd-4113-466e-8cad-002572f3f557"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:b18cd1aa-7808-49b9-a7cf-605eaf07b006"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.ks"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.ks-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b9376bea-c55d-40f3-93ca-6a81fa1186a0"/>
+        <sh:resultMessage>Cardinality violation. Upper bound shall be 1</sh:resultMessage>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.name"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#IdentifiedObject.name-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2e267815-b030-47c1-9c98-a72444e60f2f"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for SC profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#AndConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-SC"/>
+        <sh:value rdf:resource="urn:uuid:2e267815-b030-47c1-9c98-a72444e60f2f"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="http://iec.ch/TC57/CIM100#IDchecks"/>
+        <sh:resultMessage>Invalid syntax of ID (rdf:ID or rdf:about).</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Info"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC4"/>
+        <sh:value rdf:resource="urn:uuid:c1d5bfc88f8011e08e4d00247eb1f55e"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2844585c-0d35-488d-a449-685bcd57afbf"/>
+        <sh:resultMessage>Potential reactive power problem located for cim:SynchronousMachine, assumed  reactive power generation of cim:SynchronousMachine deviates from calculated  more than 50 MVAr. RotatingMachine.q: -77.743; SvPowerFlow.q: -20.66018.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Warning"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffWSparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Solved/constraints/BusinessSpecific-QoCDC/3.0#RotatingMachine.q-GenReactivePowerInfeedDiffW"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >-77.743</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:969470b9-e74c-40d2-b3f7-bcfd88400fd1"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:f96d552a-618d-4d0c-a39a-2dea3c411dee"/>
+        <sh:resultMessage>Missing required association.</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#TopologicalNode.BaseVoltage"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints#TopologicalNode.BaseVoltage-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2b1757e9-583b-46f7-b826-8bccbc5387dd"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#GovSteam1.uo"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#GovSteam1.uo-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e21e88f6-36d9-4a56-94d0-e52078d3e1c4"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.efdBaseRatio"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.efdBaseRatio-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:56a658f4-cc6d-49f1-b9cc-5bddfd5b9e64"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineDetailed.efdBaseRatio"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineDetailed.efdBaseRatio-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:9b428890-bb82-48f4-af3f-a923ef883d6d"/>
+        <sh:resultMessage>The file header dependencies cardinalities and types for GL profile are not according to PROF10.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.DependentOn"/>
+          <rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1#Model.profile"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#InConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/prof10/constraints/IEC61970-600-1/3.0#PROF10-GL"/>
+        <sh:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://iec.ch/TC57/ns/CIM/Operation-EU/3.0</sh:value>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:b0334798-475c-42aa-a25e-3945acf7a43f"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#DynamicsFunctionBlock.enabled"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#DynamicsFunctionBlock.enabled-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:17086487-56ba-4979-b8de-064025a6b4da"/>
+        <sh:resultMessage>The containment is either missing or it is not Line.</sh:resultMessage>
+        <sh:resultPath rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        </sh:resultPath>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Conductor-containment"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:2dd2eb9b-68ce-45e6-8789-cec40f83dc78"/>
+        <sh:resultMessage>SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland.</sh:resultMessage>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraint rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4Sparql"/>
+        <sh:sourceConstraintComponent rdf:resource="#SPARQLConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvStatus-SV__4"/>
+        <sh:value rdf:resource="urn:uuid:24413233-26c3-4f7e-9f72-4461796938be"/>
+      </sh:ValidationResult>
+    </sh:result>
+    <sh:result>
+      <sh:ValidationResult>
+        <sh:focusNode rdf:resource="urn:uuid:e0c1e284-5ffb-4e3d-8377-f52a22f38f48"/>
+        <sh:resultMessage>Missing required property (attribute).</sh:resultMessage>
+        <sh:resultPath rdf:resource="http://iec.ch/TC57/CIM100#SynchronousMachineTimeConstantReactance.ks"/>
+        <sh:resultSeverity rdf:resource="#Violation"/>
+        <sh:sourceConstraintComponent rdf:resource="#MinCountConstraintComponent"/>
+        <sh:sourceShape rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU/Constraints#SynchronousMachineTimeConstantReactance.ks-cardinality"/>
+      </sh:ValidationResult>
+    </sh:result>
+  </sh:ValidationReport>
+</rdf:RDF>
