@@ -8,10 +8,11 @@
                 xmlns:eumd="http://entsoe.eu/ns/Metadata-European#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:prov="http://www.w3.org/ns/prov#"
+                xmlns:cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
                 xmlns:sh="http://www.w3.org/ns/shacl#"
                 xmlns="http://entsoe.eu/checks" version="1.0">
     <xsl:output method="xml" omit-xml-declaration="no" encoding="UTF-8" indent="yes" />
-    <xsl:template match="sh:ValidationReport">
+    <xsl:template match="rdf:RDF">
 
     <!--ROOT ELEMENT-->
         <xsl:element name = "QAReport">
@@ -23,63 +24,64 @@
                 <xsl:text>Local</xsl:text>
             </xsl:attribute>
             <xsl:element name = "processible">
-                <xsl:value-of select="sh:conforms"/>
+                <xsl:value-of select="sh:ValidationReport/sh:conforms"/>
             </xsl:element>
 
             <!-- we need the full extended header in the reporing format -->
 
             <xsl:element name = "SingleProfile">
                         <xsl:attribute name="created">
-                            <xsl:value-of select="prov:generatedAtTime"/>
+                            <xsl:value-of select="md:FullModel/md:Model.created"/>
                         </xsl:attribute>
                         <xsl:attribute name="processType">
-                            <xsl:value-of select="substring-after(dct:accrualPeriodicity/@rdf:resource, '#')"/>
+                            <xsl:value-of select="md:FullModel/cgmbp:Model.businessProcess"/>
                         </xsl:attribute>
                         <xsl:attribute name="profile">
-                            <xsl:value-of select="substring-after(dcat:keyword, '#')"/>
+                            <xsl:value-of select="md:FullModel/cgmbp:Model.modelPart"/>
                         </xsl:attribute>
                         <xsl:attribute name="qualityIndicator">
                             <xsl:text>Processible</xsl:text> <!-- TODO: put if here, linked to sh:conforms -->
                         </xsl:attribute>
                         <xsl:attribute name="resource">
-                            <xsl:value-of select="dct:identifier"/>
+                            <xsl:value-of select="md:FullModel/@rdf:about"/>
                         </xsl:attribute>
                         <xsl:attribute name="scenarioTime">
-                            <xsl:value-of select="md:Model.scenarioTime"/>
+                            <xsl:value-of select="md:FullModel/md:Model.scenarioTime"/>
                         </xsl:attribute>
                         <!-- Not actually tso, but the region, this comes clear in case of Energinet -->
                         <xsl:attribute name="tso">
-                            <xsl:value-of select="prov:atLocation/@rdf:resource"/> <!-- TODO: see if we add TSO/AREA names or we can swich to EIC on QAS side -->
+                            <xsl:value-of select="md:FullModel/cgmbp:Model.sourcingTSO"/> <!-- TODO: see if we add TSO/AREA names or we can swich to EIC on QAS side -->
                         </xsl:attribute>
                         <xsl:attribute name="version">
-                             <xsl:value-of select="md:Model.version"/>
+                             <xsl:value-of select="md:FullModel/md:Model.version"/>
                         </xsl:attribute>
 
-                        <!--REFERENCES USED IN CASE OF IGM OBJECT-->
+                        <!--REFERENCES USED IN CASE OF IGM/CGM OBJECT
                         <xsl:for-each select = "MetaData/DependantOn">
                             <xsl:element name = "resource">
                                 <xsl:value-of select="modelid"/>
                             </xsl:element>
                         </xsl:for-each>
+                        -->
 
                         <!--ERRORS-->
 
             </xsl:element>
 
-            <xsl:for-each select="sh:result">
+            <xsl:for-each select=".//sh:ValidationResult">
 
                 <xsl:element name = "RuleViolation">
                     <xsl:attribute name="validationLevel">
-                        <xsl:value-of select="sh:ValidationResult/validationLevel/@rdf:resource"/> <!-- TODO: Validation levels need to be added -->
+                        <xsl:value-of select="substring-after(sh:propertyGroup/@rdf:resource, 'Level')"/> <!-- TODO: Validation levels need to be added -->
                     </xsl:attribute>
                     <xsl:attribute name="ruleId">
-                        <xsl:value-of select="substring-after(sh:ValidationResult/sh:sourceConstraintComponent/@rdf:resource, '#')"/>
+                        <xsl:value-of select="substring-after(sh:sourceShape/@rdf:resource, '#')"/>
                     </xsl:attribute>
                     <xsl:attribute name="severity">
-                        <xsl:value-of select="sh:ValidationResult/sh:resultSeverity/@rdf:resource"/> <!-- TODO: Map to used severity levels on QAS portal from SHACL -->
+                        <xsl:value-of select="substring-after(sh:resultSeverity/@rdf:resource, '#')"/> <!-- TODO: Map to used severity levels on QAS portal from SHACL -->
                     </xsl:attribute>
                     <xsl:element name = "Message">
-                        <xsl:value-of select="sh:ValidationResult/sh:resultMessage"/>
+                        <xsl:value-of select="concat(sh:resultMessage, ' VALUE:', sh:value, ' ID:', sh:focusNode/@rdf:resource)"/>
                     </xsl:element>
                 </xsl:element>
 
