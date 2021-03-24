@@ -26,8 +26,10 @@ current_directory = os.getcwd()
 # Sample how to give single path
 input_files = [r"ReportExample.xml"]
 
-# Create list to store all reports
-reports = []
+# Create dictionary to store all reports
+validation_report_name = "Validations"
+reports = {validation_report_name: []}
+
 
 # Read in all reports
 for path in input_files:
@@ -51,12 +53,29 @@ for path in input_files:
         result_data = parse_children_to_dict(result)
         meta_id = result.getparent().getparent().find("{*}ValidationReport.Model").attrib.values()[0]
         result_data.update(models_meta[meta_id])
-        reports.append(result_data)
+        reports[validation_report_name].append(result_data)
 
+    # Get statistics Report Objects
+    statistics_report_objects = report_xml.findall(".//{*}ReportObject")
+
+    for statistics_report in statistics_report_objects:
+
+        report_name = statistics_report.find("../../{*}IdentifiedReport.name").text
+
+        report_values = statistics_report.findall("{*}ReportObject.ReportValue/{*}ReportValue")
+
+        report_values_dict = {}
+        for value in report_values:
+            report_values_dict[value[0].text] = value[3].text
+
+        if not reports.get(report_name):
+            reports[report_name] = []
+
+        reports[report_name].append(report_values_dict)
 
 
 # Create one big table
-report_data = pandas.DataFrame(reports)
+report_data = pandas.DataFrame(reports[validation_report_name])
 
 # Number of severity
 severity = report_data.resultSeverity.value_counts()
@@ -76,7 +95,12 @@ tso_errors = report_data.query("resultSeverity == '#ERROR'")["Model.sourcingTSO"
 # Export to excel
 file_name = f'Report_{datetime.now():%Y%m%d_%H%M%S}.xlsx'
 with pandas.ExcelWriter(file_name) as writer:
-    report_data.to_excel(writer, sheet_name='Detailed Results')
+
+    # Raw reports
+    for report_name, report in reports.items():
+        pandas.DataFrame(report).to_excel(writer, sheet_name=report_name)
+
+    # Validation statistics
     severity.to_excel(writer, sheet_name='Overall Severity')
     rule_warnings.to_excel(writer, sheet_name='Warnings by Rule')
     rule_errors.to_excel(writer, sheet_name='Errors by Rule')
