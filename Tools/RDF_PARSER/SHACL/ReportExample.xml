@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Date of report: 2021-03-15+01:00-->
 <rdf:RDF xmlns:cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
-		 xmlns:qocdc="http://entsoe.eu/CIM/Extensions/QoCDCv3.2/2019#"
+    	 xmlns:qocdc="http://entsoe.eu/CIM/Extensions/QoCDCv3.2/2019#"
          xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
          xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#"
          xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
@@ -25,9 +25,9 @@
 		<cgmbp:Model.effectiveDateTime>2019-09-21T09:30:00Z</cgmbp:Model.effectiveDateTime>
 		<cgmbp:Model.businessProcess>1D</cgmbp:Model.businessProcess>
 		<cgmbp:Model.sourcingTSO>svedala</cgmbp:Model.sourcingTSO>
-		<cgmbp:Model.sourcingRSC/>
+		<cgmbp:Model.sourcingRSC>BALTICRSC</cgmbp:Model.sourcingRSC>
 		<cgmbp:Model.modelPart>EQ</cgmbp:Model.modelPart>
-		<cgmbp:Model.cgmRegion/>
+		<cgmbp:Model.cgmRegion>BA</cgmbp:Model.cgmRegion>
 		<cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
 		<cgmbp:Model.archiveFileName>20190921T0930Z_1D_SVEDALA_EQ_001.zip</cgmbp:Model.archiveFileName>
 		<cgmbp:Model.cimxmlFileName>20190921T0930Z_1D_SVEDALA_EQ_001.xml</cgmbp:Model.cimxmlFileName>

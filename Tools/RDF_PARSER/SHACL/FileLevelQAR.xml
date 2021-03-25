@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QAReport xmlns="http://entsoe.eu/checks"
-          created="2021-03-17T02:04:20.304+02:00"
+          created="2021-03-25T13:09:58.677+02:00"
           schemeVersion="2.0"
           serviceProvider="Local">
    <processible>false</processible>
    <SingleProfile created="2017-12-04T12:00:00.000Z"
-                  processType="1D"
-                  profile="EQ"
-                  qualityIndicator="Processible"
                   resource="urn:uuid:c59ab163-4503-4ded-9e9e-ef48835120e7"
                   scenarioTime="2019-09-21T09:30:00Z"
                   tso="svedala"
-                  version="001"/>
+                  version="001"
+                  processType="1D"
+                  profile="EQ"
+                  qualityIndicator="Processible"/>
    <RuleViolation validationLevel="2"
                   ruleId="NotMandatoryProperty"
                   severity="WARNING">
-      <Message>
-		Role or attribute in cimxml document is ignored
-		 VALUE:AL1 ID:_9e29b829-b840-4d5d-ad7b-4721c59a58e2</Message>
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL1 ID:_9e29b829-b840-4d5d-ad7b-4721c59a58e2</Message>
    </RuleViolation>
    <RuleViolation validationLevel="2"
                   ruleId="NotMandatoryProperty"
                   severity="WARNING">
-      <Message>
-		Role or attribute in cimxml document is ignored
-		 VALUE:AL10 ID:_b267ac72-2096-431f-882a-8139bc5c4615</Message>
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL10 ID:_b267ac72-2096-431f-882a-8139bc5c4615</Message>
+   </RuleViolation>
+   <RuleViolation validationLevel="2"
+                  ruleId="NotMandatoryProperty"
+                  severity="WARNING">
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL2 ID:_d78418ce-7741-48a3-9301-18661647c908</Message>
    </RuleViolation>
    <RuleViolation validationLevel="2"
                   ruleId="NotMandatoryProperty"
@@ -33,11 +34,5 @@
 		Role or attribute in cimxml document is ignored
 		 VALUE:AL2 ID:_d78418ce-7741-48a3-9301-18661647c908</Message>
    </RuleViolation>
-   <RuleViolation validationLevel="2"
-                  ruleId="NotMandatoryProperty"
-                  severity="WARNING">
-      <Message>
-		Role or attribute in cimxml document is ignored
-		 VALUE:AL2 ID:_d78418ce-7741-48a3-9301-18661647c908</Message>
-   </RuleViolation>
+   <EMFInformation mergingEntity="BALTICRSC" cgmType="BA"/>
 </QAReport>

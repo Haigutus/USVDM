@@ -50,9 +50,9 @@ SOFTWARE.
                 <xsl:value-of select="sh:ValidationReport/sh:conforms"/>
             </xsl:element>
 
-            <!-- we need the full extended header in the reporing format -->
-
+            <!-- MODEL HEADER / METADATA -->
             <xsl:element name = "SingleProfile">
+
                         <xsl:attribute name="created">
                             <xsl:value-of select="md:FullModel/md:Model.created"/>
                         </xsl:attribute>
@@ -62,8 +62,8 @@ SOFTWARE.
                         <xsl:attribute name="scenarioTime">
                             <xsl:value-of select="md:FullModel/md:Model.scenarioTime"/>
                         </xsl:attribute>
-                        <xsl:attribute name="tso">                                        <!-- Not actually tso, but the TSO area/region, this comes clear in case of Energinet -->
-                            <xsl:value-of select="md:FullModel/cgmbp:Model.sourcingTSO"/> <!-- TODO: In future switch to EIC here and on QAS side, then we can get rid of the mess of TSO Area names no being aligned -->
+                        <xsl:attribute name="tso">                                        <!-- Not actually TSO, but the TSO area/region, this comes clear in case of Energinet -->
+                            <xsl:value-of select="md:FullModel/cgmbp:Model.sourcingTSO"/> <!-- TODO: In future switch to EIC type Y (Area) here and on QAS side, then we can get rid of the mess of TSO/Area names not being aligned -->
                         </xsl:attribute>
                         <xsl:attribute name="version">
                              <xsl:value-of select="md:FullModel/md:Model.version"/>
@@ -75,43 +75,44 @@ SOFTWARE.
                             <xsl:value-of select="md:FullModel/cgmbp:Model.modelPart"/>
                         </xsl:attribute>
                         <xsl:attribute name="qualityIndicator">
-                            <xsl:text>Processible</xsl:text>                              <!-- TODO: get list of allowed valus and map to sh:conforms -->
+                            <xsl:text>Processible</xsl:text>                              <!-- TODO: get list of allowed values and map to sh:conforms -->
                         </xsl:attribute>
-
-                        <!--REFERENCES USED IN CASE OF IGM/CGM OBJECT
-                        <xsl:for-each select = "MetaData/DependantOn">
-                            <xsl:element name = "resource">
-                                <xsl:value-of select="modelid"/>
-                            </xsl:element>
-                        </xsl:for-each>
-                        -->
-
-                        <!--ERRORS-->
 
             </xsl:element>
 
+            <!-- ERRORS -->
             <xsl:for-each select=".//sh:ValidationResult">
 
                 <xsl:element name = "RuleViolation">
                     <xsl:attribute name="validationLevel">
-                        <xsl:value-of select="substring-after(sh:propertyGroup/@rdf:resource, 'Level')"/> <!-- TODO: Validation levels need to be added -->
+                        <xsl:value-of select="substring-after(sh:propertyGroup/@rdf:resource, 'Level')"/>
                     </xsl:attribute>
                     <xsl:attribute name="ruleId">
                         <xsl:value-of select="substring-after(sh:sourceShape/@rdf:resource, '#')"/>
                     </xsl:attribute>
                     <xsl:attribute name="severity">
-                        <xsl:value-of select="substring-after(sh:resultSeverity/@rdf:resource, '#')"/> <!-- TODO: Map to used severity levels on QAS portal from SHACL -->
+                        <xsl:value-of select="substring-after(sh:resultSeverity/@rdf:resource, '#')"/>
                     </xsl:attribute>
                     <xsl:element name = "Message">
                         <xsl:value-of select="concat(sh:resultMessage, ' VALUE:', sh:value, ' ID:', sh:focusNode/@rdf:resource)"/>
                     </xsl:element>
                 </xsl:element>
 
-
             </xsl:for-each>
+
+            <!-- ADDITIONAL METADATA (needed for RSC-s) -->
+            <xsl:if test="md:FullModel/cgmbp:Model.sourcingRSC != ''">
+                <xsl:element name = "EMFInformation">
+                    <xsl:attribute name="mergingEntity">
+                        <xsl:value-of select="md:FullModel/cgmbp:Model.sourcingRSC"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="cgmType">
+                        <xsl:value-of select="md:FullModel/cgmbp:Model.cgmRegion"/>
+                    </xsl:attribute>
+                </xsl:element>
+            </xsl:if>
 
         </xsl:element>
 
     </xsl:template>
 </xsl:transform>
-
