@@ -35,61 +35,69 @@ SOFTWARE.
                 xmlns:sh="http://www.w3.org/ns/shacl#"
                 xmlns="http://entsoe.eu/checks" version="1.0">
     <xsl:output method="xml" omit-xml-declaration="no" encoding="UTF-8" indent="yes" />
+
+    <!-- Extract metadata from md:FullModel -->
+    <xsl:template match="md:FullModel">
+
+        <xsl:attribute name="created">
+            <xsl:value-of select="md:Model.created"/>
+        </xsl:attribute>
+        <xsl:attribute name="scenarioTime">
+            <xsl:value-of select="md:Model.scenarioTime"/>
+        </xsl:attribute>
+        <xsl:attribute name="tso">                                        <!-- Not actually tso, but the TSO area/region, this comes clear in case of Energinet -->
+            <xsl:value-of select="cgmbp:Model.sourcingTSO"/> <!-- TODO: In future switch to EIC here and on QAS side, then we can get rid of the mess of TSO Area names no being aligned -->
+        </xsl:attribute>
+        <xsl:attribute name="version">
+             <xsl:value-of select="md:Model.version"/>
+        </xsl:attribute>
+        <xsl:attribute name="processType">
+            <xsl:value-of select="cgmbp:Model.businessProcess"/>
+        </xsl:attribute>
+        <xsl:attribute name="qualityIndicator">
+            <xsl:text>Processible</xsl:text>                              <!-- TODO: get list of allowed valus and map to sh:conforms -->
+        </xsl:attribute>
+
+    </xsl:template>
+
+
     <xsl:template match="rdf:RDF">
 
     <!--ROOT ELEMENT-->
         <xsl:element name = "QAReport">
+
             <xsl:attribute name="created" select="current-dateTime()"/>
             <xsl:attribute name="schemeVersion">
                 <xsl:text>2.0</xsl:text>
             </xsl:attribute>
             <xsl:attribute name="serviceProvider">
-                <xsl:text>Local</xsl:text>
+                <xsl:text>Gloabl</xsl:text>
             </xsl:attribute>
             <xsl:element name = "processible">
                 <xsl:value-of select="sh:ValidationReport/sh:conforms"/>
             </xsl:element>
 
-            <!-- we need the full extended header in the reporing format -->
+            <!-- MODEL HEADER / METADATA -->
+            <xsl:for-each select = "md:FullModel">
 
-            <xsl:element name = "SingleProfile">
-                        <xsl:attribute name="created">
-                            <xsl:value-of select="md:FullModel/md:Model.created"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="resource">
-                            <xsl:value-of select="md:FullModel/@rdf:about"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="scenarioTime">
-                            <xsl:value-of select="md:FullModel/md:Model.scenarioTime"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="tso">                                        <!-- Not actually tso, but the TSO area/region, this comes clear in case of Energinet -->
-                            <xsl:value-of select="md:FullModel/cgmbp:Model.sourcingTSO"/> <!-- TODO: In future switch to EIC here and on QAS side, then we can get rid of the mess of TSO Area names no being aligned -->
-                        </xsl:attribute>
-                        <xsl:attribute name="version">
-                             <xsl:value-of select="md:FullModel/md:Model.version"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="processType">
-                            <xsl:value-of select="md:FullModel/cgmbp:Model.businessProcess"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="profile">
-                            <xsl:value-of select="md:FullModel/cgmbp:Model.modelPart"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="qualityIndicator">
-                            <xsl:text>Processible</xsl:text>                              <!-- TODO: get list of allowed valus and map to sh:conforms -->
-                        </xsl:attribute>
+                <!-- Exctract metadata from instance file of SV profile -->
+                <!-- TODO: Replace with match -> match for text SV and then run template for that element parent -->
+                <xsl:if test="cgmbp:Model.modelPart = 'SV'">
+                    <xsl:element name = "IGM">
+                        <xsl:apply-templates select="."/>
+                    </xsl:element>
 
-                        <!--REFERENCES USED IN CASE OF IGM/CGM OBJECT
-                        <xsl:for-each select = "MetaData/DependantOn">
-                            <xsl:element name = "resource">
-                                <xsl:value-of select="modelid"/>
-                            </xsl:element>
-                        </xsl:for-each>
-                        -->
+                    <!-- Instance files rdf:about, that were used to create this IGM -->
+                    <xsl:for-each select = "../md:FullModel">
+                        <xsl:element name = "resource">
+                            <xsl:value-of select="@rdf:about"/>
+                        </xsl:element>
+                    </xsl:for-each>
 
-                        <!--ERRORS-->
+                </xsl:if>
+            </xsl:for-each>
 
-            </xsl:element>
-
+            <!--ERRORS-->
             <xsl:for-each select=".//sh:ValidationResult">
 
                 <xsl:element name = "RuleViolation">
@@ -107,11 +115,9 @@ SOFTWARE.
                     </xsl:element>
                 </xsl:element>
 
-
             </xsl:for-each>
 
         </xsl:element>
 
     </xsl:template>
 </xsl:transform>
-
