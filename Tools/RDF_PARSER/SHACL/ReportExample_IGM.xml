@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Date of report: 2021-03-15+01:00-->
+<rdf:RDF xmlns:cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+		 xmlns:qocdc="http://entsoe.eu/CIM/Extensions/QoCDCv3.2/2019#"
+         xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
+         xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#"
+         xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:sh="http://www.w3.org/ns/shacl#"
+         xml:base="http://entsoe.eu/CIM/Extensions/CGM-BP/2020">
+    <!--Header section-->
+	<md:FullModel rdf:about="urn:uuid:79250c05-e4dc-4b4b-b83d-d13d16bb113a">
+         <md:Model.scenarioTime>2021-02-02T23:00:00Z</md:Model.scenarioTime>
+         <md:Model.created>2021-02-03T10:11:37Z</md:Model.created>
+         <md:Model.version>001</md:Model.version>
+         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
+         <md:Model.profile>http://entsoe.eu/CIM/EquipmentOperation/3/1</md:Model.profile>
+         <md:Model.DependentOn rdf:resource="urn:uuid:eabc615a-bb53-4074-aeb7-c172c5aa0889"/>
+         <md:Model.modelingAuthoritySet>http://www.energinet.dk/OperationalPlanning</md:Model.modelingAuthoritySet>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://ast.lv</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>OperationalPlanning</cgmbp:Model.usage>
+         <cgmbp:Model.region>LV</cgmbp:Model.region>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-02T23:00:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess/>
+         <cgmbp:Model.sourcingTSO>AST</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC/>
+         <cgmbp:Model.modelPart>EQ</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210202T2300Z__AST_EQ_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+      <md:FullModel rdf:about="urn:uuid:8c2caf52-5165-4c8b-ad82-7bbd0e0c0f2d">
+         <md:Model.scenarioTime>2021-02-10T09:30:00Z</md:Model.scenarioTime>
+         <md:Model.created>2021-02-10T17:50:56Z</md:Model.created>
+         <md:Model.version>001</md:Model.version>
+         <md:Model.profile>http://entsoe.eu/CIM/Topology/4/1</md:Model.profile>
+         <md:Model.DependentOn rdf:resource="urn:uuid:79250c05-e4dc-4b4b-b83d-d13d16bb113a"/>
+         <md:Model.modelingAuthoritySet>http://ast.lv/OperationalPlanning</md:Model.modelingAuthoritySet>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://ast.lv</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>OperationalPlanning</cgmbp:Model.usage>
+         <cgmbp:Model.region>LV</cgmbp:Model.region>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-10T09:30:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess>1D</cgmbp:Model.businessProcess>
+         <cgmbp:Model.sourcingTSO>AST</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC/>
+         <cgmbp:Model.modelPart>TP</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210210T0930Z_1D_AST_TP_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+    <md:FullModel rdf:about="urn:uuid:5eb190aa-b90b-4c83-9d8c-64f3195df3c1">
+         <md:Model.scenarioTime>2021-02-10T09:30:00Z</md:Model.scenarioTime>
+         <md:Model.created>2021-02-10T17:50:56Z</md:Model.created>
+         <md:Model.version>001</md:Model.version>
+         <md:Model.profile>http://entsoe.eu/CIM/StateVariables/4/1</md:Model.profile>
+         <md:Model.DependentOn rdf:resource="urn:uuid:8c2caf52-5165-4c8b-ad82-7bbd0e0c0f2d"/>
+         <md:Model.DependentOn rdf:resource="urn:uuid:be416e04-e5c8-4c3a-bbd1-3582833352b4"/>
+         <md:Model.DependentOn rdf:resource="urn:uuid:1ef82ae8-5e60-49be-a706-0bfa7025b53d"/>
+         <md:Model.modelingAuthoritySet>http://ast.lv/OperationalPlanning</md:Model.modelingAuthoritySet>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://ast.lv</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>OperationalPlanning</cgmbp:Model.usage>
+         <cgmbp:Model.region>LV</cgmbp:Model.region>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-10T09:30:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess>1D</cgmbp:Model.businessProcess>
+         <cgmbp:Model.sourcingTSO>AST</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC/>
+         <cgmbp:Model.modelPart>SV</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210210T0930Z_1D_AST_SV_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+      <md:FullModel rdf:about="urn:uuid:be416e04-e5c8-4c3a-bbd1-3582833352b4">
+         <md:Model.scenarioTime>2021-02-10T09:30:00Z</md:Model.scenarioTime>
+         <md:Model.created>2021-02-10T17:50:56Z</md:Model.created>
+         <md:Model.version>001</md:Model.version>
+         <md:Model.profile>http://entsoe.eu/CIM/SteadyStateHypothesis/1/1</md:Model.profile>
+         <md:Model.DependentOn rdf:resource="urn:uuid:79250c05-e4dc-4b4b-b83d-d13d16bb113a"/>
+         <md:Model.modelingAuthoritySet>http://ast.lv/OperationalPlanning</md:Model.modelingAuthoritySet>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://ast.lv</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>OperationalPlanning</cgmbp:Model.usage>
+         <cgmbp:Model.region>LV</cgmbp:Model.region>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-10T09:30:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess>1D</cgmbp:Model.businessProcess>
+         <cgmbp:Model.sourcingTSO>AST</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC/>
+         <cgmbp:Model.modelPart>SSH</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210210T0930Z_1D_AST_SSH_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+      <md:FullModel rdf:about="urn:uuid:85704731-7018-47a6-94c7-9c866f165fc8">
+         <md:Model.created>2021-02-04T10:15:16.973Z</md:Model.created>
+         <md:Model.scenarioTime>2021-02-04T00:00:00.000Z</md:Model.scenarioTime>
+         <md:Model.version>1</md:Model.version>
+         <md:Model.modelingAuthoritySet>http://tscnet.eu/EMF</md:Model.modelingAuthoritySet>
+         <md:Model.profile>http://entsoe.eu/CIM/EquipmentBoundary/3/1</md:Model.profile>
+         <md:Model.profile>http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1</md:Model.profile>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://tscnet.eu</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>EMF</cgmbp:Model.usage>
+         <cgmbp:Model.region/>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-04T00:00:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess/>
+         <cgmbp:Model.sourcingTSO>entsoe</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC>tscnet.eu</cgmbp:Model.sourcingRSC>
+         <cgmbp:Model.modelPart>EQBD</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210204T0000Z__ENTSOE_EQBD_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+      <md:FullModel rdf:about="urn:uuid:41947d94-ca46-4e55-9a66-fed387c24887">
+         <md:Model.created>2021-02-04T10:15:20.236Z</md:Model.created>
+         <md:Model.scenarioTime>2021-02-04T00:00:00.000Z</md:Model.scenarioTime>
+         <md:Model.version>1</md:Model.version>
+         <md:Model.modelingAuthoritySet>http://tscnet.eu/EMF</md:Model.modelingAuthoritySet>
+         <md:Model.DependentOn rdf:resource="urn:uuid:85704731-7018-47a6-94c7-9c866f165fc8"/>
+         <md:Model.profile>http://entsoe.eu/CIM/TopologyBoundary/3/1</md:Model.profile>
+         <md:Model.description/>
+         <cgmbp:Model.modelingAuthority>http://tscnet.eu</cgmbp:Model.modelingAuthority>
+         <cgmbp:Model.usage>EMF</cgmbp:Model.usage>
+         <cgmbp:Model.region/>
+         <cgmbp:Model.bp/>
+         <cgmbp:Model.tool/>
+         <cgmbp:Model.rsc/>
+         <cgmbp:Model.txt/>
+         <cgmbp:Model.effectiveDateTime>2021-02-04T00:00:00Z</cgmbp:Model.effectiveDateTime>
+         <cgmbp:Model.businessProcess/>
+         <cgmbp:Model.sourcingTSO>entsoe</cgmbp:Model.sourcingTSO>
+         <cgmbp:Model.sourcingRSC>tscnet.eu</cgmbp:Model.sourcingRSC>
+         <cgmbp:Model.modelPart>TPBD</cgmbp:Model.modelPart>
+         <cgmbp:Model.cgmRegion/>
+         <cgmbp:Model.fileVersion>001</cgmbp:Model.fileVersion>
+         <cgmbp:Model.docPath>20210204T0000Z__ENTSOE_TPBD_001.xml</cgmbp:Model.docPath>
+      </md:FullModel>
+
+
+	<!--Statistics section, OBS: this part is from AST and fake -->
+	<qocdc:Report>
+		<qocdc:Report.ReportTable>
+			<qocdc:ReportTable>
+				<qocdc:IdentifiedReport.name>ControlArea</qocdc:IdentifiedReport.name>
+				<qocdc:ReportTable.ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ControlArea"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_d0509e83-ba01-4a96-81d5-4c0b435f490d"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>CAname</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d0509e83-ba01-4a96-81d5-4c0b435f490d"/>
+								<qocdc:ReportValue.value>LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>CAeic</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="entsoe:IdentifiedObject.energyIdentCodeEic"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d0509e83-ba01-4a96-81d5-4c0b435f490d"/>
+								<qocdc:ReportValue.value>10YLV-1001A00074</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>NetInterchange</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:ControlArea.netInterchange"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d0509e83-ba01-4a96-81d5-4c0b435f490d"/>
+								<qocdc:ReportValue.value>-316.786890</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+				</qocdc:ReportTable.ReportObject>
+			</qocdc:ReportTable>
+			<qocdc:ReportTable>
+				<qocdc:IdentifiedReport.name>TieFlows</qocdc:IdentifiedReport.name>
+				<qocdc:ReportTable.ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_bc038df1-ba01-49b6-9fe4-a93a45be8420"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_bc038df1-ba01-49b6-9fe4-a93a45be8420"/>
+								<qocdc:ReportValue.value>LN683LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_58b91453-c83f-4dcf-afa4-2eeab42"/>
+								<qocdc:ReportValue.value>XRU_AL54</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_58b91453-c83f-4dcf-afa4-2eeab42"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_cb9e6ab6-ba01-4f69-8cc0-a2a8a20d04b3"/>
+								<qocdc:ReportValue.value>0.000000</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_48d7a274-ba01-4902-aada-e9b4f9525751"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_48d7a274-ba01-4902-aada-e9b4f9525751"/>
+								<qocdc:ReportValue.value>LN677LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_ae79bab7-fd3f-4fe8-8861-a70aabd"/>
+								<qocdc:ReportValue.value>XTS_VL53</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_ae79bab7-fd3f-4fe8-8861-a70aabd"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_3fd47041-ba01-4d22-bd27-3c6b5bce4266"/>
+								<qocdc:ReportValue.value>0.000000</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_82c87efa-ba01-4d87-9d0d-56b63f12ff3d"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_82c87efa-ba01-4d87-9d0d-56b63f12ff3d"/>
+								<qocdc:ReportValue.value>LN622LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d246ac495a344a10aecd2246727cd2d3"/>
+								<qocdc:ReportValue.value>XPA_NE51</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d246ac495a344a10aecd2246727cd2d3"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_10529f20-ba01-4e1f-96ed-d3872fd27589"/>
+								<qocdc:ReportValue.value>0.000000</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_04c647ce-ba01-4ba4-82e9-66cbd168399a"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_04c647ce-ba01-4ba4-82e9-66cbd168399a"/>
+								<qocdc:ReportValue.value>LN502LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_200ad8ed95d04b3ba763304f5950b7db"/>
+								<qocdc:ReportValue.value>XSI_RI81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_200ad8ed95d04b3ba763304f5950b7db"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_8429eb73-ba01-47bd-9aab-b56de50ddd99"/>
+								<qocdc:ReportValue.value>0.000000</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_18c5c694-ba01-47b7-910e-b4db6b9f528c"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_18c5c694-ba01-47b7-910e-b4db6b9f528c"/>
+								<qocdc:ReportValue.value>LN324LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_2807facbb0294c739a65705028567b47"/>
+								<qocdc:ReportValue.value>XKL_GR81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_2807facbb0294c739a65705028567b47"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_81c78d46-ba01-409d-b11b-8538a4484fe2"/>
+								<qocdc:ReportValue.value>0.000000</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_597cc762-ba01-4b1f-b4e0-9799d724782e"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_597cc762-ba01-4b1f-b4e0-9799d724782e"/>
+								<qocdc:ReportValue.value>LN301LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_8b2e8a5189ff42c496d18c504e602aac"/>
+								<qocdc:ReportValue.value>XTA_VA81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_8b2e8a5189ff42c496d18c504e602aac"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_dcebcb20-ba01-43db-986b-6a71bf733384"/>
+								<qocdc:ReportValue.value>-100.748504</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_5bcbc375-ba01-4b13-93a1-fc2feb45ab0c"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_5bcbc375-ba01-4b13-93a1-fc2feb45ab0c"/>
+								<qocdc:ReportValue.value>LN305LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_ac661964336645a8b2aa2796f736cc05"/>
+								<qocdc:ReportValue.value>XMU_JE81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_ac661964336645a8b2aa2796f736cc05"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_fd8c9f19-ba01-423c-b31d-f393f3023bab"/>
+								<qocdc:ReportValue.value>-87.306084</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_2b2647ce-ba01-4290-8676-b975d6c32cd1"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_2b2647ce-ba01-4290-8676-b975d6c32cd1"/>
+								<qocdc:ReportValue.value>LN309LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_77ade204f1794be89447bb913f03e398"/>
+								<qocdc:ReportValue.value>XRE_VE81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_77ade204f1794be89447bb913f03e398"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_db791c73-ba01-41ef-818c-ef8ca80fac2d"/>
+								<qocdc:ReportValue.value>-39.197490</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_e714da99-ba01-41e3-9c51-ff6c7158f94f"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_e714da99-ba01-41e3-9c51-ff6c7158f94f"/>
+								<qocdc:ReportValue.value>LN316LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_60fe27b27d744e90bfa7875b4617e513"/>
+								<qocdc:ReportValue.value>XPA_PL81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_60fe27b27d744e90bfa7875b4617e513"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_d54fe5d1-ba01-4ae9-b546-8ee6e5a7289c"/>
+								<qocdc:ReportValue.value>-119.412565</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_56ef5dc4-ba01-4c69-bf16-a305c035dc7d"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_56ef5dc4-ba01-4c69-bf16-a305c035dc7d"/>
+								<qocdc:ReportValue.value>LN354LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_5640244a404f4354821d1661601b117f"/>
+								<qocdc:ReportValue.value>XTS_VA81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_5640244a404f4354821d1661601b117f"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_44b74132-ba01-4f5b-a8be-1677bea2846b"/>
+								<qocdc:ReportValue.value>28.650549</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_9e39e841-ba01-4db5-a7bc-4e4fd3c14752"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_9e39e841-ba01-4db5-a7bc-4e4fd3c14752"/>
+								<qocdc:ReportValue.value>LN451LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_cd79d19ab4c14f3f946af0becdc7ecd1"/>
+								<qocdc:ReportValue.value>XIA_LI81</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_cd79d19ab4c14f3f946af0becdc7ecd1"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_76848163-ba01-4e6e-8590-c3a32888a479"/>
+								<qocdc:ReportValue.value>-4.106680</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_031de819-ba01-458d-b79b-fc607f154108"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_031de819-ba01-458d-b79b-fc607f154108"/>
+								<qocdc:ReportValue.value>LN631LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_b0ac66eefa22416eaef9ea7c4c907458"/>
+								<qocdc:ReportValue.value>XZA_DA51</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_b0ac66eefa22416eaef9ea7c4c907458"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_5c4fb7f7-ba01-4424-95a0-72adfbd11895"/>
+								<qocdc:ReportValue.value>-3.715517</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+					<qocdc:ReportObject>
+						<qocdc:ReportObject.Class rdf:resource="cim:ACLineSegment"/>
+						<qocdc:ReportObject.Instance rdf:resource="#_e6a0618e-ba01-4f82-b32a-e498e751d5ad"/>
+						<qocdc:ReportObject.ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BranchName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_e6a0618e-ba01-4f82-b32a-e498e751d5ad"/>
+								<qocdc:ReportValue.value>LN632LV</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>BoundaryNodeName</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.name"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_f14d10b8f32a401f843117de08cb2068"/>
+								<qocdc:ReportValue.value>XIA_DA51</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>IsHVDC</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:IdentifiedObject.description"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_f14d10b8f32a401f843117de08cb2068"/>
+								<qocdc:ReportValue.value>false</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+							<qocdc:ReportValue>
+								<qocdc:ReportValue.columnName>ActivePowerFlow</qocdc:ReportValue.columnName>
+								<qocdc:ReportValue.AttributeOrRole rdf:resource="cim:SvPowerFlow.p"/>
+								<qocdc:ReportValue.Instance rdf:resource="#_06624302-ba01-40e6-bd74-19519ece7ad6"/>
+								<qocdc:ReportValue.value>9.049401</qocdc:ReportValue.value>
+							</qocdc:ReportValue>
+						</qocdc:ReportObject.ReportValue>
+					</qocdc:ReportObject>
+				</qocdc:ReportTable.ReportObject>
+			</qocdc:ReportTable>
+		</qocdc:Report.ReportTable>
+	</qocdc:Report>
+
+	<!--Validation Report Section-->
+	<sh:ValidationReport>
+		<cgmbp:ValidationReport.Model rdf:resource="urn:uuid:5eb190aa-b90b-4c83-9d8c-64f3195df3c1"/>
+        <sh:conforms>false</sh:conforms>
+		<sh:result>
+			<sh:ValidationResult>
+				<sh:focusNode rdf:resource="_9e29b829-b840-4d5d-ad7b-4721c59a58e2"/>
+				<sh:sourceShape rdf:resource="#NotMandatoryProperty"/>
+				<sh:resultMessage>Role or attribute in cimxml document is ignored</sh:resultMessage>
+				<sh:resultSeverity rdf:resource="#WARNING"/>
+				<sh:resultPath rdf:resource="svk:IdentifiedObject.aristoID"/>
+				<sh:value>AL1</sh:value>
+				<sh:propertyGroup rdf:resource="#Level2"/>
+			</sh:ValidationResult>
+		</sh:result>
+        <sh:result>
+    		<sh:ValidationResult>
+				<sh:focusNode rdf:resource="_b267ac72-2096-431f-882a-8139bc5c4615"/>
+				<sh:sourceShape rdf:resource="#NotMandatoryProperty"/>
+				<sh:resultMessage>Role or attribute in cimxml document is ignored</sh:resultMessage>
+				<sh:resultSeverity rdf:resource="#WARNING"/>
+				<sh:resultPath rdf:resource="svk:IdentifiedObject.aristoID"/>
+				<sh:value>AL10</sh:value>
+				<sh:propertyGroup rdf:resource="#Level2"/>
+			</sh:ValidationResult>
+		</sh:result>
+        <sh:result>
+    		<sh:ValidationResult>
+				<sh:focusNode rdf:resource="_d78418ce-7741-48a3-9301-18661647c908"/>
+				<sh:sourceShape rdf:resource="#NotMandatoryProperty"/>
+				<sh:resultMessage>Role or attribute in cimxml document is ignored</sh:resultMessage>
+				<sh:resultSeverity rdf:resource="#WARNING"/>
+				<sh:resultPath rdf:resource="svk:IdentifiedObject.aristoID"/>
+				<sh:value>AL2</sh:value>
+				<sh:propertyGroup rdf:resource="#Level2"/>
+			</sh:ValidationResult>
+		</sh:result>
+        <sh:result>
+    		<sh:ValidationResult>
+				<sh:focusNode rdf:resource="_d78418ce-7741-48a3-9301-18661647c908"/>
+				<sh:sourceShape rdf:resource="#NotMandatoryProperty"/>
+				<sh:resultMessage>
+		Role or attribute in cimxml document is ignored
+		</sh:resultMessage>
+				<sh:resultSeverity rdf:resource="#WARNING"/>
+				<sh:resultPath rdf:resource="svk:IdentifiedObject.aristoID"/>
+				<sh:value>AL2</sh:value>
+				<sh:propertyGroup rdf:resource="#Level2"/>
+			</sh:ValidationResult>
+		</sh:result>
+	</sh:ValidationReport>
+
+</rdf:RDF>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QAReport xmlns="http://entsoe.eu/checks"
+          created="2021-03-25T12:31:55.645+02:00"
+          schemeVersion="2.0"
+          serviceProvider="Gloabl">
+   <processible>false</processible>
+   <IGM created="2021-02-10T17:50:56Z"
+        scenarioTime="2021-02-10T09:30:00Z"
+        tso="AST"
+        version="001"
+        processType="1D"
+        qualityIndicator="Processible"/>
+   <resource>urn:uuid:79250c05-e4dc-4b4b-b83d-d13d16bb113a</resource>
+   <resource>urn:uuid:8c2caf52-5165-4c8b-ad82-7bbd0e0c0f2d</resource>
+   <resource>urn:uuid:5eb190aa-b90b-4c83-9d8c-64f3195df3c1</resource>
+   <resource>urn:uuid:be416e04-e5c8-4c3a-bbd1-3582833352b4</resource>
+   <resource>urn:uuid:85704731-7018-47a6-94c7-9c866f165fc8</resource>
+   <resource>urn:uuid:41947d94-ca46-4e55-9a66-fed387c24887</resource>
+   <RuleViolation validationLevel="2"
+                  ruleId="NotMandatoryProperty"
+                  severity="WARNING">
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL1 ID:_9e29b829-b840-4d5d-ad7b-4721c59a58e2</Message>
+   </RuleViolation>
+   <RuleViolation validationLevel="2"
+                  ruleId="NotMandatoryProperty"
+                  severity="WARNING">
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL10 ID:_b267ac72-2096-431f-882a-8139bc5c4615</Message>
+   </RuleViolation>
+   <RuleViolation validationLevel="2"
+                  ruleId="NotMandatoryProperty"
+                  severity="WARNING">
+      <Message>Role or attribute in cimxml document is ignored VALUE:AL2 ID:_d78418ce-7741-48a3-9301-18661647c908</Message>
+   </RuleViolation>
+   <RuleViolation validationLevel="2"
+                  ruleId="NotMandatoryProperty"
+                  severity="WARNING">
+      <Message>
+		Role or attribute in cimxml document is ignored
+		 VALUE:AL2 ID:_d78418ce-7741-48a3-9301-18661647c908</Message>
+   </RuleViolation>
+</QAReport>
