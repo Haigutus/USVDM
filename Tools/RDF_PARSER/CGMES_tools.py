@@ -337,10 +337,12 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
     # node_name = urlparse(dataframe[dataframe.KEY == "Model.profile"].VALUE.tolist()[0]).path  # FullModel does not have IdentifiedObject.name
 
     # Add nodes/objects
-    for ID, node in node_data.iterrows():
+    for ID, node in node_data.T.iteritems():
+        #print(node)
         object_data = reference_data.query("{} == '{}'".format(ID_COLUMN, ID))
+        #print(object_data)
 
-        node_name  = u"{} - {}".format(node["Type"], node["name"])
+        node_name  = u"{} - {}".format(node.Type, node.name)
         node_title = object_data[[ID_COLUMN, "KEY", "VALUE", "INSTANCE_ID"]].rename(columns={ID_COLUMN: "ID"}).to_html(index=False) # Add object data table to node hover titel
         node_level = object_data.level.tolist()[0]
 
@@ -415,7 +417,7 @@ def darw_relations_graph(reference_data, ID_COLUMN, notebook=False):
 
 
 
-def draw_relations_to(UUID, data, notebook=False):
+def draw_relations_to(data, UUID, notebook=False):
     reference_data = data.references_to(UUID, levels=99)
 
     ID_COLUMN = "ID"
@@ -423,12 +425,21 @@ def draw_relations_to(UUID, data, notebook=False):
     return darw_relations_graph(reference_data, ID_COLUMN, notebook)
 
 
-def draw_relations_from(UUID, data, notebook=False):
+def draw_relations_from(data, UUID, notebook=False):
     reference_data = data.references_from(UUID, levels=99)
 
     ID_COLUMN = "ID"
 
     return darw_relations_graph(reference_data, ID_COLUMN, notebook)
+
+
+def draw_relations(data, UUID, notebook=False, levels=2):
+    reference_data = data.references(UUID, levels=levels)
+
+    ID_COLUMN = "ID"
+
+    return darw_relations_graph(reference_data, ID_COLUMN, notebook)
+
 
 def export_to_cimrdf_depricated(instance_data, rdf_map, namespace_map):
 
@@ -590,15 +601,16 @@ if __name__ == '__main__':
 
     from RDF_parser import load_all_to_dataframe
 
-    path_list = ["TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"]
+    path_list = ["test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"]
 
     data = load_all_to_dataframe(path_list)
 
 
     object_UUID = "99722373_VL_TN1"
 
-    #draw_relations_from(object_UUID, data)
-    #draw_relations_to(object_UUID, data)
+    #draw_relations_from(data, object_UUID)
+    #draw_relations_to(data, object_UUID)
+    #draw_relations(data, object_UUID)
 
 
 

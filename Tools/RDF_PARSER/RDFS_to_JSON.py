@@ -1,5 +1,5 @@
 import json
-from RDFS_tools import *
+from Tools.RDF_PARSER.RDFS_tools import *
 
 #path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
 #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"

@@ -1,4 +1,4 @@
-from RDF_parser import load_all_to_dataframe
+from Tools.RDF_PARSER.RDF_parser import load_all_to_dataframe
 
 import pandas
 import os

@@ -443,6 +443,40 @@ def references_all(data):
 pandas.DataFrame.references_all = references_all
 
 
+def references(data, ID, levels=1):
+    FROM = data.references_from(ID, levels)
+    TO = data.references_to(ID, levels)
+    return pandas.concat([FROM, TO])
+pandas.DataFrame.references = references
+
+# def references(data, ID, levels=1):
+#     all_references = data.references_all()
+#     refrences_list = []
+#
+#     references = all_references.query("ID_FROM == @ID or ID_TO==@ID").copy()
+#     references["level"] = 0
+#     refrences_list.append(references)
+#
+#     level = 1
+#
+#     while levels > level:
+#
+#         previous_references = refrences_list[level-1][['ID_FROM', 'KEY', 'ID_TO']]
+#
+#         FROM = all_references.merge(previous_references["ID_FROM"]).drop_duplicates()
+#         TO = all_references.merge(previous_references["ID_TO"]).drop_duplicates()
+#         FROM_and_TO = pandas.concat([FROM, TO]).drop_duplicates()
+#
+#         new_references = pandas.concat([FROM_and_TO, previous_references]).drop_duplicates(keep=False)
+#         new_references["level"] = level
+#         refrences_list.append(new_references)
+#
+#         level += 1
+#
+#     return pandas.concat(refrences_list, ignore_index=True)
+# pandas.DataFrame.references = references()
+
+
 def types_dict(data):
     """Returns dictionary with all types as keys and number of their occurrences as values"""
 
@@ -507,7 +541,7 @@ pandas.DataFrame.export_to_excel = export_to_excel
 def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
                      class_KEY="Type",
                      export_undefined=True,
-                     export_type="xml_per_instance_zip_per_instance",
+                     export_type="xml_per_instance_zip_per_xml",
                      global_zip_filename="Export.zip",
                      debug=False):
     if debug:
@@ -519,6 +553,9 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
 
     # Keep all file names and data to be exported
     export_files = []
+
+    # Create element builder
+    E = ElementMaker(nsmap=namespace_map)
 
     if debug:
         _, start_time = print_duration("All file instance ID-s identified", start_time)
@@ -537,8 +574,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                 print("INFO - File not created for {}".format(label.VALUE))
                 continue
 
-        # Create xml element builder and the root element
-        E = ElementMaker(nsmap=namespace_map)
+        # Create xml root element
         RDF = E(QName(namespace_map["rdf"], "RDF"))
 
         # Store created xml rdf class elements
@@ -568,7 +604,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
 
                 if export_undefined:
                     class_namespace = None
-                    id_name = "about"
+                    id_name = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
                     id_value_prefix = "urn:uuid:"
                 else:
                     print("INFO - Not Exported")
@@ -578,7 +614,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
             # print(class_namespace, class_name) # DEBUG
             rdf_object = E(QName(class_namespace, class_name))
             # Add ID attribute
-            rdf_object.attrib[QName(id_name)] = id_value_prefix + ID
+            rdf_object.attrib[QName(id_name)] = f"{id_value_prefix}{ID}"
             # Add object to RDF
             RDF.append(rdf_object)
             # Add object with it's ID to dict (later we use it to add attributes to that class)
@@ -608,7 +644,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                         text_prefix = tag_def.get("text", "")
 
                         if attrib:
-                            tag.attrib[QName(attrib["attribute"])] = attrib["value_prefix"] + str(VALUE)
+                            tag.attrib[QName(attrib["attribute"])] = f"{attrib['value_prefix']}{VALUE}"
                         else:
                             if text_prefix != "":
                                 print(ID, KEY, VALUE)  # DEBUG
@@ -632,7 +668,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                     pass
 
             else:
-                # print("No Object with ID: {}".format(ID))
+                print("No Object with ID: {}".format(ID))
                 pass
 
         if debug:
@@ -782,7 +818,6 @@ def export_to_networkx(data):
 
     return graph
 
-
 pandas.DataFrame.to_networkx = export_to_networkx
 
 # END OF FUNCTIONS
@@ -792,7 +827,7 @@ pandas.DataFrame.to_networkx = export_to_networkx
 if __name__ == '__main__':
     path = "test_models/TestConfigurations_packageCASv2.0/RealGrid/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip"
 
-    data = pandas.read_RDF([path], debug=True)  # Last took 0:00:05.481340
+    data = pandas.read_RDF([path], debug=True)  # Last took 0:00:03.514987
 
     print("Loaded types")
     print(data.query("KEY == 'Type'")["VALUE"].value_counts())

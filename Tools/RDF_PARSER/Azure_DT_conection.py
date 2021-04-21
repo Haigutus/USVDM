@@ -73,8 +73,8 @@ data = pandas.read_RDF(input_data)
 
 # - AZURE_URL: The URL to the ADT in Azure
 #url = os.getenv("AZURE_URL")
-
-url = input("Please copy here your Azure DT URL")
+url = "https://Test-Digikaksik01.api.neu.digitaltwins.azure.net"
+#url = input("Please copy here your Azure DT URL")
 
 # DefaultAzureCredential expects the following three environment variables:
 # - AZURE_TENANT_ID: The tenant ID in Azure Active Directory
