@@ -30,7 +30,7 @@ from collections import OrderedDict
 
 
 # pandas.set_option("display.height", 1000)
-pandas.set_option("display.max_rows", 15)
+pandas.set_option("display.max_rows", 18)
 pandas.set_option("display.max_columns", 8)
 pandas.set_option("display.width", 1000)
 
@@ -756,32 +756,36 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
     # TODO add changes dataframe, where to keep all changes done by this function
     # TODO create function to do also ID and KEY changes
 
-    report_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE", "VALUE_OLD"]
-    write_columns = ["ID", "INSTANCE_ID", "KEY", "VALUE"]
+    report_columns = ["ID", "KEY", "VALUE", "VALUE_OLD", "INSTANCE_ID"]
+    write_columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"]
 
     # Make merge to see what updated data already exists in old and what needs to be added
-    test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_OLD", ""))
+    test_merge = data.merge(update_data, on=["ID", "KEY"], how='right', indicator=True, suffixes=("_OLD", ""), sort=False)
 
     if update:
-        # print("Data updated")
-        data_to_update = test_merge.query("_merge == 'both'")
-        # print(data_to_update[report_columns])   # TODO DEBUG
+
+        # Get unique data to be updated (if drop duplicates is not used, the update by index fill corrupt data)
+        data_to_update = test_merge.query("_merge == 'both'").drop_duplicates(subset=write_columns)
+
         # Store changes
         data.changes = data.changes.append(data_to_update[report_columns], ignore_index=True)
+
         # Get original index for update to work # TODO could be simplified by keeping index at test merge
-        old_index_new_value = \
-        data.merge(data_to_update[write_columns], on=["ID", "KEY"], how='left', suffixes=("_OLD", "")).dropna()[
-            ["VALUE"]]
+        old_index_new_value = data.merge(data_to_update[write_columns], on=["ID", "KEY"], how='left', suffixes=("_OLD", ""), sort=False).dropna()[["VALUE"]]
+
+        # Update data by original index (if data anomalies are present it is due to above merge extending initial data set with new rows and indexes)
         data.update(old_index_new_value)
         # TODO compare performance of append + drop vs update
 
     if add:
-        # print("Data added")
-        data_to_add = test_merge.query("_merge == 'right_only'")
-        # print(data_to_add[report_columns]) # TODO DEBUG
-        data = data.append(data_to_add[write_columns], ignore_index=True)
+
+        data_to_add = test_merge.query("_merge == 'right_only'").drop_duplicates(subset=write_columns)
+
         # Store changes
         data.changes = data.changes.append(data_to_add[report_columns], ignore_index=True)
+
+        # Add data
+        data = data.append(data_to_add[write_columns], ignore_index=True)
 
     return data
 

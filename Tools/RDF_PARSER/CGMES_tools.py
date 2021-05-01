@@ -115,7 +115,7 @@ def get_filename_from_metadata(meta_data, file_type="xml", filename_mask=default
     meta_data = {key.split(".")[1]:meta_data[key] for key in meta_data}
 
     # DateTime fields from text to DateTime
-    DateTime_fields = ["scenarioTime", 'created']
+    DateTime_fields = ["scenarioTime"]#, 'created']
     for field in DateTime_fields:
         meta_data[field] = aniso8601.parse_datetime(meta_data[field])
 
