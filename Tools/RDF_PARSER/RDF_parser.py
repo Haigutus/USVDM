@@ -793,12 +793,16 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
 pandas.DataFrame.update_triplet_from_triplet = update_triplet_from_triplet
 
 
-def update_triplet_from_tableview(data, tableview, update=True, add=True):
+def update_triplet_from_tableview(data, tableview, update=True, add=True, instance_id=None):
     """Update or add data to current triplet from a tableview
     VALUE at ID and KEY is updated and KEY ID pair does not exist it is added together with VALUE
     you can control if data is added or updated with parameters update and add, by default both are True"""
 
     update_triplet = tableview.tableview_to_triplet()
+
+    if instance_id:
+        update_triplet["INSTANCE_ID"] = instance_id
+
     return update_triplet_from_triplet(data, update_triplet, update, add)
 
 

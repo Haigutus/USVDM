@@ -40,7 +40,8 @@ mapping_conf_path = "configurations/MAP_AREA_PARTY.xlsx"
 enumerations_path = "configurations/ENUMERATIONS.xlsx"
 
 # Input Boundary #
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180503T0000Z_ENTSO-E_BD_1210.zip"
 
 ### Output conf ###
 
@@ -99,7 +100,7 @@ new_metadata['Model.description'] = f"Official CGM boundary set +//-3 years. Bas
 # metadata['Model.modelingAuthoritySet'] = "http://tscnet.eu/EMF"
 
 # 3.2 Update modelling AuthoritySet
-new_metadata['Model.modelingAuthoritySet'] = "http://baltic-rsc.eu/boundary"
+new_metadata['Model.modelingAuthoritySet'] = "http://baltic-rsc.eu/Boundary/CGMES/2.4.15"
 
 # 4.1 Update model Scenario Time  TODO - test 00:30 on OPDM
 new_metadata['Model.scenarioTime'] = f"{utc_now.date().isoformat()}T00:00:00Z"
@@ -168,22 +169,30 @@ columns_to_update = ["IdentifiedObject.name", "IdentifiedObject.description", "I
 
 # HVDC_data = pandas.read_csv("configurations/HVDC_mapping.csv", index_col=0)
 
+EQBD_INSTANCE_ID = data.query("KEY == 'Model.profile' and VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
+TPBD_INSTANCE_ID = data.query("KEY == 'Model.profile' and VALUE == 'http://entsoe.eu/CIM/TopologyBoundary/3/1'").INSTANCE_ID.item()
+
+
 HVDC_data = data_to_add['LINE_CGMproject']
 
-DC_LINES = HVDC_data.set_index("ID")[columns_to_update]
-data = data.update_triplet_from_tableview(DC_LINES, add=False)
+DC_LINES_1 = HVDC_data.set_index("ID")[columns_to_update]
+DC_LINES_2 = HVDC_data.dropna(subset=["DUPLICATE_ID"]).drop(columns="ID").rename(columns={"DUPLICATE_ID": "ID"}).set_index("ID")[columns_to_update]
+
+DC_LINES = pandas.concat([DC_LINES_1, DC_LINES_2])
+
+data = data.update_triplet_from_tableview(DC_LINES, add=True, instance_id=EQBD_INSTANCE_ID)
 
 # Update nodes
 columns_to_update = ["IdentifiedObject.description", "IdentifiedObject.energyIdentCodeEic"]
-HVDC_lines_and_nodes = HVDC_data.merge(line_and_nodes, on='ID', suffixes=("", "_old")).set_index("ID")
+HVDC_lines_and_nodes = DC_LINES.merge(line_and_nodes, on='ID', suffixes=("", "_old")).set_index("ID")
 
 # Update ConnectivityNodes
 DC_CN_NODES = HVDC_lines_and_nodes.rename(columns={"ID_ConnectivityNode": "ID"}).set_index("ID")[columns_to_update]
-data = data.update_triplet_from_tableview(DC_CN_NODES, add=False)
+data = data.update_triplet_from_tableview(DC_CN_NODES, add=True, instance_id=EQBD_INSTANCE_ID)
 
 # Update TopologicalNodes
 DC_TP_NODES = HVDC_lines_and_nodes.rename(columns={"ID_TopologicalNode": "ID"}).set_index("ID")[columns_to_update]
-data = data.update_triplet_from_tableview(DC_TP_NODES, add=False)
+data = data.update_triplet_from_tableview(DC_TP_NODES, add=True, instance_id=TPBD_INSTANCE_ID)
 
 # 9 Remove Junctions - Removed in export configuration
 
@@ -211,8 +220,7 @@ def set_export_filenames(data):
 
     # Generate filename for global zip
     metadata = CGMES_tools.get_metadata_from_FullModel(data)
-    global_zip_filename = CGMES_tools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask,
-                                                                 file_type='zip')
+    global_zip_filename = CGMES_tools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
 
     # 11 Update version number if it already exists
     if path.exists(global_zip_filename):
