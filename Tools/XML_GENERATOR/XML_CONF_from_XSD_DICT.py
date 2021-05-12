@@ -246,6 +246,6 @@ if __name__ == '__main__':
 
     root_name = 'ReserveBid_MarketDocument'
 
-    xsd_path = r"C:\USVDM\Tools\XML_VALIDATOR\XSD\CIM_2019-09-17\iec62325-451-7-reservebiddocument_v7_1.xsd"
+    xsd_path = r"C:\USVDM\Tools\XML_VALIDATOR\XSD\CIM_2021-04-11\iec62325-451-7-reservebiddocument_v7_1.xsd"
 
     create_message(xsd_path, root_name, header_meta_dict, data, debug = True)

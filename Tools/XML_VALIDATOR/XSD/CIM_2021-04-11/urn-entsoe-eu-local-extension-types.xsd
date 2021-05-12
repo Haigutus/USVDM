@@ -75,6 +75,11 @@
       <xsd:enumeration value="8716867000016" />
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="LocalFuelType">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="A01" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="LocalHVDCModeType">
     <xsd:restriction base="xsd:NMTOKEN">
       <xsd:enumeration value="A01" />
