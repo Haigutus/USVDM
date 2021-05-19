@@ -809,6 +809,26 @@ def update_triplet_from_tableview(data, tableview, update=True, add=True, instan
 pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 
 
+def get_diff(left_data, right_data, print_diff=False, file_id_key="label"):
+    diff = left_data.merge(right_data, on=["ID", "KEY", "VALUE"], how='outer', indicator=True, suffixes=("_OLD", "_NEW"), sort=False).query("_merge != 'both'")
+
+    if print_diff:
+        changes = diff.replace({'_merge': {"left_only": "-", "right_only": "+"}}).sort_values(by=['ID', 'KEY']).query("KEY != 'label'")
+        changes_on_left = len(changes.query("_merge == '-'"))
+        changes_on_right = len(changes.query("_merge == '+'"))
+
+        for _, file_id in left_data.query("KEY == @file_id_key").VALUE.iteritems():
+            print(f"--- {file_id}")# from-file-modification-time")
+
+        for _, file_id in right_data.query("KEY == @file_id_key").VALUE.iteritems():
+            print(f"+++ {file_id}")# to-file-modification-time")
+        print(f"@@ -1,{changes_on_left} +1,{changes_on_right} @@")
+        for _, change in (changes._merge + changes.ID + " " + changes.KEY + " " + changes.VALUE).iteritems():
+            print(change)
+
+    return diff
+# changes = changes.replace({'_merge': {"left_only": "-", "right_only": "+"}})
+
 def export_to_networkx(data):
     """Converts triplet to networkx graph"""
     import networkx
