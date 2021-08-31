@@ -17,6 +17,7 @@ from lxml.builder import ElementMaker
 from lxml.etree import QName
 
 import pandas
+#import dask as pandas
 import datetime
 import zipfile
 import uuid
@@ -90,7 +91,7 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug=False):
 
     # Get unique ID for loaded instance
     # instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
-    instance_id = str(uuid.uuid4())  # Guarantees unique ID for each loaded instance of data
+    instance_id = str(uuid.uuid4())  # Guarantees unique ID for each loaded instance of data, in erronous data it happens that same UUID is used for multiple files
 
     if debug:
         _, start_time = print_duration("XML loaded to tree object", start_time)
@@ -158,7 +159,7 @@ def find_all_xml(list_of_paths_to_zip_globalzip_xml, debug=False):
     return xml_files_list
 
 
-def load_RDF_to_list(path_or_fileobject, debug=False):
+def load_RDF_to_list(path_or_fileobject, debug=False, keep_ns=False):
     """Parse single file to triplestore list"""
 
     file_name = path_or_fileobject
@@ -173,31 +174,38 @@ def load_RDF_to_list(path_or_fileobject, debug=False):
     if debug:
         start_time = datetime.datetime.now()
 
-    # Lets generate list for RDF data and store the original filename under rdf:label
-    data_list = [(str(uuid.uuid4()), "label", file_name, INSTANCE_ID)]
+    # Lets generate list for RDF data and store the original filename under rdf:label in dcat:Distribution object
+    ID = str(uuid.uuid4())
+    data_list = [
+                    (ID, "Type", "Distribution", INSTANCE_ID),
+                    (ID, "label", file_name, INSTANCE_ID)
+                ]
 
     # lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
-    ID = ""
+    #ID = ""
     KEY = ""
     VALUE = ""
+    NS = ""
 
     for RDF_object in RDF_objects:
 
         ID = clean_ID(RDF_object.attrib.values()[0])
-        # KEY        = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Type' # If we would like to keep all with correct namespace
+        # KEY        = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}type' # If we would like to keep all with correct namespace
         KEY = 'Type'
-        VALUE = RDF_object.tag.split("}")[1]
+        KEY_NS = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+        VALUE_NS, VALUE = RDF_object.tag.split("}")  #TODO - case where there is no namespace will fail, but is it realistic for RDF file?
         # VALUE       = etree.QName(object).localname
-        # ID_TYPE    = object.attrib.keys()[0].split("}")[1] # Adds column to identifi "ID" and "about" types of ID
+        # ID_TYPE    = object.attrib.keys()[0].split("}")[1] # Adds column to identify "ID" and "about" types of ID
 
         # data_list.append([ID, ID_TYPE, KEY, VALUE]) # If using ID TYPE, maybe also namespace should be kept?
         data_list.append((ID, KEY, VALUE, INSTANCE_ID))
 
         for element in RDF_object.iterchildren():
 
-            KEY = element.tag.split("}")[1]
+            KEY_NS, KEY = element.tag.split("}")  #TODO - case where there is no namespace will fail, but is it realistic for RDF file?
             # KEY = etree.QName(element).localname
             VALUE = element.text
+            VALUE_NS = ""
 
             if VALUE is None and len(element.attrib.values()) > 0:
                 VALUE = clean_ID(element.attrib.values()[0])
@@ -809,24 +817,49 @@ def update_triplet_from_tableview(data, tableview, update=True, add=True, instan
 pandas.DataFrame.update_triplet_from_tableview = update_triplet_from_tableview
 
 
-def get_diff(left_data, right_data, print_diff=False, file_id_key="label"):
-    diff = left_data.merge(right_data, on=["ID", "KEY", "VALUE"], how='outer', indicator=True, suffixes=("_OLD", "_NEW"), sort=False).query("_merge != 'both'")
+def remove_triplet_from_triplet(from_triplet, what_triplet, columns=["ID", "KEY", "VALUE"]):
+    """Retuns from_triplet - what_triplet"""
+    return from_triplet.drop(from_triplet.reset_index().merge(what_triplet[columns], on=columns, how="inner")["index"], axis=0)
 
-    if print_diff:
-        changes = diff.replace({'_merge': {"left_only": "-", "right_only": "+"}}).sort_values(by=['ID', 'KEY']).query("KEY != 'label'")
-        changes_on_left = len(changes.query("_merge == '-'"))
-        changes_on_right = len(changes.query("_merge == '+'"))
 
-        for _, file_id in left_data.query("KEY == @file_id_key").VALUE.iteritems():
-            print(f"--- {file_id}")# from-file-modification-time")
+def filter_triplet_by_type(triplet, type):
+    """Filter out all objects data by rdf:type"""
+    return triplet.merge(triplet.query("KEY == 'Type' and VALUE == @type").ID)
 
-        for _, file_id in right_data.query("KEY == @file_id_key").VALUE.iteritems():
-            print(f"+++ {file_id}")# to-file-modification-time")
-        print(f"@@ -1,{changes_on_left} +1,{changes_on_right} @@")
-        for _, change in (changes._merge + changes.ID + " " + changes.KEY + " " + changes.VALUE).iteritems():
-            print(change)
 
-    return diff
+def triplet_diff(left_data, right_data):
+
+    return left_data.merge(right_data, on=["ID", "KEY", "VALUE"], how='outer', indicator=True, suffixes=("_OLD", "_NEW"), sort=False).query("_merge != 'both'")
+
+
+def print_triplet_diff(left_data, right_data, file_id_object="Distribution", file_id_key="label", exclude_objects=[]):
+
+    diff = triplet_diff(left_data, right_data)
+
+    changes = diff.replace({'_merge': {"left_only": "-", "right_only": "+"}}).sort_values(by=['ID', 'KEY'])
+
+    file_id_data = filter_triplet_by_type(changes, file_id_object)
+    changes = remove_triplet_from_triplet(changes, file_id_data)
+    print(f"INFO - removed {file_id_object} from diff")
+
+    if exclude_objects:
+        for object_name in exclude_objects:
+            excluded_data = filter_triplet_by_type(changes, object_name)
+            changes = remove_triplet_from_triplet(changes, excluded_data)
+            print(f"INFO - removed {object_name} from diff")
+
+    for _, file_id in file_id_data.query("KEY == @file_id_key and _merge == '-'").VALUE.iteritems():
+        print(f"--- {file_id}")# from-file-modification-time")
+
+    for _, file_id in file_id_data.query("KEY == @file_id_key and _merge == '+'").VALUE.iteritems():
+        print(f"+++ {file_id}")# to-file-modification-time")
+
+    changes_on_left = len(changes.query("_merge == '-'"))
+    changes_on_right = len(changes.query("_merge == '+'"))
+    print(f"@@ -1,{changes_on_left} +1,{changes_on_right} @@")
+    for _, change in (changes._merge + changes.ID + " " + changes.KEY + " " + changes.VALUE).iteritems():
+        print(change)
+
 # changes = changes.replace({'_merge': {"left_only": "-", "right_only": "+"}})
 
 def export_to_networkx(data):
