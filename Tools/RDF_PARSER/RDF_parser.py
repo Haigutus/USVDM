@@ -11,6 +11,7 @@
 from __future__ import print_function
 
 from io import BytesIO
+import os
 
 from lxml import etree
 from lxml.builder import ElementMaker
@@ -506,22 +507,28 @@ def set_VALUE_at_KEY(data, key, value):
 pandas.DataFrame.set_VALUE_at_KEY = set_VALUE_at_KEY
 
 
-def export_to_excel(data):
+def export_to_excel(data, path=None, file_name=None):
     """Exports to excel all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"""
-    # TODO add specific folder path
     # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
 
     labels = data.query("KEY == 'label'").iterrows()
-
+    # TODO dont use iterrows
+    # TODO instead of label use Distribution
     for _, label in labels:
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
         types = instance_data.types_dict()
 
-        file_name = '{}.xlsx'.format(label.VALUE.split(".")[0])
+        if file_name is None:
+            file_name = '{}.xlsx'.format(label.VALUE.split(".")[0])
+
+        if path is None:
+            path = os.getcwd()
+
+        file_path = os.path.join(path, file_name)
 
         print("INFO - Exporting excel: {}".format(file_name))
-        writer = pandas.ExcelWriter(file_name)
+        writer = pandas.ExcelWriter(file_path)
 
         for class_type in types:
             class_data = instance_data.type_tableview(class_type)
