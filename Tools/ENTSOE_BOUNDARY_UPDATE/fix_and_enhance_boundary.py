@@ -36,20 +36,23 @@ def get_metadata_from_filename_NMD(file_name):
 debug = True
 
 # Mapping tables #
-mapping_conf_path = "configurations/MAP_AREA_PARTY.xlsx"
+mapping_conf_path = "configurations/CGMProcess_ReferenceData.xlsx"
 enumerations_path = "configurations/ENUMERATIONS.xlsx"
 
 # Input Boundary #
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180503T0000Z_ENTSO-E_BD_1210.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180503T0000Z_ENTSO-E_BD_1210.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180531T0000Z_ENTSO-E_BD_1210.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180701T0000Z_ENTSO-E_BD_1210.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20210831T0000Z_ENTSO-E_BD_1276.zip"
 
 ### Output conf ###
 
 # CGMES export
 export_undefined = False
-export_type      = "xml_per_instance_zip_per_all"
-# export_type = "xml_per_instance_zip_per_xml"
-# export_type     = "xml_per_instance"
+#export_type      = "xml_per_instance_zip_per_all"
+export_type = "xml_per_instance_zip_per_xml"
+#export_type = "xml_per_instance"
 export_format = "configurations/CGMES_2_4_15.json"
 
 ## Process start
@@ -58,7 +61,7 @@ export_format = "configurations/CGMES_2_4_15.json"
 data = RDF_parser.load_all_to_dataframe([boundary_path])
 
 # Load configurations
-data_to_add  = pandas.read_excel(mapping_conf_path, sheet_name=None)
+data_to_add = pandas.read_excel(mapping_conf_path, sheet_name=None)
 
 # DEBUG export initial data in excel
 # data.export_to_excel()
@@ -109,7 +112,7 @@ new_metadata['Model.scenarioTime'] = f"{utc_now.date().isoformat()}T00:00:00Z"
 new_metadata['Model.created'] = f"{utc_now.isoformat()}Z"
 
 # 6.1 Set model Version to 001 by default
-new_metadata['Model.version'] = "001"
+new_metadata['Model.version'] = "002"
 
 if debug:
     print(f"INFO - updated metadata {new_metadata}")
@@ -149,7 +152,7 @@ line_cb_id = line_and_nodes["IdentifiedObject.name_ConnectivityNode"].str[-2:]
 # 7.1 Create new Line name
 # line_and_nodes["IdentifiedObject.name"] = (fromEndName + " - " + toEndName).str[:32] # Limit to 32 character # OLD
 
-# 7.2 Create new Line name and add last char from boundary point name
+# 7.3 Create new Line name and add last char from boundary point name
 line_and_nodes["IdentifiedObject.name"] = (line_cb_id + "-" + fromEndName + "-" + toEndName).str[:32]  # Limit to 32 character
 
 # 7.3 Create new Line description
@@ -200,6 +203,17 @@ data = data.update_triplet_from_tableview(DC_TP_NODES, add=True, instance_id=TPB
 
 # 13 Remove empty EIC - If empty, removed in export
 
+# Add additional Areas
+
+INSTANCE_ID = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
+
+areas = data_to_add['AREA_CGMproject'].query("add_to_boundary == True")
+
+areas_triplet = RDF_parser.tableview_to_triplet(areas)
+areas_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
+
 # 12 Export the boundary
 
 
@@ -248,7 +262,7 @@ with open(export_format, "r") as conf_file:
 namespace_map = dict(cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                      cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
                      entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#",
-                     cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+                     #cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
                      md="http://iec.ch/TC57/61970-552/ModelDescription/1#",
                      rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                      rdfs="http://www.w3.org/2000/01/rdf-schema#",
