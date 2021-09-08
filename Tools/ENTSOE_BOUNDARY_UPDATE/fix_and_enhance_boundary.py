@@ -36,8 +36,7 @@ def get_metadata_from_filename_NMD(file_name):
 debug = True
 
 # Mapping tables #
-mapping_conf_path = "configurations/CGMProcess_ReferenceData.xlsx"
-enumerations_path = "configurations/ENUMERATIONS.xlsx"
+mapping_conf_path = "configurations/CGMProcess_ReferenceData_dev.xlsx"
 
 # Input Boundary #
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
@@ -53,7 +52,7 @@ export_undefined = False
 #export_type      = "xml_per_instance_zip_per_all"
 export_type = "xml_per_instance_zip_per_xml"
 #export_type = "xml_per_instance"
-export_format = "configurations/CGMES_2_4_15.json"
+export_format = "configurations/CGMES_2_4_15_and_CGMBP_extentsions.json"
 
 ## Process start
 
@@ -112,7 +111,7 @@ new_metadata['Model.scenarioTime'] = f"{utc_now.date().isoformat()}T00:00:00Z"
 new_metadata['Model.created'] = f"{utc_now.isoformat()}Z"
 
 # 6.1 Set model Version to 001 by default
-new_metadata['Model.version'] = "002"
+new_metadata['Model.version'] = "001"
 
 if debug:
     print(f"INFO - updated metadata {new_metadata}")
@@ -207,12 +206,20 @@ data = data.update_triplet_from_tableview(DC_TP_NODES, add=True, instance_id=TPB
 
 INSTANCE_ID = data.query("VALUE == 'http://entsoe.eu/CIM/EquipmentBoundary/3/1'").INSTANCE_ID.item()
 
-areas = data_to_add['AREA_CGMproject'].query("add_to_boundary == True")
+areas = data_to_add['AREA_CGMproject'].query("add_to_boundary == True").set_index("ID")
 
 areas_triplet = RDF_parser.tableview_to_triplet(areas)
 areas_triplet["INSTANCE_ID"] = INSTANCE_ID
 
 data = data.update_triplet_from_triplet(areas_triplet, add=True, update=False)
+
+
+party = data_to_add['PARTY_CGMproject'].query("add_to_boundary == True").set_index("ID")
+
+party_triplet = RDF_parser.tableview_to_triplet(party)
+party_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+data = data.update_triplet_from_triplet(party_triplet, add=True, update=False)
 
 # 12 Export the boundary
 
@@ -235,9 +242,10 @@ def set_export_filenames(data):
     # Generate filename for global zip
     metadata = CGMES_tools.get_metadata_from_FullModel(data)
     global_zip_filename = CGMES_tools.get_filename_from_metadata(metadata, filename_mask=global_zip_filemask, file_type='zip')
+    eq_zip_filename = CGMES_tools.get_filename_from_metadata(metadata, file_type='zip')
 
     # 11 Update version number if it already exists
-    if path.exists(global_zip_filename):
+    if path.exists(global_zip_filename) or path.exists(eq_zip_filename):
         print("File all ready exists {}".format(global_zip_filename))
 
         # Update version if export all ready exists
@@ -262,7 +270,7 @@ with open(export_format, "r") as conf_file:
 namespace_map = dict(cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                      cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
                      entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#",
-                     #cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+                     cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
                      md="http://iec.ch/TC57/61970-552/ModelDescription/1#",
                      rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                      rdfs="http://www.w3.org/2000/01/rdf-schema#",

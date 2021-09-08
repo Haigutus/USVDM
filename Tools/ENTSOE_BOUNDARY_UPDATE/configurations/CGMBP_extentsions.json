@@ -1,0 +1,55 @@
+{
+  "Distribution": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+      "value_prefix": "_"
+    },
+    "namespace": "http://www.w3.org/ns/dcat#"
+  },
+  "label": {
+      "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+      "text": ""
+  },
+  "description": {
+      "namespace": "http://purl.org/dc/terms/",
+      "text": ""
+  },
+  "issued": {
+      "namespace": "http://purl.org/dc/terms/",
+      "text": ""
+  },
+  "conformsTo": {
+      "namespace": "http://purl.org/dc/terms/",
+      "text": ""
+  },
+  "ProcessType": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+      "value_prefix": "_"
+    },
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+  },
+  "ProcessType.code": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+   "CimProfile": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+      "value_prefix": "_"
+    },
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+  },
+  "CimProfile.uri": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+  "IdentifiedObject.description": {
+      "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+      "text": ""
+  },
+  "IdentifiedObject.name": {
+      "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+      "text": ""
+  }
+}

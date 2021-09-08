@@ -1,0 +1,333 @@
+{
+    "EQBD": {
+        "CGMRegion": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "MARegion.ModelingAuthority": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        },
+        "NetworkRegion.sourcingActor": {
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+            "text": ""
+        },
+        "NetworkRegion.masUri": {
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+            "text": ""
+        },
+        "ModelingAuthority": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "MergingAgent": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "Party.sourceName": {
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+            "text": ""
+        },
+        "Party.uri": {
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+            "text": ""
+        },
+        "BaseVoltage": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "BaseVoltage.nominalVoltage": {
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+            "text": ""
+        },
+        "ConnectivityNode": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "ConnectivityNode.ConnectivityNodeContainer": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "ConnectivityNode.boundaryPoint": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.fromEndIsoCode": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.fromEndName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.fromEndNameTso": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.toEndIsoCode": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.toEndName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "ConnectivityNode.toEndNameTso": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "EnergySchedulingType": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#"
+        },
+        "EntsoeCodelist.code": {
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "FullModel": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "urn:uuid:"
+            },
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        },
+        "GeographicalRegion": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "IdentifiedObject.description": {
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+            "text": ""
+        },
+        "IdentifiedObject.energyIdentCodeEic": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "IdentifiedObject.name": {
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+            "text": ""
+        },
+        "IdentifiedObject.shortName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "Line": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "Line.Region": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "Model.DependentOn": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "urn:uuid:"
+            },
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        },
+        "Model.created": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.description": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.modelingAuthoritySet": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.profile": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.scenarioTime": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.version": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Party": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "Party.Region": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+        },
+        "SubGeographicalRegion": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "SubGeographicalRegion.Region": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        }
+    },
+    "TPBD": {
+        "ConnectivityNode": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "ConnectivityNode.TopologicalNode": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "FullModel": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+                "value_prefix": "urn:uuid:"
+            },
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        },
+        "IdentifiedObject.description": {
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+            "text": ""
+        },
+        "IdentifiedObject.energyIdentCodeEic": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "IdentifiedObject.name": {
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+            "text": ""
+        },
+        "IdentifiedObject.shortName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "Model.DependentOn": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "urn:uuid:"
+            },
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        },
+        "Model.created": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.description": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.modelingAuthoritySet": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.profile": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.scenarioTime": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "Model.version": {
+            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+            "text": ""
+        },
+        "TopologicalNode": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+                "value_prefix": "_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "TopologicalNode.BaseVoltage": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "TopologicalNode.ConnectivityNodeContainer": {
+            "attrib": {
+                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                "value_prefix": "#_"
+            },
+            "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        },
+        "TopologicalNode.boundaryPoint": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.fromEndIsoCode": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.fromEndName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.fromEndNameTso": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.toEndIsoCode": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.toEndName": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        },
+        "TopologicalNode.toEndNameTso": {
+            "namespace": "http://entsoe.eu/CIM/SchemaExtension/3/1#",
+            "text": ""
+        }
+    }
+}
