@@ -41,11 +41,11 @@ data_to_add = pandas.read_excel(mapping_conf_path, sheet_name=None)
 INSTANCE_ID = str(uuid4())
 
 
-#ProcessTypes
+#Distribution
 data = RDF_parser.tableview_to_triplet(data_to_add['ReferenceData_Distribution'].set_index("ID"))
 data["INSTANCE_ID"] = INSTANCE_ID
 
-#CimProfiles
+#Process
 process_triplet = RDF_parser.tableview_to_triplet(data_to_add['ProcessType'].set_index("ID"))
 process_triplet["INSTANCE_ID"] = INSTANCE_ID
 
@@ -57,6 +57,12 @@ profiles_triplet["INSTANCE_ID"] = INSTANCE_ID
 
 data = data.update_triplet_from_triplet(profiles_triplet, add=True, update=False)
 
+#ISO country code
+profiles_triplet = RDF_parser.tableview_to_triplet(data_to_add['ISOCountryCode'].set_index("ID"))
+profiles_triplet["INSTANCE_ID"] = INSTANCE_ID
+
+data = data.update_triplet_from_triplet(profiles_triplet, add=True, update=False)
+
 
 # Load export format configuration
 with open(export_format, "r") as conf_file:
@@ -64,12 +70,14 @@ with open(export_format, "r") as conf_file:
 
 # Set namespaces for export
 
-namespace_map = dict(cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
+namespace_map = dict(
+                     cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                      cgmbp="http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
                      rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                     rdfs="http://www.w3.org/2000/01/rdf-schema#",
-                     dcat="http://www.w3.org/ns/dcat#",
-                     dcterms="http://purl.org/dc/terms/")
+                     #rdfs="http://www.w3.org/2000/01/rdf-schema#",
+                     #dcat="http://www.w3.org/ns/dcat#",
+                     #dcterms="http://purl.org/dc/terms/"
+                     )
 
 # Export triplet to CGMES
 data.export_to_cimxml(rdf_map=rdf_map,

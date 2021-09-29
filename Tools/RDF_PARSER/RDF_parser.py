@@ -553,7 +553,7 @@ def export_to_excel(data, path=None, file_name=None):
 pandas.DataFrame.export_to_excel = export_to_excel
 
 
-def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
+def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
                      class_KEY="Type",
                      export_undefined=True,
                      export_type="xml_per_instance_zip_per_xml",
@@ -579,9 +579,13 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
 
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
-        instance_type = instance_data.query("KEY == 'Model.messageType'").VALUE.item()
+        instance_type = None
 
-        instance_rdf_map = rdf_map.get(instance_type, None)
+        if len(instance_data.query("KEY == 'Model.messageType'")):
+            instance_type = instance_data.query("KEY == 'Model.messageType'").VALUE.item()
+
+        # If there is sub structure available in schema get it, otherwise use root definitions
+        instance_rdf_map = rdf_map.get(instance_type, rdf_map)  # TODO - needs revision, add support both for md:FullModel, dcat:DataSet and without profile definiton
 
         if instance_rdf_map is None:
             print("WARNING - No rdf mapping available for {}".format(instance_type))
@@ -661,10 +665,7 @@ def export_to_cimxml(data, rdf_map={}, namespace_map={"rdf": "http://www.w3.org/
                         if attrib:
                             tag.attrib[QName(attrib["attribute"])] = f"{attrib['value_prefix']}{VALUE}"
                         else:
-                            if text_prefix != "":
-                                print(ID, KEY, VALUE)  # DEBUG
-                            # tag.text = text_prefix + str(VALUE)
-                            tag.text = str(VALUE)
+                            tag.text = f"{text_prefix}{VALUE}"
 
                         _object.append(tag)
 

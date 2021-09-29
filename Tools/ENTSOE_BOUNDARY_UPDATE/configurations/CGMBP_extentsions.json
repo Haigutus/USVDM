@@ -1,42 +1,38 @@
 {
-  "Distribution": {
+  "ISOCountryCode": {
     "attrib": {
-      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-      "value_prefix": "_"
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "http://publications.europa.eu/resource/authority/country/"
     },
-    "namespace": "http://www.w3.org/ns/dcat#"
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
   },
-  "label": {
-      "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+  "ISOCountryCode.alpha2": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
       "text": ""
   },
-  "description": {
-      "namespace": "http://purl.org/dc/terms/",
+  "ISOCountryCode.alpha3": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
       "text": ""
   },
-  "issued": {
-      "namespace": "http://purl.org/dc/terms/",
-      "text": ""
-  },
-  "conformsTo": {
-      "namespace": "http://purl.org/dc/terms/",
+  "ISOCountryCode.numeric3": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
       "text": ""
   },
   "ProcessType": {
     "attrib": {
-      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-      "value_prefix": "_"
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "urn:uuid:"
     },
     "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
   },
   "ProcessType.code": {
       "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
-      "text": ""
+      "text": "urn:entsoe.eu:wgedi:codelists:StandardProcessTypeList#"
   },
    "CimProfile": {
     "attrib": {
-      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-      "value_prefix": "_"
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "urn:uuid"
     },
     "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
   },

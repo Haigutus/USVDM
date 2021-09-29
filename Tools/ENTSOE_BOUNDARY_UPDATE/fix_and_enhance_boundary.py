@@ -98,11 +98,25 @@ if debug:
 # 2.3 Update description
 new_metadata['Model.description'] = f"Official CGM boundary set +//-3 years. Based on NMD version {old_metadata['Model.version']}"
 
+# 2.4 Update description
+new_metadata['Model.description'] = f"""
+<MDE>
+    <BP></BP>
+    <TOOL>USVDM 0.2.1</TOOL>
+    <TXT>Official CGM boundary set +//-3 years. Based on NMD version {old_metadata['Model.version']}</TXT>
+    <RSC>BALTIC</RSC>
+</MDE>
+"""
+
 # 3.1 Update modelling AuthoritySet
 # metadata['Model.modelingAuthoritySet'] = "http://tscnet.eu/EMF"
 
 # 3.2 Update modelling AuthoritySet
-new_metadata['Model.modelingAuthoritySet'] = "http://baltic-rsc.eu/Boundary/CGMES/2.4.15"
+#new_metadata['Model.modelingAuthoritySet'] = "http://baltic-rsc.eu/Boundary/CGMES/2.4.15"
+
+# 3.3
+new_metadata['Model.modelingAuthoritySet'] = "http://www.entsoe.eu/BoundarySet"
+
 
 # 4.1 Update model Scenario Time  TODO - test 00:30 on OPDM
 new_metadata['Model.scenarioTime'] = f"{utc_now.date().isoformat()}T00:00:00Z"
