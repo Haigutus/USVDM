@@ -12,7 +12,7 @@
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
                 "value_prefix": "#_"
             },
-            "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+            "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
         },
         "NetworkRegion.sourcingActor": {
             "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",

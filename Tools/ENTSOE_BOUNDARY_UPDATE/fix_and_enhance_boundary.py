@@ -42,8 +42,9 @@ mapping_conf_path = "configurations/CGMProcess_ReferenceData_dev.xlsx"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20200129T0000Z_ENTSO-E_BD_1164.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180503T0000Z_ENTSO-E_BD_1210.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180531T0000Z_ENTSO-E_BD_1210.zip"
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180701T0000Z_ENTSO-E_BD_1210.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180701T0000Z_ENTSO-E_BD_1210.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20210831T0000Z_ENTSO-E_BD_1276.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181001T0000Z_ENTSO-E_BD_1308 (2).zip"
 
 ### Output conf ###
 

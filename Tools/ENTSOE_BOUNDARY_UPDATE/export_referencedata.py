@@ -36,7 +36,7 @@ export_format = "configurations/CGMBP_extentsions.json"
 ## Process start
 
 # Load configurations
-data_to_add = pandas.read_excel(mapping_conf_path, sheet_name=None)
+data_to_add = pandas.read_excel(mapping_conf_path, sheet_name=None, dtype=str)
 
 INSTANCE_ID = str(uuid4())
 
