@@ -44,7 +44,9 @@ mapping_conf_path = "configurations/CGMProcess_ReferenceData_dev.xlsx"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180531T0000Z_ENTSO-E_BD_1210.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180701T0000Z_ENTSO-E_BD_1210.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20210831T0000Z_ENTSO-E_BD_1276.zip"
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181001T0000Z_ENTSO-E_BD_1308 (2).zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181001T0000Z_ENTSO-E_BD_1308 (2).zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181101T0000Z_ENTSO-E_BD_1326.zip"
+boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181103T0000Z_ENTSO-E_BD_1337.zip"
 
 ### Output conf ###
 
@@ -116,7 +118,7 @@ new_metadata['Model.description'] = f"""
 #new_metadata['Model.modelingAuthoritySet'] = "http://baltic-rsc.eu/Boundary/CGMES/2.4.15"
 
 # 3.3
-new_metadata['Model.modelingAuthoritySet'] = "http://www.entsoe.eu/BoundarySet"
+new_metadata['Model.modelingAuthoritySet'] = "http://www.entsoe.eu/OperationalPlanning"
 
 
 # 4.1 Update model Scenario Time  TODO - test 00:30 on OPDM

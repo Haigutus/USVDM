@@ -32,7 +32,7 @@
    "CimProfile": {
     "attrib": {
       "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
-      "value_prefix": "urn:uuid"
+      "value_prefix": "urn:uuid:"
     },
     "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
   },
