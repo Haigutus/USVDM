@@ -1,3 +1,14 @@
+# -------------------------------------------------------------------------------
+# Name:        ENTSO-E EIC registry parser
+# Purpose:     Loads EIC registry XML from web to pandas DataFrame in a triplestore like manner
+#
+# Author:      kristjan.vilgo
+#
+# Created:     2020-01-31
+# Copyright:   (c) kristjan.vilgo 2020
+# Licence:     GPLv2
+# -------------------------------------------------------------------------------
+
 import requests
 import pandas
 from lxml import etree
@@ -37,6 +48,7 @@ def get_allocated_eic():
 
 def eic_table_to_triplet(data):
     return data.melt(id_vars="mRID", value_name="VALUE", var_name="KEY").rename(columns={"mRID": "ID"})
+
 
 def get_allocated_eic_triplet():
     allocated_eic_url = "https://www.entsoe.eu/fileadmin/user_upload/edi/library/eic/allocated-eic-codes.xml"
