@@ -582,7 +582,7 @@ def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.or
         instance_type = None
 
         if len(instance_data.query("KEY == 'Model.messageType'")):
-            instance_type = instance_data.query("KEY == 'Model.messageType'").VALUE.item()
+            instance_type = instance_data.query("KEY == 'Model.messageType'").iloc[0].VALUE
 
         # If there is sub structure available in schema get it, otherwise use root definitions
         instance_rdf_map = rdf_map.get(instance_type, rdf_map)  # TODO - needs revision, add support both for md:FullModel, dcat:DataSet and without profile definiton
@@ -835,38 +835,80 @@ def filter_triplet_by_type(triplet, type):
     return triplet.merge(triplet.query("KEY == 'Type' and VALUE == @type").ID)
 
 
-def triplet_diff(left_data, right_data):
+def triplet_diff(old_data, new_data):
 
-    return left_data.merge(right_data, on=["ID", "KEY", "VALUE"], how='outer', indicator=True, suffixes=("_OLD", "_NEW"), sort=False).query("_merge != 'both'")
+    return old_data.merge(new_data, on=["ID", "KEY", "VALUE"], how='outer', indicator=True, suffixes=("_OLD", "_NEW"), sort=False).query("_merge != 'both'")
 
 
-def print_triplet_diff(left_data, right_data, file_id_object="Distribution", file_id_key="label", exclude_objects=[]):
+def print_triplet_diff(old_data, new_data, file_id_object="Distribution", file_id_key="label", exclude_objects=None):
 
-    diff = triplet_diff(left_data, right_data)
+    # Get diff between datasets
+    diff = triplet_diff(old_data, new_data)
+    diff = diff.replace({'_merge': {"left_only": "-", "right_only": "+"}}).sort_values(by=['ID', 'KEY'])
 
-    changes = diff.replace({'_merge': {"left_only": "-", "right_only": "+"}}).sort_values(by=['ID', 'KEY'])
-
-    file_id_data = filter_triplet_by_type(changes, file_id_object)
-    changes = remove_triplet_from_triplet(changes, file_id_data)
+    # Extract internal structures keeping file name information
+    file_id_data = filter_triplet_by_type(diff, file_id_object)
+    diff = remove_triplet_from_triplet(diff, file_id_data)
     print(f"INFO - removed {file_id_object} from diff")
 
+    # Exclude defined types form export
     if exclude_objects:
         for object_name in exclude_objects:
-            excluded_data = filter_triplet_by_type(changes, object_name)
-            changes = remove_triplet_from_triplet(changes, excluded_data)
+            excluded_data = filter_triplet_by_type(diff, object_name)
+            diff = remove_triplet_from_triplet(diff, excluded_data)
             print(f"INFO - removed {object_name} from diff")
 
-    for _, file_id in file_id_data.query("KEY == @file_id_key and _merge == '-'").VALUE.iteritems():
+    # Extract types on left and right to get changed/modified types
+    removed_added_modified_types = pandas.concat([
+        old_data.merge(diff["ID"]).query("KEY == 'Type'").drop_duplicates(),
+        new_data.merge(diff["ID"]).query("KEY == 'Type'").drop_duplicates()
+        ])[["ID", "KEY", "VALUE"]].drop_duplicates()
+
+    # Print old file name
+    for _, file_id in file_id_data.query(f"KEY == '{file_id_key}' and _merge == '-'").VALUE.iteritems():
         print(f"--- {file_id}")# from-file-modification-time")
 
-    for _, file_id in file_id_data.query("KEY == @file_id_key and _merge == '+'").VALUE.iteritems():
+    # Print new file name
+    for _, file_id in file_id_data.query(f"KEY == '{file_id_key}' and _merge == '+'").VALUE.iteritems():
         print(f"+++ {file_id}")# to-file-modification-time")
 
-    changes_on_left = len(changes.query("_merge == '-'"))
-    changes_on_right = len(changes.query("_merge == '+'"))
-    print(f"@@ -1,{changes_on_left} +1,{changes_on_right} @@")
-    for _, change in (changes._merge + changes.ID + " " + changes.KEY + " " + changes.VALUE).iteritems():
-        print(change)
+    # Print changes
+
+    print("")
+    print(f"@@ -1,0 +1,0 @@ Removed:")
+
+    for key, value in diff.query("KEY == 'Type' and _merge == '-'").VALUE.value_counts().items():
+        print(" ", key, value)
+
+    print("")
+    print(f"@@ -1,0 +1,0 @@ Added:")
+    for key, value in diff.query("KEY == 'Type' and _merge == '+'").VALUE.value_counts().items():
+        print(" ", key, value)
+
+    print("")
+    print(f"@@ -1,0 +1,0 @@ Changed:")
+    for key, value in pandas.concat([removed_added_modified_types, diff.query("KEY == 'Type'")])[["ID", "KEY", "VALUE"]].drop_duplicates(keep=False).VALUE.value_counts().items():
+        print(" ", key, value)
+
+    # Types changed
+    # TODO add name field to be used with Type for better reporting
+
+    for group_name, group in removed_added_modified_types.groupby("VALUE"):
+        #print(f"Types - {group_name}")
+        for objec_type in group.itertuples():
+            #print("")
+            #print(f"{objec_type.ID} {objec_type.VALUE}")
+            current_diff = diff.query("ID == @objec_type.ID")
+
+            changes_on_left = len(current_diff.query("_merge == '-'"))
+            changes_on_right = len(current_diff.query("_merge == '+'"))
+            print("")
+            print(f"@@ -1,{changes_on_left} +1,{changes_on_right} @@ {objec_type.VALUE} {objec_type.ID}")
+
+            for _, change in (current_diff._merge + current_diff.KEY + " -> " + current_diff.VALUE).iteritems():
+                print(change)
+
+    # Nice diff viewer https://diffy.org/
 
 # changes = changes.replace({'_merge': {"left_only": "-", "right_only": "+"}})
 
