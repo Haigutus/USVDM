@@ -29,6 +29,7 @@
 #2021-05-26 KV  Updated parse_children_to_dict to pick up all children and all attributes, add per TSO name excel sheet, with validation results, added additional logging
 #2021-06-02 LOO Four arguments are delivered, arg0 is the path to the script location.
 #2021-06-22 KV  Check if there is sourcingTSO defined in metadata before doing aggregations per TSO; Check if any input data is provided and log invalid paths; improve xml parsing speed
+#2022-06-03 NS  Improve xml parsing speed
 
 import pandas, sys
 from lxml import etree
@@ -125,13 +126,16 @@ for path in input_files:
         models_meta[model_id] = model_meta
 
     # Get all validation results
-    validation_results_objects = report_xml.findall(".//{*}ValidationResult")
-
-    for result in validation_results_objects:
-        result_data = parse_children_to_dict(result)
-        meta_id = result.getparent().getparent().find("{*}ValidationReport.Model").attrib.values()[0]
-        result_data.update(models_meta[meta_id])
-        reports[validation_report_name].append(result_data)
+    validation_report_objects = report_xml.findall(".//{*}ValidationReport")
+    
+    for validation_report in validation_report_objects:
+        meta_id = validation_report.find("{*}ValidationReport.Model").attrib.values()[0]
+        validation_result_object = validation_report.findall(".//{*}ValidationResult")
+        
+        for result in validation_result_object:
+            result_data = parse_children_to_dict(result)
+            result_data.update(models_meta[meta_id])
+            reports[validation_report_name].append(result_data))
 
     # Get statistics Report Objects
     statistics_report_objects = report_xml.findall(".//{*}ReportObject")
