@@ -30,11 +30,16 @@
 #2021-06-02 LOO Four arguments are delivered, arg0 is the path to the script location.
 #2021-06-22 KV  Check if there is sourcingTSO defined in metadata before doing aggregations per TSO; Check if any input data is provided and log invalid paths; improve xml parsing speed
 #2022-06-03 NS  Improve xml parsing speed
+#2022-06-30 KV  Improve memory usage by using iterfind instead of findall; added argparse for commandline interface; fixed xlsx future warning; added CSV export
 
-import pandas, sys
+import pandas
 from lxml import etree
 from datetime import datetime
 import os
+import sys
+import time
+import argparse
+
 
 def parse_children_to_dict(parent):
     """Parses all children to flat dictionary.
@@ -46,9 +51,10 @@ def parse_children_to_dict(parent):
 
     for child in children:
         child_namespace, child_name = child.tag.split("}")
+        child_children = child.getchildren()
 
-        if len(child.getchildren()) > 0:
-            children.extend(child.getchildren())
+        if len(child_children) > 0:
+            children.extend(child_children)
 
         if len(child.attrib) > 0:
 
@@ -63,33 +69,28 @@ def parse_children_to_dict(parent):
 
     return result_dict
 
-# Get list of report files
-
-file_reports = ""
-model_reports = ""
-output = ""
-
 # If we got arguments use them, otherwise assume a folder structure relative current working directory
 # TODO - put output to the first position and any number of input paths as a list
-    
-if len(sys.argv) == 4:
-    file_reports    = sys.argv[1]
-    model_reports   = sys.argv[2]
-    output          = sys.argv[3]
-else:
-    base_path       = os.getcwd()
-    file_reports    = os.path.join(base_path, "workspace/output/temp/preproReports")
-    model_reports   = os.path.join(base_path, "workspace/output/temp/modelReport")
-    output          = os.path.join(base_path, "workspace/output/report")
 
-output_name = os.path.join(output, f'ExcelValidationReport_{datetime.now():%Y%m%d_%H%M%S}.xlsx')
+base_path       = os.getcwd()
+file_reports    = os.path.join(base_path, "workspace/output/temp/preproReports")
+model_reports   = os.path.join(base_path, "workspace/output/temp/modelReport")
+output          = os.path.join(base_path, "workspace/output/report")
 
+parser = argparse.ArgumentParser(description='Convert SHACL validation report to excel')
+parser.add_argument("-i", "--input_paths", type=str, nargs="+", default=[file_reports, model_reports])
+parser.add_argument("-o", "--output_path", type=str, default=output)
+parser.add_argument("-ot", "--output_type", type=str, default="xlsx", choices=['xlsx', 'csv'])
+args = parser.parse_args()
+
+output_name_xslx = os.path.join(args.output_path, f'ExcelValidationReport_{datetime.now():%Y%m%d_%H%M%S}.xlsx')
+output_name_csv = os.path.join(args.output_path, f'CSVValidationReport_{datetime.now():%Y%m%d_%H%M%S}.csv')
 
 # Create the list of input files
 
 input_files = []
 
-for input_path in [file_reports, model_reports]:
+for input_path in args.input_paths:
 
     if os.path.exists(input_path):
         input_files.extend(os.path.join(input_path, file_path) for file_path in os.listdir(input_path))
@@ -106,7 +107,7 @@ if len(input_files) == 0:
 validation_report_name = "Validations"
 reports = {validation_report_name: []}
 
-
+start_parsing = time.time()
 # Read in all reports
 parser = etree.XMLParser(remove_comments=True, collect_ids=False, remove_blank_text=True)  # Improve parsing speed
 for path in input_files:
@@ -116,7 +117,7 @@ for path in input_files:
     report_xml = etree.parse(path, parser=parser)
 
     # Extract all metadata
-    models_meta_objects = report_xml.findall(".//{*}Report.MetaData/{*}FullModel")
+    models_meta_objects = report_xml.iterfind(".//{*}Report.MetaData/{*}FullModel")
     models_meta = {}
     for model in models_meta_objects:
 
@@ -126,25 +127,25 @@ for path in input_files:
         models_meta[model_id] = model_meta
 
     # Get all validation results
-    validation_report_objects = report_xml.findall(".//{*}ValidationReport")
-    
+    validation_report_objects = report_xml.iterfind(".//{*}ValidationReport")
+
     for validation_report in validation_report_objects:
         meta_id = validation_report.find("{*}ValidationReport.Model").attrib.values()[0]
-        validation_result_object = validation_report.findall(".//{*}ValidationResult")
-        
+        validation_result_object = validation_report.iterfind(".//{*}ValidationResult")
+
         for result in validation_result_object:
             result_data = parse_children_to_dict(result)
             result_data.update(models_meta[meta_id])
-            reports[validation_report_name].append(result_data))
+            reports[validation_report_name].append(result_data)
 
     # Get statistics Report Objects
-    statistics_report_objects = report_xml.findall(".//{*}ReportObject")
+    statistics_report_objects = report_xml.iterfind(".//{*}ReportObject")
 
     for statistics_report in statistics_report_objects:
 
         report_name = statistics_report.find("../../{*}IdentifiedReport.name").text
 
-        report_values = statistics_report.findall("{*}ReportObject.ReportValue/{*}ReportValue")
+        report_values = statistics_report.iterfind("{*}ReportObject.ReportValue/{*}ReportValue")
 
         report_values_dict = {}
         for value in report_values:
@@ -155,9 +156,21 @@ for path in input_files:
 
         reports[report_name].append(report_values_dict)
 
+end_parsing = time.time()
+print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] All XML reports imported in {end_parsing - start_parsing}")
 
 # Create one big table
 report_data = pandas.DataFrame(reports[validation_report_name])
+converted_to_table = time.time()
+print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] All XML reports converted to table {converted_to_table - end_parsing}")
+
+# Export only the big table in CSV if that is selected
+if args.output_type == "csv":
+    report_data.to_csv(output_name_csv, sep=";")
+    exported_to_csv = time.time()
+    print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] CSV report created -> {output_name_csv} in {exported_to_csv - converted_to_table}")
+    # and exit program here as excel report part is not needed
+    sys.exit(0)
 
 # Number of severity
 severity = report_data.resultSeverity_resource.value_counts()
@@ -168,10 +181,12 @@ rule_warnings = report_data.query("resultSeverity_resource == '#WARNING'").sourc
 # Number of errors per Rule
 rule_errors = report_data.query("resultSeverity_resource == '#ERROR'").sourceShape_resource.value_counts()
 
+statistics_done = time.time()
+print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] All Agreagations and statistics done {statistics_done - converted_to_table}")
 
 # Export to excel
 print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] All reports imported, starting to create Excel report")
-with pandas.ExcelWriter(output_name, options={'strings_to_urls': False}) as writer:
+with pandas.ExcelWriter(output_name_xslx, engine_kwargs={"options":{'strings_to_urls': False}}) as writer:
 
     # Raw reports
     for report_name, report in reports.items():
@@ -197,7 +212,11 @@ with pandas.ExcelWriter(output_name, options={'strings_to_urls': False}) as writ
             for TSO in TSOs:
                 report_data[report_data["Model.sourcingTSO"] == TSO].to_excel(writer, sheet_name=f"{validation_report_name}_{TSO}")
 
-print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] Excel report created -> {output_name}")
+export_done = time.time()
+print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] [INFO   ] Excel report created -> {output_name_xslx} in {export_done - statistics_done}")
 
 
 
+### Example command ###
+
+#C:\Users\kristjan.vilgo\Documents\GitHub\ENTOSE-RULE-SET\dockerized-qocdc\remote>xml_reports_to_excel.py -o ./ -i C:\Users\kristjan.vilgo\Documents\GitHub\ENTOSE-RULE-SET\dockerized-qocdc\output\temp\modelReport C:\Users\kristjan.vilgo\Documents\GitHub\ENTOSE-RULE-SET\dockerized-qocdc\output\temp\preproReports -ot csv
