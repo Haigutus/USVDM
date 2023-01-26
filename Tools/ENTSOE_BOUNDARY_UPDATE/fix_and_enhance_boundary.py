@@ -46,7 +46,18 @@ mapping_conf_path = "configurations/CGMProcess_ReferenceData_dev.xlsx"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20210831T0000Z_ENTSO-E_BD_1276.zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181001T0000Z_ENTSO-E_BD_1308 (2).zip"
 #boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181101T0000Z_ENTSO-E_BD_1326.zip"
-boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181103T0000Z_ENTSO-E_BD_1337.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181103T0000Z_ENTSO-E_BD_1337.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181130T0000Z_ENTSO-E_BD_1341.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20181231T0000Z_ENTSO-E_BD_1346.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20220113T0000Z_ENTSO-E_BD_1347.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20220127T0000Z_ENTSO-E_BD_1353.zip"
+#boundary_path = r"C:\Users\kristjan.vilgo\Downloads\20180531T0000Z_ENTSO-E_BD_1210 (1).zip"
+boundary_path = [r"C:\Users\kristjan.vilgo\Documents\GitHub\USVDM\Tools\ENTSOE_BOUNDARY_UPDATE\20220114T0000Z__ENTSOE_TPBD_001.zip",
+                 r"C:\Users\kristjan.vilgo\Documents\GitHub\USVDM\Tools\ENTSOE_BOUNDARY_UPDATE\20220114T0000Z__ENTSOE_EQBD_001.zip"]
+
+boundary_path = [r"C:\Users\kristjan.vilgo\Downloads\20190209T0000Z_ENTSO-E_BD_1354.zip"]
+boundary_path = [r"C:\Users\kristjan.vilgo\Downloads\20190225T1144Z_ENTSO-E_BD_1367_9efeaf22-0085-4bde-9ee9-e84c4cebb993.zip"]
+boundary_parh = [r"C:\Users\kristjan.vilgo\Downloads\20190331T0000Z_ENTSO-E_BD_1369_1c69e4d8-529a-47eb-82f5-6e59fa3bd20c.zip"]
 
 ### Output conf ###
 
@@ -60,7 +71,7 @@ export_format = "configurations/CGMES_2_4_15_and_CGMBP_extentsions.json"
 ## Process start
 
 # 1 Load data from CGMES boundary global ZIP, exported by NMD
-data = RDF_parser.load_all_to_dataframe([boundary_path])
+data = RDF_parser.load_all_to_dataframe(boundary_path)
 
 # Load configurations
 data_to_add = pandas.read_excel(mapping_conf_path, sheet_name=None)
@@ -105,7 +116,7 @@ new_metadata['Model.description'] = f"Official CGM boundary set +//-3 years. Bas
 new_metadata['Model.description'] = f"""
 <MDE>
     <BP></BP>
-    <TOOL>USVDM 0.2.1</TOOL>
+    <TOOL>USVDM 0.2.2</TOOL>
     <TXT>Official CGM boundary set +//-3 years. Based on NMD version {old_metadata['Model.version']}</TXT>
     <RSC>BALTIC</RSC>
 </MDE>
@@ -123,6 +134,7 @@ new_metadata['Model.modelingAuthoritySet'] = "http://www.entsoe.eu/OperationalPl
 
 # 4.1 Update model Scenario Time  TODO - test 00:30 on OPDM
 new_metadata['Model.scenarioTime'] = f"{utc_now.date().isoformat()}T00:00:00Z"
+#new_metadata['Model.scenarioTime'] = f"2022-01-14T00:00:00Z"
 
 # 5.1 Update model Created
 new_metadata['Model.created'] = f"{utc_now.isoformat()}Z"
