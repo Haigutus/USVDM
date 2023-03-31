@@ -88,7 +88,10 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug=False):
 
     # LOAD XML
     parser = etree.XMLParser(remove_comments=True, collect_ids=False, remove_blank_text=True)
-    parsed_xml = etree.parse(path_or_fileobject, parser=parser)  # TODO - add iterparse for Python3
+    parsed_xml = etree.parse(path_or_fileobject, parser=parser).getroot()  # TODO - add iterparse for Python3
+
+    # Get namespace map
+    namesapce_map = parsed_xml.nsmap
 
     # Get unique ID for loaded instance
     # instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
@@ -98,12 +101,12 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug=False):
         _, start_time = print_duration("XML loaded to tree object", start_time)
 
     # EXTRACT RDF OBJECTS
-    RDF_objects = parsed_xml.getroot().iterchildren()
+    RDF_objects = parsed_xml.iterchildren()
 
     if debug:
         _, start_time = print_duration("All children put to a generator", start_time)
 
-    return RDF_objects, instance_id
+    return RDF_objects, instance_id, namesapce_map
 
 
 def find_all_xml(list_of_paths_to_zip_globalzip_xml, debug=False):
@@ -170,17 +173,23 @@ def load_RDF_to_list(path_or_fileobject, debug=False, keep_ns=False):
 
     print("INFO - Loading {}".format(file_name))
 
-    RDF_objects, INSTANCE_ID = load_RDF_objects_from_XML(path_or_fileobject, debug)
+    RDF_objects, INSTANCE_ID, namespace_map = load_RDF_objects_from_XML(path_or_fileobject, debug)
 
     if debug:
+        start_time = datetime.datetime.now()
         start_time = datetime.datetime.now()
 
     # Lets generate list for RDF data and store the original filename under rdf:label in dcat:Distribution object
     ID = str(uuid.uuid4())
+    ID_NSMAP = str(uuid.uuid4())
     data_list = [
                     (ID, "Type", "Distribution", INSTANCE_ID),
-                    (ID, "label", file_name, INSTANCE_ID)
+                    (ID, "label", file_name, INSTANCE_ID),
+                    (ID_NSMAP, "Type", "NamespaceMap", INSTANCE_ID),
                 ]
+
+    for key, value in namespace_map.items():
+        data_list.append((ID_NSMAP, key, value, INSTANCE_ID))
 
     # lets create all variables, so that in loops they are reused, rather than new ones are created, green thinking
     #ID = ""
@@ -281,8 +290,34 @@ def type_tableview(data, type_name, string_to_number=True):
         return None
 
     # Filter original data by found type_id data
-    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID",
-                                                                                                  "KEY"])  # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+    # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID", "KEY"])
+
+    # Convert form triplets to a table view all objects of same type
+    data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
+
+    if string_to_number:
+        # Convert to data type to numeric in columns that contain only numbers (for easier data usage later on)
+        data_view = data_view.apply(pandas.to_numeric, errors='ignore')
+
+    return data_view
+
+# Extend this functionality to pandas DataFrame
+pandas.DataFrame.type_tableview = type_tableview
+
+def key_tableview(data, key_name, string_to_number=True):
+    """Creates a table view of all objects of same type, with their parameters in columns"""
+
+    # Get all ID-s of rows where KEY == key_name
+    type_id = data.query("KEY == @key_name")
+
+    if type_id.empty:
+        print('WARNING - No data available for {}'.format(key_name))
+        return None
+
+    # Filter original data by found type_id data
+    # There can't be duplicate ID and KEY pairs for pivot, but this will lose data on full model DependantOn and other info, solution would be to use pivot table function.
+    type_data = pandas.merge(type_id[["ID"]], data, right_on="ID", left_on="ID").drop_duplicates(["ID", "KEY"])
 
     # Convert form triplets to a table view all objects of same type
     data_view = type_data.pivot(index="ID", columns="KEY")["VALUE"]
@@ -295,7 +330,7 @@ def type_tableview(data, type_name, string_to_number=True):
 
 
 # Extend this functionality to pandas DataFrame
-pandas.DataFrame.type_tableview = type_tableview
+pandas.DataFrame.key_tableview = key_tableview
 
 
 def references_to_simple(data, reference, columns=["Type"]):
@@ -507,7 +542,7 @@ def set_VALUE_at_KEY(data, key, value):
 pandas.DataFrame.set_VALUE_at_KEY = set_VALUE_at_KEY
 
 
-def export_to_excel(data, path=None, file_name=None):
+def export_to_excel(data, path=None):
     """Exports to excel all data with same INSTACE_ID and if label element exists for it. Each Type is put to a sheet"""
     # TODO set some nice properties - https://xlsxwriter.readthedocs.io/workbook.html#workbook-set-properties
 
@@ -519,15 +554,14 @@ def export_to_excel(data, path=None, file_name=None):
 
         types = instance_data.types_dict()
 
-        if file_name is None:
-            file_name = '{}.xlsx'.format(label.VALUE.split(".")[0])
+        file_name = '{}.xlsx'.format(label.VALUE.split(".")[0])
 
         if path is None:
             path = os.getcwd()
 
         file_path = os.path.join(path, file_name)
 
-        print("INFO - Exporting excel: {}".format(file_name))
+        print("INFO - Exporting excel: {}".format(file_path))
         writer = pandas.ExcelWriter(file_path)
 
         for class_type in types:
@@ -581,6 +615,7 @@ def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.or
 
         instance_type = None
 
+        # TODO remove dependace on this header field, wich might not be present
         if len(instance_data.query("KEY == 'Model.messageType'")):
             instance_type = instance_data.query("KEY == 'Model.messageType'").iloc[0].VALUE
 
@@ -771,6 +806,9 @@ def update_triplet_from_triplet(data, update_data, update=True, add=True):
     you can control if data is added or updated with parameters update and add, by default both are True"""
     # TODO add changes dataframe, where to keep all changes done by this function
     # TODO create function to do also ID and KEY changes
+
+    # Ensure unique and correct index
+    data = data.reindex()
 
     report_columns = ["ID", "KEY", "VALUE", "VALUE_OLD", "INSTANCE_ID"]
     write_columns = ["ID", "KEY", "VALUE", "INSTANCE_ID"]
