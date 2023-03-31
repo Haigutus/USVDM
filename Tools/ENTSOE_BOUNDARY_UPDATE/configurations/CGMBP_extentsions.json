@@ -1,0 +1,51 @@
+{
+  "ISOCountryCode": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "http://publications.europa.eu/resource/authority/country/"
+    },
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+  },
+  "ISOCountryCode.alpha2": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+  "ISOCountryCode.alpha3": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+  "ISOCountryCode.numeric3": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+  "ProcessType": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "urn:uuid:"
+    },
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+  },
+  "ProcessType.code": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": "urn:entsoe.eu:wgedi:codelists:StandardProcessTypeList#"
+  },
+   "CimProfile": {
+    "attrib": {
+      "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+      "value_prefix": "urn:uuid:"
+    },
+    "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+  },
+  "CimProfile.uri": {
+      "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#",
+      "text": ""
+  },
+  "IdentifiedObject.description": {
+      "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+      "text": ""
+  },
+  "IdentifiedObject.name": {
+      "namespace": "http://iec.ch/TC57/2013/CIM-schema-cim16#",
+      "text": ""
+  }
+}
