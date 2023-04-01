@@ -223,9 +223,9 @@ fullmodel_conf = { "FullModel": {
                     "Model.modelingEntity": {
                         "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
                     },
-                    "Model.processType": {
-                        "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
-                    },
+#                    "Model.processType": {
+#                        "namespace": "http://entsoe.eu/CIM/Extensions/CGM-BP/2020#"
+#                    },
                     "Model.profile": {
                         "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
                     },
@@ -234,7 +234,32 @@ fullmodel_conf = { "FullModel": {
                     },
                     "Model.version": {
                         "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
-                    }}
+                    },
+# New Header
+                    "Model.applicationSoftware": {
+                        "namespace": "http://entsoe.eu/ns/Metadata-European#"
+                    },
+                    "Model.processType": {
+                        "namespace": "http://entsoe.eu/ns/Metadata-European#"
+                    },
+                    "Model.identifier": {
+                        "namespace": "http://entsoe.eu/ns/Metadata-European#"
+                    },
+                    "Model.conformsTo": {
+                        "attrib": {
+                            "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                            "value_prefix": ""
+                        },
+                        "namespace": "http://entsoe.eu/ns/Metadata-European#"
+                    },
+                    "Model.wasInfluencedBy": {
+                        "attrib": {
+                            "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+                            "value_prefix": ""
+                        },
+                        "namespace": "http://entsoe.eu/ns/Metadata-European#"
+                    },
+}
 
 if __name__ == '__main__':
 

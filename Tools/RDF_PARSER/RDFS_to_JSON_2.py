@@ -9,7 +9,28 @@ def get_owl_metadata(data):
     return data.merge(data.query("KEY == 'type' and VALUE == 'http://www.w3.org/2002/07/owl#Ontology'").ID).set_index("KEY")["VALUE"]
 
 
-path = r"rdfs\ObjectRegistryProfile_RDFSv2020_21Sep2022.rdf"
+path = r"rdfs/ObjectRegistryProfile_RDFSv2020_21Sep2022.rdf"
+#path = r"rdfs/DocumentHeaderProfile_RDFSv2020_21Sep2022.rdf"
+
+add_header = True
+
+id_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID"
+id_prefix = "_"
+
+id_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
+id_prefix = "urn:uuid:"
+
+about_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
+about_prefix = "#_"
+about_prefix = "urn:uuid:"
+
+resource_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
+resource_prefix = "#_"
+resource_prefix = "urn:uuid:"
+
+enumeration_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
+enumeration_prefix = ""
+
 
 data = load_all_to_dataframe([path])
 
@@ -29,6 +50,7 @@ for profile in profiles:
     # Get namspace map
     namespace_map = data.merge(data.query("KEY == 'Type' and VALUE == 'NamespaceMap'").ID).set_index("KEY")["VALUE"].to_dict()
     namespace_map.pop("Type", None)
+    namespace_map.pop("xml_base", None)
 
     # Dictionary to keep current profile schema
     conf_dict[profile_name] = {}
@@ -54,12 +76,12 @@ for profile in profiles:
             class_namespace = class_namespace + "#"
 
         # Define class ID attribute #TODO add conf for this, foreseen to change in CGMES 3.0, use rdf:about everywhere
-        class_ID_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID"
-        class_ID_prefix = "_"
+        class_ID_attribute = id_attribute
+        class_ID_prefix = id_prefix
 
         if concrete_class in classes_defined_externally:
-            class_ID_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
-            class_ID_prefix = "#_"
+            class_ID_attribute = about_attribute
+            class_ID_prefix = about_prefix
 
         # Add class definition
         conf_dict[profile_name][class_name] = {
@@ -104,8 +126,8 @@ for profile in profiles:
             # If association
             if association_used == 'Yes':
                 parameter_def["attrib"] = {
-                                               "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                                               "value_prefix": "#_"
+                                               "attribute": resource_attribute,
+                                               "value_prefix": resource_prefix
                                           }
 
                 parameter_def["type"] = "Association"
@@ -136,8 +158,8 @@ for profile in profiles:
                 # If enumeration
                 else:
                     parameter_def["attrib"] = {
-                                                  "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                                                  "value_prefix": ""
+                                                  "attribute": enumeration_attribute,
+                                                  "value_prefix": enumeration_prefix
                                               }
                     parameter_def["type"] = "Enumeration"
                     parameter_def["range"] = parameter_dict["range"].replace("#", "")
@@ -186,8 +208,12 @@ for profile in profiles:
 
 # Add FullModel definiton
 
-for profile_name in conf_dict:
-    conf_dict[profile_name].update(fullmodel_conf)
+if add_header:
+    with open("ENTSO-E_Document header vocabulary_2.1.0_2022-07-21.json", "r") as file_object:
+        new_fullmodel_conf = json.load(file_object)["DH"]
+
+    for profile_name in conf_dict:
+        conf_dict[profile_name].update(new_fullmodel_conf)
 
 # Export conf
 

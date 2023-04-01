@@ -18,11 +18,10 @@ from lxml.builder import ElementMaker
 from lxml.etree import QName
 
 import pandas
-#import dask as pandas
 import datetime
 import zipfile
 import uuid
-import time
+import json
 
 from collections import OrderedDict
 
@@ -588,7 +587,7 @@ def export_to_excel(data, path=None):
 pandas.DataFrame.export_to_excel = export_to_excel
 
 
-def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
+def export_to_cimxml(data, rdf_map=None, namespace_map=None,
                      class_KEY="Type",
                      export_undefined=True,
                      export_type="xml_per_instance_zip_per_xml",
@@ -598,20 +597,24 @@ def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.or
         start_time = datetime.datetime.now()
         init_time = start_time
 
+    if type(rdf_map) == str:
+        with open(rdf_map, "r") as conf_file:
+            rdf_map = json.load(conf_file)
+
     # File names are kept under rdfs:lable
     labels = data.query("KEY == 'label'").itertuples()
 
     # Keep all file names and data to be exported
     export_files = []
 
-    # Create element builder
-    E = ElementMaker(nsmap=namespace_map)
+
 
     if debug:
         _, start_time = print_duration("All file instance ID-s identified", start_time)
 
     for label in labels:
 
+        # Load instance data defined by given label
         instance_data = data[data.INSTANCE_ID == label.INSTANCE_ID]
 
         instance_type = None
@@ -619,6 +622,9 @@ def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.or
         # TODO remove dependace on this header field, wich might not be present
         if len(instance_data.query("KEY == 'Model.messageType'")):
             instance_type = instance_data.query("KEY == 'Model.messageType'").iloc[0].VALUE
+
+        if len(instance_data.query("KEY == 'Model.keyword'")):
+            instance_type = instance_data.query("KEY == 'Model.keyword'").iloc[0].VALUE
 
         # If there is sub structure available in schema get it, otherwise use root definitions
         instance_rdf_map = rdf_map.get(instance_type, rdf_map)  # TODO - needs revision, add support both for md:FullModel, dcat:DataSet and without profile definiton
@@ -628,6 +634,13 @@ def export_to_cimxml(data, rdf_map=None, namespace_map={"rdf": "http://www.w3.or
             if not export_undefined:
                 print("INFO - File not created for {}".format(label.VALUE))
                 continue
+
+        # If namespace map is not defined, take it from schema
+        if instance_rdf_map and namespace_map is None:
+            namespace_map = instance_rdf_map["NamespaceMap"]
+
+        # Create element builder
+        E = ElementMaker(nsmap=namespace_map)
 
         # Create xml root element
         RDF = E(QName(namespace_map["rdf"], "RDF"))
