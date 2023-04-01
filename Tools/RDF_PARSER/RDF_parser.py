@@ -92,6 +92,7 @@ def load_RDF_objects_from_XML(path_or_fileobject, debug=False):
 
     # Get namespace map
     namesapce_map = parsed_xml.nsmap
+    namesapce_map["xml_base"] = parsed_xml.base
 
     # Get unique ID for loaded instance
     # instance_id = clean_ID(parsed_xml.find("./").attrib.values()[0]) # Lets asume that the first RDF element describes the whole document - TODO replace it with hash of whole XML
