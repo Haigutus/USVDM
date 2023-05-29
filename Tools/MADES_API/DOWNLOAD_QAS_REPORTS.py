@@ -17,12 +17,11 @@ import os
 # PROCESS START
 
 query_id_mask = "py_QAS_API_001_{UUID}"
-server = "https://test-ba-opde.elering.sise"
-#server = "https://er-opde-single-host-02.elering.sise"
+server = "https://test-opde.elering.sise"
 
 # Neede only if basic auth is set up for UI
-username = "admin"  #raw_input("UserName")
-password = "sadmin" #raw_input("PassWord")
+username = ""  #raw_input("UserName")
+password = "" #raw_input("PassWord")
 
 service = create_client(server, username, password, debug = False)
 
