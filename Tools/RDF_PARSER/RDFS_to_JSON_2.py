@@ -5,31 +5,57 @@ from Tools.RDF_PARSER.RDFS_tools import *
 def get_owl_metadata(data):
     """Returns metadata about CIM profile defined in RDFS OWL Ontology"""
 
-
     return data.merge(data.query("KEY == 'type' and VALUE == 'http://www.w3.org/2002/07/owl#Ontology'").ID).set_index("KEY")["VALUE"]
 
 
-path = r"rdfs/ObjectRegistryProfile_RDFSv2020_21Sep2022.rdf"
+#path = r"rdfs/DocumentHeaderProfile_v2_2_RDFSv2020_10May2023.rdf"
 #path = r"rdfs/DocumentHeaderProfile_RDFSv2020_21Sep2022.rdf"
+#path = r"rdfs/ObjectRegistryProfile_RDFSv2020_21Sep2022.rdf"
+path =r"rdfs/RemedialActionProfile_v2_2_RDFSv2020_20Apr2023.rdf"
 
+
+#add_header = False
 add_header = True
+#header_conf = "ENTSO-E_Document header vocabulary_2.1.0_2022-07-21_IEC61970-552_ED2.json"
+header_conf = "ENTSO-E_Document header vocabulary_2.2.0_2023-05-10_IEC61970-552_ED2.json"
 
-id_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID"
-id_prefix = "_"
+#serialisation = "IEC61970-552_ED1"
+serialisation = "IEC61970-552_ED2"
 
-id_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
-id_prefix = "urn:uuid:"
+serialisations = {
+    "IEC61970-552_ED1": {
+        "id_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
+        "id_prefix": "_",
+        "about_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+        "about_prefix": "#_",
+        "resource_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+        "resource_prefix": "#_",
+        "enumeration_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+        "enumeration_prefix": ""
+           },
+    "IEC61970-552_ED2": {
+        "id_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+        "id_prefix": "urn:uuid:",
+        "about_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about",
+        "about_prefix": "urn:uuid:",
+        "resource_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+        "resource_prefix": "urn:uuid:",
+        "enumeration_attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
+        "enumeration_prefix": ""
+           },
+}
 
-about_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
-about_prefix = "#_"
-about_prefix = "urn:uuid:"
+id_attribute = serialisations[serialisation]["id_attribute"]
+id_prefix = serialisations[serialisation]["id_prefix"]
 
-resource_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
-resource_prefix = "#_"
-resource_prefix = "urn:uuid:"
+about_attribute = serialisations[serialisation]["about_attribute"]
+about_prefix = serialisations[serialisation]["about_prefix"]
 
-enumeration_attribute = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
-enumeration_prefix = ""
+resource_attribute = serialisations[serialisation]["resource_attribute"]
+resource_prefix = serialisations[serialisation]["resource_prefix"]
+
+enumeration_attribute = serialisations[serialisation]["enumeration_attribute"]
+enumeration_prefix = serialisations[serialisation]["enumeration_prefix"]
 
 
 data = load_all_to_dataframe([path])
@@ -45,6 +71,7 @@ for profile in profiles:
 
     # Get current profile metadata
     metadata = get_owl_metadata(profile_data).to_dict()
+    metadata["serialisation"] = serialisation
     profile_name = metadata["keyword"]
 
     # Get namspace map
@@ -75,7 +102,7 @@ for profile in profiles:
         else:
             class_namespace = class_namespace + "#"
 
-        # Define class ID attribute #TODO add conf for this, foreseen to change in CGMES 3.0, use rdf:about everywhere
+        # Define class ID attribute
         class_ID_attribute = id_attribute
         class_ID_prefix = id_prefix
 
@@ -209,7 +236,7 @@ for profile in profiles:
 # Add FullModel definiton
 
 if add_header:
-    with open("ENTSO-E_Document header vocabulary_2.1.0_2022-07-21.json", "r") as file_object:
+    with open(header_conf, "r") as file_object:
         new_fullmodel_conf = json.load(file_object)["DH"]
 
     for profile_name in conf_dict:
@@ -217,9 +244,10 @@ if add_header:
 
 # Export conf
 
-file_name = "{publisher}_{title}_{versionInfo}_{modified}.json".format(**metadata)
+file_name = "{publisher}_{title}_{versionInfo}_{modified}_{serialisation}.json".format(**metadata)
 #file_name = "{entsoeUML}_{date}.json".format(**metadata)
 #file_name = "{profileUML}_{date}.json".format(**metadata)
 
 with open(file_name, "w") as file_object:
     json.dump(conf_dict, file_object, indent=4)
+    print(f"Configuration Generated: {file_name}")

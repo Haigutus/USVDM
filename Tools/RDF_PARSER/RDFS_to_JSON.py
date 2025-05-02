@@ -3,7 +3,8 @@ from Tools.RDF_PARSER.RDFS_tools import *
 
 #path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\EquipmentProfileCoreOperationShortCircuitRDFSAugmented-v2_4_15-09May2019.rdf"
 #path = r"rdfs\RDFS_UML_FDIS06_27Jan2020.zip"
-path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
+#path = r"rdfs\CGMES_2_4_15_09May2019_RDFS\UNIQUE_RDFSAugmented-v2_4_15-09May2019.zip"
+path = r"rdfs\ObjectRegistryProfile_RDFSv2020_21Sep2022.rdf"
 
 data = load_all_to_dataframe([path])
 

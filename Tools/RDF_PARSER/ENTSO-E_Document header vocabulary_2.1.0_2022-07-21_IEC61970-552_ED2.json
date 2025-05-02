@@ -1,5 +1,5 @@
 {
-    "OR": {
+    "DH": {
         "NamespaceMap": {
             "cim": "http://iec.ch/TC57/CIM100#",
             "cims": "http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
@@ -23,289 +23,6 @@
             "euvoc": "http://publications.europa.eu/ontology/euvoc#",
             "time": "http://www.w3.org/2006/time#",
             "dh": "http://entsoe.eu/ns/CIM/DocumentHeader-EU#"
-        },
-        "IdentifiedObject": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
-            },
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "description": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
-            "parameters": [
-                "IdentifiedObject.aliasName",
-                "IdentifiedObject.description",
-                "IdentifiedObject.energyIdentCodeEic",
-                "IdentifiedObject.mRID",
-                "IdentifiedObject.name",
-                "IdentifiedObject.shortName",
-                "IdentifiedObject.ObjectType"
-            ]
-        },
-        "String": {
-            "description": "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.",
-            "type": "Primitive",
-            "namespace": "http://iec.ch/TC57/CIM100#"
-        },
-        "IdentifiedObject.aliasName": {
-            "description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "IdentifiedObject.description": {
-            "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "IdentifiedObject.energyIdentCodeEic": {
-            "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "IdentifiedObject.mRID": {
-            "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "multiplicity": "1..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "IdentifiedObject.name": {
-            "description": "The name is any free human readable and possibly non unique text naming the object.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "IdentifiedObject.shortName": {
-            "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "IdentifiedObject.ObjectType": {
-            "description": "The object type of the IdentifiedObject.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "http://entsoe.eu/ns/nc#ObjectType"
-        },
-        "Name": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
-            },
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "description": "The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.",
-            "parameters": [
-                "Name.IdentifiedObject",
-                "Name.NameType",
-                "Name.UniqueIdentifiedObject",
-                "Name.name",
-                "Name.NamingAuthority",
-                "Name.language",
-                "Name.mRID"
-            ]
-        },
-        "Name.IdentifiedObject": {
-            "description": "Identified object that this name designates.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "#IdentifiedObject"
-        },
-        "Name.NameType": {
-            "description": "Type of this name.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "#NameType"
-        },
-        "Name.UniqueIdentifiedObject": {
-            "description": "Identified object that this alternative identifier designates.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "#IdentifiedObject"
-        },
-        "Name.name": {
-            "description": "Any free text that used as a name or alternative identifier of the object.",
-            "multiplicity": "1..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "Name.NamingAuthority": {
-            "description": "Authority responsible for managing this name.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "http://entsoe.eu/ns/nc#NamingAuthority"
-        },
-        "Name.language": {
-            "description": "Shall be specified as an IETF BCP 47 language tag (e.g. en-US).  Applies to the Name.name attribute. \nIETF language tags combine subtags from other standards such as ISO 639, ISO 15924, ISO 3166-1, and UN M.49. The tag structure has been standardized by the IETF in Best Current Practice (BCP) 47; the subtags are maintained by the IANA Language Subtag Registry.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "Name.mRID": {
-            "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "NameType": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
-            },
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "description": "Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:\nThe localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.",
-            "parameters": [
-                "NameType.description",
-                "NameType.name",
-                "NameType.NamingAuthority",
-                "NameType.mRID"
-            ]
-        },
-        "NameType.description": {
-            "description": "Description of the name type.",
-            "multiplicity": "0..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "NameType.name": {
-            "description": "Name of the name type.",
-            "multiplicity": "1..1",
-            "namespace": "http://iec.ch/TC57/CIM100#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "NameType.NamingAuthority": {
-            "description": "Authority responsible for managing this name type.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
-                "value_prefix": "#_"
-            },
-            "type": "Association",
-            "range": "http://entsoe.eu/ns/nc#NamingAuthority"
-        },
-        "NameType.mRID": {
-            "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "multiplicity": "1..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "NamingAuthority": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
-            },
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "description": "Authority responsible for creation and management of names of a given name type and/or name; typically an organization or an enterprise system.",
-            "parameters": [
-                "NamingAuthority.description",
-                "NamingAuthority.mRID",
-                "NamingAuthority.name"
-            ]
-        },
-        "NamingAuthority.description": {
-            "description": "Description of the name authority.",
-            "multiplicity": "0..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
-            "type": "String"
-        },
-        "NamingAuthority.mRID": {
-            "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
-            "multiplicity": "1..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "NamingAuthority.name": {
-            "description": "Name of the name authority.",
-            "multiplicity": "1..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
-        },
-        "ObjectType": {
-            "attrib": {
-                "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}ID",
-                "value_prefix": "_"
-            },
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "description": "Identifies the specialised type of an object when the instance object is serialised using a generalised class. It may be useful when the object type is not otherwise included in the exchange. For example, a Meter may be serialised as an EndDevice in message exchanges and need to have the ObjectType.type be specified as 'Meter' to provide context to the message receiver.",
-            "parameters": [
-                "ObjectType.type"
-            ]
-        },
-        "ObjectType.type": {
-            "description": "The specialised type of an object when the instance object is serialised using a generalised class. For example, a Meter being serialised as an EndDevice in a message exchange should have the type attribute specified as 'Meter'.",
-            "multiplicity": "1..1",
-            "namespace": "http://entsoe.eu/ns/nc#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "1",
-            "type": "String"
         },
         "DifferenceModel": {
             "attrib": {
@@ -358,12 +75,17 @@
                 "Model.version"
             ]
         },
+        "String": {
+            "description": "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.",
+            "type": "Primitive",
+            "namespace": "http://iec.ch/TC57/CIM100#"
+        },
         "Model.applicationSoftware": {
             "description": "Identifies the application software which generated this instance file. The application software term is defined in ISO/IEC/IEEE 24765:2017. The application software can be identified either:\n- as a string which contains information on the software name and version, e.g. &lt;tool_name&gt;-&lt;major_version&gt;.&lt;minor_version&gt;.&lt;patch&gt;, or\n- as a reference to a software identification tag as defined by ISO/IEC 19770-2:2015 and ISO/IEC/IEEE 24765:2017.",
             "multiplicity": "0..1",
             "namespace": "http://entsoe.eu/ns/Metadata-European#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "IRI": {
@@ -375,24 +97,24 @@
             "description": "The exact business nature. Reference to Business Process configurations.",
             "multiplicity": "0..1",
             "namespace": "http://entsoe.eu/ns/Metadata-European#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "Model.serviceLocation": {
             "description": "Reference to a service location (region or a domain).",
             "multiplicity": "0..1",
             "namespace": "http://entsoe.eu/ns/Metadata-European#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "Model.usedSettings": {
             "description": "Reference to a set of parameters describing used settings (e.g. power flow settings, process settings, etc.) applied to the model prior its serialisation.",
             "multiplicity": "0..n",
             "namespace": "http://entsoe.eu/ns/Metadata-European#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Statements": {
@@ -404,32 +126,32 @@
             "description": "A property of the difference model whose value is a collection of statements (i.e., resources of type rdf:Statement) representing the forward difference statements. ",
             "multiplicity": "1..n",
             "namespace": "http://iec.ch/TC57/61970-552/DifferenceModel/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "1",
+            "xsd:minOccours": "1",
+            "xsd:maxOccours": "unbounded",
             "type": "Statements"
         },
         "DifferenceModel.preconditions": {
             "description": "A property of the difference model whose value is the collection of precondition statements.",
             "multiplicity": "1..n",
             "namespace": "http://iec.ch/TC57/61970-552/DifferenceModel/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "1",
+            "xsd:minOccours": "1",
+            "xsd:maxOccours": "unbounded",
             "type": "Statements"
         },
         "DifferenceModel.reverseDifferences": {
             "description": "A property of the difference model whose value is the collection of reverse difference statements.",
             "multiplicity": "1..n",
             "namespace": "http://iec.ch/TC57/61970-552/DifferenceModel/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "1",
+            "xsd:minOccours": "1",
+            "xsd:maxOccours": "unbounded",
             "type": "Statements"
         },
         "Model.DependentOn": {
             "description": "A reference to the model documents that the model described by this document depends on. In general there can be 0 or many Model.DependentOn depending on the profile and the content of the instance file.\nFor instance:\n\u2013 A load flow solution depends on the topology model it was computed from\n\u2013 A topology model computed by a topology processor depends on the network model it was computed from.\nThe referenced models are identified by the FullModel rdf:about attribute for full model documents and by DifferenceModel rdf:about attribute for difference model documents.\nThe references are maintained by the producer of the CIMXML document and the references are valid for the model with version and identifier for which the document was created.",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "attrib": {
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
                 "value_prefix": "urn:uuid:"
@@ -441,8 +163,8 @@
             "description": "When a model is updated the resulting model supersedes the models that were used as basis for the update. Hence this is a reference to the CIMXML documents which are superseded by this model. A model (or instance file) can supersede 1 or more models, e.g. a difference model or a full model supersede multiple models (difference or full). In this case more than one Model.Supersedes are included in the header. The referenced document(s) is (are) identified by the URN/MRID/UUID in the FullModel rdf:about attribute when full model(s) is (are) referenced and by the URN/MRID/UUID in the DifferenceModel rdf:about attribute when difference model(s) is (are) referenced.",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "attrib": {
                 "attribute": "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource",
                 "value_prefix": "urn:uuid:"
@@ -454,8 +176,8 @@
             "description": "A location can be an identifiable geographic place (ISO 19112), but it can also be a non-geographic place such as a directory, row, or column. As such, there are numerous ways in which location can be expressed, such as by a coordinate, address, landmark, and so forth.\n[CIM context:\nReference to a region or a domain for which this model is provided.].",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "DateTime": {
@@ -467,24 +189,24 @@
             "description": "The date and time when the model was created. It is the time of the serialization. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC, e.g. &lt;md:Model.created&gt;2014-05-15T17:48:31.474Z&lt;/md:Model.created&gt;.",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "DateTime"
         },
         "Model.generatedAtTime": {
             "description": "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\n[CIM context:\nThe date and time when the model was serialized in the document where the header is located. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "DateTime"
         },
         "Model.hadPrimarySource": {
             "description": "A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight. Because of the directness of primary sources, they 'speak for themselves' in ways that cannot be captured through the filter of secondary sources. As such, it is important for secondary sources to reference those primary sources from which they were derived, so that their reliability can be investigated. A primary source relation is a particular case of derivation of secondary materials from their primary sources. It is recognized that the determination of primary sources can be up to interpretation, and should be done according to conventions accepted within the application's domain.\n[CIM context:\nReference to a modelling authority set version sourcing the model. It is only used in cases where a model is modified by an agent which has different version of modelling authority set. The agent that makes a revision of a model indicates the primary source using this property and also refers to its own version of modelling authority set using prov:specializationOf.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Duration": {
@@ -496,8 +218,8 @@
             "description": "Extent of a temporal entity, expressed using xsd:duration.\n[CIM context:\nThe duration of the validity period of the model that it is serialized in the document where the header is located. It is only used in relation to the inXSDDateTimeStamp property which indicates the beginning of the validity period of the model. The end of the validity period is derived from both inXSDDateTimeStamp and hasXSDDuration.].",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "Duration"
         },
         "DateTimeStamp": {
@@ -509,8 +231,8 @@
             "description": "Position of an instant, expressed using xsd:dateTimeStamp, in which the time-zone field is mandatory.\n[CIM context:\nThe date and time that this model represents, i.e. for which the model is (or was) valid. If used in relation with hasXSDDuration it indicates the beginning of the validity period.\nIt is indicating either an instant (in cases where the model is only valid for a point in time) or the start time of a period. If not provided the model is considered valid for any time stamp. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "DateTimeStamp"
         },
         "URI": {
@@ -522,96 +244,96 @@
             "description": "A URN/URI referring to the organisation role / model authority set reference. The organization role is the source of the model. It is the same for all profiles part of a model exchange. ",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "URI"
         },
         "Model.profile": {
             "description": "URN/URI describing the profiles that governs this model. It uniquely identifies the profiles and its version, e.g. http://iec.ch/TC57/61970-456/SteadyStateHypothesis/2/0. ",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "URI"
         },
         "Model.scenarioTime": {
             "description": "The date and time that this model represents, i.e. for which the model is valid. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC, e.g. &lt;md:Model.scenarioTime&gt;2030-01-15T17:00:00.000Z&lt;/md:Model.scenarioTime&gt;.",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "DateTime"
         },
         "Model.specializationOf": {
             "description": "An entity that is a specialization of another shares all aspects of the latter, and additionally presents more specific aspects of the same thing as the latter. In particular, the lifetime of the entity being specialized contains that of any specialization. Examples of aspects include a time period, an abstraction, and a context associated with the entity.\n[CIM context:\nReference to modelling authority set version sourcing the model. The agent that makes a revision of a model indicates the primary source using prov:hadPrimarySource and refers to its own version of modelling authority set using this property.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Model.status": {
             "description": "Indicates the status of a skos:Concept or a skosxl:Label, or any resource related to controlled vocabulary management.\n[CIM context:\nThe condition or position of an object with regard to its standing. (Validated, Primary, Backup etc.)].",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "Model.versionNotes": {
             "description": "A description of changes between this version and the previous version of the resource.",
             "multiplicity": "0..1",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.wasAttributedTo": {
             "description": "Attribution is the ascribing of an entity to an agent.\n[CIM context:\nReference to the agent (or service provider) from which the model originates.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Model.wasGeneratedBy": {
             "description": "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\n[CIM context:\nReference to an activity or the exact business nature (process, configuration) which produced or uses the model.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Model.wasInfluencedBy": {
             "description": "Influence is the capacity of an entity, activity, or agent to have an effect on the character, development, or behavior of another by means of usage, start, end, generation, invalidation, communication, derivation, attribution, association, or delegation.\n[CIM context:\nA reference to the model on which the model serialised in this document depends on. The references are maintained by the producer of the model. Minimum requirements for the dependency are specified and can be restricted within a business process as long as they do not contradict requirements by standards. For instance, IEC 61970-600-1 defines minimum requirements for the profiles defined in that standard.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Model.wasRevisionOf": {
             "description": "A revision is a derivation for which the resulting entity is a revised version of some original. The implication here is that the resulting entity contains substantial content from the original. Revision is a particular case of derivation. \n[CIM context:\nWhen a model is updated the resulting model supersedes the models that were used as basis for the update. Hence this is a reference to the model which are superseded by this model. A model can supersede 1 or more models, e.g. a difference model or a full model supersede multiple models (difference or full). In this case, multiple properties are included in the header. The referenced document(s) is (are) identified by the URN/MRID/UUID in the FullModel rdf:about attribute when full model(s) is (are) referenced and by the URN/MRID/UUID in the DifferenceModel rdf:about attribute when difference model(s) is (are) referenced.].",
             "multiplicity": "0..n",
             "namespace": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "IRI"
         },
         "Model.accessRights": {
             "description": "Information about who access the resource or an indication of its security status. Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.\n[CIM context:\nReference to the confidentiality level that shall be applied when handling this model.].",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "Model.accrualPeriodicity": {
             "description": "The frequency with which items are added to a collection.\n[CIM context:\nReference to the time frame.].",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "IRI"
         },
         "StringIRI": {
@@ -623,88 +345,88 @@
             "description": "An established standard to which the described resource conforms.\n[CIM context:\nAn IRI describing the profile that governs this model. It uniquely identifies the profile and its version. Multiple instances of the property describe all standards or specifications to which the model and the document representing this model conform to.\nA document would normally conform to profile definitions, the constraints that relate to the profile and/or the set of business specific constrains. A reference to a machine- readable constraints or specification indicates that the document was tested against these constraints and it conforms to them.].",
             "multiplicity": "0..n",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "unbounded",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "unbounded",
             "type": "StringIRI"
         },
         "Model.creator": {
             "description": "An entity responsible for making the resource.\nRecommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.\n[CIM context:\nThe name of the agent (Modeling Authority) from which the model originates].",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "StringIRI"
         },
         "Model.description": {
             "description": "A free-text account of the item.",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.identifier": {
             "description": "An unambiguous reference to the resource within a given context. Recommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN). Persistent identifiers should be provided as HTTP URIs.\n[CIM context:\nA unique identifier of the model which is serialised in the document where the header is located. The identifier is persistent for a given version of the model and shall change when the model changes.\nIf a model is serialized as complete (full) model or as difference model exchange the identifier shall be the same. The identifier shall not be used as an identifier of the document which can be different for a given version of a model.].",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "StringIRI"
         },
         "Model.license": {
             "description": "A legal document giving official permission to do something with the resource. Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.\n[CIM context:\nReference to the license under which the data is made available. If no license holder is defined, then the original data provider holds the license.].",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.rights": {
             "description": "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements.",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.rightsHolder": {
             "description": "Information about rights held in and over the resource. Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.type": {
             "description": "The nature or genre of the resource. Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format.",
             "multiplicity": "0..1",
             "namespace": "http://purl.org/dc/terms/#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.hasCurrentVersion": {
             "description": "This resource has a more specific, versioned resource with equivalent content.\nThis property is intended for relating a non-versioned or abstract resource to a single snapshot that can be used as a permalink to indicate the current version of the content.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle.",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.hasVersion": {
             "description": "This resource has a more specific, versioned resource.\nThis property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g. snapshots [PAV].\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:hasVersion, which makes use of a broader notion of version, including editions and adaptations.",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.isVersionOf": {
             "description": "This resource is a version of a non-versioned or abstract resource.\nThis property is intended for relating a versioned resource to a non-versioned or abstract resource.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "StringFixedLanguage": {
@@ -716,24 +438,24 @@
             "description": "A keyword or tag describing a resource.\n[CIM context:\nThe intended content type of the model, usually the profile keyword. Used to identify what profiles and content is expected in the document, e.g., Equipment, Boundary, SSH, AE, etc. The same keyword is used for different versions of same profile. It can be also used to identify different content based on the same profile.\nFor instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dct:conformsTo.].",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "StringFixedLanguage"
         },
         "Model.previousVersion": {
             "description": "The previous version of a resource in a lineage.\nThis property is meant to be used to specify a version chain, consisting of snapshots of a resource.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. One of the typical cases here is representing the history of the versions of a dataset that have been released over time.",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "Model.version": {
             "description": "The version number of a resource.",
             "multiplicity": "0..1",
             "namespace": "http://www.w3.org/ns/dcat#",
-            "xsd:minOccours": "1",
-            "xsd:maxOccours": "0",
+            "xsd:minOccours": "0",
+            "xsd:maxOccours": "1",
             "type": "String"
         },
         "FullModel": {

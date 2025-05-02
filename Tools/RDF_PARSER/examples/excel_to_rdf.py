@@ -6,10 +6,13 @@ from uuid import uuid4
 sys.path.append("..")
 import RDF_parser
 
-version = "0.0.2_2023-04-23"
+version = "0.0.4_2024-06-04"
 
 
-def convert_excel_to_rdf(rdf_conf_path, source_excel_path, types_to_convert,
+def convert_excel_to_rdf(rdf_conf_path,
+                         source_excel_path,
+                         triplets_sheet,
+                         types_to_convert,
                          destination_rdf_path=None,
                          export_type="xml_per_instance"
                          ):
@@ -21,9 +24,14 @@ def convert_excel_to_rdf(rdf_conf_path, source_excel_path, types_to_convert,
 
     print(f"INFO loading {types_to_convert} from {source_excel_path}")
     source_data = pandas.read_excel(source_excel_path, sheet_name=types_to_convert)
-
-    # Convert to triplets
+    
     triplet_data_list = []
+    
+    # Add pure triplets
+    if triplets_sheet:
+        triplet_data_list.append(pandas.read_excel(source_excel_path, sheet_name=triplets_sheet)[["ID", "KEY", "VALUE"]])
+
+    # Convert tabular data to triplets
     for type_name, type_data in source_data.items():
         triplet_data_list.append(type_data.set_index("ID").tableview_to_triplet())
 
@@ -61,7 +69,7 @@ if __name__ == "__main__":
 
     types_to_convert = ["FullModel", "IdentifiedObject", "Name"]
 
-    rdf_conf = r"../ENTSO-E_Object Registry vocabulary_2.1.0_2022-07-21_about_urn_uuid.json"
+    rdf_conf = r"../ENTSO-E_Object Registry vocabulary_2.1.0_2022-07-21_IEC61970-552_ED2.json"
 
     convert_excel_to_rdf(rdf_conf, source_excel_path, types_to_convert)
 

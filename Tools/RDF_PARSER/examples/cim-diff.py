@@ -6,7 +6,8 @@ sys.path.append("..")
 from RDF_parser import print_triplet_diff, load_all_to_dataframe
 
 parser = argparse.ArgumentParser(description="""Create diff in Unified format for XML RDF CIM files. Diff is per object (ID KEY VALUE) not per XML line in file. The input can be xml, zip(xml), zip(zip(xml))""",
-                                 epilog="""Copyright (c) Kristjan Vilgo 2021; Licence: GPL 2.0""")
+                                 epilog="""Copyright (c) Kristjan Vilgo 2021; Licence: GPL 2.0""",
+                                 prog="cim-diff")
 parser.add_argument('original_file', type=str, help='Original file path')
 parser.add_argument('changed_file', type=str, help='Changed file path')
 parser.add_argument('-ex', '--exclude_objects', nargs='+', help='Names of rdf:Description rdf:type-s without namespace or prefix to be excluded from diff')

@@ -8,6 +8,9 @@ import RDF_parser
 input_data = [r"C:\Users\kristjan.vilgo\Downloads\QoCDC_v3.2.1_test_models\test.zip"]
 
 items = ['Line',
+ 'BaseVoltage',
+ 'Bay',
+ 'VoltageLevel',
  'ACLineSegment',
  'GeneratingUnit',
  'NuclearGeneratingUnit',

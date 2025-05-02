@@ -623,8 +623,8 @@ def export_to_cimxml(data, rdf_map=None, namespace_map=None,
         if len(instance_data.query("KEY == 'Model.messageType'")):
             instance_type = instance_data.query("KEY == 'Model.messageType'").iloc[0].VALUE
 
-        if len(instance_data.query("KEY == 'Model.keyword'")):
-            instance_type = instance_data.query("KEY == 'Model.keyword'").iloc[0].VALUE
+        if len(instance_data.query("KEY == 'keyword'")):
+            instance_type = instance_data.query("KEY == 'keyword'").iloc[0].VALUE
 
         # If there is sub structure available in schema get it, otherwise use root definitions
         instance_rdf_map = rdf_map.get(instance_type, rdf_map)  # TODO - needs revision, add support both for md:FullModel, dcat:DataSet and without profile definiton

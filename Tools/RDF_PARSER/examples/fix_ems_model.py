@@ -1,13 +1,17 @@
 import pandas
 import uuid
 import json
-import sys
 from decimal import Decimal
 from shapely.geometry import Point, MultiPoint, box
+import triplets
+import requests
+import aniso8601
+import datetime
 
-sys.path.append("..")
-from RDF_parser import *
-import CGMES_tools
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 pandas.set_option('display.max_rows', 500)
 pandas.set_option('display.max_columns', 500)
@@ -15,9 +19,16 @@ pandas.set_option('display.width', 1000)
 
 #path = r"C:\Users\kristjan.vilgo\Documents\GitHub\Baasetalon\kehtiv_CIM_versioon\SCADA_EMS_CIM\20211201T2130Z_24_ELERING_TP_001.zip"
 #path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_CIM.zip"
-path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\20220701_SCADA_EMS.zip"
-path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2022-10-25T0928.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\20220701_SCADA_EMS.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2022-10-25T0928.zip"
 #path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2022-11-30T1306.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2023-05-16T1010.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2023-05-16T1010.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2023-05-22T1017.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2023-06-12T1148.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2023-07-28T0952.zip"
+path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2024-01-16T1223.zip"
+#path = r"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS\SCADA_EMS_EXPORT_2024-02-20T0909.zip"
 
 data = pandas.read_RDF([path])
 
@@ -30,16 +41,18 @@ profile_keywords = {
     'Topology/': {'keyword': 'TP'},
     'StateVariables': {'keyword': 'SV'}
 }
-
+profile_data_list = [data]
 for profile_name, profile in profile_keywords.items():
     profile_data = pandas.DataFrame(profiles[profiles.VALUE.str.contains(profile_name)])
 
     profile_data["KEY"] = "Model.messageType"
     profile_data["VALUE"] = profile["keyword"]
-    data = data.append(profile_data)
+    profile_data_list.append(profile_data)
 
     profile_keywords[profile_name]["ID"] = profile_data.iloc[0].ID
     profile_keywords[profile_name]["INSTANCE_ID"] = profile_data.iloc[0].INSTANCE_ID
+
+data = pandas.concat(profile_data_list, ignore_index=True)
 
 EQ_INSTANCE_ID = profile_keywords["EquipmentCore"]["INSTANCE_ID"]
 TP_INSTANCE_ID = profile_keywords["Topology/"]["INSTANCE_ID"]
@@ -50,13 +63,15 @@ terminals_missing_CN = data.query("KEY == 'Type' and VALUE == 'Terminal'").drop_
 
 connecting_equipment_missing_CN = data.merge(data.merge(terminals_missing_CN).query("KEY == 'Terminal.ConductingEquipment'")[["VALUE"]].rename(columns={"VALUE": "ID"}))#.query("KEY == 'IdentifiedObject.name' or KEY == 'Type'")
 
-missing_CN_report = connecting_equipment_missing_CN.query("KEY == 'IdentifiedObject.name'")[["ID", "VALUE"]]\
-    .merge(connecting_equipment_missing_CN.query("KEY == 'Type'")[["ID", "VALUE"]], on="ID", suffixes=["_EQ_NAME", "_EQ_TYPE"])\
-    .merge(connecting_equipment_missing_CN.query("KEY == 'ConductingEquipment.BaseVoltage'")[["ID", "VALUE"]].rename(columns={"VALUE": "ConductingEquipment.BaseVoltage"}), on="ID")\
-    .merge(data.merge(terminals_missing_CN)\
-    .type_tableview("Terminal").reset_index()[["IdentifiedObject.name", "ACDCTerminal.sequenceNumber", "ID", "Terminal.ConductingEquipment"]], left_on="ID", right_on="Terminal.ConductingEquipment", suffixes=["_EQ", "_TERMINAL"])\
-    .drop_duplicates()
-missing_CN_report["IdentifiedObject.name_LINE"] = missing_CN_report.VALUE_EQ_NAME.str.replace(" ", "").str[0:4]
+if len(connecting_equipment_missing_CN) > 0:
+    print("Adding missing CN-s")
+    missing_CN_report = connecting_equipment_missing_CN.query("KEY == 'IdentifiedObject.name'")[["ID", "VALUE"]]\
+        .merge(connecting_equipment_missing_CN.query("KEY == 'Type'")[["ID", "VALUE"]], on="ID", suffixes=["_EQ_NAME", "_EQ_TYPE"])\
+        .merge(connecting_equipment_missing_CN.query("KEY == 'ConductingEquipment.BaseVoltage'")[["ID", "VALUE"]].rename(columns={"VALUE": "ConductingEquipment.BaseVoltage"}), on="ID")\
+        .merge(data.merge(terminals_missing_CN)\
+        .type_tableview("Terminal").reset_index()[["IdentifiedObject.name", "ACDCTerminal.sequenceNumber", "ID", "Terminal.ConductingEquipment"]], left_on="ID", right_on="Terminal.ConductingEquipment", suffixes=["_EQ", "_TERMINAL"])\
+        .drop_duplicates()
+    missing_CN_report["IdentifiedObject.name_LINE"] = missing_CN_report.VALUE_EQ_NAME.str.replace(" ", "").str[0:4]
 #117114  05dcf690-213b-46ac-a3e8-d92ae45d1681                                        Type                      ConnectivityNode  b903c6fe-09af-43ca-8209-2e6c3c275618
 #117115  05dcf690-213b-46ac-a3e8-d92ae45d1681                       IdentifiedObject.name                                131.21  b903c6fe-09af-43ca-8209-2e6c3c275618
 #117116  05dcf690-213b-46ac-a3e8-d92ae45d1681  ConnectivityNode.ConnectivityNodeContainer  4bca4299-17fe-4246-bed4-30e641800e46  b903c6fe-09af-43ca-8209-2e6c3c275618
@@ -82,58 +97,61 @@ data.loc[data.query("ID == '3a7890d1-5fde-422a-a911-2993aa9' and KEY == 'Identif
 
 
 # Add missing CN-id
-data_to_add = []
-for line_name, terminals in missing_CN_report.groupby("IdentifiedObject.name_LINE"):
+if len(connecting_equipment_missing_CN) > 0:
+    data_to_add = []
+    for line_name, terminals in missing_CN_report.groupby("IdentifiedObject.name_LINE"):
 
-    # Find existing line ID or create new line
-    line_ID = data.query("VALUE == @line_name")
+        # Find existing line ID or create new line
+        line_ID = data.query("VALUE == @line_name")
 
-    if len(line_ID) > 0:
-        line_ID = line_ID.iloc[0].ID
-        cn_ID = data.references_to_simple(line_ID).reset_index().query("Type == 'ConnectivityNode'").iloc[0].ID_FROM
-        tn_ID = data.references_to_simple(line_ID).reset_index().query("Type == 'TopologicalNode'").iloc[0].ID_FROM
+        if len(line_ID) > 0:
+            line_ID = line_ID.iloc[0].ID
+            cn_ID = data.references_to_simple(line_ID).reset_index().query("Type == 'ConnectivityNode'").iloc[0].ID_FROM
+            tn_ID = data.references_to_simple(line_ID).reset_index().query("Type == 'TopologicalNode'").iloc[0].ID_FROM
 
-    else:
-        # Create/Get needed ID-s
-        line_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"Line:{line_name}"))
-        cn_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"ConnectivityNode:{line_name}"))
-        tn_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"TopologicalNode:{line_name}"))
-        #region_ID = data.merge(data.query("KEY == 'Type' and VALUE == 'GeographicalRegion'").ID).query("VALUE == 'Estonia'").iloc[0].ID
-        region_ID = "de92e3fa-13f0-4608-bedb-06cb41b823b1" # Needs to be SGR
+        else:
+            # Create/Get needed ID-s
+            line_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"Line:{line_name}"))
+            cn_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"ConnectivityNode:{line_name}"))
+            tn_ID = str(uuid.uuid5(uuid.NAMESPACE_OID, f"TopologicalNode:{line_name}"))
+            #region_ID = data.merge(data.query("KEY == 'Type' and VALUE == 'GeographicalRegion'").ID).query("VALUE == 'Estonia'").iloc[0].ID
+            region_ID = "de92e3fa-13f0-4608-bedb-06cb41b823b1" # Needs to be SGR
 
-        data_to_add.extend([
-            # Create Lines in EQ
-            (line_ID, "Type", "Line", EQ_INSTANCE_ID),
-            (line_ID, "Line.Region", region_ID, EQ_INSTANCE_ID),
-            (line_ID, "IdentifiedObject.name", line_name, EQ_INSTANCE_ID),
-            (line_ID, "IdentifiedObject.shortName", line_name, EQ_INSTANCE_ID),
+            data_to_add.extend([
+                # Create Lines in EQ
+                (line_ID, "Type", "Line", EQ_INSTANCE_ID),
+                (line_ID, "Line.Region", region_ID, EQ_INSTANCE_ID),
+                (line_ID, "IdentifiedObject.name", line_name, EQ_INSTANCE_ID),
+                (line_ID, "IdentifiedObject.shortName", line_name, EQ_INSTANCE_ID),
 
-            # Create CN in EQ
-            (cn_ID, "Type", "ConnectivityNode", EQ_INSTANCE_ID),
-            (cn_ID, "IdentifiedObject.name", f"Missing CN {line_name}", EQ_INSTANCE_ID),
-            (cn_ID, "ConnectivityNode.ConnectivityNodeContainer", line_ID, EQ_INSTANCE_ID),
+                # Create CN in EQ
+                (cn_ID, "Type", "ConnectivityNode", EQ_INSTANCE_ID),
+                (cn_ID, "IdentifiedObject.name", f"Missing CN {line_name}", EQ_INSTANCE_ID),
+                (cn_ID, "ConnectivityNode.ConnectivityNodeContainer", line_ID, EQ_INSTANCE_ID),
 
-            # Create CN in TP
-            (cn_ID, "Type", "ConnectivityNode", TP_INSTANCE_ID),
-            (cn_ID, "ConnectivityNode.TopologicalNode", tn_ID, TP_INSTANCE_ID),
+                # Create CN in TP
+                (cn_ID, "Type", "ConnectivityNode", TP_INSTANCE_ID),
+                (cn_ID, "ConnectivityNode.TopologicalNode", tn_ID, TP_INSTANCE_ID),
 
-            # Create TN in TP
-            (tn_ID, "Type", "TopologicalNode", TP_INSTANCE_ID),
-            (tn_ID, "IdentifiedObject.name", f"Missing TN {line_name}", TP_INSTANCE_ID),
-            (tn_ID, "TopologicalNode.ConnectivityNodeContainer", line_ID, TP_INSTANCE_ID),
-            (tn_ID, "TopologicalNode.BaseVoltage", terminals["ConductingEquipment.BaseVoltage"].iloc[0], TP_INSTANCE_ID),
-        ])
+                # Create TN in TP
+                (tn_ID, "Type", "TopologicalNode", TP_INSTANCE_ID),
+                (tn_ID, "IdentifiedObject.name", f"Missing TN {line_name}", TP_INSTANCE_ID),
+                (tn_ID, "TopologicalNode.ConnectivityNodeContainer", line_ID, TP_INSTANCE_ID),
+                (tn_ID, "TopologicalNode.BaseVoltage", terminals["ConductingEquipment.BaseVoltage"].iloc[0], TP_INSTANCE_ID),
+            ])
 
-    for terminal in terminals.itertuples():
+        for terminal in terminals.itertuples():
 
-        terminal_ID = terminal.ID_TERMINAL
+            terminal_ID = terminal.ID_TERMINAL
 
-        data_to_add.extend([
-            (terminal_ID, "Terminal.ConnectivityNode", cn_ID, EQ_INSTANCE_ID),
-            #(terminal_ID, "Terminal.TopologicalNode", tn_ID, TP_INSTANCE_ID),
-        ])
+            data_to_add.extend([
+                (terminal_ID, "Terminal.ConnectivityNode", cn_ID, EQ_INSTANCE_ID),
+                (terminal_ID, "Terminal.TopologicalNode", tn_ID, TP_INSTANCE_ID),
+            ])
 
-data = data.append(pandas.DataFrame(data_to_add, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"]))
+    data = pandas.concat([data, pandas.DataFrame(data_to_add, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"])], ignore_index=True)
+else:
+    print("INFO - Nice: No Missing CN-s")
 
 ### Connect all terminals
 #data.query("KEY == 'Type'")[["ID", "VALUE"]].merge(data.query("KEY == 'Terminal.ConductingEquipment'"), suffixes=["_EQUIPMENT", ""], left_on="ID", right_on="VALUE")
@@ -223,11 +241,11 @@ items_links = [
                {"from": "ControlArea", "to": "LoadArea", "link_name": "ControlArea.EnergyArea"}
 ]
 
-
+data_to_add = [data]
 for link in items_links:
     objects_list.append((items_data[link["from"]]["ID"], link["link_name"], items_data[link["to"]]["ID"], instance_id))
 
-data_to_add = data_to_add.append(pandas.DataFrame(objects_list, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"]), ignore_index=True)
+data_to_add.append(pandas.DataFrame(objects_list, columns=["ID", "KEY", "VALUE", "INSTANCE_ID"]))
 
 # Add LoadGroups to default SubLoadArea
 
@@ -235,7 +253,7 @@ All_ConformLoadGroups_ID = eq.query("KEY == 'Type' & VALUE == 'ConformLoadGroup'
 All_ConformLoadGroups = eq.merge(All_ConformLoadGroups_ID.ID, on="ID")
 Contained_ConformLoadGroups_ID = All_ConformLoadGroups.query("KEY == 'ConformLoad.LoadGroup'")
 
-Not_Contained_ConformLoadGroups = Contained_ConformLoadGroups_ID.append(All_ConformLoadGroups_ID)[["ID"]].drop_duplicates(keep=False)
+Not_Contained_ConformLoadGroups = pandas.concat([Contained_ConformLoadGroups_ID, All_ConformLoadGroups_ID])[["ID"]].drop_duplicates(keep=False)
 
 if not Not_Contained_ConformLoadGroups.empty:
     print(f"INFO - Adding {len(Not_Contained_ConformLoadGroups)} ConformLoadGroups to SubLoadArea {items_data['SubLoadArea']['ID']}")
@@ -244,7 +262,7 @@ if not Not_Contained_ConformLoadGroups.empty:
     Not_Contained_ConformLoadGroups["VALUE"] = items_data["SubLoadArea"]["ID"]
     Not_Contained_ConformLoadGroups["INSTANCE_ID"] = instance_id
 
-    data_to_add = data_to_add.append(Not_Contained_ConformLoadGroups, ignore_index=True)
+    data_to_add.append(Not_Contained_ConformLoadGroups)
 
 # Add ConformLoads to default LoadGroup
 
@@ -252,7 +270,7 @@ All_ConformLoads_ID = eq.query("KEY == 'Type' & VALUE == 'ConformLoad'")
 All_ConformLoads    = eq.merge(All_ConformLoads_ID.ID, on="ID")
 Contained_ConformLoads_ID = All_ConformLoads.query("KEY == 'ConformLoad.LoadGroup'")
 
-Not_Contained_ConformLoads = Contained_ConformLoads_ID.append(All_ConformLoads_ID)[["ID"]].drop_duplicates(keep=False)
+Not_Contained_ConformLoads = pandas.concat([Contained_ConformLoads_ID, All_ConformLoads_ID])[["ID"]].drop_duplicates(keep=False)
 
 
 if not Not_Contained_ConformLoads.empty:
@@ -263,7 +281,7 @@ if not Not_Contained_ConformLoads.empty:
     Not_Contained_ConformLoads["VALUE"] = items_data["ConformLoadGroup"]["ID"]
     Not_Contained_ConformLoads["INSTANCE_ID"] = instance_id
 
-    data_to_add = data_to_add.append(Not_Contained_ConformLoads, ignore_index=True)
+    data_to_add.append(Not_Contained_ConformLoads)
 
 # Add NonConformLoads to default LoadGroup
 
@@ -271,7 +289,7 @@ All_NonConformLoads_ID = eq.query("KEY == 'Type' & VALUE == 'NonConformLoad'")
 All_NonConformLoads = eq.merge(All_NonConformLoads_ID.ID, on="ID")
 Contained_NonConformLoads_ID = All_NonConformLoads.query("KEY == 'NonConformLoad.LoadGroup'")
 
-Not_Contained_NonConformLoads = Contained_NonConformLoads_ID.append(All_NonConformLoads_ID)[["ID"]].drop_duplicates(keep=False)
+Not_Contained_NonConformLoads = pandas.concat([Contained_NonConformLoads_ID, All_NonConformLoads_ID])[["ID"]].drop_duplicates(keep=False)
 
 if not Not_Contained_NonConformLoads.empty:
 
@@ -281,34 +299,34 @@ if not Not_Contained_NonConformLoads.empty:
     Not_Contained_NonConformLoads["VALUE"] = items_data["NonConformLoadGroup"]["ID"]
     Not_Contained_NonConformLoads["INSTANCE_ID"] = instance_id
 
-    data_to_add = data_to_add.append(Not_Contained_NonConformLoads, ignore_index=True)
+    data_to_add.append(Not_Contained_NonConformLoads)
 
 print(f"INFO - END fixing Loads in EQ {instance_id}")
 
-data = data.append(data_to_add, ignore_index=True)
+data = pandas.concat(data_to_add, ignore_index=True)
 data = data.drop_duplicates()
 
 
 ## Set non patl limits with 15min duration
-#TODO - high and low Voltage limits should be allewd without duration - chekc QoCDC
-non_patl_limits = data.query("KEY == 'OperationalLimitType.limitType'")[~data.query("KEY == 'OperationalLimitType.limitType'").VALUE.str.contains("patl")]
-non_patl_limits["KEY"] = "OperationalLimitType.acceptableDuration"
-non_patl_limits["VALUE"] = str(15*60)  # Default is 15 min
-data = data.append(non_patl_limits, ignore_index=True)
-data = data.drop_duplicates()
+# #TODO - high and low Voltage limits should be allewd without duration - chekc QoCDC
+# non_patl_limits = data.query("KEY == 'OperationalLimitType.limitType'")[~data.query("KEY == 'OperationalLimitType.limitType'").VALUE.str.contains("patl")]
+# non_patl_limits["KEY"] = "OperationalLimitType.acceptableDuration"
+# non_patl_limits["VALUE"] = str(15*60)  # Default is 15 min
+# data = data.append(non_patl_limits, ignore_index=True)
+# data = data.drop_duplicates()
 
 
 ### Find all machines out of PQ limits and expand PQ limits ###
 curve_data = data.type_tableview("CurveData")
 synchronous_machine = data.type_tableview("SynchronousMachine").reset_index()
-generating_units = CGMES_tools.get_GeneratingUnits(data)
+generating_units = triplets.cgmes_tools.get_GeneratingUnits(data)
 Terminals = data.type_tableview("Terminal")
 SvPowerFlow = data.type_tableview("SvPowerFlow")
 
 # Separate to coordinate pairs
 first_point = curve_data[["CurveData.Curve", "CurveData.xvalue", "CurveData.y1value"]].rename(columns={"CurveData.xvalue": "x", "CurveData.y1value": "y"})
 second_point = curve_data[["CurveData.Curve", "CurveData.xvalue", "CurveData.y2value"]].rename(columns={"CurveData.xvalue": "x", "CurveData.y2value": "y"})  # TODO Y2 might not exist, so drop NA?
-all_points = first_point.append(second_point)
+all_points = pandas.concat([first_point, second_point])
 
 # Convert to coordinate points
 all_points["PQ_area"] = all_points[["x", "y"]].apply(Point, axis=1)
@@ -347,7 +365,7 @@ data = data.update_triplet_from_tableview(PQ_curve_out_of_PQ_limits[['RotatingMa
 
 # Get Load data
 load_data = data.type_tableview('ConformLoad')
-load_data = load_data.append(data.type_tableview('NonConformLoad'))
+load_data = pandas.concat([load_data, data.type_tableview('NonConformLoad')])
 load_data = load_data.reset_index().merge(Terminals.reset_index(), right_on='Terminal.ConductingEquipment', left_on="ID", how="left", suffixes=("", "_Terminal"))
 load_data = load_data.merge(SvPowerFlow.reset_index(), right_on='SvPowerFlow.Terminal', left_on="ID_Terminal", how="left", suffixes=("", "_SvPowerFlow"))
 
@@ -371,71 +389,19 @@ NP (CA.nI)  :   {data.type_tableview("ControlArea").iloc[0]["ControlArea.netInte
 Losses:         {(load_p + tieflow_p + generation_p)*-1:.1f} MW
 """)
 
+# Set Correct default status for some switches
 
+# L354 normally closed
+data.loc[data.query("ID == 'bb188cea-a866-4a0c-8e70-eca7c1ae0b59' and KEY == 'Switch.normalOpen'").index[0], "VALUE"] = "false"
 
+# L677 normally open
+data.loc[data.query("ID == '774deeb7-35d6-4a48-a264-1d8757d326af' and KEY == 'Switch.normalOpen'").index[0], "VALUE"] = "true"
 
 
 # Set all normally closed Switches to closed status
 open_switches = data.merge(data.query("KEY == 'Switch.normalOpen' and VALUE == 'false'").ID).query("KEY == 'Switch.open' and VALUE == 'true'")
 open_switches["VALUE"] = "false"
 data = data.update_triplet_from_triplet(open_switches, update=True, add=False)
-
-# # Scale Model 2023-04-19
-# ACNP = 930.4
-# EL1 = -32.2
-# EL2 = -59.2
-# load_setpoint = 1400
-# generation_setpoint = (EL1 + EL2 + ACNP + load_setpoint) * -1
-#
-#
-# # Set HVDC flows # TODO set by EIC of Connectivity Node
-# data.loc[data.query("ID == '2274d9f6-3ac8-40c7-9eb2-2cac250bd824' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = EL2
-# data.loc[data.query("ID == '9885bc1f-664c-41e2-aa41-68f94c7db7db' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = EL1
-#
-# # Set AC Flows
-# RU_FLOWS = 300
-# # L373
-# data.loc[data.query("ID == 'cf3af93a-ad15-4db9-adc2-4e4454bb843f' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = RU_FLOWS / 2
-# # L374
-# data.loc[data.query("ID == 'd98ec0d4-4e25-4667-b21f-5b816a6e8871' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = RU_FLOWS / 2
-#
-# LV_FLOWS = ACNP - RU_FLOWS
-# # L301
-# data.loc[data.query("ID == '227b5f74-9791-4c09-81b1-c46857f91c54' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = LV_FLOWS / 4
-# # L354
-# data.loc[data.query("ID == '935dc521-a633-44b8-bbcc-dc7171449648' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = LV_FLOWS / 4
-# # L502
-# data.loc[data.query("ID == 'de62ee44-d086-4133-87f9-7ab99dabf2ea' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = LV_FLOWS / 4
-# # L358
-# data.loc[data.query("ID == 'e0786c57-57ff-454e-b9e2-7a912d81c674' and KEY == 'EquivalentInjection.p'").index, "VALUE"] = LV_FLOWS / 4
-
-
-#online_machine_data = machine_data.query("`RotatingMachine.p` < 0")
-#available_generation = (online_machine_data['GeneratingUnit.maxOperatingP'].astype(float) * -1) - online_machine_data['RotatingMachine.p']
-# available_generation = ((machine_data['GeneratingUnit.maxOperatingP'].astype(float) * -1) - machine_data['SvPowerFlow.p']).sum()
-#
-# machine_data['SvPowerFlow.p'] = machine_data['SvPowerFlow.p'] + ((machine_data['GeneratingUnit.maxOperatingP'].astype(float) * -1) - machine_data['SvPowerFlow.p']) * (generation_setpoint - generation_p) / available_generation
-#
-#
-# load_data['SvPowerFlow.p'] = load_data['SvPowerFlow.p'] + abs(load_data['SvPowerFlow.p']) * (load_setpoint - load_p) / load_p
-
-# Update SSH values from SV
-load_data[['EnergyConsumer.p', 'EnergyConsumer.q']] = load_data[['SvPowerFlow.p', 'SvPowerFlow.q']]
-data = data.update_triplet_from_tableview(load_data[['ID', 'EnergyConsumer.p', 'EnergyConsumer.q']], update=True, add=False, instance_id=profile_keywords['SteadyStateHypothesis']["INSTANCE_ID"])
-
-# Update SSH values from SV
-machine_data[['RotatingMachine.p', 'RotatingMachine.q']] = machine_data[['SvPowerFlow.p', 'SvPowerFlow.q']]
-data = data.update_triplet_from_tableview(machine_data[['ID', 'RotatingMachine.p', 'RotatingMachine.q']], update=True, add=False, instance_id=profile_keywords['SteadyStateHypothesis']["INSTANCE_ID"])
-
-# Set Slack on machine with highest generation
-slack_machine = machine_data.sort_values('RotatingMachine.p').iloc[1]
-print(f"Setting {slack_machine['IdentifiedObject.name']} as Slack")
-
-data.loc[data.query("ID == @slack_machine.ID and KEY == 'SynchronousMachine.referencePriority'").index, "VALUE"] = 1
-
-# TODO select the largest island and check that machine is part of it
-data.loc[data.query("KEY == 'TopologicalIsland.AngleRefTopologicalNode'").index[0]] = slack_machine["Terminal.TopologicalNode"]
-
 
 
 # Ensure regulating control is discrete
@@ -448,7 +414,10 @@ tapchanger_data["TapChanger.neutralU"] = tapchanger_data["PowerTransformerEnd.ra
 data = data.update_triplet_from_tableview(tapchanger_data[['ID', "TapChanger.neutralU"]], update=True, add=False, instance_id=EQ_INSTANCE_ID)
 
 # Fix voltage setpoints to BaseVoltage + 7,28%
-terminal_basevoltage = data.type_tableview("Terminal").reset_index().merge(data.type_tableview("ConnectivityNode"), left_on="Terminal.ConnectivityNode", right_on="ID").merge(data.type_tableview("TopologicalNode"), left_on="ConnectivityNode.TopologicalNode", right_on="ID").merge(data.type_tableview("BaseVoltage"), left_on="TopologicalNode.BaseVoltage", right_on="ID")[["ID", "BaseVoltage.nominalVoltage"]]
+terminal_basevoltage = data.type_tableview("Terminal").reset_index().merge(
+    data.type_tableview("ConnectivityNode"), left_on="Terminal.ConnectivityNode", right_on="ID", suffixes=("", "_ConnectivityNode")).merge(
+    data.type_tableview("TopologicalNode"), left_on="ConnectivityNode.TopologicalNode", right_on="ID", suffixes=("", "_TopologicalNode")).merge(
+    data.type_tableview("BaseVoltage"), left_on="TopologicalNode.BaseVoltage", right_on="ID", suffixes=("", "_BaseVoltage"))[["ID", "BaseVoltage.nominalVoltage"]]
 
 regulatingcontrol_basevoltage = data.key_tableview('RegulatingControl.Terminal').reset_index().merge(terminal_basevoltage, left_on="RegulatingControl.Terminal", right_on="ID", suffixes=["", "_Terminal"])
 regulatingcontrol_basevoltage["RegulatingControl.targetValue_original"] = regulatingcontrol_basevoltage["RegulatingControl.targetValue"]
@@ -459,12 +428,61 @@ data = data.update_triplet_from_tableview(regulatingcontrol_basevoltage[["ID", "
 
 # 750
 
+# Fix names to 32 char
+
+name_max_length = 32
+names_data = data.query("KEY == 'IdentifiedObject.name'").copy()
+names_data.VALUE = names_data.VALUE.str[:name_max_length - 1]
+data.update(names_data)
+
+# Fix TieFlow to true
+data.loc[data.query("KEY == 'TieFlow.positiveFlowIn'").index, "VALUE"] = "true"
+
+
+def reference_period_start(datetime_str):
+    now = datetime.datetime.now()
+    new_datetime = aniso8601.parse_datetime(datetime_str).replace(day=1, hour=0, minute=0) - aniso8601.parse_duration("P1Y")
+    new_datetime_str = new_datetime.isoformat()
+    if new_datetime > now:
+        new_datetime_str = reference_period_start(new_datetime_str)
+
+    return new_datetime_str
+
+# Query Load
+
+def get_load(scenario_time_string, duration="P1M"):
+    period_start = aniso8601.parse_datetime(reference_period_start(scenario_time_string))
+    period_end = period_start + aniso8601.parse_duration(duration)
+    query_string = f"https://isr.elering.sise/api/v1/measurements/?scada_point=10112&aggregation=1H&start_time={period_start:%Y-%m-%dT%H:%M:%S}&end_time={period_end:%Y-%m-%dT%H:%M:%S}"
+    return pandas.DataFrame(requests.get(query_string, verify=False).json()["data"]).round(1)
+
+
+def get_metadata_from_filename(file_name):
+
+    # Separators
+    file_type_separator           = "."
+    meta_separator                = "_"
+
+    #print(file_name)
+    file_metadata = {}
+    file_name, file_type = file_name.split(file_type_separator)
+
+    # Parse file metadata
+    file_meta_list = file_name.split(meta_separator)
+
+    file_metadata["Model.scenarioTime"],\
+    file_metadata["Model.processType"],\
+    file_metadata["Model.modelingEntity"],\
+    file_metadata["Model.messageType"] = file_meta_list
+
+    return file_metadata
+
+data = triplets.cgmes_tools.update_FullModel_from_filename(data)
+
 ## EXPORT ###
 
 # Set namepsaces for export
 
-
-now = datetime.datetime.now()
 
 namespace_map = dict(    cim="http://iec.ch/TC57/2013/CIM-schema-cim16#",
                          #cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#",
@@ -483,4 +501,20 @@ with open(r"..\entsoe_v2.4.15_2014-08-07.json", "r") as conf_file:
     rdf_map = json.load(conf_file)
 
 # Export triplet to CGMES
-data.export_to_cimxml(rdf_map=rdf_map, namespace_map=namespace_map, export_undefined=export_undefined, export_type=export_type)
+data_export = data.export_to_cimxml(rdf_map=rdf_map,
+                                  namespace_map=namespace_map,
+                                  export_undefined=export_undefined,
+                                  export_type=export_type,
+                                  global_zip_filename=rf"C:\Users\kristjan.vilgo\Elering AS\Upgrade of planning tools - Elering Base Model\Models\EMS_ENHANCED\Export_{datetime.date.today().isoformat()}.zip",
+                                  export_to_memory=False,
+                                  debug=False)
+
+
+
+
+# 1. Find all Operational Limit Sets
+#limit_sets = data.type_tableview('OperationalLimitSet')
+# 2. Link all Limits and Limit Sets
+#limits = data.key_tableview("OperationalLimit.OperationalLimitSet")
+# 3. Link all Limit Sets with Conducting Equipment via Terminal
+# 4. Add Base voltage via Equipment
