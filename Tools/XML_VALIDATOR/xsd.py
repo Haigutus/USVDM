@@ -1,130 +1,194 @@
-#-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
-#
-# Author:      kristjan.vilgo
-#
-# Created:     22.06.2017
-# Copyright:   (c) kristjan.vilgo 2017
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
+"""Minimal in-memory XML / XSD validation (lxml, no temp files)."""
 
-from tools import *
+from datetime import datetime, timezone
+from pathlib import Path
+from lxml import etree
 
-#https://github.com/sissaschool/xmlschema
+XSD_DIR = Path(__file__).resolve().parent / "XSD"
 
 
-def validate_XML_string(XML_string, XSD_string = False):
-
-    # Create list to keep all processing messages
-    status_list = []
-
-    # Load XML
-    XML_status, xml_doc = load_XML(XML_string)
-    status_list.append(XML_status)
-
-    # In case of XML error, return
-    if xml_doc == "":
-        return status_list
-
-    # If no XSD is provided, look fo one and loade it
-    if XSD_string == False:
-        # Find XML root namespace and corresponding XSD
-
-        #root_namespace = xml_doc.nsmap.get(None)
-        root_namespace = xml_doc.getroottree().getroot().tag.split("}")[0][1:]
-        xsd_dataframe = find_all_xsds()
-        XSD_path_list = xsd_dataframe.query("target_namespace == '{}'".format(root_namespace))["file_path"].tolist()
+def _index_xsds(root=XSD_DIR):
+    """namespace -> sorted list of xsd paths."""
+    index = {}
+    if not root.is_dir():
+        return index
+    for path in sorted(root.rglob("*.xsd")):
+        try:
+            ns = etree.parse(str(path)).getroot().get("targetNamespace", "")
+        except etree.XMLSyntaxError:
+            continue
+        if ns:
+            index.setdefault(ns, []).append(path)
+    return index
 
 
-        if len(XSD_path_list) == 1:
-            status_list.append({"type":"XSD_used", "status":os.path.basename(XSD_path_list[0]), "errors":""})
-
-            # Load XSD
-            XSD_status, xml_schema = load_XSD_file(XSD_path_list[0])
-
-        else:
-            status_list.append({"type":"XSD_used", "status":"ERROR - No XSD provided", "errors":["XML has no or wrong reference to XSD in root 'target_namespace' attribute"]})
-            return status_list
-
-    # Just load XSD if one was provided
-    else:
-        #Load XSD
-        status_list.append({"type":"XSD_used", "status":"Using provided XSD", "errors":""})
-        XSD_status, xml_schema = load_XSD_string(XSD_string)
-        #print(xml_schema)
-
-    status_list.append(XSD_status)
-
-    # In case of XSD error return
-    if xml_schema == "":
-        return status_list
+XSD_INDEX = _index_xsds()
 
 
-    # Create dict to keep all valdaiton data
-    status_dict = {"type":"Validation"}
+def _pick_xsd(paths):
+    """Prefer CIM_* package paths; else first sorted path."""
+    cim = [p for p in paths if "CIM_" in p.parts]
+    return sorted(cim or paths)[0]
 
-    # Validate XML
+
+def _root_namespace(doc):
+    tag = doc.tag
+    if isinstance(tag, str) and tag.startswith("{"):
+        return tag[1:].split("}", 1)[0]
+    return doc.nsmap.get(None) or ""
+
+
+def _parse_xml(xml):
+    if isinstance(xml, (bytes, bytearray)):
+        return etree.fromstring(xml)
+    if isinstance(xml, str):
+        text = xml.strip()
+        if not text or text.startswith("Copy your"):
+            raise ValueError("empty XML")
+        return etree.fromstring(text.encode("utf-8"))
+    raise TypeError("xml must be str or bytes")
+
+
+def _load_schema(xsd):
+    """xsd: path | str | bytes. Paths resolve xs:include; strings are self-contained."""
+    if isinstance(xsd, Path) or (isinstance(xsd, str) and Path(xsd).is_file()):
+        return etree.XMLSchema(etree.parse(str(xsd)))
+    if isinstance(xsd, (bytes, bytearray)):
+        return etree.XMLSchema(etree.fromstring(xsd))
+    if isinstance(xsd, str):
+        return etree.XMLSchema(etree.fromstring(xsd.encode("utf-8")))
+    raise TypeError("xsd must be path, str, or bytes")
+
+
+def _error_entries(error_log):
+    """Collect every entry from an lxml error log (no dedupe / no cap)."""
+    errors = []
+    for e in error_log:
+        errors.append({
+            "line": e.line or 0,
+            "column": e.column or 0,
+            "message": e.message or str(e),
+            "domain_name": getattr(e, "domain_name", "") or "",
+            "type_name": getattr(e, "type_name", "") or "",
+            "path": getattr(e, "path", "") or "",
+        })
+    return errors
+
+
+def _ts():
+    """UTC ISO 8601 with T separator and Z, e.g. 2026-08-08T12:09:34.090Z (server clock, UTC)."""
+    return (
+        datetime.now(timezone.utc)
+        .isoformat(timespec="milliseconds")
+        .replace("+00:00", "Z")
+    )
+
+def _log_lines(ts, *parts):
+    """One timestamped line per part."""
+    return [f"[{ts}] {p}" for p in parts]
+
+
+def validate(xml, xsd=None):
+    """
+    Validate XML in memory.
+
+    Returns dict:
+      ok, errors[{line, column, message, ...}], xsd_used, status_lines[str]
+    """
+    ts = _ts()
+    status = []
+    errors = []
+
+    # XML
     try:
-        xml_schema.validate(xml_doc)
+        doc = _parse_xml(xml)
+        status.extend(_log_lines(ts, "XML      OK - loaded"))
+    except Exception as exc:
+        msg = str(exc)
+        line = getattr(exc, "lineno", None) or 0
+        if not line:
+            pos = getattr(exc, "position", None)
+            if isinstance(pos, tuple) and pos:
+                line = pos[0] or 0
+        errors.append({"line": line, "column": 0, "message": msg})
+        status.extend(_log_lines(
+            ts,
+            "XML      ERROR - Loading failed",
+            f"L{line or '?':<6} {msg}",
+        ))
+        return {
+            "ok": False,
+            "errors": errors,
+            "xsd_used": "",
+            "status_lines": status,
+        }
 
-    except Exception as error:
-        print("Validation failed")
-        status_dict["status"] = "ERROR - Validation failed"
-        status_dict["errors"] = error
+    # XSD resolve
+    xsd_used = ""
+    try:
+        if xsd:
+            schema = _load_schema(xsd)
+            xsd_used = "provided XSD" if not isinstance(xsd, Path) else Path(xsd).name
+        else:
+            ns = _root_namespace(doc)
+            paths = XSD_INDEX.get(ns, [])
+            if not paths:
+                status.extend(_log_lines(
+                    ts,
+                    "XSD      ERROR - no schema for namespace",
+                    f"         {ns or '(none)'}",
+                ))
+                return {
+                    "ok": False,
+                    "errors": errors,
+                    "xsd_used": "",
+                    "status_lines": status,
+                }
+            path = _pick_xsd(paths)
+            schema = _load_schema(path)
+            xsd_used = path.name
+        status.extend(_log_lines(ts, f"XSD      {xsd_used}"))
+    except Exception as exc:
+        status.extend(_log_lines(ts, "XSD      ERROR - Loading failed", f"         {exc}"))
+        return {
+            "ok": False,
+            "errors": errors,
+            "xsd_used": xsd_used,
+            "status_lines": status,
+        }
 
-        status_list.append(status_dict)
+    # Validate in memory — use a fresh error log via assertValid-style collect
+    # schema.validate() fills schema.error_log with all libxml2 messages
+    ok = bool(schema.validate(doc))
+    errors = _error_entries(schema.error_log)
 
-        return status_list
+    # Also pull from doc if any (usually empty for schema errs)
+    n = len(errors)
+    status.extend(_log_lines(
+        ts,
+        f"Result   {n} error(s)" if n else "Result   valid",
+    ))
+    for e in errors:
+        line = e["line"] or "?"
+        status.extend(_log_lines(ts, f"L{line:<6} {e['message']}"))
 
-    #Print errors and return dataframe of errors
-
-    error_list = []
-    error_parametres_list =  ['column',
-                              'domain',
-                              'domain_name',
-                              'filename',
-                              'level',
-                              'level_name',
-                              'line',
-                              'message',
-                              'path',
-                              'type',
-                              'type_name']
-
-    for error in xml_schema.error_log:
-
-        error_dict = {}
-        for error_parameter in error_parametres_list:
-
-            error_dict[error_parameter] = getattr(error, error_parameter, "")
-
-        error_list.append(error_dict)
+    return {
+        "ok": ok and not errors,
+        "errors": errors,
+        "xsd_used": xsd_used,
+        "status_lines": status,
+    }
 
 
-    status_dict["errors"] = error_list
-    status_dict["status"] = "{} errors found in XML".format(len(error_list))
-    status_list.append(status_dict)
-
-    return status_list
-
-
-# TEST - this will only run if this file is executed on its own, will not run when this module is imported
 if __name__ == "__main__":
+    import sys
 
+    xml_path = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+    if not xml_path or not xml_path.is_file():
+        print(f"Indexed {sum(len(v) for v in XSD_INDEX.values())} XSDs, {len(XSD_INDEX)} namespaces")
+        print("Usage: python xsd.py <file.xml>")
+        sys.exit(0)
 
-    XML = r"""/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/TestConfigurations_packageCASv2.0/MiniGrid/BusBranch/CGMES_v2.4.15_MiniGridTestConfiguration_BaseCase_v3/MiniGridTestConfiguration_BC_EQ_v3.0.0.xml"""
-    XSD = r"""/home/kristjan/GIT/USVDM/Tools/RDF_PARSER/FullModel_XSD/RDF.xsd"""
-
-
-    check_path([XML, XSD]) # DEBUG
-
-
-    XML_string = open(XML,"r").read()
-    #XSD_string = open(XSD, "r").read()
-    status_list = validate_XML_string(XML_string)
-
-    for line in status_list:
-        print(line)
-        for error in line["errors"]:
-            print(error)
+    result = validate(xml_path.read_text(encoding="utf-8", errors="replace"))
+    print("\n".join(result["status_lines"]))
+    sys.exit(0 if result["ok"] else 1)

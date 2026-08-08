@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Acknowledgement_MarketDocument
+    xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
+    <mRID>31c498cb-babf-4</mRID>
+    <createdDateTime>2014-06-05T10:08:53Z</createdDateTime>
+
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+
+    <receiver_MarketParticipant.mRID codingScheme="A01">10XDE-VE-TRANSMK</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A04</receiver_MarketParticipant.marketRole.type>
+
+    <received_MarketDocument.mRID>MONTH_AHEAD_TOTAL_LOAD_FORECAST</received_MarketDocument.mRID>
+    <received_MarketDocument.revisionNumber>1</received_MarketDocument.revisionNumber>
+    
+    <received_MarketDocument.createdDateTime>2014-06-05T10:08:27Z</received_MarketDocument.createdDateTime>
+
+    <Reason>
+        <code>A02</code>
+    </Reason>
+    <Reason>
+        <code>A41</code>
+        <text>Data insertion not allowed - Value delivered in Resolution element is not correct. Submission resolution does not match the configuration. 
+Expected resolution: P7D 
+Delivered resolution: P1D 
+Data provider: 50HzT 
+Data Item: Month-ahead Total Load Forecast [6.1.D] 
+Dimension: CTA|DE(50HzT) 
+Time Interval: 2013-08-05T00:00:00.000+02:00</text>
+    </Reason>
+
+
+</Acknowledgement_MarketDocument>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GL_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:generationloaddocument:3:0">
+  <mRID>ACTUAL_TOTAL_LOAD_PER_BZN</mRID>
+  <revisionNumber>1</revisionNumber>
+  <type>A65</type>
+  <!-- A65 = Total Load -->
+  <process.processType>A16</process.processType>
+  <!-- A16 = Realised -->
+  <sender_MarketParticipant.mRID codingScheme="A01" >10XDE-VE-TRANSMK</sender_MarketParticipant.mRID>
+  <!-- (document owner (Code)) -->
+  <sender_MarketParticipant.marketRole.type>A04</sender_MarketParticipant.marketRole.type>
+  <!-- (code of role associated with MarketParticipant) -->
+  <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+  <!-- (code of doc. recipient) -->
+  <receiver_MarketParticipant.marketRole.type>A32</receiver_MarketParticipant.marketRole.type>
+  <!-- (code of Rrole associated with MarketParticipant) -->
+
+  <createdDateTime>2013-12-18T22:15:21Z</createdDateTime>
+  <time_Period.timeInterval>
+    <start>2013-12-18T23:00Z</start>
+    <end>2013-12-19T23:00Z</end>
+  </time_Period.timeInterval>
+
+  <TimeSeries>
+    <mRID>1</mRID>
+    <businessType>A04</businessType>
+    <!-- A04 = Consumption -->
+    <objectAggregation>A01</objectAggregation>
+    <!-- A01 = Area -->
+    <outBiddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</outBiddingZone_Domain.mRID>
+    <!-- code for area production (negetive) -->
+    <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+    <curveType>A01</curveType>
+    <!-- A01 = Sequential fixed block | A03 = Variable sized blocks -->
+
+    <Period>
+      <timeInterval>
+        <start>2013-12-18T23:00Z</start>
+        <end>2013-12-19T23:00Z</end>
+      </timeInterval>
+      <resolution>PT60M</resolution>
+      <Point>
+        <position>1</position>
+        <quantity>10</quantity>
+      </Point>
+      <Point>
+        <position>2</position>
+        <quantity>20</quantity>
+      </Point>
+      <Point>
+        <position>3</position>
+        <quantity>30</quantity>
+      </Point>
+      <Point>
+        <position>4</position>
+        <quantity>40</quantity>
+      </Point>
+      <Point>
+        <position>5</position>
+        <quantity>50</quantity>
+      </Point>
+      <Point>
+        <position>6</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>7</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>8</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>9</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>10</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>11</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>12</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>13</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>14</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>15</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>16</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>17</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>18</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>19</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>20</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>21</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>22</position>
+        <quantity>100</quantity>
+      </Point>
+      <Point>
+        <position>23</position>
+        <quantity>1000</quantity>
+      </Point>
+      <Point>
+        <position>24</position>
+        <quantity>2000</quantity>
+      </Point>
+    </Period>
+  </TimeSeries>
+
+</GL_MarketDocument>

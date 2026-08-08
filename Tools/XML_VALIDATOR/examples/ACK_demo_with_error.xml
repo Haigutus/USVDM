@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XML Validator demo (intentionally INVALID so errors show in the gutter).
+
+  Paste any market XML here. Schema is chosen from the root namespace.
+
+  Bundled XSDs (auto-match):
+    • IEC 62325 / ESMP market documents (ENTSO-E CIM package)
+    • EDIGAS 5 gas market schemas
+    • CGMES FullModel / RDF helpers
+    • OPDM QAR / query schemas
+    • RGCE reporting schemas
+
+  Source: ENTSO-E Transparency ACK example (positive A01), with two
+  deliberate errors so validation fails on first load:
+    1) createdDateTime almost valid — missing 'T' between date and time
+    2) unexpected THIS_IS_WRONG element
+  Fix both to see a clean pass (use 2014-05-16T08:37:18Z).
+-->
+<Acknowledgement_MarketDocument
+	xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
+
+	<mRID>edd37bda-5853-4</mRID>
+	<!-- DEMO ERROR: almost valid xs:dateTime — only the 'T' separator is missing -->
+	<createdDateTime>2014-05-16 08:37:18Z</createdDateTime>
+
+	<!-- DEMO ERROR: unexpected element (remove this block to clear) -->
+	<THIS_IS_WRONG>deliberate schema error for demo highlighting</THIS_IS_WRONG>
+
+	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+
+	<receiver_MarketParticipant.mRID codingScheme="A01">10XDE-VE-TRANSMK</receiver_MarketParticipant.mRID>
+	<receiver_MarketParticipant.marketRole.type>A04</receiver_MarketParticipant.marketRole.type>
+
+	<received_MarketDocument.mRID>ACTUAL_TOTAL_LOAD_PER_BZN</received_MarketDocument.mRID>
+	<received_MarketDocument.revisionNumber>1</received_MarketDocument.revisionNumber>
+	<received_MarketDocument.createdDateTime>2014-05-16T08:37:16Z</received_MarketDocument.createdDateTime>
+
+	<Reason>
+		<code>A01</code>
+	</Reason>
+
+</Acknowledgement_MarketDocument>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProblemStatement_MarketDocument
+    xmlns="urn:iec62325.351:tc57wg16:451-5:problemdocument:3:0">
+  <mRID>5e0ecc47-63d7-4</mRID>
+  <revisionNumber>1</revisionNumber>
+  <type>A34</type>
+  <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+
+  <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+  <receiver_MarketParticipant.mRID codingScheme="A01">10XCZ-CEPS-GRIDE</receiver_MarketParticipant.mRID>
+
+  <receiver_MarketParticipant.marketRole.type>A39</receiver_MarketParticipant.marketRole.type>
+  <createdDateTime>2014-06-05T10:23:59Z</createdDateTime>
+  <period.timeInterval>
+    <start>2014-06-03T22:00Z</start>
+    <end>2014-06-04T22:00Z</end>
+  </period.timeInterval>
+  <expected_MarketDocument.type>A01</expected_MarketDocument.type>
+
+  <expected_MarketDocument.createdDateTime>2014-06-05T10:23:59Z</expected_MarketDocument.createdDateTime>
+
+  <expected_MarketDocument.process.processType>A01</expected_MarketDocument.process.processType>
+  <Reason>
+    <code>A91</code>
+    <text>
+      Physical Flows [12.1.G] | BDimmensions: In Area = CTA|10YCZ-CEPS-----N, Out Area = CTA|10YDE-EON------1 | Missing values: 1 of 24
+    </text>
+  </Reason>
+</ProblemStatement_MarketDocument>

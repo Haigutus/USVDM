@@ -1,0 +1,10 @@
+services:
+  xml-validator:
+    build: .
+    ports:
+      - "8030:8030"
+    environment:
+      PORT: "8030"
+    # Uncomment to use host XSDs without rebuild:
+    # volumes:
+    #   - ./XSD:/app/XSD:ro
