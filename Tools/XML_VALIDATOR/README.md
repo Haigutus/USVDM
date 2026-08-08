@@ -3,7 +3,8 @@
 Live browser UI to validate **IEC 62325** / **EDIGAS** (and other bundled) XML messages against local XSDs.
 
 - In-memory validation with **lxml** (no temp files, no subprocess pipes)
-- **Ace** editor (CDN build with full **XML** mode + monokai) and error-line annotations
+- **Ace** editor vendored under `assets/ace/` (XML + monokai; fully offline — no CDN)
+- **Dash/React** UI JS served from the installed `dash` package (`serve_locally=True`)
 - Bundled schemas under `XSD/`
 - Initial demo document under `examples/ACK_demo_with_error.xml` (deliberate errors)
 
@@ -26,6 +27,22 @@ python app.py
 cd Tools/XML_VALIDATOR
 docker compose up --build
 # → http://localhost:8030
+```
+
+Runtime is self-contained (no outbound network to boot the UI):
+
+| Piece | Source |
+|-------|--------|
+| Ace editor (core, XML mode, monokai, workers, searchbox, …) | `assets/ace/` |
+| Ace ↔ Dash bridge | `assets/bridge.js` |
+| App CSS, favicon, GitHub mark | `assets/` |
+| React / Dash renderer / dcc / html | installed `dash` package → `/_dash-component-suites/` |
+| XSD schemas | `XSD/` |
+
+Only optional `update_xsds.sh` needs the internet. To refresh Ace after upgrading the version:
+
+```bash
+./scripts/vendor_ace.sh 1.36.5
 ```
 
 ## Refresh ENTSO-E CIM / ESMP XSDs

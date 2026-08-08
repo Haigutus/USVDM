@@ -1,6 +1,7 @@
-/* Bridge: full Ace (CDN) <-> Dash Stores — XML mode + monokai + gutter annotations */
+/* Bridge: vendored Ace <-> Dash Stores — XML mode + monokai + gutter annotations */
 (function () {
-  var ACE_BASE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.5/";
+  // Local Ace only (assets/ace/) — no CDN / network at runtime
+  var ACE_BASE = "/assets/ace/";
   var xmlEditor = null;
   var logEditor = null;
   var markerIds = [];

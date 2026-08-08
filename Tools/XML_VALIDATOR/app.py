@@ -1,4 +1,4 @@
-"""XML Validator UI — Dash + Ace (CDN, full XML mode), live XSD validation."""
+"""XML Validator UI — Dash + vendored Ace, offline-capable."""
 
 import os
 from pathlib import Path
@@ -15,12 +15,23 @@ INITIAL_XML = DEMO_FILE.read_text(encoding="utf-8") if DEMO_FILE.is_file() else 
     "<!-- Demo file missing; paste IEC 62325 / EDIGAS XML here -->\n<root/>\n"
 )
 
-ACE_CDN = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.5"
-
+# All UI JS is local:
+#   - Ace: assets/ace/* + assets/bridge.js (explicit load order)
+#   - Dash/React/dcc/html: installed package via /_dash-component-suites/ (serve_locally)
+# No CDN external_stylesheets / external_scripts to third parties.
 app = Dash(
     __name__,
     title="XML Validator",
-    external_scripts=[f"{ACE_CDN}/ace.min.js"],
+    serve_locally=True,
+    # Don't auto-inject every .js under assets/ (order matters for Ace)
+    assets_ignore=r".*\.js",
+    external_scripts=[
+        "/assets/ace/ace.min.js",
+        "/assets/ace/mode-xml.js",
+        "/assets/ace/mode-text.js",
+        "/assets/ace/theme-monokai.js",
+        "/assets/bridge.js",
+    ],
 )
 server = app.server
 
@@ -36,6 +47,8 @@ app.layout = html.Div(
                     href=GITHUB_URL,
                     target="_blank",
                     title="View on GitHub",
+                    # link target is external only when user clicks; not required for UI boot
+                    rel="noopener noreferrer",
                 ),
             ],
         ),
@@ -87,11 +100,7 @@ clientside_callback(
 
 
 def _annotations(errors):
-    """Ace annotation shape: row (0-based), column, type, text (hover).
-
-    One annotation per error (not deduped) so multiple issues on different
-    lines all get gutter marks. Same-line issues stack in the hover tooltip.
-    """
+    """Ace annotation shape: row (0-based), column, type, text (hover)."""
     out = []
     for e in errors:
         line = e.get("line") or 1
@@ -112,7 +121,6 @@ def _annotations(errors):
     Input("xml-store", "data"),
 )
 def on_xml(content):
-    # Ignore empty initial store so we don't flash a clear over real results
     if content is None or content == "":
         return "", []
     if not str(content).strip():
@@ -125,4 +133,10 @@ def on_xml(content):
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8030"))
-    app.run(debug=False, host="0.0.0.0", port=port)
+    # No devtools; silence any version-check against plotly CDN
+    app.run(
+        debug=False,
+        host="0.0.0.0",
+        port=port,
+        dev_tools_disable_version_check=True,
+    )
