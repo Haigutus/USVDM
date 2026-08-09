@@ -1,0 +1,3 @@
+[submodule "Tools/XML_VALIDATOR"]
+	path = Tools/XML_VALIDATOR
+	url = https://github.com/Haigutus/xml-validator.git
